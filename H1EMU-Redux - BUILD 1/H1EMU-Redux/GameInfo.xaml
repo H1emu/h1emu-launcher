@@ -1,0 +1,36 @@
+﻿<Page x:Class="H1EMU_Redux.GameInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:H1EMU_Redux"
+      mc:Ignorable="d" 
+      d:DesignHeight="100" d:DesignWidth="555"
+      FontFamily="Bahnschrift Light"
+      Title="GameInfo">
+    <Grid>
+        <RichTextBox FontSize="16" Background="Transparent" BorderThickness="0" Foreground="White">
+            <FlowDocument>
+                <Paragraph TextAlignment="Center">
+                    Which version of
+                    <Run Foreground="#FFCA1420">
+                        H1Z1: Just Survive
+                    </Run>
+                    <Run>
+                        would you like to install?
+                    </Run>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Button Click="Button2015" Content="JANUARY 2015" Foreground="White" FontFamily="Arial Black" FontSize="24" Width="270" Height="45" Margin="0,20,0,0" HorizontalAlignment="Left" BorderThickness="0" Style="{DynamicResource StandardButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources\StandardButton.png"/>
+            </Button.Background>
+        </Button>
+        <Button Click="Button2016" Content="DECEMBER 2016" Foreground="White" FontFamily="Arial Black" FontSize="24" Width="270" Height="45" Margin="0,20,0,0" HorizontalAlignment="Right" BorderThickness="0" Style="{DynamicResource StandardButton}">
+            <Button.Background>
+                <ImageBrush ImageSource="Resources\StandardButton.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Page>
