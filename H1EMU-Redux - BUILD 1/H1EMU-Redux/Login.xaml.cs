@@ -81,9 +81,10 @@ namespace H1EMU_Redux
             return true;
         }
 
+        public static string version = "";
+
         public async void TryLoginDownload()
         {
-            string version = "";
             string username = "";
             string password = "";
             
@@ -307,7 +308,7 @@ namespace H1EMU_Redux
                     Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
                         Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
-                        CustomMessageBox.Show($"Successfully cancelled the download operation of: H1Z1 Just Survive version {version}.");
+                        CustomMessageBox.Show($"Successfully cancelled the download of H1Z1: Just Survive version {version}.");
                     });
 
                     return;

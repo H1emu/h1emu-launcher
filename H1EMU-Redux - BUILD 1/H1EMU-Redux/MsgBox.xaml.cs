@@ -25,7 +25,7 @@ namespace H1EMU_Redux
             InitializeComponent();
 
             DoubleAnimation fadeAnimation = new DoubleAnimation();
-            fadeAnimation.Duration = TimeSpan.FromMilliseconds(50d);
+            fadeAnimation.Duration = TimeSpan.FromMilliseconds(20d);
             fadeAnimation.From = 0.0d;
             fadeAnimation.To = 1.0d;
             MainMsgBox.BeginAnimation(OpacityProperty, fadeAnimation);

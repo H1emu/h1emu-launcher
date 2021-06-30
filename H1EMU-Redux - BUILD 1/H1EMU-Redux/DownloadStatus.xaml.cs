@@ -30,7 +30,11 @@ namespace H1EMU_Redux
 
         private void CancelDownloadButtonClick(object sender, RoutedEventArgs e)
         {
-            ContentDownloader.tokenSource.Cancel();
+            System.Windows.Forms.DialogResult dr = CustomMessageBox.ShowResult($"Are you sure you would like to cancel the download of H1Z1: Just Survive version {Login.version}?\n\n(Files will not be deleted)");
+            if (dr == System.Windows.Forms.DialogResult.Yes)
+            {
+                ContentDownloader.tokenSource.Cancel();
+            }
         }
     }
 }
