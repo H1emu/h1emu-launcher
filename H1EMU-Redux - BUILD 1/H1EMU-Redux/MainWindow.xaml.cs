@@ -46,19 +46,31 @@ namespace H1EMU_Redux
             {
                 WebClient wc = new WebClient();
                 wc.Headers.Add("User-Agent", "d-fens HttpClient");
-                string json = wc.DownloadString("https://api.github.com/repos/H1emu/H1emu-server-app/releases/latest");
+                string jsonApp = wc.DownloadString("https://api.github.com/repos/H1emu/H1emu-server-app/releases/latest");
 
-                var jsonDes = JsonConvert.DeserializeObject<dynamic>(json);
-                string raw = jsonDes.tag_name;
+                WebClient wc2 = new WebClient();
+                wc2.Headers.Add("User-Agent", "d-fens HttpClient");
+                string jsonServer = wc2.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
+
+                // Get latest release number and date published for app
+                var jsonDesApp = JsonConvert.DeserializeObject<dynamic>(jsonApp);
+                string raw = jsonDesApp.tag_name;
                 string online = raw.Substring(1);
-                string dateExact = jsonDes.published_at;
-                Launcher.latestUpdateVersion = online;
-                Launcher.recentDate = dateExact;
-                Properties.Settings.Default.latestServerVersion = online;
-                Properties.Settings.Default.publishDate = dateExact;
-                Properties.Settings.Default.Save();
-
                 string local = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
+                string dateExact = jsonDesApp.published_at;
+
+                // Get latest release number and date published for server
+                var jsonDesServer = JsonConvert.DeserializeObject<dynamic>(jsonServer);
+                string onlineServer = jsonDesServer.tag_name;
+                string dateExactServer = jsonDesServer.published_at;
+
+                Launcher.latestUpdateVersionServer = onlineServer;
+                Launcher.recentDateServer = dateExactServer;
+
+                // Store the servers version and date incase the user is not connected to the internet anymore
+                Properties.Settings.Default.latestServerVersion = onlineServer;
+                Properties.Settings.Default.publishDate = dateExactServer;
+                Properties.Settings.Default.Save();
 
                 if (local == online)
                 {
@@ -69,7 +81,7 @@ namespace H1EMU_Redux
             }
             catch (Exception e) when (e.Message == "No such host is known. (api.github.com:443)")
             {
-                CustomMessageBox.Show($"Unable to retrieve GitHub information: {e.Message}\n\nAre you connected to the internet?");
+                CustomMessageBox.Show($"Unable to retrieve GitHub information: \"{e.Message}\"\n\n(Are you connected to the internet?)");
 
                 Launcher la = new Launcher();
                 la.Show();
@@ -77,7 +89,7 @@ namespace H1EMU_Redux
             }
             catch (Exception ex)
             {
-                CustomMessageBox.Show($"Unable to retrieve GitHub information: {ex.Message}");
+                CustomMessageBox.Show($"Unable to retrieve GitHub information: \"{ex.Message}\"");
 
                 Launcher la = new Launcher();
                 la.Show();

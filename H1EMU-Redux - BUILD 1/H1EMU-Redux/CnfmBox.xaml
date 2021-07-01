@@ -52,7 +52,7 @@
                     <RowDefinition Height="15*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock x:Name="text" Background="Transparent" Foreground="White" Margin="10,0,10,0" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Padding="0,5,0,0" Height="80"/>
+                <TextBlock x:Name="text" Background="Transparent" Foreground="White" Margin="10,0,10,0" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Padding="0,5,0,0"/>
 
                 <Button Content="YES" Foreground="White" FontFamily="Arial Black" FontSize="20" Grid.Row="1" Click="YesButton" Height="35" Width="120" HorizontalAlignment="Center" VerticalAlignment="Bottom" BorderThickness="0" Margin="0,0,150,15" Style="{DynamicResource StandardButton}">
                     <Button.Background>

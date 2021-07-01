@@ -44,6 +44,19 @@ namespace H1EMU_Redux
             this.Close();
         }
 
+        private void OkButton(object sender, RoutedEventArgs e)
+        {
+            DoubleAnimation fadeAnimation = new DoubleAnimation();
+            fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
+            fadeAnimation.From = 1.0d;
+            fadeAnimation.To = 0.0d;
+            MainMsgBox.BeginAnimation(OpacityProperty, fadeAnimation);
+
+            while (MainMsgBox.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
+
+            this.Close();
+        }
+
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();

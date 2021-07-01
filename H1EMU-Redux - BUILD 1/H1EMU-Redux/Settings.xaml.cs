@@ -138,7 +138,7 @@ namespace H1EMU_Redux
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
-                    CustomMessageBox.Show($"Unable to download files: {e.Message}");
+                    CustomMessageBox.Show($"Unable to download files: \"{e.Message}\"");
                 });
 
                 return;
@@ -246,7 +246,7 @@ namespace H1EMU_Redux
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
-                    CustomMessageBox.Show($"Unable to download files: {e.Message}");
+                    CustomMessageBox.Show($"Unable to download files: \"{e.Message}\"");
                 });
 
                 return;
@@ -493,7 +493,7 @@ namespace H1EMU_Redux
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
-                    CustomMessageBox.Show($"Unable to download files: {e.Message}");
+                    CustomMessageBox.Show($"Unable to download files: \"{e.Message}\"");
                 });
 
                 return false;
@@ -568,7 +568,7 @@ namespace H1EMU_Redux
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
-                    CustomMessageBox.Show($"Unable to download files: {e.Message}");
+                    CustomMessageBox.Show($"Unable to download files: \"{e.Message}\"");
                 });
 
                 return;

@@ -29,8 +29,8 @@ namespace H1EMU_Redux
     /// </summary>
     public partial class Launcher : Window
     {
-        public static string recentDate;
-        public static string latestUpdateVersion;
+        public static string recentDateServer;
+        public static string latestUpdateVersionServer;
 
 
         public static ManualResetEvent ma = new ManualResetEvent(false);
@@ -299,13 +299,13 @@ namespace H1EMU_Redux
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(recentDate) || !string.IsNullOrEmpty(latestUpdateVersion))
+            if (!string.IsNullOrEmpty(recentDateServer) || !string.IsNullOrEmpty(latestUpdateVersionServer))
             {
                 try
                 {
-                    var date = DateTime.ParseExact(recentDate, "G", CultureInfo.InvariantCulture);
+                    var date = DateTime.ParseExact(recentDateServer, "G", CultureInfo.InvariantCulture);
 
-                    titleUpdateText.Text = $"Update Version {latestUpdateVersion}";
+                    titleUpdateText.Text = $"Update Version {latestUpdateVersionServer}";
                     datePublished.Text = $"({date:dd MMMM yyyy})";
                 }
                 catch { }
