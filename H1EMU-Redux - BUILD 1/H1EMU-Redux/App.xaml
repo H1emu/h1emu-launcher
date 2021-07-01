@@ -23,9 +23,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <ImageBrush x:Key="Button.Static.Background" ImageSource="Resources\StandardButton.png"/>
-        <ImageBrush x:Key="Button.MouseOver.Background" ImageSource="Resources\StandardButton_Hover.png"/>
-        <ImageBrush x:Key="Button.Pressed.Background" ImageSource="Resources\StandardButton_Pressed.png"/>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -46,7 +43,11 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <ImageBrush x:Key="Button.Disabled.Background1" ImageSource="Resources\StandardButton_Pressed.png"/>
+        <ImageBrush x:Key="Button.Static.Background" ImageSource="Resources\StandardButton.png"/>
+        <ImageBrush x:Key="Button.MouseOver.Background" ImageSource="Resources\StandardButton_Hover.png"/>
+        <ImageBrush x:Key="Button.Pressed.Background" ImageSource="Resources\StandardButton_Pressed.png"/>
+        <ImageBrush x:Key="Button.Disabled.Background" ImageSource="Resources\StandardButton_Pressed.png"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="Gray"/>
         <Style x:Key="StandardButton" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource UpdateVisual}"/>
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
@@ -66,13 +67,14 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="Background"  TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background1}"/>
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -308,7 +310,7 @@
         <SolidColorBrush x:Key="PassBox.Static.Foreground" Color="white"/>
         <SolidColorBrush x:Key="PassBox.MouseOver.Border" Color="#DB111C"/>
         <SolidColorBrush x:Key="PassBox.Focus.Border" Color="Red"/>
-        <Style x:Key="PasswordBoxStyle1" TargetType="{x:Type PasswordBox}">
+        <Style x:Key="PasswordBoxStyle" TargetType="{x:Type PasswordBox}">
             <Setter Property="PasswordChar" Value="*"/>
             <Setter Property="Background" Value="{StaticResource PassBox.Static.Background}"/>
             <Setter Property="BorderBrush" Value="{StaticResource PassBox.Static.Border}"/>
@@ -353,6 +355,7 @@
         <ImageBrush x:Key="EnterButton.Static.Background" ImageSource="Resources\Arrow.png"/>
         <ImageBrush x:Key="EnterButton.MouseOver.Background" ImageSource="Resources\Arrow_Hover.png"/>
         <ImageBrush x:Key="EnterButton.Pressed.Background" ImageSource="Resources\Arrow_Pressed.png"/>
+        <ImageBrush x:Key="EnterButton.Disabled" ImageSource="Resources\Arrow_Pressed.png"/>
         <Style x:Key="EnterButton" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource UpdateVisual}"/>
             <Setter Property="Background" Value="{StaticResource EnterButton.Static.Background}"/>
@@ -378,6 +381,7 @@
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource EnterButton.Pressed.Background}"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource EnterButton.Disabled}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

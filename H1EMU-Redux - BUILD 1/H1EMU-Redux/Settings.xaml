@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:H1EMU_Redux"
         mc:Ignorable="d"
         UseLayoutRounding="True"
-        Title="Launcher" x:Name="MainSettings" Width="740" Height="530" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" FontFamily="Bahnschrift Light" FontSize="16" ResizeMode="NoResize" Loaded="SettingsLoaded">
+        Title="Launcher" x:Name="MainSettings" Width="740" Height="530" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" FontFamily="Bahnschrift Light" FontSize="16" ResizeMode="NoResize" Loaded="SettingsLoaded" Closing="MainSettings_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -60,7 +60,7 @@
             <TextBlock FontSize="16" FontFamily="Bahnschrift Light" Foreground="FloralWhite" Text="Game Directory:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,10"/>
             <TextBox x:Name="directoryBox" Height="35" HorizontalAlignment="Right" Width="520" Margin="0,0,20,10" Padding="35,7,35,0" IsReadOnly="True" Style="{DynamicResource TextBoxPrimaryStyle}"/>
             <Image Source="Resources\Folder.png" Height="20" HorizontalAlignment="Left" Margin="160,0,0,11"/>
-            <Button Click="SelectDirectory" Width="20" Height="20" HorizontalAlignment="Right" Margin="0,0,30,11" BorderThickness="0" Style="{DynamicResource EnterButton}">
+            <Button x:Name="directoryButton" Click="SelectDirectory" Width="20" Height="20" HorizontalAlignment="Right" Margin="0,0,30,11" BorderThickness="0" Style="{DynamicResource EnterButton}">
                 <Button.Background>
                     <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\Arrow.png"/>
                 </Button.Background>

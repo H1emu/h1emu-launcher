@@ -65,7 +65,7 @@ namespace H1EMU_Redux
                     return;
                 }
 
-                if (!Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master"))
+                if (!Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master\\node_modules"))
                 {
                     Dispatcher.Invoke((MethodInvoker)delegate
                     {

@@ -81,6 +81,7 @@ namespace H1EMU_Redux
 
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
+                directoryButton.IsEnabled = false;
                 patchButton.IsEnabled = false;
                 latestButton.IsEnabled = false;
                 stableButton.IsEnabled = false;
@@ -135,6 +136,7 @@ namespace H1EMU_Redux
                 Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
                     watch.Stop();
+                    directoryButton.IsEnabled = true;
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
@@ -171,11 +173,12 @@ namespace H1EMU_Redux
             // Finish.
 
             watch.Stop();
-            double elapsedMs = (double)watch.ElapsedMilliseconds / 1000;
+            TimeSpan elapsedMs = watch.Elapsed;
 
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
-                settingsProgressText.Text = $"Done. (Elapsed time: {elapsedMs:0.00}s)";
+                settingsProgressText.Text = $"Done. (Elapsed time: {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
+                directoryButton.IsEnabled = true;
                 patchButton.IsEnabled = true;
                 latestButton.IsEnabled = true;
                 stableButton.IsEnabled = true;
@@ -189,6 +192,7 @@ namespace H1EMU_Redux
 
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
+                directoryButton.IsEnabled = false;
                 patchButton.IsEnabled = false;
                 latestButton.IsEnabled = false;
                 stableButton.IsEnabled = false;
@@ -243,6 +247,7 @@ namespace H1EMU_Redux
                 Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
                     watch.Stop();
+                    directoryButton.IsEnabled = true;
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
@@ -279,11 +284,12 @@ namespace H1EMU_Redux
             // Finish.
 
             watch.Stop();
-            double elapsedMs = (double)watch.ElapsedMilliseconds / 1000;
+            TimeSpan elapsedMs = watch.Elapsed;
 
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
-                settingsProgressText.Text = $"Done. (Elapsed time: {elapsedMs:0.00}s)";
+                settingsProgressText.Text = $"Done. (Elapsed time: {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
+                directoryButton.IsEnabled = true;
                 patchButton.IsEnabled = true;
                 latestButton.IsEnabled = true;
                 stableButton.IsEnabled = true;
@@ -327,11 +333,12 @@ namespace H1EMU_Redux
                 p.WaitForExit();
 
                 watch.Stop();
-                double elapsedMs = (double)watch.ElapsedMilliseconds / 1000;
+                TimeSpan elapsedMs = watch.Elapsed;
 
                 Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
-                    settingsProgressText.Text = $"Done. (Elapsed time: {elapsedMs:0.00}s)";
+                    settingsProgressText.Text = $"Done. (Elapsed time: {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
+                    directoryButton.IsEnabled = true;
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
@@ -377,11 +384,12 @@ namespace H1EMU_Redux
                 p.WaitForExit();
 
                 watch.Stop();
-                double elapsedMs = (double)watch.ElapsedMilliseconds / 1000;
+                TimeSpan elapsedMs = watch.Elapsed;
 
                 Dispatcher.BeginInvoke((MethodInvoker) delegate
                 {
-                    settingsProgressText.Text = $"Done. (Elapsed time: {elapsedMs:0.00}s)";
+                    settingsProgressText.Text = $"Done. (Elapsed time: {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
+                    directoryButton.IsEnabled = true;
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
@@ -452,6 +460,7 @@ namespace H1EMU_Redux
         {
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
+                directoryButton.IsEnabled = false;
                 patchButton.IsEnabled = false;
                 latestButton.IsEnabled = false;
                 stableButton.IsEnabled = false;
@@ -490,6 +499,7 @@ namespace H1EMU_Redux
             {
                 Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
+                    directoryButton.IsEnabled = true;
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
@@ -565,6 +575,7 @@ namespace H1EMU_Redux
             {
                 Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
+                    directoryButton.IsEnabled = true;
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
@@ -632,6 +643,7 @@ namespace H1EMU_Redux
                 Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
                     currentGame.Text = "Detecting game version...";
+                    directoryButton.IsEnabled = false;
                     patchButton.IsEnabled = false;
                     latestButton.IsEnabled = false;
                     stableButton.IsEnabled = false;
@@ -694,6 +706,7 @@ namespace H1EMU_Redux
 
                 Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
+                    directoryButton.IsEnabled = true;
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
@@ -845,6 +858,12 @@ namespace H1EMU_Redux
 
         public void CloseButton(object sender, RoutedEventArgs e)
         {
+            if (!directoryButton.IsEnabled || !patchButton.IsEnabled || !latestButton.IsEnabled || !stableButton.IsEnabled)
+            {
+                CustomMessageBox.Show("Please wait for the current tasks to complete.");
+                return;
+            }
+
             DoubleAnimation fadeAnimation = new DoubleAnimation();
             fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
             fadeAnimation.From = 1.0d;
@@ -854,6 +873,15 @@ namespace H1EMU_Redux
             while (MainSettings.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
 
             this.Close();
+        }
+
+        private void MainSettings_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!directoryButton.IsEnabled || !patchButton.IsEnabled || !latestButton.IsEnabled || !stableButton.IsEnabled)
+            {
+                CustomMessageBox.Show("Please wait for the current tasks to complete.");
+                e.Cancel = true;
+            }
         }
 
         public void MoveWindow(object sender, MouseButtonEventArgs e)
