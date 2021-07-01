@@ -31,6 +31,7 @@ namespace H1EMU_Redux
     {
         public static string recentDateServer;
         public static string latestUpdateVersionServer;
+        public static string patchNotes;
 
 
         public static ManualResetEvent ma = new ManualResetEvent(false);
@@ -299,7 +300,7 @@ namespace H1EMU_Redux
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(recentDateServer) || !string.IsNullOrEmpty(latestUpdateVersionServer))
+            if (!string.IsNullOrEmpty(recentDateServer) || !string.IsNullOrEmpty(latestUpdateVersionServer) || !string.IsNullOrEmpty(patchNotes))
             {
                 try
                 {
@@ -307,6 +308,8 @@ namespace H1EMU_Redux
 
                     titleUpdateText.Text = $"Update Version {latestUpdateVersionServer}";
                     datePublished.Text = $"({date:dd MMMM yyyy})";
+                    patchNotesBox.Document.Blocks.Clear();
+                    patchNotesBox.Document.Blocks.Add(new Paragraph(new Run(patchNotes)));
                 }
                 catch { }
             }
@@ -318,6 +321,8 @@ namespace H1EMU_Redux
 
                     titleUpdateText.Text = $"Update Version {Properties.Settings.Default.latestServerVersion}";
                     datePublished.Text = $"({date:dd MMMM yyyy})";
+                    patchNotesBox.Document.Blocks.Clear();
+                    patchNotesBox.Document.Blocks.Add(new Paragraph(new Run(Properties.Settings.Default.patchNotes)));
                 }
                 catch { }
             }

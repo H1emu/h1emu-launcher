@@ -58,7 +58,7 @@
             
             <!-- Content for text, directory textbox, select directory button and current game version. -->
             <TextBlock FontSize="16" FontFamily="Bahnschrift Light" Foreground="FloralWhite" Text="Game Directory:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,10"/>
-            <TextBox x:Name="directoryBox" Height="35" HorizontalAlignment="Right" Width="520" Margin="0,0,20,10" Padding="35,7,35,0" IsReadOnly="True" Style="{DynamicResource TextBoxPrimaryStyle}"/>
+            <TextBox x:Name="directoryBox" Height="35" HorizontalAlignment="Right" Width="520" Margin="0,0,20,10" Padding="35,7,35,0" IsReadOnly="True" Style="{DynamicResource TextBoxPrimaryStyle}" Cursor="Arrow"/>
             <Image Source="Resources\Folder.png" Height="20" HorizontalAlignment="Left" Margin="160,0,0,11"/>
             <Button x:Name="directoryButton" Click="SelectDirectory" Width="20" Height="20" HorizontalAlignment="Right" Margin="0,0,30,11" BorderThickness="0" Style="{DynamicResource EnterButton}">
                 <Button.Background>

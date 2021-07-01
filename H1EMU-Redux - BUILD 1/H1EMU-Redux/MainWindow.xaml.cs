@@ -63,13 +63,16 @@ namespace H1EMU_Redux
                 var jsonDesServer = JsonConvert.DeserializeObject<dynamic>(jsonServer);
                 string onlineServer = jsonDesServer.tag_name;
                 string dateExactServer = jsonDesServer.published_at;
+                string patchNotesServer = jsonDesServer.body;
 
+                Launcher.patchNotes = patchNotesServer;
                 Launcher.latestUpdateVersionServer = onlineServer;
                 Launcher.recentDateServer = dateExactServer;
 
                 // Store the servers version and date incase the user is not connected to the internet anymore
                 Properties.Settings.Default.latestServerVersion = onlineServer;
                 Properties.Settings.Default.publishDate = dateExactServer;
+                Properties.Settings.Default.patchNotes = patchNotesServer;
                 Properties.Settings.Default.Save();
 
                 if (local == online)

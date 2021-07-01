@@ -70,5 +70,17 @@ namespace H1EMU_Redux.Properties {
                 this["publishDate"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string patchNotes {
+            get {
+                return ((string)(this["patchNotes"]));
+            }
+            set {
+                this["patchNotes"] = value;
+            }
+        }
     }
 }

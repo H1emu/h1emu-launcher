@@ -42,7 +42,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <RichTextBox Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True" Width="520" Margin="25,25,25,25">
+            <RichTextBox Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True" Width="520" Margin="25,25,25,25" Cursor="Arrow">
                 <FlowDocument>
                     <Paragraph TextAlignment="Center" FontSize="20" TextDecorations="Underline" Foreground="#FFED1C24">
                         Lead Development

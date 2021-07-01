@@ -118,7 +118,7 @@
             <StackPanel Margin="25,10,0,0">
 
                 <!--Displays updation version and information-->
-                <RichTextBox x:Name="titleUpdate" Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True">
+                <RichTextBox x:Name="titleUpdate" Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True" Cursor="Arrow">
                     <FlowDocument>
                         <Paragraph FontSize="32" FontFamily="{StaticResource Signika}" FontWeight="Bold">
                             <Run x:Name="titleUpdateText" Foreground="#FFED1C24" FontSize="44">
@@ -130,29 +130,10 @@
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
-                <RichTextBox Background="Transparent" Foreground="White" BorderThickness="0" Margin="0,10,0,0" IsReadOnly="True">
-                    <FlowDocument>
-                        <Paragraph>
-                            <Run>
-                                * Added Zombie, Wolf and Deer spawns around the map. (2016 Client)
-                            </Run>
-                            <LineBreak/>
-                            <Run>
-                                * /hax tp to set locations or XYZ coordinates. (2016 Client)
-                            </Run>
-                            <LineBreak/>
-                            <Run>
-                                * Fixed door and item rotations (all doors are open). (2016 Client)
-                            </Run>
-                            <LineBreak/>
-                            <Run>
-                                * Atvs now randomly spawn around the map. (2016 Client)
-                            </Run>
-                        </Paragraph>
-                    </FlowDocument>
-                </RichTextBox>
+                <RichTextBox x:Name="patchNotesBox" Background="Transparent" Foreground="White" BorderThickness="0" Margin="0,10,0,0" IsReadOnly="True" Height="95" Cursor="Arrow"/>
+
                 <!--Hyperlink text to redirect to more udpates-->
-                <TextBlock Margin="6,25,0,0">
+                <TextBlock Margin="6,15,0,0">
                     <Hyperlink NavigateUri="https://github.com/H1emu/h1z1-server/commits/master" RequestNavigate="FullUpdatesHyperlink">
                         View full details of the update...
                     </Hyperlink>
@@ -164,7 +145,7 @@
                     <RowDefinition Height="355*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Margin="25,20,30,0">
-                    <RichTextBox Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True">
+                    <RichTextBox Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True" Cursor="Arrow">
                         <FlowDocument>
                             <Paragraph>
                                 <Run Foreground="#FFCA1420">
