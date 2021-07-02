@@ -9,6 +9,8 @@
       FontFamily="Bahnschrift Light"
       UseLayoutRounding="True"
       Title="Login">
+    
+    <!-- Main Grid -->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>

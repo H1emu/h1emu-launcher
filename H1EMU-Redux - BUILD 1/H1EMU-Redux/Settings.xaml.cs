@@ -19,6 +19,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 using System.Windows.Media.Animation;
+using System.Reflection;
 
 namespace H1EMU_Redux
 {
@@ -716,13 +717,11 @@ namespace H1EMU_Redux
 
         public void SettingsLoaded(object sender, RoutedEventArgs e)
         {
+            currentVersion.Text = $"Launcher version v{Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.')}";
+            settingsProgressText.Text = "";
+
             new Thread(() => 
             {
-                Dispatcher.BeginInvoke((MethodInvoker)delegate
-                {
-                    settingsProgressText.Text = "";
-                });
-
                 if (!string.IsNullOrEmpty(Properties.Settings.Default.activeDirectory) && Directory.Exists(Properties.Settings.Default.activeDirectory) && File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
                 {
                     Dispatcher.BeginInvoke((MethodInvoker)delegate

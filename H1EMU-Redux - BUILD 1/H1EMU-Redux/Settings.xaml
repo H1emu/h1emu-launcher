@@ -18,11 +18,12 @@
         </Grid.RowDefinitions>
         
         <!-- View files hyperlink, opens file explorer to active directory. -->
-        <TextBlock Grid.Row="2" Foreground="White" VerticalAlignment="Center" Margin="25,0,0,0">
+        <TextBlock Grid.Row="2" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0">
             <Hyperlink Click="Hyperlink_Click">
                 View files...
             </Hyperlink>
         </TextBlock>
+        <TextBlock x:Name="currentVersion" Grid.Row="2" Text="Launcher version" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,25,0"/>
 
         <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="MoveWindow" Background="#FF2B2A33">
             <Grid.ColumnDefinitions>
@@ -34,7 +35,7 @@
             </Grid.RowDefinitions>
 
             <!-- Dock panel that hosts logo -->
-            <DockPanel Grid.Row="0" Grid.Column="0" Height="60" HorizontalAlignment="Left" Margin="25,0,0,0">
+            <DockPanel Grid.Row="0" Grid.Column="0" Height="60" HorizontalAlignment="Left" Margin="23,0,0,0">
                 <Image RenderOptions.BitmapScalingMode="HighQuality" Source="Resources\H1EmuIcon.png" Margin="0,15,0,0"/>
             </DockPanel>
 

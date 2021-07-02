@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
 
             <!--Creates the title and icon-->
-            <DockPanel Grid.Row="0" Grid.Column="0" Height="60" HorizontalAlignment="Left" Margin="25,0,0,0">
+            <DockPanel Grid.Row="0" Grid.Column="0" Height="60" HorizontalAlignment="Left" Margin="23,0,0,0">
                 <Image RenderOptions.BitmapScalingMode="HighQuality" Source="Resources\H1EmuIcon.png" Margin="0,15,0,0"/>
             </DockPanel>
 
