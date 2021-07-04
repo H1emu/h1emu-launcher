@@ -687,7 +687,7 @@ namespace H1EMU_Redux
 
                     token.WaitHandle.WaitOne();
 
-                    logonDetails.TwoFactorCode = twoauth;
+                    logonDetails.AuthCode = twoauth;
                 }
 
                 Debug.WriteLine("Retrying Steam3 connection...");

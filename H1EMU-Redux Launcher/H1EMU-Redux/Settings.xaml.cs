@@ -477,7 +477,7 @@ namespace H1EMU_Redux
         {
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
-                settingsProgressText.Text = "Checkinf for old files...";
+                settingsProgressText.Text = "Checking for old files...";
             });
 
             if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master"))
