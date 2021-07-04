@@ -9,10 +9,12 @@
       FontFamily="Bahnschrift Light"
       Title="GameInfo">
     <Grid>
-        <RichTextBox FontSize="16" Background="Transparent" BorderThickness="0" Foreground="White" IsReadOnly="True" Margin="0,-2,0,0">
+        <RichTextBox FontSize="16" Background="Transparent" BorderThickness="0" Foreground="White" IsReadOnly="True" Margin="0,8,0,0" Cursor="Arrow">
             <FlowDocument>
-                <Paragraph TextAlignment="Center">
-                    Currently downloading:
+                <Paragraph>
+                    <Run>
+                        Currently downloading:
+                    </Run>
                     <Run Foreground="#FFCA1420">
                         H1Z1: Just Survive
                     </Run>
@@ -20,18 +22,18 @@
                         version
                     </Run>
                     <Run x:Name="gameDownloadText" Foreground="#FFCA1420">
-                        2015
+                        ----:
                     </Run>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
 
         <!-- Creates download progress bar. -->
-        <ProgressBar x:Name="downloadProgress" Width="400" Height="35" HorizontalAlignment="Left" Grid.Row="2" Margin="0,10,0,0" Style="{DynamicResource ProgressBar}"/>
-        <ProgressBar Grid.Row="2" Width="400" Height="35" HorizontalAlignment="Left" Background="Transparent" Margin="0,10,0,0" Style="{DynamicResource ProgressBar}"/>
-        <TextBlock x:Name="downloadProgressText" Width="400" Grid.Row="2" FontSize="16" Margin="0,10,0,0" Foreground="White" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left" TextAlignment="Center"/>
+        <ProgressBar x:Name="downloadProgress" Height="35" Grid.Row="2" Margin="0,50,0,0" Style="{DynamicResource ProgressBar}"/>
+        <ProgressBar Grid.Row="2" Height="35" Background="Transparent" Margin="0,50,0,0" Style="{DynamicResource ProgressBar}"/>
+        <TextBlock x:Name="downloadProgressText" Grid.Row="2" FontSize="16" Margin="0,50,0,0" Foreground="White" Background="Transparent" VerticalAlignment="Center" TextAlignment="Center"/>
 
-        <Button x:Name="cancelDownloadButton" Content="CANCEL" Foreground="White" FontFamily="Arial Black" FontSize="20" Height="35" Width="140" HorizontalAlignment="Right" Margin="0,10,0,0" Grid.Row="0" BorderThickness="0" Click="CancelDownloadButtonClick" Style="{DynamicResource StandardButton}">
+        <Button x:Name="cancelDownloadButton" Content="CANCEL" Foreground="White" FontFamily="Arial Black" FontSize="20" Height="35" Width="140" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" BorderThickness="0" Click="CancelDownloadButtonClick" Style="{DynamicResource StandardButton}">
             <Button.Background>
                 <ImageBrush ImageSource="Resources\StandardButton.png"/>
             </Button.Background>

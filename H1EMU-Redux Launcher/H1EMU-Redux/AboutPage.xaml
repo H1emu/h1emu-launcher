@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:H1EMU_Redux"
         mc:Ignorable="d"
-        Title="Launcher" x:Name="MainAbout" Height="500" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" FontFamily="Bahnschrift Light" FontSize="16" ResizeMode="NoResize" SizeToContent="Manual">
+        Title="Launcher" x:Name="MainAbout" Height="500" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" FontFamily="Bahnschrift Light" FontSize="16" ResizeMode="NoResize" SizeToContent="Manual" Closing="MainAbout_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -26,12 +26,16 @@
 
             <!--Creates the title and icon-->
             <DockPanel Grid.Row="0" Grid.Column="0" Height="60" HorizontalAlignment="Left" Margin="23,0,0,0">
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="Resources\H1EmuIcon.png" Margin="0,15,0,0"/>
+                <Button Width="175" Height="45" BorderThickness="0" VerticalAlignment="Bottom" Style="{DynamicResource ImageButton}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources\H1EmuIcon.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Button.Background>
+                </Button>
             </DockPanel>
 
             <!-- Top bar grid. -->
             <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
-                <Button x:Name="CloseButton" Content="" Width="46" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseButton_Click" Margin="0,0,25,0" Style="{StaticResource CloseButtonStyle}">
+                <Button x:Name="CloseButton" Content="" Width="46" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseButton_Click"  Margin="0,0,25,0" Style="{StaticResource CloseButtonStyle}">
                     <Button.Background>
                         <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\Exit.png"/>
                     </Button.Background>
@@ -66,7 +70,7 @@
                         Contributers
                     </Paragraph>
                     <Paragraph TextAlignment="Center" FontSize="18">
-                        - Avcio - Eavilaswayce - Relish - LegendsNeveerrDie - Delusional - KOBUNIX - Rhett - ZamZam - UTIL_TRACELINE - LordWaycrest  -
+                        - Avcio - Eavilaswayce - Relish - LegendsNeveerrDie - Delusional - KOBUNIX - Rhett - ZamZam - UTIL_TRACELINE - LordWaycrest  - 69_HaxMax - GinnessForever - Chriis - dark_night - Flo -
                     </Paragraph>
                     <Paragraph TextAlignment="Center" FontSize="20" TextDecorations="Underline" Foreground="#FFED1C24">
                         Moderators

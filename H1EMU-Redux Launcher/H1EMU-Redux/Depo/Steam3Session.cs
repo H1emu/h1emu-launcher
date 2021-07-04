@@ -697,7 +697,7 @@ namespace H1EMU_Redux
             }
             else if (loggedOn.Result == EResult.ServiceUnavailable)
             {
-                System.Windows.Application.Current.Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
+                System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
                     Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
                     CustomMessageBox.Show($"Unable to login to Steam: {loggedOn.Result}");
@@ -709,7 +709,7 @@ namespace H1EMU_Redux
             }
             else if (loggedOn.Result != EResult.OK)
             {
-                System.Windows.Application.Current.Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
+                System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
                     Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
                     CustomMessageBox.Show($"Unable to login to Steam: {loggedOn.Result}");

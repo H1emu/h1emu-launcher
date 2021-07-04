@@ -18,6 +18,7 @@ namespace H1EMU_Redux
     /// <summary>
     /// Interaction logic for DownloadComplete.xaml
     /// </summary>
+
     public partial class DownloadComplete : Page
     {
         public DownloadComplete()

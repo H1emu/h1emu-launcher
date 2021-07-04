@@ -38,18 +38,6 @@ namespace H1EMU_Redux.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string activeGame {
-            get {
-                return ((string)(this["activeGame"]));
-            }
-            set {
-                this["activeGame"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string latestServerVersion {
             get {
                 return ((string)(this["latestServerVersion"]));

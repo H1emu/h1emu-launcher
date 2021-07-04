@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:H1EMU_Redux"
         mc:Ignorable="d"
-        Title="Launcher" x:Name="MainMsgBox" Height="210" Width="350" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" FontFamily="Bahnschrift Light" FontSize="16" ResizeMode="NoResize">
+        Title="Launcher" x:Name="MainMsgBox" Height="230" Width="350" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" FontFamily="Bahnschrift Light" FontSize="16" ResizeMode="NoResize" Closing="MainMsgBox_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -27,7 +27,11 @@
 
             <!-- Dock panel that hosts logo -->
             <DockPanel Grid.Row="0" Grid.Column="0" Height="40" HorizontalAlignment="Left" Margin="14,2,0,0">
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="Resources\H1EmuIcon.png" Margin="0,8,0,5"/>
+                <Button Width="104" Height="28" BorderThickness="0" VerticalAlignment="Center" Margin="0,4,0,0" Style="{DynamicResource ImageButton}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources\H1EmuIcon.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Button.Background>
+                </Button>
             </DockPanel>
 
             <!-- Dock panel that creates the exit button. -->
@@ -43,8 +47,8 @@
         <!-- Grid for main content inside of darkened area -->
         <Grid Grid.Row="1" Background="#1C1B22" Margin="15,5,15,15">
             <Grid.RowDefinitions>
-                <RowDefinition Height="21*"/>
-                <RowDefinition Height="8*"/>
+                <RowDefinition Height="11*"/>
+                <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
             <TextBlock x:Name="text" Background="Transparent" Foreground="White" Margin="10,0,10,0" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Padding="0,5,0,0"/>
 

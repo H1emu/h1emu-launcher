@@ -18,16 +18,25 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Text="Download complete!" FontSize="16" Foreground="#FFCA1420" Height="26" Width="200" Margin="0,-2,0,0"/>
+        <RichTextBox VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Foreground="White" Background="Transparent" BorderThickness="0" Margin="0,-2,0,0">
+            <FlowDocument TextAlignment="Center">
+                <Paragraph>
+                    <Run Foreground="#FFCA1420">
+                        Download complete!
+                    </Run>
+                    <Run>
+                        Need to download a different version? Press the button below to login again!
+                    </Run>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="1" VerticalAlignment="Top" TextWrapping="Wrap" Text="Need to download a different version? Just press the button on the left!" FontSize="16" Foreground="White" Margin="5,0,0,0"/>
 
-            <Button Content="DOWNLOAD" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Row="1" Grid.Column="0" Click="BackToLoginPage" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
+            <Button Content="LOGIN" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Column="0" Click="BackToLoginPage" Height="45" HorizontalAlignment="Center" VerticalAlignment="Top" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
                 <Button.Background>
                     <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\StandardButton.png"/>
                 </Button.Background>

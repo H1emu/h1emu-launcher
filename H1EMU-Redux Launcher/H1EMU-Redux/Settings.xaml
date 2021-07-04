@@ -36,7 +36,11 @@
 
             <!-- Dock panel that hosts logo -->
             <DockPanel Grid.Row="0" Grid.Column="0" Height="60" HorizontalAlignment="Left" Margin="23,0,0,0">
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="Resources\H1EmuIcon.png" Margin="0,15,0,0"/>
+                <Button Width="175" Height="45" BorderThickness="0" VerticalAlignment="Bottom" Style="{DynamicResource ImageButton}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources\H1EmuIcon.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Button.Background>
+                </Button>
             </DockPanel>
 
             <!-- Dock panel that creates the exit button. -->
@@ -59,7 +63,7 @@
             
             <!-- Content for text, directory textbox, select directory button and current game version. -->
             <TextBlock FontSize="16" FontFamily="Bahnschrift Light" Foreground="FloralWhite" Text="Game Directory:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,10"/>
-            <TextBox x:Name="directoryBox" Height="35" HorizontalAlignment="Right" Width="520" Margin="0,0,20,10" Padding="35,7,35,0" IsReadOnly="True" Style="{DynamicResource TextBoxPrimaryStyle}" Cursor="Arrow"/>
+            <TextBox x:Name="directoryBox" Height="35" HorizontalAlignment="Right" Width="520" Margin="0,0,20,10" Padding="35,7,35,0" IsReadOnly="True" Style="{DynamicResource TextBoxPrimaryStyle}" Cursor=""/>
             <Image Source="Resources\Folder.png" Height="20" HorizontalAlignment="Left" Margin="160,0,0,11"/>
             <Button x:Name="directoryButton" Click="SelectDirectory" Width="20" Height="20" HorizontalAlignment="Right" Margin="0,0,30,11" BorderThickness="0" Style="{DynamicResource EnterButton}">
                 <Button.Background>

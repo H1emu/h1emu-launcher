@@ -5,9 +5,6 @@
     <Setting Name="activeDirectory" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="activeGame" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="latestServerVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>

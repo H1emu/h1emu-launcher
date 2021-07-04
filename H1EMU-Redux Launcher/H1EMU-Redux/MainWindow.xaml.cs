@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Media;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
@@ -25,18 +26,19 @@ namespace H1EMU_Redux
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     public partial class MainWindow : Window
     {
+
+#pragma warning disable SYSLIB0014 // Warning saying that WebClient is discontinued and not supported anymore.
+
+        Splash sp = new Splash();
+
         public MainWindow()
         {
             InitializeComponent();
 
-            DoubleAnimation fadeAnimation = new DoubleAnimation();
-            fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
-            fadeAnimation.From = 0.0d;
-            fadeAnimation.To = 1.0d;
-            MainUpdateWindow.BeginAnimation(OpacityProperty, fadeAnimation);
-
+            sp.Show();
             CheckVersion();
         }
 
@@ -46,7 +48,7 @@ namespace H1EMU_Redux
             {
                 WebClient wc = new WebClient();
                 wc.Headers.Add("User-Agent", "d-fens HttpClient");
-                string jsonApp = wc.DownloadString("https://api.github.com/repos/H1emu/H1emu-server-app/releases/latest");
+                string jsonApp = wc.DownloadString("https://api.github.com/repos/H1emu/h1emu-launcher/releases/latest");
 
                 WebClient wc2 = new WebClient();
                 wc2.Headers.Add("User-Agent", "d-fens HttpClient");
@@ -57,7 +59,6 @@ namespace H1EMU_Redux
                 string raw = jsonDesApp.tag_name;
                 string online = raw.Substring(1);
                 string local = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
-                string dateExact = jsonDesApp.published_at;
 
                 // Get latest release number and date published for server
                 var jsonDesServer = JsonConvert.DeserializeObject<dynamic>(jsonServer);
@@ -65,11 +66,12 @@ namespace H1EMU_Redux
                 string dateExactServer = jsonDesServer.published_at;
                 string patchNotesServer = jsonDesServer.body;
 
-                Launcher.patchNotes = patchNotesServer;
+                // If there is an internet connection it gets the most recent notes
                 Launcher.latestUpdateVersionServer = onlineServer;
                 Launcher.recentDateServer = dateExactServer;
+                Launcher.patchNotes = patchNotesServer;
 
-                // Store the servers version and date incase the user is not connected to the internet anymore
+                // Store the latest server version, date and patch notes in the case of no internet
                 Properties.Settings.Default.latestServerVersion = onlineServer;
                 Properties.Settings.Default.publishDate = dateExactServer;
                 Properties.Settings.Default.patchNotes = patchNotesServer;
@@ -77,25 +79,44 @@ namespace H1EMU_Redux
 
                 if (local == online)
                 {
+                    sp.Close();
+
                     Launcher la = new Launcher();
                     la.Show();
+
                     this.Close();
+                }
+                else
+                {
+                    sp.Close();
+
+                    DoubleAnimation fadeAnimation = new DoubleAnimation();
+                    fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
+                    fadeAnimation.From = 0.0d;
+                    fadeAnimation.To = 1.0d;
+                    MainUpdateWindow.BeginAnimation(OpacityProperty, fadeAnimation);
                 }
             }
             catch (Exception e) when (e.Message == "No such host is known. (api.github.com:443)")
             {
+                sp.Close();
+
                 CustomMessageBox.Show($"Unable to retrieve GitHub information: \"{e.Message}\"\n\n(Are you connected to the internet?)");
 
                 Launcher la = new Launcher();
                 la.Show();
+
                 this.Close();
             }
             catch (Exception ex)
             {
+                sp.Close();
+
                 CustomMessageBox.Show($"Unable to retrieve GitHub information: \"{ex.Message}\"");
 
                 Launcher la = new Launcher();
                 la.Show();
+
                 this.Close();
             }
         }
@@ -104,13 +125,17 @@ namespace H1EMU_Redux
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://github.com/H1emu/H1emu-server-app/releases/latest/download/H1emu.exe",
+                FileName = "https://github.com/H1emu/h1emu-launcher/releases/latest/download/H1Emu.Launcher.exe",
                 UseShellExecute = true
             });
+
+            this.Close();
         }
 
-        public void CloseForm()
+        private void MainUpdateWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            e.Cancel = true;
+
             DoubleAnimation fadeAnimation = new DoubleAnimation();
             fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
             fadeAnimation.From = 1.0d;
@@ -119,24 +144,31 @@ namespace H1EMU_Redux
 
             while (MainUpdateWindow.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
 
+            e.Cancel = false;
+        }
+
+        private void NotNowClick(object sender, RoutedEventArgs e)
+        {
             Launcher la = new Launcher();
             la.Show();
             this.Close();
         }
 
-        private void NotNowClick(object sender, RoutedEventArgs e)
-        {
-            CloseForm();
-        }
-
         private void CloseUpdater(object sender, RoutedEventArgs e)
         {
-            CloseForm();
+            Launcher la = new Launcher();
+            la.Show();
+            this.Close();
         }
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void MainUpdateWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            SystemSounds.Beep.Play();
         }
     }
 }

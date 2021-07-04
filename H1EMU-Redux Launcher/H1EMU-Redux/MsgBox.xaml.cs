@@ -16,31 +16,44 @@ using System.Windows.Shapes;
 namespace H1EMU_Redux
 {
     /// <summary>
-    /// Interaction logic for AboutPage.xaml
+    /// Interaction logic for MsgBox.xaml
     /// </summary>
-    public partial class AboutPage : Window
+
+    public partial class MsgBox : Window
     {
-        public AboutPage()
+        public MsgBox()
         {
             InitializeComponent();
 
             DoubleAnimation fadeAnimation = new DoubleAnimation();
-            fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
+            fadeAnimation.Duration = TimeSpan.FromMilliseconds(20d);
             fadeAnimation.From = 0.0d;
             fadeAnimation.To = 1.0d;
-            MainAbout.BeginAnimation(OpacityProperty, fadeAnimation);
+            MainMsgBox.BeginAnimation(OpacityProperty, fadeAnimation);
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void MainMsgBox_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            e.Cancel = true;
+
             DoubleAnimation fadeAnimation = new DoubleAnimation();
             fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
             fadeAnimation.From = 1.0d;
             fadeAnimation.To = 0.0d;
-            MainAbout.BeginAnimation(OpacityProperty, fadeAnimation);
+            MainMsgBox.BeginAnimation(OpacityProperty, fadeAnimation);
 
-            while (MainAbout.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
+            while (MainMsgBox.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
 
+            e.Cancel = false;
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void OkButton(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:H1EMU_Redux"
         mc:Ignorable="d"
-        Title="MainWindow" x:Name="MainUpdateWindow" Height="270" Width="450" MaxHeight="300" MaxWidth="450" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True">
+        Title="MainWindow" x:Name="MainUpdateWindow" Height="270" Width="450" MaxHeight="300" MaxWidth="450" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" Closing="MainUpdateWindow_Closing" Loaded="MainUpdateWindow_Loaded">
     <!--Main Grid-->
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,15 +26,17 @@
             </Grid.RowDefinitions>
 
             <!--Creates the title and icon-->
-            <DockPanel Grid.Row="0" Grid.Column="0">
-                <!--Logo-->
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="Resources\H1EmuIcon.png" Margin="1,15,0,0"/>
-                <!--Title-->
-                <!--No title needed?-->
+            <DockPanel Grid.Row="0" Grid.Column="0" Margin="-5,0,0,0">
+                <Button Width="175" Height="45" BorderThickness="0" VerticalAlignment="Bottom" Margin="0,4,0,0" Style="{DynamicResource ImageButton}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources\H1EmuIcon.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Button.Background>
+                </Button>
             </DockPanel>
+            
             <!--Creates the control box-->
             <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
-                <Button Style="{StaticResource CloseButtonStyle}" x:Name="CloseButton" Content="" Width="44" MaxHeight="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseUpdater" Margin="0,5,25,0" >
+                <Button x:Name="CloseButton" Content="" Width="45" MaxHeight="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseUpdater" Margin="0,5,25,0" Style="{StaticResource CloseButtonStyle}">
                     <Button.Background>
                         <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\Exit.png"/>
                     </Button.Background>
@@ -51,7 +53,7 @@
             </DockPanel>
 
             <!-- Update button. -->
-            <Button x:Name="updateButton" Grid.Row="1" Width="320" Height="44" Content="UPDATE" Foreground="White" FontFamily="Arial Black" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top" Click="updateButton_Click" BorderThickness="0" Style="{DynamicResource StandardButton}">
+            <Button x:Name="updateButton" Grid.Row="1" Width="292" Height="44" Content="UPDATE" Foreground="White" FontFamily="Arial Black" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top" Click="updateButton_Click" BorderThickness="0" Style="{DynamicResource StandardButton}">
                 <Button.Background>
                     <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\StandardButton.png"/>
                 </Button.Background>

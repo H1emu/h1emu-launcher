@@ -16,45 +16,35 @@ using System.Windows.Shapes;
 namespace H1EMU_Redux
 {
     /// <summary>
-    /// Interaction logic for CnfmBox.xaml
+    /// Interaction logic for Splash.xaml
     /// </summary>
-    public partial class CnfmBox : Window
+
+    public partial class Splash : Window
     {
-        public CnfmBox()
+        public Splash()
         {
             InitializeComponent();
 
             DoubleAnimation fadeAnimation = new DoubleAnimation();
-            fadeAnimation.Duration = TimeSpan.FromMilliseconds(20d);
+            fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
             fadeAnimation.From = 0.0d;
             fadeAnimation.To = 1.0d;
-            MainCnfmBox.BeginAnimation(OpacityProperty, fadeAnimation);
+            SplashScreen.BeginAnimation(OpacityProperty, fadeAnimation);
         }
 
-        private void ExitButton(object sender, RoutedEventArgs e)
+        private void SplashScreen_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            e.Cancel = true;
+
             DoubleAnimation fadeAnimation = new DoubleAnimation();
             fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
             fadeAnimation.From = 1.0d;
             fadeAnimation.To = 0.0d;
-            MainCnfmBox.BeginAnimation(OpacityProperty, fadeAnimation);
+            SplashScreen.BeginAnimation(OpacityProperty, fadeAnimation);
 
-            while (MainCnfmBox.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
+            while (SplashScreen.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
 
-            CustomMessageBox.result = false ;
-            this.Close();
-        }
-
-        private void YesButton(object sender, RoutedEventArgs e)
-        {
-            CustomMessageBox.result = true;
-            this.Close();
-        }
-
-        private void NoButton(object sender, RoutedEventArgs e)
-        {
-            CustomMessageBox.result = false;
-            this.Close();
+            e.Cancel = false;
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

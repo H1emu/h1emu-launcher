@@ -12,7 +12,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Security.Cryptography;
 using System.Net;
 using System.IO.Compression;
 using System.Diagnostics;
@@ -26,8 +25,12 @@ namespace H1EMU_Redux
     /// <summary>
     /// Interaction logic for Settings.xaml
     /// </summary>
+
     public partial class Settings : Window
     {
+
+#pragma warning disable SYSLIB0014 // Warning saying that WebClient is discontinued and not supported anymore.
+
         ProcessStartInfo cmdShell;
         public static string gameVersion { get; set; }
 
@@ -60,15 +63,61 @@ namespace H1EMU_Redux
                 switch (gameVersion)
                 {
                     case "15jan2015":
-                        ApplyPatch2015();
+                        try
+                        {
+                            ApplyPatch2015();
+                        }
+                        catch (Exception er)
+                        {
+                            Dispatcher.BeginInvoke((MethodInvoker)delegate
+                            {
+                                settingsProgressText.Text = "Task Failed";
+                                directoryButton.IsEnabled = true;
+                                patchButton.IsEnabled = true;
+                                latestButton.IsEnabled = true;
+                                stableButton.IsEnabled = true;
+
+                                if (er.Message == "No such host is known. (api.github.com:443)")
+                                {
+                                    CustomMessageBox.Show($"There was an error installing the 2015 patch: \"{er.Message}\"\n\nAre you connected to the internet?");
+                                }
+                                else
+                                {
+                                    CustomMessageBox.Show($"There was an error installing the 2015 patch: \"{er.Message}\"");
+                                }
+                            });
+                        }
                         break;
                     case "22dec2016":
-                        ApplyPatch2016();
+                        try
+                        {
+                            ApplyPatch2016();
+                        }
+                        catch (Exception er)
+                        {
+                            Dispatcher.BeginInvoke((MethodInvoker)delegate
+                            {
+                                settingsProgressText.Text = "Task Failed";
+                                directoryButton.IsEnabled = true;
+                                patchButton.IsEnabled = true;
+                                latestButton.IsEnabled = true;
+                                stableButton.IsEnabled = true;
+
+                                if (er.Message == "No such host is known. (api.github.com:443)")
+                                {
+                                    CustomMessageBox.Show($"There was an error installing the 2016 patch: \"{er.Message}\"\n\nAre you connected to the internet?");
+                                }
+                                else
+                                {
+                                    CustomMessageBox.Show($"There was an error installing the 2016 patch: \"{er.Message}\"");
+                                }
+                            });
+                        }
                         break;
                     default:
                         Dispatcher.BeginInvoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show("Game version not detected or not supported by H1Emu.");
+                            CustomMessageBox.Show("Game version not supported by H1Emu.");
                         });
                         break;
                 }
@@ -128,24 +177,8 @@ namespace H1EMU_Redux
                 ma.Set();
             };
 
-            try
-            {
-                wc.DownloadFileAsync(new Uri(patch2015), $"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
-            }
-            catch (Exception e)
-            {
-                Dispatcher.BeginInvoke((MethodInvoker)delegate
-                {
-                    watch.Stop();
-                    directoryButton.IsEnabled = true;
-                    patchButton.IsEnabled = true;
-                    latestButton.IsEnabled = true;
-                    stableButton.IsEnabled = true;
-                    CustomMessageBox.Show($"Unable to download files: \"{e.Message}\"");
-                });
-
-                return;
-            }
+            var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
+            wc.DownloadFileAsync(new Uri(patch2015), $"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
 
             ma.WaitOne();
 
@@ -239,24 +272,8 @@ namespace H1EMU_Redux
                 ma.Set();
             };
 
-            try
-            {
-                wc.DownloadFileAsync(new Uri(patch2016), $"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
-            }
-            catch (Exception e)
-            {
-                Dispatcher.BeginInvoke((MethodInvoker)delegate
-                {
-                    watch.Stop();
-                    directoryButton.IsEnabled = true;
-                    patchButton.IsEnabled = true;
-                    latestButton.IsEnabled = true;
-                    stableButton.IsEnabled = true;
-                    CustomMessageBox.Show($"Unable to download files: \"{e.Message}\"");
-                });
-
-                return;
-            }
+            var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
+            wc.DownloadFileAsync(new Uri(patch2016), $"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
 
             ma.WaitOne();
 
@@ -308,30 +325,56 @@ namespace H1EMU_Redux
             {
                 var watch = Stopwatch.StartNew();
 
-                if (!CheckDirectory()) { return; }
-
-                if (!DownloadMaster()) { return; }
-                Dispatcher.BeginInvoke((MethodInvoker)delegate
+                try
                 {
-                    settingsProgressText.Text = "Installing latest server...";
-                });
+                    if (!CheckDirectory()) { return; }
 
-                Process p = new Process();
+                    if (!DownloadMaster()) { return; }
 
-                p.StartInfo = cmdShell;
-                p.Start();
-
-                using (StreamWriter sw = p.StandardInput)
-                {
-                    if (sw.BaseStream.CanWrite)
+                    Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
-                        sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.2.0-win-x64");
-                        sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
-                        sw.WriteLine("npm i h1z1-server@latest");
-                    }
-                }
+                        settingsProgressText.Text = "Installing latest server...";
+                    });
 
-                p.WaitForExit();
+                    Process p = new Process();
+
+                    p.StartInfo = cmdShell;
+                    p.Start();
+
+                    using (StreamWriter sw = p.StandardInput)
+                    {
+                        if (sw.BaseStream.CanWrite)
+                        {
+                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.2.0-win-x64");
+                            sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
+                            sw.WriteLine("npm i h1z1-server@latest");
+                        }
+                    }
+
+                    p.WaitForExit();
+                }
+                catch (Exception er)
+                {
+                    Dispatcher.BeginInvoke((MethodInvoker)delegate
+                    {
+                        settingsProgressText.Text = "Task Failed";
+                        directoryButton.IsEnabled = true;
+                        patchButton.IsEnabled = true;
+                        latestButton.IsEnabled = true;
+                        stableButton.IsEnabled = true;
+
+                        if (er.Message == "No such host is known. (api.github.com:443)")
+                        {
+                            CustomMessageBox.Show($"There was an error installing the latest server: \"{er.Message}\"\n\nAre you connected to the internet?");
+                        }
+                        else
+                        {
+                            CustomMessageBox.Show($"There was an error installing the latest server: \"{er.Message}\"");
+                        }
+                    });
+
+                    return;
+                }
 
                 watch.Stop();
                 TimeSpan elapsedMs = watch.Elapsed;
@@ -343,7 +386,7 @@ namespace H1EMU_Redux
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
-                    CustomMessageBox.Show("Latest server has been installed.");
+                    CustomMessageBox.Show("The latest server has been installed.");
                 });
 
             }).Start();
@@ -359,30 +402,56 @@ namespace H1EMU_Redux
             {
                 var watch = Stopwatch.StartNew();
 
-                if (!CheckDirectory()) { return; }
-
-                if (!DownloadMaster()) { return; }
-                Dispatcher.BeginInvoke((MethodInvoker)delegate
+                try
                 {
-                    settingsProgressText.Text = "Installing stable server...";
-                });
+                    if (!CheckDirectory()) { return; }
 
-                Process p = new Process();
+                    if (!DownloadMaster()) { return; }
 
-                p.StartInfo = cmdShell;
-                p.Start();
-
-                using (StreamWriter sw = p.StandardInput)
-                {
-                    if (sw.BaseStream.CanWrite)
+                    Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
-                        sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.2.0-win-x64");
-                        sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
-                        sw.WriteLine("npm i");
-                    }
-                }
+                        settingsProgressText.Text = "Installing stable server...";
+                    });
 
-                p.WaitForExit();
+                    Process p = new Process();
+
+                    p.StartInfo = cmdShell;
+                    p.Start();
+
+                    using (StreamWriter sw = p.StandardInput)
+                    {
+                        if (sw.BaseStream.CanWrite)
+                        {
+                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.2.0-win-x64");
+                            sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
+                            sw.WriteLine("npm i");
+                        }
+                    }
+
+                    p.WaitForExit();
+                }
+                catch (Exception er)
+                {
+                    Dispatcher.BeginInvoke((MethodInvoker)delegate
+                    {
+                        settingsProgressText.Text = "Task Failed";
+                        directoryButton.IsEnabled = true;
+                        patchButton.IsEnabled = true;
+                        latestButton.IsEnabled = true;
+                        stableButton.IsEnabled = true;
+
+                        if (er.Message == "No such host is known. (api.github.com:443)")
+                        {
+                            CustomMessageBox.Show($"There was an error installing the stable server: \"{er.Message}\"\n\nAre you connected to the internet?");
+                        }
+                        else
+                        {
+                            CustomMessageBox.Show($"There was an error installing the stable server: \"{er.Message}\"");
+                        }
+                    });
+
+                    return;
+                }
 
                 watch.Stop();
                 TimeSpan elapsedMs = watch.Elapsed;
@@ -394,7 +463,7 @@ namespace H1EMU_Redux
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
-                    CustomMessageBox.Show("Stable server has been installed.");
+                    CustomMessageBox.Show("The stable server has been installed.");
                 });
 
             }).Start();
@@ -408,11 +477,16 @@ namespace H1EMU_Redux
         {
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
-                settingsProgressText.Text = "Deleting old files...";
+                settingsProgressText.Text = "Checkinf for old files...";
             });
 
             if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master"))
             {
+                Dispatcher.BeginInvoke((MethodInvoker)delegate
+                {
+                    settingsProgressText.Text = "Deleting old files...";
+                });
+
                 DirectoryInfo dirInfo = new DirectoryInfo($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
                 var files = dirInfo.GetFiles();
 
@@ -492,23 +566,8 @@ namespace H1EMU_Redux
                 ma.Set();
             };
 
-            try
-            {
-                wc.DownloadFileAsync(new Uri(serverFiles), $"{Properties.Settings.Default.activeDirectory}\\H1Z1-Server-Quickstart-Master.zip");
-            }
-            catch (Exception e)
-            {
-                Dispatcher.BeginInvoke((MethodInvoker)delegate
-                {
-                    directoryButton.IsEnabled = true;
-                    patchButton.IsEnabled = true;
-                    latestButton.IsEnabled = true;
-                    stableButton.IsEnabled = true;
-                    CustomMessageBox.Show($"Unable to download files: \"{e.Message}\"");
-                });
-
-                return false;
-            }
+            var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
+            wc.DownloadFileAsync(new Uri(serverFiles), $"{Properties.Settings.Default.activeDirectory}\\H1Z1-Server-Quickstart-Master.zip");
 
             ma.WaitOne();
 
@@ -568,23 +627,8 @@ namespace H1EMU_Redux
                 ma.Set();
             };
 
-            try
-            {
-                wc.DownloadFileAsync(new Uri(serverFiles), $"{Properties.Settings.Default.activeDirectory}\\Node-v16.2.0-win-x64.zip");
-            }
-            catch (Exception e)
-            {
-                Dispatcher.BeginInvoke((MethodInvoker)delegate
-                {
-                    directoryButton.IsEnabled = true;
-                    patchButton.IsEnabled = true;
-                    latestButton.IsEnabled = true;
-                    stableButton.IsEnabled = true;
-                    CustomMessageBox.Show($"Unable to download files: \"{e.Message}\"");
-                });
-
-                return;
-            }
+            var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
+            wc.DownloadFileAsync(new Uri(serverFiles), $"{Properties.Settings.Default.activeDirectory}\\Node-v16.2.0-win-x64.zip");
 
             ma.WaitOne();
 
@@ -626,16 +670,10 @@ namespace H1EMU_Redux
 
             if (!File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
             {
-                if (!string.IsNullOrEmpty(Properties.Settings.Default.activeGame))
+                Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
-                    Dispatcher.BeginInvoke((MethodInvoker)delegate
-                    {
-                        Properties.Settings.Default.activeGame = "- Game version not detected -";
-                        Properties.Settings.Default.Save();
-                        currentGame.Text = Properties.Settings.Default.activeGame;
-                        gameVersion = "";
-                    });
-                }
+                    currentGame.Text = "- Game version not detected -";
+                });
 
                 return;
             }
@@ -665,6 +703,7 @@ namespace H1EMU_Redux
                         currentGame.Text = "Please close H1Z1.";
                         CustomMessageBox.Show("H1Z1.exe is currently being used.\n\nClose any open instances of H1Z1.");
                     });
+
                     gameVersion = "processBeingUsed";
                     return;
                 }
@@ -673,33 +712,26 @@ namespace H1EMU_Redux
                 {
                     case "53a3d98f": // 15th January 2015
                         gameVersion = "15jan2015";
-                        Properties.Settings.Default.activeGame = "2015";
-                        Properties.Settings.Default.Save();
 
                         Dispatcher.BeginInvoke((MethodInvoker)delegate
                         {
-                            currentGame.Text = $"Current Game Version: {Properties.Settings.Default.activeGame}";
+                            currentGame.Text = $"Current Game Version: 2015";
                         });
 
                         break;
                     case "bc5b3ab6": // 22nd December 2016
                         gameVersion = "22dec2016";
-                        Properties.Settings.Default.activeGame = "2016";
-                        Properties.Settings.Default.Save();
 
                         Dispatcher.BeginInvoke((MethodInvoker)delegate
                         {
-                            currentGame.Text = $"Current Game Version: {Properties.Settings.Default.activeGame}";
+                            currentGame.Text = $"Current Game Version: 2016";
                         });
 
                         break;
                     default:
-                        Properties.Settings.Default.activeGame = "- Game version not detected -";
-                        Properties.Settings.Default.Save();
-
                         Dispatcher.BeginInvoke((MethodInvoker)delegate
                         {
-                            currentGame.Text = Properties.Settings.Default.activeGame;
+                            currentGame.Text = "- Game version not supported -";
                         });
 
                         break;
@@ -811,13 +843,10 @@ namespace H1EMU_Redux
                 }
                 else if (gameVersion != "processBeingUsed")
                 {
-                    Properties.Settings.Default.activeGame = "- Game version not detected -";
-                    Properties.Settings.Default.Save();
-
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
-                        currentGame.Text = Properties.Settings.Default.activeGame;
-                        CustomMessageBox.Show("Game version not detected or not supported by H1Emu.");
+                        currentGame.Text = "- Game version not supported -";
+                        CustomMessageBox.Show("Game version not supported by H1Emu.");
                     });
                 }
                 else
@@ -857,20 +886,6 @@ namespace H1EMU_Redux
 
         public void CloseButton(object sender, RoutedEventArgs e)
         {
-            if (!directoryButton.IsEnabled || !patchButton.IsEnabled || !latestButton.IsEnabled || !stableButton.IsEnabled)
-            {
-                CustomMessageBox.Show("Please wait for the current tasks to complete.");
-                return;
-            }
-
-            DoubleAnimation fadeAnimation = new DoubleAnimation();
-            fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
-            fadeAnimation.From = 1.0d;
-            fadeAnimation.To = 0.0d;
-            MainSettings.BeginAnimation(OpacityProperty, fadeAnimation);
-
-            while (MainSettings.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
-
             this.Close();
         }
 
@@ -880,7 +895,20 @@ namespace H1EMU_Redux
             {
                 CustomMessageBox.Show("Please wait for the current tasks to complete.");
                 e.Cancel = true;
+                return;
             }
+
+            e.Cancel = true;
+
+            DoubleAnimation fadeAnimation = new DoubleAnimation();
+            fadeAnimation.Duration = TimeSpan.FromMilliseconds(200d);
+            fadeAnimation.From = 1.0d;
+            fadeAnimation.To = 0.0d;
+            MainSettings.BeginAnimation(OpacityProperty, fadeAnimation);
+
+            while (MainSettings.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
+
+            e.Cancel = false;
         }
 
         public void MoveWindow(object sender, MouseButtonEventArgs e)

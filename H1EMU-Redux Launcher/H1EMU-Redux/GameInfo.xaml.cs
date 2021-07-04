@@ -19,6 +19,7 @@ namespace H1EMU_Redux
     /// <summary>
     /// Interaction logic for gameinfo.xaml
     /// </summary>
+
     public partial class GameInfo : Page
     {
         public GameInfo()

@@ -16,50 +16,45 @@ using System.Windows.Shapes;
 namespace H1EMU_Redux
 {
     /// <summary>
-    /// Interaction logic for MsgBox.xaml
+    /// Interaction logic for AboutPage.xaml
     /// </summary>
-    public partial class MsgBox : Window
+
+    public partial class AboutPage : Window
     {
-        public MsgBox()
+        public AboutPage()
         {
             InitializeComponent();
 
             DoubleAnimation fadeAnimation = new DoubleAnimation();
-            fadeAnimation.Duration = TimeSpan.FromMilliseconds(20d);
+            fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
             fadeAnimation.From = 0.0d;
             fadeAnimation.To = 1.0d;
-            MainMsgBox.BeginAnimation(OpacityProperty, fadeAnimation);
+            MainAbout.BeginAnimation(OpacityProperty, fadeAnimation);
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void MainAbout_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            e.Cancel = true;
+
             DoubleAnimation fadeAnimation = new DoubleAnimation();
             fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
             fadeAnimation.From = 1.0d;
             fadeAnimation.To = 0.0d;
-            MainMsgBox.BeginAnimation(OpacityProperty, fadeAnimation);
+            MainAbout.BeginAnimation(OpacityProperty, fadeAnimation);
 
-            while (MainMsgBox.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
+            while (MainAbout.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
 
-            this.Close();
-        }
-
-        private void OkButton(object sender, RoutedEventArgs e)
-        {
-            DoubleAnimation fadeAnimation = new DoubleAnimation();
-            fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
-            fadeAnimation.From = 1.0d;
-            fadeAnimation.To = 0.0d;
-            MainMsgBox.BeginAnimation(OpacityProperty, fadeAnimation);
-
-            while (MainMsgBox.Opacity != 0) { System.Windows.Forms.Application.DoEvents(); }
-
-            this.Close();
+            e.Cancel = false;
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

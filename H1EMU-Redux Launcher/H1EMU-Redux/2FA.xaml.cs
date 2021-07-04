@@ -18,6 +18,7 @@ namespace H1EMU_Redux
     /// <summary>
     /// Interaction logic for _2FA.xaml
     /// </summary>
+
     public partial class _2FA : Page
     {
         public _2FA()

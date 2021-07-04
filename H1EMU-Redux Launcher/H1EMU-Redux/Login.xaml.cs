@@ -24,6 +24,7 @@ namespace H1EMU_Redux
     /// <summary>
     /// Interaction logic for Login.xaml
     /// </summary>
+
     public partial class Login : Page
     {
         public static CancellationTokenSource tokenSource = new CancellationTokenSource();
@@ -280,7 +281,7 @@ namespace H1EMU_Redux
 
                             Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                             {
-                                DownloadStatus.downStatus.gameDownloadText.Text = version;
+                                DownloadStatus.downStatus.gameDownloadText.Text = $"{version}:";
                                 DownloadStatus.downStatus.downloadProgressText.Text = "Pre-allocating space...";
                             });
                         }
@@ -290,7 +291,7 @@ namespace H1EMU_Redux
 
                             Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                             {
-                                DownloadStatus.downStatus.gameDownloadText.Text = version;
+                                DownloadStatus.downStatus.gameDownloadText.Text = $"{version}:";
                                 DownloadStatus.downStatus.downloadProgressText.Text = "Pre-allocating space...";
                             });
                         }
@@ -300,7 +301,7 @@ namespace H1EMU_Redux
 
                     Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show($"Successfully downloaded H1Z1: Just Survive version {version}");
+                        CustomMessageBox.Show($"Successfully downloaded H1Z1: Just Survive version {version}.");
                     });
                 }
                 catch (Exception ph) when (ph is OperationCanceledException)
@@ -318,7 +319,7 @@ namespace H1EMU_Redux
                     Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
                         Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
-                        CustomMessageBox.Show(ex.Message);
+                        CustomMessageBox.Show($"ContentDownloaderException: \"{ex.Message}\"");
                     });
 
                     return;
@@ -328,7 +329,7 @@ namespace H1EMU_Redux
                     Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
                         Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
-                        CustomMessageBox.Show("Download failed to due to an unhandled exception: " + er.Message);
+                        CustomMessageBox.Show($"Download failed to due to an unhandled exception: \"{er.Message}\"");
                     });
 
                     return;

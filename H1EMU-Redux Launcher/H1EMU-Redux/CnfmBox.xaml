@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:H1EMU_Redux"
         mc:Ignorable="d"
-        Title="CnfmBox" x:Name="MainCnfmBox" Height="250" Width="450" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" FontFamily="Bahnschrift Light" FontSize="16" ResizeMode="NoResize">
+        Title="CnfmBox" x:Name="MainCnfmBox" Height="250" Width="450" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" FontFamily="Bahnschrift Light" FontSize="16" ResizeMode="NoResize" Closing="MainCnfmBox_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -27,7 +27,11 @@
 
             <!-- Dock panel that hosts logo -->
             <DockPanel Grid.Row="0" Grid.Column="0" Height="40" HorizontalAlignment="Left" Margin="14,2,0,0">
-                <Image RenderOptions.BitmapScalingMode="HighQuality" Source="Resources\H1EmuIcon.png" Margin="0,8,0,5"/>
+                <Button Width="104" Height="28" BorderThickness="0" VerticalAlignment="Center" Margin="0,4,0,0" Style="{DynamicResource ImageButton}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Resources\H1EmuIcon.png" RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Button.Background>
+                </Button>
             </DockPanel>
 
             <!-- Dock panel that creates the exit button. -->
