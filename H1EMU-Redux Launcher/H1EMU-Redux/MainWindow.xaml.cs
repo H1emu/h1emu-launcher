@@ -91,7 +91,7 @@ namespace H1EMU_Redux
                     sp.Close();
 
                     DoubleAnimation fadeAnimation = new DoubleAnimation();
-                    fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
+                    fadeAnimation.Duration = TimeSpan.FromMilliseconds(50d);
                     fadeAnimation.From = 0.0d;
                     fadeAnimation.To = 1.0d;
                     MainUpdateWindow.BeginAnimation(OpacityProperty, fadeAnimation);
@@ -125,7 +125,7 @@ namespace H1EMU_Redux
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://github.com/H1emu/h1emu-launcher/releases/latest/download/H1Emu.Launcher.exe",
+                FileName = "https://github.com/H1emu/h1emu-launcher/releases/latest/download/H1Emu.Launcher.zip",
                 UseShellExecute = true
             });
 
@@ -137,7 +137,7 @@ namespace H1EMU_Redux
             e.Cancel = true;
 
             DoubleAnimation fadeAnimation = new DoubleAnimation();
-            fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
+            fadeAnimation.Duration = TimeSpan.FromMilliseconds(50d);
             fadeAnimation.From = 1.0d;
             fadeAnimation.To = 0.0d;
             MainUpdateWindow.BeginAnimation(OpacityProperty, fadeAnimation);
