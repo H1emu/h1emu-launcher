@@ -1,0 +1,30 @@
+﻿<Page x:Class="H1EMU_Launcher._2FA"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:H1EMU_Launcher"
+      mc:Ignorable="d" 
+      d:DesignHeight="100" d:DesignWidth="555"
+      FontFamily="Bahnschrift Light"
+      Title="_2FA">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" VerticalAlignment="Top" TextWrapping="Wrap" Text="Please enter your two factor authentication code." FontSize="16" Foreground="White" Margin="7,0,0,0"/>
+
+        <TextBox x:Name="authBox" CharacterCasing="Upper" IsHitTestVisible="True" Grid.Row="1" FontSize="16" VerticalContentAlignment="Center" VerticalAlignment="Top" Height="35" Margin="0,0,7,0" Padding="30,0,35,0" LostKeyboardFocus="authBox_LostKeyboardFocus" IsKeyboardFocusedChanged="authBox_IsKeyboardFocusedChanged" KeyDown="_2FAKeyDown" Style="{DynamicResource TextBoxPrimaryStyle}"/>
+        <TextBlock x:Name="authHint" Grid.Row="1" MaxHeight="35" Height="35" Padding="35,8,0,0" VerticalAlignment="Top" Text="Auth Code" Foreground="White" FontSize="16" MouseLeftButtonDown="authHint_MouseLeftButtonDown" Cursor="IBeam"/>
+        <Image Source="Resources\Padlock.png" RenderOptions.BitmapScalingMode="HighQuality" Grid.Row="1" MaxHeight="20" Height="20" MaxWidth="25" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="8,7,0,6"/>
+        <Button VerticalAlignment="Top" RenderOptions.BitmapScalingMode="HighQuality" Grid.Row="1" MaxHeight="20" MinHeight="20" Width="20" HorizontalAlignment="Right" Margin="0,7,17,0" Click="LoginButton" BorderThickness="0" Style="{DynamicResource EnterButton}">
+            <Button.Background>
+                <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\Arrow.png"/>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Page>
