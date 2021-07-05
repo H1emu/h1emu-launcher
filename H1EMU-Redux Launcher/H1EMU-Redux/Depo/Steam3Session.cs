@@ -341,6 +341,12 @@ namespace H1EMU_Redux
             Action<SteamApps.DepotKeyCallback> cbMethod = ( depotKey ) =>
             {
                 completed = true;
+
+                System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
+                {
+                    DownloadStatus.downStatus.downloadProgressText.Text = $"Got depot key for {depotKey.DepotID} result: {depotKey.Result}...";
+                });
+
                 Debug.WriteLine($"Got depot key for {depotKey.DepotID} result: {depotKey.Result}");
 
                 if ( depotKey.Result != EResult.OK )
@@ -386,6 +392,12 @@ namespace H1EMU_Redux
             Action<SteamApps.CDNAuthTokenCallback> cbMethod = ( cdnAuth ) =>
             {
                 completed = true;
+
+                System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
+                {
+                    DownloadStatus.downStatus.downloadProgressText.Text = $"Got CDN auth token for {host} result: {cdnAuth.Result}...";
+                });
+
                 Debug.WriteLine($"Got CDN auth token for {host} result: {cdnAuth.Result} (expires {cdnAuth.Expiration})");
 
                 if ( cdnAuth.Result != EResult.OK )

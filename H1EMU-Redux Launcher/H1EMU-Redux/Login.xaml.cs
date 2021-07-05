@@ -282,7 +282,7 @@ namespace H1EMU_Redux
                             Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                             {
                                 DownloadStatus.downStatus.gameDownloadText.Text = $"{version}:";
-                                DownloadStatus.downStatus.downloadProgressText.Text = "Pre-allocating space...";
+                                DownloadStatus.downStatus.downloadProgressText.Text = "Processing...";
                             });
                         }
                         else
@@ -292,7 +292,7 @@ namespace H1EMU_Redux
                             Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                             {
                                 DownloadStatus.downStatus.gameDownloadText.Text = $"{version}:";
-                                DownloadStatus.downStatus.downloadProgressText.Text = "Pre-allocating space...";
+                                DownloadStatus.downStatus.downloadProgressText.Text = "Processing...";
                             });
                         }
                     }

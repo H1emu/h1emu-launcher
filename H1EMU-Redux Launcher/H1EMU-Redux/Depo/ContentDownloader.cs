@@ -494,7 +494,12 @@ namespace H1EMU_Redux
             }
             else
             {
-                Debug.WriteLine( "Using app branch: '{0}'.", branch );
+                System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
+                {
+                    DownloadStatus.downStatus.downloadProgressText.Text = $"Using app branch: '{branch}'...";
+                });
+
+                Debug.WriteLine($"Using app branch: '{branch}'.");
 
                 if ( depots != null )
                 {
@@ -734,7 +739,12 @@ namespace H1EMU_Redux
         {
             DepotDownloadCounter depotCounter = new DepotDownloadCounter();
 
-            Debug.WriteLine("Processing depot {0} - {1}", depot.id, depot.contentName);
+            System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
+            {
+                DownloadStatus.downStatus.downloadProgressText.Text = $"Processing depot {depot.id} - {depot.contentName}...";
+            });
+
+            Debug.WriteLine($"Processing depot {depot.id} - {depot.contentName}");
 
             ProtoManifest oldProtoManifest = null;
             ProtoManifest newProtoManifest = null;
@@ -893,7 +903,12 @@ namespace H1EMU_Redux
 
             newProtoManifest.Files.Sort((x, y) => string.Compare(x.FileName, y.FileName, StringComparison.Ordinal));
 
-            Debug.WriteLine("Manifest {0} ({1})", depot.manifestId, newProtoManifest.CreationTime);
+            System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
+            {
+                DownloadStatus.downStatus.downloadProgressText.Text = $"Manifest {depot.manifestId} ({newProtoManifest.CreationTime})...";
+            });
+
+            Debug.WriteLine($"Manifest {depot.manifestId} ({newProtoManifest.CreationTime})");
 
             if (Config.DownloadManifestOnly)
             {
@@ -1041,7 +1056,12 @@ namespace H1EMU_Redux
             FileInfo fi = new FileInfo(fileFinalPath);
             if (!fi.Exists)
             {
-                Debug.WriteLine("Pre-allocating {0}", fileFinalPath);
+                System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
+                {
+                    DownloadStatus.downStatus.downloadProgressText.Text = $"Pre-allocating space...";
+                });
+
+                Debug.WriteLine($"Pre-allocating {fileFinalPath}");
 
                 // create new file. need all chunks
                 fs = File.Create(fileFinalPath);
