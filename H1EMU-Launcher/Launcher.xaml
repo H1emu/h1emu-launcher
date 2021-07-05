@@ -184,12 +184,12 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Button Grid.Row="2" Grid.Column="1" Content="PLAY" Foreground="White" FontFamily="Arial Black" FontSize="28" Click="LaunchClientTestServer" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
+                            <Button Grid.Row="2" Grid.Column="1" Content="CONNECT" Foreground="White" FontFamily="Arial Black" FontSize="28" Click="LaunchClientTestServer" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
                                 <Button.Background>
                                     <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\StandardButton.png"/>
                                 </Button.Background>
                             </Button>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Press play here to connect to the H1Emu test server. (2015 Only)" Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,5" TextWrapping="Wrap"/>
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Press connect here to connect to the H1Emu test server. (2015 Only)" Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,5" TextWrapping="Wrap"/>
                             <Button Content="PLAY" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Row="1" Grid.Column="1" Click="LaunchClientCustom" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
                                 <Button.Background>
                                     <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\StandardButton.png"/>
