@@ -18,7 +18,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <RichTextBox VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Foreground="White" Background="Transparent" BorderThickness="0" Margin="0,-2,0,0">
+        <RichTextBox VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Foreground="White" Background="Transparent" BorderThickness="0" Margin="0,-2,0,0" IsReadOnly="True" Cursor="Arrow">
             <FlowDocument TextAlignment="Center">
                 <Paragraph>
                     <Run Foreground="#FFCA1420">
