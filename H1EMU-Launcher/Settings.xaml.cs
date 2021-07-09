@@ -347,7 +347,7 @@ namespace H1EMU_Launcher
                         {
                             sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.4.1-win-x64");
                             sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
-                            sw.WriteLine("npm i h1z1-server@latest");
+                            sw.WriteLine("npm i --production h1z1-server@latest");
                         }
                     }
 
@@ -424,7 +424,7 @@ namespace H1EMU_Launcher
                         {
                             sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.4.1-win-x64");
                             sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
-                            sw.WriteLine("npm i");
+                            sw.WriteLine("npm i --production");
                         }
                     }
 
