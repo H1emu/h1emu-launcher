@@ -53,7 +53,7 @@
                     <WrapPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
                         <TextBlock VerticalAlignment="Center" Margin="0,10,16,0">
                             <Hyperlink NavigateUri="" Click="AboutHyperlink">
-                                <TextBlock x:Name="aboutProject">About the project...</TextBlock>                                
+                                About the project...
                             </Hyperlink>
                         </TextBlock>
                         <!--Wraps the control box components-->
@@ -76,8 +76,8 @@
                     
                     <!--Wraps the promtional website/discord components-->
                     <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                        <TextBlock  Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,25,10" TextWrapping="Wrap">
-                           <Run Name="joinCommunity" Text="Join the Community at"/> 
+                        <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,25,10" TextWrapping="Wrap">
+                            Join the Community at
                             <Hyperlink NavigateUri="https://h1emu.com/" RequestNavigate="H1Hyperlink">
                                 h1emu.com
                             </Hyperlink>
@@ -135,8 +135,8 @@
 
                 <!--Hyperlink text to redirect to more udpates-->
                 <TextBlock Margin="6,20,0,0">
-                    <Hyperlink x:Name="updateHyperLink"  NavigateUri="https://github.com/H1emu/h1z1-server/commits/master" RequestNavigate="FullUpdatesHyperlink">
-                        <TextBlock x:Name="updateHLTextBlock" >View full details of the update...  </TextBlock>
+                    <Hyperlink NavigateUri="https://github.com/H1emu/h1z1-server/commits/master" RequestNavigate="FullUpdatesHyperlink">
+                        View full details of the update...
                     </Hyperlink>
                 </TextBlock>
             </StackPanel>
@@ -146,17 +146,18 @@
                     <RowDefinition Height="355*"/>
                 </Grid.RowDefinitions>
                 <StackPanel Margin="25,20,30,0">
-                    <RichTextBox Background="Transparent"  Foreground="White" BorderThickness="0" IsReadOnly="True" Cursor="Arrow">
+                    <RichTextBox Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True" Cursor="Arrow">
                         <FlowDocument>
                             <Paragraph>
-                                <Run Name="warnLabel" Text="WARNING:" Foreground="#FFCA1420"/>
-
-                                <Run Name="warncontentLabel" Text="You must own H1Z1: Just Survive on your Steam account in order to download. This project does not support piracy."/>
-
-
+                                <Run Foreground="#FFCA1420">
+                                    WARNING:
+                                </Run>
+                                <Run>
+                                    You must own H1Z1: Just Survive on your Steam account in order to download. This project does not support piracy.
+                                </Run>
                             </Paragraph>
                             <Paragraph Padding="0,10,0,0">
-                                <Run Name="tipLabel">
+                                <Run>
                                     Please make sure your emails are open for the 2-Auth code after logging into your steam account.
                                 </Run>
                             </Paragraph>
@@ -183,24 +184,24 @@
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
-                            <Button Grid.Row="2" Name="connectBtn" Grid.Column="1" Content="CONNECT" Foreground="White" FontFamily="Arial Black" FontSize="28" Click="LaunchClientTestServer" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
+                            <Button Grid.Row="2" Grid.Column="1" Content="CONNECT" Foreground="White" FontFamily="Arial Black" FontSize="28" Click="LaunchClientTestServer" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
                                 <Button.Background>
                                     <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\StandardButton.png"/>
                                 </Button.Background>
                             </Button>
-                            <TextBlock Grid.Row="2" Name="connectTip" Grid.Column="0" Text="Press connect here to connect to the H1Emu test server. (2015 Only)" Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,5" TextWrapping="Wrap"/>
-                            <Button Content="PLAY" Name="playBtn" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Row="1" Grid.Column="1" Click="LaunchClientCustom" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Press connect here to connect to the H1Emu test server. (2015 Only)" Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,5" TextWrapping="Wrap"/>
+                            <Button Content="PLAY" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Row="1" Grid.Column="1" Click="LaunchClientCustom" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
                                 <Button.Background>
                                     <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\StandardButton.png"/>
                                 </Button.Background>
                             </Button>
-                            <TextBlock Grid.Row="1" x:Name="playTip" Grid.Column="0" Text="Press play here to connect to a local server." Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,5" TextWrapping="Wrap"/>
-                            <Button Content="LAUNCH" Name="lanuchBtn" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Row="0" Grid.Column="1" Click="LaunchServer" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Press play here to connect to a local server." Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,5" TextWrapping="Wrap"/>
+                            <Button Content="LAUNCH" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Row="0" Grid.Column="1" Click="LaunchServer" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
                                 <Button.Background>
                                     <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\StandardButton.png"/>
                                 </Button.Background>
                             </Button>
-                            <TextBlock Grid.Row="0" Grid.Column="0" Name="lanuchTip" Text="Press launch here to launch the local server." Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,5" TextWrapping="Wrap"/>
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Press launch here to launch the local server." Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,5" TextWrapping="Wrap"/>
                         </Grid>
                     </DockPanel>
                 </Grid>
@@ -208,10 +209,10 @@
         </Grid>
         <!--Footer-->
         <DockPanel Grid.Column="0" Grid.Row="2">
-            <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="35,0,0,0">
-                <Hyperlink  NavigateUri="" Click="Hyperlink_Click">
-                    <TextBlock x:Name="settingHL">Settings</TextBlock>
-                </Hyperlink>                
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="35,0,0,0">
+                <Hyperlink NavigateUri="" Click="Hyperlink_Click">
+                    Settings...
+                </Hyperlink>
             </TextBlock>
             <TextBlock Text="Copyright © 2021 | H1Emu Project" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,35,0" Foreground="White"/>
         </DockPanel>
