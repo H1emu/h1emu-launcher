@@ -76,7 +76,7 @@ namespace H1EMU_Launcher
             {"joinCommunity","加入社区" },
             {"About the project...","关于项目" },
             {"Unable to retrieve GitHub information: \"{0}\"\n\n(Are you connected to the internet?)","无法检索GitHub信息：\"{0}\"“\n\n（您连接到internet了吗？）" },
-            {"Not Now","暂不" },
+            {"Not Now","暂不" }
         };
 
 
