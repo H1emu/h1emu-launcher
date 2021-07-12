@@ -59,7 +59,7 @@ namespace H1EMU_Launcher
                         {
                             while (!sr.EndOfStream)
                             {
-                                string[] strs = sr.ReadLine().Split('|');//Splite By Tab
+                                string[] strs = sr.ReadLine().Split('|');//Splite By "|"
                                 if (LanguageCellsMap[lanName].ContainsKey(strs[0]))
                                 {
                                     LanguageCellsMap[lanName][strs[0]] = strs[1];
