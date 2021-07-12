@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,45 +21,60 @@ namespace H1EMU_Launcher
 
         public static void Init()
         {
-            if (System.Globalization.CultureInfo.CurrentCulture.Name == "zh-CN")
-            { 
-                m_CurrentLanguage = "zh-CN";
-            }
-            else
+            try
             {
-                m_CurrentLanguage = "en-US";
-            }
-            Zh_cn zh_Cn = new Zh_cn();
-            LanguageCellsMap = new Dictionary<string, Dictionary<string, string>>()
+                if (System.Globalization.CultureInfo.CurrentCulture.Name == "zh-CN")
+                {
+                    m_CurrentLanguage = "zh-CN";
+                }
+                else
+                {
+                    m_CurrentLanguage = "en-US";
+                }
+                Zh_cn zh_Cn = new Zh_cn();
+                LanguageCellsMap = new Dictionary<string, Dictionary<string, string>>()
             {
                 { "zh-CN",zh_Cn.LanMap},
             };
-            #region LoadFile
-            //string filePath = AppDomain.CurrentDomain.BaseDirectory + "//Settings//LanguageMap.txt";
-            //using (StreamReader sr = new StreamReader(filePath))
-            //{
-            //    while (!sr.EndOfStream)
-            //    {
-            //        string[] strs = sr.ReadLine().Split('\t');
-            //        if (LanguageCellsMap["EN"].ContainsKey(strs[0]))
-            //        {
-            //            LanguageCellsMap["EN"][strs[0]] = strs[1];
-            //        }
-            //        else
-            //        {
-            //            LanguageCellsMap["EN"].Add(strs[0], strs[1]);
-            //        }
-            //        if (LanguageCellsMap["CN"].ContainsKey(strs[0]))
-            //        {
-            //            LanguageCellsMap["CN"][strs[0]] = strs[2];
-            //        }
-            //        else
-            //        {
-            //            LanguageCellsMap["CN"].Add(strs[0], strs[2]);
-            //        }
-            //    }
-            //}
-            #endregion
+                LoadLanguageFile();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception( "Language Load Fail,Update or Remove language file in Directory\\Languages");
+            }
+        }
+        private static void LoadLanguageFile()
+        { 
+         string filepath = AppDomain.CurrentDomain.BaseDirectory + "//Languages";
+            if (Directory.Exists(filepath))
+            {
+                DirectoryInfo directoryInfo = new DirectoryInfo(filepath);
+               FileInfo[] fileInfos= directoryInfo.GetFiles();
+                foreach (FileInfo fileInfo in fileInfos)
+                {
+                    if (fileInfo.FullName.Contains(".ini"))
+                    {
+                        string lanName = fileInfo.Name.Replace(".ini","");
+                        using (StreamReader sr = new StreamReader(filepath))
+                        {
+                            while (!sr.EndOfStream)
+                            {
+                                string[] strs = sr.ReadLine().Split('|');//Splite By Tab
+                                if (LanguageCellsMap[lanName].ContainsKey(strs[0]))
+                                {
+                                    LanguageCellsMap[lanName][strs[0]] = strs[1];
+                                }
+                                else
+                                {
+                                    LanguageCellsMap[lanName].Add(strs[0], strs[1]);
+                                }
+                            }
+                        }
+                    }                
+                }
+            }
+            
+        
         }
         public static string GetWords(string key)
         {
@@ -72,20 +88,5 @@ namespace H1EMU_Launcher
             }
         }
 
-        //public static void ChangeLanguage(Control control)
-        //{
-        //    if (m_CurrentLanguage == "EN")
-        //    {
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        foreach (Control ctrl in control.Controls)
-        //        {
-        //            ChangeLanguage(ctrl);
-        //            control.Text = string.IsNullOrEmpty(LanCtler.GetWords(control.Name)) ? control.Text : LanCtler.GetWords(control.Name);
-        //        }
-        //    }
-        //}
     }
 }
