@@ -37,7 +37,7 @@ namespace H1EMU_Launcher
         public MainWindow()
         {
             InitializeComponent();
-
+            
             sp.Show();
             CheckVersion();
         }
@@ -102,6 +102,7 @@ namespace H1EMU_Launcher
                 sp.Close();
 
                 CustomMessageBox.Show($"Unable to retrieve GitHub information: \"{e.Message}\"\n\n(Are you connected to the internet?)");
+                CustomMessageBox.Show(string.Format(LanCtrler.GetWords("Unable to retrieve GitHub information: \"{0}\"\n\n(Are you connected to the internet?)"), e.Message));
 
                 Launcher la = new Launcher();
                 la.Show();
@@ -125,7 +126,7 @@ namespace H1EMU_Launcher
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://github.com/H1emu/h1emu-launcher/releases/latest/download/H1Emu.Launcher.zip",
+                FileName = "https://github.com/H1emu/h1emu-launcher/releases/latest/download/H1EMU-Launcher.zip",
                 UseShellExecute = true
             });
 
@@ -168,6 +169,9 @@ namespace H1EMU_Launcher
 
         private void MainUpdateWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            updateLabel.Text = LanCtrler.GetWords("A new update is available, would you like to update now?");
+            updateButton.Content= LanCtrler.GetWords("UPDATE");
+            notnowBtn.Text = LanCtrler.GetWords("Not Now");
             SystemSounds.Beep.Play();
         }
     }

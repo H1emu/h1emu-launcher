@@ -56,7 +56,7 @@ namespace H1EMU_Launcher
         {
             ma.Reset();
 
-            new Thread(() => 
+            new Thread(() =>
             {
                 try
                 {
@@ -64,7 +64,7 @@ namespace H1EMU_Launcher
                     {
                         Dispatcher.Invoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show("You don't seem to have an active directory set.\n\nSet this in the Settings menu.");
+                            CustomMessageBox.Show(LanCtrler.GetWords("You don't seem to have an active directory set.\n\nSet this in the Settings menu."));
                         });
 
                         return;
@@ -74,7 +74,7 @@ namespace H1EMU_Launcher
                     {
                         Dispatcher.Invoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show("You don't seem to have server files installed.\n\nInstall these in the Settings menu.");
+                            CustomMessageBox.Show(LanCtrler.GetWords("You don't seem to have server files installed.\n\nInstall these in the Settings menu."));
                         });
 
                         return;
@@ -103,7 +103,7 @@ namespace H1EMU_Launcher
                     {
                         Dispatcher.Invoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show("Game either not found or not supported by H1Emu.");
+                            CustomMessageBox.Show(LanCtrler.GetWords("Game either not found or not supported by H1Emu."));
                         });
 
                         return;
@@ -136,7 +136,7 @@ namespace H1EMU_Launcher
                 {
                     Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show($"Error launching server: \"{er.Message}\"");
+                        CustomMessageBox.Show(string.Format(LanCtrler.GetWords("Error launching server:{0}"),er.Message));
                     });
                 }
 
@@ -147,7 +147,7 @@ namespace H1EMU_Launcher
         {
             ma.Reset();
 
-            new Thread(() => 
+            new Thread(() =>
             {
                 try
                 {
@@ -155,7 +155,7 @@ namespace H1EMU_Launcher
                     {
                         Dispatcher.Invoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show("You don't seem to have an active directory set.\n\nSet this in the Settings menu.");
+                            CustomMessageBox.Show(LanCtrler.GetWords("You don't seem to have an active directory set.\n\nSet this in the Settings menu."));
                         });
 
                         return;
@@ -181,7 +181,7 @@ namespace H1EMU_Launcher
                         {
                             Dispatcher.Invoke((MethodInvoker)delegate
                             {
-                                DialogResult dialogResult = CustomMessageBox.ShowResult("The selected directory does not contain patch files.\n\nWould you like to continue anyway? (You won't be able to load into servers)");
+                                DialogResult dialogResult = CustomMessageBox.ShowResult(LanCtrler.GetWords("The selected directory does not contain patch files.\n\nWould you like to continue anyway? (You won't be able to load into servers)"));
                                 if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                                 {
                                     result = true;
@@ -211,7 +211,7 @@ namespace H1EMU_Launcher
                     {
                         Dispatcher.Invoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show("Game either not found or not supported by H1Emu.");
+                            CustomMessageBox.Show(LanCtrler.GetWords("Game either not found or not supported by H1Emu."));
                         });
 
                         return;
@@ -225,7 +225,7 @@ namespace H1EMU_Launcher
                 {
                     Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show($"Error launching game: \"{er.Message}\"");
+                        CustomMessageBox.Show(string.Format(LanCtrler.GetWords("Error launching game:{0}"), er.Message));
                     });
                 }
 
@@ -236,7 +236,7 @@ namespace H1EMU_Launcher
         {
             ma.Reset();
 
-            new Thread(() => 
+            new Thread(() =>
             {
                 try
                 {
@@ -244,7 +244,7 @@ namespace H1EMU_Launcher
                     {
                         Dispatcher.Invoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show("You don't seem to have an active directory set.\n\nSet this in the Settings menu.");
+                            CustomMessageBox.Show(LanCtrler.GetWords("You don't seem to have an active directory set.\n\nSet this in the Settings menu."));
                         });
 
                         return;
@@ -270,7 +270,7 @@ namespace H1EMU_Launcher
                         {
                             Dispatcher.Invoke((MethodInvoker)delegate
                             {
-                                DialogResult dialogResult = CustomMessageBox.ShowResult("The selected directory does not contain patch files.\n\nWould you like to continue anyway? (You won't be able to load into servers)");
+                                DialogResult dialogResult = CustomMessageBox.ShowResult(LanCtrler.GetWords("The selected directory does not contain patch files.\n\nWould you like to continue anyway? (You won't be able to load into servers)"));
                                 if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                                 {
                                     result = true;
@@ -300,7 +300,7 @@ namespace H1EMU_Launcher
                     {
                         Dispatcher.Invoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show("There is no test server for this version of the game currently. (December 2016)");
+                            CustomMessageBox.Show(LanCtrler.GetWords("There is no test server for this version of the game currently. (December 2016)"));
                         });
 
                         return;
@@ -309,7 +309,7 @@ namespace H1EMU_Launcher
                     {
                         Dispatcher.Invoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show("Game either not found or not supported by H1Emu.");
+                            CustomMessageBox.Show(LanCtrler.GetWords("Game either not found or not supported by H1Emu."));
                         });
 
                         return;
@@ -323,7 +323,7 @@ namespace H1EMU_Launcher
                 {
                     Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show($"Error launching game: \"{er.Message}\"");
+                        CustomMessageBox.Show(string.Format(LanCtrler.GetWords("Error launching game:{0}"),er.Message));
                     });
                 }
 
@@ -337,8 +337,7 @@ namespace H1EMU_Launcher
                 try
                 {
                     var date = DateTime.ParseExact(recentDateServer, "G", CultureInfo.InvariantCulture);
-
-                    titleUpdateText.Text = $"Update Version {latestUpdateVersionServer}";
+                    LanChange();
                     datePublished.Text = $"({date:dd MMMM yyyy})";
                     patchNotesBox.Document.Blocks.Clear();
                     patchNotesBox.Document.Blocks.Add(new Paragraph(new Run(patchNotes)));
@@ -350,14 +349,30 @@ namespace H1EMU_Launcher
                 try
                 {
                     var date = DateTime.ParseExact(Properties.Settings.Default.publishDate, "G", CultureInfo.InvariantCulture);
-
-                    titleUpdateText.Text = $"Update Version {Properties.Settings.Default.latestServerVersion}";
+                    LanChange();
                     datePublished.Text = $"({date:dd MMMM yyyy})";
                     patchNotesBox.Document.Blocks.Clear();
                     patchNotesBox.Document.Blocks.Add(new Paragraph(new Run(Properties.Settings.Default.patchNotes)));
                 }
                 catch { }
             }
+        }
+        private void LanChange()
+        {
+            titleUpdateText.Text = string.Format(LanCtrler.GetWords("Update Version{0}"), latestUpdateVersionServer);
+            lanuchTip.Text = LanCtrler.GetWords("Press launch here to launch the local server.");
+            playTip.Text = LanCtrler.GetWords("Press play here to connect to a local server.");
+            connectTip.Text= LanCtrler.GetWords("Press connect here to connect to the H1Emu test server. (2015 Only)");
+            lanuchBtn.Content= LanCtrler.GetWords("LAUNCH");
+            playBtn.Content = LanCtrler.GetWords("PLAY");
+            connectBtn.Content = LanCtrler.GetWords("CONNECT");
+            warnLabel.Text = LanCtrler.GetWords("WARNING:");
+            warncontentLabel.Text=LanCtrler.GetWords("You must own H1Z1: Just Survive on your Steam account in order to download. This project does not support piracy.");
+            joinCommunity.Text = LanCtrler.GetWords("Join the Community at");
+            tipLabel.Text = LanCtrler.GetWords("Please make sure your emails are open for the 2-Auth code after logging into your steam account.");
+            updateHLTextBlock.Text= LanCtrler.GetWords("View full details of the update...");
+            settingHL.Text = LanCtrler.GetWords("Setting");
+            aboutProject.Text = LanCtrler.GetWords("About the project...");
         }
 
         private void AboutHyperlink(object sender, RoutedEventArgs e)

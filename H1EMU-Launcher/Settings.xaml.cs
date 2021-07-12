@@ -48,6 +48,16 @@ namespace H1EMU_Launcher
             cmdShell.FileName = "cmd.exe";
             cmdShell.RedirectStandardInput = true;
             cmdShell.UseShellExecute = false;
+
+            gameDirectoryTip.Text = LanCtrler.GetWords("Game Directory:");
+            patchButton.Content = LanCtrler.GetWords("PATCH");
+            latestButton.Content = LanCtrler.GetWords("LATEST");
+            stableButton.Content = LanCtrler.GetWords("STABLE");
+            patchTip.Text = LanCtrler.GetWords("Click here to patch the game files. This will allow you to load into the game.");
+            latestTip.Text = LanCtrler.GetWords("Click here to download the latest build of the server.");
+            stableTip.Text = LanCtrler.GetWords("Click here to download the latest stable build of the server.");
+
+
         }
 
         //////////////////////
@@ -117,7 +127,7 @@ namespace H1EMU_Launcher
                     default:
                         Dispatcher.BeginInvoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show("Game version not supported by H1Emu.");
+                            CustomMessageBox.Show(LanCtrler.GetWords("Game version not supported by H1Emu."));
                         });
                         break;
                 }
@@ -864,7 +874,7 @@ namespace H1EMU_Launcher
                 Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
                     currentGame.Text = "- Game Version Not Detected -";
-                    CustomMessageBox.Show("Game either not found or not supported by H1Emu.");
+                    CustomMessageBox.Show(LanCtrler.GetWords("Game either not found or not supported by H1Emu."));
                 });
 
                 return false;

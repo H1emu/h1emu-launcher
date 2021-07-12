@@ -27,11 +27,14 @@ namespace H1EMU_Launcher
         {
             InitializeComponent();
             downStatus = this;
+            currentDowloadLabel.Text = LanCtrler.GetWords("Currently downloading:");
+            versionLabel.Text = LanCtrler.GetWords("version");
+            cancelDownloadButton.Content = LanCtrler.GetWords("CANCEL");
         }
 
         private void CancelDownloadButtonClick(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.DialogResult dr = CustomMessageBox.ShowResult($"Are you sure you would like to cancel the download of H1Z1: Just Survive version {Login.version}?\n\n(Files will not be deleted)");
+            System.Windows.Forms.DialogResult dr = CustomMessageBox.ShowResult(string.Format(LanCtrler.GetWords("Are you sure you would like to cancel the download of H1Z1: Just Survive version {0}?\n\n(Files will not be deleted)"), Login.version));
             if (dr == System.Windows.Forms.DialogResult.Yes)
             {
                 ContentDownloader.tokenSource.Cancel();

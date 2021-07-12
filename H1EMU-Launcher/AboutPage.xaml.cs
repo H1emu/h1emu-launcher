@@ -30,6 +30,7 @@ namespace H1EMU_Launcher
             fadeAnimation.From = 0.0d;
             fadeAnimation.To = 1.0d;
             MainAbout.BeginAnimation(OpacityProperty, fadeAnimation);
+            thanksLabel.Text = LanCtrler.GetWords("And a special thanks to everyone who joined the community and kept the motivation alive!");
         }
 
         private void MainAbout_Closing(object sender, System.ComponentModel.CancelEventArgs e)

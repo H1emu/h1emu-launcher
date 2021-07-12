@@ -33,7 +33,7 @@
                     </Button.Background>
                 </Button>
             </DockPanel>
-            
+
             <!--Creates the control box-->
             <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
                 <Button x:Name="CloseButton" Content="" Width="45" MaxHeight="30" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseUpdater" Margin="0,5,25,0" Style="{StaticResource CloseButtonStyle}">
@@ -49,7 +49,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <DockPanel Grid.Row="0" Margin="25,0,25,0">
-                <TextBlock Width="320" FontSize="20" FontFamily="Bahnschrift Light" Foreground="FloralWhite" TextWrapping="Wrap" Text="A new update is available, would you like to update now?" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                <TextBlock Width="320" FontSize="20" Name="updateLabel" FontFamily="Bahnschrift Light" Foreground="FloralWhite" TextWrapping="Wrap" Text="A new update is available, would you like to update now?" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
             </DockPanel>
 
             <!-- Update button. -->
@@ -58,9 +58,9 @@
                     <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\StandardButton.png"/>
                 </Button.Background>
             </Button>
-            <TextBlock Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16" Margin="0,0,0,12" Height="21" Width="62">
-                <Hyperlink NavigateUri="" Click="NotNowClick" Foreground="White">
-                    Not now
+            <TextBlock Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16" Margin="0,0,0,12" Height="21" Width="70">
+                <Hyperlink Name="notNowBtn" NavigateUri="" Click="NotNowClick" Foreground="White">
+                    <TextBlock x:Name="notnowBtn" Width="75">Not now </TextBlock>
                 </Hyperlink>
             </TextBlock>
         </Grid>

@@ -9,25 +9,25 @@
       FontFamily="Bahnschrift Light"
       Title="GameInfo">
     <Grid>
-        <RichTextBox FontSize="16" Background="Transparent" BorderThickness="0" Foreground="White">
+        <RichTextBox FontSize="16" Background="Transparent" BorderThickness="0" Foreground="White" IsReadOnly="True" Cursor="Arrow">
             <FlowDocument>
-                <Paragraph TextAlignment="Center">
-                    Which version of
+                <Paragraph  TextAlignment="Center">
+                    <Run Name="whichVersionLabel" Text="Which version of" />
                     <Run Foreground="#FFCA1420">
                         H1Z1: Just Survive
                     </Run>
-                    <Run>
+                    <Run Name="wouldULikeLabel">
                         would you like to install?
                     </Run>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button Click="Button2015" Content="JANUARY 2015" Foreground="White" FontFamily="Arial Black" FontSize="24" Width="270" Height="45" Margin="0,20,0,0" HorizontalAlignment="Left" BorderThickness="0" Style="{DynamicResource StandardButton}">
+        <Button Click="Button2015" x:Name="jan2015Btn" Content="JANUARY 2015" Foreground="White" FontFamily="Arial Black" FontSize="24" Width="270" Height="45" Margin="0,20,0,0" HorizontalAlignment="Left" BorderThickness="0" Style="{DynamicResource StandardButton}">
             <Button.Background>
                 <ImageBrush ImageSource="Resources\StandardButton.png"/>
             </Button.Background>
         </Button>
-        <Button Click="Button2016" Content="DECEMBER 2016" Foreground="White" FontFamily="Arial Black" FontSize="24" Width="270" Height="45" Margin="0,20,0,0" HorizontalAlignment="Right" BorderThickness="0" Style="{DynamicResource StandardButton}">
+        <Button Click="Button2016" x:Name="dec2016Btn" Content="DECEMBER 2016" Foreground="White" FontFamily="Arial Black" FontSize="24" Width="270" Height="45" Margin="0,20,0,0" HorizontalAlignment="Right" BorderThickness="0" Style="{DynamicResource StandardButton}">
             <Button.Background>
                 <ImageBrush ImageSource="Resources\StandardButton.png"/>
             </Button.Background>

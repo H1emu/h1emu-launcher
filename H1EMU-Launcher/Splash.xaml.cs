@@ -24,12 +24,14 @@ namespace H1EMU_Launcher
         public Splash()
         {
             InitializeComponent();
-
+            LanCtrler.Init();
             DoubleAnimation fadeAnimation = new DoubleAnimation();
             fadeAnimation.Duration = TimeSpan.FromMilliseconds(100d);
             fadeAnimation.From = 0.0d;
             fadeAnimation.To = 1.0d;
             SplashScreen.BeginAnimation(OpacityProperty, fadeAnimation);
+            checkUpdateTip.Text = LanCtrler.GetWords("Checking for updates...");
+            waitTip.Text = LanCtrler.GetWords("Please wait");
         }
 
         private void SplashScreen_Closing(object sender, System.ComponentModel.CancelEventArgs e)

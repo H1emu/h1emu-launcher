@@ -18,13 +18,13 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <RichTextBox VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Foreground="White" Background="Transparent" BorderThickness="0" Margin="0,-2,0,0">
+        <RichTextBox VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Foreground="White" Background="Transparent" BorderThickness="0" Margin="0,-2,0,0" IsReadOnly="True" Cursor="Arrow">
             <FlowDocument TextAlignment="Center">
                 <Paragraph>
-                    <Run Foreground="#FFCA1420">
+                    <Run Name="downloadCompletelabel" Foreground="#FFCA1420">
                         Download complete!
                     </Run>
-                    <Run>
+                    <Run Name="downTip">
                         Need to download a different version? Press the button below to login again!
                     </Run>
                 </Paragraph>
@@ -36,7 +36,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Content="LOGIN" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Column="0" Click="BackToLoginPage" Height="45" HorizontalAlignment="Center" VerticalAlignment="Top" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
+            <Button x:Name="loginBtn" Content="LOGIN" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Column="0" Click="BackToLoginPage" Height="45" HorizontalAlignment="Center" VerticalAlignment="Top" Width="270" BorderThickness="0" Style="{DynamicResource StandardButton}">
                 <Button.Background>
                     <ImageBrush RenderOptions.BitmapScalingMode="HighQuality" ImageSource="Resources\StandardButton.png"/>
                 </Button.Background>

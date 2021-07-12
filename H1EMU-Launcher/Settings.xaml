@@ -62,7 +62,7 @@
             </Grid.RowDefinitions>
             
             <!-- Content for text, directory textbox, select directory button and current game version. -->
-            <TextBlock FontSize="16" FontFamily="Bahnschrift Light" Foreground="FloralWhite" Text="Game Directory:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,10"/>
+            <TextBlock Name="gameDirectoryTip" FontSize="16" FontFamily="Bahnschrift Light" Foreground="FloralWhite" Text="Game Directory:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,10"/>
             <TextBox x:Name="directoryBox" Height="35" HorizontalAlignment="Right" Width="520" Margin="0,0,20,10" Padding="35,7,35,0" IsReadOnly="True" Style="{DynamicResource TextBoxPrimaryStyle}" Cursor=""/>
             <Image Source="Resources\Folder.png" Height="20" HorizontalAlignment="Left" Margin="160,0,0,11"/>
             <Button x:Name="directoryButton" Click="SelectDirectory" Width="20" Height="20" HorizontalAlignment="Right" Margin="0,0,30,11" BorderThickness="0" Style="{DynamicResource EnterButton}">
@@ -79,24 +79,24 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button x:Name="patchButton" Content="PATCH" Foreground="White" FontFamily="Arial Black" FontSize="24" Click="InstallPatch" Height="40" Width="220" HorizontalAlignment="Left" Margin="20,20,0,0" Grid.Row="0" BorderThickness="0" Style="{DynamicResource StandardButton}">
+                <Button  x:Name="patchButton" Content="PATCH" Foreground="White" FontFamily="Arial Black" FontSize="24" Click="InstallPatch" Height="40" Width="220" HorizontalAlignment="Left" Margin="20,20,0,0" Grid.Row="0" BorderThickness="0" Style="{DynamicResource StandardButton}">
                     <Button.Background>
                         <ImageBrush ImageSource="Resources\StandardButton.png"/>
                     </Button.Background>
                 </Button>
-                <TextBlock Grid.Row="0" Text="Click here to patch the game files. This will allow you to load into the game." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="260,20,20,0" Width="400" TextWrapping="Wrap"/>
+                <TextBlock x:Name="patchTip" Grid.Row="0" Text="Click here to patch the game files. This will allow you to load into the game." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="260,20,20,0" Width="400" TextWrapping="Wrap"/>
                 <Button x:Name="latestButton" Content="LATEST" Foreground="White" FontFamily="Arial Black" FontSize="24" Click="DownloadServerLatest" Height="40" Width="220" HorizontalAlignment="Left" Margin="20,15,0,0" Grid.Row="1" BorderThickness="0" Style="{DynamicResource StandardButton}">
                     <Button.Background>
                         <ImageBrush ImageSource="Resources\StandardButton.png"/>
                     </Button.Background>
                 </Button>
-                <TextBlock Grid.Row="1" Text="Click here to download the latest build of the server." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="260,15,20,0" Width="400" TextWrapping="Wrap"/>
+                <TextBlock x:Name="latestTip" Grid.Row="1" Text="Click here to download the latest build of the server." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="260,15,20,0" Width="400" TextWrapping="Wrap"/>
                 <Button x:Name="stableButton" Content="STABLE" Foreground="White" FontFamily="Arial Black" FontSize="24" Click="DownloadServerStable" Height="40" Width="220" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="2" BorderThickness="0" Style="{DynamicResource StandardButton}">
                     <Button.Background>
                         <ImageBrush ImageSource="Resources\StandardButton.png"/>
                     </Button.Background>
                 </Button>
-                <TextBlock Grid.Row="2" Text="Click here to download the latest stable build of the server." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="260,10,20,0" Width="400" TextWrapping="Wrap"/>
+                <TextBlock x:Name="stableTip" Grid.Row="2" Text="Click here to download the latest stable build of the server." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="260,10,20,0" Width="400" TextWrapping="Wrap"/>
             </Grid>
             
             <!-- Creating progress bar and text that overlays. -->

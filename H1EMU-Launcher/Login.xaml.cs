@@ -35,6 +35,11 @@ namespace H1EMU_Launcher
         public Login()
         {
             InitializeComponent();
+            needDowloadTip.Text = LanCtrler.GetWords("Need to download Just Survive?");
+            loginSteamTip.Text = LanCtrler.GetWords("Enter your Steam credentials on the left to get started!");
+            usernameHint.Text = LanCtrler.GetWords("Steam ID");
+            passHint.Text = LanCtrler.GetWords("Password");
+            
         }
 
         private void TextBox_KeyDown(object sender, KeyEventArgs e)
@@ -64,7 +69,7 @@ namespace H1EMU_Launcher
             }
             else
             {
-                new Thread(() => 
+                new Thread(() =>
                 {
                     TryLoginDownload();
                 }).Start();
@@ -75,7 +80,7 @@ namespace H1EMU_Launcher
         {
             if (string.IsNullOrEmpty(usernameBox.Text) || string.IsNullOrEmpty(passwordBox.Password))
             {
-                CustomMessageBox.Show("Please make sure to fill in the Username and Password boxes.");
+                CustomMessageBox.Show(LanCtrler.GetWords("Please make sure to fill in the Username and Password boxes."));
                 return false;
             }
 
@@ -88,10 +93,10 @@ namespace H1EMU_Launcher
         {
             string username = "";
             string password = "";
-            
+
             string[] args = gameInfo.Split(' ');
 
-            Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate 
+            Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
             {
                 username = usernameBox.Text;
                 password = passwordBox.Password;
@@ -143,7 +148,7 @@ namespace H1EMU_Launcher
                         {
                             if (isWindows)
                             {
-                                 ContentDownloader.Config.FilesToDownload.Add(fileEnry.Replace("/", "\\"));
+                                ContentDownloader.Config.FilesToDownload.Add(fileEnry.Replace("/", "\\"));
                             }
                             ContentDownloader.Config.FilesToDownload.Add(fileEnry);
                         }
@@ -301,7 +306,7 @@ namespace H1EMU_Launcher
 
                     Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show($"Successfully downloaded H1Z1: Just Survive version {version}.");
+                        CustomMessageBox.Show(string.Format(LanCtrler.GetWords("Successfully downloaded H1Z1: Just Survive version{0}."), version));
                     });
                 }
                 catch (Exception ph) when (ph is OperationCanceledException)
@@ -309,7 +314,7 @@ namespace H1EMU_Launcher
                     Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
                         Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
-                        CustomMessageBox.Show($"Successfully cancelled the download of H1Z1: Just Survive version {version}.");
+                        CustomMessageBox.Show(string.Format(LanCtrler.GetWords("Successfully cancelled the download of H1Z1: Just Survive version {0}"),version));
                     });
 
                     return;
@@ -319,7 +324,7 @@ namespace H1EMU_Launcher
                     Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
                         Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
-                        CustomMessageBox.Show($"ContentDownloaderException: \"{ex.Message}\"");
+                        CustomMessageBox.Show(string.Format(LanCtrler.GetWords("ContentDownloaderException:{0}"),ex.Message));
                     });
 
                     return;
@@ -329,7 +334,7 @@ namespace H1EMU_Launcher
                     Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
                         Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
-                        CustomMessageBox.Show($"Download failed to due to an unhandled exception: \"{er.Message}\"");
+                        CustomMessageBox.Show(string.Format(LanCtrler.GetWords("Download failed to due to an unhandled exception:{0}"),er.Message));
                     });
 
                     return;

@@ -186,7 +186,7 @@ namespace H1EMU_Launcher
                 completed = true;
                 if ( appTokens.AppTokensDenied.Contains( appId ) )
                 {
-                    Debug.WriteLine($"Insufficient privileges to get access token for app {appId}");
+                    Debug.WriteLine(string.Format("Insufficient privileges to get access token for app {0}",appId));
                 }
 
                 foreach ( var token_dict in appTokens.AppTokens )
@@ -209,7 +209,7 @@ namespace H1EMU_Launcher
                 {
                     var app = app_value.Value;
 
-                    Debug.WriteLine($"Got AppInfo for {app.ID}");
+                    Debug.WriteLine(string.Format("Got AppInfo for{0}"),app.ID);
                     AppInfo[ app.ID ] = app;
                 }
 
@@ -315,7 +315,7 @@ namespace H1EMU_Launcher
 
                 if ( appTicket.Result != EResult.OK )
                 {
-                    Debug.WriteLine($"Unable to get appticket for {appTicket.AppID}: {appTicket.Result}");
+                    Debug.WriteLine(string.Format("Unable to get appticket for{0} {1}"),appTicket.AppID,appTicket.Result);
                     Abort();
                 }
                 else
@@ -344,7 +344,7 @@ namespace H1EMU_Launcher
 
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
-                    DownloadStatus.downStatus.downloadProgressText.Text = $"Got depot key for {depotKey.DepotID} result: {depotKey.Result}...";
+                    DownloadStatus.downStatus.downloadProgressText.Text = string.Format(LanCtrler.GetWords("Got depot key for {0} result:{1}..."), depotKey.DepotID, depotKey.Result);
                 });
 
                 Debug.WriteLine($"Got depot key for {depotKey.DepotID} result: {depotKey.Result}");
@@ -395,7 +395,7 @@ namespace H1EMU_Launcher
 
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
-                    DownloadStatus.downStatus.downloadProgressText.Text = $"Got CDN auth token for {host} result: {cdnAuth.Result}...";
+                    DownloadStatus.downStatus.downloadProgressText.Text = string.Format(LanCtrler.GetWords("Got CDN auth token for{0}result:{1}"),host, cdnAuth.Result);
                 });
 
                 Debug.WriteLine($"Got CDN auth token for {host} result: {cdnAuth.Result} (expires {cdnAuth.Expiration})");
@@ -712,7 +712,7 @@ namespace H1EMU_Launcher
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
                     Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
-                    CustomMessageBox.Show($"Unable to login to Steam: {loggedOn.Result}");
+                    CustomMessageBox.Show(string.Format(LanCtrler.GetWords("Unable to login to Steam:{0}") ,loggedOn.Result));
                 });
 
                 Abort(false);
@@ -724,7 +724,7 @@ namespace H1EMU_Launcher
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
                     Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
-                    CustomMessageBox.Show($"Unable to login to Steam: {loggedOn.Result}");
+                    CustomMessageBox.Show(string.Format(LanCtrler.GetWords("Unable to login to Steam:{0}"),loggedOn.Result));
                 });
 
                 Abort();

@@ -2,13 +2,13 @@
 
   <PropertyGroup>
 	  <OutputType>WinExe</OutputType>
-	  <TargetFramework>net6.0-windows</TargetFramework>
+	  <TargetFramework>net5.0-windows</TargetFramework>
 	  <RootNamespace>H1EMU_Launcher</RootNamespace>
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>1.10.2</AssemblyVersion>
-	  <FileVersion>1.10.2</FileVersion>
+	  <AssemblyVersion>1.10.4</AssemblyVersion>
+	  <FileVersion>1.10.4</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

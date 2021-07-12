@@ -24,6 +24,9 @@ namespace H1EMU_Launcher
         public DownloadComplete()
         {
             InitializeComponent();
+            downloadCompletelabel.Text = LanCtrler.GetWords("Download complete!");
+            downTip.Text = LanCtrler.GetWords("Need to download a different version? Press the button below to login again!");
+            loginBtn.Content = LanCtrler.GetWords("LOGIN");
         }
 
         private void BackToLoginPage(object sender, RoutedEventArgs e)

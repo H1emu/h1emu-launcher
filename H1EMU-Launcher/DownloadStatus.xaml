@@ -12,13 +12,13 @@
         <RichTextBox FontSize="16" Background="Transparent" BorderThickness="0" Foreground="White" IsReadOnly="True" Margin="0,8,0,0" Cursor="Arrow">
             <FlowDocument>
                 <Paragraph>
-                    <Run>
+                    <Run Name="currentDowloadLabel">
                         Currently downloading:
                     </Run>
                     <Run Foreground="#FFCA1420">
                         H1Z1: Just Survive
                     </Run>
-                    <Run>
+                    <Run Name="versionLabel">
                         version
                     </Run>
                     <Run x:Name="gameDownloadText" Foreground="#FFCA1420">

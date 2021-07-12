@@ -496,7 +496,7 @@ namespace H1EMU_Launcher
             {
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
-                    DownloadStatus.downStatus.downloadProgressText.Text = $"Using app branch: '{branch}'...";
+                    DownloadStatus.downStatus.downloadProgressText.Text = string.Format(LanCtrler.GetWords("Using app branch:{0}"),branch);
                 });
 
                 Debug.WriteLine($"Using app branch: '{branch}'.");
@@ -741,7 +741,7 @@ namespace H1EMU_Launcher
 
             System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
             {
-                DownloadStatus.downStatus.downloadProgressText.Text = $"Processing depot {depot.id} - {depot.contentName}...";
+                DownloadStatus.downStatus.downloadProgressText.Text = string.Format(LanCtrler.GetWords("Processing depot{0}-{1}"), depot.id, depot.contentName);
             });
 
             Debug.WriteLine($"Processing depot {depot.id} - {depot.contentName}");
@@ -1058,7 +1058,7 @@ namespace H1EMU_Launcher
             {
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
-                    DownloadStatus.downStatus.downloadProgressText.Text = $"Pre-allocating space...";
+                    DownloadStatus.downStatus.downloadProgressText.Text = LanCtrler.GetWords("Pre-allocating space...");
                 });
 
                 Debug.WriteLine($"Pre-allocating {fileFinalPath}");
@@ -1160,7 +1160,8 @@ namespace H1EMU_Launcher
                         System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                         {
                             DownloadStatus.downStatus.downloadProgress.Value = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f;
-                            DownloadStatus.downStatus.downloadProgressText.Text = $"Downloading... {depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
+                            DownloadStatus.downStatus.downloadProgressText.Text = string.Format(LanCtrler.GetWords("Downloading...{0}%"), depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f);
+
                         });
                     }
 
@@ -1317,7 +1318,7 @@ namespace H1EMU_Launcher
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
                     DownloadStatus.downStatus.downloadProgress.Value = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f;
-                    DownloadStatus.downStatus.downloadProgressText.Text = $"Downloading... {sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
+                    DownloadStatus.downStatus.downloadProgressText.Text = string.Format(LanCtrler.GetWords("Downloading...{0}%"), sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f);
                 });
             }
         }

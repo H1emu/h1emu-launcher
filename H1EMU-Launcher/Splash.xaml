@@ -19,8 +19,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="Checking for updates..." TextAlignment="Center" FontSize="30" Foreground="White" FontFamily="Bahnschrift Light" Padding="0,15,0,0"/>
-            <TextBlock Grid.Row="1" Text="Please wait" TextAlignment="Center" FontSize="16" Foreground="White" FontFamily="Bahnschrift Light" Padding="0,12,0,0"/>
+            <TextBlock Name="checkUpdateTip" Grid.Row="0" Text="Checking for updates..." TextAlignment="Center" FontSize="30" Foreground="White" FontFamily="Bahnschrift Light" Padding="0,15,0,0"/>
+            <TextBlock x:Name="waitTip" Grid.Row="1" Text="Please wait" TextAlignment="Center" FontSize="16" Foreground="White" FontFamily="Bahnschrift Light" Padding="0,12,0,0"/>
         </Grid>
     </Border>
 </Window>

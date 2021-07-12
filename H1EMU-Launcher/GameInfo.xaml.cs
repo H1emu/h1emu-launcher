@@ -25,6 +25,10 @@ namespace H1EMU_Launcher
         public GameInfo()
         {
             InitializeComponent();
+            whichVersionLabel.Text = LanCtrler.GetWords("Which version of");
+            wouldULikeLabel.Text = LanCtrler.GetWords("would you like to install?");
+            jan2015Btn.Content = LanCtrler.GetWords("JANUARY 2015");
+            dec2016Btn.Content = LanCtrler.GetWords("DECEMBER 2016");
         }
 
         private void Button2015(object sender, RoutedEventArgs e)
