@@ -20,7 +20,8 @@
         <!-- View files hyperlink, opens file explorer to active directory. -->
         <TextBlock Grid.Row="2" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0">
             <Hyperlink Click="Hyperlink_Click">
-                View files...
+                <TextBlock x:Name="viewFilesBtn">View files...</TextBlock>
+                
             </Hyperlink>
         </TextBlock>
         <TextBlock x:Name="currentVersion" Grid.Row="2" Text="Launcher version" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,25,0"/>

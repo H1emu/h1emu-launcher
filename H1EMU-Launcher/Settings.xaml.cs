@@ -56,7 +56,7 @@ namespace H1EMU_Launcher
             patchTip.Text = LanCtrler.GetWords("Click here to patch the game files. This will allow you to load into the game.");
             latestTip.Text = LanCtrler.GetWords("Click here to download the latest build of the server.");
             stableTip.Text = LanCtrler.GetWords("Click here to download the latest stable build of the server.");
-
+            viewFilesBtn.Text = LanCtrler.GetWords("View files...");
 
         }
 
@@ -759,7 +759,7 @@ namespace H1EMU_Launcher
 
         public void SettingsLoaded(object sender, RoutedEventArgs e)
         {
-            currentVersion.Text = $"Launcher version v{Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.')}";
+            currentVersion.Text =string.Format(LanCtrler.GetWords("Launcher version v"), Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.'));
             settingsProgressText.Text = "";
 
             new Thread(() => 
@@ -776,7 +776,7 @@ namespace H1EMU_Launcher
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
                         directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                        currentGame.Text = "- Game Version Not Detected -";
+                        currentGame.Text = LanCtrler.GetWords("- Game Version Not Detected -");
                     });
 
                     return;
@@ -788,8 +788,8 @@ namespace H1EMU_Launcher
 
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
-                        directoryBox.Text = "Directory";
-                        currentGame.Text = "- Game Version Not Detected -";
+                        directoryBox.Text = LanCtrler.GetWords("Directory");
+                        currentGame.Text = LanCtrler.GetWords("- Game Version Not Detected -");
                     });
 
                     return;
@@ -797,7 +797,7 @@ namespace H1EMU_Launcher
 
                 Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
-                    currentGame.Text = "Detecting game version...";
+                    currentGame.Text = LanCtrler.GetWords("Detecting game version...");
                 });
 
                 CheckGameVersion();
@@ -841,22 +841,22 @@ namespace H1EMU_Launcher
                 {
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show("Game version detected: 15 January 2015");
+                        CustomMessageBox.Show(LanCtrler.GetWords("Game version detected: 15 January 2015"));
                     });
                 }
                 else if (gameVersion == "22dec2016")
                 {
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show("Game version detected: 22nd December 2016");
+                        CustomMessageBox.Show(LanCtrler.GetWords("Game version detected: 22nd December 2016"));
                     });
                 }
                 else if (gameVersion != "processBeingUsed")
                 {
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
-                        currentGame.Text = "- Game version not supported -";
-                        CustomMessageBox.Show("Game version not supported by H1Emu.");
+                        currentGame.Text =LanCtrler.GetWords( "- Game version not supported -");
+                        CustomMessageBox.Show(LanCtrler.GetWords("Game version not supported by H1Emu."));
                     });
                 }
                 else
@@ -873,7 +873,7 @@ namespace H1EMU_Launcher
             {
                 Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
-                    currentGame.Text = "- Game Version Not Detected -";
+                    currentGame.Text = LanCtrler.GetWords("- Game Version Not Detected -");
                     CustomMessageBox.Show(LanCtrler.GetWords("Game either not found or not supported by H1Emu."));
                 });
 
@@ -903,7 +903,7 @@ namespace H1EMU_Launcher
         {
             if (!directoryButton.IsEnabled || !patchButton.IsEnabled || !latestButton.IsEnabled || !stableButton.IsEnabled)
             {
-                CustomMessageBox.Show("Please wait for the current tasks to complete.");
+                CustomMessageBox.Show(LanCtrler.GetWords("Please wait for the current tasks to complete."));
                 e.Cancel = true;
                 return;
             }

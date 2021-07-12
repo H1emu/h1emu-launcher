@@ -88,7 +88,7 @@
                         Translation Staff
                     </Paragraph>
                     <Paragraph TextAlignment="Center" FontSize="18">
-                        • YuaneKo(Multi-language Develop/Translation) • AZAZ(Chinese) •
+                        • YuaneKo(Multi-language Develop) • AZAZ(Chinese) •
                     </Paragraph>
                     <Paragraph  TextAlignment="Center" FontSize="18" FontWeight="Bold" TextDecorations="Underline" Margin="0,100,0,0">
                         <TextBlock Name="thanksLabel">And a special thanks to everyone who joined the community and kept the motivation alive!</TextBlock>

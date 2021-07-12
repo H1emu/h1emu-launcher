@@ -40,7 +40,7 @@ namespace H1EMU_Launcher
             }
             catch (Exception ex)
             {
-                throw new Exception( "Language Load Fail,Update or Remove language file in Directory\\Languages");
+                //throw ex;
             }
         }
         private static void LoadLanguageFile()
@@ -59,7 +59,7 @@ namespace H1EMU_Launcher
                         {
                             while (!sr.EndOfStream)
                             {
-                                string[] strs = sr.ReadLine().Split('|');//Splite By "|"
+                                string[] strs = sr.ReadLine().Split('|');//Splite By "|",The Format about load file at the end of this class file
                                 if (LanguageCellsMap[lanName].ContainsKey(strs[0]))
                                 {
                                     LanguageCellsMap[lanName][strs[0]] = strs[1];
@@ -89,4 +89,13 @@ namespace H1EMU_Launcher
         }
 
     }
+    ///Load File Format 
+    ///Split By "|"
+    ///the FileName.Replace(".ini","") is the target language type,such as "zh-cn.ini" is Chinese,it is also as same as OS-Language type
+    ///string[] words=StreamReader.ReadLine();
+    ///words[0] is English-Word,it is the key in  LanguageCellsMap<string,string>
+    ///words[0] is Translate-Word,it is the value in  LanguageCellsMap<string,string>
+    #region 
+    //"A new update is available, would you like to update now?|有新的更新可用，是否立即更新?"        
+    #endregion
 }
