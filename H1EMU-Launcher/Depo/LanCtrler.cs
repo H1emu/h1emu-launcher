@@ -95,7 +95,6 @@ namespace H1EMU_Launcher
     ///string[] words=StreamReader.ReadLine();
     ///words[0] is English-Word,it is the key in  LanguageCellsMap<string,string>
     ///words[0] is Translate-Word,it is the value in  LanguageCellsMap<string,string>
-    #region 
-    //"A new update is available, would you like to update now?|有新的更新可用，是否立即更新?"        
-    #endregion
+    ///English Words|Target Words
+    ///"A new update is available, would you like to update now?|有新的更新可用，是否立即更新?"        
 }

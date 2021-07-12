@@ -77,15 +77,15 @@ namespace H1EMU_Launcher
             {"About the project...","关于项目" },
             {"Unable to retrieve GitHub information: \"{0}\"\n\n(Are you connected to the internet?)","未能获取GitHub信息：\"{0}\"\n\n(如果你的电脑可以正常上网，那么就可能是你的运营商限制了你访问GitHub的全部功能。)" },
             {"Not Now","暂不更新" },
-            {"View files...","查看文件" },
+            {"View files...","打开游戏目录" },
             {"Launcher version v","启动版本号 v" },
             {"- Game Version Not Detected -","-未检测到游戏版本-" },
             {"Detecting game version...","正在检测游戏版本…" },
-            {"Game version detected: 15 January 2015","检测到游戏版本：2015年1月15日" },
+            {"Game version detected: 15 January 2015","检测到游戏版本：2015年1月15日"},
             {"- Game version not supported -","-不支持游戏版本-" },
-            {"Please wait for the current tasks to complete.","请等待当前任务完成" },
-            {"Game version detected: 22nd December 2016","检测到游戏版本：2016年12月22日" },
-            {"Directory","文件夹" },            
+            {"Please wait for the current tasks to complete.","请等待当前任务完成"},
+            {"Game version detected: 22nd December 2016","检测到游戏版本：2016年12月22日"},
+            {"Directory","打开文件夹"},            
         };
 
 
