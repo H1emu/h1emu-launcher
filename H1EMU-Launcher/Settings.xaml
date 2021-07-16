@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:H1EMU_Launcher"
         mc:Ignorable="d"
         UseLayoutRounding="True"
-        Title="Launcher" x:Name="MainSettings" Width="740" Height="530" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" FontFamily="Bahnschrift Light" FontSize="16" ResizeMode="NoResize" Loaded="SettingsLoaded" Closing="MainSettings_Closing">
+        Title="Launcher" x:Name="MainSettings" Width="740" Height="593" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" FontFamily="Bahnschrift Light" FontSize="16" ResizeMode="NoResize" Loaded="SettingsLoaded" Closing="MainSettings_Closing">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -16,7 +16,7 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
-        
+
         <!-- View files hyperlink, opens file explorer to active directory. -->
         <TextBlock Grid.Row="2" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0">
             <Hyperlink Click="Hyperlink_Click">
@@ -53,7 +53,7 @@
                 </Button>
             </DockPanel>
         </Grid>
-        
+
         <!-- Grid for main content inside of darkened area -->
         <Grid Grid.Row="1" Background="#1C1B22" Margin="25,5,25,0">
             <Grid.RowDefinitions>
@@ -61,7 +61,7 @@
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
-            
+
             <!-- Content for text, directory textbox, select directory button and current game version. -->
             <TextBlock Name="gameDirectoryTip" FontSize="16" FontFamily="Bahnschrift Light" Foreground="FloralWhite" Text="Game Directory:" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,10"/>
             <TextBox x:Name="directoryBox" Height="35" HorizontalAlignment="Right" Width="520" Margin="0,0,20,10" Padding="35,7,35,0" IsReadOnly="True" Style="{DynamicResource TextBoxPrimaryStyle}" Cursor=""/>
@@ -79,6 +79,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <!--<RowDefinition Height="*"/>-->
                 </Grid.RowDefinitions>
                 <Button  x:Name="patchButton" Content="PATCH" Foreground="White" FontFamily="Arial Black" FontSize="24" Click="InstallPatch" Height="40" Width="220" HorizontalAlignment="Left" Margin="20,20,0,0" Grid.Row="0" BorderThickness="0" Style="{DynamicResource StandardButton}">
                     <Button.Background>
@@ -98,8 +99,16 @@
                     </Button.Background>
                 </Button>
                 <TextBlock x:Name="stableTip" Grid.Row="2" Text="Click here to download the latest stable build of the server." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="260,10,20,0" Width="400" TextWrapping="Wrap"/>
+                <!--<ComboBox  x:Name="languageButton"  Foreground="White" FontFamily="Arial Black" FontSize="24"  Height="40" Width="220" HorizontalAlignment="Left" Margin="20,12,0,8" Grid.Row="3" BorderThickness="0" SelectionChanged="languageButton_SelectionChanged" >
+                    <ComboBox.Background>
+                        <ImageBrush ImageSource="Resources\StandardButton.png"/>
+                    </ComboBox.Background>
+                </ComboBox>
+                <TextBlock x:Name="languageTip" Grid.Row="3" Text="Click here to patch the game files. This will allow you to load into the game." Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="265,0,0,0" Width="400" TextWrapping="Wrap"/>-->
+
+
             </Grid>
-            
+
             <!-- Creating progress bar and text that overlays. -->
             <ProgressBar x:Name="settingsProgress" Grid.Row="2" Height="35" Margin="20,0,20,0" Style="{DynamicResource ProgressBar}"/>
             <ProgressBar Grid.Row="2" Height="35" Margin="20,0,20,0" Background="Transparent" Style="{DynamicResource ProgressBar}"/>

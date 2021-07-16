@@ -44,18 +44,20 @@ namespace H1EMU_Launcher
             }
         }
         private static void LoadLanguageFile()
-        { 
-         string filepath = AppDomain.CurrentDomain.BaseDirectory + "//Languages";
+        {
+            string filepath = AppDomain.CurrentDomain.BaseDirectory + "//Languages";
             if (Directory.Exists(filepath))
             {
                 DirectoryInfo directoryInfo = new DirectoryInfo(filepath);
-               FileInfo[] fileInfos= directoryInfo.GetFiles();
+                FileInfo[] fileInfos = directoryInfo.GetFiles();
                 foreach (FileInfo fileInfo in fileInfos)
                 {
                     if (fileInfo.FullName.Contains(".ini"))
                     {
-                        string lanName = fileInfo.Name.Replace(".ini","");
-                        using (StreamReader sr = new StreamReader(filepath))
+                        string lanName = fileInfo.Name.Replace(".ini", "");
+                        if (!LanguageCellsMap.ContainsKey(lanName)) LanguageCellsMap.Add(lanName,new Dictionary<string, string>());
+                        FileStream fs = new FileStream(fileInfo.FullName, FileMode.Open, FileAccess.Read);
+                        using (StreamReader sr = new StreamReader(fs))
                         {
                             while (!sr.EndOfStream)
                             {
@@ -70,11 +72,11 @@ namespace H1EMU_Launcher
                                 }
                             }
                         }
-                    }                
+                    }
                 }
             }
-            
-        
+
+
         }
         public static string GetWords(string key)
         {

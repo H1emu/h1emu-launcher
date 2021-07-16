@@ -38,7 +38,7 @@ namespace H1EMU_Launcher
 
         public static ManualResetEvent ma = new ManualResetEvent(false);
         public static Launcher lncher;
-
+        private List<string> languageList = new List<string>() { "en-US"};
         public Launcher()
         {
             InitializeComponent();
@@ -50,6 +50,15 @@ namespace H1EMU_Launcher
             MainLauncher.BeginAnimation(OpacityProperty, fadeAnimation);
 
             lncher = this;
+            foreach (string lan in LanCtrler.LanguageCellsMap.Keys)
+            {
+                if (!languageList.Contains(lan))
+                {
+                    languageList.Add(lan);
+                }
+            }
+            languageSelect.ItemsSource = languageList;
+            languageSelect.SelectedValue=LanCtrler.CurrentLanguage;
         }
 
         private void LaunchServer(object sender, RoutedEventArgs e)
@@ -457,5 +466,12 @@ namespace H1EMU_Launcher
         {
             this.DragMove();
         }
+
+        private void languageSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            LanCtrler.CurrentLanguage = languageSelect.SelectedValue.ToString();
+            LanChange();
+        }
+
     }
 }

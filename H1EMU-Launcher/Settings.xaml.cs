@@ -33,7 +33,8 @@ namespace H1EMU_Launcher
 
         ProcessStartInfo cmdShell;
         public static string gameVersion { get; set; }
-
+        private static List<string> LanguageList = new List<string>() {"en-US" };
+             
         public Settings()
         {
             InitializeComponent();
@@ -57,7 +58,6 @@ namespace H1EMU_Launcher
             latestTip.Text = LanCtrler.GetWords("Click here to download the latest build of the server.");
             stableTip.Text = LanCtrler.GetWords("Click here to download the latest stable build of the server.");
             viewFilesBtn.Text = LanCtrler.GetWords("View files...");
-
         }
 
         //////////////////////
@@ -925,5 +925,6 @@ namespace H1EMU_Launcher
         {
             this.DragMove();
         }
+
     }
 }

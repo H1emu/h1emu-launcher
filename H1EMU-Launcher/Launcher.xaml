@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         UseLayoutRounding="True"
         Title="Launcher" x:Name="MainLauncher" MinHeight="650" MinWidth="1300" Height="750" Width="1280" WindowStartupLocation="CenterScreen" WindowStyle="None" Background="#FF2A2A32" AllowsTransparency="True" FontFamily="Bahnschrift Light" FontSize="16" ResizeMode="NoResize" Loaded="Window_Loaded" Closed="MainLauncher_Closed" Closing="MainLauncher_Closing">
-    
+
     <!--Main Grid-->
     <Grid>
         <Grid.ColumnDefinitions>
@@ -73,7 +73,7 @@
                             </Button>
                         </WrapPanel>
                     </WrapPanel>
-                    
+
                     <!--Wraps the promtional website/discord components-->
                     <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <TextBlock  Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,25,10" TextWrapping="Wrap">
@@ -211,7 +211,8 @@
             <TextBlock  VerticalAlignment="Center" HorizontalAlignment="Left" Margin="35,0,0,0">
                 <Hyperlink  NavigateUri="" Click="Hyperlink_Click">
                     <TextBlock x:Name="settingHL">Settings</TextBlock>
-                </Hyperlink>                
+                </Hyperlink>  
+                <ComboBox Name="languageSelect" Margin="35,0,0,0" Height="17" FontSize="12" RenderTransformOrigin="0.512,0.529" Width="55" SelectionChanged="languageSelect_SelectionChanged"  />
             </TextBlock>
             <TextBlock Text="Copyright © 2021 | H1Emu Project" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,35,0" Foreground="White"/>
         </DockPanel>
