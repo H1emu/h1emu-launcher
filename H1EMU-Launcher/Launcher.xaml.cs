@@ -197,7 +197,7 @@ namespace H1EMU_Launcher
 
                         Process process = new Process()
                         {
-                            StartInfo = new ProcessStartInfo(Properties.Settings.Default.activeDirectory + "\\H1Z1.exe", "sessionid=115 server=localhost:1115")
+                            StartInfo = new ProcessStartInfo(Properties.Settings.Default.activeDirectory + "\\H1Z1.exe", "sessionid=115 gamecrashurl=https://www.h1emu.com/us/game-error?code=G server=localhost:1115")
                             {
                                 WindowStyle = ProcessWindowStyle.Normal,
                                 WorkingDirectory = Properties.Settings.Default.activeDirectory,
@@ -286,7 +286,7 @@ namespace H1EMU_Launcher
 
                         Process process = new Process()
                         {
-                            StartInfo = new ProcessStartInfo(Properties.Settings.Default.activeDirectory + "\\H1Z1.exe", "sessionid=0 server=loginserver.h1emu.com:1115")
+                            StartInfo = new ProcessStartInfo(Properties.Settings.Default.activeDirectory + "\\H1Z1.exe", "sessionid=0 gamecrashurl=https://www.h1emu.com/us/game-error?code=G server=loginserver.h1emu.com:1115")
                             {
                                 WindowStyle = ProcessWindowStyle.Normal,
                                 WorkingDirectory = Properties.Settings.Default.activeDirectory,
