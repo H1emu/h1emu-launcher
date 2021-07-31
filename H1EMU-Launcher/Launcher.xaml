@@ -135,7 +135,7 @@
 
                 <!--Hyperlink text to redirect to more udpates-->
                 <TextBlock Margin="6,20,0,0">
-                    <Hyperlink NavigateUri="https://github.com/H1emu/h1z1-server/commits/master" RequestNavigate="FullUpdatesHyperlink">
+                    <Hyperlink NavigateUri="https://github.com/QuentinGruber/h1z1-server/releases/latest" RequestNavigate="FullUpdatesHyperlink">
                         View full details of the update...
                     </Hyperlink>
                 </TextBlock>
