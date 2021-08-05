@@ -9,34 +9,40 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="2FA.xaml.cs">
+    <Compile Update="SteamFrame\2FA.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="AboutPage.xaml.cs">
+    <Compile Update="Windows\AboutPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="CnfmBox.xaml.cs">
+    <Compile Update="Windows\AddServer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="DownloadComplete.xaml.cs">
+    <Compile Update="Windows\AuthKey.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="GameInfo.xaml.cs">
+    <Compile Update="Windows\CnfmBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Launcher.xaml.cs">
+    <Compile Update="SteamFrame\DownloadComplete.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Login.xaml.cs">
+    <Compile Update="SteamFrame\GameInfo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="MsgBox.xaml.cs">
+    <Compile Update="Windows\Launcher.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Settings.xaml.cs">
+    <Compile Update="SteamFrame\Login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Splash.xaml.cs">
+    <Compile Update="Windows\MsgBox.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Settings.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\Splash.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -46,40 +52,58 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="2FA.xaml">
+    <Page Update="Language\StringResources.fr.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="AboutPage.xaml">
+    <Page Update="SteamFrame\2FA.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="CnfmBox.xaml">
+    <Page Update="Windows\AboutPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="DownloadComplete.xaml">
+    <Page Update="Windows\AddServer.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="DownloadStatus.xaml">
+    <Page Update="Windows\AuthKey.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="GameInfo.xaml">
+    <Page Update="Windows\CnfmBox.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Launcher.xaml">
+    <Page Update="SteamFrame\DownloadComplete.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Login.xaml">
+    <Page Update="SteamFrame\DownloadStatus.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MainWindow.xaml">
+    <Page Update="SteamFrame\GameInfo.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="MsgBox.xaml">
+    <Page Update="Windows\Launcher.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Settings.xaml">
+    <Page Update="SteamFrame\Login.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Splash.xaml">
+    <Page Update="Windows\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\MsgBox.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Language\StringResources.hr.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Language\StringResources.zh-cn.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Language\StringResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Settings.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Splash.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

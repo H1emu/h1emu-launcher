@@ -19,7 +19,7 @@ namespace H1EMU_Launcher.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -93,6 +93,16 @@ namespace H1EMU_Launcher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AuthKey {
+            get {
+                object obj = ResourceManager.GetObject("AuthKey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Discord {
             get {
                 object obj = ResourceManager.GetObject("Discord", resourceCulture);
@@ -106,16 +116,6 @@ namespace H1EMU_Launcher.Properties {
         internal static System.Drawing.Bitmap Discord_Pressed {
             get {
                 object obj = ResourceManager.GetObject("Discord_Pressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap DisplayImage {
-            get {
-                object obj = ResourceManager.GetObject("DisplayImage", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,6 +163,26 @@ namespace H1EMU_Launcher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Folder_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Folder_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Folder_Pressed {
+            get {
+                object obj = ResourceManager.GetObject("Folder_Pressed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap H1EmuIcon {
             get {
                 object obj = ResourceManager.GetObject("H1EmuIcon", resourceCulture);
@@ -187,6 +207,16 @@ namespace H1EMU_Launcher.Properties {
             get {
                 object obj = ResourceManager.GetObject("Icon", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Loading {
+            get {
+                object obj = ResourceManager.GetObject("Loading", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -223,6 +253,16 @@ namespace H1EMU_Launcher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap OfflineImage {
+            get {
+                object obj = ResourceManager.GetObject("OfflineImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Padlock {
             get {
                 object obj = ResourceManager.GetObject("Padlock", resourceCulture);
@@ -233,9 +273,69 @@ namespace H1EMU_Launcher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Server {
+            get {
+                object obj = ResourceManager.GetObject("Server", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Server_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Server_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Server_Pressed {
+            get {
+                object obj = ResourceManager.GetObject("Server_Pressed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Shield {
             get {
                 object obj = ResourceManager.GetObject("Shield", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShowPassword {
+            get {
+                object obj = ResourceManager.GetObject("ShowPassword", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShowPassword_Hover {
+            get {
+                object obj = ResourceManager.GetObject("ShowPassword_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShowPassword_Pressed {
+            get {
+                object obj = ResourceManager.GetObject("ShowPassword_Pressed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -277,6 +377,71 @@ namespace H1EMU_Launcher.Properties {
             get {
                 object obj = ResourceManager.GetObject("StandardButton_Pressed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;A new update is available, would you like to update now?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;UPDATE&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Update Version&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Press lau [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources {
+            get {
+                return ResourceManager.GetString("StringResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Une mise à jour est disponible, voulez vous la télécharger?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Mise à jour&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Maj Version&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Appu [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_fr_FR {
+            get {
+                return ResourceManager.GetString("StringResources_fr_FR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Nova verzija je dostupna, želite li ažurirati?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;AŽURIRANJE&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Verzija&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Pritisnite pokreni da  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_hr {
+            get {
+                return ResourceManager.GetString("StringResources_hr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;有新的更新可用，是否立即更新?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;更新&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;最新版本&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;按 本地服务器 按键启动本地服务器&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;ite [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_zh_cn {
+            get {
+                return ResourceManager.GetString("StringResources_zh_cn", resourceCulture);
             }
         }
     }

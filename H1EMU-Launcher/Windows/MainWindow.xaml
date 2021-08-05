@@ -1,0 +1,83 @@
+﻿<Window x:Class="H1EMU_Launcher.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:H1EMU_Launcher"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        x:Name="MainUpdateWindow"
+        Height="270" Width="450"
+        WindowStartupLocation="CenterScreen"
+        Background="#FF2A2A32"
+        Loaded="MainUpdateWindow_Loaded"
+        Closing="MainUpdateWindowClosing">
+
+        <WindowChrome.WindowChrome>
+            <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
+        </WindowChrome.WindowChrome>
+
+    <!--Main Grid-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="210"/>
+        </Grid.RowDefinitions>
+        <!--Creates the Grid to host the control box and title/icon-->
+        <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="MoveWindow" Background="#FF2A2A32">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--Creates the title and icon-->
+            <DockPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,0">
+                <Button Width="150" Height="35" BorderThickness="0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="23,16,0,0" Style="{DynamicResource ImageButton}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="..\Resources\H1EmuIcon.png"/>
+                    </Button.Background>
+                </Button>
+            </DockPanel>
+            
+            <!--Creates the control box-->
+            <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
+                <Button x:Name="CloseButton" RenderOptions.BitmapScalingMode="Fant" Width="44" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseUpdater" Margin="0,5,25,0" Style="{StaticResource CloseButtonStyle}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="..\Resources\Exit.png"/>
+                    </Button.Background>
+                </Button>
+            </DockPanel>
+        </Grid>
+        <Grid Grid.Row="1" Background="#1C1B22" Margin="25,10,25,25" UseLayoutRounding="True">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="10" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+            </Grid.Effect>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0" Margin="25,0,25,0">
+                <TextBlock Width="320" FontSize="20" FontFamily="Bahnschrift Light" Foreground="FloralWhite" TextWrapping="Wrap" Text="{DynamicResource item1}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+            </DockPanel>
+
+            <!-- Update button. -->
+            <Button x:Name="updateButton" Grid.Row="1" Width="292" Height="44" Content="{DynamicResource item2}" Foreground="White" FontFamily="Arial Black" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top" Click="updateButton_Click" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
+                <Button.Background>
+                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                </Button.Background>
+            </Button>
+            <TextBlock Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16" Margin="0,0,0,12">
+                <Hyperlink NavigateUri="" Click="NotNowClick" Foreground="White">
+                    <TextBlock Text="{DynamicResource item67}"/>
+                </Hyperlink>
+            </TextBlock>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,4 +1,5 @@
-﻿using SteamKit2;
+﻿using H1EMU_Launcher.Resources;
+using SteamKit2;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -11,8 +12,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using static SteamKit2.Internal.CContentBuilder_CommitAppBuild_Request;
 
 namespace H1EMU_Launcher
 {
@@ -443,6 +446,17 @@ namespace H1EMU_Launcher
             File.Move( fileStagingPath, fileFinalPath );
         }
 
+        public static void UpdateLang()
+        {
+            System.Windows.Application.Current.Resources.MergedDictionaries.Clear();
+
+            //Set just language code ex: en-us, fr-ca from the settings
+            SetLanguageFile.SetLanguageCode();
+
+            //Adds the correct language file to the resource dictionary and then load it.
+            System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+        }
+
         public static async Task DownloadAppAsync( uint appId, List<(uint depotId, ulong manifestId)> depotManifestIds, string branch, string os, string arch, string language, bool lv, bool isUgc )
         {
             cdnPool = new CDNClientPool(steam3, appId);
@@ -496,7 +510,7 @@ namespace H1EMU_Launcher
             {
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
-                    DownloadStatus.downStatus.downloadProgressText.Text = $"Using app branch: '{branch}'...";
+                    DownloadStatus.downStatus.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item55").ToString().Replace("{0}", $"'{branch}'")}";
                 });
 
                 Debug.WriteLine($"Using app branch: '{branch}'.");
@@ -560,13 +574,13 @@ namespace H1EMU_Launcher
                     }
                 }
                 if ( depotManifestIds.Count == 0 && !hasSpecificDepots )
-                {
-                    throw new ContentDownloaderException( String.Format( "Couldn't find any depots to download for app {0}", appId ) );
+{
+                    throw new ContentDownloaderException(System.Windows.Application.Current.FindResource("item84").ToString().Replace("{0}", $"{appId}"));
                 }
                 else if ( depotIdsFound.Count < depotIdsExpected.Count )
                 {
                     var remainingDepotIds = depotIdsExpected.Except( depotIdsFound );
-                    throw new ContentDownloaderException( String.Format( "Depot {0} not listed for app {1}", string.Join(", ", remainingDepotIds), appId ) );
+                    throw new ContentDownloaderException(System.Windows.Application.Current.FindResource("item85").ToString().Replace("{0}", $"'{string.Join(", ", remainingDepotIds).Replace("{1}", $"{appId}")}'"));
                 }
             }
 
@@ -727,11 +741,6 @@ namespace H1EMU_Launcher
 
             Properties.Settings.Default.activeDirectory = DEFAULT_DOWNLOAD_DIR;
             Properties.Settings.Default.Save();
-
-            System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
-            {
-                Launcher.lncher.SteamFrame.Navigate(new Uri("DownloadComplete.xaml", UriKind.Relative));
-            });
         }
 
         private static async Task<DepotFilesData> ProcessDepotManifestAndFiles(CancellationTokenSource cts, 
@@ -741,7 +750,7 @@ namespace H1EMU_Launcher
 
             System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
             {
-                DownloadStatus.downStatus.downloadProgressText.Text = $"Processing depot {depot.id} - {depot.contentName}...";
+                DownloadStatus.downStatus.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item56").ToString().Replace("{0}", $"{depot.id}").Replace("{1}", $"{depot.contentName}")}";
             });
 
             Debug.WriteLine($"Processing depot {depot.id} - {depot.contentName}");
@@ -1158,9 +1167,9 @@ namespace H1EMU_Launcher
                         Debug.WriteLine("{0,6:#00.00}% {1}", ((float)depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize) * 100.0f, fileFinalPath);
 
                         System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
-                        {
+                        { 
                             DownloadStatus.downStatus.downloadProgress.Value = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f;
-                            DownloadStatus.downStatus.downloadProgressText.Text = $"Downloading... {depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
+                            DownloadStatus.downStatus.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item54").ToString()}" + $" {depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
                         });
                     }
 
@@ -1199,7 +1208,11 @@ namespace H1EMU_Launcher
             FileStreamData fileStreamData, 
             ProtoManifest.ChunkData chunk)
         {
-            cts.Token.ThrowIfCancellationRequested();
+            //cts.Token.ThrowIfCancellationRequested();
+            if (cts.Token.IsCancellationRequested)
+            {
+                throw new TaskCanceledException();
+            }
 
             var depot = depotFilesData.depotDownloadInfo;
             var depotDownloadCounter = depotFilesData.depotCounter;
@@ -1317,7 +1330,7 @@ namespace H1EMU_Launcher
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
                     DownloadStatus.downStatus.downloadProgress.Value = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f;
-                    DownloadStatus.downStatus.downloadProgressText.Text = $"Downloading... {sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
+                    DownloadStatus.downStatus.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item54").ToString()}" + $" {sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
                 });
             }
         }

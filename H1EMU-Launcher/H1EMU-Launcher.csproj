@@ -1,21 +1,32 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
 	  <OutputType>WinExe</OutputType>
-	  <TargetFramework>net6.0-windows</TargetFramework>
+	  <TargetFramework>net5.0-windows7.0</TargetFramework>
 	  <RootNamespace>H1EMU_Launcher</RootNamespace>
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
 	  <AssemblyVersion>1.11.0</AssemblyVersion>
 	  <FileVersion>1.11.0</FileVersion>
+	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\Debug\net5.0-windows7.0\Resources\**" />
+    <EmbeddedResource Remove="bin\Debug\net5.0-windows7.0\Resources\**" />
+    <None Remove="bin\Debug\net5.0-windows7.0\Resources\**" />
+    <Page Remove="bin\Debug\net5.0-windows7.0\Resources\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Remove="Fonts\Signika.ttf" />
     <None Remove="Resources\Arrow.png" />
     <None Remove="Resources\Arrow_Hover.png" />
     <None Remove="Resources\Arrow_Pressed.png" />
+    <None Remove="Resources\AuthKey.png" />
+    <None Remove="Resources\AuthKey_Hover.png" />
+    <None Remove="Resources\AuthKey_Pressed.png" />
     <None Remove="Resources\Discord.png" />
     <None Remove="Resources\Discord_Pressed.png" />
     <None Remove="Resources\DisplayImage.png" />
@@ -23,95 +34,88 @@
     <None Remove="Resources\Exit_Hover.png" />
     <None Remove="Resources\Exit_Pressed.png" />
     <None Remove="Resources\Folder.png" />
+    <None Remove="Resources\Folder_Hover.png" />
+    <None Remove="Resources\Folder_Pressed.png" />
     <None Remove="Resources\H1EmuIcon.png" />
     <None Remove="Resources\H1EmuLogo.png" />
     <None Remove="Resources\Icon.ico" />
+    <None Remove="Resources\Loading.gif" />
     <None Remove="Resources\Minimise.png" />
     <None Remove="Resources\Minimise_Hover.png" />
     <None Remove="Resources\Minimise_Pressed.png" />
+    <None Remove="Resources\OfflineImage.png" />
     <None Remove="Resources\Padlock.png" />
+    <None Remove="Resources\Server.png" />
+    <None Remove="Resources\Server_Hover.png" />
+    <None Remove="Resources\Server_Pressed.png" />
     <None Remove="Resources\Shield.png" />
+    <None Remove="Resources\ShowPassword.png" />
+    <None Remove="Resources\ShowPassword_Hover.png" />
+    <None Remove="Resources\ShowPassword_Pressed.png" />
     <None Remove="Resources\StandardButton.png" />
     <None Remove="Resources\StandardButton_Hover.png" />
     <None Remove="Resources\StandardButton_Pressed.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Resources\StringResources.fr-FR.xaml" />
+    <Page Remove="Resources\StringResources.hr.xaml" />
+    <Page Remove="Resources\StringResources.xaml" />
+    <Page Remove="Resources\StringResources.zh-cn.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.864.35" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="SteamKit2" Version="2.3.0" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\Signika.ttf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Arrow.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Arrow_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Arrow_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Discord.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Discord_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\DisplayImage.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Exit.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Exit_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Exit_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Folder.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\H1EmuIcon.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\H1EmuLogo.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Icon.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Minimise.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Minimise_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Minimise_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Padlock.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Shield.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\StandardButton.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\StandardButton_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\StandardButton_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    <Content Include="Fonts\Signika.ttf" />
+    <Content Include="Resources\Arrow.png" />
+    <Content Include="Resources\Arrow_Hover.png" />
+    <Content Include="Resources\Arrow_Pressed.png" />
+    <Content Include="Resources\AuthKey.png" />
+    <Content Include="Resources\AuthKey_Hover.png" />
+    <Content Include="Resources\AuthKey_Pressed.png" />
+    <Content Include="Resources\Discord.png" />
+    <Content Include="Resources\Discord_Pressed.png" />
+    <Content Include="Resources\Exit.png" />
+    <Content Include="Resources\Exit_Hover.png" />
+    <Content Include="Resources\Exit_Pressed.png" />
+    <Content Include="Resources\Folder.png" />
+    <Content Include="Resources\Folder_Hover.png" />
+    <Content Include="Resources\Folder_Pressed.png" />
+    <Content Include="Resources\H1EmuIcon.png" />
+    <Content Include="Resources\H1EmuLogo.png" />
+    <Content Include="Resources\Icon.ico" />
+    <Content Include="Resources\Loading.gif" />
+    <Content Include="Resources\Minimise.png" />
+    <Content Include="Resources\Minimise_Hover.png" />
+    <Content Include="Resources\Minimise_Pressed.png" />
+    <Content Include="Resources\OfflineImage.png" />
+    <Content Include="Resources\Padlock.png" />
+    <Content Include="Resources\Server.png" />
+    <Content Include="Resources\Server_Hover.png" />
+    <Content Include="Resources\Server_Pressed.png" />
+    <Content Include="Resources\Shield.png" />
+    <Content Include="Resources\ShowPassword.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ShowPassword_Hover.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ShowPassword_Pressed.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\StandardButton.png" />
+    <Content Include="Resources\StandardButton_Hover.png" />
+    <Content Include="Resources\StandardButton_Pressed.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="DownloadStatus.xaml.cs">
+    <Compile Update="SteamFrame\DownloadStatus.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
@@ -141,10 +145,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="DownloadStatus.xaml">
+    <Page Update="SteamFrame\DownloadStatus.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\net5.0-windows7.0\" />
   </ItemGroup>
 
 </Project>

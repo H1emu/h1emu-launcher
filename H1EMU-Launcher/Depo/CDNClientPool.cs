@@ -1,4 +1,5 @@
-﻿using SteamKit2;
+﻿using H1EMU_Launcher.Resources;
+using SteamKit2;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -176,7 +177,16 @@ namespace H1EMU_Launcher
             }
             else
             {
-                throw new Exception($"Failed to retrieve CDN token for server {server.Host} depot {depotId}");
+                if (System.Windows.Application.Current.Resources.MergedDictionaries.Count < 1)
+                {
+                    //Set just language code ex: en-us, fr-ca from the settings
+                    SetLanguageFile.SetLanguageCode();
+
+                    //Adds the correct language file to the resource dictionary and then load it.
+                    System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+                }
+
+                throw new Exception($"{System.Windows.Application.Current.FindResource("item83").ToString().Replace("{0}", $"{server.Host}").Replace("{1}", $"{depotId}")}");
             }
         }
 

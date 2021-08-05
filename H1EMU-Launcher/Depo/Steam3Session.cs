@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Windows.Threading;
+using H1EMU_Launcher.Resources;
 
 namespace H1EMU_Launcher
 {
@@ -344,7 +345,7 @@ namespace H1EMU_Launcher
 
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
-                    DownloadStatus.downStatus.downloadProgressText.Text = $"Got depot key for {depotKey.DepotID} result: {depotKey.Result}...";
+                    DownloadStatus.downStatus.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item21").ToString().Replace("{0}", $"{depotKey.DepotID}").Replace("{1}", $"{depotKey.Result}")}";
                 });
 
                 Debug.WriteLine($"Got depot key for {depotKey.DepotID} result: {depotKey.Result}");
@@ -395,7 +396,7 @@ namespace H1EMU_Launcher
 
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
-                    DownloadStatus.downStatus.downloadProgressText.Text = $"Got CDN auth token for {host} result: {cdnAuth.Result}...";
+                    DownloadStatus.downStatus.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item22").ToString().Replace("{0}", $"{host}").Replace("{1}", $"{cdnAuth.Result}")}";
                 });
 
                 Debug.WriteLine($"Got CDN auth token for {host} result: {cdnAuth.Result} (expires {cdnAuth.Expiration})");
@@ -643,6 +644,12 @@ namespace H1EMU_Launcher
 
         private void LogOnCallback( SteamUser.LoggedOnCallback loggedOn )
         {
+            //Set just language code ex: en-us, fr-ca from the settings
+            SetLanguageFile.SetLanguageCode();
+
+            //Adds the correct language file to the resource dictionary and then load it.
+            System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+
             tokenSource.Dispose();
             tokenSource = new CancellationTokenSource();
             token = tokenSource.Token;
@@ -665,7 +672,7 @@ namespace H1EMU_Launcher
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        Launcher.lncher.SteamFrame.Navigate(new Uri("2FA.xaml", UriKind.Relative));
+                        Launcher.lncher.SteamFrame.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
                     });
 
                     token.WaitHandle.WaitOne();
@@ -694,7 +701,7 @@ namespace H1EMU_Launcher
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
-                        Launcher.lncher.SteamFrame.Navigate(new Uri("2FA.xaml", UriKind.Relative));
+                        Launcher.lncher.SteamFrame.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
                     });
 
                     token.WaitHandle.WaitOne();
@@ -711,8 +718,16 @@ namespace H1EMU_Launcher
             {
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
-                    Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
-                    CustomMessageBox.Show($"Unable to login to Steam: {loggedOn.Result}");
+                    System.Windows.Application.Current.Resources.MergedDictionaries.Clear();
+
+                    //Set just language code ex: en-us, fr-ca from the settings
+                    SetLanguageFile.SetLanguageCode();
+
+                    //Adds the correct language file to the resource dictionary and then load it.
+                    System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+
+                    Launcher.lncher.SteamFrame.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+                    CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".");
                 });
 
                 Abort(false);
@@ -723,8 +738,16 @@ namespace H1EMU_Launcher
             {
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
-                    Launcher.lncher.SteamFrame.Navigate(new Uri("Login.xaml", UriKind.Relative));
-                    CustomMessageBox.Show($"Unable to login to Steam: {loggedOn.Result}");
+                    System.Windows.Application.Current.Resources.MergedDictionaries.Clear();
+
+                    //Set just language code ex: en-us, fr-ca from the settings
+                    SetLanguageFile.SetLanguageCode();
+
+                    //Adds the correct language file to the resource dictionary and then load it.
+                    System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+
+                    Launcher.lncher.SteamFrame.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+                    CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".");
                 });
 
                 Abort();
