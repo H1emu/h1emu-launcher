@@ -7,8 +7,8 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.0.0</AssemblyVersion>
-	  <FileVersion>2.0.0</FileVersion>
+	  <AssemblyVersion>2.0.1</AssemblyVersion>
+	  <FileVersion>2.0.1</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
@@ -39,6 +39,7 @@
     <None Remove="Resources\H1EmuIcon.png" />
     <None Remove="Resources\H1EmuLogo.png" />
     <None Remove="Resources\Icon.ico" />
+    <None Remove="Resources\Language.png" />
     <None Remove="Resources\Loading.gif" />
     <None Remove="Resources\Minimise.png" />
     <None Remove="Resources\Minimise_Hover.png" />
@@ -93,6 +94,7 @@
     <Content Include="Resources\H1EmuIcon.png" />
     <Content Include="Resources\H1EmuLogo.png" />
     <Content Include="Resources\Icon.ico" />
+    <Content Include="Resources\Language.png" />
     <Content Include="Resources\Loading.gif" />
     <Content Include="Resources\Minimise.png" />
     <Content Include="Resources\Minimise_Hover.png" />

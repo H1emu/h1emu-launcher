@@ -24,12 +24,6 @@ namespace H1EMU_Launcher.Classes
 
                 if (Directory.GetFileSystemEntries($"{Launcher.appDataPath}\\H1EmuLauncher\\CarouselImages").Length == 0) { return; }
 
-                System.Windows.Application.Current.Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
-                {
-                    Launcher.lncher.offlineImage.Visibility = System.Windows.Visibility.Hidden;
-                    Launcher.lncher.imageCarousel.Visibility = System.Windows.Visibility.Visible;
-                });
-
                 foreach (var fileName in Directory.EnumerateFiles($"{Launcher.appDataPath}\\H1EmuLauncher\\CarouselImages"))
                 {
                     images.Add(fileName);
@@ -38,6 +32,8 @@ namespace H1EMU_Launcher.Classes
                 System.Windows.Application.Current.Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                 {
                     Launcher.lncher.carouselImage.Source = new BitmapImage(new Uri(images[currentIndex]));
+                    Launcher.lncher.offlineImage.Visibility = System.Windows.Visibility.Hidden;
+                    Launcher.lncher.imageCarousel.Visibility = System.Windows.Visibility.Visible;
                 });
 
                 for (progressI = 0; progressI <= 3000; progressI++)

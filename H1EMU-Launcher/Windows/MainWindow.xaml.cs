@@ -34,6 +34,8 @@ namespace H1EMU_Launcher
 
 #pragma warning disable SYSLIB0014 // Warning saying that WebClient is discontinued and not supported anymore.
 
+        string downloadUrl;
+
         Splash sp = new Splash();
 
         public MainWindow()
@@ -68,6 +70,7 @@ namespace H1EMU_Launcher
                 string raw = jsonDesApp.tag_name;
                 string online = raw.Substring(1);
                 string local = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
+                downloadUrl = jsonDesApp.assets[0].browser_download_url;
 
                 // Get latest release number and date published for server
                 var jsonDesServer = JsonConvert.DeserializeObject<dynamic>(jsonServer);
@@ -122,7 +125,7 @@ namespace H1EMU_Launcher
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://github.com/H1emu/h1emu-launcher/releases/latest/download/H1EmuLauncherSetup.msi",
+                FileName = downloadUrl,
                 UseShellExecute = true
             });
         }
