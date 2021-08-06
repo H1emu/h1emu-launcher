@@ -15,7 +15,8 @@
         FontFamily="Bahnschrift Light"
         FontSize="16"
         ResizeMode="NoResize"
-        Activated="MainCnfmBoxActivated">
+        Activated="MainCnfmBoxActivated"
+        Loaded="MainCnfmBoxLoaded">
 
         <WindowChrome.WindowChrome>
             <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>

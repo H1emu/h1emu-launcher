@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         xmlns:local="clr-namespace:H1EMU_Launcher"
         mc:Ignorable="d"
         UseLayoutRounding="True"
@@ -16,235 +15,255 @@
         FontSize="16"
         ResizeMode="NoResize"
         Loaded="LauncherWindowLoaded"
+        Activated="MainLauncherActivated"
         Closed="MainLauncher_Closed">
 
         <WindowChrome.WindowChrome>
             <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
         </WindowChrome.WindowChrome>
 
-    <!-- Main Grid -->
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="25*"/>
-            <RowDefinition Height="117*"/>
-            <RowDefinition Height="8*"/>
-        </Grid.RowDefinitions>
+        <!-- Main Grid -->
+        <Grid>
+            <Grid.Effect>
+                <BlurEffect x:Name="launcherBlur" Radius="0" KernelType="Gaussian"/>
+            </Grid.Effect>
 
-        <!-- Creates the Grid to host the control box and title/icon -->
-        <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="MoveWindow" Background="#FF2A2A32">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="116*"/>
+                <RowDefinition Height="8*"/>
             </Grid.RowDefinitions>
 
-            <!-- Creates the title and icon -->
-            <DockPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
-                <Button Width="220" Margin="35,20,0,12" HorizontalAlignment="Left" BorderThickness="0" Click="LogoClick" Style="{DynamicResource ImageButton}" >
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\H1EmuLogo.png"/>
-                    </Button.Background>
-                </Button>
-            </DockPanel>
-            
-            <!-- Dock Panel to Host the grid that holds the control box/infomational section -->
-            <DockPanel Grid.Column="1">
-                <!-- Grid for control box/inforamtional-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <!-- Wraps the about project informational -->
-                    <WrapPanel Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right">
-                        <ComboBox Style="{DynamicResource ComboBox}" x:Name="LangBox" FontSize="15" Margin="10,10,25,0" SelectedIndex="-1" SelectionChanged="ComboBox_SelectionChanged" BorderThickness="2" Foreground="White" Padding="14,2,10,0" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Height="30">
-                            <ComboBoxItem Content="English"/>
-                            <ComboBoxItem Content="Chinese"/>
-                            <ComboBoxItem Content="Croatian"/>
-                            <ComboBoxItem Content="French"/>
-                        </ComboBox>
+            <!-- Creates the Grid to host the control box and title/icon -->
+            <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="MoveWindow" Background="#FF2A2A32">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-                        <TextBlock VerticalAlignment="Center" Margin="0,10,16,0">
+                <!-- Creates the title and icon -->
+                <DockPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+                    <Button Width="220" Margin="35,20,0,12" HorizontalAlignment="Left" BorderThickness="0" Click="LogoClick" Style="{DynamicResource ImageButton}" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\H1EmuLogo.png"/>
+                        </Button.Background>
+                    </Button>
+                </DockPanel>
+
+                <!-- Dock Panel to Host the grid that holds the control box/infomational section -->
+                <DockPanel Grid.Column="1">
+                    <!-- Grid for control box/inforamtional-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <!-- Wraps the about project informational -->
+                        <WrapPanel Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <ComboBox Style="{DynamicResource ComboBox}" x:Name="LangBox" FontSize="15" Margin="10,10,25,0" SelectedIndex="-1" SelectionChanged="ComboBox_SelectionChanged" BorderThickness="2" Foreground="White" Padding="14,2,10,0" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Height="30">
+                                <ComboBoxItem Content="English"/>
+                                <ComboBoxItem Content="Chinese"/>
+                                <ComboBoxItem Content="Croatian"/>
+                                <ComboBoxItem Content="French"/>
+                            </ComboBox>
+
+                            <TextBlock VerticalAlignment="Center" Margin="0,10,16,0">
                             <Hyperlink NavigateUri="" Click="AboutHyperlink">
                                 <TextBlock Text="{DynamicResource item65}"/>
                             </Hyperlink>
                         </TextBlock>
-                        
-                        <!-- Wraps the control box components -->
-                        <WrapPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
 
-                            <!-- Minimise Button-->
-                            <Button x:Name="MiniButton" Content="" Width="45" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="FloralWhite" BorderThickness="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial" Click="MiniButtonClick" FontSize="36" Margin="0,10,4,0" Style="{DynamicResource MinimiseButtonStyle}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="/Resources/Minimise.png"/>
-                                </Button.Background>
-                            </Button>
+                            <!-- Wraps the control box components -->
+                            <WrapPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Right">
 
-                            <!-- Exit and Minimise button -->
-                            <Button x:Name="ExitButton" Content="" Width="45" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="FloralWhite" BorderThickness="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial" Click="CloseLauncher" FontSize="36" Margin="0,10,35,0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource CloseButtonStyle}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="/Resources/Exit.png"/>
-                                </Button.Background>
-                            </Button>
+                                <!-- Minimise Button-->
+                                <Button x:Name="MiniButton" Content="" Width="45" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="FloralWhite" BorderThickness="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial" Click="MiniButtonClick" FontSize="36" Margin="0,10,4,0" Style="{DynamicResource MinimiseButtonStyle}">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/Resources/Minimise.png"/>
+                                    </Button.Background>
+                                </Button>
+
+                                <!-- Exit and Minimise button -->
+                                <Button x:Name="ExitButton" Content="" Width="45" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="FloralWhite" BorderThickness="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Arial" Click="CloseLauncher" FontSize="36" Margin="0,10,35,0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource CloseButtonStyle}">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/Resources/Exit.png"/>
+                                    </Button.Background>
+                                </Button>
+                            </WrapPanel>
                         </WrapPanel>
-                    </WrapPanel>
-                    
-                    <!-- Wraps the promtional website/discord components -->
-                    <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                        <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,25,10" TextWrapping="Wrap">
+
+                        <!-- Wraps the promtional website/discord components -->
+                        <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,25,10" TextWrapping="Wrap">
                             <TextBlock Text="{DynamicResource item12}"></TextBlock>
                             <Hyperlink NavigateUri="https://h1emu.com/" RequestNavigate="H1Hyperlink">
                                 h1emu.com
                             </Hyperlink>
                         </TextBlock>
-                        <Button x:Name="discordLink" Width="160" Height="44" VerticalAlignment="Center" Click="OpenDiscord" HorizontalAlignment="Right" Margin="0,0,35,5" Grid.Column="1" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource DiscordButtonStyle}">
-                            <Button.Background>
-                                <ImageBrush ImageSource="..\Resources\Discord.png"/>
-                            </Button.Background>
-                        </Button>
-                    </WrapPanel>
-                </Grid>
-            </DockPanel>
-        </Grid>
-
-        <!-- Grid to split the content in half -->
-        <Grid Grid.Row="1" Background="#1C1B22" Margin="35,10,35,0" UseLayoutRounding="True">
-            <Grid.Effect>
-                <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
-            </Grid.Effect>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-            </Grid.RowDefinitions>
-
-            <!-- This grid splits the left side in half -->
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="197*"/>
-                    <RowDefinition Height="370*"/>
-                </Grid.RowDefinitions>
-
-                <!-- Grid to dock the game image -->
-                <Grid Grid.Row="1" Margin="30,20,0,25">
-                    <wv2:WebView2 x:Name="imageSlideshow" Visibility="Visible" DefaultBackgroundColor="Transparent"/>
-                    <Image x:Name="offlineImage" Source="..\Resources\OfflineImage.png" RenderOptions.BitmapScalingMode="Fant" Visibility="Hidden"/>
-                </Grid>
+                            <Button x:Name="discordLink" Width="160" Height="44" VerticalAlignment="Center" Click="OpenDiscord" HorizontalAlignment="Right" Margin="0,0,35,5" Grid.Column="1" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource DiscordButtonStyle}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="..\Resources\Discord.png"/>
+                                </Button.Background>
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                </DockPanel>
             </Grid>
 
-            <!-- Stacks the update info -->
-            <StackPanel Margin="25,10,0,0">
+            <!-- Grid to split the content in half -->
+            <Grid Grid.Row="1" Background="#1C1B22" Margin="35,10,35,0" UseLayoutRounding="True">
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+                </Grid.Effect>
 
-                <!-- Displays updation version and information -->
-                <RichTextBox x:Name="titleUpdate" Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True" Cursor="Arrow">
-                    <FlowDocument>
-                        <Paragraph FontSize="32" FontFamily="{StaticResource Signika}" FontWeight="Bold">
-                            <Run x:Name="titleUpdateText" Foreground="#FFED1C24" FontSize="44" Text="{DynamicResource item3}"/>
-                            <Run x:Name="updateVersion" Foreground="#FFED1C24" FontSize="44"/>
-                            <Run x:Name="datePublished" FontFamily="Bahnschrift Light" FontSize="16"/>
-                        </Paragraph>
-                    </FlowDocument>
-                </RichTextBox>
-                
-                <RichTextBox x:Name="patchNotesBox" Background="Transparent" Foreground="White" BorderThickness="0" Margin="0,10,0,0" IsReadOnly="True" Height="95" Cursor="Arrow"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
 
-                <!-- Hyperlink text to redirect to more udpates -->
-                <TextBlock Margin="6,20,0,0">
+                <!-- This grid splits the left side in half -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="197*"/>
+                        <RowDefinition Height="370*"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Grid to dock the game image -->
+                    <Grid Grid.Row="1" Margin="30,20,12,25">
+                        <Grid x:Name="offlineImage" RenderOptions.BitmapScalingMode="Fant">
+                            <Image Source="..\Resources\OfflineImage.png"/>
+                        </Grid>
+                        
+                        <Grid x:Name="imageCarousel" Grid.Row="1" MouseEnter="CarouselMouseEnter" MouseLeave="CarouselMouseLeave" Visibility="Hidden">
+                            <Image x:Name="carouselImage" RenderOptions.BitmapScalingMode="Fant"/>
+
+                            <Button x:Name="prevImage" HorizontalAlignment="Left" Width="30" BorderThickness="0" Foreground="White" Click="PrevImageClick" Visibility="Hidden" Style="{DynamicResource CarouselButtonPrevious}"/>
+                            <Button x:Name="nextImage" HorizontalAlignment="Right" Width="30" BorderThickness="0" Foreground="White" Click="NextImageClick" Visibility="Hidden" Style="{DynamicResource CarouselButtonNext}"/>
+
+                            <ProgressBar x:Name="carouselProgressBar" VerticalAlignment="Bottom" Height="5" BorderThickness="0" Background="Transparent" Foreground="#DB111C" Maximum="3000"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+                <!-- Stacks the update info -->
+                <StackPanel Margin="25,10,12,0">
+
+                    <!-- Displays updation version and information -->
+                    <RichTextBox x:Name="titleUpdate" Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True" Cursor="Arrow">
+                        <FlowDocument>
+                            <Paragraph FontSize="32" FontFamily="{StaticResource Signika}" FontWeight="Bold">
+                                <Run x:Name="titleUpdateText" Foreground="#FFED1C24" FontSize="44" Text="{DynamicResource item3}"/>
+                                <Run x:Name="updateVersion" Foreground="#FFED1C24" FontSize="44"/>
+                                <Run x:Name="datePublished" FontFamily="Bahnschrift Light" FontSize="16"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+
+                    <RichTextBox x:Name="patchNotesBox" Background="Transparent" Foreground="White" BorderThickness="0" Margin="0,10,0,0" IsReadOnly="True" Height="95" Cursor="Arrow"/>
+
+                    <!-- Hyperlink text to redirect to more udpates -->
+                    <TextBlock Margin="6,22,0,0">
                     <Hyperlink NavigateUri="https://github.com/QuentinGruber/h1z1-server/releases/latest" RequestNavigate="FullUpdatesHyperlink">
                         <TextBlock Text="{DynamicResource item61}"/>
                     </Hyperlink>
                 </TextBlock>
-            </StackPanel>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="220*"/>
-                    <RowDefinition Height="355*"/>
-                </Grid.RowDefinitions>
-                <StackPanel Margin="25,20,30,0">
-                    <RichTextBox Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True" Cursor="Arrow">
-                        <FlowDocument>
-                            <Paragraph>
-                                <Run Foreground="#FFCA1420" Text="{DynamicResource item10}"/>
-                                <Run Text="{DynamicResource item11}"/>
-                            </Paragraph>
-                            <Paragraph Padding="0,10,0,0">
-                                <Run Text="{DynamicResource item50}"/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
                 </StackPanel>
-                <Grid Grid.Row="1">
+                <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
                         <RowDefinition Height="220*"/>
+                        <RowDefinition Height="355*"/>
                     </Grid.RowDefinitions>
-                    <DockPanel Margin="30,0,30,0">
-                        <Frame x:Name="SteamFrame" VerticalAlignment="Top" Source="..\\SteamFrame\Login.xaml" NavigationUIVisibility="Hidden" VerticalContentAlignment="Top" Padding="0" Height="100"/>
-                    </DockPanel>
-                    <DockPanel Grid.Row="2" Margin="25,80,30,25">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
+                    <StackPanel Margin="12,20,30,0">
+                        <RichTextBox Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True" Cursor="Arrow">
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run Foreground="#FFCA1420" Text="{DynamicResource item10}"/>
+                                    <Run Text="{DynamicResource item11}"/>
+                                </Paragraph>
+                                <Paragraph Padding="0,10,0,0">
+                                    <Run Text="{DynamicResource item50}"/>
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+                    </StackPanel>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="220*"/>
+                        </Grid.RowDefinitions>
+                        <DockPanel Margin="20,0,30,0">
+                            <Frame x:Name="SteamFrame" VerticalAlignment="Top" Source="..\\SteamFrame\Login.xaml" NavigationUIVisibility="Hidden" VerticalContentAlignment="Top" Padding="0" Height="100"/>
+                        </DockPanel>
+                        <DockPanel Grid.Row="2" Margin="12,80,30,25">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
 
-                            <Button Content="{DynamicResource item7}" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Row="0" Grid.Column="1" Click="LaunchServer" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                                </Button.Background>
-                            </Button>
+                                <Button Content="{DynamicResource item7}" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Row="0" Grid.Column="1" Click="LaunchServer" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                                    </Button.Background>
+                                </Button>
 
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="{DynamicResource item4}" Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,5" TextWrapping="Wrap"/>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="{DynamicResource item4}" Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,5" TextWrapping="Wrap"/>
 
-                            <ComboBox Grid.Row="1" x:Name="serverSelector" Foreground="White" Grid.Column="0" Height="35" BorderThickness="2" VerticalAlignment="Bottom" Margin="5,0,5,5" Padding="38,8,15,0" Style="{DynamicResource ComboBox}" SelectionChanged="ServerSelectorChanged">
-                                <ComboBoxItem Content="{DynamicResource item139}"/>
-                                <ComboBoxItem Content="{DynamicResource item140}"/>
-                                <Separator/>
-                                <ComboBoxItem x:Name="newServer" Content="{DynamicResource item141}" PreviewMouseLeftButtonDown="AddNewServer"></ComboBoxItem>
-                            </ComboBox>
+                                <ComboBox Grid.Row="1" x:Name="serverSelector" Foreground="White" Grid.Column="0" Height="35" BorderThickness="2" VerticalAlignment="Bottom" Margin="5,0,5,5" Padding="38,8,15,0" Style="{DynamicResource ComboBox}" SelectionChanged="ServerSelectorChanged">
+                                    <ComboBoxItem Content="{DynamicResource item139}"/>
+                                    <ComboBoxItem Content="{DynamicResource item140}"/>
+                                    <Separator/>
+                                    <ComboBoxItem x:Name="newServer" Content="{DynamicResource item141}" PreviewMouseLeftButtonDown="AddNewServer"></ComboBoxItem>
+                                </ComboBox>
 
-                            <Button Grid.Row="1" HorizontalAlignment="Left" Height="20" Width="20" Margin="15,29,0,0" Padding="0" BorderThickness="0" Click="DeleteServer" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource DeleteServer}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Resources\Server.png"/>
-                                </Button.Background>
-                            </Button>
+                                <Button Grid.Row="1" HorizontalAlignment="Left" Height="20" Width="20" Margin="15,29,0,0" Padding="0" BorderThickness="0" Click="DeleteServer" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource DeleteServer}">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="..\Resources\Server.png"/>
+                                    </Button.Background>
+                                </Button>
 
-                            <Button Grid.Row="1" Grid.Column="1" x:Name="playButton" Content="{DynamicResource item8}" Foreground="White" FontFamily="Arial Black" FontSize="28" Click="LaunchClient" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                                </Button.Background>
-                            </Button>
-                        </Grid>
-                    </DockPanel>
+                                <Button Grid.Row="1" Grid.Column="1" x:Name="playButton" Content="{DynamicResource item8}" Foreground="White" FontFamily="Arial Black" FontSize="28" Click="LaunchClient" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                                    </Button.Background>
+                                </Button>
+                            </Grid>
+                        </DockPanel>
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
-        
-        <!-- Footer -->
-        <DockPanel Grid.Column="0" Grid.Row="2">
-            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="35,1,0,0">
+
+            <!-- Footer -->
+            <DockPanel Grid.Column="0" Grid.Row="2">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="35,1,0,0">
                 <Hyperlink NavigateUri="" Click="Hyperlink_Click">
                     <TextBlock Text="{DynamicResource item62}"/>
                 </Hyperlink>
             </TextBlock>
-            <TextBlock Text="{DynamicResource item125}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,1,35,0" Foreground="White"/>
-        </DockPanel>
+                <TextBlock Text="{DynamicResource item125}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,1,35,0" Foreground="White"/>
+            </DockPanel>
+        </Grid>
+
+        <Rectangle x:Name="launcherFade" Fill="#40000000" IsHitTestVisible="False" Visibility="Hidden"/>
     </Grid>
 </Window>

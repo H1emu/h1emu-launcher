@@ -22,9 +22,12 @@ namespace H1EMU_Launcher
 
     public partial class AboutPage : Window
     {
+        public static AboutPage abtpage;
+
         public AboutPage()
         {
             InitializeComponent();
+            abtpage = this;
 
             //Set just language code ex: en-us, fr-ca from the settings
             SetLanguageFile.SetLanguageCode();
@@ -42,6 +45,24 @@ namespace H1EMU_Launcher
         {
             this.Topmost = true;
             this.Close();
+        }
+
+        private void MainAboutLoaded(object sender, RoutedEventArgs e)
+        {
+            Launcher.lncher.launcherBlur.Radius = 15;
+            Launcher.lncher.launcherFade.Visibility = Visibility.Visible;
+        }
+
+        private void MainAboutClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Launcher.lncher.launcherBlur.Radius = 0;
+            Launcher.lncher.launcherFade.Visibility = Visibility.Hidden;
+        }
+
+        private void MainAboutActivated(object sender, EventArgs e)
+        {
+            aboutPageBlur.Radius = 0;
+            aboutPageFade.Visibility = Visibility.Hidden;
         }
     }
 }

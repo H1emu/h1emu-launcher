@@ -14,83 +14,93 @@
         FontSize="16"
         ResizeMode="NoResize"
         Loaded="AuthKeyLoaded"
-        Closing="AuthKeyWindowClosing">
+        Closing="AuthKeyWindowClosing"
+        Activated="WindowActivated">
 
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
     </WindowChrome.WindowChrome>
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="5*"/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0" Grid.Column="0" Background="#FF2A2A32" MouseLeftButtonDown="AuthKeyDragWindow">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-            </Grid.RowDefinitions>
-
-            <!-- Dock panel that hosts logo -->
-            <DockPanel Grid.Row="0" Grid.Column="0" Height="60" HorizontalAlignment="Left" Margin="15,4,0,0">
-                <Button Width="140" Height="40" BorderThickness="0" VerticalAlignment="Center" Style="{DynamicResource ImageButton}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\H1EmuIcon.png"/>
-                    </Button.Background>
-                </Button>
-            </DockPanel>
-
-            <!-- Dock panel that creates the exit button. -->
-            <DockPanel Grid.Column="1" Grid.Row="0">
-                <Button x:Name="ExitButton" RenderOptions.BitmapScalingMode="Fant" Width="44" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Margin="0,0,15,0" Click="CloseAuthKeyWindow" Style="{StaticResource CloseButtonStyle}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\Exit.png"/>
-                    </Button.Background>
-                </Button>
-            </DockPanel>
-        </Grid>
-
-        <!-- Grid for main content inside of darkened area -->
-        <Grid Grid.Row="1" Background="#1C1B22" Margin="15,5,15,15" UseLayoutRounding="True">
+        <Grid>
             <Grid.Effect>
-                <DropShadowEffect BlurRadius="8" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+                <BlurEffect x:Name="authKeyBlur" Radius="0" KernelType="Gaussian"/>
             </Grid.Effect>
 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
             <Grid.RowDefinitions>
-                <RowDefinition Height="3*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Grid.Row="0" Width="540" Text="{DynamicResource item156}" Foreground="White" FontSize="16" Margin="0,16,0,0" TextWrapping="Wrap"/>
-            <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
+            <Grid Grid.Row="0" Grid.Column="0" Background="#FF2A2A32" MouseLeftButtonDown="AuthKeyDragWindow">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <!-- Dock panel that hosts logo -->
+                <DockPanel Grid.Row="0" Grid.Column="0" Height="60" HorizontalAlignment="Left" Margin="15,4,0,0">
+                    <Button Width="140" Height="40" BorderThickness="0" VerticalAlignment="Center" Style="{DynamicResource ImageButton}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\H1EmuIcon.png"/>
+                        </Button.Background>
+                    </Button>
+                </DockPanel>
+
+                <!-- Dock panel that creates the exit button. -->
+                <DockPanel Grid.Column="1" Grid.Row="0">
+                    <Button x:Name="ExitButton" RenderOptions.BitmapScalingMode="Fant" Width="44" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Margin="0,0,15,0" Click="CloseAuthKeyWindow" Style="{StaticResource CloseButtonStyle}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\Exit.png"/>
+                        </Button.Background>
+                    </Button>
+                </DockPanel>
+            </Grid>
+
+            <!-- Grid for main content inside of darkened area -->
+            <Grid Grid.Row="1" Background="#1C1B22" Margin="15,5,15,15" UseLayoutRounding="True">
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="8" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+                </Grid.Effect>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Grid.Row="0" Width="540" Text="{DynamicResource item156}" Foreground="White" FontSize="16" Margin="0,16,0,0" TextWrapping="Wrap"/>
+                <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
                 <Hyperlink Click="UserProfileLink">
                     <TextBlock Text="https://www.h1emu.com/us/cockpit/my/security-launcher/"/>
                 </Hyperlink>
             </TextBlock>
 
-            <TextBox VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="authKeyBoxShown" Grid.Row="0" Padding="35,0,35,0" FontSize="16"  VerticalContentAlignment="Center" Width="540" Height="35" Margin="0,0,0,12" Visibility="Hidden" Text="{Binding ElementName=authKeyBox, Path=Password}" Style="{DynamicResource TextBoxPrimaryStyle}"/>
-            <PasswordBox VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="authKeyBox" Grid.Row="0" PasswordChar="●" Padding="35,0,35,0" FontSize="16" VerticalContentAlignment="Center" Width="540" Height="35" GotFocus="AuthKeyGotFocus" LostFocus="AuthKeyLostFocus" Margin="0,0,0,12" Style="{DynamicResource PasswordBoxStyle}"/>
-            <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="authKeyHint" Grid.Row="0" IsHitTestVisible="False" Width="540" Padding="37,0,37,0" Text="{DynamicResource item154}" Foreground="White" FontSize="16" Height="27" Margin="0,0,0,12"/>
-            <Image VerticalAlignment="Bottom" Source="..\Resources\AuthKey.png" RenderOptions.BitmapScalingMode="Fant" Grid.Row="0" HorizontalAlignment="Left" Margin="50,0,0,20" Width="20" Height="20"/>
+                <TextBox VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="authKeyBoxShown" Grid.Row="0" Padding="35,0,40,0" FontSize="16"  VerticalContentAlignment="Center" Width="540" Height="35" Margin="0,0,0,12" Visibility="Hidden" Text="{Binding ElementName=authKeyBox, Path=Password}" Style="{DynamicResource TextBoxPrimaryStyle}"/>
+                <PasswordBox VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="authKeyBox" Grid.Row="0" PasswordChar="●" Padding="35,0,40,0" FontSize="16" VerticalContentAlignment="Center" Width="540" Height="35" GotFocus="AuthKeyGotFocus" LostFocus="AuthKeyLostFocus" Margin="0,0,0,12" Style="{DynamicResource PasswordBoxStyle}"/>
+                <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="authKeyHint" Grid.Row="0" IsHitTestVisible="False" Width="540" Padding="37,0,37,0" Text="{DynamicResource item154}" Foreground="White" FontSize="16" Height="27" Margin="0,0,0,12"/>
+                <Image VerticalAlignment="Bottom" Source="..\Resources\AuthKey.png" RenderOptions.BitmapScalingMode="Fant" Grid.Row="0" HorizontalAlignment="Left" Margin="50,0,0,20" Width="20" Height="20"/>
 
-            <Button x:Name="showHidePassword" VerticalAlignment="Bottom" RenderOptions.BitmapScalingMode="Fant" Height="24" Width="24" HorizontalAlignment="Right" Margin="0,0,50,18" Click="ShowHidePasswordClick" BorderThickness="0" Style="{StaticResource ShowPasswordButton}">
-                <Button.Background>
-                    <ImageBrush ImageSource="..\Resources\ShowPassword.png"/>
-                </Button.Background>
-            </Button>
+                <Button x:Name="showHidePassword" VerticalAlignment="Bottom" RenderOptions.BitmapScalingMode="Fant" Height="24" Width="24" HorizontalAlignment="Right" Margin="0,0,50,18" Click="ShowHidePasswordClick" BorderThickness="0" Style="{StaticResource ShowPasswordButton}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="..\Resources\ShowPassword.png"/>
+                    </Button.Background>
+                </Button>
 
-            <Button Content="{DynamicResource item92}" Foreground="White" FontFamily="Arial Black" FontSize="18" Click="OkCloseAuthKeyWindow" Height="30" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
-                <Button.Background>
-                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                </Button.Background>
-            </Button>
+                <Button Content="{DynamicResource item92}" Foreground="White" FontFamily="Arial Black" FontSize="18" Click="OkCloseAuthKeyWindow" Height="30" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
         </Grid>
+
+        <Rectangle x:Name="authKeyFade" Fill="#40000000" IsHitTestVisible="False" Visibility="Hidden"/>
     </Grid>
 </Window>

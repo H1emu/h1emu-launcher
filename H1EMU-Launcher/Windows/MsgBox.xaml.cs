@@ -54,5 +54,32 @@ namespace H1EMU_Launcher
         {
             this.SizeToContent = SizeToContent.Manual;
         }
+
+        private void MainMsgBoxLoaded(object sender, RoutedEventArgs e)
+        {
+            if (AboutPage.abtpage != null)
+            {
+                AboutPage.abtpage.aboutPageBlur.Radius = 15;
+                AboutPage.abtpage.aboutPageFade.Visibility = Visibility.Visible;
+            }
+
+            if (AddServer.addsver != null)
+            {
+                AddServer.addsver.addServerBlur.Radius = 15;
+                AddServer.addsver.addServerFade.Visibility = Visibility.Visible;
+            }
+
+            if (Launcher.lncher != null)
+            {
+                Launcher.lncher.launcherBlur.Radius = 15;
+                Launcher.lncher.launcherFade.Visibility = Visibility.Visible;
+            }
+
+            if (Settings.sttngs != null)
+            {
+                Settings.sttngs.settingsBlur.Radius = 15;
+                Settings.sttngs.settingsFade.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

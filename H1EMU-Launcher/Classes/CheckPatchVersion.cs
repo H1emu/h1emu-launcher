@@ -164,6 +164,8 @@ namespace H1EMU_Launcher
 
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
 
+            /*
+
             // Unzip asset patch files
 
             try
@@ -175,6 +177,8 @@ namespace H1EMU_Launcher
             // Delete the downloaded asset .zip file, not needed anymore.
 
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\AssetPatch2015.zip");
+
+            */
 
             // Finish
 

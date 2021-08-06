@@ -70,6 +70,9 @@ namespace H1EMU_Launcher
 
         private void AuthKeyLoaded(object sender, RoutedEventArgs e)
         {
+            Settings.sttngs.settingsBlur.Radius = 15;
+            Settings.sttngs.settingsFade.Visibility = Visibility.Visible;
+
             authKeyBox.Password = Properties.Settings.Default.sessionIdKey;
 
             if (!string.IsNullOrEmpty(authKeyBox.Password)) { authKeyHint.Visibility = Visibility.Hidden; }
@@ -77,6 +80,9 @@ namespace H1EMU_Launcher
 
         private void AuthKeyWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            Settings.sttngs.settingsBlur.Radius = 0;
+            Settings.sttngs.settingsFade.Visibility = Visibility.Hidden;
+
             Properties.Settings.Default.sessionIdKey = authKeyBox.Password;
             Properties.Settings.Default.Save();
         }
@@ -95,6 +101,12 @@ namespace H1EMU_Launcher
                 authKeyBox.Visibility = Visibility.Visible;
                 authKeyBoxShown.Visibility = Visibility.Hidden;
             }
+        }
+
+        private void WindowActivated(object sender, EventArgs e)
+        {
+            authKeyBlur.Radius = 0;
+            authKeyFade.Visibility = Visibility.Hidden;
         }
     }
 }

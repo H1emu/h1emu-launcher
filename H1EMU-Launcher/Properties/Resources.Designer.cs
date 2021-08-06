@@ -253,6 +253,26 @@ namespace H1EMU_Launcher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap NextButton {
+            get {
+                object obj = ResourceManager.GetObject("NextButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NextButton_Hover {
+            get {
+                object obj = ResourceManager.GetObject("NextButton_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap OfflineImage {
             get {
                 object obj = ResourceManager.GetObject("OfflineImage", resourceCulture);
@@ -266,6 +286,26 @@ namespace H1EMU_Launcher.Properties {
         internal static System.Drawing.Bitmap Padlock {
             get {
                 object obj = ResourceManager.GetObject("Padlock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PrevButton {
+            get {
+                object obj = ResourceManager.GetObject("PrevButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PrevButton_Hover {
+            get {
+                object obj = ResourceManager.GetObject("PrevButton_Hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

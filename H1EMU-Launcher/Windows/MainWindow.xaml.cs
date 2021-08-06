@@ -122,7 +122,7 @@ namespace H1EMU_Launcher
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://github.com/H1emu/h1emu-launcher/releases/latest/download/H1EMU-Launcher.zip",
+                FileName = "https://github.com/H1emu/h1emu-launcher/releases/latest/download/H1EmuLauncherSetup.msi",
                 UseShellExecute = true
             });
         }

@@ -22,9 +22,12 @@ namespace H1EMU_Launcher
     /// </summary>
     public partial class AddServer : Window
     {
+        public static AddServer addsver;
+
         public AddServer()
         {
             InitializeComponent();
+            addsver = this;
 
             //Set just language code ex: en-us, fr-ca from the settings
             SetLanguageFile.SetLanguageCode();
@@ -86,6 +89,24 @@ namespace H1EMU_Launcher
         private void ServerIPLostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(serverIpBox.Text)) { serverIpHint.Visibility = Visibility.Visible; }
+        }
+
+        private void AddServerMenuLoaded(object sender, RoutedEventArgs e)
+        {
+            Launcher.lncher.launcherBlur.Radius = 15;
+            Launcher.lncher.launcherFade.Visibility = Visibility.Visible;
+        }
+
+        private void AddServerMenuClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Launcher.lncher.launcherBlur.Radius = 0;
+            Launcher.lncher.launcherFade.Visibility = Visibility.Hidden;
+        }
+
+        private void AddServerMenuActivated(object sender, EventArgs e)
+        {
+            addServerBlur.Radius = 0;
+            addServerFade.Visibility = Visibility.Hidden;
         }
     }
 }

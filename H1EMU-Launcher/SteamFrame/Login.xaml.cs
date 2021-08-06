@@ -92,16 +92,13 @@ namespace H1EMU_Launcher
 
         public void UpdateLang()
         {
-            Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
-            {
-                Resources.MergedDictionaries.Clear();
+            Resources.MergedDictionaries.Clear();
 
-                //Set just language code ex: en-us, fr-ca from the settings
-                SetLanguageFile.SetLanguageCode();
+            //Set just language code ex: en-us, fr-ca from the settings
+            SetLanguageFile.SetLanguageCode();
 
-                //Adds the correct language file to the resource dictionary and then load it.
-                Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
-            });
+            //Adds the correct language file to the resource dictionary and then load it.
+            Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
         public static string version = "";
@@ -240,13 +237,7 @@ namespace H1EMU_Launcher
                         {
                             if (Directory.GetFileSystemEntries(folderBrowser.SelectedPath).Length != 0)
                             {
-                                Resources.MergedDictionaries.Clear();
-
-                                //Set just language code ex: en-us, fr-ca from the settings
-                                SetLanguageFile.SetLanguageCode();
-
-                                //Adds the correct language file to the resource dictionary and then load it.
-                                Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+                                UpdateLang();
 
                                 System.Windows.Forms.DialogResult dr = CustomMessageBox.ShowResult(FindResource("item89").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
                                 if (dr == System.Windows.Forms.DialogResult.Yes)

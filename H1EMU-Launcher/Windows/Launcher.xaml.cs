@@ -24,7 +24,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using H1EMU_Launcher.Resources;
 using System.Text.Json.Serialization;
-using Microsoft.Web.WebView2.Core;
 
 namespace H1EMU_Launcher
 {
@@ -58,26 +57,13 @@ namespace H1EMU_Launcher
         public Launcher()
         {
             InitializeComponent();
-            InitializeAsync();
             lncher = this;
 
             //Set just language code ex: en-us, fr-ca
             SetLanguageFile.SetLanguageCode();
-            //Set combobox selected item from the settings
-            LangBox.SelectedIndex = Properties.Settings.Default.language;
 
             //Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
-        }
-
-        async void InitializeAsync()
-        {
-            var env = await CoreWebView2Environment.CreateAsync(null, $"{appDataPath}\\H1EmuLauncher").ConfigureAwait(true);
-            imageSlideshow.Loaded += async (sender, e) =>
-            {
-                await imageSlideshow.EnsureCoreWebView2Async(env).ConfigureAwait(true);
-                imageSlideshow.Source = new Uri("https://www.h1emu.com/us/embed/slider/");
-            };
         }
 
         private void ServerSelectorChanged(object sender, SelectionChangedEventArgs e)
@@ -271,7 +257,7 @@ namespace H1EMU_Launcher
                     {
                         if (sw.BaseStream.CanWrite)
                         {
-                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.4.1-win-x64");
+                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.6.0-win-x64");
                             sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
                             sw.WriteLine(serverVersion);
                         }
@@ -438,25 +424,17 @@ namespace H1EMU_Launcher
 
         private void LauncherWindowLoaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                WebClient wc = new WebClient();
-                wc.DownloadString("https://api.github.com/repos/H1emu/h1emu-patch/releases/latest");
-            }
-            catch (Exception ex)
-            {
-                if (ex.Message == "No such host is known. (api.github.com:443)")
-                {
-                    imageSlideshow.Visibility = Visibility.Hidden;
-                    offlineImage.Visibility = Visibility.Visible;
-                }
-            }
+            LangBox.SelectedIndex = Properties.Settings.Default.language;
 
+            Directory.CreateDirectory($"{appDataPath}\\H1EmuLauncher\\CarouselImages");
             Directory.CreateDirectory($"{appDataPath}\\H1EmuLauncher");
             serverJsonFile = System.IO.Path.Combine($"{appDataPath}\\H1EmuLauncher", "servers.json");
             if (!File.Exists(serverJsonFile)) { File.WriteAllText(serverJsonFile, "[]"); }
-
             LoadServers();
+
+            Classes.Carousel.BeginImageCarousel();
+
+            // Update version, date published and patch notes stuff.
 
             if (!string.IsNullOrEmpty(recentDateServer) || !string.IsNullOrEmpty(latestUpdateVersionServer) || !string.IsNullOrEmpty(patchNotes))
             {
@@ -488,28 +466,25 @@ namespace H1EMU_Launcher
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string selectedLanguage = LangBox.SelectedItem.ToString().Replace("System.Windows.Controls.ComboBoxItem: ", "").ToLower();
+            int selectedLanguage = LangBox.SelectedIndex;
 
             switch (selectedLanguage)
             {
-                case "english":
+                case 0:
                     //Update and save settings
                     SetLanguageFile.SaveLang(0);
                     break;
-                case "chinese":
-                    //update and save settings
+                case 1:
                     SetLanguageFile.SaveLang(1);
                     break;
-                case "croatian":
-                    //update and save settings
+                case 2:
                     SetLanguageFile.SaveLang(2);
                     break;
-                case "french":
-                    //update and save settings
+                case 3:
                     SetLanguageFile.SaveLang(3);
                     break;
                 default:
-                    CustomMessageBox.Show("ERROR");
+                    CustomMessageBox.Show("Error selecting language.");
                     return;
             }
 
@@ -585,6 +560,34 @@ namespace H1EMU_Launcher
         private void MoveWindow(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void MainLauncherActivated(object sender, EventArgs e)
+        {
+            launcherBlur.Radius = 0;
+            launcherFade.Visibility = Visibility.Hidden;
+        }
+
+        private void PrevImageClick(object sender, RoutedEventArgs e)
+        {
+            Classes.Carousel.PreviousImage();
+        }
+
+        private void NextImageClick(object sender, RoutedEventArgs e)
+        {
+            Classes.Carousel.NextImage();
+        }
+
+        private void CarouselMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            prevImage.Visibility = Visibility.Visible;
+            nextImage.Visibility = Visibility.Visible;
+        }
+
+        private void CarouselMouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            prevImage.Visibility = Visibility.Hidden;
+            nextImage.Visibility = Visibility.Hidden;
         }
     }
 }

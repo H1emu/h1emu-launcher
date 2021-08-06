@@ -36,11 +36,14 @@ namespace H1EMU_Launcher
 
         ProcessStartInfo cmdShell;
         public static ManualResetEvent installPatchResetEvent = new ManualResetEvent(false);
+
         public static string gameVersion { get; set; }
+        public static Settings sttngs;
 
         public Settings()
         {
             InitializeComponent();
+            sttngs = this;
 
             //Set just language code ex: en-us, fr-ca from the settings
             SetLanguageFile.SetLanguageCode();
@@ -219,6 +222,8 @@ namespace H1EMU_Launcher
 
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
 
+            /*
+
             // Unzip asset patch files
 
             Dispatcher.BeginInvoke((MethodInvoker)delegate
@@ -241,7 +246,9 @@ namespace H1EMU_Launcher
 
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\AssetPatch2015.zip");
 
-            // Finish
+            */
+
+            // Finish.
 
             watch.Stop();
             TimeSpan elapsedMs = watch.Elapsed;
@@ -400,7 +407,7 @@ namespace H1EMU_Launcher
                     {
                         if (sw.BaseStream.CanWrite)
                         {
-                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.4.1-win-x64");
+                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.6.0-win-x64");
                             sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
                             sw.WriteLine("npm i --production h1z1-server@latest");
                         }
@@ -480,7 +487,7 @@ namespace H1EMU_Launcher
                     {
                         if (sw.BaseStream.CanWrite)
                         {
-                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.4.1-win-x64");
+                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.6.0-win-x64");
                             sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
                             sw.WriteLine("npm i --production");
                         }
@@ -662,11 +669,11 @@ namespace H1EMU_Launcher
 
             // Delete old .zip file in the case of corruption.
 
-            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v16.4.1-win-x64.zip");
+            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v16.6.0-win-x64.zip");
 
             // Download the NodeJS files.
 
-            string serverFiles = "https://nodejs.org/dist/v16.4.1/node-v16.4.1-win-x64.zip?" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            string serverFiles = "https://nodejs.org/dist/v16.6.0/node-v16.6.0-win-x64.zip?" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
             ManualResetEvent ma = new ManualResetEvent(false);
 
@@ -686,7 +693,7 @@ namespace H1EMU_Launcher
             };
 
             var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
-            wc.DownloadFileAsync(new Uri(serverFiles), $"{Properties.Settings.Default.activeDirectory}\\Node-v16.4.1-win-x64.zip");
+            wc.DownloadFileAsync(new Uri(serverFiles), $"{Properties.Settings.Default.activeDirectory}\\Node-v16.6.0-win-x64.zip");
 
             ma.WaitOne();
 
@@ -699,13 +706,13 @@ namespace H1EMU_Launcher
 
             try
             {
-                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Node-v16.4.1-win-x64.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
+                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Node-v16.6.0-win-x64.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
             }
             catch { }
 
             // Delete the old .zip file, not needed anymore.
 
-            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v16.4.1-win-x64.zip");
+            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v16.6.0-win-x64.zip");
         }
 
         //////////////////////////
@@ -811,6 +818,9 @@ namespace H1EMU_Launcher
 
         public void SettingsLoaded(object sender, RoutedEventArgs e)
         {
+            Launcher.lncher.launcherBlur.Radius = 15;
+            Launcher.lncher.launcherFade.Visibility = Visibility.Visible;
+
             currentVersion.Text = FindResource("item124").ToString() + $"{Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.')}";
             settingsProgressText.Text = FindResource("item19").ToString();
 
@@ -960,6 +970,9 @@ namespace H1EMU_Launcher
                 e.Cancel = true;
                 return;
             }
+
+            Launcher.lncher.launcherBlur.Radius = 0;
+            Launcher.lncher.launcherFade.Visibility = Visibility.Hidden;
         }
 
         public void CloseButton(object sender, RoutedEventArgs e)
@@ -971,6 +984,12 @@ namespace H1EMU_Launcher
         public void MoveWindow(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
+        }
+
+        private void MainSettingsActivated(object sender, EventArgs e)
+        {
+            settingsBlur.Radius = 0;
+            settingsFade.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -22,10 +22,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="210"/>
         </Grid.RowDefinitions>
+
         <!--Creates the Grid to host the control box and title/icon-->
         <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="MoveWindow" Background="#FF2A2A32">
             <Grid.ColumnDefinitions>
@@ -44,7 +46,7 @@
                     </Button.Background>
                 </Button>
             </DockPanel>
-            
+
             <!--Creates the control box-->
             <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
                 <Button x:Name="CloseButton" RenderOptions.BitmapScalingMode="Fant" Width="44" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseUpdater" Margin="0,5,25,0" Style="{StaticResource CloseButtonStyle}">
@@ -58,7 +60,7 @@
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="10" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
             </Grid.Effect>
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>

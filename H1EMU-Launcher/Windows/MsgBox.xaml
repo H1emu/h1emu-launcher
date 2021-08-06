@@ -14,7 +14,8 @@
         Background="#FF2A2A32"
         FontFamily="Bahnschrift Light"
         FontSize="16"
-        Activated="MainMsgBoxActivated">
+        Activated="MainMsgBoxActivated"
+        Loaded="MainMsgBoxLoaded">
 
         <WindowChrome.WindowChrome>
             <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
