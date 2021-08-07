@@ -81,5 +81,7 @@
                 </Hyperlink>
             </TextBlock>
         </Grid>
+
+        <ProgressBar x:Name="downloadSetupProgress" Grid.Row="1" VerticalAlignment="Bottom" Height="4" Background="Transparent" Foreground="#DB111C" BorderThickness="0" Margin="25,0,25,10"/>
     </Grid>
 </Window>

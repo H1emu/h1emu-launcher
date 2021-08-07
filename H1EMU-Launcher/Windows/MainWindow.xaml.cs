@@ -35,6 +35,7 @@ namespace H1EMU_Launcher
 #pragma warning disable SYSLIB0014 // Warning saying that WebClient is discontinued and not supported anymore.
 
         string downloadUrl;
+        public static string downloadFileName;
 
         Splash sp = new Splash();
 
@@ -71,6 +72,7 @@ namespace H1EMU_Launcher
                 string online = raw.Substring(1);
                 string local = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
                 downloadUrl = jsonDesApp.assets[0].browser_download_url;
+                downloadFileName = jsonDesApp.assets[0].name;
 
                 // Get latest release number and date published for server
                 var jsonDesServer = JsonConvert.DeserializeObject<dynamic>(jsonServer);
@@ -123,11 +125,35 @@ namespace H1EMU_Launcher
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(new ProcessStartInfo
+            new Thread(() => 
             {
-                FileName = downloadUrl,
-                UseShellExecute = true
-            });
+                ManualResetEvent ma = new ManualResetEvent(false);
+
+                WebClient wc = new WebClient();
+                wc.DownloadProgressChanged += (s, e) =>
+                {
+                    Dispatcher.BeginInvoke((System.Windows.Forms.MethodInvoker)delegate
+                    {
+                        downloadSetupProgress.Value = e.ProgressPercentage;
+                    });
+                };
+                wc.DownloadFileCompleted += (s, e) =>
+                {
+                    ma.Set();
+                };
+
+                wc.DownloadFileAsync(new Uri(downloadUrl), $"{Launcher.appDataPath}\\H1EmuLauncher\\{downloadFileName}");
+                ma.WaitOne();
+
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = $"{Launcher.appDataPath}\\H1EmuLauncher\\{downloadFileName}",
+                    UseShellExecute = true
+                });
+
+                Environment.Exit(69);
+
+            }).Start();
         }
 
         private void NotNowClick(object sender, RoutedEventArgs e)

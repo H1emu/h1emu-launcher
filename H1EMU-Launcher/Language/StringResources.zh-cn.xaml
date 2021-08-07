@@ -125,8 +125,8 @@
     <system:String x:Key="item130">版主</system:String>
     <system:String x:Key="item131">支持</system:String>
     <system:String x:Key="item132">特别感谢所有加入社区并保持动力的人！</system:String>
-    <system:String x:Key="item133">是的</system:String>
-    <system:String x:Key="item134">不</system:String>
+    <system:String x:Key="item133">是</system:String>
+    <system:String x:Key="item134">否</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
     <system:String x:Key="item136">翻译人员</system:String>
     <system:String x:Key="item137">\n\n您是否已连接到互联网？</system:String>

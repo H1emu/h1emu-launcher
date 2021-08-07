@@ -141,7 +141,6 @@ namespace H1EMU_Launcher
 
             WebClient wc = new WebClient();
             wc.Headers.Add("User-Agent", "d-fens HttpClient");
-
             wc.DownloadFileCompleted += (s, e) =>
             {
                 ma.Set();
@@ -212,7 +211,6 @@ namespace H1EMU_Launcher
 
             WebClient wc = new WebClient();
             wc.Headers.Add("User-Agent", "d-fens HttpClient");
-
             wc.DownloadFileCompleted += (s, e) =>
             {
                 ma.Set();

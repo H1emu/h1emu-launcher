@@ -173,7 +173,6 @@ namespace H1EMU_Launcher
                     var newJson = System.Text.Json.JsonSerializer.Serialize<List<Server>>(currentjson, new JsonSerializerOptions { WriteIndented = true });
                     File.WriteAllText(serverJsonFile, newJson);
                     serverSelector.Items.Insert(serverSelector.Items.Count - 2, serverName.Trim());
-                    newServer.Content = "New Server...";
                     serverSelector.SelectedIndex = serverSelector.Items.Count - 3;
                 }
             }
@@ -434,7 +433,9 @@ namespace H1EMU_Launcher
 
             Classes.Carousel.BeginImageCarousel();
 
-            // Update version, date published and patch notes stuff.
+            File.Delete($"{appDataPath}\\H1EmuLauncher\\{MainWindow.downloadFileName}");
+
+            // Update version, date published and patch notes code.
 
             if (!string.IsNullOrEmpty(recentDateServer) || !string.IsNullOrEmpty(latestUpdateVersionServer) || !string.IsNullOrEmpty(patchNotes))
             {
@@ -549,7 +550,7 @@ namespace H1EMU_Launcher
 
         private void MainLauncher_Closed(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            Environment.Exit(69);
         }
 
         private void MiniButtonClick(object sender, RoutedEventArgs e)
