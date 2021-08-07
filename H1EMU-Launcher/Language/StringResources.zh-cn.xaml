@@ -20,7 +20,7 @@
     <system:String x:Key="item16">你选择的目录未包含补丁文件。\n\n你是否要继续？ (没有补丁文件可能无法顺利进入游戏)</system:String>
     <system:String x:Key="item17">无法登录到Steam:</system:String>
     <system:String x:Key="item18">添加</system:String>
-    <system:String x:Key="item19">• 地位 •</system:String>
+    <system:String x:Key="item19">• 进度状态 •</system:String>
     <system:String x:Key="item21">获取数据包密钥 {0} 结果： {1}</system:String>
     <system:String x:Key="item22">获取CDN {0} 验证令牌结果： {1}</system:String>
     <system:String x:Key="item23">下载完成！</system:String>
@@ -42,7 +42,7 @@
     <system:String x:Key="item39">下载异常：</system:String>
     <system:String x:Key="item40">未知异常，下载失败：</system:String>
     <system:String x:Key="item41">游戏目录：</system:String>
-    <system:String x:Key="item42">重打补丁</system:String>
+    <system:String x:Key="item42">重装补丁</system:String>
     <system:String x:Key="item43">最新版</system:String>
     <system:String x:Key="item44">稳定版</system:String>
     <system:String x:Key="item45">如果在进入游戏时遇到问题，请在这里尝试重新安装补丁文件。</system:String>
@@ -142,11 +142,11 @@
     <system:String x:Key="item147">确认要删除这个服务器吗？</system:String>
     <system:String x:Key="item148">正在下载2015版资源补丁...</system:String>
     <system:String x:Key="item149">正在解压资源文件...</system:String>
-    <system:String x:Key="item150">打补丁</system:String>
-    <system:String x:Key="item151">服务器名称或 IP 无效。</system:String>
-    <system:String x:Key="item152">正在删除 BattlEye 文件夹...</system:String>
-    <system:String x:Key="item153">当连接到 H1Emu 服务器时，您必须设置一个 Auth Key。这可以在设置菜单中完成。</system:String>
-    <system:String x:Key="item154">授权键...</system:String>
-    <system:String x:Key="item155">授权键</system:String>
-    <system:String x:Key="item156">要在 H1Emu 服务器上玩游戏，您需要设置一个 Auth Key。您可以在您的个人资料中找到此信息：</system:String>
+    <system:String x:Key="item150">正在安装补丁</system:String>
+    <system:String x:Key="item151">无效的服务器名字或者IP地址。</system:String>
+    <system:String x:Key="item152">正在删除BattlEye目录...</system:String>
+    <system:String x:Key="item153">连接H1Emu服务器必须使用认证密钥，请在游戏配置菜单中贴入认证密钥。</system:String>
+    <system:String x:Key="item154">认证密钥...</system:String>
+    <system:String x:Key="item155">认证密钥</system:String>
+    <system:String x:Key="item156">登录H1Emu服务器需要设置认证密钥，您可以在H1Emu网站的个人账号信息中获取，网址：</system:String>
 </ResourceDictionary>
