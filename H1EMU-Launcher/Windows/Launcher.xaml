@@ -80,7 +80,7 @@
                                     <ComboBoxItem Content="French"/>
                                 </ComboBox>
 
-                                <Image Source="..\Resources\Language.png" RenderOptions.BitmapScalingMode="Fant" Width="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20,0,0,7"/>
+                                <Image Source="..\Resources\Language.png" RenderOptions.BitmapScalingMode="Fant" Width="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20,0,0,7" IsHitTestVisible="False"/>
                             </Grid>
 
                             <TextBlock VerticalAlignment="Center" Margin="0,10,16,0">
@@ -182,11 +182,12 @@
 
                     <!-- Hyperlink text to redirect to more udpates -->
                     <TextBlock Margin="6,22,0,0">
-                    <Hyperlink NavigateUri="https://github.com/QuentinGruber/h1z1-server/releases/latest" RequestNavigate="FullUpdatesHyperlink">
-                        <TextBlock Text="{DynamicResource item61}"/>
-                    </Hyperlink>
-                </TextBlock>
+                        <Hyperlink NavigateUri="https://github.com/QuentinGruber/h1z1-server/releases/latest" RequestNavigate="FullUpdatesHyperlink">
+                            <TextBlock Text="{DynamicResource item61}"/>
+                        </Hyperlink>
+                    </TextBlock>
                 </StackPanel>
+                
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="220*"/>
@@ -205,54 +206,45 @@
                             </FlowDocument>
                         </RichTextBox>
                     </StackPanel>
+                    
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="100"/>
-                            <RowDefinition Height="220*"/>
                         </Grid.RowDefinitions>
+                        
                         <DockPanel Margin="20,0,30,0">
                             <Frame x:Name="SteamFrame" VerticalAlignment="Top" Source="..\\SteamFrame\Login.xaml" NavigationUIVisibility="Hidden" VerticalContentAlignment="Top" Padding="0" Height="100"/>
                         </DockPanel>
-                        <DockPanel Grid.Row="2" Margin="12,80,30,25">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                    </Grid>
 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
+                    <Grid Grid.Row="1" Margin="12,0,30,25">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                                <Button Content="{DynamicResource item7}" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Row="0" Grid.Column="1" Click="LaunchServer" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
-                                    <Button.Background>
-                                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                                    </Button.Background>
-                                </Button>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                                <TextBlock Grid.Row="0" Grid.Column="0" Text="{DynamicResource item4}" Foreground="White" VerticalAlignment="Bottom" Margin="5,0,0,5" TextWrapping="Wrap"/>
+                        <ComboBox Grid.Row="1" x:Name="serverSelector" Foreground="White" Grid.Column="0" Height="35" BorderThickness="2" VerticalAlignment="Bottom" Margin="7,0,3,5" Padding="38,8,15,0" Style="{DynamicResource ComboBox}" SelectionChanged="ServerSelectorChanged">
+                            <ComboBoxItem Content="{DynamicResource item139}"/>
+                            <ComboBoxItem Content="{DynamicResource item140}"/>
+                            <Separator/>
+                            <ComboBoxItem x:Name="newServer" Content="{DynamicResource item141}" PreviewMouseLeftButtonDown="AddNewServer"></ComboBoxItem>
+                        </ComboBox>
 
-                                <ComboBox Grid.Row="1" x:Name="serverSelector" Foreground="White" Grid.Column="0" Height="35" BorderThickness="2" VerticalAlignment="Bottom" Margin="5,0,5,5" Padding="38,8,15,0" Style="{DynamicResource ComboBox}" SelectionChanged="ServerSelectorChanged">
-                                    <ComboBoxItem Content="{DynamicResource item139}"/>
-                                    <ComboBoxItem Content="{DynamicResource item140}"/>
-                                    <Separator/>
-                                    <ComboBoxItem x:Name="newServer" Content="{DynamicResource item141}" PreviewMouseLeftButtonDown="AddNewServer"></ComboBoxItem>
-                                </ComboBox>
+                        <Button Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="20" Width="20" Margin="17,0,0,13" Padding="0" BorderThickness="0" Click="DeleteServer" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource DeleteServer}">
+                            <Button.Background>
+                                <ImageBrush ImageSource="..\Resources\Server.png"/>
+                            </Button.Background>
+                        </Button>
 
-                                <Button Grid.Row="1" HorizontalAlignment="Left" Height="20" Width="20" Margin="15,29,0,0" Padding="0" BorderThickness="0" Click="DeleteServer" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource DeleteServer}">
-                                    <Button.Background>
-                                        <ImageBrush ImageSource="..\Resources\Server.png"/>
-                                    </Button.Background>
-                                </Button>
-
-                                <Button Grid.Row="1" Grid.Column="1" x:Name="playButton" Content="{DynamicResource item8}" Foreground="White" FontFamily="Arial Black" FontSize="28" Click="LaunchClient" Height="45" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="270" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
-                                    <Button.Background>
-                                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                                    </Button.Background>
-                                </Button>
-                            </Grid>
-                        </DockPanel>
+                        <Button Grid.Row="1" Grid.Column="1" x:Name="playButton" Content="{DynamicResource item8}" Foreground="White" FontFamily="Arial Black" FontSize="28" Click="LaunchClient" Height="45" VerticalAlignment="Bottom" Margin="12,0,0,0" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
+                            <Button.Background>
+                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                            </Button.Background>
+                        </Button>
                     </Grid>
                 </Grid>
             </Grid>

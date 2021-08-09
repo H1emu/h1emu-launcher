@@ -24,13 +24,13 @@
         </Grid.ColumnDefinitions>
 
         <TextBox VerticalAlignment="Top" x:Name="usernameBox" Grid.Row="0" FontSize="16" VerticalContentAlignment="Center" MaxHeight="35" Height="35" Padding="32,0,0,0" Margin="0,0,7,0" GotFocus="UsernameBoxGotFocus" LostFocus="UsernameBoxLostFocus" Style="{DynamicResource TextBoxPrimaryStyle}"/>
-        <TextBlock VerticalAlignment="Top" x:Name="usernameHint" Grid.Row="0" IsHitTestVisible="False" MaxHeight="35" Padding="35,8,0,0" Text="{DynamicResource item59}" Foreground="White" FontSize="16" Height="27"/>
+        <TextBlock VerticalAlignment="Top" x:Name="usernameHint" Grid.Row="0" IsHitTestVisible="False" MaxHeight="35" Margin="0,0,7,0" Padding="35,8,0,0" Text="{DynamicResource item59}" Foreground="White" FontSize="16" Height="27"/>
         
         <Image VerticalAlignment="Top" Source="..\Resources\Shield.png" RenderOptions.BitmapScalingMode="Fant" Grid.Row="0" MaxHeight="20" HorizontalAlignment="Left" Margin="8,7,0,0" Width="20" Height="20"/>
         <TextBlock VerticalAlignment="Top" Grid.Column="1" Foreground="White" FontSize="16" Text="{DynamicResource item34}" TextWrapping="Wrap" Margin="7,0,0,0"/>
 
         <PasswordBox VerticalAlignment="Top" x:Name="passwordBox" PasswordChar="●" Grid.Row="1" Grid.Column="0" FontSize="16" VerticalContentAlignment="Center" MaxHeight="35" Height="35" KeyDown="TextBox_KeyDown" Padding="32,0,35,0" Margin="0,0,7,0" GotFocus="PasswordBoxGotFocus" LostFocus="PasswordBoxLostFocus" Style="{DynamicResource PasswordBoxStyle}"/>
-        <TextBlock VerticalAlignment="Top" x:Name="passwordHint" Grid.Row="1" IsHitTestVisible="False" MaxHeight="35" Margin="0,4,0,0" Padding="35,5,0,0" Text="{DynamicResource item60}" Foreground="White" FontSize="16" Height="24"/>
+        <TextBlock VerticalAlignment="Top" x:Name="passwordHint" Grid.Row="1" IsHitTestVisible="False" MaxHeight="35" Margin="0,4,7,0" Padding="35,5,0,0" Text="{DynamicResource item60}" Foreground="White" FontSize="16" Height="24"/>
         
         <Image VerticalAlignment="Top" Source="..\Resources\Padlock.png" Grid.Row="1" MaxHeight="20" HorizontalAlignment="Left" Margin="8,7,0,0" Height="20" Width="20" RenderOptions.BitmapScalingMode="Fant"/>
         <Button x:Name="loginEnterButton" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="Fant" Grid.Row="1" MaxHeight="20" MinHeight="20" Width="20" HorizontalAlignment="Right" Margin="0,7,17,0" Click="LoginButton" BorderThickness="0" Style="{DynamicResource EnterButton}">

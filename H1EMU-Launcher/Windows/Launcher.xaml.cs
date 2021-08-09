@@ -182,95 +182,78 @@ namespace H1EMU_Launcher
             }
         }
 
-        private void LaunchServer(object sender, RoutedEventArgs e)
+        public bool LaunchServer(string gameVersion)
         {
             ma.Reset();
 
-            new Thread(() => 
+            try
             {
-                try
-                {
-                    if (string.IsNullOrEmpty(Properties.Settings.Default.activeDirectory) || Properties.Settings.Default.activeDirectory == "Directory")
-                    {
-                        Dispatcher.Invoke((MethodInvoker)delegate
-                        {
-                            CustomMessageBox.Show(FindResource("item51").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
-                        });
-
-                        return;
-                    }
-
-                    if (!Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master\\node_modules"))
-                    {
-                        Dispatcher.Invoke((MethodInvoker)delegate
-                        {
-                            CustomMessageBox.Show(FindResource("item52").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
-                        });
-
-                        return;
-                    }
-
-                    Dispatcher.Invoke((MethodInvoker)delegate
-                    {
-                        Settings settings = new Settings();
-                        settings.CheckGameVersionNewThread();
-                    });
-
-                    ma.WaitOne();
-
-                    string gameVersion = Settings.gameVersion;
-                    string serverVersion = "";
-
-                    if (gameVersion == "15jan2015")
-                    {
-                        serverVersion = "npm start";
-                    }
-                    else if (gameVersion == "22dec2016")
-                    {
-                        serverVersion = "npm run start-2016";
-                    }
-                    else if (gameVersion != "processBeingUsed")
-                    {
-                        Dispatcher.Invoke((MethodInvoker)delegate
-                        {
-                            CustomMessageBox.Show(FindResource("item14").ToString());
-                        });
-
-                        return;
-                    }
-                    else
-                    {
-                        return;
-                    }
-
-                    Process p = new Process();
-                    ProcessStartInfo info = new ProcessStartInfo();
-                    info.FileName = "cmd.exe";
-                    info.RedirectStandardInput = true;
-                    info.UseShellExecute = false;
-
-                    p.StartInfo = info;
-                    p.Start();
-
-                    using (StreamWriter sw = p.StandardInput)
-                    {
-                        if (sw.BaseStream.CanWrite)
-                        {
-                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.6.0-win-x64");
-                            sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
-                            sw.WriteLine(serverVersion);
-                        }
-                    }
-                }
-                catch (Exception er)
+                if (!Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master\\node_modules"))
                 {
                     Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show(FindResource("item53").ToString() + $" \"{er.Message}\"");
+                        CustomMessageBox.Show(FindResource("item52").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
                     });
+
+                    return false;
                 }
 
-            }).Start();
+                string serverVersion = "";
+
+                if (gameVersion == "15jan2015")
+                {
+                    serverVersion = "npm start";
+                }
+                else if (gameVersion == "22dec2016")
+                {
+                    serverVersion = "npm run start-2016";
+                }
+                else if (gameVersion != "processBeingUsed")
+                {
+                    Dispatcher.Invoke((MethodInvoker)delegate
+                    {
+                        CustomMessageBox.Show(FindResource("item14").ToString());
+                    });
+
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+
+                Process p = new Process();
+                ProcessStartInfo info = new ProcessStartInfo();
+                info.FileName = "cmd.exe";
+                info.RedirectStandardInput = true;
+                info.UseShellExecute = false;
+
+                p.StartInfo = info;
+                p.Start();
+
+                using (StreamWriter sw = p.StandardInput)
+                {
+                    if (sw.BaseStream.CanWrite)
+                    {
+                        sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.6.0-win-x64");
+                        sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
+                        sw.WriteLine(serverVersion);
+
+                        return true;
+                    }
+                }
+            }
+            catch (Exception er)
+            {
+                Dispatcher.Invoke((MethodInvoker)delegate
+                {
+                    CustomMessageBox.Show(FindResource("item53").ToString() + $" \"{er.Message}\"");
+                });
+
+                return false;
+            }
+
+            return false;
         }
 
         private void LaunchClient(object sender, RoutedEventArgs e)
@@ -383,6 +366,11 @@ namespace H1EMU_Launcher
                         }
 
                         if (!result) { return; }
+
+                        if (serverIp == "localhost:1115")
+                        {
+                            if (!LaunchServer(gameVersion)) { return; }
+                        }
 
                         Process process = new Process()
                         {

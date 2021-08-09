@@ -56,7 +56,7 @@
     <system:String x:Key="item53">Erreur de lancement du serveur:</system:String>
     <system:String x:Key="item54">Téléchargement en cours...</system:String>
     <system:String x:Key="item55">Utilisation d'une branche d'application: {0}</system:String>
-    <system:String x:Key="item56">Dépôt de traitement {0}-{1}</system:String>
+    <system:String x:Key="item56">Dépôt de traitement {0} - {1}</system:String>
     <system:String x:Key="item57">Pré-attribution de l'espace...</system:String>
     <system:String x:Key="item58">Version du jeu non prise en charge par H1Emu.</system:String>
     <system:String x:Key="item59">Steam ID</system:String>
@@ -132,7 +132,7 @@
     <system:String x:Key="item137">\n\n(Êtes-vous connecté à l'internet?)</system:String>
     <system:String x:Key="item138">\n\n(Les fichiers ne seront pas supprimés)</system:String>
     <system:String x:Key="item139">Serveur H1Emu</system:String>
-    <system:String x:Key="item140">Serveur Local</system:String>
+    <system:String x:Key="item140">Joueur unique</system:String>
     <system:String x:Key="item141">Nouveau serveur...</system:String>
     <system:String x:Key="item142">Exception levée: {0}</system:String>
     <system:String x:Key="item143">Le nom du serveur existe déjà dans la liste.</system:String>

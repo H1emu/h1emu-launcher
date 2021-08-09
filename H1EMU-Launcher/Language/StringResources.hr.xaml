@@ -132,7 +132,7 @@
     <system:String x:Key="item137">\n\n(Da li imate ostvarenu internet vezu?)</system:String>
     <system:String x:Key="item138">\n\n(Datoteke neće biti izbrisane)</system:String>
     <system:String x:Key="item139">H1Emu Server</system:String>
-    <system:String x:Key="item140">Lokalni Server</system:String>
+    <system:String x:Key="item140">Igraj sam</system:String>
 	<system:String x:Key="item141">Novi Server...</system:String>
     <system:String x:Key="item142">Bačena iznimka: {0}</system:String>
     <system:String x:Key="item143">Upisano ime već postoji na listi servera.</system:String>

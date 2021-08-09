@@ -132,7 +132,7 @@
     <system:String x:Key="item137">\n\n您是否已连接到互联网？</system:String>
     <system:String x:Key="item138">\n\n(文件不会被删除)</system:String>
     <system:String x:Key="item139">H1Emu在线服务器</system:String>
-    <system:String x:Key="item140">本地服务器</system:String>
+    <system:String x:Key="item140">单机版（本地）</system:String>
     <system:String x:Key="item141">新建服务器...</system:String>
     <system:String x:Key="item142">运行异常：{0}</system:String>
     <system:String x:Key="item143">此服务器已存在</system:String>

@@ -132,7 +132,7 @@
     <system:String x:Key="item137">\n\n(Are you connected to the internet?)</system:String>
     <system:String x:Key="item138">\n\n(Files will not be deleted)</system:String>
     <system:String x:Key="item139">H1Emu Server</system:String>
-    <system:String x:Key="item140">Local Server</system:String>
+    <system:String x:Key="item140">Singleplayer</system:String>
     <system:String x:Key="item141">New Server...</system:String>
     <system:String x:Key="item142">Exception thrown: {0}</system:String>
     <system:String x:Key="item143">Server name already exists in list.</system:String>

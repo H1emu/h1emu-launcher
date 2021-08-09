@@ -6,6 +6,13 @@
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2">
     <Application.Resources>
         <FontFamily x:Key="Signika">pack://application:,,,/Fonts/#Signika</FontFamily>
+        <Style x:Key="HyperLinkStyleUpdate" TargetType="TextBlock">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="Gray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style x:Key="ExitVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -440,7 +447,7 @@
                 </Grid.ColumnDefinitions>
                 <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
                     <theme:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MinWidth="{Binding ActualWidth, ElementName=templateRoot}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                        <Border x:Name="dropDownBorder" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1">
+                        <Border x:Name="dropDownBorder" CornerRadius="5" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1">
                             <ScrollViewer x:Name="DropDownScrollViewer">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -682,6 +689,7 @@
         <ImageBrush x:Key="Exit.Static.Background" ImageSource="Resources\Exit.png"/>
         <ImageBrush x:Key="Exit.MouseOver.Background" ImageSource="Resources\Exit_Hover.png"/>
         <ImageBrush x:Key="Exit.Pressed.Background" ImageSource="Resources\Exit_Pressed.png"/>
+        <ImageBrush x:Key="Exit.Disabled.Background" ImageSource="Resources\Exit_Pressed.png"/>
         <Style x:Key="CloseButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource ExitVisual}"/>
             <Setter Property="Background" Value="{StaticResource Exit.Static.Background}"/>
@@ -707,7 +715,7 @@
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Exit.Pressed.Background}"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <!--It will never be disabled-->
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Exit.Disabled.Background}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

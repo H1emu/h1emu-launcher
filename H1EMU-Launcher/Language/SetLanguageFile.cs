@@ -34,6 +34,7 @@ namespace H1EMU_Launcher.Resources
                     dict.Source = new Uri("Language/StringResources.xaml", UriKind.RelativeOrAbsolute);
                     break;
             }
+
             return dict;
         }
 
@@ -70,9 +71,8 @@ namespace H1EMU_Launcher.Resources
             //Set just language code ex: en-us, fr-ca from the settings
             SetLanguageCode();
 
-            //Adds the correct language file to the resource dictionary and then load it.
-            Launcher.GetWindow(Application.Current.MainWindow).Resources.MergedDictionaries.Clear();
-            Launcher.GetWindow(Application.Current.MainWindow).Resources.MergedDictionaries.Add(LoadFile());
+            Launcher.lncher.Resources.MergedDictionaries.Clear();
+            Launcher.lncher.Resources.MergedDictionaries.Add(LoadFile());
         }
     }
 }

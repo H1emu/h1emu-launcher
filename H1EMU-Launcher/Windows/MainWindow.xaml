@@ -10,7 +10,7 @@
         Height="270" Width="450"
         WindowStartupLocation="CenterScreen"
         Background="#FF2A2A32"
-        Loaded="MainUpdateWindow_Loaded"
+        Loaded="MainUpdateWindowLoaded"
         Closing="MainUpdateWindowClosing">
 
         <WindowChrome.WindowChrome>
@@ -49,7 +49,7 @@
 
             <!--Creates the control box-->
             <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
-                <Button x:Name="CloseButton" RenderOptions.BitmapScalingMode="Fant" Width="44" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseUpdater" Margin="0,5,25,0" Style="{StaticResource CloseButtonStyle}">
+                <Button x:Name="closeButton" RenderOptions.BitmapScalingMode="Fant" Width="44" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseUpdater" Margin="0,5,25,0" Style="{StaticResource CloseButtonStyle}">
                     <Button.Background>
                         <ImageBrush ImageSource="..\Resources\Exit.png"/>
                     </Button.Background>
@@ -76,8 +76,8 @@
                 </Button.Background>
             </Button>
             <TextBlock Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="16" Margin="0,0,0,12">
-                <Hyperlink NavigateUri="" Click="NotNowClick" Foreground="White">
-                    <TextBlock Text="{DynamicResource item67}"/>
+                <Hyperlink x:Name="notNow" NavigateUri="" Click="NotNowClick" Foreground="White">
+                    <TextBlock Text="{DynamicResource item67}" MouseDown="NotNowHyperLinkMouseDown"/>
                 </Hyperlink>
             </TextBlock>
         </Grid>

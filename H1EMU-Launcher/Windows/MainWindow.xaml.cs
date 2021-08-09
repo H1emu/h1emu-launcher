@@ -125,31 +125,46 @@ namespace H1EMU_Launcher
 
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
+            notNow.Foreground = new SolidColorBrush(Colors.Gray);
+            notNow.IsEnabled = false;
+            updateButton.IsEnabled = false;
+            closeButton.IsEnabled = false;
+
             new Thread(() => 
             {
-                ManualResetEvent ma = new ManualResetEvent(false);
-
-                WebClient wc = new WebClient();
-                wc.DownloadProgressChanged += (s, e) =>
+                try
                 {
-                    Dispatcher.BeginInvoke((System.Windows.Forms.MethodInvoker)delegate
+                    ManualResetEvent ma = new ManualResetEvent(false);
+
+                    WebClient wc = new WebClient();
+                    wc.DownloadProgressChanged += (s, e) =>
                     {
-                        downloadSetupProgress.Value = e.ProgressPercentage;
+                        Dispatcher.BeginInvoke((System.Windows.Forms.MethodInvoker)delegate
+                        {
+                            downloadSetupProgress.Value = e.ProgressPercentage;
+                        });
+                    };
+                    wc.DownloadFileCompleted += (s, e) =>
+                    {
+                        ma.Set();
+                    };
+
+                    wc.DownloadFileAsync(new Uri(downloadUrl), $"{Launcher.appDataPath}\\H1EmuLauncher\\{downloadFileName}");
+                    ma.WaitOne();
+
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = $"{Launcher.appDataPath}\\H1EmuLauncher\\{downloadFileName}",
+                        UseShellExecute = true
                     });
-                };
-                wc.DownloadFileCompleted += (s, e) =>
+                }
+                catch (Exception ex)
                 {
-                    ma.Set();
-                };
-
-                wc.DownloadFileAsync(new Uri(downloadUrl), $"{Launcher.appDataPath}\\H1EmuLauncher\\{downloadFileName}");
-                ma.WaitOne();
-
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = $"{Launcher.appDataPath}\\H1EmuLauncher\\{downloadFileName}",
-                    UseShellExecute = true
-                });
+                    Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
+                    {
+                        CustomMessageBox.Show(FindResource("item142").ToString().Replace("{0}", ex.Message));
+                    });
+                }
 
                 Environment.Exit(69);
 
@@ -173,17 +188,23 @@ namespace H1EMU_Launcher
             this.DragMove();
         }
 
-        private void MainUpdateWindow_Loaded(object sender, RoutedEventArgs e)
+        private void MainUpdateWindowLoaded(object sender, RoutedEventArgs e)
         {
             SystemSounds.Beep.Play();
         }
 
         private void MainUpdateWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            notNow.Foreground = new SolidColorBrush(Colors.White);
             this.Hide();
 
             Launcher la = new Launcher();
             la.Show();
+        }
+
+        private void NotNowHyperLinkMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            notNow.Foreground = new SolidColorBrush(Colors.Gray);
         }
     }
 }
