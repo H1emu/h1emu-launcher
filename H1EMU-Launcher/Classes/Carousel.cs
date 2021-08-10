@@ -6,6 +6,8 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 using System.Windows.Media.Imaging;
 
 namespace H1EMU_Launcher.Classes
@@ -14,7 +16,9 @@ namespace H1EMU_Launcher.Classes
     {
         public static List<string> images = new List<string>();
         public static int currentIndex = 0;
+        public static int lastIndex = 0;
         public static int progressI = 0;
+        public static ManualResetEvent pauseCarousel = new ManualResetEvent(true);
 
         public static void BeginImageCarousel()
         {
@@ -38,6 +42,8 @@ namespace H1EMU_Launcher.Classes
 
                 for (progressI = 0; progressI <= 3000; progressI++)
                 {
+                    pauseCarousel.WaitOne();
+
                     System.Windows.Application.Current.Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
                         Launcher.lncher.carouselProgressBar.Value = progressI;
@@ -47,10 +53,15 @@ namespace H1EMU_Launcher.Classes
 
                     if (progressI == 3000)
                     {
+                        System.Windows.Application.Current.Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
+                        {
+                            ButtonAutomationPeer peer = new ButtonAutomationPeer(Launcher.lncher.nextImage);
+                            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+                            invokeProv.Invoke();
+                        });
+
                         Thread.Sleep(1000);
                         progressI = 0;
-
-                        NextImage();
                     }
                 }
 
@@ -62,12 +73,11 @@ namespace H1EMU_Launcher.Classes
             if (currentIndex == images.Count - 1) { currentIndex = 0; }
             else { currentIndex++; }
 
-            System.Windows.Application.Current.Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
-            {
-                Launcher.lncher.carouselImage.Source = new BitmapImage(new Uri(images[currentIndex]));
-            });
+            lastIndex = currentIndex - 1;
+            if (lastIndex < 0) { lastIndex = images.Count - 1; }
 
-            progressI = 0;
+            Launcher.lncher.carouselImage.Source = new BitmapImage(new Uri(images[lastIndex]));
+            Launcher.lncher.carouselImageSlider.Source = new BitmapImage(new Uri(images[currentIndex]));
         }
 
         public static void PreviousImage()
@@ -75,9 +85,11 @@ namespace H1EMU_Launcher.Classes
             if (currentIndex == 0) { currentIndex = images.Count - 1; }
             else { currentIndex--; }
 
-            Launcher.lncher.carouselImage.Source = new BitmapImage(new Uri(images[currentIndex]));
+            lastIndex = currentIndex + 1;
+            if (lastIndex > images.Count - 1) { lastIndex = 0; }
 
-            progressI = 0;
+            Launcher.lncher.carouselImage.Source = new BitmapImage(new Uri(images[lastIndex]));
+            Launcher.lncher.carouselImageSlider.Source = new BitmapImage(new Uri(images[currentIndex]));
         }
 
         public static void DownloadImages()

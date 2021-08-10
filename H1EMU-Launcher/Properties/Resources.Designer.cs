@@ -483,15 +483,31 @@ namespace H1EMU_Launcher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Yeni bir güncelleme var, yüklemek ister misiniz?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;GÜNCELLEME&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Güncelleme Versiyonu&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Yerel t [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_tr_TR {
+            get {
+                return ResourceManager.GetString("StringResources_tr_TR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;有新的更新可用，是否立即更新?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;更新&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;最新版本&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item4&quot;&gt;按 本地服务器 按键启动本地服务器&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;ite [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string StringResources_zh_cn {
+        internal static string StringResources_zh_CN {
             get {
-                return ResourceManager.GetString("StringResources_zh_cn", resourceCulture);
+                return ResourceManager.GetString("StringResources_zh_CN", resourceCulture);
             }
         }
     }

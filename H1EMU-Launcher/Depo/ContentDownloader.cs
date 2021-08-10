@@ -450,9 +450,6 @@ namespace H1EMU_Launcher
         {
             System.Windows.Application.Current.Resources.MergedDictionaries.Clear();
 
-            //Set just language code ex: en-us, fr-ca from the settings
-            SetLanguageFile.SetLanguageCode();
-
             //Adds the correct language file to the resource dictionary and then load it.
             System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }

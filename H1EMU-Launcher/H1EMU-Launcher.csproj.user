@@ -55,6 +55,12 @@
     <Page Update="Language\StringResources.fr.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Language\StringResources.tr-TR.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Language\StringResources.zh-CN.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="SteamFrame\2FA.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -92,9 +98,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Language\StringResources.hr.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Language\StringResources.zh-cn.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Language\StringResources.xaml">

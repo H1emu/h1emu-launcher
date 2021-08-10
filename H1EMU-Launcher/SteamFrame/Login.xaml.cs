@@ -31,9 +31,6 @@ namespace H1EMU_Launcher
         {
             InitializeComponent();
 
-            //Set just language code ex: en-us, fr-ca from the settings
-            SetLanguageFile.SetLanguageCode();
-
             //Adds the correct language file to the resource dictionary and then load it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
@@ -93,9 +90,6 @@ namespace H1EMU_Launcher
         public void UpdateLang()
         {
             Resources.MergedDictionaries.Clear();
-
-            //Set just language code ex: en-us, fr-ca from the settings
-            SetLanguageFile.SetLanguageCode();
 
             //Adds the correct language file to the resource dictionary and then load it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());

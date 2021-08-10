@@ -24,6 +24,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using H1EMU_Launcher.Resources;
 using System.Text.Json.Serialization;
+using System.Windows.Automation.Peers;
+using System.Windows.Automation.Provider;
 
 namespace H1EMU_Launcher
 {
@@ -58,9 +60,6 @@ namespace H1EMU_Launcher
         {
             InitializeComponent();
             lncher = this;
-
-            //Set just language code ex: en-us, fr-ca
-            SetLanguageFile.SetLanguageCode();
 
             //Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
@@ -472,6 +471,9 @@ namespace H1EMU_Launcher
                 case 3:
                     SetLanguageFile.SaveLang(3);
                     break;
+                case 4:
+                    SetLanguageFile.SaveLang(4);
+                    break;
                 default:
                     CustomMessageBox.Show("Error selecting language.");
                     return;
@@ -557,24 +559,69 @@ namespace H1EMU_Launcher
             launcherFade.Visibility = Visibility.Hidden;
         }
 
+        public bool doContinue = true;
+
+        private void StoryboardCompleted(object sender, EventArgs e)
+        {
+            doContinue = true;
+        }
+
         private void PrevImageClick(object sender, RoutedEventArgs e)
+        {
+            if (!doContinue) { return; }
+
+            if (carouselProgressBar.Value != 3000)
+            {
+                Classes.Carousel.progressI = 0;
+                carouselProgressBar.Value = 0;
+            }
+
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(fauxPrevImage);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
+
+            doContinue = false;
+        }
+
+        private void NextImageClick(object sender, RoutedEventArgs e)
+        {
+            if (!doContinue) { return; }
+
+            if (carouselProgressBar.Value != 3000)
+            {
+                Classes.Carousel.progressI = 0;
+                carouselProgressBar.Value = 0;
+            }
+
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(fauxNextImage);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
+
+            doContinue = false;
+        }
+
+        private void FauxPrevImageClick(object sender, RoutedEventArgs e)
         {
             Classes.Carousel.PreviousImage();
         }
 
-        private void NextImageClick(object sender, RoutedEventArgs e)
+        private void FauxNextImageClick(object sender, RoutedEventArgs e)
         {
             Classes.Carousel.NextImage();
         }
 
         private void CarouselMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
+            Classes.Carousel.pauseCarousel.Reset();
+
             prevImage.Visibility = Visibility.Visible;
             nextImage.Visibility = Visibility.Visible;
         }
 
         private void CarouselMouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
+            Classes.Carousel.pauseCarousel.Set();
+
             prevImage.Visibility = Visibility.Hidden;
             nextImage.Visibility = Visibility.Hidden;
         }

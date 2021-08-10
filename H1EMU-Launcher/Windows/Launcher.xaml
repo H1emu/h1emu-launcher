@@ -18,10 +18,112 @@
         Activated="MainLauncherActivated"
         Closed="MainLauncher_Closed">
 
-        <WindowChrome.WindowChrome>
-            <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
-        </WindowChrome.WindowChrome>
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
+    </WindowChrome.WindowChrome>
 
+    <Window.Resources>
+        <Storyboard x:Key="NextImageAnimation" Completed="StoryboardCompleted">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="carouselImage">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="-3"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.10" Value="-6"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.15" Value="-12"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.20" Value="-24"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.25" Value="-48"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.30" Value="-96"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.35" Value="-144"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.40" Value="-192"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.60" Value="-381"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.65" Value="-429"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.70" Value="-477"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.75" Value="-525"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.80" Value="-549"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.85" Value="-561"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.90" Value="-567"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.95" Value="-570"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.00" Value="-573"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="NextImageAnimationFollow" Completed="StoryboardCompleted">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="carouselImageSlider">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="573"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="570"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.10" Value="567"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.15" Value="561"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.20" Value="549"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.25" Value="525"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.30" Value="477"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.35" Value="429"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.40" Value="381"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.60" Value="192"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.65" Value="144"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.70" Value="96"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.75" Value="48"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.80" Value="24"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.85" Value="12"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.90" Value="6"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.95" Value="3"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.00" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="PrevImageAnimation" Completed="StoryboardCompleted">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="carouselImage">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="3"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.10" Value="6"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.15" Value="12"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.20" Value="24"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.25" Value="48"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.30" Value="96"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.35" Value="144"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.40" Value="192"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.60" Value="381"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.65" Value="429"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.70" Value="477"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.75" Value="525"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.80" Value="549"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.85" Value="561"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.90" Value="567"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.95" Value="570"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.00" Value="573"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="PrevImageAnimationFollow" Completed="StoryboardCompleted">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="carouselImageSlider">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="-573"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="-570"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.10" Value="-567"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.15" Value="-561"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.20" Value="-549"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.25" Value="-525"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.30" Value="-477"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.35" Value="-429"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.40" Value="-381"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.60" Value="-192"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.65" Value="-144"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.70" Value="-96"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.75" Value="-48"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.80" Value="-24"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.85" Value="-12"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.90" Value="-6"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:00.95" Value="-3"/>
+                <EasingDoubleKeyFrame KeyTime="00:00:01.00" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="fauxPrevImage">
+            <BeginStoryboard Storyboard="{StaticResource PrevImageAnimationFollow}"/>
+            <BeginStoryboard Storyboard="{StaticResource PrevImageAnimation}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="fauxNextImage">
+            <BeginStoryboard Storyboard="{StaticResource NextImageAnimationFollow}"/>
+            <BeginStoryboard Storyboard="{StaticResource NextImageAnimation}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    
     <Grid>
         <!-- Main Grid -->
         <Grid>
@@ -73,14 +175,15 @@
                         <!-- Wraps the about project informational -->
                         <WrapPanel Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Right">
                             <Grid>
-                                <ComboBox Style="{DynamicResource ComboBox}" x:Name="LangBox" FontSize="15" Margin="10,10,25,0" SelectedIndex="-1" SelectionChanged="ComboBox_SelectionChanged" BorderThickness="2" Foreground="White" Padding="34,2,10,0" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Height="30">
+                                <ComboBox Style="{DynamicResource ComboBox}" x:Name="LangBox" FontSize="15" Margin="10,10,25,0" SelectedIndex="-1" SelectionChanged="ComboBox_SelectionChanged" BorderThickness="2" Foreground="White" Padding="35,2,10,0" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Height="30">
                                     <ComboBoxItem Content="English"/>
                                     <ComboBoxItem Content="Chinese"/>
                                     <ComboBoxItem Content="Croatian"/>
                                     <ComboBoxItem Content="French"/>
+                                    <ComboBoxItem Content="Turkish"/>
                                 </ComboBox>
 
-                                <Image Source="..\Resources\Language.png" RenderOptions.BitmapScalingMode="Fant" Width="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="20,0,0,7" IsHitTestVisible="False"/>
+                                <Image Source="..\Resources\Language.png" RenderOptions.BitmapScalingMode="Fant" Width="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="21,0,0,7" IsHitTestVisible="False"/>
                             </Grid>
 
                             <TextBlock VerticalAlignment="Center" Margin="0,10,16,0">
@@ -148,18 +251,40 @@
                     </Grid.RowDefinitions>
 
                     <!-- Grid to dock the game image -->
-                    <Grid Grid.Row="1" Margin="30,20,12,25">
+                    <Grid Grid.Row="1" Margin="30,27,12,25">
                         <Grid x:Name="offlineImage" RenderOptions.BitmapScalingMode="Fant">
                             <Image Source="..\Resources\OfflineImage.png"/>
                         </Grid>
-                        
-                        <Grid x:Name="imageCarousel" Grid.Row="1" MouseEnter="CarouselMouseEnter" MouseLeave="CarouselMouseLeave" Visibility="Hidden">
-                            <Image x:Name="carouselImage" RenderOptions.BitmapScalingMode="Fant"/>
+
+                        <Grid x:Name="imageCarousel" MouseEnter="CarouselMouseEnter" MouseLeave="CarouselMouseLeave" Visibility="Hidden" ClipToBounds="True">
+                            <Image x:Name="carouselImageSlider" RenderOptions.BitmapScalingMode="Fant">
+                                <Image.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Image.RenderTransform>
+                            </Image>
+                            <Image x:Name="carouselImage" RenderOptions.BitmapScalingMode="Fant">
+                                <Image.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Image.RenderTransform>
+                            </Image>
 
                             <Button x:Name="prevImage" HorizontalAlignment="Left" Width="30" BorderThickness="0" Foreground="White" Click="PrevImageClick" Visibility="Hidden" Style="{DynamicResource CarouselButtonPrevious}"/>
                             <Button x:Name="nextImage" HorizontalAlignment="Right" Width="30" BorderThickness="0" Foreground="White" Click="NextImageClick" Visibility="Hidden" Style="{DynamicResource CarouselButtonNext}"/>
 
                             <ProgressBar x:Name="carouselProgressBar" VerticalAlignment="Bottom" Height="5" BorderThickness="0" Background="Transparent" Foreground="#DB111C" Maximum="3000"/>
+
+                            <Button x:Name="fauxPrevImage" Visibility="Hidden" Click="FauxPrevImageClick"/>
+                            <Button x:Name="fauxNextImage" Visibility="Hidden" Click="FauxNextImageClick"/>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -178,7 +303,7 @@
                         </FlowDocument>
                     </RichTextBox>
 
-                    <RichTextBox x:Name="patchNotesBox" Background="Transparent" Foreground="White" BorderThickness="0" Margin="0,10,0,0" IsReadOnly="True" Height="95" Cursor="Arrow"/>
+                    <RichTextBox x:Name="patchNotesBox" Background="Transparent" Foreground="White" BorderThickness="0" Margin="0,10,0,0" IsReadOnly="True" Height="96" Cursor="Arrow"/>
 
                     <!-- Hyperlink text to redirect to more udpates -->
                     <TextBlock Margin="6,22,0,0">
@@ -227,20 +352,20 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <ComboBox Grid.Row="1" x:Name="serverSelector" Foreground="White" Grid.Column="0" Height="35" BorderThickness="2" VerticalAlignment="Bottom" Margin="7,0,3,5" Padding="38,8,15,0" Style="{DynamicResource ComboBox}" SelectionChanged="ServerSelectorChanged">
+                        <ComboBox x:Name="serverSelector" Foreground="White" Grid.Column="0" Height="35" BorderThickness="2" VerticalAlignment="Bottom" Margin="7,0,3,5" Padding="38,8,15,0" Style="{DynamicResource ComboBox}" SelectionChanged="ServerSelectorChanged">
                             <ComboBoxItem Content="{DynamicResource item139}"/>
                             <ComboBoxItem Content="{DynamicResource item140}"/>
                             <Separator/>
                             <ComboBoxItem x:Name="newServer" Content="{DynamicResource item141}" PreviewMouseLeftButtonDown="AddNewServer"></ComboBoxItem>
                         </ComboBox>
 
-                        <Button Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="20" Width="20" Margin="17,0,0,13" Padding="0" BorderThickness="0" Click="DeleteServer" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource DeleteServer}">
+                        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="20" Width="20" Margin="17,0,0,13" Padding="0" BorderThickness="0" Click="DeleteServer" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource DeleteServer}">
                             <Button.Background>
                                 <ImageBrush ImageSource="..\Resources\Server.png"/>
                             </Button.Background>
                         </Button>
 
-                        <Button Grid.Row="1" Grid.Column="1" x:Name="playButton" Content="{DynamicResource item8}" Foreground="White" FontFamily="Arial Black" FontSize="28" Click="LaunchClient" Height="45" VerticalAlignment="Bottom" Margin="12,0,0,0" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
+                        <Button Grid.Column="1" x:Name="playButton" Content="{DynamicResource item8}" Foreground="White" FontFamily="Arial Black" FontSize="28" Click="LaunchClient" Height="45" VerticalAlignment="Bottom" Margin="12,0,0,0" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
                             <Button.Background>
                                 <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
                             </Button.Background>
@@ -252,10 +377,11 @@
             <!-- Footer -->
             <DockPanel Grid.Column="0" Grid.Row="2">
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Margin="35,1,0,0">
-                <Hyperlink NavigateUri="" Click="Hyperlink_Click">
-                    <TextBlock Text="{DynamicResource item62}"/>
-                </Hyperlink>
-            </TextBlock>
+                    <Hyperlink NavigateUri="" Click="Hyperlink_Click">
+                        <TextBlock Text="{DynamicResource item62}"/>
+                    </Hyperlink>
+                </TextBlock>
+                
                 <TextBlock Text="{DynamicResource item125}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,1,35,0" Foreground="White"/>
             </DockPanel>
         </Grid>
