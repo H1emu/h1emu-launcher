@@ -15,7 +15,7 @@
     <system:String x:Key="item11">你的steam账户中必须要有H1Z1：Just Survive这个游戏才能下载游戏本体，本项目不支持盗版。</system:String>
     <system:String x:Key="item12">加入社区在</system:String>
     <system:String x:Key="item13">启动游戏错误：</system:String>
-    <system:String x:Key="item14">未找到游戏或者H1Emu不支持当前游戏。</system:String>
+    <system:String x:Key="item14">未在指定的目录中找到游戏。</system:String>
     <system:String x:Key="item15">目前没有2016年12月版本的在线测试服务器。</system:String>
     <system:String x:Key="item16">你选择的目录未包含补丁文件。\n\n你是否要继续？ (没有补丁文件可能无法顺利进入游戏)</system:String>
     <system:String x:Key="item17">无法登录到Steam:</system:String>
@@ -111,11 +111,9 @@
     <system:String x:Key="item116">正在解压服务器文件...</system:String>
     <system:String x:Key="item117">正在下载服务器运行环境...</system:String>
     <system:String x:Key="item118">正在解压服务器运行环境...</system:String>
-    <system:String x:Key="item119">• 未检测到游戏版本 •</system:String>
     <system:String x:Key="item120">请关闭已经启动的H1Z1游戏。</system:String>
     <system:String x:Key="item121">H1Z1游戏已经启动。\n\n请关闭所有已经启动的H1Z1游戏。</system:String>
-    <system:String x:Key="item122">当前游戏版本：2015版</system:String>
-    <system:String x:Key="item123">当前游戏版本：2016版</system:String>
+    <system:String x:Key="item122">当前游戏版本：</system:String>
     <system:String x:Key="item124">启动器版本 v</system:String>
     <system:String x:Key="item125">Copyright © 2021 | H1Emu Project</system:String>
     <system:String x:Key="item126">领导开发</system:String>

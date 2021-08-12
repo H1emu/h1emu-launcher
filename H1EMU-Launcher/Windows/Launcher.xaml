@@ -316,7 +316,7 @@
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="220*"/>
-                        <RowDefinition Height="355*"/>
+                        <RowDefinition Height="338*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Margin="12,20,30,0">
                         <RichTextBox Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True" Cursor="Arrow">

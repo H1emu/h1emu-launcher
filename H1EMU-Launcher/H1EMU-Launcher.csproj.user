@@ -55,10 +55,10 @@
     <Page Update="Language\StringResources.fr.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Language\StringResources.tr-TR.xaml">
+    <Page Update="Language\StringResources.zh-CN.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Language\StringResources.zh-CN.xaml">
+    <Page Update="Language\StringResources.tr-TR.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SteamFrame\2FA.xaml">

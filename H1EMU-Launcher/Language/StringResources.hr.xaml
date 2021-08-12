@@ -15,7 +15,7 @@
     <system:String x:Key="item11">Da bi ste igrali H1Z1: Just Survive morate imati kopiju igre na svojem Steam računu. Projekt ne podržava piratstvo.</system:String>
     <system:String x:Key="item12">Pridružite se zajednici klikom na</system:String>
     <system:String x:Key="item13">Pogreška pri pokretanju igrice:</system:String>
-    <system:String x:Key="item14">Igra ili nije pronađena ili nije podržana od strane H1Emu.</system:String>
+    <system:String x:Key="item14">Igra nije pronađena u navedenom direktoriju.</system:String>
     <system:String x:Key="item15">Trenutno ne postoji test server za odabranu verziju igre. (Prosinac 2016)</system:String>
     <system:String x:Key="item16">Odabran direktorij ne sadržava patch datoteke.\n\nDa li ste sigurni da želite nastaviti? (Nećete biti u mogućnosti ulaska na servere)</system:String>
     <system:String x:Key="item17">Pogreška pri povezivanju sa Steam računom:</system:String>
@@ -69,10 +69,10 @@
     <system:String x:Key="item66">Nemoguće dohvatiti informacije s GitHuba:</system:String>
     <system:String x:Key="item67">Ne sada</system:String>
     <system:String x:Key="item68">Pregled datoteka...</system:String>
-    <system:String x:Key="item69">• Verzija igre nije otkrivena •</system:String>
+    <system:String x:Key="item69">• Verzija Igre Nije Otkrivena •</system:String>
     <system:String x:Key="item70">Otkrivanje verzije igre...</system:String>
     <system:String x:Key="item71">Otkrivena verzija igre: 15. siječanj 2015</system:String>
-    <system:String x:Key="item72">• Verzija igre nije podržana •</system:String>
+    <system:String x:Key="item72">• Verzija Igre Nije Podržana •</system:String>
     <system:String x:Key="item73">Molim vas pričekajte da se izvrši trenutni zadatak.</system:String>
     <system:String x:Key="item74">Otkrivena verzija igre: 22. prosinac 2016</system:String>
     <system:String x:Key="item75">Direktorij</system:String>
@@ -111,11 +111,9 @@
     <system:String x:Key="item116">Raspakiravanje datoteka servera...</system:String>
     <system:String x:Key="item117">Preuzimanje NodeJS standalone...</system:String>
     <system:String x:Key="item118">Raspakiravanje node datotka...</system:String>
-    <system:String x:Key="item119">• Verzija igre nije otkrivena •</system:String>
     <system:String x:Key="item120">Molim vas zatvorite H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe je trenutno u korištenju.\n\nZatvorite bilo koju inačicu H1Z1.</system:String>
-    <system:String x:Key="item122">Trenutna verzija igre: 2015</system:String>
-    <system:String x:Key="item123">Trenutna verzija igre: 2016</system:String>
+    <system:String x:Key="item122">Trenutna verzija igre:</system:String>
     <system:String x:Key="item124">Verzija launchera v</system:String>
     <system:String x:Key="item125">Copyright © 2021 | H1Emu Project</system:String>
     <system:String x:Key="item126">Vodeći developer</system:String>

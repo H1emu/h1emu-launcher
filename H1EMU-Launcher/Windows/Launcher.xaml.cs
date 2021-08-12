@@ -207,19 +207,6 @@ namespace H1EMU_Launcher
                 {
                     serverVersion = "npm run start-2016";
                 }
-                else if (gameVersion != "processBeingUsed")
-                {
-                    Dispatcher.Invoke((MethodInvoker)delegate
-                    {
-                        CustomMessageBox.Show(FindResource("item14").ToString());
-                    });
-
-                    return false;
-                }
-                else
-                {
-                    return false;
-                }
 
                 Process p = new Process();
                 ProcessStartInfo info = new ProcessStartInfo();
@@ -258,6 +245,13 @@ namespace H1EMU_Launcher
         private void LaunchClient(object sender, RoutedEventArgs e)
         {
             ma.Reset();
+
+            Settings settings = new Settings();
+
+            if (!settings.CheckDirectory())
+            {
+                return;
+            }
 
             string gameVersion = "";
             string serverIp = "";
@@ -308,7 +302,6 @@ namespace H1EMU_Launcher
 
                     Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        Settings settings = new Settings();
                         settings.CheckGameVersionNewThread();
                     });
 
@@ -383,17 +376,22 @@ namespace H1EMU_Launcher
 
                         process.Start();
                     }
-                    else if (gameVersion != "processBeingUsed")
+                    else if (gameVersion == "processBeingUsed")
                     {
                         Dispatcher.Invoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show(FindResource("item14").ToString());
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
                         });
 
                         return;
                     }
                     else
                     {
+                        Dispatcher.Invoke((MethodInvoker)delegate
+                        {
+                            CustomMessageBox.Show(FindResource("item58").ToString());
+                        });
+
                         return;
                     }
                 }

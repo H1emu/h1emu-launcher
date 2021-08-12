@@ -92,17 +92,22 @@ namespace H1EMU_Launcher
                         catch { }
                     }
                 }
-                else if (gameVersion != "processBeingUsed")
+                else if (gameVersion == "processBeingUsed")
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item14").ToString());
+                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
                     });
 
                     return;
                 }
                 else
                 {
+                    System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
+                    {
+                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item58").ToString());
+                    });
+
                     return;
                 }
             }

@@ -15,7 +15,7 @@
     <system:String x:Key="item11">Vous devez posséder H1Z1 : Just Survive sur votre compte Steam pour pouvoir le télécharger. Ce projet ne soutient pas le piratage.</system:String>
     <system:String x:Key="item12">Rejoignez la communauté sur</system:String>
     <system:String x:Key="item13">Erreur au lancement du jeu :</system:String>
-    <system:String x:Key="item14">Jeu non trouvé ou non pris en charge par H1Emu.</system:String>
+    <system:String x:Key="item14">Jeu introuvable dans le répertoire spécifié.</system:String>
     <system:String x:Key="item15">Il n'y a pas de serveur de test pour cette version du jeu actuellement. (décembre 2016)</system:String>
     <system:String x:Key="item16">Le répertoire sélectionné ne contient pas de fichiers patch. Voulez-vous quand même continuer ? (Vous ne pourrez pas vous connecter aux serveurs)</system:String>
     <system:String x:Key="item17">Impossible de se connecter à Steam :</system:String>
@@ -69,10 +69,10 @@
     <system:String x:Key="item66">Impossible de récupérer les informations GitHub:</system:String>
     <system:String x:Key="item67">Pas maintenant</system:String>
     <system:String x:Key="item68">Voir les fichiers...</system:String>
-    <system:String x:Key="item69">• Version du jeu non détectée •</system:String>
+    <system:String x:Key="item69">• Version Du Jeu Non Détectée •</system:String>
     <system:String x:Key="item70">Détection de la version du jeu en cours...</system:String>
     <system:String x:Key="item71">Version du jeu détectée : 15 janvier 2015</system:String>
-    <system:String x:Key="item72">• Version du jeu non supportée •</system:String>
+    <system:String x:Key="item72">• Version Du Jeu Non Supportée •</system:String>
     <system:String x:Key="item73">Veuillez attendre la fin des tâches en cours.</system:String>
     <system:String x:Key="item74">Version du jeu détectée : 22 décembre 2016</system:String>
     <system:String x:Key="item75">Directory</system:String>
@@ -111,11 +111,9 @@
     <system:String x:Key="item116">Décompression des fichiers du serveur...</system:String>
     <system:String x:Key="item117">Décompression des fichiers NodeJS...</system:String>
     <system:String x:Key="item118">Décompression des fichiers de nœuds...</system:String>
-    <system:String x:Key="item119">• Version du jeu non détectée •</system:String>
     <system:String x:Key="item120">Veuillez fermer H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe est actuellement en cours d'utilisation.\n\nVeuillez fermez toutes applications d'H1Z1 en cours d'utilisations.</system:String>
-    <system:String x:Key="item122">Version actuelle du jeu: 2015</system:String>
-    <system:String x:Key="item123">Version actuelle du jeu: 2016</system:String>
+    <system:String x:Key="item122">Version actuelle du jeu:</system:String>
     <system:String x:Key="item124">Version du launcher v</system:String>
     <system:String x:Key="item125">Copyright © 2021 | H1Emu Project</system:String>
     <system:String x:Key="item126">Lead Development</system:String>

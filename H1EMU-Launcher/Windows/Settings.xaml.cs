@@ -767,7 +767,6 @@ namespace H1EMU_Launcher
                         latestButton.IsEnabled = true;
                         stableButton.IsEnabled = true;
                         currentGame.Text = FindResource("item120").ToString();
-                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
                     });
 
                     gameVersion = "processBeingUsed";
@@ -781,7 +780,7 @@ namespace H1EMU_Launcher
 
                         Dispatcher.BeginInvoke((MethodInvoker)delegate
                         {
-                            currentGame.Text = FindResource("item122").ToString();
+                            currentGame.Text = $"{FindResource("item122").ToString()} 2015";
                         });
 
                         break;
@@ -790,7 +789,7 @@ namespace H1EMU_Launcher
 
                         Dispatcher.BeginInvoke((MethodInvoker)delegate
                         {
-                            currentGame.Text = FindResource("item123").ToString();
+                            currentGame.Text = $"{FindResource("item122").ToString()} 2016";
                         });
 
                         break;
@@ -861,6 +860,21 @@ namespace H1EMU_Launcher
 
                 CheckGameVersion();
 
+                if (gameVersion == "processBeingUsed")
+                {
+                    System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
+                    {
+                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                    });
+                }
+                else if (gameVersion != "15jan2015" && gameVersion != "22dec2016")
+                {
+                    Dispatcher.BeginInvoke((MethodInvoker)delegate
+                    {
+                        currentGame.Text = FindResource("item72").ToString();
+                    });
+                }
+
             }).Start();
         }
 
@@ -894,6 +908,8 @@ namespace H1EMU_Launcher
                     directoryBox.Text = Properties.Settings.Default.activeDirectory;
                 });
 
+                if (!CheckDirectory()) { return; }
+
                 CheckGameVersion();
 
                 if (gameVersion == "15jan2015")
@@ -910,16 +926,23 @@ namespace H1EMU_Launcher
                         CustomMessageBox.Show(FindResource("item74").ToString());
                     });
                 }
-                else if (gameVersion != "processBeingUsed")
+                else if (gameVersion == "processBeingUsed")
+                {
+                    Dispatcher.Invoke((MethodInvoker)delegate
+                    {
+                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                    });
+
+                    return;
+                }
+                else
                 {
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
                         currentGame.Text = FindResource("item72").ToString();
                         CustomMessageBox.Show(FindResource("item58").ToString());
                     });
-                }
-                else
-                {
+
                     return;
                 }
 
@@ -968,13 +991,14 @@ namespace H1EMU_Launcher
                 return;
             }
 
+            this.Topmost = true;
+
             Launcher.lncher.launcherBlur.Radius = 0;
             Launcher.lncher.launcherFade.Visibility = Visibility.Hidden;
         }
 
         public void CloseButton(object sender, RoutedEventArgs e)
         {
-            this.Topmost = true;
             this.Close();
         }
 
