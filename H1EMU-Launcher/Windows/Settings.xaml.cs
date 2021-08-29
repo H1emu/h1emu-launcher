@@ -413,7 +413,7 @@ namespace H1EMU_Launcher
                         {
                             sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{Launcher.nodeJSVersion}-win-x64");
                             sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
-                            sw.WriteLine("npm i --production h1z1-server@nightly");
+                            sw.WriteLine("npm i --production h1z1-server@next");
                         }
                     }
 
