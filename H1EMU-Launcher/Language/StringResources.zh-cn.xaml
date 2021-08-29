@@ -59,7 +59,7 @@
     <system:String x:Key="item56">处理数据包 {0} - {1}</system:String>
     <system:String x:Key="item57">预分配空间...</system:String>
     <system:String x:Key="item58">H1Emu不支持当前游戏版本。</system:String>
-    <system:String x:Key="item59">这里输入 Steam 账号</system:String>
+    <system:String x:Key="item59">用户名</system:String>
     <system:String x:Key="item60">这里输入Steam密码</system:String>
     <system:String x:Key="item61">查看最新版本的详细信息...</system:String>
     <system:String x:Key="item62">游戏配置...</system:String>
@@ -147,4 +147,5 @@
     <system:String x:Key="item154">认证密钥...</system:String>
     <system:String x:Key="item155">认证密钥</system:String>
     <system:String x:Key="item156">登录H1Emu服务器需要设置认证密钥，您可以在H1Emu网站的个人账号信息中获取，网址：</system:String>
+    <system:String x:Key="item157">请注意：最新版单机服务器为开发版本，可能存在不稳定甚至闪退等问题。\n\n是否继续安装最新版服务器？</system:String>
 </ResourceDictionary>

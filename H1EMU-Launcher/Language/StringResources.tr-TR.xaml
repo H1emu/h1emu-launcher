@@ -4,7 +4,7 @@
 
     <system:String x:Key="item1">Yeni bir güncelleme var, yüklemek ister misiniz?</system:String>
     <system:String x:Key="item2">GÜNCELLEME</system:String>
-    <system:String x:Key="item3">Güncelleme Versiyonu</system:String>
+    <system:String x:Key="item3">Versiyonu</system:String>
     <system:String x:Key="item4">Yerel tekli sunucu için buradan başlatın.</system:String>
     <system:String x:Key="item5">Yerel bir sunucuya bağlanmak için OYNA tuşuna basın.</system:String>
     <system:String x:Key="item6">H1Emu test sunucusuna bağlanmak için BAĞLAN tuşuna basın.(2015 için)</system:String>
@@ -59,7 +59,7 @@
     <system:String x:Key="item56">Depo işleniyor {0} - {1}</system:String>
     <system:String x:Key="item57">Disk alanı tanımlanıyor...</system:String>
     <system:String x:Key="item58">H1Emu bu oyun versiyonunu desteklemiyor.</system:String>
-    <system:String x:Key="item59">Steam Adı</system:String>
+    <system:String x:Key="item59">Kullanıcı adı</system:String>
     <system:String x:Key="item60">Şifre</system:String>
     <system:String x:Key="item61">Güncellemenin tüm detaylarını göster...</system:String>
     <system:String x:Key="item62">Ayarlar...</system:String>
@@ -147,4 +147,5 @@
     <system:String x:Key="item154">Erişim Kodu...</system:String>
     <system:String x:Key="item155">Erişim Kodu</system:String>
     <system:String x:Key="item156">H1Emu sunucularında oynamak için bir erişim kodu ayarlamalısınız.Bu kodu Profilinizde şu kısımda bulabilirsiniz:</system:String>
+    <system:String x:Key="item157">Sunucunun en son sürümü bir geliştirme yapısıdır, kararsız olabileceği ve çökmelere neden olabileceği konusunda uyarılırsınız.\n\nYine de devam etmek ister misiniz?</system:String>
 </ResourceDictionary>

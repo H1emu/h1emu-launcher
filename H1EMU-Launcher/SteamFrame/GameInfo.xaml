@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:H1EMU_Launcher"
       mc:Ignorable="d" 
-      d:DesignHeight="100"
+      d:DesignHeight="140"
       d:DesignWidth="565"
       FontFamily="Bahnschrift Light"
       Title="GameInfo">

@@ -59,7 +59,7 @@
     <system:String x:Key="item56">Procesiranje depoa {0} - {1}</system:String>
     <system:String x:Key="item57">Alociranje prostora...</system:String>
     <system:String x:Key="item58">Verzija nije podržana od strane H1Emu.</system:String>
-    <system:String x:Key="item59">Steam ID</system:String>
+    <system:String x:Key="item59">Korisničko ime</system:String>
     <system:String x:Key="item60">Šifra</system:String>
     <system:String x:Key="item61">Prikaži detalje nove verzije...</system:String>
     <system:String x:Key="item62">Postavke...</system:String>
@@ -147,4 +147,5 @@
     <system:String x:Key="item154">Auth Ključ...</system:String>
     <system:String x:Key="item155">Auth Ključ</system:String>
     <system:String x:Key="item156">Da bi ste mogli igrati na H1Emu serverima, morate imati zadani Auth ključ.  Opciju možete pronaći na vašem profilu:</system:String>
+    <system:String x:Key="item157">Najnovija verzija servera je development build pa je moguće da zbog nestabilnosti dođe do neočekivanog prekida rada.\n\nDa li ste sigurni da želite nastaviti?</system:String>
 </ResourceDictionary>

@@ -6,7 +6,7 @@
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:H1EMU_Launcher"
       mc:Ignorable="d" 
-      d:DesignHeight="100"
+      d:DesignHeight="140"
       d:DesignWidth="565"
       FontFamily="Bahnschrift Light"
       Title="_2FA">

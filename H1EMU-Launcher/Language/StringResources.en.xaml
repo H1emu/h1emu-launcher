@@ -59,7 +59,7 @@
     <system:String x:Key="item56">Processing depot {0} - {1}</system:String>
     <system:String x:Key="item57">Pre-allocating space...</system:String>
     <system:String x:Key="item58">Game version not supported by H1Emu.</system:String>
-    <system:String x:Key="item59">Steam ID</system:String>
+    <system:String x:Key="item59">Username</system:String>
     <system:String x:Key="item60">Password</system:String>
     <system:String x:Key="item61">View full details of the update...</system:String>
     <system:String x:Key="item62">Settings...</system:String>
@@ -147,4 +147,5 @@
     <system:String x:Key="item154">Auth Key...</system:String>
     <system:String x:Key="item155">Auth Key</system:String>
     <system:String x:Key="item156">To play on H1Emu Servers, you need to set an Auth Key. You can find this on your profile at:</system:String>
+    <system:String x:Key="item157">The latest version of the server is a development build, be warned that it may be unstable and cause crashes.\n\nWould you like to continue anyway?</system:String>
 </ResourceDictionary>

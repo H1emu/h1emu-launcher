@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Automation.Peers;
@@ -94,22 +95,42 @@ namespace H1EMU_Launcher.Classes
 
         public static void DownloadImages()
         {
-            int number = 1;
-
             WebClient wc = new WebClient();
+            int number = 0;
 
-            while (true)
+            string url = "https://h1emu.com/Public/uploads/media/embed/";
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+
+            try
             {
-                try
+                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
                 {
-                    wc.DownloadString($"https://h1emu.com/Public/uploads/media/embed/{number}.png");
-                    wc.DownloadFile($"https://h1emu.com/Public/uploads/media/embed/{number}.png", $"{Launcher.appDataPath}\\H1EmuLauncher\\CarouselImages\\{number}.png");
-                    number++;
+                    using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                    {
+                        string html = reader.ReadToEnd();
+                        Regex regex = new Regex("<a href=\".*\">(?<name>.*)</a>");
+                        MatchCollection matches = regex.Matches(html);
+                        if (matches.Count > 0)
+                        {
+                            foreach (Match match in matches)
+                            {
+                                if (match.Success)
+                                {
+                                    number++;
+
+                                    if (number != 1 && number != 2)
+                                    {
+                                        wc.DownloadFile($"https://h1emu.com/Public/uploads/media/embed/{match.Groups["name"]}", $"{Launcher.appDataPath}\\H1EmuLauncher\\CarouselImages\\{match.Groups["name"]}");
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-                catch
-                {
-                    break;
-                }
+            }
+            catch
+            {
+                return;
             }
         }
     }

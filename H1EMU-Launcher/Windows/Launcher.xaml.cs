@@ -1,27 +1,15 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Reflection;
-using System.Text;
 using System.Text.Json;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using H1EMU_Launcher.Resources;
 using System.Text.Json.Serialization;
 using System.Windows.Automation.Peers;
@@ -37,6 +25,8 @@ namespace H1EMU_Launcher
     {
 
 #pragma warning disable SYSLIB0014 // Warning saying that WebClient is discontinued and not supported anymore.
+
+        public static string nodeJSVersion = "16.8.0";
 
         public static string recentDateServer;
         public static string latestUpdateVersionServer;
@@ -221,7 +211,7 @@ namespace H1EMU_Launcher
                 {
                     if (sw.BaseStream.CanWrite)
                     {
-                        sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.6.0-win-x64");
+                        sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{nodeJSVersion}-win-x64");
                         sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
                         sw.WriteLine(serverVersion);
 
@@ -410,6 +400,12 @@ namespace H1EMU_Launcher
         {
             LangBox.SelectedIndex = Properties.Settings.Default.language;
 
+            try
+            {
+                Directory.Delete($"{appDataPath}\\H1EmuLauncher\\CarouselImages", true);
+            }
+            catch { }
+
             Directory.CreateDirectory($"{appDataPath}\\H1EmuLauncher\\CarouselImages");
             Directory.CreateDirectory($"{appDataPath}\\H1EmuLauncher");
             serverJsonFile = System.IO.Path.Combine($"{appDataPath}\\H1EmuLauncher", "servers.json");
@@ -418,7 +414,11 @@ namespace H1EMU_Launcher
 
             Classes.Carousel.BeginImageCarousel();
 
-            File.Delete($"{appDataPath}\\H1EmuLauncher\\{MainWindow.downloadFileName}");
+            try
+            {
+                File.Delete($"{appDataPath}\\H1EmuLauncher\\{MainWindow.downloadFileName}");
+            }
+            catch { }
 
             // Update version, date published and patch notes code.
 
@@ -472,6 +472,18 @@ namespace H1EMU_Launcher
                 case 4:
                     SetLanguageFile.SaveLang(4);
                     break;
+                case 5:
+                    SetLanguageFile.SaveLang(5);
+                    break;
+                case 6:
+                    SetLanguageFile.SaveLang(6);
+                    break;
+                case 7:
+                    SetLanguageFile.SaveLang(7);
+                    break;
+                case 8:
+                    SetLanguageFile.SaveLang(8);
+                    break;
                 default:
                     CustomMessageBox.Show("Error selecting language.");
                     return;
@@ -481,6 +493,73 @@ namespace H1EMU_Launcher
             ContentDownloader.UpdateLang();
             SteamFrame.Refresh();
             playButton.Content = FindResource("item8").ToString();
+        }
+
+        public bool doContinue = true;
+
+        private void StoryboardCompleted(object sender, EventArgs e)
+        {
+            doContinue = true;
+        }
+
+        private void PrevImageClick(object sender, RoutedEventArgs e)
+        {
+            if (!doContinue) { return; }
+
+            if (carouselProgressBar.Value != 3000)
+            {
+                Classes.Carousel.progressI = 0;
+                carouselProgressBar.Value = 0;
+            }
+
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(fauxPrevImage);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
+
+            doContinue = false;
+        }
+
+        private void NextImageClick(object sender, RoutedEventArgs e)
+        {
+            if (!doContinue) { return; }
+
+            if (carouselProgressBar.Value != 3000)
+            {
+                Classes.Carousel.progressI = 0;
+                carouselProgressBar.Value = 0;
+            }
+
+            ButtonAutomationPeer peer = new ButtonAutomationPeer(fauxNextImage);
+            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
+            invokeProv.Invoke();
+
+            doContinue = false;
+        }
+
+        private void FauxPrevImageClick(object sender, RoutedEventArgs e)
+        {
+            Classes.Carousel.PreviousImage();
+        }
+
+        private void FauxNextImageClick(object sender, RoutedEventArgs e)
+        {
+            Classes.Carousel.NextImage();
+        }
+
+        private void CarouselMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Classes.Carousel.pauseCarousel.Reset();
+
+            prevImage.Visibility = Visibility.Visible;
+            nextImage.Visibility = Visibility.Visible;
+        }
+
+        private void CarouselMouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            Classes.Carousel.pauseCarousel.Set();
+
+            prevImage.Visibility = Visibility.Hidden;
+            nextImage.Visibility = Visibility.Hidden;
         }
 
         private void AboutHyperlink(object sender, RoutedEventArgs e)
@@ -555,73 +634,6 @@ namespace H1EMU_Launcher
         {
             launcherBlur.Radius = 0;
             launcherFade.Visibility = Visibility.Hidden;
-        }
-
-        public bool doContinue = true;
-
-        private void StoryboardCompleted(object sender, EventArgs e)
-        {
-            doContinue = true;
-        }
-
-        private void PrevImageClick(object sender, RoutedEventArgs e)
-        {
-            if (!doContinue) { return; }
-
-            if (carouselProgressBar.Value != 3000)
-            {
-                Classes.Carousel.progressI = 0;
-                carouselProgressBar.Value = 0;
-            }
-
-            ButtonAutomationPeer peer = new ButtonAutomationPeer(fauxPrevImage);
-            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
-            invokeProv.Invoke();
-
-            doContinue = false;
-        }
-
-        private void NextImageClick(object sender, RoutedEventArgs e)
-        {
-            if (!doContinue) { return; }
-
-            if (carouselProgressBar.Value != 3000)
-            {
-                Classes.Carousel.progressI = 0;
-                carouselProgressBar.Value = 0;
-            }
-
-            ButtonAutomationPeer peer = new ButtonAutomationPeer(fauxNextImage);
-            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
-            invokeProv.Invoke();
-
-            doContinue = false;
-        }
-
-        private void FauxPrevImageClick(object sender, RoutedEventArgs e)
-        {
-            Classes.Carousel.PreviousImage();
-        }
-
-        private void FauxNextImageClick(object sender, RoutedEventArgs e)
-        {
-            Classes.Carousel.NextImage();
-        }
-
-        private void CarouselMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            Classes.Carousel.pauseCarousel.Reset();
-
-            prevImage.Visibility = Visibility.Visible;
-            nextImage.Visibility = Visibility.Visible;
-        }
-
-        private void CarouselMouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
-        {
-            Classes.Carousel.pauseCarousel.Set();
-
-            prevImage.Visibility = Visibility.Hidden;
-            nextImage.Visibility = Visibility.Hidden;
         }
     }
 }

@@ -451,6 +451,22 @@ namespace H1EMU_Launcher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Ново обновление е налично,желаете ли да го изтеглите?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Обновление&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Обнови версията&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Натисни [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_bg_BG {
+            get {
+                return ResourceManager.GetString("StringResources_bg_BG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Une mise à jour est disponible, voulez vous la télécharger?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Mise à jour&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Maj Version&lt;/system:String&gt;
@@ -475,6 +491,38 @@ namespace H1EMU_Launcher.Properties {
         internal static string StringResources_hr {
             get {
                 return ResourceManager.GetString("StringResources_hr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Dostępna jest nowa aktualizacja, Czy chcesz zaktualizować teraz?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;AKTUALIZACJA&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;WERSJA AKTUALIZACJI&lt;/system:String&gt;
+        ///    &lt;system:String x:Ke [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_pl_PL {
+            get {
+                return ResourceManager.GetString("StringResources_pl_PL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Доступно новое обновление, хотите обновить сейчас?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ОБНОВИТЬ&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Обновление&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Нажмите здесь, чт [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_ru_RU {
+            get {
+                return ResourceManager.GetString("StringResources_ru_RU", resourceCulture);
             }
         }
         

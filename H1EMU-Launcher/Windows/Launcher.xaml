@@ -181,6 +181,10 @@
                                     <ComboBoxItem Content="Croatian"/>
                                     <ComboBoxItem Content="French"/>
                                     <ComboBoxItem Content="Turkish"/>
+                                    <ComboBoxItem Content="Polish"/>
+                                    <ComboBoxItem Content="Russian"/>
+                                    <ComboBoxItem Content="Dutch"/>
+                                    <ComboBoxItem Content="Bulgarian"/>
                                 </ComboBox>
 
                                 <Image Source="..\Resources\Language.png" RenderOptions.BitmapScalingMode="Fant" Width="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="21,0,0,7" IsHitTestVisible="False"/>
@@ -334,11 +338,11 @@
                     
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="140"/>
                         </Grid.RowDefinitions>
                         
                         <DockPanel Margin="20,0,30,0">
-                            <Frame x:Name="SteamFrame" VerticalAlignment="Top" Source="..\\SteamFrame\Login.xaml" NavigationUIVisibility="Hidden" VerticalContentAlignment="Top" Padding="0" Height="100"/>
+                            <Frame x:Name="SteamFrame" VerticalAlignment="Top" Source="..\\SteamFrame\Login.xaml" NavigationUIVisibility="Hidden" VerticalContentAlignment="Top" Padding="0" Height="140"/>
                         </DockPanel>
                     </Grid>
 

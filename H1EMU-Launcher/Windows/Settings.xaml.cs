@@ -82,6 +82,7 @@ namespace H1EMU_Launcher
                             Dispatcher.BeginInvoke((MethodInvoker)delegate
                             {
                                 settingsProgressText.Text = FindResource("item93").ToString();
+                                settingsProgress.Value = 0;
                                 directoryButton.IsEnabled = true;
                                 patchButton.IsEnabled = true;
                                 latestButton.IsEnabled = true;
@@ -110,6 +111,7 @@ namespace H1EMU_Launcher
                             Dispatcher.BeginInvoke((MethodInvoker)delegate
                             {
                                 settingsProgressText.Text = FindResource("item93").ToString();
+                                settingsProgress.Value = 0;
                                 directoryButton.IsEnabled = true;
                                 patchButton.IsEnabled = true;
                                 latestButton.IsEnabled = true;
@@ -380,6 +382,12 @@ namespace H1EMU_Launcher
 
         public void DownloadServerLatest(object sender, RoutedEventArgs e)
         {
+            DialogResult dr = CustomMessageBox.ShowResult(FindResource("item157").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+            if (dr != System.Windows.Forms.DialogResult.Yes)
+            {
+                return;
+            }
+
             new Thread(() =>
             {
                 var watch = Stopwatch.StartNew();
@@ -387,7 +395,6 @@ namespace H1EMU_Launcher
                 try
                 {
                     if (!CheckDirectory()) { return; }
-
                     if (!DownloadMaster()) { return; }
 
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
@@ -404,9 +411,9 @@ namespace H1EMU_Launcher
                     {
                         if (sw.BaseStream.CanWrite)
                         {
-                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.6.0-win-x64");
+                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{Launcher.nodeJSVersion}-win-x64");
                             sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
-                            sw.WriteLine("npm i --production h1z1-server@latest");
+                            sw.WriteLine("npm i --production h1z1-server@nightly");
                         }
                     }
 
@@ -417,6 +424,7 @@ namespace H1EMU_Launcher
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
                         settingsProgressText.Text = FindResource("item93").ToString();
+                        settingsProgress.Value = 0;
                         directoryButton.IsEnabled = true;
                         patchButton.IsEnabled = true;
                         latestButton.IsEnabled = true;
@@ -467,7 +475,6 @@ namespace H1EMU_Launcher
                 try
                 {
                     if (!CheckDirectory()) { return; }
-
                     if (!DownloadMaster()) { return; }
 
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
@@ -484,9 +491,9 @@ namespace H1EMU_Launcher
                     {
                         if (sw.BaseStream.CanWrite)
                         {
-                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v16.6.0-win-x64");
+                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{Launcher.nodeJSVersion}-win-x64");
                             sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
-                            sw.WriteLine("npm i --production");
+                            sw.WriteLine("npm i --production h1z1-server@latest");
                         }
                     }
 
@@ -497,6 +504,7 @@ namespace H1EMU_Launcher
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
                         settingsProgressText.Text = FindResource("item93").ToString();
+                        settingsProgress.Value = 0;
                         directoryButton.IsEnabled = true;
                         patchButton.IsEnabled = true;
                         latestButton.IsEnabled = true;
@@ -666,11 +674,11 @@ namespace H1EMU_Launcher
 
             // Delete old .zip file in the case of corruption.
 
-            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v16.6.0-win-x64.zip");
+            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v{Launcher.nodeJSVersion}-win-x64.zip");
 
             // Download the NodeJS files.
 
-            string serverFiles = "https://nodejs.org/dist/v16.6.0/node-v16.6.0-win-x64.zip?" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            string serverFiles = "https://nodejs.org/dist/v" + Launcher.nodeJSVersion + "/node-v" + Launcher.nodeJSVersion + "-win-x64.zip?" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
             ManualResetEvent ma = new ManualResetEvent(false);
 
@@ -690,7 +698,7 @@ namespace H1EMU_Launcher
             };
 
             var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
-            wc.DownloadFileAsync(new Uri(serverFiles), $"{Properties.Settings.Default.activeDirectory}\\Node-v16.6.0-win-x64.zip");
+            wc.DownloadFileAsync(new Uri(serverFiles), $"{Properties.Settings.Default.activeDirectory}\\Node-v{Launcher.nodeJSVersion}-win-x64.zip");
 
             ma.WaitOne();
 
@@ -703,13 +711,13 @@ namespace H1EMU_Launcher
 
             try
             {
-                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Node-v16.6.0-win-x64.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
+                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Node-v{Launcher.nodeJSVersion}-win-x64.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
             }
             catch { }
 
             // Delete the old .zip file, not needed anymore.
 
-            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v16.6.0-win-x64.zip");
+            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v{Launcher.nodeJSVersion}-win-x64.zip");
         }
 
         //////////////////////////

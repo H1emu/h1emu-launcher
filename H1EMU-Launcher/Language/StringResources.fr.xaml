@@ -4,7 +4,7 @@
 
     <system:String x:Key="item1">Une mise à jour est disponible, voulez vous la télécharger?</system:String>
     <system:String x:Key="item2">Mise à jour</system:String>
-    <system:String x:Key="item3">Maj Version</system:String>
+    <system:String x:Key="item3">Màj Version</system:String>
     <system:String x:Key="item4">Appuyez sur "lancer" ici pour lancer le serveur local.</system:String>
     <system:String x:Key="item5">Appuyez sur "jouer" ici pour vous connecter à un serveur local.</system:String>
     <system:String x:Key="item6">Appuyez sur "connecter" ici pour vous connecter au serveur de test H1Emu. (2015 seulement)</system:String>
@@ -59,7 +59,7 @@
     <system:String x:Key="item56">Dépôt de traitement {0} - {1}</system:String>
     <system:String x:Key="item57">Pré-attribution de l'espace...</system:String>
     <system:String x:Key="item58">Version du jeu non prise en charge par H1Emu.</system:String>
-    <system:String x:Key="item59">Steam ID</system:String>
+    <system:String x:Key="item59">Nom d'utilisateur</system:String>
     <system:String x:Key="item60">Mot de passe</system:String>
     <system:String x:Key="item61">Voir tous les détails de la mise à jour...</system:String>
     <system:String x:Key="item62">Paramètres...</system:String>
@@ -146,5 +146,6 @@
     <system:String x:Key="item153">Lors de la connexion aux serveurs H1Emu, vous devez définir une clé d'authentification. Cela peut être fait dans le menu Paramètres.</system:String>
     <system:String x:Key="item154">Clé d'authentification...</system:String>
     <system:String x:Key="item155">Clé d'authentification</system:String>
-    <system:String x:Key="item156">Pour jouer sur les serveurs H1Emu, vous devez définir une clé d'authentification. Vous pouvez le trouver sur votre profil à l'adresse :</system:String>
+    <system:String x:Key="item156">Pour jouer sur les serveurs H1Emu, vous devez définir une clé d'authentification. Vous pouvez le trouver sur votre profil à l'adresse:</system:String>
+    <system:String x:Key="item157">La dernière version du serveur est une version de développement, sachez qu'elle peut être instable et provoquer des plantages.\n\nVoulez-vous continuer malgré tout?</system:String>
 </ResourceDictionary>
