@@ -453,8 +453,8 @@ namespace H1EMU_Launcher.Properties {
         ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Ново обновление е налично,желаете ли да го изтеглите?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Обновление&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Обнови версията&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Натисни [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Версията&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Натисни пусни  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_bg_BG {
             get {
@@ -467,9 +467,24 @@ namespace H1EMU_Launcher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Eine neue Aktualisierung ist verfügbar, möchtest du die Aktualisierung jetzt ausführen?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Aktualisierung&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Version Aktualisieren&lt;/system:Strin [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_de_DE {
+            get {
+                return ResourceManager.GetString("StringResources_de_DE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Une mise à jour est disponible, voulez vous la télécharger?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Mise à jour&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Maj Version&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Màj Version&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Appu [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_fr_FR {
@@ -501,8 +516,8 @@ namespace H1EMU_Launcher.Properties {
         ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Dostępna jest nowa aktualizacja, Czy chcesz zaktualizować teraz?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;AKTUALIZACJA&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;WERSJA AKTUALIZACJI&lt;/system:String&gt;
-        ///    &lt;system:String x:Ke [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Wersja&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Uży [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_pl_PL {
             get {
@@ -533,8 +548,8 @@ namespace H1EMU_Launcher.Properties {
         ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Yeni bir güncelleme var, yüklemek ister misiniz?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;GÜNCELLEME&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Güncelleme Versiyonu&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Yerel t [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versiyonu&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Yerel tekli sunucu [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_tr_TR {
             get {

@@ -185,6 +185,7 @@
                                     <ComboBoxItem Content="Russian"/>
                                     <ComboBoxItem Content="Dutch"/>
                                     <ComboBoxItem Content="Bulgarian"/>
+                                    <ComboBoxItem Content="German"/>
                                 </ComboBox>
 
                                 <Image Source="..\Resources\Language.png" RenderOptions.BitmapScalingMode="Fant" Width="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="21,0,0,7" IsHitTestVisible="False"/>
@@ -311,7 +312,7 @@
 
                     <!-- Hyperlink text to redirect to more udpates -->
                     <TextBlock Margin="6,22,0,0">
-                        <Hyperlink NavigateUri="https://github.com/QuentinGruber/h1z1-server/releases/latest" RequestNavigate="FullUpdatesHyperlink">
+                        <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/" RequestNavigate="FullUpdatesHyperlink">
                             <TextBlock Text="{DynamicResource item61}"/>
                         </Hyperlink>
                     </TextBlock>
