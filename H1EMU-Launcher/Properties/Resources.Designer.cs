@@ -469,7 +469,8 @@ namespace H1EMU_Launcher.Properties {
         ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Eine neue Aktualisierung ist verfügbar, möchtest du die Aktualisierung jetzt ausführen?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Aktualisierung&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Version Aktualisieren&lt;/system:Strin [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Aktualisieren&lt;/system:String&gt;
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_de_DE {
             get {
@@ -506,6 +507,22 @@ namespace H1EMU_Launcher.Properties {
         internal static string StringResources_hr {
             get {
                 return ResourceManager.GetString("StringResources_hr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Een niewe versie is beschikbaar, wilt u deze instaleren?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;INSTALEREN&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Werk bij&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Klik opstar [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_nl_NL {
+            get {
+                return ResourceManager.GetString("StringResources_nl_NL", resourceCulture);
             }
         }
         

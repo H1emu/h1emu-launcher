@@ -73,6 +73,9 @@
     <Page Update="Language\StringResources.de-DE.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Language\StringResources.nl-NL.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="SteamFrame\2FA.xaml">
       <SubType>Designer</SubType>
     </Page>
