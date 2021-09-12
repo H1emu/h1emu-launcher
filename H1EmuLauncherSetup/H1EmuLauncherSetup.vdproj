@@ -1208,15 +1208,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
-        "ProductCode" = "8:{5057A449-CEFE-45C7-889C-D1D3BCEBDC83}"
-        "PackageCode" = "8:{F71B076B-78D1-444F-8AFD-04EA80D6BA57}"
+        "ProductCode" = "8:{0A9986FA-09F6-47BF-BA94-5E08A518D238}"
+        "PackageCode" = "8:{A1A62CD2-B97D-4C83-BD8C-92506FC0E6F2}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.1.4"
+        "ProductVersion" = "8:2.1.5"
         "Manufacturer" = "8:H1Emu © 2021"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
@@ -1596,6 +1596,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_3A01745E226B4B48BF4BE962735172DF"
                     {
                     "Sequence" = "3:300"
+                    "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -1757,7 +1758,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2D66CB3FB34C461298B8A7FB878DDDA1"
             {
-            "SourcePath" = "8:..\\H1EMU-Launcher\\obj\\Release\\net5.0-windows7.0\\apphost.exe"
+            "SourcePath" = "8:..\\H1EMU-Launcher\\obj\\Debug\\net5.0-windows7.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"

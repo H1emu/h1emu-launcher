@@ -7,8 +7,8 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.1.4</AssemblyVersion>
-	  <FileVersion>2.1.4</FileVersion>
+	  <AssemblyVersion>2.1.5</AssemblyVersion>
+	  <FileVersion>2.1.5</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
@@ -69,6 +69,7 @@
     <Page Remove="Resources\StringResources.hr.xaml" />
     <Page Remove="Resources\StringResources.nl-NL.xaml" />
     <Page Remove="Resources\StringResources.pl-PL.xaml" />
+    <Page Remove="Resources\StringResources.pt-PT.xaml" />
     <Page Remove="Resources\StringResources.ru-RU.xaml" />
     <Page Remove="Resources\StringResources.tr-TR.xaml" />
     <Page Remove="Resources\StringResources.xaml" />

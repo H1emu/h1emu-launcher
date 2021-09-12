@@ -547,6 +547,22 @@ namespace H1EMU_Launcher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Uma nova atualização está disponível, quer atualizar agora?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ATUALIZAR&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versão da atualização&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Cli [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_pt_PT {
+            get {
+                return ResourceManager.GetString("StringResources_pt_PT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Доступно новое обновление, хотите обновить сейчас?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ОБНОВИТЬ&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Обновление&lt;/system:String&gt;

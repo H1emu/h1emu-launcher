@@ -115,7 +115,7 @@
                             <TextBlock Text="{DynamicResource item136}" TextWrapping="Wrap" TextDecorations="Underline"/>
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="18">
-                            • YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) •
+                            • YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) •
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Bold" Margin="0,100,0,0">
                             <TextBlock Text="{DynamicResource item132}" TextWrapping="Wrap" TextDecorations="Underline"/>

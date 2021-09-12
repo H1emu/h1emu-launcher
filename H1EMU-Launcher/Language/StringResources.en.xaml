@@ -4,7 +4,7 @@
 
     <system:String x:Key="item1">A new update is available, would you like to update now?</system:String>
     <system:String x:Key="item2">UPDATE</system:String>
-    <system:String x:Key="item3">Update Version</system:String>
+    <system:String x:Key="item3">Version</system:String>
     <system:String x:Key="item4">Press launch here to launch the local solo server.</system:String>
     <system:String x:Key="item5">Press play here to connect to a local server.</system:String>
     <system:String x:Key="item6">Press connect here to connect to the H1Emu test server. (2015 Only)</system:String>

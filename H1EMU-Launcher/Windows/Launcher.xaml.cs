@@ -456,8 +456,8 @@ namespace H1EMU_Launcher
 
             switch (selectedLanguage)
             {
+                //Update and save settings
                 case 0:
-                    //Update and save settings
                     SetLanguageFile.SaveLang(0);
                     break;
                 case 1:
@@ -486,6 +486,9 @@ namespace H1EMU_Launcher
                     break;
                 case 9:
                     SetLanguageFile.SaveLang(9);
+                    break;
+                case 10:
+                    SetLanguageFile.SaveLang(10);
                     break;
                 default:
                     CustomMessageBox.Show("Error selecting language.");

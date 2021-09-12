@@ -46,6 +46,9 @@ namespace H1EMU_Launcher.Resources
                 case 9:
                     dict.Source = new Uri("Language/StringResources.de-DE.xaml", UriKind.RelativeOrAbsolute);
                     break;
+                case 10:
+                    dict.Source = new Uri("Language/StringResources.pt-PT.xaml", UriKind.RelativeOrAbsolute);
+                    break;
                 default:
                     dict.Source = new Uri("Language/StringResources.en.xaml", UriKind.RelativeOrAbsolute);
                     break;
