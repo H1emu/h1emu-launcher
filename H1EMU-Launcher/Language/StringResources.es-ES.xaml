@@ -23,7 +23,7 @@
     <system:String x:Key="item19">• ESTADO •</system:String>
     <system:String x:Key="item21">Se obtuvo la clave de depot para {0} resultado: {1}</system:String>
     <system:String x:Key="item22">Se obtuvo la clave de autorización del CDN para {0} resultado: {1}</system:String>
-    <system:String x:Key="item23">Descarga completada!</system:String>
+    <system:String x:Key="item23">¡Descarga completada!</system:String>
     <system:String x:Key="item24">¿Necesitas descargar una versión diferente? ¡Presiona en el botón de abajo para iniciar se sesión de nuevo!</system:String>
     <system:String x:Key="item25">INICIAR SESIÓN</system:String>
     <system:String x:Key="item26">Descargando:</system:String>
