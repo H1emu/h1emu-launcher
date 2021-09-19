@@ -190,5 +190,10 @@ namespace H1EMU_Launcher
         {
             notNow.Foreground = new SolidColorBrush(Colors.Gray);
         }
+
+        private void MainUpdateWindowActivated(object sender, EventArgs e)
+        {
+            this.SizeToContent = SizeToContent.Manual;
+        }
     }
 }

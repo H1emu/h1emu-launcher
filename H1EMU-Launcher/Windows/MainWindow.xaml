@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow"
         x:Name="MainUpdateWindow"
-        Height="270" Width="450"
+        MinHeight="270" MinWidth="450"
+        MaxHeight="670" MaxWidth="450"
+        SizeToContent="WidthAndHeight"
+        Activated="MainUpdateWindowActivated"
         WindowStartupLocation="CenterScreen"
         Background="#FF2A2A32"
         Loaded="MainUpdateWindowLoaded"
@@ -24,8 +27,8 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="210"/>
         </Grid.RowDefinitions>
 
         <!--Creates the Grid to host the control box and title/icon-->
@@ -63,10 +66,10 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="85"/>
             </Grid.RowDefinitions>
             <DockPanel Grid.Row="0" Margin="25,0,25,0">
-                <TextBlock Width="320" FontSize="20" FontFamily="Bahnschrift Light" Foreground="FloralWhite" TextWrapping="Wrap" Text="{DynamicResource item1}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                <TextBlock Margin="25,0,25,5" FontSize="20" FontFamily="Bahnschrift Light" Foreground="FloralWhite" TextWrapping="Wrap" Text="{DynamicResource item1}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
             </DockPanel>
 
             <!-- Update button. -->

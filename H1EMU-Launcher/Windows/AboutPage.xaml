@@ -109,13 +109,13 @@
                             <TextBlock Text="{DynamicResource item131}" TextWrapping="Wrap" TextDecorations="Underline"/>
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="18">
-                            • rob138us •
+                            • rob138us • Dave •
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24">
                             <TextBlock Text="{DynamicResource item136}" TextWrapping="Wrap" TextDecorations="Underline"/>
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="18">
-                            • YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) •
+                            • YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) •
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Bold" Margin="0,100,0,0">
                             <TextBlock Text="{DynamicResource item132}" TextWrapping="Wrap" TextDecorations="Underline"/>

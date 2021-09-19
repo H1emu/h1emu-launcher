@@ -238,6 +238,9 @@
   <data name="StringResources_de_DE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Language\StringResources.de-DE.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="StringResources_es_ES" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Language\StringResources.es-ES.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="StringResources_fr_FR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Language\StringResources.fr.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>

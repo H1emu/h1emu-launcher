@@ -490,6 +490,9 @@ namespace H1EMU_Launcher
                 case 10:
                     SetLanguageFile.SaveLang(10);
                     break;
+                case 11:
+                    SetLanguageFile.SaveLang(11);
+                    break;
                 default:
                     CustomMessageBox.Show("Error selecting language.");
                     return;

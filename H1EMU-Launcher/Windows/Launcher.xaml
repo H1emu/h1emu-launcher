@@ -187,6 +187,7 @@
                                     <ComboBoxItem Content="Bulgarian"/>
                                     <ComboBoxItem Content="German"/>
                                     <ComboBoxItem Content="Portuguese"/>
+                                    <ComboBoxItem Content="Spanish"/>
                                 </ComboBox>
 
                                 <Image Source="..\Resources\Language.png" RenderOptions.BitmapScalingMode="Fant" Width="16" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="21,0,0,7" IsHitTestVisible="False"/>

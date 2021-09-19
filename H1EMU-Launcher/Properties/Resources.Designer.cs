@@ -437,8 +437,8 @@ namespace H1EMU_Launcher.Properties {
         ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;A new update is available, would you like to update now?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;UPDATE&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Update Version&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Press lau [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Version&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Press launch her [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources {
             get {
@@ -475,6 +475,22 @@ namespace H1EMU_Launcher.Properties {
         internal static string StringResources_de_DE {
             get {
                 return ResourceManager.GetString("StringResources_de_DE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Existe una nueva actualización disponible; ¿quieres actualizar ahora?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ACTUALIZAR&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versión&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_es_ES {
+            get {
+                return ResourceManager.GetString("StringResources_es_ES", resourceCulture);
             }
         }
         
@@ -549,8 +565,8 @@ namespace H1EMU_Launcher.Properties {
         ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Uma nova atualização está disponível, quer atualizar agora?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ATUALIZAR&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versão da atualização&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Cli [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versão&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Clique em lançar a [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_pt_PT {
             get {
