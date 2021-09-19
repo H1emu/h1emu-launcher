@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -48,6 +48,9 @@ namespace H1EMU_Launcher.Resources
                     break;
                 case 10:
                     dict.Source = new Uri("Language/StringResources.pt-PT.xaml", UriKind.RelativeOrAbsolute);
+                    break;
+				case 11:
+                    dict.Source = new Uri("Language/StringResources.es-ES.xaml", UriKind.RelativeOrAbsolute);
                     break;
                 default:
                     dict.Source = new Uri("Language/StringResources.en.xaml", UriKind.RelativeOrAbsolute);
