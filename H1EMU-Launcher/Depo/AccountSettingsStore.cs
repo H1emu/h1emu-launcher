@@ -1,12 +1,10 @@
-﻿using ProtoBuf;
-using System;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.IO.IsolatedStorage;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ProtoBuf;
 
 namespace H1EMU_Launcher
 {
@@ -17,17 +15,17 @@ namespace H1EMU_Launcher
         public Dictionary<string, byte[]> SentryData { get; private set; }
 
         [ProtoMember(2, IsRequired = false)]
-        public System.Collections.Concurrent.ConcurrentDictionary<string, int> ContentServerPenalty { get; private set; }
+        public ConcurrentDictionary<string, int> ContentServerPenalty { get; private set; }
 
         [ProtoMember(3, IsRequired = false)]
         public Dictionary<string, string> LoginKeys { get; private set; }
 
-        string FileName = null;
+        string FileName;
 
         AccountSettingsStore()
         {
             SentryData = new Dictionary<string, byte[]>();
-            ContentServerPenalty = new System.Collections.Concurrent.ConcurrentDictionary<string, int>();
+            ContentServerPenalty = new ConcurrentDictionary<string, int>();
             LoginKeys = new Dictionary<string, string>();
         }
 
@@ -36,7 +34,7 @@ namespace H1EMU_Launcher
             get { return Instance != null; }
         }
 
-        public static AccountSettingsStore Instance = null;
+        public static AccountSettingsStore Instance;
         static readonly IsolatedStorageFile IsolatedStorage = IsolatedStorageFile.GetUserStoreForAssembly();
 
         public static void LoadFromFile(string filename)
@@ -49,9 +47,9 @@ namespace H1EMU_Launcher
                 try
                 {
                     using (var fs = IsolatedStorage.OpenFile(filename, FileMode.Open, FileAccess.Read))
-                    using (DeflateStream ds = new DeflateStream(fs, CompressionMode.Decompress))
+                    using (var ds = new DeflateStream(fs, CompressionMode.Decompress))
                     {
-                        Instance = ProtoBuf.Serializer.Deserialize<AccountSettingsStore>(ds);
+                        Instance = Serializer.Deserialize<AccountSettingsStore>(ds);
                     }
                 }
                 catch (IOException ex)
@@ -76,9 +74,9 @@ namespace H1EMU_Launcher
             try
             {
                 using (var fs = IsolatedStorage.OpenFile(Instance.FileName, FileMode.Create, FileAccess.Write))
-                using (DeflateStream ds = new DeflateStream(fs, CompressionMode.Compress))
+                using (var ds = new DeflateStream(fs, CompressionMode.Compress))
                 {
-                    ProtoBuf.Serializer.Serialize<AccountSettingsStore>(ds, Instance);
+                    Serializer.Serialize(ds, Instance);
                 }
             }
             catch (IOException ex)

@@ -148,4 +148,14 @@
     <system:String x:Key="item155">认证密钥</system:String>
     <system:String x:Key="item156">登录H1Emu服务器需要设置认证密钥，您可以在H1Emu网站的个人账号信息中获取，网址：</system:String>
     <system:String x:Key="item157">请注意：最新版单机服务器为开发版本，可能存在不稳定甚至闪退等问题。\n\n是否继续安装最新版服务器？</system:String>
+    <system:String x:Key="item158">欢迎使用H1Emu！</system:String>
+    <system:String x:Key="item159">在您使用本项目前请注意本项目只支持如下两个日期的游戏版本：</system:String>
+    <system:String x:Key="item160">2015年1月15日</system:String>
+    <system:String x:Key="item161">与</system:String>
+    <system:String x:Key="item162">2016年12月22日</system:String>
+    <system:String x:Key="item163">请</system:String>
+    <system:String x:Key="item164">不要</system:String>
+    <system:String x:Key="item165">使用steam下载最新或者不是上述版本的游戏，因为除以上两个版本外其他版本不能正常使用。</system:String>
+    <system:String x:Key="item166">再次感谢您的关注，祝游戏愉快！</system:String>
+    <system:String x:Key="item167">继续使用</system:String>
 </ResourceDictionary>

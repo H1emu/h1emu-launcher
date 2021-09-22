@@ -8,7 +8,7 @@
         UseLayoutRounding="True"
         Title="Launcher"
         x:Name="AddServerMenu"
-        Width="420" Height="280"
+        Width="420" Height="300"
         WindowStartupLocation="CenterScreen"
         Background="#FF2A2A32"
         FontFamily="Bahnschrift Light"

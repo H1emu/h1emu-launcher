@@ -148,4 +148,14 @@
     <system:String x:Key="item155">Authentifizierungsschlüssel</system:String>
     <system:String x:Key="item156">Um auf H1Emu-Servern zu spielen, müssen Sie einen Authentifizierungsschlüssel festlegen. Diese findest du in deinem Profil unter:</system:String>
     <system:String x:Key="item157">Die neueste Version des Servers ist eine Entwicklungsversion. Seien Sie gewarnt, dass sie instabil sein und Abstürze verursachen kann.\n\nMöchten Sie trotzdem fortfahren?</system:String>
+    <system:String x:Key="item158">Willkommen bei H1Emu!</system:String>
+    <system:String x:Key="item159">BEVOR SIE BEGINNEN, beachten Sie bitte, dass dieses Projekt nur die folgenden Spielversionen unterstützt:</system:String>
+    <system:String x:Key="item160">15. Januar 2015</system:String>
+    <system:String x:Key="item161">und</system:String>
+    <system:String x:Key="item162">22. Dezember 2016</system:String>
+    <system:String x:Key="item163">Bitte</system:String>
+    <system:String x:Key="item164">NICHT</system:String>
+    <system:String x:Key="item165">die neueste Steam Version des Spiels oder eine andere Version, die oben nicht erwähnt wurde, da sie nicht funktioniert.</system:String>
+    <system:String x:Key="item166">Vielen Dank und viel Spaß!</system:String>
+    <system:String x:Key="item167">FORTSETZEN</system:String>
 </ResourceDictionary>

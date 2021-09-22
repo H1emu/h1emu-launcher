@@ -24,11 +24,13 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Rectangle Grid.Row="1" Height="2" Fill="#DB111C" Margin="40,10,40,0">
-            <Rectangle.Effect>
+
+        <Border Grid.Row="1" Height="2" Background="#FFCA1420" Margin="35,10,35,0" CornerRadius="40">
+            <Border.Effect>
                 <DropShadowEffect BlurRadius="8" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
-            </Rectangle.Effect>
-        </Rectangle>
+            </Border.Effect>
+        </Border>
+
         <TextBlock Grid.Row="0" Text="{DynamicResource item48}" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="30" Foreground="White" FontFamily="Bahnschrift Light" Padding="20,0,20,0"/>
         <TextBlock Grid.Row="2" Text="{DynamicResource item49}" TextAlignment="Center" FontSize="16" Foreground="White" FontFamily="Bahnschrift Light" Padding="0,11,0,0"/>
     </Grid>

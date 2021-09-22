@@ -65,7 +65,6 @@ namespace H1EMU_Launcher
                 installPatchResetEvent.Reset();
 
                 if (!CheckDirectory()) { return; }
-
                 CheckGameVersion();
 
                 switch (gameVersion)
@@ -129,6 +128,10 @@ namespace H1EMU_Launcher
                         }
                         break;
                     case "processBeingUsed":
+                        Dispatcher.BeginInvoke((MethodInvoker)delegate
+                        {
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                        });
                         break;
                     default:
                         Dispatcher.BeginInvoke((MethodInvoker)delegate
@@ -220,32 +223,6 @@ namespace H1EMU_Launcher
             });
 
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
-
-            /*
-
-            // Unzip asset patch files
-
-            Dispatcher.BeginInvoke((MethodInvoker)delegate
-            {
-                settingsProgressText.Text = FindResource("item149").ToString();
-            });
-
-            try
-            {
-                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\AssetPatch2015.zip", $"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets");
-            }
-            catch { }
-
-            // Delete the downloaded asset .zip file, not needed anymore.
-
-            Dispatcher.BeginInvoke((MethodInvoker)delegate
-            {
-                settingsProgressText.Text = FindResource("item100").ToString();
-            });
-
-            File.Delete($"{Properties.Settings.Default.activeDirectory}\\AssetPatch2015.zip");
-
-            */
 
             // Finish.
 
@@ -446,9 +423,6 @@ namespace H1EMU_Launcher
 
                 watch.Stop();
                 TimeSpan elapsedMs = watch.Elapsed;
-
-                Properties.Settings.Default.currentPatchVersion2016 = CheckPatchVersion.latestPatchVersion2016;
-                Properties.Settings.Default.Save();
 
                 Dispatcher.BeginInvoke((MethodInvoker)delegate
                 {
@@ -919,7 +893,6 @@ namespace H1EMU_Launcher
                 });
 
                 if (!CheckDirectory()) { return; }
-
                 CheckGameVersion();
 
                 if (gameVersion == "15jan2015")
@@ -959,6 +932,17 @@ namespace H1EMU_Launcher
             }).Start();
         }
 
+        public void OpenDirectory(object sender, RoutedEventArgs e)
+        {
+            if (!CheckDirectory()) { return; }
+
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = Properties.Settings.Default.activeDirectory,
+                UseShellExecute = true
+            });
+        }
+
         public bool CheckDirectory()
         {
             if (string.IsNullOrEmpty(Properties.Settings.Default.activeDirectory) || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
@@ -973,17 +957,6 @@ namespace H1EMU_Launcher
             }
 
             return true;
-        }
-
-        public void OpenDirectory(object sender, RoutedEventArgs e)
-        {
-            if (!CheckDirectory()) { return; }
-
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = Properties.Settings.Default.activeDirectory,
-                UseShellExecute = true
-            });
         }
 
         private void AuthKey_Click(object sender, RoutedEventArgs e)

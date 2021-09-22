@@ -1,5 +1,6 @@
 ﻿using H1EMU_Launcher.Resources;
 using System;
+using System.Media;
 using System.Windows;
 using System.Windows.Input;
 
@@ -9,9 +10,9 @@ namespace H1EMU_Launcher
     /// Interaction logic for MsgBox.xaml
     /// </summary>
 
-    public partial class MsgBox : Window
+    public partial class Disclaimer : Window
     {
-        public MsgBox()
+        public Disclaimer()
         {
             InitializeComponent();
 
@@ -21,28 +22,60 @@ namespace H1EMU_Launcher
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
+            Properties.Settings.Default.firstTimeUse = 1;
+            Properties.Settings.Default.Save();
+
             this.Topmost = true;
             this.Close();
         }
 
-        private void OkButton(object sender, RoutedEventArgs e)
+        private void ContinueButton(object sender, RoutedEventArgs e)
         {
+            Properties.Settings.Default.firstTimeUse = 1;
+            Properties.Settings.Default.Save();
+
             this.Topmost = true;
             this.Close();
         }
 
-        private void MoveMessageBox(object sender, MouseButtonEventArgs e)
+        private void MoveDisclaimer(object sender, MouseButtonEventArgs e)
         {
             this.DragMove();
         }
 
-        private void MainMsgBoxActivated(object sender, EventArgs e)
+        private void DisclaimerActivated(object sender, EventArgs e)
         {
             this.SizeToContent = SizeToContent.Manual;
         }
 
-        private void MainMsgBoxLoaded(object sender, RoutedEventArgs e)
+        public int seconds = 10;
+        public System.Windows.Forms.Timer timer;
+
+        private void timerTick(object sender, EventArgs e)
         {
+            seconds--;
+
+            if (seconds == -1) 
+            { 
+                timer.Stop(); 
+                continueButton.Content = FindResource("item167").ToString();
+                continueButton.IsEnabled = true;
+                CloseButton.IsEnabled = true;
+            }
+            else { continueButton.Content = seconds.ToString(); }
+        }
+
+        private void DisclaimerLoaded(object sender, RoutedEventArgs e)
+        {
+            SystemSounds.Beep.Play();
+
+            timer = new System.Windows.Forms.Timer();
+            timer.Tick += new EventHandler(timerTick);
+            timer.Interval = 1000;
+            timer.Start();
+
+            continueButton.Content = seconds.ToString();
+
             if (AboutPage.abtpage != null)
             {
                 AboutPage.abtpage.aboutPageBlur.Radius = 15;

@@ -168,22 +168,6 @@ namespace H1EMU_Launcher
 
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
 
-            /*
-
-            // Unzip asset patch files
-
-            try
-            {
-                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\AssetPatch2015.zip", $"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets");
-            }
-            catch { }
-
-            // Delete the downloaded asset .zip file, not needed anymore.
-
-            File.Delete($"{Properties.Settings.Default.activeDirectory}\\AssetPatch2015.zip");
-
-            */
-
             // Finish
 
             Properties.Settings.Default.currentPatchVersion2015 = latestPatchVersion2015;

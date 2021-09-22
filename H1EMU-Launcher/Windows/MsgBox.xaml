@@ -31,7 +31,7 @@
         </Grid.RowDefinitions>
 
         <!-- Top bar grid. -->
-        <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#FF2A2A32">
+        <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="MoveMessageBox" Background="#FF2A2A32">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>

@@ -114,7 +114,7 @@
     <system:String x:Key="item120">Please close H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe is currently being used.\n\nClose any open instances of H1Z1.</system:String>
     <system:String x:Key="item122">Current Game Version:</system:String>
-    <system:String x:Key="item124">Launcher version v</system:String>
+    <system:String x:Key="item124">Launcher Version v</system:String>
     <system:String x:Key="item125">Copyright © 2021 | H1Emu Project</system:String>
     <system:String x:Key="item126">Lead Development</system:String>
     <system:String x:Key="item127">Co-Development</system:String>
@@ -148,4 +148,14 @@
     <system:String x:Key="item155">Auth Key</system:String>
     <system:String x:Key="item156">To play on H1Emu Servers, you need to set an Auth Key. You can find this on your profile at:</system:String>
     <system:String x:Key="item157">The latest version of the server is a development build, be warned that it may be unstable and cause crashes.\n\nWould you like to continue anyway?</system:String>
+    <system:String x:Key="item158">Welcome to H1Emu!</system:String>
+    <system:String x:Key="item159">BEFORE YOU BEGIN, please note that this project only supports the following game versions:</system:String>
+    <system:String x:Key="item160">15th January 2015</system:String>
+    <system:String x:Key="item161">and</system:String>
+    <system:String x:Key="item162">22nd December 2016</system:String>
+    <system:String x:Key="item163">Please</system:String>
+    <system:String x:Key="item164">DO NOT</system:String>
+    <system:String x:Key="item165">use the latest Steam version of the game or any other version that was not mentioned above as it will not work.</system:String>
+    <system:String x:Key="item166">Thank you and enjoy!</system:String>
+    <system:String x:Key="item167">CONTINUE</system:String>
 </ResourceDictionary>

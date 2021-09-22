@@ -359,6 +359,12 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
+                        <Border Height="1" Background="#FFCA1420" VerticalAlignment="Bottom" Margin="7,0,0,75" CornerRadius="20" Grid.ColumnSpan="2" RenderOptions.BitmapScalingMode="Fant">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="8" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+                            </Border.Effect>
+                        </Border>
+
                         <ComboBox x:Name="serverSelector" Foreground="White" Grid.Column="0" Height="35" BorderThickness="2" VerticalAlignment="Bottom" Margin="7,0,3,5" Padding="38,8,15,0" Style="{DynamicResource ComboBox}" SelectionChanged="ServerSelectorChanged">
                             <ComboBoxItem Content="{DynamicResource item139}"/>
                             <ComboBoxItem Content="{DynamicResource item140}"/>

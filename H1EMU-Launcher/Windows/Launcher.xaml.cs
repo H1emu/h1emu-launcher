@@ -398,7 +398,17 @@ namespace H1EMU_Launcher
 
         private void LauncherWindowLoaded(object sender, RoutedEventArgs e)
         {
-            LangBox.SelectedIndex = Properties.Settings.Default.language;
+            if (Properties.Settings.Default.firstTimeUse != 1) 
+            {
+                Disclaimer dc = new Disclaimer();
+                dc.ShowDialog();
+            }
+
+            try
+            {
+                File.Delete($"{appDataPath}\\H1EmuLauncher\\{MainWindow.downloadFileName}");
+            }
+            catch { }
 
             try
             {
@@ -410,15 +420,10 @@ namespace H1EMU_Launcher
             Directory.CreateDirectory($"{appDataPath}\\H1EmuLauncher");
             serverJsonFile = System.IO.Path.Combine($"{appDataPath}\\H1EmuLauncher", "servers.json");
             if (!File.Exists(serverJsonFile)) { File.WriteAllText(serverJsonFile, "[]"); }
+            
             LoadServers();
-
             Classes.Carousel.BeginImageCarousel();
-
-            try
-            {
-                File.Delete($"{appDataPath}\\H1EmuLauncher\\{MainWindow.downloadFileName}");
-            }
-            catch { }
+            LangBox.SelectedIndex = Properties.Settings.Default.language;
 
             // Update version, date published and patch notes code.
 

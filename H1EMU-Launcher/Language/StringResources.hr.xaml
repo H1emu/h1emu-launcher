@@ -148,4 +148,14 @@
     <system:String x:Key="item155">Auth Ključ</system:String>
     <system:String x:Key="item156">Da bi ste mogli igrati na H1Emu serverima, morate imati zadani Auth ključ.  Opciju možete pronaći na vašem profilu:</system:String>
     <system:String x:Key="item157">Najnovija verzija servera je development build pa je moguće da zbog nestabilnosti dođe do neočekivanog prekida rada.\n\nDa li ste sigurni da želite nastaviti?</system:String>
+    <system:String x:Key="item158">Dobrodošli na H1Emu!</system:String>
+    <system:String x:Key="item159">PRIJE NEGO ŠTO NASTAVITE, molim vas imajte na umu da ovaj projekt podržava samo navedene verzije:</system:String>
+    <system:String x:Key="item160">verzija 15 Siječanj 2015</system:String>
+    <system:String x:Key="item161">i</system:String>
+    <system:String x:Key="item162">verzija 22 Prosinca 2016</system:String>
+    <system:String x:Key="item163">Molim vas</system:String>
+    <system:String x:Key="item164">NE POKUŠAVAJTE</system:String>
+    <system:String x:Key="item165">pokretati najnoviju Steam verziju igre ili bilo koju drugu verziju koja nije navedena iz razloga što ju neće te moći pokrenuti.</system:String>
+    <system:String x:Key="item166">Hvala i uživajte!</system:String>
+    <system:String x:Key="item167">NASTAVI</system:String>
 </ResourceDictionary>

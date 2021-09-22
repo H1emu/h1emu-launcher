@@ -9,6 +9,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Windows\Disclaimer.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="SteamFrame\2FA.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -52,6 +55,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Windows\Disclaimer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Language\StringResources.fr.xaml">
       <SubType>Designer</SubType>
     </Page>

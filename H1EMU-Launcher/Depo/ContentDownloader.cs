@@ -12,10 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
-using System.Windows.Threading;
-using static SteamKit2.Internal.CContentBuilder_CommitAppBuild_Request;
 
 namespace H1EMU_Launcher
 {
@@ -86,15 +83,16 @@ namespace H1EMU_Launcher
             if ( !Config.UsingFileList )
                 return true;
 
-            foreach ( string fileListEntry in Config.FilesToDownload )
+            filename = filename.Replace('\\', '/');
+
+            if (Config.FilesToDownload.Contains(filename))
             {
-                if ( fileListEntry.Equals( filename, StringComparison.OrdinalIgnoreCase ) )
-                    return true;
+                return true;
             }
 
-            foreach ( Regex rgx in Config.FilesToDownloadRegex )
+            foreach (var rgx in Config.FilesToDownloadRegex)
             {
-                Match m = rgx.Match( filename );
+                var m = rgx.Match(filename);
 
                 if ( m.Success )
                     return true;
@@ -149,7 +147,7 @@ namespace H1EMU_Launcher
                 return null;
             }
 
-            KeyValue appinfo = app.KeyValues;
+            var appinfo = app.KeyValues;
             string section_key;
 
             switch ( section )
@@ -170,7 +168,7 @@ namespace H1EMU_Launcher
                     throw new NotImplementedException();
             }
 
-            KeyValue section_kv = appinfo.Children.Where( c => c.Name == section_key ).FirstOrDefault();
+            var section_kv = appinfo.Children.Where( c => c.Name == section_key ).FirstOrDefault();
             return section_kv;
         }
 
@@ -180,14 +178,14 @@ namespace H1EMU_Launcher
                 return 0;
 
 
-            KeyValue depots = ContentDownloader.GetSteam3AppSection( appId, EAppInfoSection.Depots );
-            KeyValue branches = depots[ "branches" ];
-            KeyValue node = branches[ branch ];
+            var depots = ContentDownloader.GetSteam3AppSection( appId, EAppInfoSection.Depots );
+            var branches = depots[ "branches" ];
+            var node = branches[ branch ];
 
             if ( node == KeyValue.Invalid )
                 return 0;
 
-            KeyValue buildid = node[ "buildid" ];
+            var buildid = node[ "buildid" ];
 
             if ( buildid == KeyValue.Invalid )
                 return 0;
@@ -197,8 +195,8 @@ namespace H1EMU_Launcher
 
         static ulong GetSteam3DepotManifest( uint depotId, uint appId, string branch )
         {
-            KeyValue depots = GetSteam3AppSection( appId, EAppInfoSection.Depots );
-            KeyValue depotChild = depots[ depotId.ToString() ];
+            var depots = GetSteam3AppSection( appId, EAppInfoSection.Depots );
+            var depotChild = depots[ depotId.ToString() ];
 
             if ( depotChild == KeyValue.Invalid )
                 return INVALID_MANIFEST_ID;
@@ -208,7 +206,7 @@ namespace H1EMU_Launcher
             // Rather than relay on the unknown sharedinstall key, just look for manifests. Test cases: 111710, 346680.
             if ( depotChild[ "manifests" ] == KeyValue.Invalid && depotChild[ "depotfromapp" ] != KeyValue.Invalid )
             {
-                uint otherAppId = depotChild["depotfromapp"].AsUnsignedInteger();
+                var otherAppId = depotChild["depotfromapp"].AsUnsignedInteger();
                 if ( otherAppId == appId )
                 {
                     // This shouldn't ever happen, but ya never know with Valve. Don't infinite loop.
@@ -235,7 +233,7 @@ namespace H1EMU_Launcher
                 var node_encrypted = manifests_encrypted[ branch ];
                 if ( node_encrypted != KeyValue.Invalid )
                 {
-                    string password = Config.BetaPassword;
+                    var password = Config.BetaPassword;
                     if ( password == null )
                     {
                         Console.Write( "Please enter the password for branch {0}: ", branch );
@@ -247,8 +245,8 @@ namespace H1EMU_Launcher
 
                     if ( encrypted_v1 != KeyValue.Invalid )
                     {
-                        byte[] input = Util.DecodeHexString( encrypted_v1.Value );
-                        byte[] manifest_bytes = CryptoHelper.VerifyAndDecryptPassword( input, password );
+                        var input = Util.DecodeHexString( encrypted_v1.Value );
+                        var manifest_bytes = CryptoHelper.VerifyAndDecryptPassword( input, password );
 
                         if ( manifest_bytes == null )
                         {
@@ -258,7 +256,8 @@ namespace H1EMU_Launcher
 
                         return BitConverter.ToUInt64( manifest_bytes, 0 );
                     }
-                    else if ( encrypted_v2 != KeyValue.Invalid )
+
+                    if ( encrypted_v2 != KeyValue.Invalid )
                     {
                         // Submit the password to Steam now to get encryption keys
                         steam3.CheckAppBetaPassword( appId, Config.BetaPassword );
@@ -269,7 +268,7 @@ namespace H1EMU_Launcher
                             return INVALID_MANIFEST_ID;
                         }
 
-                        byte[] input = Util.DecodeHexString( encrypted_v2.Value );
+                        var input = Util.DecodeHexString( encrypted_v2.Value );
                         byte[] manifest_bytes;
                         try
                         {
@@ -283,12 +282,9 @@ namespace H1EMU_Launcher
 
                         return BitConverter.ToUInt64( manifest_bytes, 0 );
                     }
-                    else
-                    {
-                        Debug.WriteLine( "Unhandled depot encryption for depotId {0}", depotId );
-                        return INVALID_MANIFEST_ID;
-                    }
 
+                    Debug.WriteLine("Unhandled depot encryption for depotId {0}", depotId);
+                    return INVALID_MANIFEST_ID;
                 }
 
                 return INVALID_MANIFEST_ID;
@@ -311,20 +307,18 @@ namespace H1EMU_Launcher
 
                 return info[ "name" ].AsString();
             }
-            else
-            {
-                KeyValue depots = GetSteam3AppSection( appId, EAppInfoSection.Depots );
 
-                if ( depots == null )
-                    return String.Empty;
+            var depots = GetSteam3AppSection(appId, EAppInfoSection.Depots);
 
-                KeyValue depotChild = depots[ depotId.ToString() ];
+            if (depots == null)
+                return String.Empty;
 
-                if ( depotChild == null )
-                    return String.Empty;
+            var depotChild = depots[depotId.ToString()];
 
-                return depotChild[ "name" ].AsString();
-            }
+            if (depotChild == null)
+                return String.Empty;
+
+            return depotChild["name"].AsString();
         }
 
         public static bool InitializeSteam3( string username, string password )
@@ -397,7 +391,7 @@ namespace H1EMU_Launcher
 
             if ( steam3.steamUser.SteamID.AccountType != EAccountType.AnonUser )
             {
-                steam3.GetUGCDetails( ugcId );
+                details = steam3.GetUGCDetails( ugcId );
             } 
             else
             {
@@ -430,8 +424,8 @@ namespace H1EMU_Launcher
             Directory.CreateDirectory( Path.GetDirectoryName( fileFinalPath ) );
             Directory.CreateDirectory( Path.GetDirectoryName( fileStagingPath ) );
 
-            using ( var file = File.OpenWrite( fileStagingPath ) )
-            using ( var client = new HttpClient() )
+            using (var file = File.OpenWrite(fileStagingPath))
+            using (var client = Depo.HttpClientFactory.CreateHttpClient())
             {
                 Debug.WriteLine( "Downloading {0}", fileName );
                 var responseStream = await client.GetStreamAsync( url );
@@ -459,7 +453,7 @@ namespace H1EMU_Launcher
             cdnPool = new CDNClientPool(steam3, appId);
 
             // Load our configuration data containing the depots currently installed
-            string configPath = ContentDownloader.Config.InstallDirectory;
+            var configPath = Config.InstallDirectory;
             if (string.IsNullOrWhiteSpace(configPath))
             {
                 configPath = DEFAULT_DOWNLOAD_DIR;
@@ -482,7 +476,7 @@ namespace H1EMU_Launcher
                 }
                 else
                 {
-                    string contentName = GetAppOrDepotName( INVALID_DEPOT_ID, appId );
+                    var contentName = GetAppOrDepotName( INVALID_DEPOT_ID, appId );
                     throw new ContentDownloaderException( String.Format( "App {0} ({1}) is not available from this account.", appId, contentName ) );
                 }
             }
@@ -490,7 +484,7 @@ namespace H1EMU_Launcher
             var hasSpecificDepots = depotManifestIds.Count > 0;
             var depotIdsFound = new List<uint>();
             var depotIdsExpected = depotManifestIds.Select( x => x.Item1 ).ToList();
-            KeyValue depots = GetSteam3AppSection( appId, EAppInfoSection.Depots );
+            var depots = GetSteam3AppSection( appId, EAppInfoSection.Depots );
 
             if ( isUgc )
             {
@@ -516,7 +510,7 @@ namespace H1EMU_Launcher
                 {
                     foreach ( var depotSection in depots.Children )
                     {
-                        uint id = INVALID_DEPOT_ID;
+                        var id = INVALID_DEPOT_ID;
                         if ( depotSection.Children.Count == 0 )
                             continue;
 
@@ -608,7 +602,7 @@ namespace H1EMU_Launcher
             if ( steam3 != null && appId != INVALID_APP_ID )
                 steam3.RequestAppInfo( ( uint )appId );
 
-            string contentName = GetAppOrDepotName( depotId, appId );
+            var contentName = GetAppOrDepotName( depotId, appId );
 
             if ( !AccountHasAccess( depotId ) )
             {
@@ -616,9 +610,6 @@ namespace H1EMU_Launcher
 
                 return null;
             }
-
-            // Skip requesting an app ticket
-            steam3.AppTickets[ depotId ] = null;
 
             if (manifestId == INVALID_MANIFEST_ID)
             {
@@ -637,7 +628,7 @@ namespace H1EMU_Launcher
                 }
             }
 
-            uint uVersion = GetSteam3AppBuildNumber( appId, branch );
+            var uVersion = GetSteam3AppBuildNumber( appId, branch );
 
             string installDir;
             if (!CreateDirectories(depotId, uVersion, out installDir))
@@ -653,7 +644,7 @@ namespace H1EMU_Launcher
                 return null;
             }
 
-            byte[] depotKey = steam3.DepotKeys[ depotId ];
+            var depotKey = steam3.DepotKeys[ depotId ];
 
             var info = new DepotDownloadInfo( depotId, manifestId, installDir, contentName );
             info.depotKey = depotKey;
@@ -728,6 +719,21 @@ namespace H1EMU_Launcher
                 tokenSource.Token.ThrowIfCancellationRequested();
             }
 
+            // If we're about to write all the files to the same directory, we will need to first de-duplicate any files by path
+            // This is in last-depot-wins order, from Steam or the list of depots supplied by the user
+            if (!string.IsNullOrWhiteSpace(Config.InstallDirectory) && depotsToDownload.Count > 0)
+            {
+                var claimedFileNames = new HashSet<String>();
+
+                for (var i = depotsToDownload.Count - 1; i >= 0; i--)
+                {
+                    // For each depot, remove all files from the list that have been claimed by a later depot
+                    depotsToDownload[i].filteredFiles.RemoveAll(file => claimedFileNames.Contains(file.FileName));
+
+                    claimedFileNames.UnionWith(depotsToDownload[i].allFileNames);
+                }
+            }
+
             foreach (var depotFileData in depotsToDownload)
             {
                 await DownloadSteam3AsyncDepotFiles(tokenSource, appId, downloadCounter, depotFileData, allFileNamesAllDepots);
@@ -743,7 +749,7 @@ namespace H1EMU_Launcher
         private static async Task<DepotFilesData> ProcessDepotManifestAndFiles(CancellationTokenSource cts, 
             uint appId, DepotDownloadInfo depot)
         {
-            DepotDownloadCounter depotCounter = new DepotDownloadCounter();
+            var depotCounter = new DepotDownloadCounter();
 
             System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
             {
@@ -754,9 +760,9 @@ namespace H1EMU_Launcher
 
             ProtoManifest oldProtoManifest = null;
             ProtoManifest newProtoManifest = null;
-            string configDir = Path.Combine(depot.installDir, CONFIG_DIR);
+            var configDir = Path.Combine(depot.installDir, CONFIG_DIR);
 
-            ulong lastManifestId = INVALID_MANIFEST_ID;
+            var lastManifestId = INVALID_MANIFEST_ID;
             DepotConfigStore.Instance.InstalledManifestIDs.TryGetValue(depot.id, out lastManifestId);
 
             // In case we have an early exit, this will force equiv of verifyall next run.
@@ -841,15 +847,13 @@ namespace H1EMU_Launcher
                         try
                         {
                             connection = cdnPool.GetConnection(cts.Token);
+
+                            DebugLog.WriteLine("ContentDownloader", "Authenticating connection to {0}", connection);
                             var cdnToken = await cdnPool.AuthenticateConnection(appId, depot.id, connection);
 
-#if STEAMKIT_UNRELEASED
+                            DebugLog.WriteLine("ContentDownloader", "Downloading manifest {0} from {1} with {2}", depot.manifestId, connection, cdnPool.ProxyServer != null ? cdnPool.ProxyServer : "no proxy");
                             depotManifest = await cdnPool.CDNClient.DownloadManifestAsync(depot.id, depot.manifestId,
                                 connection, cdnToken, depot.depotKey, proxyServer: cdnPool.ProxyServer).ConfigureAwait(false);
-#else
-                            depotManifest = await cdnPool.CDNClient.DownloadManifestAsync(depot.id, depot.manifestId,
-                                connection, cdnToken, depot.depotKey).ConfigureAwait(false);
-#endif
 
                             cdnPool.ReturnConnection(connection);
                         }
@@ -886,6 +890,7 @@ namespace H1EMU_Launcher
                             Debug.WriteLine("Encountered error downloading manifest for depot {0} {1}: {2}", depot.id, depot.manifestId, e.Message);
                         }
                     }
+
                     while (depotManifest == null);
 
                     if (depotManifest == null)
@@ -918,28 +923,14 @@ namespace H1EMU_Launcher
 
             if (Config.DownloadManifestOnly)
             {
-                StringBuilder manifestBuilder = new StringBuilder();
-                string txtManifest = Path.Combine(depot.installDir, string.Format("manifest_{0}_{1}.txt", depot.id, depot.manifestId));
-                manifestBuilder.Append(string.Format("{0}\n\n", newProtoManifest.CreationTime));
-
-                foreach (var file in newProtoManifest.Files)
-                {
-                    if (file.Flags.HasFlag(EDepotFileFlag.Directory))
-                        continue;
-
-                    manifestBuilder.Append(string.Format("{0}\n", file.FileName));
-                    manifestBuilder.Append(string.Format("\t{0}\n", file.TotalSize));
-                    manifestBuilder.Append(string.Format("\t{0}\n", BitConverter.ToString(file.FileHash).Replace("-", "")));
-                }
-
-                File.WriteAllText(txtManifest, manifestBuilder.ToString());
+                DumpManifestToTextFile(depot, newProtoManifest);
                 return null;
             }
 
-            string stagingDir = Path.Combine(depot.installDir, STAGING_DIR);
+            var stagingDir = Path.Combine(depot.installDir, STAGING_DIR);
 
             var filesAfterExclusions = newProtoManifest.Files.AsParallel().Where(f => TestIsFileIncluded(f.FileName)).ToList();
-            var allFileNames = new HashSet<string>();
+            var allFileNames = new HashSet<string>(filesAfterExclusions.Count);
 
             // Pre-process
             filesAfterExclusions.ForEach(file =>
@@ -1003,7 +994,7 @@ namespace H1EMU_Launcher
             // Check for deleted files if updating the depot.
             if (depotFilesData.previousManifest != null)
             {
-                var previousFilteredFiles = new HashSet<string>(depotFilesData.previousManifest.Files.AsParallel().Where(f => TestIsFileIncluded(f.FileName)).Select(f => f.FileName));
+                var previousFilteredFiles = new HashSet<string>(depotFilesData.previousManifest.Files.AsParallel().Where(f => TestIsFileIncluded(f.FileName)).Select(f => f.FileName).ToHashSet());
 
                 // Check if we are writing to a single output directory. If not, each depot folder is managed independently
                 if (string.IsNullOrWhiteSpace(ContentDownloader.Config.InstallDirectory))
@@ -1019,7 +1010,7 @@ namespace H1EMU_Launcher
 
                 foreach(var existingFileName in previousFilteredFiles)
                 {
-                    string fileFinalPath = Path.Combine(depot.installDir, existingFileName);
+                    var fileFinalPath = Path.Combine(depot.installDir, existingFileName);
 
                     if (!File.Exists(fileFinalPath))
                         continue;
@@ -1048,8 +1039,14 @@ namespace H1EMU_Launcher
             var depotDownloadCounter = depotFilesData.depotCounter;
             var oldProtoManifest = depotFilesData.previousManifest;
 
-            string fileFinalPath = Path.Combine(depot.installDir, file.FileName);
-            string fileStagingPath = Path.Combine(stagingDir, file.FileName);
+            ProtoManifest.FileData oldManifestFile = null;
+            if (oldProtoManifest != null)
+            {
+                oldManifestFile = oldProtoManifest.Files.SingleOrDefault(f => f.FileName == file.FileName);
+            }
+
+            var fileFinalPath = Path.Combine(depot.installDir, file.FileName);
+            var fileStagingPath = Path.Combine(stagingDir, file.FileName);
 
             // This may still exist if the previous run exited before cleanup
             if (File.Exists(fileStagingPath))
@@ -1057,10 +1054,10 @@ namespace H1EMU_Launcher
                 File.Delete(fileStagingPath);
             }
 
-            FileStream fs = null;
             List<ProtoManifest.ChunkData> neededChunks;
-            FileInfo fi = new FileInfo(fileFinalPath);
-            if (!fi.Exists)
+            var fi = new FileInfo(fileFinalPath);
+            var fileDidExist = fi.Exists;
+            if (!fileDidExist)
             {
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
@@ -1070,29 +1067,32 @@ namespace H1EMU_Launcher
                 Debug.WriteLine($"Pre-allocating {fileFinalPath}");
 
                 // create new file. need all chunks
-                fs = File.Create(fileFinalPath);
-                fs.SetLength((long)file.TotalSize);
+                using var fs = File.Create(fileFinalPath);
+                try
+                {
+                    fs.SetLength((long)file.TotalSize);
+                }
+                catch (IOException ex)
+                {
+                    throw new ContentDownloaderException(String.Format("Failed to allocate file {0}: {1}", fileFinalPath, ex.Message));
+                }
+
                 neededChunks = new List<ProtoManifest.ChunkData>(file.Chunks);
             }
             else
             {
                 // open existing
-                ProtoManifest.FileData oldManifestFile = null;
-                if (oldProtoManifest != null)
-                {
-                    oldManifestFile = oldProtoManifest.Files.SingleOrDefault(f => f.FileName == file.FileName);
-                }
-
                 if (oldManifestFile != null)
                 {
                     neededChunks = new List<ProtoManifest.ChunkData>();
 
-                    if (Config.VerifyAll || !oldManifestFile.FileHash.SequenceEqual(file.FileHash))
+                    var hashMatches = oldManifestFile.FileHash.SequenceEqual(file.FileHash);
+                    if (Config.VerifyAll || !hashMatches)
                     {
                         // we have a version of this file, but it doesn't fully match what we want
                         if (Config.VerifyAll)
                         {
-                            Debug.WriteLine("Validating {0}", fileFinalPath);
+                            Console.WriteLine("Validating {0}", fileFinalPath);
                         }
 
                         var matchingChunks = new List<ChunkMatch>();
@@ -1112,47 +1112,79 @@ namespace H1EMU_Launcher
 
                         var orderedChunks = matchingChunks.OrderBy(x => x.OldChunk.Offset);
 
-                        File.Move(fileFinalPath, fileStagingPath);
+                        var copyChunks = new List<ChunkMatch>();
 
-                        fs = File.Open(fileFinalPath, FileMode.Create);
-                        fs.SetLength((long)file.TotalSize);
-
-                        using (var fsOld = File.Open(fileStagingPath, FileMode.Open))
+                        using (var fsOld = File.Open(fileFinalPath, FileMode.Open))
                         {
                             foreach (var match in orderedChunks)
                             {
                                 fsOld.Seek((long)match.OldChunk.Offset, SeekOrigin.Begin);
 
-                                byte[] tmp = new byte[match.OldChunk.UncompressedLength];
+                                var tmp = new byte[match.OldChunk.UncompressedLength];
                                 fsOld.Read(tmp, 0, tmp.Length);
 
-                                byte[] adler = Util.AdlerHash(tmp);
+                                var adler = Util.AdlerHash(tmp);
                                 if (!adler.SequenceEqual(match.OldChunk.Checksum))
                                 {
                                     neededChunks.Add(match.NewChunk);
                                 }
                                 else
                                 {
-                                    fs.Seek((long)match.NewChunk.Offset, SeekOrigin.Begin);
-                                    fs.Write(tmp, 0, tmp.Length);
+                                    copyChunks.Add(match);
                                 }
                             }
                         }
 
-                        File.Delete(fileStagingPath);
+                        if (!hashMatches || neededChunks.Count > 0)
+                        {
+                            File.Move(fileFinalPath, fileStagingPath);
+
+                            using (var fsOld = File.Open(fileStagingPath, FileMode.Open))
+                            {
+                                using var fs = File.Open(fileFinalPath, FileMode.Create);
+                                try
+                                {
+                                    fs.SetLength((long)file.TotalSize);
+                                }
+                                catch (IOException ex)
+                                {
+                                    throw new ContentDownloaderException(String.Format("Failed to resize file to expected size {0}: {1}", fileFinalPath, ex.Message));
+                                }
+
+                                foreach (var match in copyChunks)
+                                {
+                                    fsOld.Seek((long)match.OldChunk.Offset, SeekOrigin.Begin);
+
+                                    var tmp = new byte[match.OldChunk.UncompressedLength];
+                                    fsOld.Read(tmp, 0, tmp.Length);
+
+                                    fs.Seek((long)match.NewChunk.Offset, SeekOrigin.Begin);
+                                    fs.Write(tmp, 0, tmp.Length);
+                                }
+                            }
+
+                            File.Delete(fileStagingPath);
+                        }
                     }
                 }
                 else
                 {
                     // No old manifest or file not in old manifest. We must validate.
 
-                    fs = File.Open(fileFinalPath, FileMode.Open);
+                    using var fs = File.Open(fileFinalPath, FileMode.Open);
                     if ((ulong)fi.Length != file.TotalSize)
                     {
-                        fs.SetLength((long)file.TotalSize);
+                        try
+                        {
+                            fs.SetLength((long)file.TotalSize);
+                        }
+                        catch (IOException ex)
+                        {
+                            throw new ContentDownloaderException(String.Format("Failed to allocate file {0}: {1}", fileFinalPath, ex.Message));
+                        }
                     }
 
-                    Debug.WriteLine("Validating {0}", fileFinalPath);
+                    Console.WriteLine("Validating {0}", fileFinalPath);
                     neededChunks = Util.ValidateSteam3FileChecksums(fs, file.Chunks.OrderBy(x => x.Offset).ToArray());
                 }
 
@@ -1160,33 +1192,23 @@ namespace H1EMU_Launcher
                 {
                     lock (depotDownloadCounter)
                     {
-                        depotDownloadCounter.SizeDownloaded += (ulong)file.TotalSize;
-                        Debug.WriteLine("{0,6:#00.00}% {1}", ((float)depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize) * 100.0f, fileFinalPath);
-
-                        System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
-                        { 
-                            DownloadStatus.downStatus.downloadProgress.Value = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f;
-                            DownloadStatus.downStatus.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item54").ToString()}" + $" {depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
-                        });
+                        depotDownloadCounter.SizeDownloaded += file.TotalSize;
+                        Console.WriteLine("{0,6:#00.00}% {1}", (depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize) * 100.0f, fileFinalPath);
                     }
 
-                    if (fs != null)
-                        fs.Dispose();
                     return;
                 }
-                else
+
+                var sizeOnDisk = (file.TotalSize - (ulong)neededChunks.Select(x => (long)x.UncompressedLength).Sum());
+                lock (depotDownloadCounter)
                 {
-                    var sizeOnDisk = (file.TotalSize - (ulong)neededChunks.Select(x => (long)x.UncompressedLength).Sum());
-                    lock (depotDownloadCounter)
-                    {
-                        depotDownloadCounter.SizeDownloaded += sizeOnDisk;
-                    }
+                    depotDownloadCounter.SizeDownloaded += sizeOnDisk;
                 }
             }
 
-            FileStreamData fileStreamData = new FileStreamData
+            var fileStreamData = new FileStreamData
             {
-                fileStream = fs,
+                fileStream = null,
                 fileLock = new SemaphoreSlim(1),
                 chunksToDownload = neededChunks.Count
             };
@@ -1214,9 +1236,9 @@ namespace H1EMU_Launcher
             var depot = depotFilesData.depotDownloadInfo;
             var depotDownloadCounter = depotFilesData.depotCounter;
 
-            string chunkID = Util.EncodeHexString(chunk.ChunkID);
+            var chunkID = Util.EncodeHexString(chunk.ChunkID);
 
-            DepotManifest.ChunkData data = new DepotManifest.ChunkData();
+            var data = new DepotManifest.ChunkData();
             data.ChunkID = chunk.ChunkID;
             data.Checksum = chunk.Checksum;
             data.Offset = chunk.Offset;
@@ -1234,15 +1256,13 @@ namespace H1EMU_Launcher
                 try
                 {
                     connection = cdnPool.GetConnection(cts.Token);
+
+                    DebugLog.WriteLine("ContentDownloader", "Authenticating connection to {0}", connection);
                     var cdnToken = await cdnPool.AuthenticateConnection(appId, depot.id, connection);
 
-#if STEAMKIT_UNRELEASED
+                    DebugLog.WriteLine("ContentDownloader", "Downloading chunk {0} from {1} with {2}", chunkID, connection, cdnPool.ProxyServer != null ? cdnPool.ProxyServer : "no proxy");
                     chunkData = await cdnPool.CDNClient.DownloadDepotChunkAsync(depot.id, data,
                         connection, cdnToken, depot.depotKey, proxyServer: cdnPool.ProxyServer).ConfigureAwait(false);
-#else
-                    chunkData = await cdnPool.CDNClient.DownloadDepotChunkAsync(depot.id, data,
-                        connection, cdnToken, depot.depotKey).ConfigureAwait(false);
-#endif
 
                     cdnPool.ReturnConnection(connection);
                 }
@@ -1256,13 +1276,11 @@ namespace H1EMU_Launcher
 
                     if (e.StatusCode == HttpStatusCode.Unauthorized || e.StatusCode == HttpStatusCode.Forbidden)
                     {
-                        Debug.WriteLine("Encountered 401 for chunk {0}. Aborting.", chunkID);
+                        Console.WriteLine("Encountered 401 for chunk {0}. Aborting.", chunkID);
                         break;
                     }
-                    else
-                    {
-                        Debug.WriteLine("Encountered error downloading chunk {0}: {1}", chunkID, e.StatusCode);
-                    }
+
+                    Console.WriteLine("Encountered error downloading chunk {0}: {1}", chunkID, e.StatusCode);
                 }
                 catch (OperationCanceledException)
                 {
@@ -1274,6 +1292,7 @@ namespace H1EMU_Launcher
                     Debug.WriteLine("Encountered unexpected error downloading chunk {0}: {1}", chunkID, e.Message);
                 }
             }
+
             while (chunkData == null);
 
             if (chunkData == null)
@@ -1289,6 +1308,12 @@ namespace H1EMU_Launcher
             {
                 await fileStreamData.fileLock.WaitAsync().ConfigureAwait(false);
 
+                if (fileStreamData.fileStream == null)
+                {
+                    var fileFinalPath = Path.Combine(depot.installDir, file.FileName);
+                    fileStreamData.fileStream = File.Open(fileFinalPath, FileMode.Open);
+                }
+
                 fileStreamData.fileStream.Seek((long)chunkData.ChunkInfo.Offset, SeekOrigin.Begin);
                 await fileStreamData.fileStream.WriteAsync(chunkData.Data, 0, chunkData.Data.Length);
             }
@@ -1297,7 +1322,7 @@ namespace H1EMU_Launcher
                 fileStreamData.fileLock.Release();
             }
 
-            int remainingChunks = Interlocked.Decrement(ref fileStreamData.chunksToDownload);
+            var remainingChunks = Interlocked.Decrement(ref fileStreamData.chunksToDownload);
             if (remainingChunks == 0)
             {
                 fileStreamData.fileStream.Dispose();
@@ -1329,6 +1354,49 @@ namespace H1EMU_Launcher
                     DownloadStatus.downStatus.downloadProgress.Value = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f;
                     DownloadStatus.downStatus.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item54").ToString()}" + $" {sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
                 });
+            }
+        }
+
+        static void DumpManifestToTextFile(DepotDownloadInfo depot, ProtoManifest manifest)
+        {
+            var txtManifest = Path.Combine(depot.installDir, $"manifest_{depot.id}_{depot.manifestId}.txt");
+
+            using (var sw = new StreamWriter(txtManifest))
+            {
+                sw.WriteLine($"Content Manifest for Depot {depot.id}");
+                sw.WriteLine();
+                sw.WriteLine($"Manifest ID / date     : {depot.manifestId} / {manifest.CreationTime}");
+
+                int numFiles = 0, numChunks = 0;
+                ulong uncompressedSize = 0, compressedSize = 0;
+
+                foreach (var file in manifest.Files)
+                {
+                    if (file.Flags.HasFlag(EDepotFileFlag.Directory))
+                        continue;
+
+                    numFiles++;
+                    numChunks += file.Chunks.Count;
+
+                    foreach (var chunk in file.Chunks)
+                    {
+                        uncompressedSize += chunk.UncompressedLength;
+                        compressedSize += chunk.CompressedLength;
+                    }
+                }
+
+                sw.WriteLine($"Total number of files  : {numFiles}");
+                sw.WriteLine($"Total number of chunks : {numChunks}");
+                sw.WriteLine($"Total bytes on disk    : {uncompressedSize}");
+                sw.WriteLine($"Total bytes compressed : {compressedSize}");
+                sw.WriteLine();
+                sw.WriteLine("          Size Chunks File SHA                                 Flags Name");
+
+                foreach (var file in manifest.Files)
+                {
+                    var sha1Hash = BitConverter.ToString(file.FileHash).Replace("-", "");
+                    sw.WriteLine($"{file.TotalSize,14} {file.Chunks.Count,6} {sha1Hash} {file.Flags,5:D} {file.FileName}");
+                }
             }
         }
     }

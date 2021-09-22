@@ -38,7 +38,6 @@ namespace H1EMU_Launcher
             private set;
         }
 
-        public Dictionary<uint, byte[]> AppTickets { get; private set; }
         public Dictionary<uint, ulong> AppTokens { get; private set; }
         public Dictionary<uint, ulong> PackageTokens { get; private set; }
         public Dictionary<uint, byte[]> DepotKeys { get; private set; }
@@ -49,11 +48,12 @@ namespace H1EMU_Launcher
 
         public SteamClient steamClient;
         public SteamUser steamUser;
-        SteamApps steamApps;
-        SteamCloud steamCloud;
-        SteamUnifiedMessages.UnifiedService<IPublishedFile> steamPublishedFile;
 
-        CallbackManager callbacks;
+        readonly SteamApps steamApps;
+        readonly SteamCloud steamCloud;
+        readonly SteamUnifiedMessages.UnifiedService<IPublishedFile> steamPublishedFile;
+
+        readonly CallbackManager callbacks;
 
         bool authenticatedUser;
         bool bConnected;
@@ -62,15 +62,16 @@ namespace H1EMU_Launcher
         bool bExpectingDisconnectRemote;
         bool bDidDisconnect;
         bool bDidReceiveLoginKey;
+        bool bIsConnectionRecovery;
         int connectionBackoff;
         int seq; // more hack fixes
         DateTime connectTime;
 
         // input
-        SteamUser.LogOnDetails logonDetails;
+        readonly SteamUser.LogOnDetails logonDetails;
 
         // output
-        Credentials credentials;
+        readonly Credentials credentials;
 
         public static CancellationTokenSource tokenSource = new CancellationTokenSource();
         CancellationToken token;
@@ -92,7 +93,6 @@ namespace H1EMU_Launcher
             this.bDidReceiveLoginKey = false;
             this.seq = 0;
 
-            this.AppTickets = new Dictionary<uint, byte[]>();
             this.AppTokens = new Dictionary<uint, ulong>();
             this.PackageTokens = new Dictionary<uint, ulong>();
             this.DepotKeys = new Dictionary<uint, byte[]>();
@@ -101,7 +101,9 @@ namespace H1EMU_Launcher
             this.PackageInfo = new Dictionary<uint, SteamApps.PICSProductInfoCallback.PICSProductInfo>();
             this.AppBetaPasswords = new Dictionary<string, byte[]>();
 
-            this.steamClient = new SteamClient();
+            var clientConfiguration = SteamConfiguration.Create(config => config.WithHttpClientFactory(Depo.HttpClientFactory.CreateHttpClient));
+
+            this.steamClient = new SteamClient(clientConfiguration);
 
             this.steamUser = this.steamClient.GetHandler<SteamUser>();
             this.steamApps = this.steamClient.GetHandler<SteamApps>();
@@ -123,7 +125,7 @@ namespace H1EMU_Launcher
 
             if ( authenticatedUser )
             {
-                FileInfo fi = new FileInfo( String.Format( "{0}.sentryFile", logonDetails.Username ) );
+                var fi = new FileInfo( String.Format( "{0}.sentryFile", logonDetails.Username ) );
                 if (AccountSettingsStore.Instance.SentryData != null && AccountSettingsStore.Instance.SentryData.ContainsKey(logonDetails.Username))
                 {
                     logonDetails.SentryFileHash = Util.SHAHash( AccountSettingsStore.Instance.SentryData[ logonDetails.Username ] );
@@ -141,7 +143,7 @@ namespace H1EMU_Launcher
         }
 
         public delegate bool WaitCondition();
-        private object steamLock = new object();
+        private readonly object steamLock = new object();
 
         public bool WaitUntilCallback( Action submitter, WaitCondition waiter )
         {
@@ -152,7 +154,7 @@ namespace H1EMU_Launcher
                     submitter();
                 }
 
-                int seq = this.seq;
+                var seq = this.seq;
                 do
                 {
                     lock (steamLock)
@@ -181,7 +183,7 @@ namespace H1EMU_Launcher
             if ( ( AppInfo.ContainsKey( appId ) && !bForce ) || bAborted )
                 return;
 
-            bool completed = false;
+            var completed = false;
             Action<SteamApps.PICSTokensCallback> cbMethodTokens = ( appTokens ) =>
             {
                 completed = true;
@@ -196,10 +198,10 @@ namespace H1EMU_Launcher
                 }
             };
 
-            WaitUntilCallback( () =>
+            WaitUntilCallback(() =>
             {
-                callbacks.Subscribe( steamApps.PICSGetAccessTokens( new List<uint>() { appId }, new List<uint>() { } ), cbMethodTokens );
-            }, () => { return completed; } );
+                callbacks.Subscribe(steamApps.PICSGetAccessTokens(new List<uint> { appId }, new List<uint>()), cbMethodTokens);
+            }, () => { return completed; });
 
             completed = false;
             Action<SteamApps.PICSProductInfoCallback> cbMethod = ( appInfo ) =>
@@ -224,24 +226,23 @@ namespace H1EMU_Launcher
             if ( AppTokens.ContainsKey( appId ) )
             {
                 request.AccessToken = AppTokens[ appId ];
-                request.Public = false;
             }
 
-            WaitUntilCallback( () =>
+            WaitUntilCallback(() =>
             {
-                callbacks.Subscribe( steamApps.PICSGetProductInfo( new List<SteamApps.PICSRequest>() { request }, new List<SteamApps.PICSRequest>() { } ), cbMethod );
-            }, () => { return completed; } );
+                callbacks.Subscribe(steamApps.PICSGetProductInfo(new List<SteamApps.PICSRequest> { request }, new List<SteamApps.PICSRequest>()), cbMethod);
+            }, () => { return completed; });
         }
 
         public void RequestPackageInfo( IEnumerable<uint> packageIds )
         {
-            List<uint> packages = packageIds.ToList();
+            var packages = packageIds.ToList();
             packages.RemoveAll( pid => PackageInfo.ContainsKey( pid ) );
 
             if ( packages.Count == 0 || bAborted )
                 return;
 
-            bool completed = false;
+            var completed = false;
             Action<SteamApps.PICSProductInfoCallback> cbMethod = ( packageInfo ) =>
             {
                 completed = !packageInfo.ResponsePending;
@@ -267,7 +268,6 @@ namespace H1EMU_Launcher
                 if ( PackageTokens.TryGetValue( package, out var token ) )
                 {
                     request.AccessToken = token;
-                    request.Public = false;
                 }
 
                 packageRequests.Add( request );
@@ -281,8 +281,8 @@ namespace H1EMU_Launcher
 
         public bool RequestFreeAppLicense( uint appId )
         {
-            bool success = false;
-            bool completed = false;
+            var success = false;
+            var completed = false;
             Action<SteamApps.FreeLicenseCallback> cbMethod = ( resultInfo ) =>
             {
                 completed = true;
@@ -297,47 +297,12 @@ namespace H1EMU_Launcher
             return success;
         }
 
-        public void RequestAppTicket( uint appId )
-        {
-            if ( AppTickets.ContainsKey( appId ) || bAborted )
-                return;
-
-
-            if ( !authenticatedUser )
-            {
-                AppTickets[ appId ] = null;
-                return;
-            }
-
-            bool completed = false;
-            Action<SteamApps.AppOwnershipTicketCallback> cbMethod = ( appTicket ) =>
-            {
-                completed = true;
-
-                if ( appTicket.Result != EResult.OK )
-                {
-                    Debug.WriteLine($"Unable to get appticket for {appTicket.AppID}: {appTicket.Result}");
-                    Abort();
-                }
-                else
-                {
-                    Debug.WriteLine($"Got appticket for {appTicket.AppID}!");
-                    AppTickets[ appTicket.AppID ] = appTicket.Ticket;
-                }
-            };
-
-            WaitUntilCallback( () =>
-            {
-                callbacks.Subscribe( steamApps.GetAppOwnershipTicket( appId ), cbMethod );
-            }, () => { return completed; } );
-        }
-
         public void RequestDepotKey( uint depotId, uint appid = 0 )
         {
             if ( DepotKeys.ContainsKey( depotId ) || bAborted )
                 return;
 
-            bool completed = false;
+            var completed = false;
 
             Action<SteamApps.DepotKeyCallback> cbMethod = ( depotKey ) =>
             {
@@ -359,20 +324,21 @@ namespace H1EMU_Launcher
                 DepotKeys[ depotKey.DepotID ] = depotKey.DepotKey;
             };
 
-            WaitUntilCallback( () =>
+            WaitUntilCallback(() =>
             {
-                callbacks.Subscribe( steamApps.GetDepotDecryptionKey( depotId, appid ), cbMethod );
-            }, () => { return completed; } );
+                callbacks.Subscribe(steamApps.GetDepotDecryptionKey(depotId, appid), cbMethod);
+            }, () => { return completed; });
         }
 
         public string ResolveCDNTopLevelHost(string host)
         {
             // SteamPipe CDN shares tokens with all hosts
-            if (host.EndsWith( ".steampipe.steamcontent.com" ) )
+            if (host.EndsWith(".steampipe.steamcontent.com"))
             {
                 return "steampipe.steamcontent.com";
             }
-            else if (host.EndsWith(".steamcontent.com"))
+
+            if (host.EndsWith(".steamcontent.com"))
             {
                 return "steamcontent.com";
             }
@@ -410,15 +376,15 @@ namespace H1EMU_Launcher
                 CDNAuthTokens[cdnKey].TrySetResult( cdnAuth );
             };
 
-            WaitUntilCallback( () =>
+            WaitUntilCallback(() =>
             {
-                callbacks.Subscribe( steamApps.GetCDNAuthToken( appid, depotid, host ), cbMethod );
-            }, () => { return completed || DateTime.Now >= timeoutDate; } );
+                callbacks.Subscribe(steamApps.GetCDNAuthToken(appid, depotid, host), cbMethod);
+            }, () => { return completed || DateTime.Now >= timeoutDate; });
         }
 
         public void CheckAppBetaPassword( uint appid, string password )
         {
-            bool completed = false;
+            var completed = false;
             Action<SteamApps.CheckAppBetaPasswordCallback> cbMethod = ( appPassword ) =>
             {
                 completed = true;
@@ -437,42 +403,12 @@ namespace H1EMU_Launcher
             }, () => { return completed; } );
         }
 
-        public CPublishedFile_GetItemInfo_Response.WorkshopItemInfo GetPubfileItemInfo( uint appId, PublishedFileID pubFile )
-        {
-            var pubFileRequest = new CPublishedFile_GetItemInfo_Request() { app_id = appId };
-            pubFileRequest.workshop_items.Add( new CPublishedFile_GetItemInfo_Request.WorkshopItem() { published_file_id = pubFile } );
-
-            bool completed = false;
-            CPublishedFile_GetItemInfo_Response.WorkshopItemInfo details = null;
-
-            Action<SteamUnifiedMessages.ServiceMethodResponse> cbMethod = callback =>
-            {
-                completed = true;
-                if ( callback.Result == EResult.OK )
-                {
-                    var response = callback.GetDeserializedResponse<CPublishedFile_GetItemInfo_Response>();
-                    details = response.workshop_items.FirstOrDefault();
-                }
-                else
-                {
-                    throw new Exception( $"EResult {(int)callback.Result} ({callback.Result}) while retrieving UGC id for pubfile {pubFile}.");
-                }
-            };
-
-            WaitUntilCallback(() =>
-            {
-                callbacks.Subscribe( steamPublishedFile.SendMessage( api => api.GetItemInfo( pubFileRequest ) ), cbMethod );
-            }, () => { return completed; });
-
-            return details;
-        }
-
         public PublishedFileDetails GetPublishedFileDetails(uint appId, PublishedFileID pubFile)
         {
             var pubFileRequest = new CPublishedFile_GetDetails_Request() { appid = appId };
             pubFileRequest.publishedfileids.Add( pubFile );
 
-            bool completed = false;
+            var completed = false;
             PublishedFileDetails details = null;
 
             Action<SteamUnifiedMessages.ServiceMethodResponse> cbMethod = callback =>
@@ -500,7 +436,7 @@ namespace H1EMU_Launcher
 
         public SteamCloud.UGCDetailsCallback GetUGCDetails(UGCHandle ugcHandle)
         {
-            bool completed = false;
+            var completed = false;
             SteamCloud.UGCDetailsCallback details = null;
 
             Action<SteamCloud.UGCDetailsCallback> cbMethod = callback =>
@@ -528,15 +464,23 @@ namespace H1EMU_Launcher
             return details;
         }
 
+        private void ResetConnectionFlags()
+        {
+            bExpectingDisconnectRemote = false;
+            bDidDisconnect = false;
+            bIsConnectionRecovery = false;
+            bDidReceiveLoginKey = false;
+        }
+
         void Connect()
         {
             bAborted = false;
             bConnected = false;
             bConnecting = true;
             connectionBackoff = 0;
-            bExpectingDisconnectRemote = false;
-            bDidDisconnect = false;
-            bDidReceiveLoginKey = false;
+
+            ResetConnectionFlags();
+
             this.connectTime = DateTime.Now;
             this.steamClient.Connect();
         }
@@ -545,23 +489,30 @@ namespace H1EMU_Launcher
         {
             Disconnect( sendLogOff );
         }
-        public void Disconnect( bool sendLogOff = true )
+        public void Disconnect(bool sendLogOff = true)
         {
-            if ( sendLogOff )
+            if (sendLogOff)
             {
                 steamUser.LogOff();
             }
 
-            steamClient.Disconnect();
+            bAborted = true;
             bConnected = false;
             bConnecting = false;
-            bAborted = true;
+            bIsConnectionRecovery = false;
+            steamClient.Disconnect();
 
             // flush callbacks until our disconnected event
-            while ( !bDidDisconnect )
+            while (!bDidDisconnect)
             {
-                callbacks.RunWaitAllCallbacks( TimeSpan.FromMilliseconds( 100 ) );
+                callbacks.RunWaitAllCallbacks(TimeSpan.FromMilliseconds(100));
             }
+        }
+
+        private void Reconnect()
+        {
+            bIsConnectionRecovery = true;
+            steamClient.Disconnect();
         }
 
         public void TryWaitForLoginKey()
@@ -572,7 +523,7 @@ namespace H1EMU_Launcher
 
             while ( true )
             {
-                DateTime now = DateTime.Now;
+                var now = DateTime.Now;
                 if ( now >= totalWaitPeriod ) break;
 
                 if ( bDidReceiveLoginKey ) break;
@@ -613,22 +564,26 @@ namespace H1EMU_Launcher
             }
         }
 
-        private void DisconnectedCallback( SteamClient.DisconnectedCallback disconnected )
+        private void DisconnectedCallback(SteamClient.DisconnectedCallback disconnected)
         {
             bDidDisconnect = true;
 
-            if ( disconnected.UserInitiated || bExpectingDisconnectRemote )
+            // When recovering the connection, we want to reconnect even if the remote disconnects us
+            if (!bIsConnectionRecovery && (disconnected.UserInitiated || bExpectingDisconnectRemote))
             {
                 Debug.WriteLine("Disconnected from Steam");
+
+                // Any operations outstanding need to be aborted
+                bAborted = true;
             }
-            else if ( connectionBackoff >= 10 )
+            else if (connectionBackoff >= 10)
             {
                 Debug.WriteLine("Could not connect to Steam after 10 tries");
-                Abort( false );
+                Abort(false);
             }
-            else if ( !bAborted )
+            else if (!bAborted)
             {
-                if ( bConnecting )
+                if (bConnecting)
                 {
                     Debug.WriteLine("Connection to Steam failed. Trying again");
                 }
@@ -637,7 +592,10 @@ namespace H1EMU_Launcher
                     Debug.WriteLine("Lost connection to Steam. Reconnecting");
                 }
 
-                Thread.Sleep( 1000 * ++connectionBackoff );
+                Thread.Sleep(1000 * ++connectionBackoff);
+
+                // Any connection related flags need to be reset here to match the state after Connect
+                ResetConnectionFlags();
                 steamClient.Connect();
             }
         }
@@ -651,9 +609,9 @@ namespace H1EMU_Launcher
             tokenSource = new CancellationTokenSource();
             token = tokenSource.Token;
 
-            bool isSteamGuard = loggedOn.Result == EResult.AccountLogonDenied;
-            bool is2FA = loggedOn.Result == EResult.AccountLoginDeniedNeedTwoFactor;
-            bool isLoginKey = ContentDownloader.Config.RememberPassword && logonDetails.LoginKey != null && loggedOn.Result == EResult.InvalidPassword;
+            var isSteamGuard = loggedOn.Result == EResult.AccountLogonDenied;
+            var is2FA = loggedOn.Result == EResult.AccountLoginDeniedNeedTwoFactor;
+            var isLoginKey = ContentDownloader.Config.RememberPassword && logonDetails.LoginKey != null && loggedOn.Result == EResult.InvalidPassword;
 
             if (isSteamGuard || is2FA || isLoginKey)
             {
@@ -711,7 +669,17 @@ namespace H1EMU_Launcher
 
                 return;
             }
-            else if (loggedOn.Result == EResult.ServiceUnavailable)
+
+            if (loggedOn.Result == EResult.TryAnotherCM)
+            {
+                Console.Write("Retrying Steam3 connection (TryAnotherCM)...");
+
+                Reconnect();
+
+                return;
+            }
+
+            if (loggedOn.Result == EResult.ServiceUnavailable)
             {
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
@@ -728,7 +696,8 @@ namespace H1EMU_Launcher
 
                 return;
             }
-            else if (loggedOn.Result != EResult.OK)
+
+            if (loggedOn.Result != EResult.OK)
             {
                 System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                 {
@@ -786,12 +755,12 @@ namespace H1EMU_Launcher
             }
         }
 
-        private void UpdateMachineAuthCallback( SteamUser.UpdateMachineAuthCallback machineAuth )
+        private void UpdateMachineAuthCallback(SteamUser.UpdateMachineAuthCallback machineAuth)
         {
-            byte[] hash = Util.SHAHash( machineAuth.Data );
-            Debug.WriteLine($"Got Machine Auth: {machineAuth.FileName} {machineAuth.Offset} {machineAuth.BytesToWrite} {machineAuth.Data.Length} Hash: {hash}");
+            var hash = Util.SHAHash(machineAuth.Data);
+            Console.WriteLine("Got Machine Auth: {0} {1} {2} {3}", machineAuth.FileName, machineAuth.Offset, machineAuth.BytesToWrite, machineAuth.Data.Length, hash);
 
-            AccountSettingsStore.Instance.SentryData[ logonDetails.Username ] = machineAuth.Data;
+            AccountSettingsStore.Instance.SentryData[logonDetails.Username] = machineAuth.Data;
             AccountSettingsStore.Save();
 
             var authResponse = new SteamUser.MachineAuthDetails
@@ -812,21 +781,19 @@ namespace H1EMU_Launcher
             };
 
             // send off our response
-            steamUser.SendMachineAuthResponse( authResponse );
+            steamUser.SendMachineAuthResponse(authResponse);
         }
 
-        private void LoginKeyCallback( SteamUser.LoginKeyCallback loginKey )
+        private void LoginKeyCallback(SteamUser.LoginKeyCallback loginKey)
         {
-            Debug.WriteLine($"Accepted new login key for account {logonDetails.Username}");
+            Console.WriteLine("Accepted new login key for account {0}", logonDetails.Username);
 
-            AccountSettingsStore.Instance.LoginKeys[ logonDetails.Username ] = loginKey.LoginKey;
+            AccountSettingsStore.Instance.LoginKeys[logonDetails.Username] = loginKey.LoginKey;
             AccountSettingsStore.Save();
 
-            steamUser.AcceptNewLoginKey( loginKey );
+            steamUser.AcceptNewLoginKey(loginKey);
 
             bDidReceiveLoginKey = true;
         }
-
-
     }
 }

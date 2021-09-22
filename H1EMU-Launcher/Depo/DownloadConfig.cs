@@ -12,10 +12,8 @@ namespace H1EMU_Launcher
         public string InstallDirectory { get; set; }
 
         public bool UsingFileList { get; set; }
-        public List<string> FilesToDownload { get; set; }
+        public HashSet<string> FilesToDownload { get; set; }
         public List<Regex> FilesToDownloadRegex { get; set; }
-
-        public bool UsingExclusionList { get; set; }
 
         public string BetaPassword { get; set; }
 
@@ -28,6 +26,6 @@ namespace H1EMU_Launcher
         public bool RememberPassword { get; set; }
 
         // A Steam LoginID to allow multiple concurrent connections
-        public uint? LoginID {get; set; }
+        public uint? LoginID { get; set; }
     }
 }

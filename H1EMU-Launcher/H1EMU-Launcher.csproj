@@ -7,8 +7,8 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.1.6</AssemblyVersion>
-	  <FileVersion>2.1.6</FileVersion>
+	  <AssemblyVersion>2.1.7</AssemblyVersion>
+	  <FileVersion>2.1.7</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
@@ -21,7 +21,6 @@
 
   <ItemGroup>
     <None Remove="Fonts\Signika.ttf" />
-    <None Remove="Resources\Arrow.png" />
     <None Remove="Resources\Arrow_Hover.png" />
     <None Remove="Resources\Arrow_Pressed.png" />
     <None Remove="Resources\AuthKey.png" />
@@ -63,6 +62,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Resources\JIGGERBISH.xaml" />
     <Page Remove="Resources\StringResources.bg-BG.xaml" />
     <Page Remove="Resources\StringResources.de-DE.xaml" />
     <Page Remove="Resources\StringResources.es-ES.xaml" />
@@ -79,7 +79,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="SteamKit2" Version="2.3.0" />
+    <PackageReference Include="SteamKit2" Version="2.4.0-Alpha.3" />
     <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
   </ItemGroup>
 

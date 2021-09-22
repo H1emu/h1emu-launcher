@@ -1,13 +1,11 @@
-﻿using H1EMU_Launcher.Resources;
-using SteamKit2;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using SteamKit2;
 
 namespace H1EMU_Launcher
 {
@@ -21,9 +19,7 @@ namespace H1EMU_Launcher
         private readonly Steam3Session steamSession;
         private readonly uint appId;
         public CDNClient CDNClient { get; }
-#if STEAMKIT_UNRELEASED
         public CDNClient.Server ProxyServer { get; private set; }
-#endif
 
         private readonly ConcurrentStack<CDNClient.Server> activeConnectionPool;
         private readonly BlockingCollection<CDNClient.Server> availableServerEndpoints;
@@ -86,7 +82,7 @@ namespace H1EMU_Launcher
 
         private async Task ConnectionPoolMonitorAsync()
         {
-            bool didPopulate = false;
+            var didPopulate = false;
 
             while (!shutdownToken.IsCancellationRequested)
             {
@@ -103,19 +99,13 @@ namespace H1EMU_Launcher
                         return;
                     }
 
-#if STEAMKIT_UNRELEASED
                     ProxyServer = servers.Where(x => x.UseAsProxy).FirstOrDefault();
-#endif
 
                     var weightedCdnServers = servers
                         .Where(server =>
                         {
-#if STEAMKIT_UNRELEASED
                             var isEligibleForApp = server.AllowedAppIds == null || server.AllowedAppIds.Contains(appId);
                             return isEligibleForApp && (server.Type == "SteamCache" || server.Type == "CDN");
-#else
-                            return server.Type == "SteamCache" || server.Type == "CDN";
-#endif
                         })
                         .Select(server =>
                         {
@@ -175,16 +165,14 @@ namespace H1EMU_Launcher
                 var result = await authTokenCallbackPromise.Task;
                 return result.Token;
             }
-            else
-            {
-                if (System.Windows.Application.Current.Resources.MergedDictionaries.Count < 1)
-                {
-                    //Adds the correct language file to the resource dictionary and then load it.
-                    System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
-                }
 
-                throw new Exception($"{System.Windows.Application.Current.FindResource("item83").ToString().Replace("{0}", $"{server.Host}").Replace("{1}", $"{depotId}")}");
+            if (System.Windows.Application.Current.Resources.MergedDictionaries.Count < 1)
+            {
+                //Adds the correct language file to the resource dictionary and then load it.
+                System.Windows.Application.Current.Resources.MergedDictionaries.Add(Resources.SetLanguageFile.LoadFile());
             }
+
+            throw new Exception($"{System.Windows.Application.Current.FindResource("item83").ToString().Replace("{0}", $"{server.Host}").Replace("{1}", $"{depotId}")}");
         }
 
         public void ReturnConnection(CDNClient.Server server)
@@ -201,5 +189,4 @@ namespace H1EMU_Launcher
             // Broken connections are not returned to the pool
         }
     }
-
 }

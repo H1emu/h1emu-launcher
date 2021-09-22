@@ -4,7 +4,7 @@
 
     <system:String x:Key="item1">Een niewe versie is beschikbaar, wilt u deze instaleren?</system:String>
     <system:String x:Key="item2">INSTALEREN</system:String>
-    <system:String x:Key="item3">Werk bij</system:String>
+    <system:String x:Key="item3">Versie</system:String>
     <system:String x:Key="item4">Klik opstarten hier om een locale solo server op te starten.</system:String>
     <system:String x:Key="item5">Klik spelen hier om te verbinden met een locale server.</system:String>
     <system:String x:Key="item6">Klik verbinden hier om te verbinden met de H1Emu test server te verbinden (enkel 2015)</system:String>
@@ -147,4 +147,14 @@
     <system:String x:Key="item154">Auth Code...</system:String>
     <system:String x:Key="item155">Auth Code</system:String>
     <system:String x:Key="item156">Om te spelen op H1Emu servers, moet je een Auth code instellen. Je kan dit vinden op profiel op:</system:String>
+    <system:String x:Key="item158">Welkom bij H1Emu!</system:String>
+    <system:String x:Key="item159">VOOR JE BEGINT, merk alstublieft op dat dit project enkel de volgende versies ondersteunt:</system:String>
+    <system:String x:Key="item160">15e Januarie 2015</system:String>
+    <system:String x:Key="item161">en</system:String>
+    <system:String x:Key="item162">22e December 2016</system:String>
+    <system:String x:Key="item163">Alstublieft</system:String>
+    <system:String x:Key="item164">NIET</system:String>
+    <system:String x:Key="item165">de laatste Steam Versie of een andere, niet opgenoemde versie gebruiken omdat deze niet zullen werken.</system:String>
+    <system:String x:Key="item166">Bedankt en veel plezier!</system:String>
+    <system:String x:Key="item167">VOLLGENDE</system:String>
 </ResourceDictionary>

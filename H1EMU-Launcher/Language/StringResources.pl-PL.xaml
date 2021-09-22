@@ -148,4 +148,14 @@
     <system:String x:Key="item155">Auth Key</system:String>
     <system:String x:Key="item156">Aby grać na serwerach H1Emu musisz wprowadzić swój klucz uwierzytelniający. Znajdziesz go na swoim profilu:</system:String>
     <system:String x:Key="item157">Najnowsza wersja serwera jest wersją rozwojową, ostrzegamy, że może być niestabilna i powodować awarie.\n\nCzy mimo to chcesz kontynuować?</system:String>
+    <system:String x:Key="item158">Witaj w H1Emu!</system:String>
+    <system:String x:Key="item159">ZANIM KLIKNIESZ DALEJ, wiedz że ten projekt wspiera następujące wersje gry:</system:String>
+    <system:String x:Key="item160">15th Styczeń 2015</system:String>
+    <system:String x:Key="item161">oraz</system:String>
+    <system:String x:Key="item162">22nd Grudzień 2016</system:String>
+    <system:String x:Key="item163">Nie</system:String>
+    <system:String x:Key="item164">UŻYWAJ</system:String>
+    <system:String x:Key="item165">najnowszej wersji pobranej ze Steam, ani żadnej innej nie wymienionej powyżej, nie będą one działać.</system:String>
+    <system:String x:Key="item166">Dziękujemy!</system:String>
+    <system:String x:Key="item167">DALEJ</system:String>
 </ResourceDictionary>

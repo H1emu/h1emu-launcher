@@ -148,4 +148,14 @@
     <system:String x:Key="item155">Ключ аутентификации</system:String>
     <system:String x:Key="item156">Чтобы играть на серверах H1Emu, вам необходимо установить ключ аутентификации. Вы можете найти его в своем профиле по адресу:</system:String>
     <system:String x:Key="item157">Последняя версия сервера - это сборка для разработки, имейте в виду, что она может работать нестабильно и вызывать сбои.\n\nВы все равно хотите продолжить?</system:String>
+    <system:String x:Key="item158">Добро пожаловать в H1Emu!</system:String>
+    <system:String x:Key="item159">ПРЕЖДЕ ЧЕМ НАЧАТЬ, обратите внимание, что этот проект поддерживает только следующие версии игр:</system:String>
+    <system:String x:Key="item160">15 января 2015</system:String>
+    <system:String x:Key="item161">а также</system:String>
+    <system:String x:Key="item162">22 декабря 2016 г.</system:String>
+    <system:String x:Key="item163">Пожалуйста</system:String>
+    <system:String x:Key="item164">НЕ НАДО</system:String>
+    <system:String x:Key="item165">используйте последнюю версию игры для Steam или любую другую версию, не упомянутую выше, так как это не сработает.</system:String>
+    <system:String x:Key="item166">Спасибо и наслаждайтесь!</system:String>
+    <system:String x:Key="item167">ПРОДОЛЖИТЬ</system:String>
 </ResourceDictionary>

@@ -148,4 +148,14 @@
     <system:String x:Key="item155">Erişim Kodu</system:String>
     <system:String x:Key="item156">H1Emu sunucularında oynamak için bir erişim kodu ayarlamalısınız.Bu kodu Profilinizde şu kısımda bulabilirsiniz:</system:String>
     <system:String x:Key="item157">Sunucunun en son sürümü bir geliştirme yapısıdır, kararsız olabileceği ve çökmelere neden olabileceği konusunda uyarılırsınız.\n\nYine de devam etmek ister misiniz?</system:String>
+    <system:String x:Key="item158">H1Emu'ya hoş geldiniz!</system:String>
+    <system:String x:Key="item159">BAŞLAMADAN ÖNCE, lütfen bu projenin sadece altta belirtilen oyun versiyonlarını desteklediğini dikkate alınız:</system:String>
+    <system:String x:Key="item160">15 Ocak 2015</system:String>
+    <system:String x:Key="item161">ve</system:String>
+    <system:String x:Key="item162">22 Aralık  2016</system:String>
+    <system:String x:Key="item163">Lütfen</system:String>
+    <system:String x:Key="item164">HİÇBİR ZAMAN</system:String>
+    <system:String x:Key="item165">Steam'deki en son sürümünü veya oyunun yukarıda belirtilenlerden başka bir sürümünü inidirip kullanmayınız, aksi takdirde sistem çalışmayacaktır.</system:String>
+    <system:String x:Key="item166">Teşekkürler, keyfinize bakın!</system:String>
+    <system:String x:Key="item167">DEVAM ET</system:String>
 </ResourceDictionary>

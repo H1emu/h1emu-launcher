@@ -1,0 +1,98 @@
+﻿<Window x:Class="H1EMU_Launcher.Disclaimer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:H1EMU_Launcher"
+        mc:Ignorable="d"
+        Title="Launcher"
+        x:Name="MainMsgBox"
+        MinHeight="200" MinWidth="550"
+        MaxHeight="10000" MaxWidth="600"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        Background="#FF2A2A32"
+        FontFamily="Bahnschrift Light"
+        FontSize="16"
+        Activated="DisclaimerActivated"
+        Loaded="DisclaimerLoaded">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Top bar grid. -->
+        <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="MoveDisclaimer" Background="#FF2A2A32">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Dock panel that hosts logo -->
+            <DockPanel Grid.Row="0" Grid.Column="0" Height="40" HorizontalAlignment="Left" Margin="14,2,0,0">
+                <Button Width="140" Height="40" BorderThickness="0" VerticalAlignment="Center" Margin="0,4,0,0" Style="{DynamicResource ImageButton}">
+                    <Button.Background>
+                        <ImageBrush ImageSource="..\Resources\H1EmuIcon.png"/>
+                    </Button.Background>
+                </Button>
+            </DockPanel>
+
+            <!-- Dock panel that creates the exit button. -->
+            <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
+                <Button Style="{StaticResource CloseButtonStyle}" x:Name="CloseButton" IsEnabled="False" RenderOptions.BitmapScalingMode="Fant" Width="45" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Margin="0,0,15,0" Click="CloseButton_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="..\Resources\Exit.png"/>
+                    </Button.Background>
+                </Button>
+            </DockPanel>
+        </Grid>
+
+        <!-- Grid for main content inside of darkened area -->
+        <Grid Grid.Row="1" Background="#1C1B22" Margin="15,5,15,15" UseLayoutRounding="True">
+            <Grid.Effect>
+                <DropShadowEffect BlurRadius="8" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+            </Grid.Effect>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="90"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Foreground="#FFED1C24" FontSize="32" FontFamily="{StaticResource Signika}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="{DynamicResource item158}"/>
+
+            <TextBlock FontFamily="Bahnschrift" Grid.Row="1" Background="Transparent" Foreground="White" Cursor="Arrow" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="25,0,25,0" Padding="0,15,0,0">
+                <Run FontWeight="Light" Foreground="White" Text="{DynamicResource item159}"/>
+                <Run TextDecorations="Underline" FontWeight="Bold" Foreground="#FFED1C24" Text="{DynamicResource item160}"/>
+                <Run FontWeight="Light" Foreground="White" Text="{DynamicResource item161}"/>
+                <Run TextDecorations="Underline" FontWeight="Bold" Foreground="#FFED1C24" Text="{DynamicResource item162}"/><Run FontWeight="Light" Text="."/>
+                <LineBreak/>
+                <LineBreak/>
+                <Run FontWeight="Light" Foreground="White" Text="{DynamicResource item163}"/>
+                <Run TextDecorations="Underline" FontWeight="Bold" Foreground="#FFED1C24" Text="{DynamicResource item164}"/>
+                <Run FontWeight="Light" Foreground="White" Text="{DynamicResource item165}"/>
+                <LineBreak/>
+                <LineBreak/>
+                <Run FontWeight="Light" Foreground="White" Text="{DynamicResource item166}"/>
+            </TextBlock>
+
+            <Button x:Name="continueButton" IsEnabled="False" Content="{DynamicResource item167}" Foreground="White" FontFamily="Arial Black" FontSize="18" Click="ContinueButton" Height="38" Width="180" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,0,10" Style="{DynamicResource StandardButton}">
+                <Button.Background>
+                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                </Button.Background>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

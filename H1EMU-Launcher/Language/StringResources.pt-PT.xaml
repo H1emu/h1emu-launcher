@@ -148,4 +148,14 @@
     <system:String x:Key="item155">Chave de autorização</system:String>
     <system:String x:Key="item156">Para poder jogar nos servidores H1Emu, é necessário definir uma chave de autenticação. Pode encontrar isto no seu perfil em:</system:String>
     <system:String x:Key="item157">A versão recente do servidor é uma versão de desenvolvimento. Tenha em conta que pode ser instável e causar paragens.\n\n Deseja continuar de qualquer forma?</system:String>
+    <system:String x:Key="item158">Bem vindo ao H1Emu!</system:String>
+    <system:String x:Key="item159">ANTES DE INICIAR, tenha atenção que este projeto apenas suporta as seguintes versões de jogo:</system:String>
+    <system:String x:Key="item160">15 de Janeiro de 2015</system:String>
+    <system:String x:Key="item161">e</system:String>
+    <system:String x:Key="item162">22 de Dezembro de 2016</system:String>
+    <system:String x:Key="item163">Por favor</system:String>
+    <system:String x:Key="item164">NÃO</system:String>
+    <system:String x:Key="item165">use a última versão Steam do jogo ou qualquer outra versão que não tenha sido mencionada acima, pois não funcionará.</system:String>
+    <system:String x:Key="item166">Obrigado e divirta-se!</system:String>
+    <system:String x:Key="item167">CONTINUAR</system:String>
 </ResourceDictionary>
