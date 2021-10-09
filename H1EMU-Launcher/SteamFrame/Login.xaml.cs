@@ -204,6 +204,7 @@ namespace H1EMU_Launcher
 
             var depotIdList = GetParameterList<uint>(args, "-depot");
             var manifestIdList = GetParameterList<ulong>(args, "-manifest");
+
             if (manifestIdList.Count > 0)
             {
                 if (depotIdList.Count != manifestIdList.Count)
@@ -290,7 +291,7 @@ namespace H1EMU_Launcher
                                 DownloadStatus.downStatus.downloadProgressText.Text = "Processing...";
                             });
                         }
-                        else
+                        else if (manifestVersion == 8395659676467739522)
                         {
                             version = "2016";
 

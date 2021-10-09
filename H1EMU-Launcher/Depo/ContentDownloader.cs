@@ -477,7 +477,7 @@ namespace H1EMU_Launcher
                 else
                 {
                     var contentName = GetAppOrDepotName( INVALID_DEPOT_ID, appId );
-                    throw new ContentDownloaderException( String.Format( "App {0} ({1}) is not available from this account.", appId, contentName ) );
+                    throw new ContentDownloaderException( String.Format($"App {appId} ({contentName}) is not available from this account."));
                 }
             }
 
@@ -607,7 +607,6 @@ namespace H1EMU_Launcher
             if ( !AccountHasAccess( depotId ) )
             {
                 Debug.WriteLine( "Depot {0} ({1}) is not available from this account.", depotId, contentName );
-
                 return null;
             }
 
@@ -848,12 +847,9 @@ namespace H1EMU_Launcher
                         {
                             connection = cdnPool.GetConnection(cts.Token);
 
-                            DebugLog.WriteLine("ContentDownloader", "Authenticating connection to {0}", connection);
-                            var cdnToken = await cdnPool.AuthenticateConnection(appId, depot.id, connection);
-
                             DebugLog.WriteLine("ContentDownloader", "Downloading manifest {0} from {1} with {2}", depot.manifestId, connection, cdnPool.ProxyServer != null ? cdnPool.ProxyServer : "no proxy");
                             depotManifest = await cdnPool.CDNClient.DownloadManifestAsync(depot.id, depot.manifestId,
-                                connection, cdnToken, depot.depotKey, proxyServer: cdnPool.ProxyServer).ConfigureAwait(false);
+                                connection, null, depot.depotKey, proxyServer: cdnPool.ProxyServer).ConfigureAwait(false);
 
                             cdnPool.ReturnConnection(connection);
                         }
@@ -1257,12 +1253,9 @@ namespace H1EMU_Launcher
                 {
                     connection = cdnPool.GetConnection(cts.Token);
 
-                    DebugLog.WriteLine("ContentDownloader", "Authenticating connection to {0}", connection);
-                    var cdnToken = await cdnPool.AuthenticateConnection(appId, depot.id, connection);
-
                     DebugLog.WriteLine("ContentDownloader", "Downloading chunk {0} from {1} with {2}", chunkID, connection, cdnPool.ProxyServer != null ? cdnPool.ProxyServer : "no proxy");
                     chunkData = await cdnPool.CDNClient.DownloadDepotChunkAsync(depot.id, data,
-                        connection, cdnToken, depot.depotKey, proxyServer: cdnPool.ProxyServer).ConfigureAwait(false);
+                        connection, null, depot.depotKey, proxyServer: cdnPool.ProxyServer).ConfigureAwait(false);
 
                     cdnPool.ReturnConnection(connection);
                 }
