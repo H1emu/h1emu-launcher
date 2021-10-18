@@ -214,10 +214,22 @@ namespace H1EMU_Launcher
                         sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{nodeJSVersion}-win-x64");
                         sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
                         sw.WriteLine(serverVersion);
-
-                        return true;
                     }
                 }
+                p.WaitForExit(5000);
+                if (p.HasExited)
+                {
+                    Dispatcher.Invoke((MethodInvoker)delegate
+                    {
+                        CustomMessageBox.Show("Server failed to start, try to install it back and if it persist report this");
+                    });
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+                
             }
             catch (Exception er)
             {
@@ -228,8 +240,6 @@ namespace H1EMU_Launcher
 
                 return false;
             }
-
-            return false;
         }
 
         private void LaunchClient(object sender, RoutedEventArgs e)
