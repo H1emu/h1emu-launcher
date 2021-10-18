@@ -133,7 +133,7 @@
     <system:String x:Key="item140">Солова Игра</system:String>
     <system:String x:Key="item141">Нов сървър...</system:String>
     <system:String x:Key="item142">Exception thrown: {0}</system:String>
-    <system:String x:Key="item143">Името на сървъра вече съществува Server name already exists in list.</system:String>
+    <system:String x:Key="item143">Името на сървъра вече съществува в списъка.</system:String>
     <system:String x:Key="item144">Име на сървъра...</system:String>
     <system:String x:Key="item145">IP адрес на сървара...</system:String>
     <system:String x:Key="item146">Не можете да изтрете този вход.</system:String>
@@ -148,14 +148,15 @@
     <system:String x:Key="item155">Ключ за потвърждение</system:String>
     <system:String x:Key="item156">За да играете на сървърите  на H1emu, ви трябва ключ за потвърждение. Може да намерите този ключ в профила ви на:</system:String>
     <system:String x:Key="item157">Най -новата версия на сървъра е версия за разработка, имайте предвид, че може да е нестабилна и да причини сривове.\n\nИскате ли все пак да продължите?</system:String>
-    <system:String x:Key="item158">Welcome to H1Emu!</system:String>
-    <system:String x:Key="item159">BEFORE YOU BEGIN, please note that this project only supports the following game versions:</system:String>
-    <system:String x:Key="item160">15th January 2015</system:String>
-    <system:String x:Key="item161">and</system:String>
-    <system:String x:Key="item162">22nd December 2016</system:String>
-    <system:String x:Key="item163">Please</system:String>
-    <system:String x:Key="item164">DO NOT</system:String>
-    <system:String x:Key="item165">use the latest Steam version of the game or any other version that was not mentioned above as it will not work.</system:String>
-    <system:String x:Key="item166">Thank you and enjoy!</system:String>
-    <system:String x:Key="item167">CONTINUE</system:String>
+    <system:String x:Key="item158">Добре дошли в H1Emu!</system:String>
+    <system:String x:Key="item159">ПРЕДИ ДА ЗАПОЧНЕТЕ, моля, имайте предвид, че този проект поддържа само следните версии на играта:</system:String>
+    <system:String x:Key="item160">15 януари 2015 г.</system:String>
+    <system:String x:Key="item161">и</system:String>
+    <system:String x:Key="item162">22 декември 2016 г.</system:String>
+    <system:String x:Key="item163">PlМоля теease</system:String>
+    <system:String x:Key="item164">НЕДЕЙ</system:String>
+    <system:String x:Key="item165">използвайте най -новата версия на Steam на играта или друга версия, която не е спомената по -горе, тъй като няма да работи.</system:String>
+    <system:String x:Key="item166">Благодаря и се наслаждавайте!</system:String>
+    <system:String x:Key="item167">ПРОДЪЛЖИ</system:String>
+    <system:String x:Key="item168">Сървърът не се стартира, опитайте отново и ако проблемът продължава, моля, докладвайте го.</system:String>
 </ResourceDictionary>

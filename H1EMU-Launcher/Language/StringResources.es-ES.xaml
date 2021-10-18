@@ -158,4 +158,5 @@
     <system:String x:Key="item165">uses la última versión del juego en Steam o cualquier otra versión que no haya sido mencionada arriba porque no funcionará.</system:String>
     <system:String x:Key="item166">¡Gracias y diviértete!</system:String>
     <system:String x:Key="item167">CONTINUAR</system:String>
+    <system:String x:Key="item168">El servidor no pudo iniciarse, inténtelo de nuevo y, si el problema persiste, infórmelo.</system:String>
 </ResourceDictionary>

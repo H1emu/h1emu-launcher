@@ -158,4 +158,5 @@
     <system:String x:Key="item165">使用steam下载最新或者不是上述版本的游戏，因为除以上两个版本外其他版本不能正常使用。</system:String>
     <system:String x:Key="item166">再次感谢您的关注，祝游戏愉快！</system:String>
     <system:String x:Key="item167">继续使用</system:String>
+    <system:String x:Key="item168">服务器无法启动，请重试，如果问题仍然存在，请报告。</system:String>
 </ResourceDictionary>

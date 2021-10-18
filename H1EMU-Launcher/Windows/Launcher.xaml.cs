@@ -214,9 +214,19 @@ namespace H1EMU_Launcher
                         sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{nodeJSVersion}-win-x64");
                         sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
                         sw.WriteLine(serverVersion);
-
-                        return true;
                     }
+                }
+
+                p.WaitForExit(5000);
+
+                if (p.HasExited)
+                {
+                    Dispatcher.Invoke((MethodInvoker)delegate
+                    {
+                        CustomMessageBox.Show(FindResource("item168").ToString());
+                    });
+
+                    return false;
                 }
             }
             catch (Exception er)
@@ -229,7 +239,7 @@ namespace H1EMU_Launcher
                 return false;
             }
 
-            return false;
+            return true;
         }
 
         private void LaunchClient(object sender, RoutedEventArgs e)

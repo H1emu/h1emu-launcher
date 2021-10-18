@@ -157,4 +157,5 @@
     <system:String x:Key="item165">de laatste Steam Versie of een andere, niet opgenoemde versie gebruiken omdat deze niet zullen werken.</system:String>
     <system:String x:Key="item166">Bedankt en veel plezier!</system:String>
     <system:String x:Key="item167">VOLLGENDE</system:String>
+    <system:String x:Key="item168">De server kan niet worden gestart, probeer het opnieuw en als het probleem aanhoudt, meld het dan.</system:String>
 </ResourceDictionary>
