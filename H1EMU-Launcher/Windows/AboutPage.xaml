@@ -85,13 +85,13 @@
                             <TextBlock Text="{DynamicResource item127}" TextWrapping="Wrap" TextDecorations="Underline"/>
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="18">
-                            • Meme (2016 Server) • Avcio (2015 Server) •
+                            • Meme (2016 Server) • Avcio (2015 Server) • HaxMax (2015 server)
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24">
                             <TextBlock Text="{DynamicResource item128}" TextWrapping="Wrap" TextDecorations="Underline"/>
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="18">
-                            • Kentin • LcplReaper • Traqnar •
+                            • Kentin • LcplReaper • Traqnar • Meme
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24">
                             <TextBlock Text="{DynamicResource item129}" TextWrapping="Wrap" TextDecorations="Underline"/>
