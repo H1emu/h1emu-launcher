@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace H1EMU_Launcher.Depo
+namespace H1EMU_Launcher
 {
     public static class PlatformUtilities
     {

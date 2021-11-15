@@ -2,7 +2,7 @@
 using System.Diagnostics.Tracing;
 using System.Text;
 
-namespace H1EMU_Launcher.Depo
+namespace H1EMU_Launcher
 {
     internal sealed class HttpDiagnosticEventListener : EventListener
     {

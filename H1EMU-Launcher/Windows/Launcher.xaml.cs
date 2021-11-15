@@ -32,7 +32,7 @@ namespace H1EMU_Launcher
         public static string latestUpdateVersionServer;
         public static string patchNotes;
 
-        public static string serverJsonFile = null;
+        public static string serverJsonFile;
         public static string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         public static ManualResetEvent ma = new ManualResetEvent(false);

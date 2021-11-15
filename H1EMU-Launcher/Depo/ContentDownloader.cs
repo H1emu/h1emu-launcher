@@ -425,7 +425,7 @@ namespace H1EMU_Launcher
             Directory.CreateDirectory( Path.GetDirectoryName( fileStagingPath ) );
 
             using (var file = File.OpenWrite(fileStagingPath))
-            using (var client = Depo.HttpClientFactory.CreateHttpClient())
+            using (var client = HttpClientFactory.CreateHttpClient())
             {
                 Debug.WriteLine( "Downloading {0}", fileName );
                 var responseStream = await client.GetStreamAsync( url );

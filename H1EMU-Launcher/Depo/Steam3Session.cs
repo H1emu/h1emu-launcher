@@ -101,7 +101,7 @@ namespace H1EMU_Launcher
             this.PackageInfo = new Dictionary<uint, SteamApps.PICSProductInfoCallback.PICSProductInfo>();
             this.AppBetaPasswords = new Dictionary<string, byte[]>();
 
-            var clientConfiguration = SteamConfiguration.Create(config => config.WithHttpClientFactory(Depo.HttpClientFactory.CreateHttpClient));
+            var clientConfiguration = SteamConfiguration.Create(config => config.WithHttpClientFactory(HttpClientFactory.CreateHttpClient));
 
             this.steamClient = new SteamClient(clientConfiguration);
 

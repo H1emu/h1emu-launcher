@@ -5,7 +5,7 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace H1EMU_Launcher.Depo
+namespace H1EMU_Launcher
 {
     // This is based on the dotnet issue #44686 and its workaround at https://github.com/dotnet/runtime/issues/44686#issuecomment-733797994
     // We don't know if the IPv6 stack is functional.

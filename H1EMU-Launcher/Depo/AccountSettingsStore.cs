@@ -39,8 +39,8 @@ namespace H1EMU_Launcher
 
         public static void LoadFromFile(string filename)
         {
-            //if (Loaded)
-                //throw new Exception("Config already loaded");
+            if (Loaded)
+                throw new Exception("Config already loaded");
 
             if (IsolatedStorage.FileExists(filename))
             {

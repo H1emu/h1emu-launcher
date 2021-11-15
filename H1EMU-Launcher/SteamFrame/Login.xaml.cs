@@ -24,7 +24,7 @@ namespace H1EMU_Launcher
         public static CancellationTokenSource tokenSource = new CancellationTokenSource();
         static CancellationToken token;
 
-        public static string gameInfo { get; set; } = "NULL";
+        public static string gameInfo { get; set; }
 
         public Login()
         {
@@ -100,8 +100,6 @@ namespace H1EMU_Launcher
         {
             string username = "";
             string password = "";
-            
-            string[] args = gameInfo.Split(' ');
 
             Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate 
             {
@@ -118,108 +116,10 @@ namespace H1EMU_Launcher
                 Debug.WriteLine(er.Message);
             }
 
-            ContentDownloader.Config.RememberPassword = HasParameter(args, "-remember-password");
-            ContentDownloader.Config.DownloadManifestOnly = HasParameter(args, "-manifest-only");
-
-            var cellId = GetParameter(args, "-cellid", -1);
-            if (cellId == -1)
-            {
-                cellId = 0;
-            }
-
-            ContentDownloader.Config.CellID = cellId;
-
-            var fileList = GetParameter<string>(args, "-filelist");
-
-            if (fileList != null)
-            {
-                try
-                {
-                    var fileListData = File.ReadAllText(fileList);
-                    var files = fileListData.Split(new char[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    ContentDownloader.Config.UsingFileList = true;
-                    ContentDownloader.Config.FilesToDownload = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-                    ContentDownloader.Config.FilesToDownloadRegex = new List<Regex>();
-
-                    var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-                    foreach (var fileEntry in files)
-                    {
-                        if (fileEntry.StartsWith("regex:"))
-                        {
-                            var rgx = new Regex(fileEntry.Substring(6), RegexOptions.Compiled | RegexOptions.IgnoreCase);
-                            ContentDownloader.Config.FilesToDownloadRegex.Add(rgx);
-                        }
-                        else
-                        {
-                            ContentDownloader.Config.FilesToDownload.Add(fileEntry.Replace('\\', '/'));
-                        }
-                    }
-
-                    Debug.WriteLine("Using filelist: " + fileList);
-                }
-
-                catch (Exception ex)
-                { 
-                    Debug.WriteLine("Warning: Unable to load filelist: " + ex.ToString()); 
-                }
-            }
-
-            ContentDownloader.Config.InstallDirectory = GetParameter<string>(args, "-dir");
-
-            ContentDownloader.Config.VerifyAll = HasParameter(args, "-verify-all") || HasParameter(args, "-verify_all") || HasParameter(args, "-validate");
-            ContentDownloader.Config.MaxServers = GetParameter<int>(args, "-max-servers", 20);
-            ContentDownloader.Config.MaxDownloads = GetParameter<int>(args, "-max-downloads", 8);
-            ContentDownloader.Config.MaxServers = Math.Max(ContentDownloader.Config.MaxServers, ContentDownloader.Config.MaxDownloads);
-            ContentDownloader.Config.LoginID = HasParameter(args, "-loginid") ? (uint?)GetParameter<uint>(args, "-loginid") : null;
-
             #region App downloading
-
-            var branch = GetParameter<string>(args, "-branch") ?? GetParameter<string>(args, "-beta") ?? ContentDownloader.DEFAULT_BRANCH;
-            ContentDownloader.Config.BetaPassword = GetParameter<string>(args, "-betapassword");
-
-            ContentDownloader.Config.DownloadAllPlatforms = HasParameter(args, "-all-platforms");
-            var os = GetParameter<string>(args, "-os", null);
-
-            if (ContentDownloader.Config.DownloadAllPlatforms && !String.IsNullOrEmpty(os))
-            {
-                Debug.WriteLine("Error: Cannot specify -os when -all-platforms is specified.");
-            }
-
-            var arch = GetParameter<string>(args, "-osarch", null);
-
-            ContentDownloader.Config.DownloadAllLanguages = HasParameter(args, "-all-languages");
-            var language = GetParameter<string>(args, "-language", null);
-
-            if (ContentDownloader.Config.DownloadAllLanguages && !String.IsNullOrEmpty(language))
-            {
-                Console.WriteLine("Error: Cannot specify -language when -all-languages is specified.");
-                return;
-            }
-
-            var lv = HasParameter(args, "-lowviolence");
 
             var depotManifestIds = new List<(uint, ulong)>();
             var isUGC = false;
-
-            var depotIdList = GetParameterList<uint>(args, "-depot");
-            var manifestIdList = GetParameterList<ulong>(args, "-manifest");
-
-            if (manifestIdList.Count > 0)
-            {
-                if (depotIdList.Count != manifestIdList.Count)
-                {
-                    Console.WriteLine("Error: -manifest requires one id for every -depot specified");
-                    return;
-                }
-
-                var zippedDepotManifest = depotIdList.Zip(manifestIdList, (depotId, manifestId) => (depotId, manifestId));
-                depotManifestIds.AddRange(zippedDepotManifest);
-            }
-            else
-            {
-                depotManifestIds.AddRange(depotIdList.Select(depotId => (depotId, ContentDownloader.INVALID_MANIFEST_ID)));
-            }
 
             if (InitializeSteam(username, password))
             {
@@ -279,6 +179,29 @@ namespace H1EMU_Launcher
                         Launcher.lncher.SteamFrame.Navigate(new Uri("..\\SteamFrame\\DownloadStatus.xaml", UriKind.Relative));
                     });
 
+                    string[] args = gameInfo.Split(' ');
+
+                    ContentDownloader.Config.MaxDownloads = 8;
+                    var appId = GetParameter(args, "-app", ContentDownloader.INVALID_APP_ID);
+                    var depotIdList = GetParameterList<uint>(args, "-depot");
+                    var manifestIdList = GetParameterList<ulong>(args, "-manifest");
+
+                    if (manifestIdList.Count > 0)
+                    {
+                        if (depotIdList.Count != manifestIdList.Count)
+                        {
+                            Console.WriteLine("Error: -manifest requires one id for every -depot specified");
+                            return;
+                        }
+
+                        var zippedDepotManifest = depotIdList.Zip(manifestIdList, (depotId, manifestId) => (depotId, manifestId));
+                        depotManifestIds.AddRange(zippedDepotManifest);
+                    }
+                    else
+                    {
+                        depotManifestIds.AddRange(depotIdList.Select(depotId => (depotId, ContentDownloader.INVALID_MANIFEST_ID)));
+                    }
+
                     foreach (ulong manifestVersion in manifestIdList)
                     {
                         if (manifestVersion == 1930886153446950288)
@@ -303,9 +226,7 @@ namespace H1EMU_Launcher
                         }
                     }
 
-                    var appId = GetParameter(args, "-app", ContentDownloader.INVALID_APP_ID);
-
-                    await ContentDownloader.DownloadAppAsync(appId, depotManifestIds, branch, os, arch, language, lv, isUGC).ConfigureAwait(false);
+                    await ContentDownloader.DownloadAppAsync(appId, depotManifestIds, "Public", null, null, null, false, isUGC).ConfigureAwait(false);
 
                     Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {

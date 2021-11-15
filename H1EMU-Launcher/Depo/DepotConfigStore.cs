@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using ProtoBuf;
 using System.IO;
 using System.IO.Compression;
+using ProtoBuf;
 
 namespace H1EMU_Launcher
 {
@@ -28,8 +28,8 @@ namespace H1EMU_Launcher
 
         public static void LoadFromFile(string filename)
         {
-            //if (Loaded)
-                //throw new Exception("Config already loaded");
+            if (Loaded)
+                throw new Exception("Config already loaded");
 
             if (File.Exists(filename))
             {
