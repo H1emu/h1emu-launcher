@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.IO.IsolatedStorage;
@@ -12,17 +13,17 @@ namespace H1EMU_Launcher
     class AccountSettingsStore
     {
         [ProtoMember(1, IsRequired = false)]
-        public Dictionary<string, byte[]> SentryData { get; private set; }
+        public Dictionary<string, byte[]> SentryData { get; set; }
 
         [ProtoMember(2, IsRequired = false)]
-        public ConcurrentDictionary<string, int> ContentServerPenalty { get; private set; }
+        public ConcurrentDictionary<string, int> ContentServerPenalty { get; set; }
 
         [ProtoMember(3, IsRequired = false)]
-        public Dictionary<string, string> LoginKeys { get; private set; }
+        public Dictionary<string, string> LoginKeys { get; set; }
 
         string FileName;
 
-        AccountSettingsStore()
+        public AccountSettingsStore()
         {
             SentryData = new Dictionary<string, byte[]>();
             ContentServerPenalty = new ConcurrentDictionary<string, int>();
@@ -54,7 +55,7 @@ namespace H1EMU_Launcher
                 }
                 catch (IOException ex)
                 {
-                    Console.WriteLine("Failed to load account settings: {0}", ex.Message);
+                    Debug.WriteLine("Failed to load account settings: {0}", ex.Message);
                     Instance = new AccountSettingsStore();
                 }
             }
@@ -81,7 +82,7 @@ namespace H1EMU_Launcher
             }
             catch (IOException ex)
             {
-                Console.WriteLine("Failed to save account settings: {0}", ex.Message);
+                Debug.WriteLine("Failed to save account settings: {0}", ex.Message);
             }
         }
     }

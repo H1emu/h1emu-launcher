@@ -7,8 +7,8 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.2.3</AssemblyVersion>
-	  <FileVersion>2.2.3</FileVersion>
+	  <AssemblyVersion>2.2.4</AssemblyVersion>
+	  <FileVersion>2.2.4</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 

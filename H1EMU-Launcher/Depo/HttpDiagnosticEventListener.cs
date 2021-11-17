@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.Text;
 
@@ -36,7 +37,7 @@ namespace H1EMU_Launcher
             }
 
             sb.Append(")");
-            Console.WriteLine(sb.ToString());
+            Debug.WriteLine(sb.ToString());
         }
     }
 }

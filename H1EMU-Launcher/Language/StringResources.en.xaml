@@ -147,7 +147,7 @@
     <system:String x:Key="item154">Auth Key...</system:String>
     <system:String x:Key="item155">Auth Key</system:String>
     <system:String x:Key="item156">To play on H1Emu Servers, you need to set an Auth Key. You can find this on your profile at:</system:String>
-    <system:String x:Key="item157">The latest version of the server is a development build, be warned that it may be unstable and cause crashes.\n\nWould you like to continue anyway?</system:String>
+    <system:String x:Key="item157">The latest version of the server is an in development build, be warned that it may be unstable and cause crashes.\n\nWould you like to continue?</system:String>
     <system:String x:Key="item158">Welcome to H1Emu!</system:String>
     <system:String x:Key="item159">BEFORE YOU BEGIN, please note that this project only supports the following game versions:</system:String>
     <system:String x:Key="item160">15th January 2015</system:String>

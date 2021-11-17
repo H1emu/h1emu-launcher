@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Threading;
@@ -66,7 +67,7 @@ namespace H1EMU_Launcher
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Failed to retrieve content server list: {0}", ex.Message);
+                    Debug.WriteLine("Failed to retrieve content server list: {0}", ex.Message);
 
                     if (ex is SteamKitWebRequestException e && e.StatusCode == (HttpStatusCode)429)
                     {

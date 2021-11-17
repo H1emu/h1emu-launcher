@@ -207,6 +207,7 @@ namespace H1EMU_Launcher
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
                 settingsProgressText.Text = FindResource("item99").ToString();
+                settingsProgress.IsIndeterminate = true;
             });
 
             try
@@ -239,6 +240,7 @@ namespace H1EMU_Launcher
                 patchButton.IsEnabled = true;
                 latestButton.IsEnabled = true;
                 stableButton.IsEnabled = true;
+                settingsProgress.IsIndeterminate = false;
                 CustomMessageBox.Show(FindResource("item102").ToString());
             });
         }
@@ -305,6 +307,7 @@ namespace H1EMU_Launcher
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
                 settingsProgressText.Text = FindResource("item99").ToString();
+                settingsProgress.IsIndeterminate = true;
             });
 
             try
@@ -349,6 +352,7 @@ namespace H1EMU_Launcher
                 patchButton.IsEnabled = true;
                 latestButton.IsEnabled = true;
                 stableButton.IsEnabled = true;
+                settingsProgress.IsIndeterminate = false;
                 CustomMessageBox.Show(FindResource("item104").ToString());
             });
         }
@@ -377,6 +381,7 @@ namespace H1EMU_Launcher
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
                         settingsProgressText.Text = FindResource("item105").ToString();
+                        settingsProgress.IsIndeterminate = true;
                     });
 
                     Process p = new Process();
@@ -407,6 +412,7 @@ namespace H1EMU_Launcher
                         patchButton.IsEnabled = true;
                         latestButton.IsEnabled = true;
                         stableButton.IsEnabled = true;
+                        settingsProgress.IsIndeterminate = false;
 
                         if (er.Message == "No such host is known. (api.github.com:443)")
                         {
@@ -431,6 +437,7 @@ namespace H1EMU_Launcher
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
+                    settingsProgress.IsIndeterminate = false;
                     CustomMessageBox.Show(FindResource("item108").ToString());
                 });
 
@@ -455,6 +462,7 @@ namespace H1EMU_Launcher
                     Dispatcher.BeginInvoke((MethodInvoker)delegate
                     {
                         settingsProgressText.Text = FindResource("item109").ToString();
+                        settingsProgress.IsIndeterminate = true;
                     });
 
                     Process p = new Process();
@@ -485,6 +493,7 @@ namespace H1EMU_Launcher
                         patchButton.IsEnabled = true;
                         latestButton.IsEnabled = true;
                         stableButton.IsEnabled = true;
+                        settingsProgress.IsIndeterminate = false;
 
                         if (er.Message == "No such host is known. (api.github.com:443)")
                         {
@@ -509,6 +518,7 @@ namespace H1EMU_Launcher
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
+                    settingsProgress.IsIndeterminate = false;
                     CustomMessageBox.Show(FindResource("item112").ToString());
                 });
 
@@ -622,6 +632,7 @@ namespace H1EMU_Launcher
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
                 settingsProgressText.Text = FindResource("item116").ToString();
+                settingsProgress.IsIndeterminate = true;
             });
 
             try
@@ -646,6 +657,7 @@ namespace H1EMU_Launcher
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
                 settingsProgress.Value = 0;
+                settingsProgress.IsIndeterminate = false;
             });
 
             // Delete old .zip file in the case of corruption.
@@ -683,6 +695,7 @@ namespace H1EMU_Launcher
             Dispatcher.BeginInvoke((MethodInvoker)delegate
             {
                 settingsProgressText.Text = FindResource("item118").ToString();
+                settingsProgress.IsIndeterminate = true;
             });
 
             try

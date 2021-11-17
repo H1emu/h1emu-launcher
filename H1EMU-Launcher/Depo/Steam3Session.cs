@@ -672,7 +672,7 @@ namespace H1EMU_Launcher
 
             if (loggedOn.Result == EResult.TryAnotherCM)
             {
-                Console.Write("Retrying Steam3 connection (TryAnotherCM)...");
+                Debug.Write("Retrying Steam3 connection (TryAnotherCM)...");
 
                 Reconnect();
 
@@ -758,7 +758,7 @@ namespace H1EMU_Launcher
         private void UpdateMachineAuthCallback(SteamUser.UpdateMachineAuthCallback machineAuth)
         {
             var hash = Util.SHAHash(machineAuth.Data);
-            Console.WriteLine("Got Machine Auth: {0} {1} {2} {3}", machineAuth.FileName, machineAuth.Offset, machineAuth.BytesToWrite, machineAuth.Data.Length, hash);
+            Debug.WriteLine("Got Machine Auth: {0} {1} {2} {3}", machineAuth.FileName, machineAuth.Offset, machineAuth.BytesToWrite, machineAuth.Data.Length, hash);
 
             AccountSettingsStore.Instance.SentryData[logonDetails.Username] = machineAuth.Data;
             AccountSettingsStore.Save();
@@ -786,7 +786,7 @@ namespace H1EMU_Launcher
 
         private void LoginKeyCallback(SteamUser.LoginKeyCallback loginKey)
         {
-            Console.WriteLine("Accepted new login key for account {0}", logonDetails.Username);
+            Debug.WriteLine("Accepted new login key for account {0}", logonDetails.Username);
 
             AccountSettingsStore.Instance.LoginKeys[logonDetails.Username] = loginKey.LoginKey;
             AccountSettingsStore.Save();

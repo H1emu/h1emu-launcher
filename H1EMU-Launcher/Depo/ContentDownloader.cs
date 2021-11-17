@@ -30,13 +30,13 @@ namespace H1EMU_Launcher
 
         public static DownloadConfig Config = new DownloadConfig();
 
-        private static Steam3Session steam3;
-        private static Steam3Session.Credentials steam3Credentials;
-        private static CDNClientPool cdnPool;
+        public static Steam3Session steam3;
+        public static Steam3Session.Credentials steam3Credentials;
+        public static CDNClientPool cdnPool;
 
         public static string DEFAULT_DOWNLOAD_DIR = "depots";
-        private static string CONFIG_DIR = "DepotDownloader";
-        private static string STAGING_DIR = Path.Combine(CONFIG_DIR, "staging");
+        public static string CONFIG_DIR = "DepotDownloader";
+        public static string STAGING_DIR = Path.Combine(CONFIG_DIR, "staging");
         
         private sealed class DepotDownloadInfo
         {
@@ -698,6 +698,9 @@ namespace H1EMU_Launcher
 
         private static async Task DownloadSteam3Async(uint appId, List<DepotDownloadInfo> depots)
         {
+            tokenSource.Dispose();
+            tokenSource = new CancellationTokenSource();
+
             cdnPool.ExhaustedToken = tokenSource;
 
             GlobalDownloadCounter downloadCounter = new GlobalDownloadCounter();
@@ -740,9 +743,6 @@ namespace H1EMU_Launcher
 
             Debug.WriteLine("Total downloaded: {0} bytes ({1} bytes uncompressed) from {2} depots",
                 downloadCounter.TotalBytesCompressed, downloadCounter.TotalBytesUncompressed, depots.Count);
-
-            Properties.Settings.Default.activeDirectory = DEFAULT_DOWNLOAD_DIR;
-            Properties.Settings.Default.Save();
         }
 
         private static async Task<DepotFilesData> ProcessDepotManifestAndFiles(CancellationTokenSource cts, 
@@ -833,7 +833,7 @@ namespace H1EMU_Launcher
                 }
                 else
                 {
-                    Console.Write("Downloading depot manifest...");
+                    Debug.Write("Downloading depot manifest...");
 
                     DepotManifest depotManifest = null;
 
@@ -1088,7 +1088,7 @@ namespace H1EMU_Launcher
                         // we have a version of this file, but it doesn't fully match what we want
                         if (Config.VerifyAll)
                         {
-                            Console.WriteLine("Validating {0}", fileFinalPath);
+                            Debug.WriteLine("Validating {0}", fileFinalPath);
                         }
 
                         var matchingChunks = new List<ChunkMatch>();
@@ -1180,7 +1180,7 @@ namespace H1EMU_Launcher
                         }
                     }
 
-                    Console.WriteLine("Validating {0}", fileFinalPath);
+                    Debug.WriteLine("Validating {0}", fileFinalPath);
                     neededChunks = Util.ValidateSteam3FileChecksums(fs, file.Chunks.OrderBy(x => x.Offset).ToArray());
                 }
 
@@ -1189,7 +1189,7 @@ namespace H1EMU_Launcher
                     lock (depotDownloadCounter)
                     {
                         depotDownloadCounter.SizeDownloaded += file.TotalSize;
-                        Console.WriteLine("{0,6:#00.00}% {1}", (depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize) * 100.0f, fileFinalPath);
+                        Debug.WriteLine("{0,6:#00.00}% {1}", (depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize) * 100.0f, fileFinalPath);
                     }
 
                     return;
@@ -1269,11 +1269,11 @@ namespace H1EMU_Launcher
 
                     if (e.StatusCode == HttpStatusCode.Unauthorized || e.StatusCode == HttpStatusCode.Forbidden)
                     {
-                        Console.WriteLine("Encountered 401 for chunk {0}. Aborting.", chunkID);
+                        Debug.WriteLine("Encountered 401 for chunk {0}. Aborting.", chunkID);
                         break;
                     }
 
-                    Console.WriteLine("Encountered error downloading chunk {0}: {1}", chunkID, e.StatusCode);
+                    Debug.WriteLine("Encountered error downloading chunk {0}: {1}", chunkID, e.StatusCode);
                 }
                 catch (OperationCanceledException)
                 {

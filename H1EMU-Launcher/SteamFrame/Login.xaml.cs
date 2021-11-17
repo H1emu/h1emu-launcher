@@ -119,7 +119,6 @@ namespace H1EMU_Launcher
             #region App downloading
 
             var depotManifestIds = new List<(uint, ulong)>();
-            var isUGC = false;
 
             if (InitializeSteam(username, password))
             {
@@ -190,7 +189,7 @@ namespace H1EMU_Launcher
                     {
                         if (depotIdList.Count != manifestIdList.Count)
                         {
-                            Console.WriteLine("Error: -manifest requires one id for every -depot specified");
+                            Debug.WriteLine("Error: -manifest requires one id for every -depot specified");
                             return;
                         }
 
@@ -226,7 +225,10 @@ namespace H1EMU_Launcher
                         }
                     }
 
-                    await ContentDownloader.DownloadAppAsync(appId, depotManifestIds, "Public", null, null, null, false, isUGC).ConfigureAwait(false);
+                    await ContentDownloader.DownloadAppAsync(appId, depotManifestIds, "Public", null, null, null, false, false).ConfigureAwait(false);
+
+                    Properties.Settings.Default.activeDirectory = ContentDownloader.DEFAULT_DOWNLOAD_DIR;
+                    Properties.Settings.Default.Save();
 
                     Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
@@ -247,8 +249,6 @@ namespace H1EMU_Launcher
                         loginEnterButton.Visibility = Visibility.Visible;
                         CustomMessageBox.Show(FindResource("item38").ToString() + $" {version}.");
                     });
-
-                    return;
                 }
                 catch (Exception ex) when (ex is ContentDownloaderException || ex is OperationCanceledException)
                 {
@@ -260,8 +260,6 @@ namespace H1EMU_Launcher
                         loginEnterButton.Visibility = Visibility.Visible;
                         CustomMessageBox.Show(FindResource("item39").ToString() + $" \"{ex.Message}\".");
                     });
-
-                    return;
                 }
                 catch (Exception er)
                 {
@@ -273,8 +271,6 @@ namespace H1EMU_Launcher
                         loginEnterButton.Visibility = Visibility.Visible;
                         CustomMessageBox.Show(FindResource("item40").ToString() + $" \"{er.Message}\".");
                     });
-
-                    return;
                 }
                 finally
                 {
@@ -291,6 +287,18 @@ namespace H1EMU_Launcher
                     loginEnterButton.Visibility = Visibility.Visible;
                 });
             }
+
+            try
+            {
+                AccountSettingsStore.Instance.SentryData.Clear();
+                AccountSettingsStore.Instance.ContentServerPenalty.Clear();
+                AccountSettingsStore.Instance.LoginKeys.Clear();
+                AccountSettingsStore.Instance = null;
+
+                DepotConfigStore.Instance.InstalledManifestIDs.Clear();
+                DepotConfigStore.Instance = null;
+            }
+            catch { }
 
             username = "";
             password = "";

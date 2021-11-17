@@ -10,11 +10,11 @@ namespace H1EMU_Launcher
     class DepotConfigStore
     {
         [ProtoMember(1)]
-        public Dictionary<uint, ulong> InstalledManifestIDs { get; private set; }
+        public Dictionary<uint, ulong> InstalledManifestIDs { get; set; }
 
         string FileName;
 
-        DepotConfigStore()
+        public DepotConfigStore()
         {
             InstalledManifestIDs = new Dictionary<uint, ulong>();
         }
