@@ -159,4 +159,5 @@
     <system:String x:Key="item166">Благодаря и се наслаждавайте!</system:String>
     <system:String x:Key="item167">ПРОДЪЛЖИ</system:String>
     <system:String x:Key="item168">Сървърът не се стартира, опитайте отново и ако проблемът продължава, моля, докладвайте го.</system:String>
+    <system:String x:Key="item169">• Стартер, направен от @Eavilaswayce •</system:String>
 </ResourceDictionary>

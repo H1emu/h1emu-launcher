@@ -159,4 +159,5 @@
     <system:String x:Key="item166">¡Gracias y diviértete!</system:String>
     <system:String x:Key="item167">CONTINUAR</system:String>
     <system:String x:Key="item168">El servidor no pudo iniciarse, inténtelo de nuevo y, si el problema persiste, infórmelo.</system:String>
+    <system:String x:Key="item169">• Lanzador hecho por @Eavilaswayce •</system:String>
 </ResourceDictionary>

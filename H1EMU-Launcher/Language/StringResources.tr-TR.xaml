@@ -159,4 +159,5 @@
     <system:String x:Key="item166">Teşekkürler, keyfinize bakın!</system:String>
     <system:String x:Key="item167">DEVAM ET</system:String>
     <system:String x:Key="item168">Sunucu başlatılamadı, tekrar deneyin ve sorun devam ederse lütfen bildirin.</system:String>
+    <system:String x:Key="item169">• Başlatıcı @Eavilaswayce tarafından yapılmıştır •</system:String>
 </ResourceDictionary>

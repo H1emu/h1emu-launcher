@@ -159,4 +159,5 @@
     <system:String x:Key="item166">Dziękujemy!</system:String>
     <system:String x:Key="item167">DALEJ</system:String>
     <system:String x:Key="item168">Nie udało się uruchomić serwera, spróbuj ponownie, a jeśli problem będzie się powtarzał, zgłoś go.</system:String>
+    <system:String x:Key="item169">• Launcher stworzony przez @Eavilaswayce •</system:String>
 </ResourceDictionary>

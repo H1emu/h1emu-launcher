@@ -159,4 +159,5 @@
     <system:String x:Key="item166">Hvala i uživajte!</system:String>
     <system:String x:Key="item167">NASTAVI</system:String>
     <system:String x:Key="item168">Poslužitelj se nije uspio pokrenuti, pokušajte ponovo. Ako problem potraje, prijavite ga.</system:String>
+    <system:String x:Key="item169">• Launcher izradio @Eavilaswayce •</system:String>
 </ResourceDictionary>

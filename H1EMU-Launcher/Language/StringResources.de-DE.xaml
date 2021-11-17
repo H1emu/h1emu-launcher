@@ -159,4 +159,5 @@
     <system:String x:Key="item166">Vielen Dank und viel Spaß!</system:String>
     <system:String x:Key="item167">FORTSETZEN</system:String>
     <system:String x:Key="item168">Der Server konnte nicht gestartet werden, versuchen Sie es erneut und wenn das Problem weiterhin besteht, melden Sie es bitte.</system:String>
+    <system:String x:Key="item169">• Launcher von @Eavilaswayce •</system:String>
 </ResourceDictionary>
