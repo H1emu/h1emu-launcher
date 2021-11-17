@@ -52,6 +52,7 @@ namespace H1EMU_Launcher
             cmdShell.FileName = "cmd.exe";
             cmdShell.RedirectStandardInput = true;
             cmdShell.UseShellExecute = false;
+            cmdShell.CreateNoWindow = true;
         }
 
         //////////////////////
@@ -385,7 +386,6 @@ namespace H1EMU_Launcher
                     });
 
                     Process p = new Process();
-
                     p.StartInfo = cmdShell;
                     p.Start();
 
@@ -466,7 +466,6 @@ namespace H1EMU_Launcher
                     });
 
                     Process p = new Process();
-
                     p.StartInfo = cmdShell;
                     p.Start();
 
