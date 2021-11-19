@@ -160,4 +160,5 @@
     <system:String x:Key="item167">CONTINUER</system:String>
     <system:String x:Key="item168">Le serveur n'a pas pu démarrer, réessayez et si le problème persiste, veuillez le signaler.</system:String>
     <system:String x:Key="item169">• Lanceur réalisé par @Eavilaswayce •</system:String>
+    <system:String x:Key="item170">Contributeurs financiers</system:String>
 </ResourceDictionary>

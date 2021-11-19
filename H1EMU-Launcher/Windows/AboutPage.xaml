@@ -117,6 +117,12 @@
                         <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
                             • YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) •
                         </Paragraph>
+                        <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24" FontWeight="Light" Margin="0,50,0,0">
+                            <TextBlock Text="{DynamicResource item170}" TextDecorations="Underline" TextWrapping="Wrap"/>
+                        </Paragraph>
+                        <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
+                            •  •
+                        </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light" Margin="0,60,0,0">
                             <TextBlock Text="{DynamicResource item132}" TextDecorations="Underline" TextWrapping="Wrap"/>
                         </Paragraph>

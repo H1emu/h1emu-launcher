@@ -160,4 +160,5 @@
     <system:String x:Key="item167">ПРОДОЛЖИТЬ</system:String>
     <system:String x:Key="item168">Не удалось запустить сервер, попробуйте еще раз, и, если проблема не исчезнет, ​​сообщите об этом.</system:String>
     <system:String x:Key="item169">• Программа запуска от @Eavilaswayce •</system:String>
+    <system:String x:Key="item170">Financial contributors</system:String>
 </ResourceDictionary>

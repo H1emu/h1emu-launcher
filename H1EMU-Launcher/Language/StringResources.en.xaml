@@ -160,4 +160,5 @@
     <system:String x:Key="item167">CONTINUE</system:String>
     <system:String x:Key="item168">Server failed to start, try again and if the issue persists please report it.</system:String>
     <system:String x:Key="item169">• Launcher made by @Eavilaswayce •</system:String>
+    <system:String x:Key="item170">Financial contributors</system:String>
 </ResourceDictionary>

@@ -159,4 +159,5 @@
     <system:String x:Key="item167">VOLLGENDE</system:String>
     <system:String x:Key="item168">De server kan niet worden gestart, probeer het opnieuw en als het probleem aanhoudt, meld het dan.</system:String>
     <system:String x:Key="item169">• Launcher gemaakt door @Eavilaswayce •</system:String>
+    <system:String x:Key="item170">Financial contributors</system:String>
 </ResourceDictionary>
