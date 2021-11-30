@@ -160,5 +160,5 @@
     <system:String x:Key="item167">DEVAM ET</system:String>
     <system:String x:Key="item168">Sunucu başlatılamadı, tekrar deneyin ve sorun devam ederse lütfen bildirin.</system:String>
     <system:String x:Key="item169">• Başlatıcı @Eavilaswayce tarafından yapılmıştır •</system:String>
-    <system:String x:Key="item170">Financial contributors</system:String>
+    <system:String x:Key="item170">Finansal Katkıda Bulunanlar</system:String>
 </ResourceDictionary>

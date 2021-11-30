@@ -160,5 +160,5 @@
     <system:String x:Key="item167">NASTAVI</system:String>
     <system:String x:Key="item168">Poslužitelj se nije uspio pokrenuti, pokušajte ponovo. Ako problem potraje, prijavite ga.</system:String>
     <system:String x:Key="item169">• Launcher izradio @Eavilaswayce •</system:String>
-    <system:String x:Key="item170">Financial contributors</system:String>
+    <system:String x:Key="item170">Financijski Suradnici</system:String>
 </ResourceDictionary>
