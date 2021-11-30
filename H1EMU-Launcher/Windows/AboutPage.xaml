@@ -109,7 +109,7 @@
                             <TextBlock Text="{DynamicResource item131}" TextDecorations="Underline" TextWrapping="Wrap"/>
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
-                            • rob138us • Dave •
+                            • rob138us • Dave • Booze (Orphanfeast87) •
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24" FontWeight="Light" Margin="0,50,0,0">
                             <TextBlock Text="{DynamicResource item136}" TextDecorations="Underline" TextWrapping="Wrap"/>
@@ -121,7 +121,7 @@
                             <TextBlock Text="{DynamicResource item170}" TextDecorations="Underline" TextWrapping="Wrap"/>
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
-                            •  •
+                            • Booze (Orphanfeast87) •
                         </Paragraph>
                         <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light" Margin="0,60,0,0">
                             <TextBlock Text="{DynamicResource item132}" TextDecorations="Underline" TextWrapping="Wrap"/>
