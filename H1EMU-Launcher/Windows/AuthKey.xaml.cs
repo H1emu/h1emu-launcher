@@ -50,7 +50,7 @@ namespace H1EMU_Launcher
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://www.h1emu.com/us/cockpit/my/security-launcher/",
+                FileName = "https://www.h1emu.com/us/cockpit/my/launcher-key/",
                 UseShellExecute = true
             });
         }

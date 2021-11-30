@@ -78,7 +78,7 @@
                 <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Grid.Row="0" Width="540" Text="{DynamicResource item156}" Foreground="White" FontSize="16" Margin="0,16,0,0" TextWrapping="Wrap"/>
                 <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
                 <Hyperlink Click="UserProfileLink">
-                    <TextBlock Text="https://www.h1emu.com/us/cockpit/my/security-launcher/"/>
+                    <TextBlock Text="https://www.h1emu.com/us/cockpit/my/launcher-key/"/>
                 </Hyperlink>
             </TextBlock>
 

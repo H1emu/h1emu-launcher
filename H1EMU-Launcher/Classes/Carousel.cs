@@ -120,7 +120,7 @@ namespace H1EMU_Launcher.Classes
 
                                     if (number != 1 && number != 2)
                                     {
-                                        wc.DownloadFile($"https://h1emu.com/Public/uploads/media/embed/{match.Groups["name"]}", $"{Launcher.appDataPath}\\H1EmuLauncher\\CarouselImages\\{match.Groups["name"]}");
+                                        wc.DownloadFile($"https://cdn.h1emu.com/main/uploads/media/embed/{match.Groups["name"]}", $"{Launcher.appDataPath}\\H1EmuLauncher\\CarouselImages\\{match.Groups["name"]}");
                                     }
                                 }
                             }
