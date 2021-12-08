@@ -26,7 +26,7 @@ namespace H1EMU_Launcher
 
 #pragma warning disable SYSLIB0014 // Warning saying that WebClient is discontinued and not supported anymore.
 
-        public static string nodeJSVersion = "16.11.0";
+        public static string nodeJSVersion = "16.13.1";
 
         public static string recentDateServer;
         public static string latestUpdateVersionServer;
