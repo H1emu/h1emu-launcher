@@ -222,14 +222,26 @@
                         <WrapPanel Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                             <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,25,10" TextWrapping="Wrap">
                             <TextBlock Text="{DynamicResource item12}"></TextBlock>
-                            <Hyperlink NavigateUri="https://h1emu.com/" RequestNavigate="H1Hyperlink">
-                                h1emu.com
-                            </Hyperlink>
+                                <Hyperlink NavigateUri="https://h1emu.com/" RequestNavigate="H1Hyperlink">
+                                    h1emu.com
+                                </Hyperlink>
+                                
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Copy" Click="websiteLinkCopy" Style="{DynamicResource PopupMenuItem}"/>
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
                         </TextBlock>
                             <Button x:Name="discordLink" Width="160" Height="44" VerticalAlignment="Center" Click="OpenDiscord" HorizontalAlignment="Right" Margin="0,0,35,5" Grid.Column="1" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource DiscordButtonStyle}">
                                 <Button.Background>
                                     <ImageBrush ImageSource="..\Resources\Discord.png"/>
                                 </Button.Background>
+
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Header="Copy" Click="discordLinkCopy" Style="{DynamicResource PopupMenuItem}"/>
+                                    </ContextMenu>
+                                </Button.ContextMenu>
                             </Button>
                         </WrapPanel>
                     </Grid>
@@ -317,6 +329,12 @@
                         <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/" RequestNavigate="FullUpdatesHyperlink">
                             <TextBlock Text="{DynamicResource item61}"/>
                         </Hyperlink>
+                        
+                        <TextBlock.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Copy" Click="patchNotesCopy" Style="{DynamicResource PopupMenuItem}"/>
+                            </ContextMenu>
+                        </TextBlock.ContextMenu>
                     </TextBlock>
                 </StackPanel>
                 

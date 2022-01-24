@@ -41,6 +41,11 @@ namespace H1EMU_Launcher
             authKeyHint.Visibility = Visibility.Hidden;
         }
 
+        private void authKeyLinkCopy(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Clipboard.SetText(Classes.Info.AUTH_KEY_LINK);
+        }
+
         private void AuthKeyLostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(authKeyBox.Password)) { authKeyHint.Visibility = Visibility.Visible; }
@@ -50,7 +55,7 @@ namespace H1EMU_Launcher
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://www.h1emu.com/us/cockpit/my/launcher-key/",
+                FileName = Classes.Info.AUTH_KEY_LINK,
                 UseShellExecute = true
             });
         }

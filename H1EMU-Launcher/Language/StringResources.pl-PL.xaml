@@ -158,7 +158,7 @@
     <system:String x:Key="item165">najnowszej wersji pobranej ze Steam, ani żadnej innej nie wymienionej powyżej, nie będą one działać.</system:String>
     <system:String x:Key="item166">Dziękujemy!</system:String>
     <system:String x:Key="item167">DALEJ</system:String>
-    <system:String x:Key="item168">Nie udało się uruchomić serwera, spróbuj ponownie, a jeśli problem będzie się powtarzał, zgłoś go.</system:String>
+    <system:String x:Key="item168">Nie udało się uruchomić serwera, spróbuj ponownie, a jeśli problem będzie się powtarzał, zgłoś go.\n\nPonowna instalacja plików serwera może rozwiązać ten problem.</system:String>
     <system:String x:Key="item169">• Launcher stworzony przez @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Współtwórcy Finansowi</system:String>
 </ResourceDictionary>

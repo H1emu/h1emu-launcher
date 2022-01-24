@@ -11,8 +11,6 @@ namespace H1EMU_Launcher.Classes
 {
     class CustomSettingsProvider : SettingsProvider
     {
-        public static string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-
         const string NAME = "name";
         const string SERIALIZE_AS = "serializeAs";
         const string CONFIG = "configuration";
@@ -170,7 +168,7 @@ namespace H1EMU_Launcher.Classes
 
         private void CreateEmptyConfig()
         {
-            Directory.CreateDirectory($"{appDataPath}\\H1EmuLauncher");
+            Directory.CreateDirectory($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher");
 
             var doc = new XDocument();
             var declaration = new XDeclaration("1.0", "utf-8", "true");
@@ -227,7 +225,7 @@ namespace H1EMU_Launcher.Classes
             get
             {
                 //return $"{appDataPath}\\H1EmuLauncher";
-                return $"{appDataPath}\\H1EmuLauncher\\user.config";
+                return $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\user.config";
             }
 
         }

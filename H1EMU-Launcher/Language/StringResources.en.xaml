@@ -158,7 +158,7 @@
     <system:String x:Key="item165">use the latest Steam version of the game or any other version that was not mentioned above as it will not work.</system:String>
     <system:String x:Key="item166">Thank you and enjoy!</system:String>
     <system:String x:Key="item167">CONTINUE</system:String>
-    <system:String x:Key="item168">Server failed to start, try again and if the issue persists please report it.</system:String>
+    <system:String x:Key="item168">The server failed to start, try again and if the issue persists please report it.\n\nReinstalling server files may fix this issue.</system:String>
     <system:String x:Key="item169">• Launcher made by @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Financial Contributors</system:String>
 </ResourceDictionary>

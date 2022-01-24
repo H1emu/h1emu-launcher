@@ -14,6 +14,8 @@ using H1EMU_Launcher.Resources;
 using System.Text.Json.Serialization;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
+using System.Net;
+using Newtonsoft.Json;
 
 namespace H1EMU_Launcher
 {
@@ -25,18 +27,10 @@ namespace H1EMU_Launcher
     {
 
 #pragma warning disable SYSLIB0014 // Warning saying that WebClient is discontinued and not supported anymore.
-
-        public static string nodeJSVersion = "16.13.1";
-
-        public static string recentDateServer;
-        public static string latestUpdateVersionServer;
-        public static string patchNotes;
-
-        public static string serverJsonFile;
-        public static string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-
         public static ManualResetEvent ma = new ManualResetEvent(false);
         public static Launcher lncher;
+
+        public static string serverJsonFile;
 
         public class Server
         {
@@ -211,7 +205,7 @@ namespace H1EMU_Launcher
                 {
                     if (sw.BaseStream.CanWrite)
                     {
-                        sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{nodeJSVersion}-win-x64");
+                        sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{Classes.Info.NODEJS_VERSION}-win-x64");
                         sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
                         sw.WriteLine(serverVersion);
                     }
@@ -223,7 +217,7 @@ namespace H1EMU_Launcher
                 {
                     Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show(FindResource("item168").ToString());
+                        CustomMessageBox.Show(FindResource("item168").ToString().Replace("\n\n", Environment.NewLine + Environment.NewLine));
                     });
 
                     return false;
@@ -366,7 +360,7 @@ namespace H1EMU_Launcher
 
                         Process process = new Process()
                         {
-                            StartInfo = new ProcessStartInfo($"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe", $"sessionid={sessionId} gamecrashurl=https://www.h1emu.com/us/game-error?code=G server={serverIp}")
+                            StartInfo = new ProcessStartInfo($"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe", $"sessionid={sessionId} gamecrashurl={Classes.Info.GAME_CRASH_URL} server={serverIp}")
                             {
                                 WindowStyle = ProcessWindowStyle.Normal,
                                 WorkingDirectory = Properties.Settings.Default.activeDirectory,
@@ -416,37 +410,69 @@ namespace H1EMU_Launcher
 
             try
             {
-                File.Delete($"{appDataPath}\\H1EmuLauncher\\{MainWindow.downloadFileName}");
+                File.Delete($"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{MainWindow.downloadFileName}");
             }
             catch { }
 
             try
             {
-                Directory.Delete($"{appDataPath}\\H1EmuLauncher\\CarouselImages", true);
+                Directory.Delete($"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages", true);
             }
             catch { }
 
-            Directory.CreateDirectory($"{appDataPath}\\H1EmuLauncher\\CarouselImages");
-            Directory.CreateDirectory($"{appDataPath}\\H1EmuLauncher");
-            serverJsonFile = System.IO.Path.Combine($"{appDataPath}\\H1EmuLauncher", "servers.json");
+            Directory.CreateDirectory($"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages");
+            Directory.CreateDirectory($"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher");
+            serverJsonFile = System.IO.Path.Combine($"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher", "servers.json");
             if (!File.Exists(serverJsonFile)) { File.WriteAllText(serverJsonFile, "[]"); }
             
             LoadServers();
             Classes.Carousel.BeginImageCarousel();
             LangBox.SelectedIndex = Properties.Settings.Default.language;
 
-            // Update version, date published and patch notes code.
+            VersionInformation();
+        }
 
-            if (!string.IsNullOrEmpty(recentDateServer) || !string.IsNullOrEmpty(latestUpdateVersionServer) || !string.IsNullOrEmpty(patchNotes))
+        public void VersionInformation()
+        {
+            string latestVersion = null;
+            string latestPatchNotes = null;
+            string publishDate = null;
+
+            try
+            {
+                // Update version, date published and patch notes code.
+
+                WebClient wc = new WebClient();
+                wc.Headers.Add("User-Agent", "d-fens HttpClient");
+
+                string jsonServer = wc.DownloadString(new Uri(Classes.Info.SERVER_JSON_API));
+
+                // Get latest release number and date published for server.
+
+                var jsonDesServer = JsonConvert.DeserializeObject<dynamic>(jsonServer);
+                latestVersion = jsonDesServer.tag_name;
+                latestPatchNotes = jsonDesServer.body;
+                publishDate = jsonDesServer.published_at;
+
+                // Store the latest server version, date and patch notes in the case of no internet.
+
+                Properties.Settings.Default.latestServerVersion = latestVersion;
+                Properties.Settings.Default.patchNotes = latestPatchNotes;
+                Properties.Settings.Default.publishDate = publishDate;
+                Properties.Settings.Default.Save();
+            }
+            catch { }
+
+            if (!string.IsNullOrEmpty(latestVersion) || !string.IsNullOrEmpty(latestPatchNotes) || !string.IsNullOrEmpty(publishDate))
             {
                 try
                 {
-                    var date = DateTime.ParseExact(recentDateServer, "G", CultureInfo.InvariantCulture);
+                    var date = DateTime.ParseExact(publishDate, "G", CultureInfo.InvariantCulture);
 
-                    updateVersion.Text = $" {latestUpdateVersionServer}";
+                    updateVersion.Text = $" {latestVersion}";
                     datePublished.Text = $"({date:dd MMMM yyyy})";
                     patchNotesBox.Document.Blocks.Clear();
-                    patchNotesBox.Document.Blocks.Add(new Paragraph(new Run(patchNotes)));
+                    patchNotesBox.Document.Blocks.Add(new Paragraph(new Run(latestPatchNotes)));
                 }
                 catch { }
             }
@@ -532,7 +558,7 @@ namespace H1EMU_Launcher
 
             if (carouselProgressBar.Value != 3000)
             {
-                Classes.Carousel.progressI = 0;
+                Classes.Carousel.progress = 0;
                 carouselProgressBar.Value = 0;
             }
 
@@ -549,7 +575,7 @@ namespace H1EMU_Launcher
 
             if (carouselProgressBar.Value != 3000)
             {
-                Classes.Carousel.progressI = 0;
+                Classes.Carousel.progress = 0;
                 carouselProgressBar.Value = 0;
             }
 
@@ -620,7 +646,7 @@ namespace H1EMU_Launcher
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://discord.com/invite/RM6jNkj",
+                FileName = Classes.Info.DISCORD_LINK,
                 UseShellExecute = true
             });
         }
@@ -629,9 +655,24 @@ namespace H1EMU_Launcher
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley",
+                FileName = Classes.Info.LOGO_LINK,
                 UseShellExecute = true
             });
+        }
+
+        private void patchNotesCopy(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Clipboard.SetText(Classes.Info.CHANGELOG);
+        }
+
+        private void websiteLinkCopy(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Clipboard.SetText(Classes.Info.WEBSITE);
+        }
+
+        private void discordLinkCopy(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Clipboard.SetText(Classes.Info.DISCORD_LINK);
         }
 
         private void CloseLauncher(object sender, RoutedEventArgs e)

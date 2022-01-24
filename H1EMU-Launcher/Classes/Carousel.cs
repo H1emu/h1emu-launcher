@@ -10,16 +10,17 @@ using System.Threading.Tasks;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace H1EMU_Launcher.Classes
 {
     class Carousel
     {
+        public static ManualResetEvent pauseCarousel = new ManualResetEvent(true);
         public static List<string> images = new List<string>();
         public static int currentIndex = 0;
         public static int lastIndex = 0;
-        public static int progressI = 0;
-        public static ManualResetEvent pauseCarousel = new ManualResetEvent(true);
+        public static int progress = 0;
 
         public static void BeginImageCarousel()
         {
@@ -27,9 +28,9 @@ namespace H1EMU_Launcher.Classes
             {
                 DownloadImages();
 
-                if (Directory.GetFileSystemEntries($"{Launcher.appDataPath}\\H1EmuLauncher\\CarouselImages").Length == 0) { return; }
+                if (Directory.GetFileSystemEntries($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages").Length == 0) { return; }
 
-                foreach (var fileName in Directory.EnumerateFiles($"{Launcher.appDataPath}\\H1EmuLauncher\\CarouselImages"))
+                foreach (var fileName in Directory.EnumerateFiles($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages"))
                 {
                     images.Add(fileName);
                 }
@@ -41,18 +42,18 @@ namespace H1EMU_Launcher.Classes
                     Launcher.lncher.imageCarousel.Visibility = System.Windows.Visibility.Visible;
                 });
 
-                for (progressI = 0; progressI <= 3000; progressI++)
+                for (progress = 0; progress <= 3000; progress++)
                 {
                     pauseCarousel.WaitOne();
 
                     System.Windows.Application.Current.Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                     {
-                        Launcher.lncher.carouselProgressBar.Value = progressI;
+                        Launcher.lncher.carouselProgressBar.Value = progress;
                     });
 
                     Thread.Sleep(1);
 
-                    if (progressI == 3000)
+                    if (progress == 3000)
                     {
                         System.Windows.Application.Current.Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
                         {
@@ -62,11 +63,12 @@ namespace H1EMU_Launcher.Classes
                         });
 
                         Thread.Sleep(1000);
-                        progressI = 0;
+                        progress = 0;
                     }
                 }
 
             }).Start();
+
         }
 
         public static void NextImage()
@@ -98,8 +100,7 @@ namespace H1EMU_Launcher.Classes
             WebClient wc = new WebClient();
             int number = 0;
 
-            string url = "https://h1emu.com/Public/uploads/media/embed/";
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Info.CAROUSEL_MEDIA);
 
             try
             {
@@ -120,7 +121,7 @@ namespace H1EMU_Launcher.Classes
 
                                     if (number != 1 && number != 2)
                                     {
-                                        wc.DownloadFile($"https://cdn.h1emu.com/main/uploads/media/embed/{match.Groups["name"]}", $"{Launcher.appDataPath}\\H1EmuLauncher\\CarouselImages\\{match.Groups["name"]}");
+                                        wc.DownloadFile($"{Info.CAROUSEL_MEDIA + match.Groups["name"]}", $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages\\{match.Groups["name"]}");
                                     }
                                 }
                             }

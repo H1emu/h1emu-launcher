@@ -34,7 +34,6 @@ namespace H1EMU_Launcher
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
             sp.Show();
-
             CheckVersion();
         }
 
@@ -44,36 +43,15 @@ namespace H1EMU_Launcher
             {
                 WebClient wc = new WebClient();
                 wc.Headers.Add("User-Agent", "d-fens HttpClient");
-                string jsonApp = wc.DownloadString("https://api.github.com/repos/H1emu/h1emu-launcher/releases/latest");
+                string jsonLauncher = wc.DownloadString(new Uri(Classes.Info.LAUNCHER_JSON_API));
 
-                WebClient wc2 = new WebClient();
-                wc2.Headers.Add("User-Agent", "d-fens HttpClient");
-                string jsonServer = wc2.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
+                // Get latest release number and date published for app.
 
-                // Get latest release number and date published for app
-                var jsonDesApp = JsonConvert.DeserializeObject<dynamic>(jsonApp);
-                string raw = jsonDesApp.tag_name;
-                string online = raw.Substring(1);
+                var jsonDesLauncher = JsonConvert.DeserializeObject<dynamic>(jsonLauncher);
+                string online = $"{jsonDesLauncher.tag_name}".Substring(1);
                 string local = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
-                downloadUrl = jsonDesApp.assets[0].browser_download_url;
-                downloadFileName = jsonDesApp.assets[0].name;
-
-                // Get latest release number and date published for server
-                var jsonDesServer = JsonConvert.DeserializeObject<dynamic>(jsonServer);
-                string onlineServer = jsonDesServer.tag_name;
-                string dateExactServer = jsonDesServer.published_at;
-                string patchNotesServer = jsonDesServer.body;
-
-                // If there is an internet connection set these properties
-                Launcher.latestUpdateVersionServer = onlineServer;
-                Launcher.recentDateServer = dateExactServer;
-                Launcher.patchNotes = patchNotesServer;
-
-                // Store the latest server version, date and patch notes in the case of no internet
-                Properties.Settings.Default.latestServerVersion = onlineServer;
-                Properties.Settings.Default.publishDate = dateExactServer;
-                Properties.Settings.Default.patchNotes = patchNotesServer;
-                Properties.Settings.Default.Save();
+                downloadUrl = jsonDesLauncher.assets[0].browser_download_url;
+                downloadFileName = jsonDesLauncher.assets[0].name;
 
                 if (local == online)
                 {
@@ -114,7 +92,7 @@ namespace H1EMU_Launcher
             updateButton.IsEnabled = false;
             closeButton.IsEnabled = false;
 
-            new Thread(() => 
+            new Thread(() =>
             {
                 try
                 {
@@ -133,12 +111,12 @@ namespace H1EMU_Launcher
                         ma.Set();
                     };
 
-                    wc.DownloadFileAsync(new Uri(downloadUrl), $"{Launcher.appDataPath}\\H1EmuLauncher\\{downloadFileName}");
+                    wc.DownloadFileAsync(new Uri(downloadUrl), $"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}");
                     ma.WaitOne();
 
                     Process.Start(new ProcessStartInfo
                     {
-                        FileName = $"{Launcher.appDataPath}\\H1EmuLauncher\\{downloadFileName}",
+                        FileName = $"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}",
                         UseShellExecute = true
                     });
                 }

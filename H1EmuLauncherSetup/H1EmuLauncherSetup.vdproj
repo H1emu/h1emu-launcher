@@ -285,6 +285,11 @@
                     "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
                     "ProductCode" = "8:.NETFramework,Version=v4.7.2"
                     }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.5.0.x64"
+                    {
+                    "Name" = "8:.NET Desktop Runtime 5.0.13 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.5.0.x64"
+                    }
                 }
             }
         }
@@ -1208,16 +1213,16 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
-        "ProductCode" = "8:{F05976E3-C4B3-481F-B20B-E8BADA478A3C}"
-        "PackageCode" = "8:{14528466-51A1-4731-9A0D-D7A6459AACC1}"
+        "ProductCode" = "8:{DB2361EE-9E7E-4168-AE10-F9D29E26FA03}"
+        "PackageCode" = "8:{D0BED24A-1B29-4690-AB22-8672C1CAB304}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.2.9"
-        "Manufacturer" = "8:H1Emu © 2021"
+        "ProductVersion" = "8:2.3.0"
+        "Manufacturer" = "8:H1Emu © 2022"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
         "Title" = "8:H1Emu Launcher"
@@ -1758,7 +1763,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2D66CB3FB34C461298B8A7FB878DDDA1"
             {
-            "SourcePath" = "8:..\\H1EMU-Launcher\\obj\\Debug\\net5.0-windows7.0\\apphost.exe"
+            "SourcePath" = "8:..\\H1EMU-Launcher\\obj\\Debug\\net5.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"

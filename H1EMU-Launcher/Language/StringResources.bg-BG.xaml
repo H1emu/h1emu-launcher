@@ -158,7 +158,7 @@
     <system:String x:Key="item165">използвайте най -новата версия на Steam на играта или друга версия, която не е спомената по -горе, тъй като няма да работи.</system:String>
     <system:String x:Key="item166">Благодаря и се наслаждавайте!</system:String>
     <system:String x:Key="item167">ПРОДЪЛЖИ</system:String>
-    <system:String x:Key="item168">Сървърът не се стартира, опитайте отново и ако проблемът продължава, моля, докладвайте го.</system:String>
+    <system:String x:Key="item168">Сървърът не се стартира, опитайте отново и ако проблемът продължава, моля, докладвайте го.\n\nПреинсталирането на сървърни файлове може да реши този проблем.</system:String>
     <system:String x:Key="item169">• Стартер, направен от @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Финансови сътрудници</system:String>
 </ResourceDictionary>

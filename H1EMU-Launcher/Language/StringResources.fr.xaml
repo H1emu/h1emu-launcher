@@ -158,7 +158,7 @@
     <system:String x:Key="item165">utiliser la dernière version Steam du jeu ou toute autre version qui n'a pas été mentionnée ci-dessus car cela ne fonctionnera pas.</system:String>
     <system:String x:Key="item166">Merci et amusez-vous bien!</system:String>
     <system:String x:Key="item167">CONTINUER</system:String>
-    <system:String x:Key="item168">Le serveur n'a pas pu démarrer, réessayez et si le problème persiste, veuillez le signaler.</system:String>
+    <system:String x:Key="item168">Le serveur n'a pas pu démarrer, réessayez et si le problème persiste, veuillez le signaler.\n\nLa réinstallation des fichiers du serveur peut résoudre ce problème.</system:String>
     <system:String x:Key="item169">• Lanceur réalisé par @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Contributeurs Financiers</system:String>
 </ResourceDictionary>

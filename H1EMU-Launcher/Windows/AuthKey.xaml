@@ -78,8 +78,14 @@
                 <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Grid.Row="0" Width="540" Text="{DynamicResource item156}" Foreground="White" FontSize="16" Margin="0,16,0,0" TextWrapping="Wrap"/>
                 <TextBlock Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
                 <Hyperlink Click="UserProfileLink">
-                    <TextBlock Text="https://www.h1emu.com/us/cockpit/my/launcher-key/"/>
-                </Hyperlink>
+                        <TextBlock Text="https://www.h1emu.com/us/cockpit/my/launcher-key/"/>
+                    </Hyperlink>
+                    
+                    <TextBlock.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Header="Copy" Click="authKeyLinkCopy" Style="{DynamicResource PopupMenuItem}"/>
+                        </ContextMenu>
+                    </TextBlock.ContextMenu>
             </TextBlock>
 
                 <TextBox VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="authKeyBoxShown" Grid.Row="0" Padding="35,0,40,0" FontSize="16"  VerticalContentAlignment="Center" Width="540" Height="35" Margin="0,0,0,12" Visibility="Hidden" Text="{Binding ElementName=authKeyBox, Path=Password}" Style="{DynamicResource TextBoxPrimaryStyle}"/>

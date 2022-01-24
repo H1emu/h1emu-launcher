@@ -179,7 +179,7 @@ namespace H1EMU_Launcher
 
             // Actually downloading the patch .zip.
 
-            string patch2015 = "https://github.com/H1emu/h1emu-patch/releases/latest/download/H1emu_patch.zip?" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            string patch2015 = Classes.Info.GAME_PATCH_2015 + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
             ManualResetEvent ma = new ManualResetEvent(false);
 
@@ -198,7 +198,7 @@ namespace H1EMU_Launcher
                 ma.Set();
             };
 
-            var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
+            var connectionTest = wc.DownloadString(Classes.Info.SERVER_JSON_API);
             wc.DownloadFileAsync(new Uri(patch2015), $"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
 
             ma.WaitOne();
@@ -279,7 +279,7 @@ namespace H1EMU_Launcher
 
             // Actually downloading the patch .zip.
 
-            string patch2016 = "https://github.com/H1emu/h1emu-patch-2016/releases/latest/download/H1emu_patch.zip?" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            string patch2016 = Classes.Info.GAME_PATCH_2016 + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
             ManualResetEvent ma = new ManualResetEvent(false);
 
@@ -298,7 +298,7 @@ namespace H1EMU_Launcher
                 ma.Set();
             };
 
-            var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
+            var connectionTest = wc.DownloadString(Classes.Info.SERVER_JSON_API);
             wc.DownloadFileAsync(new Uri(patch2016), $"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
 
             ma.WaitOne();
@@ -393,7 +393,7 @@ namespace H1EMU_Launcher
                     {
                         if (sw.BaseStream.CanWrite)
                         {
-                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{Launcher.nodeJSVersion}-win-x64");
+                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{Classes.Info.NODEJS_VERSION}-win-x64");
                             sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
                             sw.WriteLine("set INSTALL_TYPE=launcher");
                             sw.WriteLine("npm i --production h1z1-server@next");
@@ -473,7 +473,7 @@ namespace H1EMU_Launcher
                     {
                         if (sw.BaseStream.CanWrite)
                         {
-                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{Launcher.nodeJSVersion}-win-x64");
+                            sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{Classes.Info.NODEJS_VERSION}-win-x64");
                             sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
                             sw.WriteLine("set INSTALL_TYPE=launcher");
                             sw.WriteLine("npm i --production h1z1-server@latest");
@@ -602,8 +602,6 @@ namespace H1EMU_Launcher
 
             // Download the latest server files.
 
-            string serverFiles = "https://github.com/H1emu/h1z1-server-QuickStart/archive/master.zip";
-
             ManualResetEvent ma = new ManualResetEvent(false);
 
             WebClient wc = new WebClient();
@@ -621,8 +619,8 @@ namespace H1EMU_Launcher
                 ma.Set();
             };
 
-            var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
-            wc.DownloadFileAsync(new Uri(serverFiles), $"{Properties.Settings.Default.activeDirectory}\\H1Z1-Server-Quickstart-Master.zip");
+            var connectionTest = wc.DownloadString(Classes.Info.SERVER_JSON_API);
+            wc.DownloadFileAsync(new Uri(Classes.Info.SERVER_FILES), $"{Properties.Settings.Default.activeDirectory}\\H1Z1-Server-Quickstart-Master.zip");
 
             ma.WaitOne();
 
@@ -661,11 +659,11 @@ namespace H1EMU_Launcher
 
             // Delete old .zip file in the case of corruption.
 
-            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v{Launcher.nodeJSVersion}-win-x64.zip");
+            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v{Classes.Info.NODEJS_VERSION}-win-x64.zip");
 
             // Download the NodeJS files.
 
-            string serverFiles = "https://nodejs.org/dist/v" + Launcher.nodeJSVersion + "/node-v" + Launcher.nodeJSVersion + "-win-x64.zip?" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
+            string serverFiles = "https://nodejs.org/dist/v" + Classes.Info.NODEJS_VERSION + "/node-v" + Classes.Info.NODEJS_VERSION + "-win-x64.zip?" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
             ManualResetEvent ma = new ManualResetEvent(false);
 
@@ -684,8 +682,8 @@ namespace H1EMU_Launcher
                 ma.Set();
             };
 
-            var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
-            wc.DownloadFileAsync(new Uri(serverFiles), $"{Properties.Settings.Default.activeDirectory}\\Node-v{Launcher.nodeJSVersion}-win-x64.zip");
+            var connectionTest = wc.DownloadString(Classes.Info.SERVER_JSON_API);
+            wc.DownloadFileAsync(new Uri(serverFiles), $"{Properties.Settings.Default.activeDirectory}\\Node-v{Classes.Info.NODEJS_VERSION}-win-x64.zip");
 
             ma.WaitOne();
 
@@ -699,13 +697,13 @@ namespace H1EMU_Launcher
 
             try
             {
-                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Node-v{Launcher.nodeJSVersion}-win-x64.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
+                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Node-v{Classes.Info.NODEJS_VERSION}-win-x64.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
             }
             catch { }
 
             // Delete the old .zip file, not needed anymore.
 
-            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v{Launcher.nodeJSVersion}-win-x64.zip");
+            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v{Classes.Info.NODEJS_VERSION}-win-x64.zip");
         }
 
         //////////////////////////

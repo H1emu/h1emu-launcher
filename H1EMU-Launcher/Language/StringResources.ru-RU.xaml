@@ -158,7 +158,7 @@
     <system:String x:Key="item165">используйте последнюю версию игры для Steam или любую другую версию, не упомянутую выше, так как это не сработает.</system:String>
     <system:String x:Key="item166">Спасибо и наслаждайтесь!</system:String>
     <system:String x:Key="item167">ПРОДОЛЖИТЬ</system:String>
-    <system:String x:Key="item168">Не удалось запустить сервер, попробуйте еще раз, и, если проблема не исчезнет, ​​сообщите об этом.</system:String>
+    <system:String x:Key="item168">Не удалось запустить сервер, попробуйте еще раз, и, если проблема не исчезнет, ​​сообщите об этом.\n\nПереустановка файлов сервера может решить эту проблему.</system:String>
     <system:String x:Key="item169">• Программа запуска от @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Финансовые спонсоры</system:String>
 </ResourceDictionary>
