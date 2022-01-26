@@ -306,24 +306,19 @@ namespace H1EMU_Launcher
 
                     if (gameVersion == "22dec2016" || gameVersion == "15jan2015")
                     {
-                        if (gameVersion == "22dec2016" && serverIp == "") { serverIp = "loginserver.h1emu.com:1116"; }
-                        if (gameVersion == "15jan2015" && serverIp == "") { serverIp = "loginserver.h1emu.com:1115"; }
-
-                        if (serverIp == "loginserver.h1emu.com:1116" || serverIp == "loginserver.h1emu.com:1115")
+                        serverIp = "loginserver.h1emu.com:1115";
+                        if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
                         {
-                            if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
+                            Dispatcher.Invoke((MethodInvoker)delegate
                             {
-                                Dispatcher.Invoke((MethodInvoker)delegate
-                                {
-                                    CustomMessageBox.Show(FindResource("item153").ToString());
-                                });
+                                CustomMessageBox.Show(FindResource("item153").ToString());
+                            });
 
-                                return;
-                            }
-                            else
-                            {
-                                sessionId = Properties.Settings.Default.sessionIdKey;
-                            }
+                            return;
+                        }
+                        else
+                        {
+                            sessionId = Properties.Settings.Default.sessionIdKey;
                         }
 
                         CheckPatchVersion.CheckPatch();
