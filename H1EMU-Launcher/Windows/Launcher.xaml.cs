@@ -306,10 +306,10 @@ namespace H1EMU_Launcher
 
                     if (gameVersion == "22dec2016" || gameVersion == "15jan2015")
                     {
-                        if (gameVersion == "22dec2016" && serverIp == "") { serverIp = "loginserver.h1emu.com:1116"; }
+                        if (gameVersion == "22dec2016" && serverIp == "") { serverIp = "loginserver.h1emu.com:1115"; }
                         if (gameVersion == "15jan2015" && serverIp == "") { serverIp = "loginserver.h1emu.com:1115"; }
 
-                        if (serverIp == "loginserver.h1emu.com:1116" || serverIp == "loginserver.h1emu.com:1115")
+                        if (serverIp == "loginserver.h1emu.com:1115" || serverIp == "loginserver.h1emu.com:1115")
                         {
                             if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
                             {
