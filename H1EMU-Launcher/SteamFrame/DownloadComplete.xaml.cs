@@ -5,10 +5,6 @@ using System.Windows.Controls;
 
 namespace H1EMU_Launcher
 {
-    /// <summary>
-    /// Interaction logic for DownloadComplete.xaml
-    /// </summary>
-
     public partial class DownloadComplete : Page
     {
         public DownloadComplete()

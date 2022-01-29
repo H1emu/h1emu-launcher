@@ -19,10 +19,6 @@ using Newtonsoft.Json;
 
 namespace H1EMU_Launcher
 {
-    /// <summary>
-    /// Interaction logic for Launcher.xaml
-    /// </summary>
-
     public partial class Launcher : Window
     {
 

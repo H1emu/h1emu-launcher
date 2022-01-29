@@ -6,9 +6,6 @@ using System.Windows.Input;
 
 namespace H1EMU_Launcher
 {
-    /// <summary>
-    /// Interaction logic for AuthKey.xaml
-    /// </summary>
     public partial class AuthKey : Window
     {
         public AuthKey()

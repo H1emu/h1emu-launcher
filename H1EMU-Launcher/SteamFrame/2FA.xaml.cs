@@ -5,10 +5,6 @@ using System.Windows.Input;
 
 namespace H1EMU_Launcher
 {
-    /// <summary>
-    /// Interaction logic for _2FA.xaml
-    /// </summary>
-
     public partial class _2FA : Page
     {
         public _2FA()

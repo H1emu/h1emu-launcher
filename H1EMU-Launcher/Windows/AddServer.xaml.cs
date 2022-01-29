@@ -5,9 +5,6 @@ using System.Windows.Input;
 
 namespace H1EMU_Launcher
 {
-    /// <summary>
-    /// Interaction logic for AddServer.xaml
-    /// </summary>
     public partial class AddServer : Window
     {
         public static AddServer addsver;

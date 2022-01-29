@@ -5,10 +5,6 @@ using System.Windows.Input;
 
 namespace H1EMU_Launcher
 {
-    /// <summary>
-    /// Interaction logic for AboutPage.xaml
-    /// </summary>
-
     public partial class AboutPage : Window
     {
         public static AboutPage abtpage;

@@ -5,10 +5,6 @@ using System.Windows.Input;
 
 namespace H1EMU_Launcher
 {
-    /// <summary>
-    /// Interaction logic for Splash.xaml
-    /// </summary>
-
     public partial class Splash : Window
     {
         public Splash()

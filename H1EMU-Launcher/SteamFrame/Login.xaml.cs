@@ -13,10 +13,6 @@ using System.Windows.Input;
 
 namespace H1EMU_Launcher
 {
-    /// <summary>
-    /// Interaction logic for Login.xaml
-    /// </summary>
-
     public partial class Login : Page
     {
         public static CancellationTokenSource tokenSource = new CancellationTokenSource();

@@ -5,10 +5,6 @@ using System.Windows.Controls;
 
 namespace H1EMU_Launcher
 {
-    /// <summary>
-    /// Interaction logic for gameinfo.xaml
-    /// </summary>
-
     public partial class GameInfo : Page
     {
         public GameInfo()

@@ -6,10 +6,6 @@ using System.Windows.Input;
 
 namespace H1EMU_Launcher
 {
-    /// <summary>
-    /// Interaction logic for MsgBox.xaml
-    /// </summary>
-
     public partial class Disclaimer : Window
     {
         public Disclaimer()
