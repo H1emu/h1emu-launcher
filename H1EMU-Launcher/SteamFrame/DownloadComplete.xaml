@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:H1EMU_Launcher"
       mc:Ignorable="d" 
-      d:DesignHeight="140"
       d:DesignWidth="565"
+      d:DesignHeight="140"
       FontFamily="Bahnschrift Light"
       Title="DoenloadComplete">
 
@@ -15,29 +15,50 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
 
-        <RichTextBox VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Foreground="White" Background="Transparent" BorderThickness="0" Margin="0,-2,0,0" IsReadOnly="True" Cursor="Arrow">
+        <!-- Download complete message -->
+        <RichTextBox
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center"
+            Margin="0,-2,0,0"
+            FontSize="16"
+            Foreground="White"
+            Background="Transparent"
+            BorderThickness="0"
+            IsReadOnly="True"
+            Cursor="Arrow">
+            
             <FlowDocument TextAlignment="Center">
                 <Paragraph>
-                    <Run Foreground="#FFCA1420" Text="{DynamicResource item23}"/>
-                    <Run Text="{DynamicResource item24}"/>
+                    <Run
+                        Foreground="#FFCA1420"
+                        Text="{DynamicResource item23}"/>
+                    <LineBreak/>
+                    <Run
+                        Text="{DynamicResource item24}"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <!-- Back to login page button -->
+        <Button
+                Grid.Row="1"
+                RenderOptions.BitmapScalingMode="Fant"
+                Height="45"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Center"
+                Foreground="White"
+                FontFamily="Arial Black"
+                FontSize="28"
+                Click="BackToLoginPage"
+                Width="270"
+                BorderThickness="0"
+                Content="{DynamicResource item25}"
+                Style="{DynamicResource StandardButton}">
 
-            <Button Content="{DynamicResource item25}" Foreground="White" FontFamily="Arial Black" FontSize="28" Grid.Column="0" Click="BackToLoginPage" Height="45" HorizontalAlignment="Center" VerticalAlignment="Top" Width="270" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
-                <Button.Background>
-                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                </Button.Background>
-            </Button>
-        </Grid>
+            <Button.Background>
+                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Page>

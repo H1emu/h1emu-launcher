@@ -14,8 +14,15 @@
         WindowStartupLocation="CenterScreen"
         Activated="SplashScreenActivated">
 
+        <!-- Hide window border but keep animations -->
         <WindowChrome.WindowChrome>
-            <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
+            <WindowChrome
+                GlassFrameThickness="0"
+                CornerRadius="0"
+                CaptionHeight="0"
+                ResizeBorderThickness="0"
+                UseAeroCaptionButtons="False"/>
+
         </WindowChrome.WindowChrome>
 
     <Grid MouseLeftButtonDown="SplashScreenMove">
@@ -25,13 +32,43 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="1" Height="2" Background="#FFCA1420" Margin="35,10,35,0" CornerRadius="40">
+        <!-- Divider -->
+        <Border
+            Grid.Row="1"
+            Height="2"
+            Background="#FFCA1420"
+            Margin="35,10,35,0"
+            CornerRadius="40">
+            
+            <!-- Drop shadow effect -->
             <Border.Effect>
-                <DropShadowEffect BlurRadius="8" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+                <DropShadowEffect
+                    BlurRadius="8"
+                    Direction="-90"
+                    RenderingBias="Quality"
+                    ShadowDepth="1"/>
+                
             </Border.Effect>
         </Border>
 
-        <TextBlock Grid.Row="0" Text="{DynamicResource item48}" VerticalAlignment="Bottom" TextAlignment="Center" FontSize="30" Foreground="White" FontFamily="Bahnschrift Light" Padding="20,0,20,0"/>
-        <TextBlock Grid.Row="2" Text="{DynamicResource item49}" TextAlignment="Center" FontSize="16" Foreground="White" FontFamily="Bahnschrift Light" Padding="0,11,0,0"/>
+        <!-- Checking for updates text -->
+        <TextBlock
+            Padding="20,0,20,0"
+            VerticalAlignment="Bottom"
+            TextAlignment="Center"
+            FontSize="30"
+            Foreground="White"
+            FontFamily="Bahnschrift Light"
+            Text="{DynamicResource item48}"/>
+
+        <!-- Please wait text -->
+        <TextBlock
+            Grid.Row="2"
+            Padding="0,11,0,0"
+            TextAlignment="Center"
+            FontSize="16"
+            Foreground="White"
+            FontFamily="Bahnschrift Light"
+            Text="{DynamicResource item49}"/>
     </Grid>
 </Window>

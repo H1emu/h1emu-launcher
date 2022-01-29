@@ -5,27 +5,73 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:H1EMU_Launcher"
       mc:Ignorable="d" 
-      d:DesignHeight="140"
       d:DesignWidth="565"
+      d:DesignHeight="140"
       FontFamily="Bahnschrift Light"
       Title="GameInfo">
     
     <Grid>
-        <RichTextBox FontSize="16" Background="Transparent" BorderThickness="0" Foreground="White" IsReadOnly="True" Cursor="Arrow">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.5*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Choose version message -->
+        <RichTextBox
+            FontSize="16"
+            Background="Transparent"
+            BorderThickness="0"
+            Foreground="White"
+            IsReadOnly="True"
+            Cursor="Arrow">
+            
             <FlowDocument>
                 <Paragraph TextAlignment="Center">
-                    <TextBlock Text="{DynamicResource item29}"/>
-                    <Run Foreground="#FFCA1420" Text="{DynamicResource item135}"/>
-                    <Run Text="{DynamicResource item30}"/>
+                    <TextBlock
+                        Text="{DynamicResource item29}"/>
+                    <Run
+                        Foreground="#FFCA1420" Text="{DynamicResource item135}"/>
+                    <Run
+                        Text="{DynamicResource item30}"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Button Click="Button2015" Content="{DynamicResource item31}" Foreground="White" FontFamily="Arial Black" FontSize="24" Width="270" Height="45" Margin="0,20,0,0" HorizontalAlignment="Left" BorderThickness="0" Style="{DynamicResource StandardButton}">
+
+        <!-- 2015 Button -->
+        <Button
+            Grid.Row="1"
+            Click="Button2015"
+            Width="270"
+            Height="45"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Foreground="White"
+            FontFamily="Arial Black"
+            FontSize="24"
+            BorderThickness="0"
+            Content="{DynamicResource item31}"
+            Style="{DynamicResource StandardButton}">
+            
             <Button.Background>
                 <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
             </Button.Background>
         </Button>
-        <Button Click="Button2016" Content="{DynamicResource item32}" Foreground="White" FontFamily="Arial Black" FontSize="24" Width="270" Height="45" Margin="0,20,0,0" HorizontalAlignment="Right" BorderThickness="0" Style="{DynamicResource StandardButton}">
+
+        <!-- 2016 Button -->
+        <Button
+            Grid.Row="1"
+            Click="Button2016"
+            Width="270"
+            Height="45"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Right"
+            Foreground="White"
+            FontFamily="Arial Black"
+            FontSize="24"
+            BorderThickness="0"
+            Content="{DynamicResource item32}"
+            Style="{DynamicResource StandardButton}">
+            
             <Button.Background>
                 <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
             </Button.Background>

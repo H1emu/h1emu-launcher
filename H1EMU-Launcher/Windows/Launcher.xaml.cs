@@ -304,12 +304,12 @@ namespace H1EMU_Launcher
 
                     gameVersion = Settings.gameVersion;
 
-                    if (gameVersion == "22dec2016" || gameVersion == "15jan2015")
+                    if (gameVersion == "15jan2015" || gameVersion == "22dec2016")
                     {
-                        if (gameVersion == "22dec2016" && serverIp == "") { serverIp = "loginserver.h1emu.com:1115"; }
-                        if (gameVersion == "15jan2015" && serverIp == "") { serverIp = "loginserver.h1emu.com:1115"; }
+                        if (gameVersion == "15jan2015" && serverIp == "") { serverIp = Classes.Info.SERVER_IP_2015; }
+                        if (gameVersion == "22dec2016" && serverIp == "") { serverIp = Classes.Info.SERVER_IP_2016; }
 
-                        if (serverIp == "loginserver.h1emu.com:1115" || serverIp == "loginserver.h1emu.com:1115")
+                        if (serverIp == Classes.Info.SERVER_IP_2015 || serverIp == Classes.Info.SERVER_IP_2016)
                         {
                             if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
                             {
@@ -549,18 +549,17 @@ namespace H1EMU_Launcher
 
         private void StoryboardCompleted(object sender, EventArgs e)
         {
+            Classes.Carousel.progress = 0;
+            carouselProgressBar.Value = 0;
+
             doContinue = true;
         }
 
         private void PrevImageClick(object sender, RoutedEventArgs e)
         {
-            if (!doContinue) { return; }
+            Classes.Carousel.pauseCarousel.Reset();
 
-            if (carouselProgressBar.Value != 3000)
-            {
-                Classes.Carousel.progress = 0;
-                carouselProgressBar.Value = 0;
-            }
+            if (!doContinue) { return; }
 
             ButtonAutomationPeer peer = new ButtonAutomationPeer(fauxPrevImage);
             IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
@@ -571,13 +570,9 @@ namespace H1EMU_Launcher
 
         private void NextImageClick(object sender, RoutedEventArgs e)
         {
-            if (!doContinue) { return; }
+            Classes.Carousel.pauseCarousel.Reset();
 
-            if (carouselProgressBar.Value != 3000)
-            {
-                Classes.Carousel.progress = 0;
-                carouselProgressBar.Value = 0;
-            }
+            if (!doContinue) { return; }
 
             ButtonAutomationPeer peer = new ButtonAutomationPeer(fauxNextImage);
             IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;

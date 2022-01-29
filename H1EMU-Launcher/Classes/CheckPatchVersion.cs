@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Newtonsoft.Json;
-using System.Diagnostics;
 using System.IO.Compression;
 using System.Net;
-using System.Windows.Threading;
-using System.Windows;
 
 namespace H1EMU_Launcher
 {

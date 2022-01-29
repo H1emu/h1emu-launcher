@@ -8,7 +8,8 @@
         UseLayoutRounding="True"
         Title="Launcher"
         x:Name="AddServerMenu"
-        Width="420" Height="300"
+        Width="420"
+        Height="300"
         WindowStartupLocation="CenterScreen"
         Background="#FF2A2A32"
         FontFamily="Bahnschrift Light"
@@ -18,16 +19,35 @@
         Closing="AddServerMenuClosing"
         Activated="AddServerMenuActivated">
 
+        <!-- Hide window border but keep animations -->
         <WindowChrome.WindowChrome>
-            <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
+            <WindowChrome
+                GlassFrameThickness="0"
+                CornerRadius="0"
+                CaptionHeight="0"
+                ResizeBorderThickness="0"
+                UseAeroCaptionButtons="False"/>
+            
         </WindowChrome.WindowChrome>
 
     <Grid>
+
+        <!-- Background fade on unfocus -->
+        <Rectangle x:Name="addServerFade"
+                   Fill="#40000000"
+                   IsHitTestVisible="False"
+                   Visibility="Hidden"/>
+        
         <Grid>
+
+            <!-- Add server blur on unfocus -->
             <Grid.Effect>
-                <BlurEffect x:Name="addServerBlur" Radius="0" KernelType="Gaussian"/>
+                <BlurEffect x:Name="addServerBlur"
+                            Radius="0"
+                            KernelType="Gaussian"/>
+                
             </Grid.Effect>
-            
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -37,27 +57,43 @@
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="AddServerTopBar"  Background="#FF2A2A32">
+            <!-- Grid for logo and exit button -->
+            <Grid
+                MouseLeftButtonDown="AddServerTopBar" 
+                Background="#FF2A2A32">
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                </Grid.RowDefinitions>
 
-                <!-- Dock panel that hosts logo -->
-                <DockPanel Grid.Row="0" Grid.Column="0" Height="60" HorizontalAlignment="Left" Margin="15,4,0,0">
-                    <Button Width="140" Height="40" BorderThickness="0" VerticalAlignment="Center" Style="{DynamicResource ImageButton}">
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\H1EmuIcon.png"/>
-                        </Button.Background>
-                    </Button>
+                <!-- Logo -->
+                <DockPanel
+                    Height="60"
+                    HorizontalAlignment="Left"
+                    Margin="15,4,0,0">
+
+                    <Image
+                        Source="..\Resources\H1EmuIcon.png"
+                        Width="140"
+                        Height="40"
+                        VerticalAlignment="Center"/>
+
                 </DockPanel>
 
-                <!-- Dock panel that creates the exit button. -->
-                <DockPanel Grid.Column="1" Grid.Row="0">
-                    <Button x:Name="ExitButton" RenderOptions.BitmapScalingMode="Fant" Width="44" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseAddServerMenu" Margin="0,0,15,0" Style="{StaticResource CloseButtonStyle}">
+                <!-- Exit button -->
+                <DockPanel Grid.Column="1">
+                    <Button x:Name="ExitButton"
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Click="CloseAddServerMenu"
+                            Width="44"
+                            Height="30"
+                            Margin="0,0,15,0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            BorderThickness="0"
+                            Style="{StaticResource CloseButtonStyle}">
+                        
                         <Button.Background>
                             <ImageBrush ImageSource="..\Resources\Exit.png"/>
                         </Button.Background>
@@ -66,9 +102,20 @@
             </Grid>
 
             <!-- Grid for main content inside of darkened area -->
-            <Grid Grid.Row="1" Background="#1C1B22" Margin="15,5,15,15" UseLayoutRounding="True">
+            <Grid
+                Grid.Row="1"
+                Background="#1C1B22"
+                Margin="15,5,15,15"
+                UseLayoutRounding="True">
+                
+                <!-- Drop shadow effect -->
                 <Grid.Effect>
-                    <DropShadowEffect BlurRadius="8" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+                    <DropShadowEffect
+                        BlurRadius="8"
+                        Direction="-90"
+                        RenderingBias="Quality"
+                        ShadowDepth="1"/>
+                    
                 </Grid.Effect>
 
                 <Grid.RowDefinitions>
@@ -77,28 +124,104 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBox VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="serverNameBox" Grid.Row="0" Padding="10,0,0,0" FontSize="16" VerticalContentAlignment="Center" GotFocus="ServerNameGotFocus" LostFocus="ServerNameLostFocus" Width="300" Height="35" Margin="0,12,0,0" Style="{DynamicResource TextBoxPrimaryStyle}"/>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="serverNameHint" Grid.Row="0" IsHitTestVisible="False" Width="300" Padding="12,4,0,0" Text="{DynamicResource item144}" Foreground="White" FontSize="16" Height="27" Margin="0,12,0,0"/>
+                <!-- Server name text box -->
+                <TextBox x:Name="serverNameBox"
+                    Width="300"
+                    Height="35"
+                    Margin="0,12,0,0"
+                    Padding="10,0,0,0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontSize="16"
+                    GotFocus="ServerNameGotFocus"
+                    LostFocus="ServerNameLostFocus"
+                    Style="{DynamicResource TextBoxPrimaryStyle}"/>
 
-                <TextBox VerticalAlignment="Center" x:Name="serverIpBox" Grid.Row="1" Grid.Column="0" FontSize="16" Padding="10,0,0,0" VerticalContentAlignment="Center" GotFocus="ServerIPGotFocus" LostFocus="ServerIPLostFocus" KeyDown="ServerIpBoxKeyDown" Width="300" Height="35" Style="{DynamicResource TextBoxPrimaryStyle}"/>
-                <TextBlock VerticalAlignment="Center" x:Name="serverIpHint" Grid.Row="1" IsHitTestVisible="False" MaxHeight="35" Width="300" Padding="12,4,0,0" Text="{DynamicResource item145}" Foreground="White" FontSize="16" Height="24"/>
+                <!-- Hint for server name textbox -->
+                <TextBlock x:Name="serverNameHint"
+                    Width="300"
+                    Height="27"
+                    Margin="0,12,0,0"
+                    Padding="12,4,0,0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    IsHitTestVisible="False"
+                    Foreground="White"
+                    FontSize="16"
+                    Text="{DynamicResource item144}"/>
 
-                <!-- Cancel and Add buttons -->
-                <Button Grid.Row="2" Grid.Column="1" Content="{DynamicResource item18}" Foreground="White" FontFamily="Arial Black" FontSize="22" Height="38" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Margin="160,0,0,0" BorderThickness="0" Click="AddButton" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
+                <!-- Server IP textbox -->
+                <TextBox x:Name="serverIpBox"
+                    Grid.Row="1"
+                    Width="300"
+                    Height="35"
+                    Padding="10,0,0,0"
+                    VerticalAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontSize="16"
+                    GotFocus="ServerIPGotFocus"
+                    LostFocus="ServerIPLostFocus"
+                    KeyDown="ServerIpBoxKeyDown"
+                    Style="{DynamicResource TextBoxPrimaryStyle}"/>
+
+                <TextBlock x:Name="serverIpHint"
+                    Grid.Row="1"
+                    Width="300"
+                    Height="24"
+                    Padding="12,4,0,0"
+                    VerticalAlignment="Center"
+                    IsHitTestVisible="False"
+                    Foreground="White"
+                    FontSize="16"
+                    Text="{DynamicResource item145}"/>
+
+                <!-- Add server button -->
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Click="AddButton"
+                    RenderOptions.BitmapScalingMode="Fant"
+                    Width="140"
+                    Height="38"
+                    Margin="160,0,0,0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="White"
+                    FontFamily="Arial Black"
+                    FontSize="22"
+                    BorderThickness="0"
+                    Content="{DynamicResource item18}"
+                    Style="{DynamicResource StandardButton}">
+                    
                     <Button.Background>
                         <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
                     </Button.Background>
                 </Button>
 
-                <Button Grid.Row="2" Grid.Column="1" Content="{DynamicResource item28}" Foreground="White" FontFamily="Arial Black" FontSize="22" Height="38" HorizontalAlignment="Center" VerticalAlignment="Center" Width="140" Margin="0,0,160,0" BorderThickness="0" Click="CancelButton" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
+                <!-- Cancel button -->
+                <Button
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Click="CancelButton"
+                    RenderOptions.BitmapScalingMode="Fant"
+                    Width="140"
+                    Height="38"
+                    Margin="0,0,160,0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="White"
+                    FontFamily="Arial Black"
+                    FontSize="22"
+                    BorderThickness="0"
+                    Content="{DynamicResource item28}"
+                    Style="{DynamicResource StandardButton}">
+                    
                     <Button.Background>
                         <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
                     </Button.Background>
                 </Button>
-
             </Grid>
         </Grid>
-
-        <Rectangle x:Name="addServerFade" Fill="#40000000" IsHitTestVisible="False" Visibility="Hidden"/>
     </Grid>
 </Window>

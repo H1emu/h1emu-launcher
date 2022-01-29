@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="CnfmBox"
         x:Name="MainCnfmBox"
-        MinHeight="220" MinWidth="350"
-        MaxHeight="900" MaxWidth="1200"
+        MinWidth="350"
+        MaxWidth="1200"
+        MinHeight="220"
+        MaxHeight="900"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
         Background="#FF2A2A32"
@@ -18,8 +20,15 @@
         Activated="MainCnfmBoxActivated"
         Loaded="MainCnfmBoxLoaded">
 
+        <!-- Hide window border but keep animations -->
         <WindowChrome.WindowChrome>
-            <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
+            <WindowChrome
+                GlassFrameThickness="0"
+                CornerRadius="0"
+                CaptionHeight="0"
+                ResizeBorderThickness="0"
+                UseAeroCaptionButtons="False"/>
+
         </WindowChrome.WindowChrome>
 
     <Grid>
@@ -31,28 +40,48 @@
             <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
 
-        <!-- Top bar grid. -->
-        <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#FF2A2A32">
+        <!-- Grid for logo and exit button -->
+        <Grid
+            MouseLeftButtonDown="Grid_MouseLeftButtonDown"
+            Background="#FF2A2A32">
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- Dock panel that hosts logo -->
-            <DockPanel Grid.Row="0" Grid.Column="0" Height="40" HorizontalAlignment="Left" Margin="14,2,0,0">
-                <Button Width="104" Height="28" BorderThickness="0" VerticalAlignment="Center" Margin="0,4,0,0" Style="{DynamicResource ImageButton}">
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\H1EmuIcon.png"/>
-                    </Button.Background>
-                </Button>
+            <!-- Logo -->
+            <DockPanel
+                Height="40"
+                HorizontalAlignment="Left"
+                Margin="14,2,0,0">
+
+                <Image
+                    Source="..\Resources\H1EmuIcon.png"
+                    Width="104"
+                    Height="28"
+                    Margin="0,4,0,0"
+                    VerticalAlignment="Center"/>
+
             </DockPanel>
 
-            <!-- Dock panel that creates the exit button. -->
-            <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
-                <Button Style="{StaticResource CloseButtonStyle}" x:Name="CloseButton" RenderOptions.BitmapScalingMode="Fant" Click="ExitButton" Content="" Width="39" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" BorderThickness="0" Margin="0,5,15,7">
+            <!-- Exit button -->
+            <DockPanel Grid.Column="1">
+                <Button x:Name="CloseButton"
+                    Click="ExitButton"
+                    RenderOptions.BitmapScalingMode="Fant"
+                    Width="39"
+                    Height="25"
+                    Margin="0,5,15,7"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    BorderThickness="0"
+                    Style="{StaticResource CloseButtonStyle}">
+                    
                     <Button.Background>
                         <ImageBrush ImageSource="..\Resources\Exit.png"/>
                     </Button.Background>
@@ -61,9 +90,20 @@
         </Grid>
 
         <!-- Grid for main content inside of darkened area -->
-        <Grid Grid.Row="1" Background="#1C1B22" Margin="15,5,15,15" UseLayoutRounding="True">
+        <Grid
+            Grid.Row="1"
+            Background="#1C1B22"
+            Margin="15,5,15,15"
+            UseLayoutRounding="True">
+            
+            <!-- Drop shadow effect -->
             <Grid.Effect>
-                <DropShadowEffect BlurRadius="8" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+                <DropShadowEffect
+                    BlurRadius="8"
+                    Direction="-90"
+                    RenderingBias="Quality"
+                    ShadowDepth="1"/>
+                
             </Grid.Effect>
             
             <Grid.RowDefinitions>
@@ -76,14 +116,56 @@
                     <RowDefinition Height="60"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock x:Name="text" Background="Transparent" Foreground="White" Margin="25,10,25,10" VerticalAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center" Padding="0,5,0,0"/>
+                <!-- Main text message -->
+                <TextBlock x:Name="text"
+                           Margin="25,10,25,10"
+                           Padding="0,5,0,0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Background="Transparent"
+                           Foreground="White"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"/>
 
-                <Button Content="{DynamicResource item133}" Foreground="White" FontFamily="Arial Black" FontSize="20" Grid.Row="1" Click="YesButton" Height="35" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0" Margin="0,0,150,0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
+                <!-- Yes button -->
+                <Button
+                    Grid.Row="1"
+                    Click="YesButton"
+                    RenderOptions.BitmapScalingMode="Fant"
+                    Width="120"
+                    Height="35"
+                    Margin="0,0,150,0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="White"
+                    FontFamily="Arial Black"
+                    FontSize="20"
+                    BorderThickness="0"
+                    Content="{DynamicResource item133}"
+                    Style="{DynamicResource StandardButton}">
+                    
                     <Button.Background>
                         <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
                     </Button.Background>
                 </Button>
-                <Button Content="{DynamicResource item134}" Foreground="White" FontFamily="Arial Black" FontSize="20" Grid.Row="1" Click="NoButton" Height="35" Width="120" HorizontalAlignment="Center" VerticalAlignment="Center" BorderThickness="0" Margin="150,0,0,0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource StandardButton}">
+                
+                <!-- No button -->
+                <Button
+                    Grid.Row="1"
+                    Click="NoButton"
+                    RenderOptions.BitmapScalingMode="Fant"
+                    Width="120"
+                    Height="35"
+                    Margin="150,0,0,0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Foreground="White"
+                    FontFamily="Arial Black"
+                    FontSize="20"
+                    BorderThickness="0"
+                    Content="{DynamicResource item134}"
+                    Style="{DynamicResource StandardButton}">
+                    
                     <Button.Background>
                         <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
                     </Button.Background>

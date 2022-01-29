@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace H1EMU_Launcher.Classes
 {
@@ -11,6 +7,10 @@ namespace H1EMU_Launcher.Classes
         public static string APPLICATION_DATA_PATH = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
         public static string NODEJS_VERSION = "16.13.1";
+
+        public static string SERVER_IP_2015 = "loginserver.h1emu.com:1115";
+
+        public static string SERVER_IP_2016 = "loginserver.h1emu.com:1115";
 
         public static string DISCORD_LINK = "https://discord.com/invite/RM6jNkj";
 

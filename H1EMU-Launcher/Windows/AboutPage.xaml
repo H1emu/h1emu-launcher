@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Launcher"
         x:Name="MainAbout"
-        Height="500" Width="800"
+        Width="800"
+        Height="500"
         WindowStartupLocation="CenterScreen"
         Background="#FF2A2A32"
         FontFamily="Bahnschrift"
@@ -17,123 +18,333 @@
         Closing="MainAboutClosing"
         Activated="MainAboutActivated">
 
+        <!-- Hide window border but keep animations -->
         <WindowChrome.WindowChrome>
-            <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
+            <WindowChrome
+                GlassFrameThickness="0"
+                CornerRadius="0"
+                CaptionHeight="0"
+                ResizeBorderThickness="0"
+                UseAeroCaptionButtons="False"/>
+
         </WindowChrome.WindowChrome>
 
     <Grid>
+        
+        <!-- Background fade on unfocus -->
+        <Rectangle x:Name="aboutPageFade"
+                   Fill="#40000000"
+                   IsHitTestVisible="False"
+                   Visibility="Hidden"/>
+
         <Grid>
-            <Grid.Effect>
-                <BlurEffect x:Name="aboutPageBlur" Radius="0" KernelType="Gaussian"/>
-            </Grid.Effect>
             
+            <!-- About page blur on unfocus -->
+            <Grid.Effect>
+                <BlurEffect x:Name="aboutPageBlur"
+                            Radius="0"
+                            KernelType="Gaussian"/>
+                
+            </Grid.Effect>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="5*"/>
             </Grid.RowDefinitions>
-            
-            <!--Creates the Grid to host the control box and title/icon-->
-            <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="Grid_MouseLeftButtonDown" Background="#FF2A2A32">
+
+            <!-- Grid for logo and exit button -->
+            <Grid
+                MouseLeftButtonDown="Grid_MouseLeftButtonDown"
+                Background="#FF2A2A32">
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!--Creates the title and icon-->
-                <DockPanel Grid.Row="0" Grid.Column="0" Height="60" HorizontalAlignment="Left" Margin="23,0,0,0">
-                    <Button Width="175" Height="45" BorderThickness="0" VerticalAlignment="Bottom" Style="{DynamicResource ImageButton}">
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\H1EmuIcon.png"/>
-                        </Button.Background>
-                    </Button>
+                <!-- Logo -->
+                <DockPanel
+                    Height="60"
+                    HorizontalAlignment="Left"
+                    Margin="23,0,0,0">
+
+                    <Image
+                        Source="..\Resources\H1EmuIcon.png"
+                        Width="175"
+                        Height="45"
+                        VerticalAlignment="Bottom"/>
+                    
                 </DockPanel>
 
-                <!-- Top bar grid. -->
-                <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
-                    <Button x:Name="CloseButton" RenderOptions.BitmapScalingMode="Fant" Content="" Width="44" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseButton_Click"  Margin="0,0,25,0" Style="{StaticResource CloseButtonStyle}">
+                <!-- Exit button -->
+                <DockPanel Grid.Column="1">
+                    <Button x:Name="CloseButton"
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Width="44"
+                            Height="30"
+                            Margin="0,0,25,0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            BorderThickness="0"
+                            Click="CloseButton_Click"
+                            Style="{StaticResource CloseButtonStyle}">
+
                         <Button.Background>
                             <ImageBrush ImageSource="..\Resources\Exit.png"/>
                         </Button.Background>
                     </Button>
                 </DockPanel>
             </Grid>
-            <Grid Grid.Row="1" Background="#1C1B22" Margin="25,5,25,25" UseLayoutRounding="True">
+
+            <!-- Main content in darkened area -->
+            <Grid
+                Grid.Row="1"
+                Margin="25,5,25,25"
+                Background="#1C1B22"
+                UseLayoutRounding="True">
+                
+                <!-- Drop shadow effect -->
                 <Grid.Effect>
-                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+                    <DropShadowEffect
+                        BlurRadius="15"
+                        Direction="-90"
+                        RenderingBias="Quality"
+                        ShadowDepth="1"/>
+
                 </Grid.Effect>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <RichTextBox Background="Transparent" Foreground="White" BorderThickness="0" IsReadOnly="True" Width="600" Margin="25,25,25,25" Cursor="Arrow">
+                <!-- List of everyone who helped on the project -->
+                <RichTextBox
+                    Margin="25,25,25,25"
+                    Width="600"
+                    Background="Transparent"
+                    Foreground="White"
+                    BorderThickness="0"
+                    IsReadOnly="True"
+                    Cursor="Arrow">
+
                     <FlowDocument>
-                        <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24" FontWeight="Light">
-                            <TextBlock Text="{DynamicResource item126}" TextDecorations="Underline" TextWrapping="Wrap"/>
+                        <Paragraph
+                            TextAlignment="Center"
+                            FontSize="20"
+                            Foreground="#FFED1C24"
+                            FontWeight="Light">
+
+                            <TextBlock
+                                TextDecorations="Underline"
+                                TextWrapping="Wrap"
+                                Text="{DynamicResource item126}"/>
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
+
+                        <Paragraph
+                            TextAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Light">
+
                             • Kentin •
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24" FontWeight="Light" Margin="0,50,0,0">
-                            <TextBlock Text="{DynamicResource item127}" TextDecorations="Underline" TextWrapping="Wrap"/>
+
+                        <Paragraph
+                            Margin="0,50,0,0"
+                            TextAlignment="Center"
+                            FontSize="20"
+                            Foreground="#FFED1C24"
+                            FontWeight="Light">
+
+                            <TextBlock
+                                TextDecorations="Underline"
+                                TextWrapping="Wrap"
+                                Text="{DynamicResource item127}"/>
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
+
+                        <Paragraph
+                            TextAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Light">
+
                             • Meme (2016 Server) • Avcio (2015 Server) • HaxMax (2015 server)
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24" FontWeight="Light" Margin="0,50,0,0">
-                            <TextBlock Text="{DynamicResource item128}" TextDecorations="Underline" TextWrapping="Wrap"/>
+
+                        <Paragraph
+                            Margin="0,50,0,0"
+                            TextAlignment="Center"
+                            FontSize="20"
+                            Foreground="#FFED1C24"
+                            FontWeight="Light">
+
+                            <TextBlock
+                                TextDecorations="Underline"
+                                TextWrapping="Wrap"
+                                Text="{DynamicResource item128}"/>
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
+
+                        <Paragraph
+                            TextAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Light">
+
                             • Kentin • LcplReaper • Traqnar • Meme
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24" FontWeight="Light" Margin="0,50,0,0">
-                            <TextBlock Text="{DynamicResource item129}" TextDecorations="Underline" TextWrapping="Wrap"/>
+
+                        <Paragraph
+                            Margin="0,50,0,0"
+                            TextAlignment="Center"
+                            FontSize="20"
+                            Foreground="#FFED1C24"
+                            FontWeight="Light">
+
+                            <TextBlock
+                                TextDecorations="Underline"
+                                TextWrapping="Wrap"
+                                Text="{DynamicResource item129}"/>
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
+
+                        <Paragraph
+                            TextAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Light">
+
                             • Eavilaswayce • Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo •
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24" FontWeight="Light" Margin="0,50,0,0">
-                            <TextBlock Text="{DynamicResource item130}" TextDecorations="Underline" TextWrapping="Wrap"/>
+
+                        <Paragraph
+                            Margin="0,50,0,0"
+                            TextAlignment="Center"
+                            FontSize="20"
+                            Foreground="#FFED1C24"
+                            FontWeight="Light">
+
+                            <TextBlock
+                                TextDecorations="Underline"
+                                TextWrapping="Wrap"
+                                Text="{DynamicResource item130}"/>
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
+
+                        <Paragraph
+                            TextAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Light">
+
                             • Meme • Chrisisbrown • Cur7 • Movezie • Skoz •
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24" FontWeight="Light" Margin="0,50,0,0">
-                            <TextBlock Text="{DynamicResource item131}" TextDecorations="Underline" TextWrapping="Wrap"/>
+
+                        <Paragraph
+                            Margin="0,50,0,0"
+                            TextAlignment="Center"
+                            FontSize="20"
+                            Foreground="#FFED1C24"
+                            FontWeight="Light">
+
+                            <TextBlock
+                                TextDecorations="Underline"
+                                TextWrapping="Wrap"
+                                Text="{DynamicResource item131}"/>
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
+
+                        <Paragraph
+                            TextAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Light">
+
                             • rob138us • Dave • Booze (Orphanfeast87) •
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24" FontWeight="Light" Margin="0,50,0,0">
-                            <TextBlock Text="{DynamicResource item136}" TextDecorations="Underline" TextWrapping="Wrap"/>
+
+                        <Paragraph
+                            Margin="0,50,0,0"
+                            TextAlignment="Center"
+                            FontSize="20"
+                            Foreground="#FFED1C24"
+                            FontWeight="Light">
+
+                            <TextBlock
+                                TextDecorations="Underline"
+                                TextWrapping="Wrap"
+                                Text="{DynamicResource item136}"/>
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
+
+                        <Paragraph
+                            TextAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Light">
+
                             • YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) •
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="20" Foreground="#FFED1C24" FontWeight="Light" Margin="0,50,0,0">
-                            <TextBlock Text="{DynamicResource item170}" TextDecorations="Underline" TextWrapping="Wrap"/>
+
+                        <Paragraph
+                            Margin="0,50,0,0"
+                            TextAlignment="Center"
+                            FontSize="20"
+                            Foreground="#FFED1C24"
+                            FontWeight="Light">
+
+                            <TextBlock
+                                TextDecorations="Underline"
+                                TextWrapping="Wrap"
+                                Text="{DynamicResource item170}"/>
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light">
+
+                        <Paragraph
+                            TextAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Light">
+
                             • Booze (Orphanfeast87) •
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light" Margin="0,60,0,0">
-                            <TextBlock Text="{DynamicResource item132}" TextDecorations="Underline" TextWrapping="Wrap"/>
+
+                        <Paragraph
+                            Margin="0,60,0,0"
+                            TextAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Light">
+
+                            <TextBlock
+                                TextDecorations="Underline"
+                                TextWrapping="Wrap"
+                                Text="{DynamicResource item132}"/>
+
                         </Paragraph>
-                        <Paragraph TextAlignment="Center" FontSize="18" FontWeight="Light" Margin="0,100,0,0">
-                            <TextBlock Text="{DynamicResource item169}" TextWrapping="Wrap"/>
+
+                        <Paragraph
+                            Margin="0,100,0,0"
+                            TextAlignment="Center"
+                            FontSize="18"
+                            FontWeight="Light">
+
+                            <TextBlock
+                                TextWrapping="Wrap"
+                                Text="{DynamicResource item169}"/>
+
                         </Paragraph>
                     </FlowDocument>
                 </RichTextBox>
             </Grid>
         </Grid>
-
-        <Rectangle x:Name="aboutPageFade" Fill="#40000000" IsHitTestVisible="False" Visibility="Hidden"/>
     </Grid>
 </Window>

@@ -6,8 +6,8 @@
       xmlns:gif="http://wpfanimatedgif.codeplex.com"
       xmlns:local="clr-namespace:H1EMU_Launcher"
       mc:Ignorable="d" 
-      d:DesignHeight="140"
       d:DesignWidth="565"
+      d:DesignHeight="140"
       FontFamily="Bahnschrift Light"
       UseLayoutRounding="True"
       Title="Login">
@@ -15,31 +15,136 @@
     <!-- Main Grid -->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBox VerticalAlignment="Top" x:Name="usernameBox" Grid.Row="0" FontSize="16" VerticalContentAlignment="Center" MaxHeight="35" Height="35" Padding="32,0,0,0" Margin="0,0,7,0" GotFocus="UsernameBoxGotFocus" LostFocus="UsernameBoxLostFocus" Style="{DynamicResource TextBoxPrimaryStyle}"/>
-        <TextBlock VerticalAlignment="Top" x:Name="usernameHint" Grid.Row="0" IsHitTestVisible="False" MaxHeight="35" Margin="0,0,7,0" Padding="35,8,0,0" Text="{DynamicResource item59}" Foreground="White" FontSize="16" Height="27"/>
-        
-        <Image VerticalAlignment="Top" Source="..\Resources\Shield.png" RenderOptions.BitmapScalingMode="Fant" Grid.Row="0" MaxHeight="20" HorizontalAlignment="Left" Margin="8,7,0,0" Width="20" Height="20"/>
-        <TextBlock VerticalAlignment="Top" Grid.Column="1" Foreground="White" FontSize="16" Text="{DynamicResource item34}" TextWrapping="Wrap" Margin="7,0,0,0"/>
+        <!-- Username box -->
+        <TextBox x:Name="usernameBox"
+            Grid.Row="0"
+            Height="35"
+            Margin="0,0,7,0"
+            Padding="32,0,0,0"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            FontSize="16"
+            GotFocus="UsernameBoxGotFocus"
+            LostFocus="UsernameBoxLostFocus"
+            Style="{DynamicResource TextBoxPrimaryStyle}"/>
 
-        <PasswordBox VerticalAlignment="Top" x:Name="passwordBox" PasswordChar="●" Grid.Row="1" Grid.Column="0" FontSize="16" VerticalContentAlignment="Center" MaxHeight="35" Height="35" KeyDown="TextBox_KeyDown" Padding="32,0,35,0" Margin="0,0,7,0" GotFocus="PasswordBoxGotFocus" LostFocus="PasswordBoxLostFocus" Style="{DynamicResource PasswordBoxStyle}"/>
-        <TextBlock VerticalAlignment="Top" x:Name="passwordHint" Grid.Row="1" IsHitTestVisible="False" MaxHeight="35" Margin="0,4,7,0" Padding="35,5,0,0" Text="{DynamicResource item60}" Foreground="White" FontSize="16" Height="24"/>
+        <!-- Hint for username textbox -->
+        <TextBlock x:Name="usernameHint"
+            Grid.Row="0"
+            Height="27"
+            Margin="0,4,7,0"
+            Padding="35,4,0,0"
+            VerticalAlignment="Top"
+            IsHitTestVisible="False"
+            Foreground="White"
+            FontSize="16"
+            Text="{DynamicResource item59}"/>
+
+        <!-- Image for username textbox -->
+        <Image Source="..\Resources\Shield.png"
+            Grid.Row="0"
+            RenderOptions.BitmapScalingMode="Fant"
+            Width="20"
+            Height="20"
+            Margin="8,7,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"/>
         
-        <Image VerticalAlignment="Top" Source="..\Resources\Padlock.png" Grid.Row="1" MaxHeight="20" HorizontalAlignment="Left" Margin="8,7,0,0" Height="20" Width="20" RenderOptions.BitmapScalingMode="Fant"/>
-        <Button x:Name="loginEnterButton" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="Fant" Grid.Row="1" MaxHeight="20" MinHeight="20" Width="20" HorizontalAlignment="Right" Margin="0,7,17,0" Click="LoginButton" BorderThickness="0" Style="{DynamicResource EnterButton}">
+        <!-- Text beside username textbox -->
+        <TextBlock
+            Grid.Column="1"
+            Margin="7,0,0,0"
+            VerticalAlignment="Top"
+            Foreground="White"
+            FontSize="16"
+            TextWrapping="Wrap"
+            Text="{DynamicResource item34}"/>
+
+        <!-- Password box -->
+        <PasswordBox x:Name="passwordBox"
+            Grid.Row="1"
+            VerticalAlignment="Top"
+            Height="35"
+            Margin="0,0,7,0"
+            Padding="32,0,35,0"
+            VerticalContentAlignment="Center"
+            FontSize="16"
+            PasswordChar="●"
+            KeyDown="TextBox_KeyDown"
+            GotFocus="PasswordBoxGotFocus"
+            LostFocus="PasswordBoxLostFocus"
+            Style="{DynamicResource PasswordBoxStyle}"/>
+
+        <!-- Hint for password textbox -->
+        <TextBlock x:Name="passwordHint"
+            Grid.Row="1"
+            Height="27"
+            Margin="0,4,7,0"
+            Padding="35,5,0,0"
+            VerticalAlignment="Top"
+            IsHitTestVisible="False"
+            Foreground="White"
+            FontSize="16"
+            Text="{DynamicResource item60}"/>
+
+        <!-- Hint for password textbox -->
+        <Image Source="..\Resources\Padlock.png"
+            Grid.Row="1"
+            RenderOptions.BitmapScalingMode="Fant"
+            Width="20"
+            Height="20"
+            Margin="8,7,0,0"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"/>
+
+        <!-- Button to submit username and password -->
+        <Button x:Name="loginEnterButton"
+                Grid.Row="1"
+                Click="LoginButton"
+                RenderOptions.BitmapScalingMode="Fant"
+                Width="20"
+                Height="20"
+                Margin="0,7,17,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                BorderThickness="0"
+                Style="{DynamicResource EnterButton}">
+            
             <Button.Background>
                 <ImageBrush ImageSource="..\Resources\Arrow.png"/>
             </Button.Background>
         </Button>
-        <Image gif:ImageBehavior.AnimatedSource="..\Resources/Loading.gif" x:Name="loadingGif" Visibility="Hidden" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="Fant" Grid.Row="1" MaxHeight="20" MinHeight="20" Width="20" HorizontalAlignment="Right" Margin="0,7,17,0"/>
 
-        <TextBlock VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Foreground="White" FontSize="16" Text="{DynamicResource item35}" TextWrapping="Wrap" Margin="7,0,0,0"/>
+        <!-- Loading wheel GIF -->
+        <Image gif:ImageBehavior.AnimatedSource="..\Resources/Loading.gif"
+               x:Name="loadingGif"
+               Grid.Row="1"
+               RenderOptions.BitmapScalingMode="Fant"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Right"
+               Margin="0,7,17,0"
+               Height="20"
+               Width="20"
+               Visibility="Hidden"/>
+
+        <!-- Login message -->
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="7,0,0,0"
+            VerticalAlignment="Top"
+            Foreground="White"
+            FontSize="16"
+            TextWrapping="Wrap"
+            Text="{DynamicResource item35}"/>
     </Grid>
 </Page>

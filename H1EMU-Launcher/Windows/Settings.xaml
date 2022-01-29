@@ -18,14 +18,33 @@
         Closing="MainSettings_Closing"
         Activated="MainSettingsActivated">
 
+        <!-- Hide window border but keep animations -->
         <WindowChrome.WindowChrome>
-            <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="0"/>
+            <WindowChrome
+                GlassFrameThickness="0"
+                CornerRadius="0"
+                CaptionHeight="0"
+                ResizeBorderThickness="0"
+                UseAeroCaptionButtons="False"/>
+
         </WindowChrome.WindowChrome>
 
     <Grid>
+        
+        <!-- Background fade on unfocus -->
+        <Rectangle x:Name="settingsFade"
+                   Fill="#40000000"
+                   IsHitTestVisible="False"
+                   Visibility="Hidden"/>
+        
         <Grid>
+            
+            <!-- Settings blur on unfocus -->
             <Grid.Effect>
-                <BlurEffect x:Name="settingsBlur" Radius="0" KernelType="Gaussian"/>
+                <BlurEffect x:Name="settingsBlur"
+                            Radius="0"
+                            KernelType="Gaussian"/>
+                
             </Grid.Effect>
 
             <Grid.ColumnDefinitions>
@@ -38,36 +57,67 @@
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
-            <!-- View files hyperlink, opens file explorer to active directory. -->
+            <!-- Hyperlink to open auth key window -->
+            <TextBlock
+                Grid.Row="2"
+                Foreground="White"
+                Margin="25,1,0,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left">
+                
+                <Hyperlink Click="AuthKey_Click">
+                    <TextBlock Text="{DynamicResource item154}"/>
+                </Hyperlink>
+            </TextBlock>
+            
+            <!-- Current installed version of the launcher number -->
+            <TextBlock x:Name="currentVersion"
+                       Grid.Row="2"
+                       Margin="0,1,25,0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Foreground="White"
+                       Text="{DynamicResource item124}"/>
 
-            <TextBlock Grid.Row="2" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,1,0,0">
-            <Hyperlink Click="AuthKey_Click">
-                <TextBlock Text="{DynamicResource item154}"/>
-            </Hyperlink>
-        </TextBlock>
-            <TextBlock x:Name="currentVersion" Grid.Row="2" Text="{DynamicResource item124}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,1,25,0"/>
-
-            <Grid Grid.Row="0" Grid.Column="0" MouseLeftButtonDown="MoveWindow" Background="#FF2A2A32">
+            <Grid 
+                MouseLeftButtonDown="MoveWindow"
+                Background="#FF2A2A32">
+                
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
+                
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Dock panel that hosts logo -->
-                <DockPanel Grid.Row="0" Grid.Column="0" Height="60" HorizontalAlignment="Left" Margin="23,0,0,0">
-                    <Button Width="175" Height="45" BorderThickness="0" VerticalAlignment="Bottom" Style="{DynamicResource ImageButton}">
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\H1EmuIcon.png"/>
-                        </Button.Background>
-                    </Button>
+                <!-- Logo -->
+                <DockPanel
+                    Height="60"
+                    Margin="23,0,0,0"
+                    HorizontalAlignment="Left">
+                    
+                    <Image
+                        Source="..\Resources\H1EmuIcon.png"
+                        Width="175"
+                        Height="45"
+                        VerticalAlignment="Bottom"/>
                 </DockPanel>
 
-                <!-- Dock panel that creates the exit button. -->
-                <DockPanel Grid.Column="1" Grid.Row="0">
-                    <Button x:Name="ExitButton" RenderOptions.BitmapScalingMode="Fant" Width="44" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" BorderThickness="0" Click="CloseButton" Margin="0,2,25,0" Style="{StaticResource CloseButtonStyle}">
+                <!-- Exit button -->
+                <DockPanel Grid.Column="1">
+                    <Button x:Name="ExitButton"
+                            Click="CloseButton"
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Width="44"
+                            Height="30"
+                            Margin="0,2,25,0"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            BorderThickness="0"
+                            Style="{StaticResource CloseButtonStyle}">
+                        
                         <Button.Background>
                             <ImageBrush ImageSource="..\Resources\Exit.png"/>
                         </Button.Background>
@@ -76,9 +126,20 @@
             </Grid>
 
             <!-- Grid for main content inside of darkened area -->
-            <Grid Grid.Row="1" Background="#1C1B22" Margin="25,5,25,0" UseLayoutRounding="True">
+            <Grid
+                Grid.Row="1"
+                Background="#1C1B22"
+                Margin="25,5,25,0"
+                UseLayoutRounding="True">
+                
+                <!-- Drop shadow effect -->
                 <Grid.Effect>
-                    <DropShadowEffect BlurRadius="15" Direction="-90" RenderingBias="Quality" ShadowDepth="1"/>
+                    <DropShadowEffect
+                        BlurRadius="15"
+                        Direction="-90"
+                        RenderingBias="Quality"
+                        ShadowDepth="1"/>
+                    
                 </Grid.Effect>
 
                 <Grid.RowDefinitions>
@@ -93,57 +154,192 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- Content for text, directory textbox, select directory button and current game version. -->
-                    <TextBlock FontSize="16" FontFamily="Bahnschrift Light" Foreground="FloralWhite" Text="{DynamicResource item41}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,10"/>
-                    <TextBox Grid.Column="1" x:Name="directoryBox" Height="35" Margin="10,0,20,10" Padding="35,7,35,0" IsReadOnly="True" Style="{DynamicResource TextBoxPrimaryStyle}" Cursor=""/>
-                    <Button Grid.Column="1" Width="20" Height="20" HorizontalAlignment="Left" Margin="20,0,0,12" Click="OpenDirectory" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource FolderButton}">
+                    <!-- Game directory text -->
+                    <TextBlock
+                        Margin="20,0,0,10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        FontSize="16"
+                        FontFamily="Bahnschrift Light"
+                        Foreground="FloralWhite"
+                        Text="{DynamicResource item41}"/>
+
+                    <!-- Active directory textbox -->
+                    <TextBox x:Name="directoryBox"
+                        Grid.Column="1"
+                        Height="35"
+                        Margin="10,0,20,10"
+                        Padding="35,7,35,0"
+                        IsReadOnly="True"
+                        Cursor="Arrow"
+                        Style="{DynamicResource TextBoxPrimaryStyle}"/>
+                    
+                    <!-- Button to open file explorer to game directory -->
+                    <Button
+                        Grid.Column="1"
+                        Click="OpenDirectory"
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Width="20"
+                        Height="20"
+                        Margin="20,0,0,12"
+                        HorizontalAlignment="Left"
+                        BorderThickness="0"
+                        Style="{DynamicResource FolderButton}">
+                        
                         <Button.Background>
                             <ImageBrush ImageSource="..\Resources\Folder.png"/>
                         </Button.Background>
                     </Button>
-                    <Button Grid.Column="1" x:Name="directoryButton" Click="SelectDirectory" Width="20" Height="20" HorizontalAlignment="Right" Margin="0,0,30,12" BorderThickness="0" RenderOptions.BitmapScalingMode="Fant" Style="{DynamicResource EnterButton}">
+                    
+                    <!-- Button to select a new game directory -->
+                    <Button x:Name="directoryButton"
+                        Grid.Column="1"
+                        Click="SelectDirectory"
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Width="20"
+                        Height="20"
+                        Margin="0,0,30,12"
+                        HorizontalAlignment="Right"
+                        BorderThickness="0"
+                        Style="{DynamicResource EnterButton}">
+                        
                         <Button.Background>
                             <ImageBrush ImageSource="..\Resources\Arrow.png"/>
                         </Button.Background>
                     </Button>
                 </Grid>
 
-                <TextBlock x:Name="currentGame" Grid.Row="0" Foreground="Gray" FontFamily="Bahnschrift" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                <!-- Current detected game version -->
+                <TextBlock x:Name="currentGame"
+                           Margin="0,0,0,5"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Center"
+                           Foreground="Gray"
+                           FontFamily="Bahnschrift"
+                           FontWeight="Bold"/>
 
-                <!-- Grid to host patch, latest, stable and corresponding textboxes. -->
+                <!-- Grid to host patch, latest, stable buttons and corresponding textboxes. -->
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Button x:Name="patchButton" Content="{DynamicResource item42}" Foreground="White" FontFamily="Arial Black" FontSize="24" Click="InstallPatch" Height="40" Width="220" HorizontalAlignment="Left" Margin="20,20,0,0" Grid.Row="0" BorderThickness="0" Style="{DynamicResource StandardButton}">
+                    
+                    <!-- Install patch button -->
+                    <Button x:Name="patchButton"
+                            Click="InstallPatch"
+                            Width="220"
+                            Height="40"
+                            Margin="20,20,0,0"
+                            HorizontalAlignment="Left"
+                            Foreground="White"
+                            FontFamily="Arial Black"
+                            FontSize="24"
+                            BorderThickness="0"
+                            Content="{DynamicResource item42}"
+                            Style="{DynamicResource StandardButton}">
+                        
                         <Button.Background>
                             <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
                         </Button.Background>
                     </Button>
-                    <TextBlock Grid.Row="0" Text="{DynamicResource item45}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="260,20,20,0" Width="400" TextWrapping="Wrap"/>
-                    <Button x:Name="latestButton" Content="{DynamicResource item43}" Foreground="White" FontFamily="Arial Black" FontSize="24" Click="DownloadServerLatest" Height="40" Width="220" HorizontalAlignment="Left" Margin="20,15,0,0" Grid.Row="1" BorderThickness="0" Style="{DynamicResource StandardButton}">
+                    
+                    <!-- Patch button text -->
+                    <TextBlock
+                        Width="400"
+                        Margin="260,20,20,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="White"
+                        TextWrapping="Wrap"
+                        Text="{DynamicResource item45}"/>
+                    
+                    <!-- Install latest server button -->
+                    <Button x:Name="latestButton"
+                            Grid.Row="1"
+                            Click="DownloadServerLatest"
+                            Width="220"
+                            Height="40"
+                            Margin="20,15,0,0"
+                            HorizontalAlignment="Left"
+                            Foreground="White"
+                            FontFamily="Arial Black"
+                            FontSize="24"
+                            BorderThickness="0"
+                            Content="{DynamicResource item43}"
+                            Style="{DynamicResource StandardButton}">
+                        
                         <Button.Background>
                             <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
                         </Button.Background>
                     </Button>
-                    <TextBlock Grid.Row="1" Text="{DynamicResource item46}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="260,15,20,0" Width="400" TextWrapping="Wrap"/>
-                    <Button x:Name="stableButton" Content="{DynamicResource item44}" Foreground="White" FontFamily="Arial Black" FontSize="24" Click="DownloadServerStable" Height="40" Width="220" HorizontalAlignment="Left" Margin="20,10,0,0" Grid.Row="2" BorderThickness="0" Style="{DynamicResource StandardButton}">
+                    
+                    <!-- Latest server button text -->
+                    <TextBlock
+                        Grid.Row="1"
+                        Width="400"
+                        Margin="260,15,20,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="White"
+                        TextWrapping="Wrap"
+                        Text="{DynamicResource item46}"/>
+                    
+                    <!-- Install stable server button -->
+                    <Button x:Name="stableButton"
+                            Grid.Row="2"
+                            Click="DownloadServerStable"
+                            Width="220"
+                            Height="40"
+                            Margin="20,10,0,0"
+                            HorizontalAlignment="Left"
+                            Foreground="White"
+                            FontFamily="Arial Black"
+                            FontSize="24"
+                            BorderThickness="0"
+                            Content="{DynamicResource item44}"
+                            Style="{DynamicResource StandardButton}">
+                        
                         <Button.Background>
                             <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
                         </Button.Background>
                     </Button>
-                    <TextBlock Grid.Row="2" Text="{DynamicResource item47}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="260,10,20,0" Width="400" TextWrapping="Wrap"/>
+                    
+                    <!-- Stable server button text -->
+                    <TextBlock
+                        Grid.Row="2"
+                        Width="400"
+                        Margin="260,10,20,0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Foreground="White"
+                        TextWrapping="Wrap"
+                        Text="{DynamicResource item47}"/>
                 </Grid>
 
-                <!-- Creating progress bar and text that overlays. -->
-                <ProgressBar x:Name="settingsProgress" Grid.Row="2" Height="35" Margin="20,0,20,0" Style="{DynamicResource ProgressBar}"/>
-                <ProgressBar Grid.Row="2" Height="35" Margin="20,0,20,0" Background="Transparent" Style="{DynamicResource ProgressBar}"/>
-                <TextBlock x:Name="settingsProgressText" Grid.Row="2" Foreground="White" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <!-- Status progress bar -->
+                <ProgressBar x:Name="settingsProgress"
+                             Grid.Row="2"
+                             Height="35"
+                             Margin="20,0,20,0"
+                             Style="{DynamicResource ProgressBar}"/>
+                
+                <ProgressBar
+                    Grid.Row="2"
+                    Height="35"
+                    Margin="20,0,20,0"
+                    Background="Transparent"
+                    Style="{DynamicResource ProgressBar}"/>
+                
+                <!-- Status text to overlay progress bar -->
+                <TextBlock x:Name="settingsProgressText"
+                           Grid.Row="2"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           Foreground="White"
+                           Background="Transparent"/>
             </Grid>
         </Grid>
-
-        <Rectangle x:Name="settingsFade" Fill="#40000000" IsHitTestVisible="False" Visibility="Hidden"/>
     </Grid>
 </Window>

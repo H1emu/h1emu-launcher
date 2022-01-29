@@ -8,11 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualBasic;
 using System.Windows.Forms;
 using System.Diagnostics;
-using System.ComponentModel;
-using System.Windows.Threading;
 using H1EMU_Launcher.Resources;
 
 namespace H1EMU_Launcher

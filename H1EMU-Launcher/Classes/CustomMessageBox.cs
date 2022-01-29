@@ -1,10 +1,4 @@
-﻿using H1EMU_Launcher.Resources;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Media;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Media;
 using System.Windows.Forms;
 
 namespace H1EMU_Launcher
