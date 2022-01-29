@@ -325,6 +325,7 @@
                              Margin="20,0,20,0"
                              Style="{DynamicResource ProgressBar}"/>
                 
+                <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
                 <ProgressBar
                     Grid.Row="2"
                     Height="35"
