@@ -30,13 +30,6 @@
         </WindowChrome.WindowChrome>
 
     <Grid>
-        
-        <!-- Background fade on unfocus -->
-        <Rectangle x:Name="settingsFade"
-                   Fill="#40000000"
-                   IsHitTestVisible="False"
-                   Visibility="Hidden"/>
-        
         <Grid>
             
             <!-- Settings blur on unfocus -->
@@ -342,5 +335,12 @@
                            Background="Transparent"/>
             </Grid>
         </Grid>
+
+        <!-- Background fade on unfocus -->
+        <Rectangle x:Name="settingsFade"
+                   Fill="#40000000"
+                   IsHitTestVisible="False"
+                   Visibility="Hidden"/>
+
     </Grid>
 </Window>

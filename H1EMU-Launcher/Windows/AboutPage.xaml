@@ -30,13 +30,6 @@
         </WindowChrome.WindowChrome>
 
     <Grid>
-        
-        <!-- Background fade on unfocus -->
-        <Rectangle x:Name="aboutPageFade"
-                   Fill="#40000000"
-                   IsHitTestVisible="False"
-                   Visibility="Hidden"/>
-
         <Grid>
             
             <!-- About page blur on unfocus -->
@@ -346,5 +339,12 @@
                 </RichTextBox>
             </Grid>
         </Grid>
+
+        <!-- Background fade on unfocus -->
+        <Rectangle x:Name="aboutPageFade"
+                   Fill="#40000000"
+                   IsHitTestVisible="False"
+                   Visibility="Hidden"/>
+
     </Grid>
 </Window>

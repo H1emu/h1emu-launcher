@@ -162,13 +162,6 @@
     </Window.Triggers>
 
     <Grid>
-
-        <!-- Background fade on unfocus -->
-        <Rectangle x:Name="launcherFade"
-                   Fill="#40000000"
-                   IsHitTestVisible="False"
-                   Visibility="Hidden"/>
-        
         <Grid>
 
             <!-- Launcher blur on unfocus -->
@@ -742,5 +735,12 @@
                     Text="{DynamicResource item125}"/>
             </DockPanel>
         </Grid>
+
+        <!-- Background fade on unfocus -->
+        <Rectangle x:Name="launcherFade"
+                   Fill="#40000000"
+                   IsHitTestVisible="False"
+                   Visibility="Hidden"/>
+
     </Grid>
 </Window>

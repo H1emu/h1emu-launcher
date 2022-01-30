@@ -31,13 +31,6 @@
         </WindowChrome.WindowChrome>
 
     <Grid>
-
-        <!-- Background fade on unfocus -->
-        <Rectangle x:Name="addServerFade"
-                   Fill="#40000000"
-                   IsHitTestVisible="False"
-                   Visibility="Hidden"/>
-        
         <Grid>
 
             <!-- Add server blur on unfocus -->
@@ -223,5 +216,12 @@
                 </Button>
             </Grid>
         </Grid>
+
+        <!-- Background fade on unfocus -->
+        <Rectangle x:Name="addServerFade"
+                   Fill="#40000000"
+                   IsHitTestVisible="False"
+                   Visibility="Hidden"/>
+
     </Grid>
 </Window>
