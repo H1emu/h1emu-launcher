@@ -31,15 +31,6 @@
 
     <Grid>
         <Grid>
-
-            <!-- Auth key blur on unfocus -->
-            <Grid.Effect>
-                <BlurEffect x:Name="authKeyBlur"
-                            Radius="0"
-                            KernelType="Gaussian"/>
-
-            </Grid.Effect>
-
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -244,12 +235,5 @@
                 </Button>
             </Grid>
         </Grid>
-
-        <!-- Background fade on unfocus -->
-        <Rectangle x:Name="authKeyFade"
-                   Fill="#40000000"
-                   IsHitTestVisible="False"
-                   Visibility="Hidden"/>
-        
     </Grid>
 </Window>
