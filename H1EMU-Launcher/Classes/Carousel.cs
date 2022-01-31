@@ -24,6 +24,11 @@ namespace H1EMU_Launcher.Classes
             {
                 DownloadImages();
 
+                if (!Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages"))
+                {
+                    Directory.CreateDirectory($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages");
+                }
+
                 if (Directory.GetFileSystemEntries($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages").Length == 0) { return; }
 
                 foreach (var fileName in Directory.EnumerateFiles($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages"))
@@ -38,7 +43,7 @@ namespace H1EMU_Launcher.Classes
                     Launcher.lncher.imageCarousel.Visibility = System.Windows.Visibility.Visible;
                 });
 
-                for (progress = 0; progress <= 3000; progress++)
+            for (progress = 0; progress <= 3000; progress++)
                 {
                     pauseCarousel.WaitOne();
 

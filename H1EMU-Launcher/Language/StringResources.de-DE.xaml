@@ -22,7 +22,6 @@
     <system:String x:Key="item18">HINZUFÜGEN</system:String>
     <system:String x:Key="item19">• Status •</system:String>
     <system:String x:Key="item21">Depotschlüssel für {0} Ergebnis: {1}</system:String>
-    <system:String x:Key="item22">CDN-Authentifizierungstoken erhalten für {0} Ergebnis: {1}</system:String>
     <system:String x:Key="item23">Download abgeschlossen!</system:String>
     <system:String x:Key="item24">Müssen Sie eine andere Version herunterladen? Drücken Sie die Schaltfläche unten, um sich erneut anzumelden!</system:String>
     <system:String x:Key="item25">Anmelden</system:String>
@@ -78,8 +77,10 @@
     <system:String x:Key="item75">Verzeichnis</system:String>
     <system:String x:Key="item76">Entferne alten Pach...</system:String>
     <system:String x:Key="item77">Authentifizierungscode</system:String>
-    <system:String x:Key="item78">Bitte geben Sie Ihren Zwei Faktor Authentifizierungscode ein.</system:String>
+    <system:String x:Key="item78">Bitte geben Sie den Zwei-Faktor-Authentifizierungscode ein, der an Ihre Steam-App gesendet wurde.</system:String>
+    <system:String x:Key="item79">Bitte geben Sie den Zwei-Faktor-Authentifizierungscode ein, der an Ihre E-Mail gesendet wurde.</system:String>
     <system:String x:Key="item80">Speichere vor dem Laden die Konfiguration</system:String>
+    <system:String x:Key="item81">Bitte geben Sie Ihren Zwei Faktor Authentifizierungscode ein.</system:String>
     <system:String x:Key="item83">Fehler beim Abrufen des CDN Tokens für den Server {0} Depot {1}</system:String>
     <system:String x:Key="item84">Es konnten keine Depots zum Herunterladen für die App gefunden werden {0}</system:String>
     <system:String x:Key="item85">Depot {0} nicht für die App gelistet {1}</system:String>
@@ -143,10 +144,10 @@
     <system:String x:Key="item150">PATCHEN</system:String>
     <system:String x:Key="item151">Server Name oder IP ungültig.</system:String>
     <system:String x:Key="item152">Lösche das BattlEye Verzeichnis...</system:String>
-    <system:String x:Key="item153">Wenn Sie eine Verbindung zu H1Emu-Servern herstellen, müssen Sie einen Authentifizierungsschlüssel festlegen. Dies kann im Menü Einstellungen erfolgen.</system:String>
-    <system:String x:Key="item154">Authentifizierungsschlüssel...</system:String>
-    <system:String x:Key="item155">Authentifizierungsschlüssel</system:String>
-    <system:String x:Key="item156">Um auf H1Emu-Servern zu spielen, müssen Sie einen Authentifizierungsschlüssel festlegen. Diese findest du in deinem Profil unter:</system:String>
+    <system:String x:Key="item153">Wenn Sie eine Verbindung zu H1Emu-Servern herstellen, müssen Sie einen Kontoschlüssel festlegen. Dies kann im Menü Einstellungen erfolgen.</system:String>
+    <system:String x:Key="item154">Kontoschlüssel...</system:String>
+    <system:String x:Key="item155">Kontoschlüssel</system:String>
+    <system:String x:Key="item156">Um auf H1Emu-Servern zu spielen, müssen Sie einen Kontoschlüssel festlegen. Diese findest du in deinem Profil unter:</system:String>
     <system:String x:Key="item157">Die neueste Version des Servers ist eine Entwicklungsversion. Seien Sie gewarnt, dass sie instabil sein und Abstürze verursachen kann.\n\nMöchten Sie trotzdem fortfahren?</system:String>
     <system:String x:Key="item158">Willkommen bei H1Emu!</system:String>
     <system:String x:Key="item159">BEVOR SIE BEGINNEN, beachten Sie bitte, dass dieses Projekt nur die folgenden Spielversionen unterstützt:</system:String>

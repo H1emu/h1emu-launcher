@@ -50,28 +50,7 @@
                 <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
 
-            <!-- Hyperlink to open auth key window -->
-            <TextBlock
-                Grid.Row="2"
-                Foreground="White"
-                Margin="25,1,0,0"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Left">
-                
-                <Hyperlink Click="AuthKey_Click">
-                    <TextBlock Text="{DynamicResource item154}"/>
-                </Hyperlink>
-            </TextBlock>
-            
-            <!-- Current installed version of the launcher number -->
-            <TextBlock x:Name="currentVersion"
-                       Grid.Row="2"
-                       Margin="0,1,25,0"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Right"
-                       Foreground="White"
-                       Text="{DynamicResource item124}"/>
-
+            <!-- Grid for logo and exit button -->
             <Grid 
                 MouseLeftButtonDown="MoveWindow"
                 Background="#FF2A2A32">
@@ -334,6 +313,29 @@
                            Foreground="White"
                            Background="Transparent"/>
             </Grid>
+
+            <!-- Hyperlink to open account key window -->
+            <TextBlock
+                Grid.Row="2"
+                Foreground="White"
+                Margin="25,1,0,0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left">
+                
+                <Hyperlink Click="AccountKeyClick">
+                    <TextBlock Text="{DynamicResource item154}"/>
+                </Hyperlink>
+            </TextBlock>
+
+            <!-- Current installed version of the launcher number -->
+            <TextBlock x:Name="currentVersion"
+                       Grid.Row="2"
+                       Margin="0,1,25,0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Foreground="White"
+                       Text="{DynamicResource item124}"/>
+
         </Grid>
 
         <!-- Background fade on unfocus -->

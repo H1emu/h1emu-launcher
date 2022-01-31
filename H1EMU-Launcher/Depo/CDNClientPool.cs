@@ -154,28 +154,6 @@ namespace H1EMU_Launcher
             return connection;
         }
 
-        public async Task<string> AuthenticateConnection(uint appId, uint depotId, CDNClient.Server server)
-        {
-            var host = steamSession.ResolveCDNTopLevelHost(server.Host);
-            var cdnKey = $"{depotId:D}:{host}";
-
-            steamSession.RequestCDNAuthToken(appId, depotId, host, cdnKey);
-
-            if (steamSession.CDNAuthTokens.TryGetValue(cdnKey, out var authTokenCallbackPromise))
-            {
-                var result = await authTokenCallbackPromise.Task;
-                return result.Token;
-            }
-
-            if (System.Windows.Application.Current.Resources.MergedDictionaries.Count < 1)
-            {
-                //Adds the correct language file to the resource dictionary and then load it.
-                System.Windows.Application.Current.Resources.MergedDictionaries.Add(Resources.SetLanguageFile.LoadFile());
-            }
-
-            throw new Exception($"{System.Windows.Application.Current.FindResource("item83").ToString().Replace("{0}", $"{server.Host}").Replace("{1}", $"{depotId}")}");
-        }
-
         public void ReturnConnection(CDNClient.Server server)
         {
             if (server == null) return;

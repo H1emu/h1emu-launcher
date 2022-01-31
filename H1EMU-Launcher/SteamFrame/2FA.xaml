@@ -21,14 +21,15 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         
-        <!-- Please enter 2 factor code -->
-        <TextBlock Grid.Column="1"
+        <!-- Please enter 2 factor code text -->
+        <TextBlock x:Name="twoFacInstructionText"
+                   Grid.Column="1"
                    Margin="7,0,0,0"
                    VerticalAlignment="Top"
                    TextWrapping="Wrap"
                    FontSize="16"
                    Foreground="White"
-                   Text="{DynamicResource item78}"/>
+                   Text="{DynamicResource item81}"/>
 
         <!-- Textbox to enter auth code -->
         <TextBox x:Name="authBox"

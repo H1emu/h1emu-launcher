@@ -22,7 +22,6 @@
     <system:String x:Key="item18">DODATI</system:String>
     <system:String x:Key="item19">• Status •</system:String>
     <system:String x:Key="item21">Dobiven depo kljuć za {0} rezultat: {1}</system:String>
-    <system:String x:Key="item22">Dobiven CDN auth token za {0} rezultat: {1}</system:String>
     <system:String x:Key="item23">Preuzimanje dovršeno!</system:String>
     <system:String x:Key="item24">Potrebna vam je druga verzija? Pritisnite na gumb ispod da bi ste se ponovno prijavili!</system:String>
     <system:String x:Key="item25">Prijava</system:String>
@@ -77,9 +76,11 @@
     <system:String x:Key="item74">Otkrivena verzija igre: 22. prosinac 2016</system:String>
     <system:String x:Key="item75">Direktorij</system:String>
     <system:String x:Key="item76">Brisanje starog patcha...</system:String>
-    <system:String x:Key="item77">Autentikacijski kod</system:String>
-    <system:String x:Key="item78">Molim vas unesite vaš 2FA kod</system:String>
+    <system:String x:Key="item77">Autentikacijski Kod</system:String>
+    <system:String x:Key="item78">Unesite dvofaktorni kod za provjeru autentičnosti koji je poslan vašoj aplikaciji Steam.</system:String>
+    <system:String x:Key="item79">Unesite dvofaktorni kod za autentifikaciju poslan na Vašu e-poštu.</system:String>
     <system:String x:Key="item80">Spremljena konfiguracija prije učitavnja.</system:String>
+    <system:String x:Key="item81">Molim vas unesite vaš 2FA kod.</system:String>
     <system:String x:Key="item83">Pogreška pri dohvatu CDN tokena za server {0} depo {1}</system:String>
     <system:String x:Key="item84">Nije pronađen nijedan depo za preuzimanje aplikacije {0}</system:String>
     <system:String x:Key="item85">Depo {0} nije na popisu za aplikaciju {1}</system:String>
@@ -143,10 +144,10 @@
     <system:String x:Key="item150">PATCHANJE</system:String>
     <system:String x:Key="item151">Naziv ili IP adresa poslužitelja nisu valjani.</system:String>
     <system:String x:Key="item152">Brisanje BattlEye mape...</system:String>
-    <system:String x:Key="item153">Prilikom povezivanja na H1Emu servere morate imati zadani Auth ključ. Ključ možete postaviti u Postavkama.</system:String>
-    <system:String x:Key="item154">Auth Ključ...</system:String>
-    <system:String x:Key="item155">Auth Ključ</system:String>
-    <system:String x:Key="item156">Da bi ste mogli igrati na H1Emu serverima, morate imati zadani Auth ključ.  Opciju možete pronaći na vašem profilu:</system:String>
+    <system:String x:Key="item153">Prilikom povezivanja na H1Emu servere morate imati zadani Ključ Računa. Ključ možete postaviti u Postavkama.</system:String>
+    <system:String x:Key="item154">Ključ Računa...</system:String>
+    <system:String x:Key="item155">Ključ Računa</system:String>
+    <system:String x:Key="item156">Da bi ste mogli igrati na H1Emu serverima, morate imati zadani Ključ Računa.  Opciju možete pronaći na vašem profilu:</system:String>
     <system:String x:Key="item157">Najnovija verzija servera je development build pa je moguće da zbog nestabilnosti dođe do neočekivanog prekida rada.\n\nDa li ste sigurni da želite nastaviti?</system:String>
     <system:String x:Key="item158">Dobrodošli na H1Emu!</system:String>
     <system:String x:Key="item159">PRIJE NEGO ŠTO NASTAVITE, molim vas imajte na umu da ovaj projekt podržava samo navedene verzije:</system:String>

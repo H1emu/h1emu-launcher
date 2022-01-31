@@ -63,6 +63,16 @@ namespace H1EMU_Launcher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AccountKey {
+            get {
+                object obj = ResourceManager.GetObject("AccountKey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Arrow {
             get {
                 object obj = ResourceManager.GetObject("Arrow", resourceCulture);
@@ -86,16 +96,6 @@ namespace H1EMU_Launcher.Properties {
         internal static System.Drawing.Bitmap Arrow_Pressed {
             get {
                 object obj = ResourceManager.GetObject("Arrow_Pressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap AuthKey {
-            get {
-                object obj = ResourceManager.GetObject("AuthKey", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -533,8 +533,8 @@ namespace H1EMU_Launcher.Properties {
         ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Een niewe versie is beschikbaar, wilt u deze instaleren?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;INSTALEREN&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Werk bij&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Klik opstar [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versie&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Klik opstarte [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_nl_NL {
             get {
@@ -566,7 +566,7 @@ namespace H1EMU_Launcher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Uma nova atualização está disponível, quer atualizar agora?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ATUALIZAR&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versão&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Clique em lançar a [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Clique em l [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_pt_PT {
             get {

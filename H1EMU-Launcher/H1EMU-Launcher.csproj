@@ -21,11 +21,11 @@
 
   <ItemGroup>
     <None Remove="Fonts\Signika.ttf" />
+    <None Remove="Resources\AccountKey.png" />
+    <None Remove="Resources\AccountKey_Hover.png" />
+    <None Remove="Resources\AccountKey_Pressed.png" />
     <None Remove="Resources\Arrow_Hover.png" />
     <None Remove="Resources\Arrow_Pressed.png" />
-    <None Remove="Resources\AuthKey.png" />
-    <None Remove="Resources\AuthKey_Hover.png" />
-    <None Remove="Resources\AuthKey_Pressed.png" />
     <None Remove="Resources\Discord.png" />
     <None Remove="Resources\Discord_Pressed.png" />
     <None Remove="Resources\DisplayImage.png" />
@@ -88,9 +88,9 @@
     <Content Include="Resources\Arrow.png" />
     <Content Include="Resources\Arrow_Hover.png" />
     <Content Include="Resources\Arrow_Pressed.png" />
-    <Content Include="Resources\AuthKey.png" />
-    <Content Include="Resources\AuthKey_Hover.png" />
-    <Content Include="Resources\AuthKey_Pressed.png" />
+    <Content Include="Resources\AccountKey.png" />
+    <Content Include="Resources\AccountKey_Hover.png" />
+    <Content Include="Resources\AccountKey_Pressed.png" />
     <Content Include="Resources\Discord.png" />
     <Content Include="Resources\Discord_Pressed.png" />
     <Content Include="Resources\Exit.png" />

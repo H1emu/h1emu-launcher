@@ -22,7 +22,6 @@
     <system:String x:Key="item18">添加</system:String>
     <system:String x:Key="item19">• 进度状态 •</system:String>
     <system:String x:Key="item21">获取数据包密钥 {0} 结果： {1}</system:String>
-    <system:String x:Key="item22">获取CDN {0} 验证令牌结果： {1}</system:String>
     <system:String x:Key="item23">下载完成！</system:String>
     <system:String x:Key="item24">需要下载其他版本吗？按下面的登录按钮返回Steam登录界面！</system:String>
     <system:String x:Key="item25">登录</system:String>
@@ -78,8 +77,10 @@
     <system:String x:Key="item75">请正确选择H1Z1.exe文件所在的目录</system:String>
     <system:String x:Key="item76">正在删除旧的补丁文件...</system:String>
     <system:String x:Key="item77">令牌</system:String>
-    <system:String x:Key="item78">请输入你当前的steam令牌。</system:String>
+    <system:String x:Key="item78">请输入发送到您的 Steam 应用的两因素验证码。</system:String>
+    <system:String x:Key="item79">请输入发送到您的电子邮件的两因素验证码。</system:String>
     <system:String x:Key="item80">加载已保存的配置</system:String>
+    <system:String x:Key="item81">请输入你当前的steam令牌。</system:String>
     <system:String x:Key="item83">获取服务器 {0} 安装包 {1} 的CDN令牌失败</system:String>
     <system:String x:Key="item84">未找到任何可以下载此游戏的 {0} 的数据包</system:String>
     <system:String x:Key="item85">数据包 {0} 不在游戏 {1} 列表中</system:String>
@@ -143,10 +144,10 @@
     <system:String x:Key="item150">正在安装补丁</system:String>
     <system:String x:Key="item151">无效的服务器名字或者IP地址。</system:String>
     <system:String x:Key="item152">正在删除BattlEye目录...</system:String>
-    <system:String x:Key="item153">连接H1Emu服务器必须使用认证密钥，请在游戏配置菜单中贴入认证密钥。</system:String>
-    <system:String x:Key="item154">认证密钥...</system:String>
-    <system:String x:Key="item155">认证密钥</system:String>
-    <system:String x:Key="item156">登录H1Emu服务器需要设置认证密钥，您可以在H1Emu网站的个人账号信息中获取，网址：</system:String>
+    <system:String x:Key="item153">连接到 H1Emu 服务器时，您必须设置帐户密钥。请在游戏配置菜单中贴入认证密钥。</system:String>
+    <system:String x:Key="item154">帐户密钥...</system:String>
+    <system:String x:Key="item155">帐户密钥</system:String>
+    <system:String x:Key="item156">要在 H1Emu 服务器上玩游戏，您需要设置一个帐户密钥。您可以在H1Emu网站的个人账号信息中获取，网址：</system:String>
     <system:String x:Key="item157">请注意：最新版单机服务器为开发版本，可能存在不稳定甚至闪退等问题。\n\n是否继续安装最新版服务器？</system:String>
     <system:String x:Key="item158">欢迎使用H1Emu！</system:String>
     <system:String x:Key="item159">在您使用本项目前请注意本项目只支持如下两个日期的游戏版本：</system:String>

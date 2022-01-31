@@ -22,7 +22,6 @@
     <system:String x:Key="item18">AJOUTER</system:String>
     <system:String x:Key="item19">• Statut •</system:String>
     <system:String x:Key="item21">La clé de dépôt pour {0} obtenue , résultat : {1}</system:String>
-    <system:String x:Key="item22">jeton d'authentification CDN obtenu pour {0} résultat : {1}</system:String>
     <system:String x:Key="item23">Téléchargement terminé !</system:String>
     <system:String x:Key="item24">Vous avez besoin de télécharger une autre version ? Appuyez sur le bouton ci-dessous pour vous connecter à nouveau !</system:String>
     <system:String x:Key="item25">CONNEXION</system:String>
@@ -78,8 +77,10 @@
     <system:String x:Key="item75">Directory</system:String>
     <system:String x:Key="item76">Suppression de l'ancien patch...</system:String>
     <system:String x:Key="item77">Code d'autorisation</system:String>
-    <system:String x:Key="item78">Veuillez entrer votre code d'authentification à deux facteurs.</system:String>
+    <system:String x:Key="item78">Veuillez saisir le code d'authentification à deux facteurs envoyé à votre application Steam.</system:String>
+    <system:String x:Key="item79">Veuillez saisir le code d'authentification à deux facteurs envoyé à votre adresse e-mail.</system:String>
     <system:String x:Key="item80">Sauvegarde de la configuration avant le chargement</system:String>
+    <system:String x:Key="item81">Veuillez entrer votre code d'authentification à deux facteurs.</system:String>
     <system:String x:Key="item83">Échec de la récupération du jeton CDN pour le serveur {0} depot {1}</system:String>
     <system:String x:Key="item84">Impossible de trouver des dépôts à télécharger pour l'application. {0}</system:String>
     <system:String x:Key="item85">Dépôt {0} non listé pour l'application {1}</system:String>
@@ -143,9 +144,9 @@
     <system:String x:Key="item150">PATCHING</system:String>
     <system:String x:Key="item151">Nom du serveur ou IP non valide.</system:String>
     <system:String x:Key="item152">Suppression du dossier BattlEye...</system:String>
-    <system:String x:Key="item153">Lors de la connexion aux serveurs H1Emu, vous devez définir une clé d'authentification. Cela peut être fait dans le menu Paramètres.</system:String>
-    <system:String x:Key="item154">Clé d'authentification...</system:String>
-    <system:String x:Key="item155">Clé d'authentification</system:String>
+    <system:String x:Key="item153">Lors de la connexion aux serveurs H1Emu, vous devez définir une Clé de Compte. Cela peut être fait dans le menu Paramètres.</system:String>
+    <system:String x:Key="item154">Clé de Compte...</system:String>
+    <system:String x:Key="item155">Clé de Compte</system:String>
     <system:String x:Key="item156">Pour jouer sur les serveurs H1Emu, vous devez définir une clé d'authentification. Vous pouvez le trouver sur votre profil à l'adresse:</system:String>
     <system:String x:Key="item157">La dernière version du serveur est une version de développement, sachez qu'elle peut être instable et provoquer des plantages.\n\nVoulez-vous continuer malgré tout?</system:String>
     <system:String x:Key="item158">Bienvenue sur H1Emu!</system:String>

@@ -13,7 +13,7 @@ namespace H1EMU_Launcher
 
             Resources.MergedDictionaries.Clear();
 
-            //Adds the correct language file to the resource dictionary and then load it.
+            // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 

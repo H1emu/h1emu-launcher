@@ -24,7 +24,7 @@ namespace H1EMU_Launcher
         {
             InitializeComponent();
 
-            //Adds the correct language file to the resource dictionary and then load it.
+            // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
@@ -84,7 +84,7 @@ namespace H1EMU_Launcher
         {
             Resources.MergedDictionaries.Clear();
 
-            //Adds the correct language file to the resource dictionary and then load it.
+            // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
@@ -142,7 +142,7 @@ namespace H1EMU_Launcher
                             {
                                 UpdateLang();
 
-                                System.Windows.Forms.DialogResult dr = CustomMessageBox.ShowResult(FindResource("item89").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                                System.Windows.Forms.DialogResult dr = CustomMessageBox.ShowResult(FindResource("item89").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                                 if (dr == System.Windows.Forms.DialogResult.Yes)
                                 {
                                     ContentDownloader.DEFAULT_DOWNLOAD_DIR = folderBrowser.SelectedPath;

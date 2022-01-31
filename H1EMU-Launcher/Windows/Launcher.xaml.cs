@@ -21,12 +21,10 @@ namespace H1EMU_Launcher
 {
     public partial class Launcher : Window
     {
-
-#pragma warning disable SYSLIB0014 // Warning saying that WebClient is discontinued and not supported anymore.
         public static ManualResetEvent ma = new ManualResetEvent(false);
         public static Launcher lncher;
 
-        public static string serverJsonFile;
+        public static string serverJsonFile = $"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
 
         public class Server
         {
@@ -41,7 +39,7 @@ namespace H1EMU_Launcher
             InitializeComponent();
             lncher = this;
 
-            //Adds the correct language file to the resource dictionary and then loads it.
+            // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
@@ -53,6 +51,8 @@ namespace H1EMU_Launcher
 
         private void LoadServers()
         {
+            if (!File.Exists(serverJsonFile)) { File.WriteAllText(serverJsonFile, "[]"); }
+
             try
             {
                 List<Server> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<Server>>(File.ReadAllText(serverJsonFile));
@@ -75,8 +75,8 @@ namespace H1EMU_Launcher
 
         private void DeleteServer(object sender, RoutedEventArgs e)
         {
-            string deleteName = "";
-            string deleteIP = "";
+            string deleteName;
+            string deleteIP;
 
             if (serverSelector.SelectedIndex == 0 || serverSelector.SelectedIndex == 1 || serverSelector.SelectedIndex == serverSelector.Items.Count - 1 || string.IsNullOrEmpty(serverSelector.Text))
             {
@@ -126,7 +126,7 @@ namespace H1EMU_Launcher
             string serverName  = CustomMessageBox.newServerName;
             string serverIp  = CustomMessageBox.newServerIp;
 
-            List<Server> currentjson = new List<Server>();
+            List<Server> currentjson;
 
             try
             {
@@ -140,20 +140,17 @@ namespace H1EMU_Launcher
                     throw new Exception(FindResource("item151").ToString());
                 }
 
-                if (File.Exists(serverJsonFile))
+                currentjson = System.Text.Json.JsonSerializer.Deserialize<List<Server>>(File.ReadAllText(serverJsonFile));
+                currentjson.Add(new Server()
                 {
-                    currentjson = System.Text.Json.JsonSerializer.Deserialize<List<Server>>(File.ReadAllText(serverJsonFile));
-                    currentjson.Add(new Server()
-                    {
-                        SName = serverName.Trim(),
-                        SAddress = serverIp.Trim().Replace(" ", "")
-                    });
+                    SName = serverName.Trim(),
+                    SAddress = serverIp.Trim().Replace(" ", "")
+                });
 
-                    var newJson = System.Text.Json.JsonSerializer.Serialize<List<Server>>(currentjson, new JsonSerializerOptions { WriteIndented = true });
-                    File.WriteAllText(serverJsonFile, newJson);
-                    serverSelector.Items.Insert(serverSelector.Items.Count - 2, serverName.Trim());
-                    serverSelector.SelectedIndex = serverSelector.Items.Count - 3;
-                }
+                var newJson = System.Text.Json.JsonSerializer.Serialize<List<Server>>(currentjson, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(serverJsonFile, newJson);
+                serverSelector.Items.Insert(serverSelector.Items.Count - 2, serverName.Trim());
+                serverSelector.SelectedIndex = serverSelector.Items.Count - 3;
             }
             catch (Exception ex)
             {
@@ -171,7 +168,7 @@ namespace H1EMU_Launcher
                 {
                     Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show(FindResource("item52").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(FindResource("item52").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                     });
 
                     return false;
@@ -213,7 +210,7 @@ namespace H1EMU_Launcher
                 {
                     Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show(FindResource("item168").ToString().Replace("\n\n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(FindResource("item168").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                     });
 
                     return false;
@@ -284,7 +281,7 @@ namespace H1EMU_Launcher
                     {
                         Dispatcher.Invoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show(FindResource("item51").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                            CustomMessageBox.Show(FindResource("item51").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                         });
 
                         return;
@@ -335,7 +332,7 @@ namespace H1EMU_Launcher
                         {
                             Dispatcher.Invoke((MethodInvoker)delegate
                             {
-                                DialogResult dialogResult = CustomMessageBox.ShowResult(FindResource("item16").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                                DialogResult dialogResult = CustomMessageBox.ShowResult(FindResource("item16").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                                 if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                                 {
                                     result = true;
@@ -370,7 +367,7 @@ namespace H1EMU_Launcher
                     {
                         Dispatcher.Invoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                         });
 
                         return;
@@ -416,11 +413,6 @@ namespace H1EMU_Launcher
             }
             catch { }
 
-            Directory.CreateDirectory($"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages");
-            Directory.CreateDirectory($"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher");
-            serverJsonFile = System.IO.Path.Combine($"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher", "servers.json");
-            if (!File.Exists(serverJsonFile)) { File.WriteAllText(serverJsonFile, "[]"); }
-            
             LoadServers();
             Classes.Carousel.BeginImageCarousel();
             LangBox.SelectedIndex = Properties.Settings.Default.language;
@@ -493,7 +485,7 @@ namespace H1EMU_Launcher
 
             switch (selectedLanguage)
             {
-                //Update and save settings
+                // Update and save settings
                 case 0:
                     SetLanguageFile.SaveLang(0);
                     break;
@@ -535,7 +527,7 @@ namespace H1EMU_Launcher
                     return;
             }
 
-            //Reload pages
+            // Reload pages
             ContentDownloader.UpdateLang();
             SteamFrame.Refresh();
             playButton.Content = FindResource("item8").ToString();
@@ -547,6 +539,8 @@ namespace H1EMU_Launcher
         {
             Classes.Carousel.progress = 0;
             carouselProgressBar.Value = 0;
+
+            Classes.Carousel.pauseCarousel.Set();
 
             doContinue = true;
         }
@@ -597,7 +591,10 @@ namespace H1EMU_Launcher
 
         private void CarouselMouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            Classes.Carousel.pauseCarousel.Set();
+            if (doContinue) 
+            {
+                Classes.Carousel.pauseCarousel.Set();
+            }
 
             prevImage.Visibility = Visibility.Hidden;
             nextImage.Visibility = Visibility.Hidden;

@@ -22,7 +22,6 @@
     <system:String x:Key="item18">DODAJ</system:String>
     <system:String x:Key="item19">• Status •</system:String>
     <system:String x:Key="item21">Otrzymano klucz: {1} dla {0}</system:String>
-    <system:String x:Key="item22">Otrzymano klucz autoryzacji: {1} dla {0}</system:String>
     <system:String x:Key="item23">Pobieranie zakończone!</system:String>
     <system:String x:Key="item24">Chcesz pobrać inną wersję? Użyj przycisku poniżej, aby zalogować się ponownie!</system:String>
     <system:String x:Key="item25">LOGIN</system:String>
@@ -78,8 +77,10 @@
     <system:String x:Key="item75">Ścieżka</system:String>
     <system:String x:Key="item76">Usuwanie starego Patcha...</system:String>
     <system:String x:Key="item77">Klucz Autoryzacji</system:String>
-    <system:String x:Key="item78">Wprowadź swój dwuskładnikowy kod uwierzytelniający.</system:String>
+    <system:String x:Key="item78">Wprowadź dwuskładnikowy kod uwierzytelniający wysłany do Twojej aplikacji Steam.</system:String>
+    <system:String x:Key="item79">Wprowadź dwuskładnikowy kod uwierzytelniający wysłany na Twój adres e-mail.</system:String>
     <system:String x:Key="item80">Zapisano konfigurację przed załadowaniem</system:String>
+    <system:String x:Key="item81">Wprowadź swój dwuskładnikowy kod uwierzytelniający.</system:String>
     <system:String x:Key="item83">Nie udało się pobrać tokena CDN dla serwera {0} depot {1}</system:String>
     <system:String x:Key="item84">Nie udało się znaleźć żadnego depota do pobrania dla aplikacji {0}</system:String>
     <system:String x:Key="item85">Depot {0} nie istnieje dla aplikacji {1}</system:String>
@@ -143,10 +144,10 @@
     <system:String x:Key="item150">PATCHOWANIE</system:String>
     <system:String x:Key="item151">Nazwa serwera lub IP nieprawidłowe.</system:String>
     <system:String x:Key="item152">Usuwanie folderu BattlEye...</system:String>
-    <system:String x:Key="item153">Aby połączyć się z serwerami H1Emu musisz ustawić swój klucz uwierzytelniający. Możesz to zrobić w ustawieniach.</system:String>
-    <system:String x:Key="item154">Auth Key...</system:String>
-    <system:String x:Key="item155">Auth Key</system:String>
-    <system:String x:Key="item156">Aby grać na serwerach H1Emu musisz wprowadzić swój klucz uwierzytelniający. Znajdziesz go na swoim profilu:</system:String>
+    <system:String x:Key="item153">Łącząc się z serwerami H1Emu, musisz ustawić klucz konta. Możesz to zrobić w ustawieniach.</system:String>
+    <system:String x:Key="item154">Klucz Konta...</system:String>
+    <system:String x:Key="item155">Klucz Konta</system:String>
+    <system:String x:Key="item156">Aby grać na serwerach H1Emu, musisz ustawić klucz konta. Znajdziesz go na swoim profilu:</system:String>
     <system:String x:Key="item157">Najnowsza wersja serwera jest wersją rozwojową, ostrzegamy, że może być niestabilna i powodować awarie.\n\nCzy mimo to chcesz kontynuować?</system:String>
     <system:String x:Key="item158">Witaj w H1Emu!</system:String>
     <system:String x:Key="item159">ZANIM KLIKNIESZ DALEJ, wiedz że ten projekt wspiera następujące wersje gry:</system:String>

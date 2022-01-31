@@ -7,12 +7,16 @@ namespace H1EMU_Launcher
 {
     public partial class _2FA : Page
     {
+        public static string twoFacInstruction;
+
         public _2FA()
         {
             InitializeComponent();
 
-            //Adds the correct language file to the resource dictionary and then load it.
+            // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+
+            twoFacInstructionText.Text = twoFacInstruction;
         }
 
         private void _2FAKeyDown(object sender, KeyEventArgs e)

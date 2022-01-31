@@ -89,7 +89,7 @@ namespace H1EMU_Launcher
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                     });
 
                     return;

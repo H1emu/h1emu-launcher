@@ -21,7 +21,7 @@
     <Compile Update="Windows\AddServer.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\AuthKey.xaml.cs">
+    <Compile Update="Windows\AccountKey.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\CnfmBox.xaml.cs">
@@ -97,7 +97,7 @@
     <Page Update="Windows\AddServer.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\AuthKey.xaml">
+    <Page Update="Windows\AccountKey.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\CnfmBox.xaml">

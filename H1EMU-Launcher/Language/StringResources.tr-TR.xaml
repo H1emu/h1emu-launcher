@@ -22,7 +22,6 @@
     <system:String x:Key="item18">EKLE</system:String>
     <system:String x:Key="item19">• Durum •</system:String>
     <system:String x:Key="item21">{0} için depo anahtarı mevcut: {1}</system:String>
-    <system:String x:Key="item22">{0} için CDN erişim anahtarı durumu: {1}</system:String>
     <system:String x:Key="item23">İndirme tamamlandı!</system:String>
     <system:String x:Key="item24">Başka bir versiyon yüklemek ister misiniz? Tekrar girmöek için tuşa alttaki basın!</system:String>
     <system:String x:Key="item25">GİRİŞ</system:String>
@@ -78,8 +77,10 @@
     <system:String x:Key="item75">Klasör</system:String>
     <system:String x:Key="item76">Eski yama kaldırılıyor...</system:String>
     <system:String x:Key="item77">Erişim Kodu</system:String>
-    <system:String x:Key="item78">Lütfen ikili-güvenlik adımı kodunu girin.</system:String>
+    <system:String x:Key="item78">Lütfen Steam uygulamanıza gönderilen iki faktörlü kimlik doğrulama kodunu girin.</system:String>
+    <system:String x:Key="item79">Lütfen e-postanıza gönderilen iki faktörlü doğrulama kodunu giriniz.</system:String>
     <system:String x:Key="item80">Yükleme öncesi ayarlar kaydedildi.</system:String>
+    <system:String x:Key="item81">Lütfen ikili-güvenlik adımı kodunu girin.</system:String>
     <system:String x:Key="item83">{0} sunucusu  {1} deposu için CDN kodu alınamadı.</system:String>
     <system:String x:Key="item84">{0} uygulaması için depo dosyası bulunamadı.</system:String>
     <system:String x:Key="item85">{0} deposu {1} uygulaması için listelenmedi.</system:String>
@@ -143,10 +144,10 @@
     <system:String x:Key="item150">YAMA UYGULANIYOR</system:String>
     <system:String x:Key="item151">Sunucu adı veya IP geçerli değil.</system:String>
     <system:String x:Key="item152">BattlEye klasörü siliniyor...</system:String>
-    <system:String x:Key="item153">H1Emu sunucularına bağlanırken bir erişim kodu ayarlamalısınız. Bu işlem Ayarlar menüsünden yapılabilir.</system:String>
-    <system:String x:Key="item154">Erişim Kodu...</system:String>
-    <system:String x:Key="item155">Erişim Kodu</system:String>
-    <system:String x:Key="item156">H1Emu sunucularında oynamak için bir erişim kodu ayarlamalısınız.Bu kodu Profilinizde şu kısımda bulabilirsiniz:</system:String>
+    <system:String x:Key="item153">H1Emu sunucularına bağlanırken bir Hesap Anahtarı ayarlamalısınız. Bu işlem Ayarlar menüsünden yapılabilir.</system:String>
+    <system:String x:Key="item154">Hesap Anahtarı...</system:String>
+    <system:String x:Key="item155">Hesap Anahtarı</system:String>
+    <system:String x:Key="item156">H1Emu sunucularında oynamak için bir Hesap Anahtarı ayarlamalısınız.Bu kodu Profilinizde şu kısımda bulabilirsiniz:</system:String>
     <system:String x:Key="item157">Sunucunun en son sürümü bir geliştirme yapısıdır, kararsız olabileceği ve çökmelere neden olabileceği konusunda uyarılırsınız.\n\nYine de devam etmek ister misiniz?</system:String>
     <system:String x:Key="item158">H1Emu'ya hoş geldiniz!</system:String>
     <system:String x:Key="item159">BAŞLAMADAN ÖNCE, lütfen bu projenin sadece altta belirtilen oyun versiyonlarını desteklediğini dikkate alınız:</system:String>

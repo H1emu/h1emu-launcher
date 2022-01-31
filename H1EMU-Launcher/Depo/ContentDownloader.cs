@@ -441,7 +441,7 @@ namespace H1EMU_Launcher
         {
             System.Windows.Application.Current.Resources.MergedDictionaries.Clear();
 
-            //Adds the correct language file to the resource dictionary and then load it.
+            // Adds the correct language file to the resource dictionary and then loads it.
             System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 

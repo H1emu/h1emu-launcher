@@ -22,7 +22,6 @@
     <system:String x:Key="item18">TOEVOEGEN</system:String>
     <system:String x:Key="item19">• Status •</system:String>
     <system:String x:Key="item21">Kreeg depotsleutel voor {0} resultaat: {1}</system:String>
-    <system:String x:Key="item22">Kreeg CDN verificatietoken voor {0} resultaat: {1}</system:String>
     <system:String x:Key="item23">Download voltooid</system:String>
     <system:String x:Key="item24">Een andere versie nodig? Klik de knop om opnieuw in te loggen!</system:String>
     <system:String x:Key="item25">Inloggen</system:String>
@@ -78,8 +77,10 @@
     <system:String x:Key="item75">Locatie</system:String>
     <system:String x:Key="item76">Verwijderen oude patch...</system:String>
     <system:String x:Key="item77">Auth Code</system:String>
-    <system:String x:Key="item78">Voer uw 2-factor authenticatie code in.</system:String>
+    <system:String x:Key="item78">Voer de tweefactorauthenticatiecode in die naar je Steam-app is verzonden.</system:String>
+    <system:String x:Key="item79">Voer de tweefactorauthenticatiecode in die naar uw e-mail is verzonden.</system:String>
     <system:String x:Key="item80">Config is opgeslagen voor het laden</system:String>
+    <system:String x:Key="item81">Voer uw 2-factor authenticatie code in.</system:String>
     <system:String x:Key="item83">Ophalen CDN token voor server {0} depot {1} mislukt</system:String>
     <system:String x:Key="item84">Kon geen deopt vinden om te downloaden voor app {0}</system:String>
     <system:String x:Key="item85">Depot {0} staat niet in lijst voor app {1}</system:String>
@@ -143,10 +144,10 @@
     <system:String x:Key="item150">PATCHING</system:String>
     <system:String x:Key="item151">Server naam of IP niet geldig.</system:String>
     <system:String x:Key="item152">BattlEye map aan het verwijderen...</system:String>
-    <system:String x:Key="item153">Tijdens het verbinden met H1Emu Servers moet je een Auth code instellen. Dit kan je doen via het instellen menu.</system:String>
-    <system:String x:Key="item154">Auth Code...</system:String>
-    <system:String x:Key="item155">Auth Code</system:String>
-    <system:String x:Key="item156">Om te spelen op H1Emu servers, moet je een Auth code instellen. Je kan dit vinden op profiel op:</system:String>
+    <system:String x:Key="item153">Tijdens het verbinden met H1Emu Servers moet je een Accountsleutel instellen. Dit kan je doen via het instellen menu.</system:String>
+    <system:String x:Key="item154">Accountsleutel...</system:String>
+    <system:String x:Key="item155">Accountsleutel</system:String>
+    <system:String x:Key="item156">Om te spelen op H1Emu servers, moet je een Accountsleutel instellen. Je kan dit vinden op profiel op:</system:String>
     <system:String x:Key="item158">Welkom bij H1Emu!</system:String>
     <system:String x:Key="item159">VOOR JE BEGINT, merk alstublieft op dat dit project enkel de volgende versies ondersteunt:</system:String>
     <system:String x:Key="item160">15e Januarie 2015</system:String>

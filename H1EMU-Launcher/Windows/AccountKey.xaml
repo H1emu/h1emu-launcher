@@ -1,4 +1,4 @@
-﻿<Window x:Class="H1EMU_Launcher.AuthKey"
+﻿<Window x:Class="H1EMU_Launcher.AccountKey"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,9 +14,8 @@
         FontFamily="Bahnschrift Light"
         FontSize="16"
         ResizeMode="NoResize"
-        Loaded="AuthKeyLoaded"
-        Closing="AuthKeyWindowClosing"
-        Activated="WindowActivated">
+        Loaded="AccountKeyLoaded"
+        Closing="AccountKeyWindowClosing">
 
     <!-- Hide window border but keep animations -->
     <WindowChrome.WindowChrome>
@@ -43,7 +42,7 @@
             <!-- Grid for logo and exit button -->
             <Grid
                 Background="#FF2A2A32"
-                MouseLeftButtonDown="AuthKeyDragWindow">
+                MouseLeftButtonDown="AccountKeyDragWindow">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -72,7 +71,7 @@
                 <DockPanel Grid.Column="1">
                     <Button x:Name="ExitButton"
                             RenderOptions.BitmapScalingMode="Fant"
-                            Click="CloseAuthKeyWindow"
+                            Click="CloseAccountKeyWindow"
                             Width="44"
                             Height="30"
                             Margin="0,0,15,0"
@@ -110,7 +109,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Info about auth key message -->
+                <!-- Info about account key message -->
                 <TextBlock
                     Width="540"
                     Margin="0,16,0,0"
@@ -135,7 +134,7 @@
                     <TextBlock.ContextMenu>
                         <ContextMenu>
                             <MenuItem
-                                Click="authKeyLinkCopy"
+                                Click="AccountKeyLinkCopy"
                                 Header="Copy"
                                 Style="{DynamicResource PopupMenuItem}"/>
                             
@@ -143,8 +142,8 @@
                     </TextBlock.ContextMenu>
                 </TextBlock>
 
-                <!-- Plain text box that holds auth key in plain text for visibility toggle -->
-                <TextBox x:Name="authKeyBoxShown"
+                <!-- Plain text box that holds account key in plain text for visibility toggle -->
+                <TextBox x:Name="accountKeyBoxShown"
                     Width="540"
                     Height="35"
                     Margin="0,0,0,12"
@@ -154,13 +153,13 @@
                     VerticalContentAlignment="Center"
                     FontSize="16"
                     Visibility="Hidden"
-                    GotFocus="AuthKeyGotFocus"
-                    LostFocus="AuthKeyLostFocus"
-                    Text="{Binding ElementName=authKeyBox, Path=Password}"
+                    GotFocus="AccountKeyGotFocus"
+                    LostFocus="AccountKeyLostFocus"
+                    Text="{Binding ElementName=accountKeyBox, Path=Password}"
                     Style="{DynamicResource TextBoxPrimaryStyle}"/>
 
-                <!-- Password box to hold auth key -->
-                <PasswordBox x:Name="authKeyBox"
+                <!-- Password box to hold account key -->
+                <PasswordBox x:Name="accountKeyBox"
                     Width="540"
                     Height="35"
                     Margin="0,0,0,12"
@@ -170,12 +169,12 @@
                     VerticalContentAlignment="Center"
                     PasswordChar="●"
                     FontSize="16"
-                    GotFocus="AuthKeyGotFocus"
-                    LostFocus="AuthKeyLostFocus"
+                    GotFocus="AccountKeyGotFocus"
+                    LostFocus="AccountKeyLostFocus"
                     Style="{DynamicResource PasswordBoxStyle}"/>
 
-                <!-- Hint for auth key textbox -->
-                <TextBlock x:Name="authKeyHint"
+                <!-- Hint for account key textbox -->
+                <TextBlock x:Name="accountKeyHint"
                     Width="540"
                     Height="27"
                     Padding="37,0,37,0"
@@ -187,8 +186,8 @@
                     FontSize="16"
                     Text="{DynamicResource item154}"/>
 
-                <!-- Key image inside of auth key textbox -->
-                <Image Source="..\Resources\AuthKey.png"
+                <!-- Key image inside of account key textbox -->
+                <Image Source="..\Resources\AccountKey.png"
                     RenderOptions.BitmapScalingMode="Fant"
                     Width="20"
                     Height="20"
@@ -213,10 +212,10 @@
                     </Button.Background>
                 </Button>
 
-                <!-- Close auth key window button -->
+                <!-- Close account key window button -->
                 <Button
                     Grid.Row="1"
-                    Click="OkCloseAuthKeyWindow"
+                    Click="OkCloseAccountKeyWindow"
                     RenderOptions.BitmapScalingMode="Fant"
                     Width="100"
                     Height="30"

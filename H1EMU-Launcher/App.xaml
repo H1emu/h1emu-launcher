@@ -5,6 +5,7 @@
     xmlns:local="clr-namespace:H1EMU_Launcher"
     xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
     StartupUri="Windows/MainWindow.xaml">
+    
     <Application.Resources>
         <FontFamily x:Key="Signika">pack://application:,,,/Fonts/#Signika</FontFamily>
         <Style BasedOn="{StaticResource {x:Type MenuItem}}" TargetType="{x:Type MenuItem}" x:Key="PopupMenuItem">

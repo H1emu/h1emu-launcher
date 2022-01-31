@@ -22,7 +22,6 @@
     <system:String x:Key="item18">AÑADIR</system:String>
     <system:String x:Key="item19">• Estado •</system:String>
     <system:String x:Key="item21">Se obtuvo la clave de depot para {0} resultado: {1}</system:String>
-    <system:String x:Key="item22">Se obtuvo la clave de autorización del CDN para {0} resultado: {1}</system:String>
     <system:String x:Key="item23">¡Descarga completada!</system:String>
     <system:String x:Key="item24">¿Necesitas descargar una versión diferente? ¡Presiona en el botón de abajo para iniciar se sesión de nuevo!</system:String>
     <system:String x:Key="item25">INICIAR SESIÓN</system:String>
@@ -78,8 +77,10 @@
     <system:String x:Key="item75">Carpeta</system:String>
     <system:String x:Key="item76">Borrando parche antiguo...</system:String>
     <system:String x:Key="item77">Código de autorización</system:String>
-    <system:String x:Key="item78">Por favor, introduce tu código de autorización en dos pasos.</system:String>
+    <system:String x:Key="item78">Ingrese el código de autenticación de dos factores enviado a su aplicación Steam.</system:String>
+    <system:String x:Key="item79">Ingrese el código de autenticación de dos factores enviado a su correo electrónico.</system:String>
     <system:String x:Key="item80">Guardada la configuración antes de cargar</system:String>
+    <system:String x:Key="item81">Por favor, introduce tu código de autorización en dos pasos.</system:String>
     <system:String x:Key="item83">Error al obtener la clave del CDN para el servidor {0} depot {1}</system:String>
     <system:String x:Key="item84">No se encontró ningún depot de descarga para la aplicación {0}</system:String>
     <system:String x:Key="item85">Depot {0} no listado para aplicación {1}</system:String>
@@ -143,10 +144,10 @@
     <system:String x:Key="item150">PARCHEANDO</system:String>
     <system:String x:Key="item151">El nombre o la IP del servidor son inválidos.</system:String>
     <system:String x:Key="item152">Eliminando carpeta de BattlEye...</system:String>
-    <system:String x:Key="item153">Al conectarse a los servidores de H1Emu, debes configurar una clave de autenticación. Esto se puede hacer desde el menú de Configuración.</system:String>
-    <system:String x:Key="item154">Clave de autenticación...</system:String>
-    <system:String x:Key="item155">Clave de autenticación</system:String>
-    <system:String x:Key="item156">Para jugar en los Servidores de H1Emu, debes configurar una clave de autenticación. Puedes encontrar esto en tu perfil en:</system:String>
+    <system:String x:Key="item153">Al conectarse a los servidores de H1Emu, debes configurar una Clave de Cuenta. Esto se puede hacer desde el menú de Configuración.</system:String>
+    <system:String x:Key="item154">Clave de Cuenta...</system:String>
+    <system:String x:Key="item155">Clave de Cuenta</system:String>
+    <system:String x:Key="item156">Para jugar en los Servidores de H1Emu, debes configurar una Clave de Cuenta. Puedes encontrar esto en tu perfil en:</system:String>
     <system:String x:Key="item157">La última version del servidor es una compilación de desarrollo, ésta puede ser inestable y causar crashes.\n\n¿Continuar de todas formas?</system:String>
     <system:String x:Key="item158">¡Bienvenido a H1Emu!</system:String>
     <system:String x:Key="item159">ANTES DE COMENZAR, por favor recuerda que este proyecto solo es compatible con las siguientes versiones del juego:</system:String>

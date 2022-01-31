@@ -13,9 +13,6 @@ namespace H1EMU_Launcher
 {
     public partial class Settings : Window
     {
-
-#pragma warning disable SYSLIB0014 // Warning saying that WebClient is discontinued and not supported anymore.
-
         ProcessStartInfo cmdShell;
         public static ManualResetEvent installPatchResetEvent = new ManualResetEvent(false);
 
@@ -27,7 +24,7 @@ namespace H1EMU_Launcher
             InitializeComponent();
             sttngs = this;
 
-            //Adds the correct language file to the resource dictionary and then load it.
+            // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(H1EMU_Launcher.Resources.SetLanguageFile.LoadFile());
 
             this.cmdShell = new ProcessStartInfo();
@@ -72,7 +69,7 @@ namespace H1EMU_Launcher
 
                                 if (er.Message == "No such host is known. (api.github.com:443)")
                                 {
-                                    CustomMessageBox.Show(FindResource("item95").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                                    CustomMessageBox.Show(FindResource("item95").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                                 }
                                 else
                                 {
@@ -101,7 +98,7 @@ namespace H1EMU_Launcher
 
                                 if (er.Message == "No such host is known. (api.github.com:443)")
                                 {
-                                    CustomMessageBox.Show(FindResource("item97").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                                    CustomMessageBox.Show(FindResource("item97").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                                 }
                                 else
                                 {
@@ -113,7 +110,7 @@ namespace H1EMU_Launcher
                     case "processBeingUsed":
                         Dispatcher.BeginInvoke((MethodInvoker)delegate
                         {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                         });
                         break;
                     default:
@@ -159,7 +156,7 @@ namespace H1EMU_Launcher
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\AssetPatch2015.zip");
             }
 
-            // Actually downloading the patch .zip.
+            // Download the patch .zip.
 
             string patch2015 = Classes.Info.GAME_PATCH_2015 + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
@@ -259,7 +256,7 @@ namespace H1EMU_Launcher
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
             }
 
-            // Actually downloading the patch .zip.
+            // Download the patch .zip.
 
             string patch2016 = Classes.Info.GAME_PATCH_2016 + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
 
@@ -346,7 +343,7 @@ namespace H1EMU_Launcher
 
         public void DownloadServerLatest(object sender, RoutedEventArgs e)
         {
-            DialogResult dr = CustomMessageBox.ShowResult(FindResource("item157").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+            DialogResult dr = CustomMessageBox.ShowResult(FindResource("item157").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
             if (dr != System.Windows.Forms.DialogResult.Yes)
             {
                 return;
@@ -398,7 +395,7 @@ namespace H1EMU_Launcher
 
                         if (er.Message == "No such host is known. (api.github.com:443)")
                         {
-                            CustomMessageBox.Show(FindResource("item107").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                            CustomMessageBox.Show(FindResource("item107").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                         }
                         else
                         {
@@ -478,7 +475,7 @@ namespace H1EMU_Launcher
 
                         if (er.Message == "No such host is known. (api.github.com:443)")
                         {
-                            CustomMessageBox.Show(FindResource("item111").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                            CustomMessageBox.Show(FindResource("item111").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                         }
                         else
                         {
@@ -840,7 +837,7 @@ namespace H1EMU_Launcher
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                     });
                 }
                 else if (gameVersion != "15jan2015" && gameVersion != "22dec2016")
@@ -905,7 +902,7 @@ namespace H1EMU_Launcher
                 {
                     Dispatcher.Invoke((MethodInvoker)delegate
                     {
-                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                     });
 
                     return;
@@ -951,9 +948,9 @@ namespace H1EMU_Launcher
             return true;
         }
 
-        private void AuthKey_Click(object sender, RoutedEventArgs e)
+        private void AccountKeyClick(object sender, RoutedEventArgs e)
         {
-            AuthKey ak = new AuthKey();
+            AccountKey ak = new AccountKey();
             ak.ShowDialog();
         }
 

@@ -14,9 +14,6 @@ namespace H1EMU_Launcher
 {
     public partial class MainWindow : Window
     {
-
-#pragma warning disable SYSLIB0014 // Warning saying that WebClient is discontinued and not supported anymore.
-
         string downloadUrl;
         public static string downloadFileName;
 
@@ -26,7 +23,7 @@ namespace H1EMU_Launcher
         {
             InitializeComponent();
 
-            //Adds the correct language file to the resource dictionary and then load it.
+            // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
             sp.Show();
@@ -65,7 +62,7 @@ namespace H1EMU_Launcher
             {
                 sp.Close();
 
-                CustomMessageBox.Show(FindResource("item66").ToString() + $" \"{e.Message}\"." + FindResource("item137").ToString().Replace("\\" + "n" + "\\" + "n", Environment.NewLine + Environment.NewLine));
+                CustomMessageBox.Show(FindResource("item66").ToString() + $" \"{e.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
 
                 this.Topmost = true;
                 this.Close();

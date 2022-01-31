@@ -343,42 +343,6 @@ namespace H1EMU_Launcher
             return host;
         }
 
-        public void RequestCDNAuthToken( uint appid, uint depotid, string host, string cdnKey )
-        {
-            if ( CDNAuthTokens.ContainsKey( cdnKey ) || bAborted )
-                return;
-
-            if ( !CDNAuthTokens.TryAdd( cdnKey, new TaskCompletionSource<SteamApps.CDNAuthTokenCallback>() ) )
-                return;
-
-            bool completed = false;
-            var timeoutDate = DateTime.Now.AddSeconds( 10 );
-            Action<SteamApps.CDNAuthTokenCallback> cbMethod = ( cdnAuth ) =>
-            {
-                completed = true;
-
-                System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
-                {
-                    DownloadStatus.downStatus.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item22").ToString().Replace("{0}", $"{host}").Replace("{1}", $"{cdnAuth.Result}")}";
-                });
-
-                Debug.WriteLine($"Got CDN auth token for {host} result: {cdnAuth.Result} (expires {cdnAuth.Expiration})");
-
-                if ( cdnAuth.Result != EResult.OK )
-                {
-                    Abort();
-                    return;
-                }
-
-                CDNAuthTokens[cdnKey].TrySetResult( cdnAuth );
-            };
-
-            WaitUntilCallback(() =>
-            {
-                callbacks.Subscribe(steamApps.GetCDNAuthToken(appid, depotid, host), cbMethod);
-            }, () => { return completed || DateTime.Now >= timeoutDate; });
-        }
-
         public void CheckAppBetaPassword( uint appid, string password )
         {
             var completed = false;
@@ -599,7 +563,7 @@ namespace H1EMU_Launcher
 
         private void LogOnCallback( SteamUser.LoggedOnCallback loggedOn )
         {
-            //Adds the correct language file to the resource dictionary and then load it.
+            // Adds the correct language file to the resource dictionary and then loads it.
             System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
             tokenSource.Dispose();
@@ -625,35 +589,19 @@ namespace H1EMU_Launcher
                     System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                     {
                         Launcher.lncher.SteamFrame.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
+                        _2FA.twoFacInstruction = System.Windows.Application.Current.FindResource("item78").ToString();
                     });
 
                     token.WaitHandle.WaitOne();
 
                     logonDetails.TwoFactorCode = twoauth;
                 }
-                else if (isLoginKey)
-                {
-                    AccountSettingsStore.Instance.LoginKeys.Remove(logonDetails.Username);
-                    AccountSettingsStore.Save();
-
-                    logonDetails.LoginKey = null;
-
-                    if (ContentDownloader.Config.SuppliedPassword != null)
-                    {
-                        Debug.WriteLine("Login key was expired. Connecting with supplied password.");
-                        logonDetails.Password = ContentDownloader.Config.SuppliedPassword;
-                    }
-                    else
-                    {
-                        Console.Write("Login key was expired. Please enter your password: ");
-                        logonDetails.Password = Util.ReadPassword();
-                    }
-                }
                 else
                 {
-                    System.Windows.Application.Current.Dispatcher.Invoke((System.Windows.Forms.MethodInvoker)delegate
+                    System.Windows.Application.Current.Dispatcher.Invoke((MethodInvoker)delegate
                     {
                         Launcher.lncher.SteamFrame.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
+                        _2FA.twoFacInstruction = System.Windows.Application.Current.FindResource("item79").ToString();
                     });
 
                     token.WaitHandle.WaitOne();
@@ -682,7 +630,7 @@ namespace H1EMU_Launcher
                 {
                     System.Windows.Application.Current.Resources.MergedDictionaries.Clear();
 
-                    //Adds the correct language file to the resource dictionary and then load it.
+                    // Adds the correct language file to the resource dictionary and then loads it.
                     System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
                     Launcher.lncher.SteamFrame.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
@@ -700,7 +648,7 @@ namespace H1EMU_Launcher
                 {
                     System.Windows.Application.Current.Resources.MergedDictionaries.Clear();
 
-                    //Adds the correct language file to the resource dictionary and then load it.
+                    // Adds the correct language file to the resource dictionary and then loads it.
                     System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
                     Launcher.lncher.SteamFrame.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
