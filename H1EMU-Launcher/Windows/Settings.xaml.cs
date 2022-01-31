@@ -13,7 +13,7 @@ namespace H1EMU_Launcher
 {
     public partial class Settings : Window
     {
-        ProcessStartInfo cmdShell;
+        ProcessStartInfo cmdShell = new ProcessStartInfo();
         public static ManualResetEvent installPatchResetEvent = new ManualResetEvent(false);
 
         public static string gameVersion { get; set; }
@@ -27,7 +27,6 @@ namespace H1EMU_Launcher
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(H1EMU_Launcher.Resources.SetLanguageFile.LoadFile());
 
-            this.cmdShell = new ProcessStartInfo();
             cmdShell.FileName = "cmd.exe";
             cmdShell.RedirectStandardInput = true;
             cmdShell.UseShellExecute = false;

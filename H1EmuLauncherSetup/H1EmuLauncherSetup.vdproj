@@ -15,7 +15,19 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_07983D62B9604E75B3F0FFE5239495CD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1E07B3DEC04A4DE1A8B87D13D6EEE53F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1F459ED5FA204227BD1AE7D16930BA46"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -57,12 +69,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3F393E1AA77D47B283FA39FD90A29DA6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_3FBFA56742984FD5B0F73B89D9E66E73"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -76,18 +82,6 @@
         "Entry"
         {
         "MsmKey" = "8:_42932CB092204FFCADCEB4035B1AA3EB"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_48B8B61476AE4FCB964D1C181DBCBE82"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4B49FE69F0794CEF9B52D26CA77B2697"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -231,6 +225,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EF56F21950814221AA48BB6381AD631C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F7A3BDB02C4B498D85CF8FFB950FBE62"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -355,10 +355,50 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_07983D62B9604E75B3F0FFE5239495CD"
+            {
+            "SourcePath" = "8:..\\H1EMU-Launcher\\Resources\\AccountKey_Pressed.png"
+            "TargetName" = "8:AccountKey_Pressed.png"
+            "Tag" = "8:"
+            "Folder" = "8:_64E18124D6F5411C8117732F6B4FDE08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1E07B3DEC04A4DE1A8B87D13D6EEE53F"
             {
             "SourcePath" = "8:..\\H1EMU-Launcher\\Resources\\Exit_Hover.png"
             "TargetName" = "8:Exit_Hover.png"
+            "Tag" = "8:"
+            "Folder" = "8:_64E18124D6F5411C8117732F6B4FDE08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1F459ED5FA204227BD1AE7D16930BA46"
+            {
+            "SourcePath" = "8:..\\H1EMU-Launcher\\Resources\\AccountKey.png"
+            "TargetName" = "8:AccountKey.png"
             "Tag" = "8:"
             "Folder" = "8:_64E18124D6F5411C8117732F6B4FDE08"
             "Condition" = "8:"
@@ -475,26 +515,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3F393E1AA77D47B283FA39FD90A29DA6"
-            {
-            "SourcePath" = "8:..\\H1EMU-Launcher\\Resources\\AuthKey_Hover.png"
-            "TargetName" = "8:AuthKey_Hover.png"
-            "Tag" = "8:"
-            "Folder" = "8:_64E18124D6F5411C8117732F6B4FDE08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3FBFA56742984FD5B0F73B89D9E66E73"
             {
             "SourcePath" = "8:..\\H1EMU-Launcher\\Resources\\StandardButton_Hover.png"
@@ -541,46 +561,6 @@
             "TargetName" = "8:Signika.ttf"
             "Tag" = "8:"
             "Folder" = "8:_71968DF4E9EB4847AE3349CE7EA2F469"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_48B8B61476AE4FCB964D1C181DBCBE82"
-            {
-            "SourcePath" = "8:..\\H1EMU-Launcher\\Resources\\AuthKey_Pressed.png"
-            "TargetName" = "8:AuthKey_Pressed.png"
-            "Tag" = "8:"
-            "Folder" = "8:_64E18124D6F5411C8117732F6B4FDE08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4B49FE69F0794CEF9B52D26CA77B2697"
-            {
-            "SourcePath" = "8:..\\H1EMU-Launcher\\Resources\\AuthKey.png"
-            "TargetName" = "8:AuthKey.png"
-            "Tag" = "8:"
-            "Folder" = "8:_64E18124D6F5411C8117732F6B4FDE08"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1055,6 +1035,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EF56F21950814221AA48BB6381AD631C"
+            {
+            "SourcePath" = "8:..\\H1EMU-Launcher\\Resources\\AccountKey_Hover.png"
+            "TargetName" = "8:AccountKey_Hover.png"
+            "Tag" = "8:"
+            "Folder" = "8:_64E18124D6F5411C8117732F6B4FDE08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F7A3BDB02C4B498D85CF8FFB950FBE62"
             {
             "SourcePath" = "8:..\\H1EMU-Launcher\\Resources\\Arrow_Hover.png"
@@ -1213,15 +1213,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
-        "ProductCode" = "8:{D54C3051-32F3-45A2-8FC2-659472E77627}"
-        "PackageCode" = "8:{A012C96E-55A2-47F1-90D8-B152B30E787B}"
+        "ProductCode" = "8:{59F3C539-0FD1-45B0-A2A4-9CF6A1FC50A0}"
+        "PackageCode" = "8:{85962003-8264-41EA-90FF-44859D2D54B9}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.3.1"
+        "ProductVersion" = "8:2.3.2"
         "Manufacturer" = "8:H1Emu © 2022"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
@@ -1763,7 +1763,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2D66CB3FB34C461298B8A7FB878DDDA1"
             {
-            "SourcePath" = "8:..\\H1EMU-Launcher\\obj\\Release\\net5.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\H1EMU-Launcher\\obj\\Debug\\net5.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"

@@ -21,6 +21,7 @@ namespace H1EMU_Launcher
 {
     public partial class Launcher : Window
     {
+        ProcessStartInfo cmdShell = new ProcessStartInfo();
         public static ManualResetEvent ma = new ManualResetEvent(false);
         public static Launcher lncher;
 
@@ -41,6 +42,10 @@ namespace H1EMU_Launcher
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+
+            cmdShell.FileName = "cmd.exe";
+            cmdShell.RedirectStandardInput = true;
+            cmdShell.UseShellExecute = false;
         }
 
         private void ServerSelectorChanged(object sender, SelectionChangedEventArgs e)
@@ -186,12 +191,7 @@ namespace H1EMU_Launcher
                 }
 
                 Process p = new Process();
-                ProcessStartInfo info = new ProcessStartInfo();
-                info.FileName = "cmd.exe";
-                info.RedirectStandardInput = true;
-                info.UseShellExecute = false;
-
-                p.StartInfo = info;
+                p.StartInfo = cmdShell;
                 p.Start();
 
                 using (StreamWriter sw = p.StandardInput)

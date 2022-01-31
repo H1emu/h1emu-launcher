@@ -17,21 +17,22 @@ namespace H1EMU_Launcher.Classes
         public static int currentIndex = 0;
         public static int lastIndex = 0;
         public static int progress = 0;
+        public static string imagesFolder = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages";
 
         public static void BeginImageCarousel()
         {
             new Thread(() =>
             {
-                DownloadImages();
-
-                if (!Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages"))
+                if (!Directory.Exists(imagesFolder))
                 {
-                    Directory.CreateDirectory($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages");
+                    Directory.CreateDirectory(imagesFolder);
                 }
 
-                if (Directory.GetFileSystemEntries($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages").Length == 0) { return; }
+                DownloadImages();
 
-                foreach (var fileName in Directory.EnumerateFiles($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages"))
+                if (Directory.GetFileSystemEntries(imagesFolder).Length == 0) { return; }
+
+                foreach (var fileName in Directory.EnumerateFiles(imagesFolder))
                 {
                     images.Add(fileName);
                 }
@@ -122,7 +123,7 @@ namespace H1EMU_Launcher.Classes
 
                                     if (number != 1 && number != 2)
                                     {
-                                        wc.DownloadFile($"{Info.CAROUSEL_MEDIA + match.Groups["name"]}", $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages\\{match.Groups["name"]}");
+                                        wc.DownloadFile($"{Info.CAROUSEL_MEDIA}{match.Groups["name"]}", $"{imagesFolder}\\{match.Groups["name"]}");
                                     }
                                 }
                             }
@@ -130,10 +131,7 @@ namespace H1EMU_Launcher.Classes
                     }
                 }
             }
-            catch
-            {
-                return;
-            }
+            catch { }
         }
     }
 }
