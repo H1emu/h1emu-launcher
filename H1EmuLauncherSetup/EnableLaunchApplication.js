@@ -5,7 +5,7 @@
 // Configurable values
 var checkboxChecked = true;         // Is the checkbox on the finished dialog checked by default?
 var checkboxText = "Launch [ProductName]";  // Text for the checkbox on the finished dialog
-var filename = "H1EMU-Launcher.exe";   // The name of the executable to launch - change this to match the file you want to launch at the end of your setup
+var filename = "H1EmuLauncher.exe";   // The name of the executable to launch - change this to match the file you want to launch at the end of your setup
 
 
 // Constant values from Windows Installer
