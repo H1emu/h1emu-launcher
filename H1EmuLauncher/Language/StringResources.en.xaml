@@ -64,7 +64,7 @@
     <system:String x:Key="item63">And a special thanks to everyone who joined the community and kept the motivation alive!</system:String>
     <system:String x:Key="item64">Join Community</system:String>
     <system:String x:Key="item65">About the project...</system:String>
-    <system:String x:Key="item66">Unable to retrieve GitHub information:</system:String>
+    <system:String x:Key="item66">Unable to retrieve GitHub information: {0}\n\nSome information may be missing.</system:String>
     <system:String x:Key="item67">Not Now</system:String>
     <system:String x:Key="item68">View files...</system:String>
     <system:String x:Key="item69">• Game Version Not Detected •</system:String>

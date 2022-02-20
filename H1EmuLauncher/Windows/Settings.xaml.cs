@@ -163,6 +163,8 @@ namespace H1EmuLauncher
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
+                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
+                    Launcher.launcherInstance.taskbarIcon.ProgressValue = e.ProgressPercentage / 100f;
                     settingsProgress.Value = e.ProgressPercentage;
                     settingsProgressText.Text = FindResource("item98").ToString() + $" {e.ProgressPercentage}%";
                 }));
@@ -181,8 +183,9 @@ namespace H1EmuLauncher
 
             Dispatcher.Invoke(new Action(delegate
             {
-                settingsProgressText.Text = FindResource("item99").ToString();
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 settingsProgress.IsIndeterminate = true;
+                settingsProgressText.Text = FindResource("item99").ToString();
             }));
 
             try
@@ -208,14 +211,15 @@ namespace H1EmuLauncher
             Properties.Settings.Default.currentPatchVersion2015 = CheckPatchVersion.latestPatchVersion2015;
             Properties.Settings.Default.Save();
 
+            EnableButtons();
+
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 settingsProgress.IsIndeterminate = false;
                 CustomMessageBox.Show(FindResource("item102").ToString());
             }));
-
-            EnableButtons();
         }
 
         public void ApplyPatch2016()
@@ -255,6 +259,8 @@ namespace H1EmuLauncher
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
+                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
+                    Launcher.launcherInstance.taskbarIcon.ProgressValue = e.ProgressPercentage / 100f;
                     settingsProgress.Value = e.ProgressPercentage;
                     settingsProgressText.Text = FindResource("item103").ToString() + $" {e.ProgressPercentage}%";
                 }));
@@ -273,8 +279,9 @@ namespace H1EmuLauncher
 
             Dispatcher.Invoke(new Action(delegate
             {
-                settingsProgressText.Text = FindResource("item99").ToString();
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 settingsProgress.IsIndeterminate = true;
+                settingsProgressText.Text = FindResource("item99").ToString();
             }));
 
             try
@@ -312,14 +319,15 @@ namespace H1EmuLauncher
             Properties.Settings.Default.currentPatchVersion2016 = CheckPatchVersion.latestPatchVersion2016;
             Properties.Settings.Default.Save();
 
+            EnableButtons();
+
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 settingsProgress.IsIndeterminate = false;
                 CustomMessageBox.Show(FindResource("item104").ToString());
             }));
-
-            EnableButtons();
         }
 
         /////////////////////////////
@@ -349,6 +357,7 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         settingsProgressText.Text = FindResource("item105").ToString();
+                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                         settingsProgress.IsIndeterminate = true;
                     }));
 
@@ -377,6 +386,7 @@ namespace H1EmuLauncher
                     {
                         settingsProgressText.Text = FindResource("item93").ToString();
                         settingsProgress.Value = 0;
+                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         settingsProgress.IsIndeterminate = false;
 
                         if (er.Message == "No such host is known. (api.github.com:443)")
@@ -395,14 +405,15 @@ namespace H1EmuLauncher
                 watch.Stop();
                 TimeSpan elapsedMs = watch.Elapsed;
 
+                EnableButtons();
+
                 Dispatcher.Invoke(new Action(delegate
                 {
                     settingsProgressText.Text = FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
+                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     settingsProgress.IsIndeterminate = false;
                     CustomMessageBox.Show(FindResource("item108").ToString());
                 }));
-
-                EnableButtons();
 
             }).Start();
         }
@@ -428,6 +439,7 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         settingsProgressText.Text = FindResource("item109").ToString();
+                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                         settingsProgress.IsIndeterminate = true;
                     }));
 
@@ -456,6 +468,7 @@ namespace H1EmuLauncher
                     {
                         settingsProgressText.Text = FindResource("item93").ToString();
                         settingsProgress.Value = 0;
+                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         settingsProgress.IsIndeterminate = false;
 
                         if (er.Message == "No such host is known. (api.github.com:443)")
@@ -474,14 +487,15 @@ namespace H1EmuLauncher
                 watch.Stop();
                 TimeSpan elapsedMs = watch.Elapsed;
 
+                EnableButtons();
+
                 Dispatcher.Invoke(new Action( delegate
                 {
                     settingsProgressText.Text = FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
+                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     settingsProgress.IsIndeterminate = false;
                     CustomMessageBox.Show(FindResource("item112").ToString());
                 }));
-
-                EnableButtons();
 
             }).Start();
         }
@@ -495,6 +509,7 @@ namespace H1EmuLauncher
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item113").ToString();
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             }));
 
             if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master"))
@@ -541,8 +556,10 @@ namespace H1EmuLauncher
                 }
 
                 Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles", true);
+
                 Dispatcher.Invoke(new Action(delegate
                 {
+                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     settingsProgress.Maximum = 100;
                 }));
             }
@@ -566,6 +583,8 @@ namespace H1EmuLauncher
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
+                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
+                    Launcher.launcherInstance.taskbarIcon.ProgressValue = e.ProgressPercentage / 100f;
                     settingsProgress.Value = e.ProgressPercentage;
                     settingsProgressText.Text = FindResource("item115").ToString() + $" {e.ProgressPercentage}%";
                 }));
@@ -585,6 +604,7 @@ namespace H1EmuLauncher
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item116").ToString();
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 settingsProgress.IsIndeterminate = true;
             }));
 
@@ -609,6 +629,7 @@ namespace H1EmuLauncher
         {
             Dispatcher.Invoke(new Action(delegate
             {
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 settingsProgress.Value = 0;
                 settingsProgress.IsIndeterminate = false;
             }));
@@ -629,6 +650,8 @@ namespace H1EmuLauncher
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
+                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
+                    Launcher.launcherInstance.taskbarIcon.ProgressValue = e.ProgressPercentage / 100f;
                     settingsProgress.Value = e.ProgressPercentage;
                     settingsProgressText.Text = FindResource("item117").ToString() + $" {e.ProgressPercentage}%";
                 }));
@@ -648,6 +671,7 @@ namespace H1EmuLauncher
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item118").ToString();
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 settingsProgress.IsIndeterminate = true;
             }));
 
@@ -694,6 +718,7 @@ namespace H1EmuLauncher
                 Dispatcher.Invoke(new Action(delegate
                 {
                     currentGame.Text = FindResource("item70").ToString();
+                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 }));
 
                 DisableButtons();
@@ -801,7 +826,7 @@ namespace H1EmuLauncher
 
                 if (gameVersion == "processBeingUsed")
                 {
-                    System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
+                    Dispatcher.Invoke(new Action(delegate
                     {
                         CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
                     }));
@@ -936,10 +961,12 @@ namespace H1EmuLauncher
         {
             Dispatcher.Invoke(new Action(delegate
             {
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 directoryButton.IsEnabled = false;
                 patchButton.IsEnabled = false;
                 latestButton.IsEnabled = false;
                 stableButton.IsEnabled = false;
+
             }));
         }
 
@@ -947,10 +974,12 @@ namespace H1EmuLauncher
         {
             Dispatcher.Invoke(new Action(delegate
             {
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 directoryButton.IsEnabled = true;
                 patchButton.IsEnabled = true;
                 latestButton.IsEnabled = true;
                 stableButton.IsEnabled = true;
+
             }));
         }
 
@@ -960,7 +989,7 @@ namespace H1EmuLauncher
             ak.ShowDialog();
         }
 
-        private void MainSettings_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void MainSettingsClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (!directoryButton.IsEnabled || !patchButton.IsEnabled || !latestButton.IsEnabled || !stableButton.IsEnabled)
             {

@@ -28,6 +28,11 @@
                 UseAeroCaptionButtons="False"/>
 
         </WindowChrome.WindowChrome>
+    
+        <!-- Tasbar icon info -->
+        <Window.TaskbarItemInfo>
+            <TaskbarItemInfo x:Name="taskbarIcon" Description="H1Emu Launcher"/>
+        </Window.TaskbarItemInfo>
 
     <Window.Resources>
         <Storyboard x:Key="NextImageAnimation"

@@ -14,7 +14,7 @@
         FontSize="16"
         ResizeMode="NoResize"
         Loaded="SettingsLoaded"
-        Closing="MainSettings_Closing"
+        Closing="MainSettingsClosing"
         Activated="MainSettingsActivated"
         ContentRendered="MainSettingsContentRendered">
 

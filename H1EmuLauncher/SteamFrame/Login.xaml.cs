@@ -200,24 +200,19 @@ namespace H1EmuLauncher.SteamFrame
                         if (manifestVersion == 1930886153446950288)
                         {
                             version = "2015";
-
-                            Dispatcher.Invoke(new Action(delegate
-                            {
-                                DownloadStatus.downloadStatusInstance.gameDownloadText.Text = $"{version}:";
-                                DownloadStatus.downloadStatusInstance.downloadProgressText.Text = "Processing...";
-                            }));
                         }
                         else if (manifestVersion == 8395659676467739522)
                         {
                             version = "2016";
-
-                            Dispatcher.Invoke(new Action(delegate
-                            {
-                                DownloadStatus.downloadStatusInstance.gameDownloadText.Text = $"{version}:";
-                                DownloadStatus.downloadStatusInstance.downloadProgressText.Text = "Processing...";
-                            }));
                         }
                     }
+
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        DownloadStatus.downloadStatusInstance.gameDownloadText.Text = $"{version}:";
+                        DownloadStatus.downloadStatusInstance.downloadProgressText.Text = "Processing...";
+                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
+                    }));
 
                     await ContentDownloader.DownloadAppAsync(appId, depotManifestIds, "Public", null, null, null, false, false).ConfigureAwait(false);
 
@@ -227,6 +222,7 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         UpdateLang();
+                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         Launcher.launcherInstance.SteamFramePanel.Navigate(new Uri("..\\SteamFrame\\DownloadComplete.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
@@ -238,6 +234,7 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         UpdateLang();
+                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         Launcher.launcherInstance.SteamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
@@ -249,6 +246,7 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         UpdateLang();
+                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         Launcher.launcherInstance.SteamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
@@ -260,6 +258,7 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         UpdateLang();
+                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         Launcher.launcherInstance.SteamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;

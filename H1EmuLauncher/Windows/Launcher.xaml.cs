@@ -27,8 +27,10 @@ namespace H1EmuLauncher
         public static ManualResetEvent ma = new ManualResetEvent(false);
         public static Launcher launcherInstance;
         public static string serverJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
-        public static string[] rawArgs;
+        public static string[] rawArgs = null;
         public static bool systemWatcherFire = true;
+        public static string newServerName = null;
+        public static string newServerIp = null;
 
         public class Server
         {
@@ -86,6 +88,100 @@ namespace H1EmuLauncher
             Properties.Settings.Default.Save();
         }
 
+        private void AddNewServer(object sender, MouseButtonEventArgs e)
+        {
+            AddServerDetails();
+        }
+
+        public void AddServerDetails()
+        {
+            MessageBoxResult dr = CustomMessageBox.AddServer();
+            if (dr != MessageBoxResult.OK)
+            {
+                return;
+            }
+
+            try
+            {
+                if (newServerName.Trim() == FindResource("item139").ToString() || newServerName.Trim() == FindResource("item140").ToString() || newServerName.Trim() == FindResource("item141").ToString())
+                {
+                    throw new Exception(FindResource("item143").ToString());
+                }
+
+                if (string.IsNullOrEmpty(newServerName) || string.IsNullOrEmpty(newServerIp))
+                {
+                    throw new Exception(FindResource("item151").ToString());
+                }
+
+                List<Server> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<Server>>(File.ReadAllText(serverJsonFile));
+
+                foreach (var item in currentjson)
+                {
+                    if (item.SName == newServerName.Trim())
+                    {
+                        throw new Exception(FindResource("item143").ToString());
+                    }
+                }
+
+                currentjson.Add(new Server()
+                {
+                    SName = newServerName.Trim(),
+                    SAddress = newServerIp.Trim().Replace(" ", "")
+                });
+
+                var newJson = System.Text.Json.JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(serverJsonFile, newJson);
+
+                serverSelector.Items.Insert(serverSelector.Items.Count - 2, newServerName.Trim());
+                serverSelector.SelectedIndex = serverSelector.Items.Count - 3;
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show(FindResource("item142").ToString().Replace("{0}", ex.Message));
+            }
+
+            newServerName = null;
+            newServerIp = null;
+        }
+
+        private void DeleteServer(object sender, RoutedEventArgs e)
+        {
+            if (serverSelector.SelectedIndex == 0 || serverSelector.SelectedIndex == 1 || serverSelector.SelectedIndex == serverSelector.Items.Count - 1 || string.IsNullOrEmpty(serverSelector.Text))
+            {
+                CustomMessageBox.Show(FindResource("item146").ToString());
+                return;
+            }
+
+            MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item147").ToString());
+            if (dr != MessageBoxResult.Yes)
+            {
+                return;
+            }
+
+            List<Server> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<Server>>(File.ReadAllText(serverJsonFile));
+
+            int index = -1;
+
+            foreach (var item in currentjson)
+            {
+                index++;
+
+                if (item.SName == serverSelector.Text)
+                {
+                    break;
+                }
+            }
+
+            currentjson.Remove(currentjson[index]);
+
+            var finalJson = System.Text.Json.JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(serverJsonFile, finalJson);
+
+            serverSelector.Items.Remove(serverSelector.SelectedItem);
+
+            serverSelector.SelectedIndex = index + 1;
+        }
+
         private void LoadServers()
         {
             if (!File.Exists(serverJsonFile))
@@ -109,108 +205,6 @@ namespace H1EmuLauncher
             {
                 serverSelector.SelectedIndex = 0;
             }
-        }
-
-        private void AddNewServer(object sender, MouseButtonEventArgs e)
-        {
-            AddServerDetails();
-        }
-
-        public void AddServerDetails()
-        {
-            MessageBoxResult dr = CustomMessageBox.AddServer();
-            if (dr != MessageBoxResult.OK)
-            {
-                return;
-            }
-
-            string serverName = CustomMessageBox.newServerName;
-            string serverIp = CustomMessageBox.newServerIp;
-
-            try
-            {
-                if (serverName.Trim() == FindResource("item139").ToString() || serverName.Trim() == FindResource("item140").ToString() || serverName.Trim() == FindResource("item141").ToString())
-                {
-                    throw new Exception(FindResource("item143").ToString());
-                }
-
-                if (string.IsNullOrEmpty(serverName) || string.IsNullOrEmpty(serverIp))
-                {
-                    throw new Exception(FindResource("item151").ToString());
-                }
-
-                List<Server> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<Server>>(File.ReadAllText(serverJsonFile));
-
-                foreach (var item in currentjson)
-                {
-                    if (item.SName == serverName.Trim())
-                    {
-                        throw new Exception(FindResource("item143").ToString());
-                    }
-                }
-
-                currentjson.Add(new Server()
-                {
-                    SName = serverName.Trim(),
-                    SAddress = serverIp.Trim().Replace(" ", "")
-                });
-
-                var newJson = System.Text.Json.JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(serverJsonFile, newJson);
-
-                serverSelector.Items.Insert(serverSelector.Items.Count - 2, serverName.Trim());
-                serverSelector.SelectedIndex = serverSelector.Items.Count - 3;
-            }
-            catch (Exception ex)
-            {
-                CustomMessageBox.Show(FindResource("item142").ToString().Replace("{0}", ex.Message));
-            }
-
-            CustomMessageBox.newServerName = null;
-            CustomMessageBox.newServerIp = null;
-        }
-
-        private void DeleteServer(object sender, RoutedEventArgs e)
-        {
-            string deleteName;
-            string deleteIP;
-
-            if (serverSelector.SelectedIndex == 0 || serverSelector.SelectedIndex == 1 || serverSelector.SelectedIndex == serverSelector.Items.Count - 1 || string.IsNullOrEmpty(serverSelector.Text))
-            {
-                CustomMessageBox.Show(FindResource("item146").ToString());
-                return;
-            }
-
-            MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item147").ToString());
-            if (dr != MessageBoxResult.Yes)
-            {
-                return;
-            }
-
-            List<Server> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<Server>>(File.ReadAllText(serverJsonFile));
-
-            int index = -1;
-
-            foreach (var item in currentjson)
-            {
-                index++;
-
-                if (item.SName == serverSelector.Text)
-                {
-                    deleteName = item.SName;
-                    deleteIP = item.SAddress;
-                    break;
-                }
-            }
-
-            currentjson.Remove(currentjson[index]);
-
-            var finalJson = System.Text.Json.JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(serverJsonFile, finalJson);
-
-            serverSelector.Items.Remove(serverSelector.SelectedItem);
-
-            serverSelector.SelectedIndex = index + 1;
         }
 
         public bool LaunchLocalServer(string gameVersion)
@@ -574,10 +568,10 @@ namespace H1EmuLauncher
             }
 
             // Set the server name and ip textboxes text
-            CustomMessageBox.newServerName = SteamFrame.Login.GetParameter(rawArgs, "-name", "");
-            CustomMessageBox.newServerIp = SteamFrame.Login.GetParameter(rawArgs, "-ip", "");
+            newServerName = SteamFrame.Login.GetParameter(rawArgs, "-name", "");
+            newServerIp = SteamFrame.Login.GetParameter(rawArgs, "-ip", "");
 
-            if (!string.IsNullOrEmpty(CustomMessageBox.newServerName) || !string.IsNullOrEmpty(CustomMessageBox.newServerIp))
+            if (!string.IsNullOrEmpty(newServerName) || !string.IsNullOrEmpty(newServerIp))
             {
                 AddServerDetails();
             }

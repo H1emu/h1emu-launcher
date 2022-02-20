@@ -85,7 +85,7 @@ namespace H1EmuLauncher
                     {
                         sp.Close();
 
-                        CustomMessageBox.Show(FindResource("item66").ToString() + $" \"{ex.Message}\".");
+                        CustomMessageBox.Show(FindResource("item66").ToString().Replace("{0}", $"\"{ex.Message}\".").Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
 
                         Topmost = true;
                         Close();

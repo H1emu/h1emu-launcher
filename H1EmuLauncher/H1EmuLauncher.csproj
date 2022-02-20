@@ -20,10 +20,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="bin\Debug\net5.0-windows7.0\Resources\**" />
-    <EmbeddedResource Remove="bin\Debug\net5.0-windows7.0\Resources\**" />
-    <None Remove="bin\Debug\net5.0-windows7.0\Resources\**" />
-    <Page Remove="bin\Debug\net5.0-windows7.0\Resources\**" />
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+    <Page Remove="bin\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -281,10 +281,6 @@
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="bin\Debug\net5.0-windows7.0\Language\" />
   </ItemGroup>
 
 </Project>

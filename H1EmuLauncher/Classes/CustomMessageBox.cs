@@ -6,8 +6,6 @@ namespace H1EmuLauncher.Classes
     class CustomMessageBox
     {
         public static bool result = false;
-        public static string newServerName;
-        public static string newServerIp;
 
         public static void Show(string text)
         {
@@ -38,10 +36,10 @@ namespace H1EmuLauncher.Classes
         {
             AddServer addServer = new AddServer();
 
-            if (!string.IsNullOrEmpty(newServerName) || !string.IsNullOrEmpty(newServerIp))
+            if (!string.IsNullOrEmpty(Launcher.newServerName) || !string.IsNullOrEmpty(Launcher.newServerIp))
             {
-                H1EmuLauncher.AddServer.addServerInstance.serverNameBox.Text = newServerName;
-                H1EmuLauncher.AddServer.addServerInstance.serverIpBox.Text = newServerIp;
+                H1EmuLauncher.AddServer.addServerInstance.serverNameBox.Text = Launcher.newServerName;
+                H1EmuLauncher.AddServer.addServerInstance.serverIpBox.Text = Launcher.newServerIp;
                 H1EmuLauncher.AddServer.addServerInstance.serverNameHint.Visibility = Visibility.Hidden;
                 H1EmuLauncher.AddServer.addServerInstance.serverIpHint.Visibility = Visibility.Hidden;
             }
@@ -50,15 +48,15 @@ namespace H1EmuLauncher.Classes
 
             if (result)
             {
-                newServerName = addServer.serverNameBox.Text;
-                newServerIp = addServer.serverIpBox.Text;
+                Launcher.newServerName = addServer.serverNameBox.Text;
+                Launcher.newServerIp = addServer.serverIpBox.Text;
 
                 return MessageBoxResult.OK;
             }
             else
             {
-                newServerName = null;
-                newServerIp = null;
+                Launcher.newServerName = null;
+                Launcher.newServerIp = null;
 
                 return MessageBoxResult.No;
             }

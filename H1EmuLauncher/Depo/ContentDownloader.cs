@@ -498,7 +498,7 @@ namespace H1EmuLauncher
             {
                 System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item55").ToString().Replace("{0}", $"'{branch}'")}";
+                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = System.Windows.Application.Current.FindResource("item55").ToString().Replace("{0}", $"'{branch}'");
                 }));
 
                 Debug.WriteLine($"Using app branch: '{branch}'.");
@@ -749,7 +749,7 @@ namespace H1EmuLauncher
 
             System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
             {
-                DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item56").ToString().Replace("{0}", $"{depot.id}").Replace("{1}", $"{depot.contentName}")}";
+                DownloadStatus.downloadStatusInstance.downloadProgressText.Text = System.Windows.Application.Current.FindResource("item56").ToString().Replace("{0}", $"{depot.id}").Replace("{1}", $"{depot.contentName}");
             }));
 
             Debug.WriteLine($"Processing depot {depot.id} - {depot.contentName}");
@@ -909,7 +909,7 @@ namespace H1EmuLauncher
 
             System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
             {
-                DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"Manifest {depot.manifestId} ({newProtoManifest.CreationTime})...";
+                DownloadStatus.downloadStatusInstance.downloadProgressText.Text = System.Windows.Application.Current.FindResource("item57").ToString().Replace("{0}", depot.manifestId.ToString()).Replace("{1}", newProtoManifest.CreationTime.ToString());
             }));
 
             Debug.WriteLine($"Manifest {depot.manifestId} ({newProtoManifest.CreationTime})");
@@ -1054,7 +1054,7 @@ namespace H1EmuLauncher
             {
                 System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"Pre-allocating space...";
+                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = System.Windows.Application.Current.FindResource("item57").ToString();
                 }));
 
                 Debug.WriteLine($"Pre-allocating {fileFinalPath}");
@@ -1342,7 +1342,8 @@ namespace H1EmuLauncher
                 System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
                     DownloadStatus.downloadStatusInstance.downloadProgress.Value = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f;
-                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item54").ToString()}" + $" {sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
+                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item54")} {sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
+                    Launcher.launcherInstance.taskbarIcon.ProgressValue = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize;
                 }));
             }
         }
