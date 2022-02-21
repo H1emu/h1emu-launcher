@@ -22,7 +22,6 @@ namespace H1EmuLauncher
 {
     public partial class Launcher : Window
     {
-        FileSystemWatcher argsWatcher = new FileSystemWatcher();
         ProcessStartInfo cmdShell = new ProcessStartInfo();
         public static ManualResetEvent ma = new ManualResetEvent(false);
         public static Launcher launcherInstance;
@@ -472,6 +471,7 @@ namespace H1EmuLauncher
             }
             catch { }
 
+            FileSystemWatcher argsWatcher = new FileSystemWatcher();
             argsWatcher.Path = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher";
             argsWatcher.Filter = "args.txt";
             argsWatcher.EnableRaisingEvents = true;

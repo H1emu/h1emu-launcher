@@ -58,36 +58,36 @@
     <Page Update="Windows\Disclaimer.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Language\StringResources.fr.xaml">
+    <Resource Update="Language\StringResources.fr.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Language\StringResources.zh-CN.xaml">
+    </Resource>
+    <Resource Update="Language\StringResources.zh-CN.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Language\StringResources.tr-TR.xaml">
+    </Resource>
+    <Resource Update="Language\StringResources.tr-TR.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Language\StringResources.ru-RU.xaml">
+    </Resource>
+    <Resource Update="Language\StringResources.ru-RU.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Language\StringResources.pl-PL.xaml">
+    </Resource>
+    <Resource Update="Language\StringResources.pl-PL.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Language\StringResources.bg-BG.xaml">
+    </Resource>
+    <Resource Update="Language\StringResources.bg-BG.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Language\StringResources.de-DE.xaml">
+    </Resource>
+    <Resource Update="Language\StringResources.de-DE.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Language\StringResources.nl-NL.xaml">
+    </Resource>
+    <Resource Update="Language\StringResources.nl-NL.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Language\StringResources.pt-PT.xaml">
+    </Resource>
+    <Resource Update="Language\StringResources.pt-PT.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Language\StringResources.es-ES.xaml">
+    </Resource>
+    <Resource Update="Language\StringResources.es-ES.xaml">
       <SubType>Designer</SubType>
-    </Page>
+    </Resource>
     <Page Update="SteamFrame\2FA.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -124,12 +124,12 @@
     <Page Update="Windows\MsgBox.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Language\StringResources.hr.xaml">
+    <Resource Update="Language\StringResources.hr.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Language\StringResources.en.xaml">
+    </Resource>
+    <Resource Update="Language\StringResources.en.xaml">
       <SubType>Designer</SubType>
-    </Page>
+    </Resource>
     <Page Update="Windows\Settings.xaml">
       <SubType>Designer</SubType>
     </Page>

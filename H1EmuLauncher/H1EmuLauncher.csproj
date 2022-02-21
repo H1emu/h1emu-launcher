@@ -69,6 +69,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Page Remove="Language\StringResources.bg-BG.xaml" />
+    <Page Remove="Language\StringResources.de-DE.xaml" />
+    <Page Remove="Language\StringResources.en.xaml" />
+    <Page Remove="Language\StringResources.es-ES.xaml" />
+    <Page Remove="Language\StringResources.fr.xaml" />
+    <Page Remove="Language\StringResources.hr.xaml" />
+    <Page Remove="Language\StringResources.nl-NL.xaml" />
+    <Page Remove="Language\StringResources.pl-PL.xaml" />
+    <Page Remove="Language\StringResources.pt-PT.xaml" />
+    <Page Remove="Language\StringResources.ru-RU.xaml" />
+    <Page Remove="Language\StringResources.tr-TR.xaml" />
+    <Page Remove="Language\StringResources.zh-cn.xaml" />
     <Page Remove="Resources\JIGGERBISH.xaml" />
     <Page Remove="Resources\StringResources.bg-BG.xaml" />
     <Page Remove="Resources\StringResources.de-DE.xaml" />
@@ -91,123 +103,159 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Fonts\Signika.ttf">
+    <Resource Include="Fonts\Signika.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Arrow.png">
+    </Resource>
+    <Resource Include="Language\StringResources.bg-BG.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Arrow_Hover.png">
+    </Resource>
+    <Resource Include="Language\StringResources.de-DE.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Arrow_Pressed.png">
+    </Resource>
+    <Resource Include="Language\StringResources.en.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\AccountKey.png">
+    </Resource>
+    <Resource Include="Language\StringResources.es-ES.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\AccountKey_Hover.png">
+    </Resource>
+    <Resource Include="Language\StringResources.fr.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\AccountKey_Pressed.png">
+    </Resource>
+    <Resource Include="Language\StringResources.hr.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Discord.png">
+    </Resource>
+    <Resource Include="Language\StringResources.nl-NL.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Discord_Pressed.png">
+    </Resource>
+    <Resource Include="Language\StringResources.pl-PL.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Exit.png">
+    </Resource>
+    <Resource Include="Language\StringResources.pt-PT.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Exit_Hover.png">
+    </Resource>
+    <Resource Include="Language\StringResources.ru-RU.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Exit_Pressed.png">
+    </Resource>
+    <Resource Include="Language\StringResources.tr-TR.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Folder.png">
+    </Resource>
+    <Resource Include="Language\StringResources.zh-cn.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Folder_Hover.png">
+    </Resource>
+    <Resource Include="Resources\Arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Folder_Pressed.png">
+    </Resource>
+    <Resource Include="Resources\Arrow_Hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\H1EmuIcon.png">
+    </Resource>
+    <Resource Include="Resources\Arrow_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\H1EmuLogo.png">
+    </Resource>
+    <Resource Include="Resources\AccountKey.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Icon.ico">
+    </Resource>
+    <Resource Include="Resources\AccountKey_Hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Language.png">
+    </Resource>
+    <Resource Include="Resources\AccountKey_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Loading.gif">
+    </Resource>
+    <Resource Include="Resources\Discord.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Minimise.png">
+    </Resource>
+    <Resource Include="Resources\Discord_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Minimise_Hover.png">
+    </Resource>
+    <Resource Include="Resources\Exit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Minimise_Pressed.png">
+    </Resource>
+    <Resource Include="Resources\Exit_Hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\NextButton.png">
+    </Resource>
+    <Resource Include="Resources\Exit_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\NextButton_Hover.png">
+    </Resource>
+    <Resource Include="Resources\Folder.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\OfflineImage.png">
+    </Resource>
+    <Resource Include="Resources\Folder_Hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Padlock.png">
+    </Resource>
+    <Resource Include="Resources\Folder_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\PrevButton.png">
+    </Resource>
+    <Resource Include="Resources\H1EmuIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\PrevButton_Hover.png">
+    </Resource>
+    <Resource Include="Resources\H1EmuLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Server.png">
+    </Resource>
+    <Resource Include="Resources\Icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Server_Hover.png">
+    </Resource>
+    <Resource Include="Resources\Language.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Server_Pressed.png">
+    </Resource>
+    <Resource Include="Resources\Loading.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Shield.png">
+    </Resource>
+    <Resource Include="Resources\Minimise.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\ShowPassword.png">
+    </Resource>
+    <Resource Include="Resources\Minimise_Hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\ShowPassword_Hover.png">
+    </Resource>
+    <Resource Include="Resources\Minimise_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\ShowPassword_Pressed.png">
+    </Resource>
+    <Resource Include="Resources\NextButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\StandardButton.png">
+    </Resource>
+    <Resource Include="Resources\NextButton_Hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\StandardButton_Hover.png">
+    </Resource>
+    <Resource Include="Resources\OfflineImage.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\StandardButton_Pressed.png">
+    </Resource>
+    <Resource Include="Resources\Padlock.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </Resource>
+    <Resource Include="Resources\PrevButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\PrevButton_Hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Server.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Server_Hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Server_Pressed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Shield.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ShowPassword.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ShowPassword_Hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ShowPassword_Pressed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\StandardButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\StandardButton_Hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\StandardButton_Pressed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -241,42 +289,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Language\StringResources.bg-BG.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Language\StringResources.de-DE.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Language\StringResources.en.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Language\StringResources.es-ES.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Language\StringResources.fr.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Language\StringResources.hr.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Language\StringResources.nl-NL.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Language\StringResources.pl-PL.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Language\StringResources.pt-PT.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Language\StringResources.ru-RU.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Language\StringResources.tr-TR.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
-    <Page Update="Language\StringResources.zh-cn.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Page>
     <Page Update="SteamFrame\DownloadStatus.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
