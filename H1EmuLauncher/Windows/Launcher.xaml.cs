@@ -22,6 +22,7 @@ namespace H1EmuLauncher
 {
     public partial class Launcher : Window
     {
+        FileSystemWatcher argsWatcher = new FileSystemWatcher();
         ProcessStartInfo cmdShell = new ProcessStartInfo();
         public static ManualResetEvent ma = new ManualResetEvent(false);
         public static Launcher launcherInstance;
@@ -94,7 +95,7 @@ namespace H1EmuLauncher
 
         public void AddServerDetails()
         {
-            MessageBoxResult dr = CustomMessageBox.AddServer();
+            MessageBoxResult dr = CustomMessageBox.AddServer(this);
             if (dr != MessageBoxResult.OK)
             {
                 return;
@@ -136,7 +137,7 @@ namespace H1EmuLauncher
             }
             catch (Exception ex)
             {
-                CustomMessageBox.Show(FindResource("item142").ToString().Replace("{0}", ex.Message));
+                CustomMessageBox.Show(FindResource("item142").ToString().Replace("{0}", ex.Message), this);
             }
 
             newServerName = null;
@@ -147,11 +148,11 @@ namespace H1EmuLauncher
         {
             if (serverSelector.SelectedIndex == 0 || serverSelector.SelectedIndex == 1 || serverSelector.SelectedIndex == serverSelector.Items.Count - 1 || string.IsNullOrEmpty(serverSelector.Text))
             {
-                CustomMessageBox.Show(FindResource("item146").ToString());
+                CustomMessageBox.Show(FindResource("item146").ToString(), this);
                 return;
             }
 
-            MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item147").ToString());
+            MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item147").ToString(), this);
             if (dr != MessageBoxResult.Yes)
             {
                 return;
@@ -216,7 +217,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item52").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(FindResource("item52").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                     }));
 
                     return false;
@@ -256,7 +257,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item168").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(FindResource("item168").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                     }));
 
                     return false;
@@ -266,7 +267,7 @@ namespace H1EmuLauncher
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    CustomMessageBox.Show(FindResource("item53").ToString() + $" \"{er.Message}\"");
+                    CustomMessageBox.Show(FindResource("item53").ToString() + $" \"{er.Message}\"", this);
                 }));
 
                 return false;
@@ -323,7 +324,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"Exception thrown: {ex.Message}");
+                        CustomMessageBox.Show($"Exception thrown: {ex.Message}", this);
                     }));
                 }
 
@@ -333,7 +334,7 @@ namespace H1EmuLauncher
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item51").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                            CustomMessageBox.Show(FindResource("item51").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                         }));
 
                         return;
@@ -363,7 +364,7 @@ namespace H1EmuLauncher
                             {
                                 Dispatcher.Invoke(new Action(delegate
                                 {
-                                    CustomMessageBox.Show(FindResource("item153").ToString());
+                                    CustomMessageBox.Show(FindResource("item153").ToString(), this);
                                 }));
 
                                 return;
@@ -388,7 +389,7 @@ namespace H1EmuLauncher
                         {
                             Dispatcher.Invoke(new Action(delegate
                             {
-                                MessageBoxResult dialogResult = CustomMessageBox.ShowResult(FindResource("item16").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                                MessageBoxResult dialogResult = CustomMessageBox.ShowResult(FindResource("item16").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                                 if (dialogResult == MessageBoxResult.Yes)
                                 {
                                     result = true;
@@ -409,7 +410,7 @@ namespace H1EmuLauncher
                                 return;
                         }
 
-                        Process process = new Process()
+                        /*Process process = new Process()
                         {
                             StartInfo = new ProcessStartInfo($"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe", $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}")
                             {
@@ -419,13 +420,13 @@ namespace H1EmuLauncher
                             }
                         };
 
-                        process.Start();
+                        process.Start();*/
                     }
                     else if (gameVersion == "processBeingUsed")
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                         }));
 
                         return;
@@ -434,7 +435,7 @@ namespace H1EmuLauncher
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item58").ToString());
+                            CustomMessageBox.Show(FindResource("item58").ToString(), this);
                         }));
 
                         return;
@@ -444,7 +445,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item13").ToString() + $" \"{er.Message}\"");
+                        CustomMessageBox.Show(FindResource("item13").ToString() + $" \"{er.Message}\"", this);
                     }));
                 }
 
@@ -471,7 +472,6 @@ namespace H1EmuLauncher
             }
             catch { }
 
-            FileSystemWatcher argsWatcher = new FileSystemWatcher();
             argsWatcher.Path = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher";
             argsWatcher.Filter = "args.txt";
             argsWatcher.EnableRaisingEvents = true;
@@ -629,7 +629,7 @@ namespace H1EmuLauncher
                     SetLanguageFile.SaveLang(11);
                     break;
                 default:
-                    CustomMessageBox.Show("Error selecting language.");
+                    CustomMessageBox.Show("Error selecting language.", this);
                     return;
             }
 

@@ -21,7 +21,7 @@ namespace H1EmuLauncher.SteamFrame
 
         private void CancelDownloadButtonClick(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult dr = CustomMessageBox.ShowResult($"{FindResource("item33")} {Login.version}?{FindResource("item138").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine)}");
+            MessageBoxResult dr = CustomMessageBox.ShowResult($"{FindResource("item33")} {Login.version}?{FindResource("item138").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine)}", Launcher.launcherInstance);
 
             if (dr == MessageBoxResult.Yes)
             {

@@ -634,7 +634,7 @@ namespace H1EmuLauncher
                     System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
                     Launcher.launcherInstance.SteamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
-                    CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".");
+                    CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", Launcher.launcherInstance);
                 }));
 
                 Abort(false);
@@ -652,7 +652,7 @@ namespace H1EmuLauncher
                     System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
                     Launcher.launcherInstance.SteamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
-                    CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".");
+                    CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", Launcher.launcherInstance);
                 }));
 
                 Abort();

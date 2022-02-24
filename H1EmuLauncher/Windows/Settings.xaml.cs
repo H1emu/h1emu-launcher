@@ -68,11 +68,11 @@ namespace H1EmuLauncher
 
                                 if (er.Message == "No such host is known. (api.github.com:443)")
                                 {
-                                    CustomMessageBox.Show(FindResource("item95").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                                    CustomMessageBox.Show(FindResource("item95").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                                 }
                                 else
                                 {
-                                    CustomMessageBox.Show(FindResource("item95").ToString() + $" \"{er.Message}\".");
+                                    CustomMessageBox.Show(FindResource("item95").ToString() + $" \"{er.Message}\".", this);
                                 }
                             }));
                         }
@@ -95,11 +95,11 @@ namespace H1EmuLauncher
 
                                 if (er.Message == "No such host is known. (api.github.com:443)")
                                 {
-                                    CustomMessageBox.Show(FindResource("item97").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                                    CustomMessageBox.Show(FindResource("item97").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                                 }
                                 else
                                 {
-                                    CustomMessageBox.Show(FindResource("item97").ToString() + $" \"{er.Message}\".");
+                                    CustomMessageBox.Show(FindResource("item97").ToString() + $" \"{er.Message}\".", this);
                                 }
                             }));
                         }
@@ -107,7 +107,7 @@ namespace H1EmuLauncher
                     case "processBeingUsed":
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
 
                             EnableButtons();
                         }));
@@ -115,7 +115,7 @@ namespace H1EmuLauncher
                     default:
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
 
                             EnableButtons();
                         }));
@@ -218,7 +218,7 @@ namespace H1EmuLauncher
                 settingsProgressText.Text = FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
                 Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 settingsProgress.IsIndeterminate = false;
-                CustomMessageBox.Show(FindResource("item102").ToString());
+                CustomMessageBox.Show(FindResource("item102").ToString(), this);
             }));
         }
 
@@ -326,7 +326,7 @@ namespace H1EmuLauncher
                 settingsProgressText.Text = FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
                 Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 settingsProgress.IsIndeterminate = false;
-                CustomMessageBox.Show(FindResource("item104").ToString());
+                CustomMessageBox.Show(FindResource("item104").ToString(), this);
             }));
         }
 
@@ -336,7 +336,7 @@ namespace H1EmuLauncher
 
         public void DownloadServerLatest(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item157").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+            MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item157").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
             if (dr != MessageBoxResult.Yes)
             {
                 return;
@@ -391,11 +391,11 @@ namespace H1EmuLauncher
 
                         if (er.Message == "No such host is known. (api.github.com:443)")
                         {
-                            CustomMessageBox.Show(FindResource("item107").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                            CustomMessageBox.Show(FindResource("item107").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                         }
                         else
                         {
-                            CustomMessageBox.Show(FindResource("item107").ToString() + $" \"{er.Message}\".");
+                            CustomMessageBox.Show(FindResource("item107").ToString() + $" \"{er.Message}\".", this);
                         }
                     }));
 
@@ -412,7 +412,7 @@ namespace H1EmuLauncher
                     settingsProgressText.Text = FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
                     Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     settingsProgress.IsIndeterminate = false;
-                    CustomMessageBox.Show(FindResource("item108").ToString());
+                    CustomMessageBox.Show(FindResource("item108").ToString(), this);
                 }));
 
             }).Start();
@@ -473,11 +473,11 @@ namespace H1EmuLauncher
 
                         if (er.Message == "No such host is known. (api.github.com:443)")
                         {
-                            CustomMessageBox.Show(FindResource("item111").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                            CustomMessageBox.Show(FindResource("item111").ToString() + $" \"{er.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                         }
                         else
                         {
-                            CustomMessageBox.Show(FindResource("item111").ToString() + $" \"{er.Message}\".");
+                            CustomMessageBox.Show(FindResource("item111").ToString() + $" \"{er.Message}\".", this);
                         }
                     }));
 
@@ -494,7 +494,7 @@ namespace H1EmuLauncher
                     settingsProgressText.Text = FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
                     Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     settingsProgress.IsIndeterminate = false;
-                    CustomMessageBox.Show(FindResource("item112").ToString());
+                    CustomMessageBox.Show(FindResource("item112").ToString(), this);
                 }));
 
             }).Start();
@@ -773,6 +773,11 @@ namespace H1EmuLauncher
                         break;
                 }
             }
+
+            Dispatcher.Invoke(new Action(delegate
+            {
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+            }));
         }
 
         public void SettingsLoaded(object sender, RoutedEventArgs e)
@@ -828,7 +833,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                     }));
                 }
                 else if (gameVersion != "15jan2015" && gameVersion != "22dec2016")
@@ -896,21 +901,21 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item71").ToString());
+                        CustomMessageBox.Show(FindResource("item71").ToString(), this);
                     }));
                 }
                 else if (gameVersion == "22dec2016")
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item74").ToString());
+                        CustomMessageBox.Show(FindResource("item74").ToString(), this);
                     }));
                 }
                 else if (gameVersion == "processBeingUsed")
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                     }));
 
                     return;
@@ -920,7 +925,7 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         currentGame.Text = FindResource("item72").ToString();
-                        CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                     }));
 
                     return;
@@ -948,7 +953,7 @@ namespace H1EmuLauncher
                 Dispatcher.Invoke(new Action(delegate
                 {
                     currentGame.Text = FindResource("item69").ToString();
-                    CustomMessageBox.Show(FindResource("item14").ToString());
+                    CustomMessageBox.Show(FindResource("item14").ToString(), this);
                 }));
 
                 return false;
@@ -993,7 +998,7 @@ namespace H1EmuLauncher
         {
             if (!directoryButton.IsEnabled || !patchButton.IsEnabled || !latestButton.IsEnabled || !stableButton.IsEnabled)
             {
-                CustomMessageBox.Show(FindResource("item73").ToString());
+                CustomMessageBox.Show(FindResource("item73").ToString(), this);
                 e.Cancel = true;
                 return;
             }

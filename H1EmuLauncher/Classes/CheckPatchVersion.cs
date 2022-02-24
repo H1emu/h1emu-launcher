@@ -88,7 +88,7 @@ namespace H1EmuLauncher.Classes
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
                     }));
 
                     return;
@@ -97,7 +97,7 @@ namespace H1EmuLauncher.Classes
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item58").ToString());
+                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item58").ToString(), Launcher.launcherInstance);
                     }));
 
                     return;
@@ -164,8 +164,6 @@ namespace H1EmuLauncher.Classes
 
             Properties.Settings.Default.currentPatchVersion2015 = latestPatchVersion2015;
             Properties.Settings.Default.Save();
-
-            Launcher.ma.Set();
         }
 
         public static void ApplyPatch2016()
@@ -225,8 +223,6 @@ namespace H1EmuLauncher.Classes
 
             Properties.Settings.Default.currentPatchVersion2016 = latestPatchVersion2016;
             Properties.Settings.Default.Save();
-
-            Launcher.ma.Set();
         }
     }
 }

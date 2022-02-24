@@ -73,7 +73,7 @@ namespace H1EmuLauncher
                     {
                         sp.Close();
 
-                        CustomMessageBox.Show(FindResource("item66").ToString() + $" \"{e.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(FindResource("item66").ToString() + $" \"{e.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
 
                         Topmost = true;
                         Close();
@@ -85,7 +85,7 @@ namespace H1EmuLauncher
                     {
                         sp.Close();
 
-                        CustomMessageBox.Show(FindResource("item66").ToString().Replace("{0}", $"\"{ex.Message}\".").Replace("\\n\\n", Environment.NewLine + Environment.NewLine));
+                        CustomMessageBox.Show(FindResource("item66").ToString().Replace("{0}", $"\"{ex.Message}\".").Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
 
                         Topmost = true;
                         Close();
@@ -134,7 +134,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item142").ToString().Replace("{0}", ex.Message));
+                        CustomMessageBox.Show(FindResource("item142").ToString().Replace("{0}", ex.Message), this);
                     }));
                 }
 

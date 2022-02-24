@@ -7,20 +7,36 @@ namespace H1EmuLauncher.Classes
     {
         public static bool result = false;
 
-        public static void Show(string text)
+        public static void Show(string text, Window owner = null)
         {
             MsgBox newBox = new MsgBox();
             newBox.text.Text = text;
+
+            if (owner != null)
+                newBox.Owner = owner;
+            else
+                newBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             SystemSounds.Beep.Play();
             newBox.ShowDialog();
+
+            owner.Activate();
         }
 
-        public static MessageBoxResult ShowResult(string text)
+        public static MessageBoxResult ShowResult(string text, Window owner = null)
         {
             CnfmBox cnfmBox = new CnfmBox();
             cnfmBox.text.Text = text;
+
+            if (owner != null)
+                cnfmBox.Owner = owner;
+            else
+                cnfmBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
             SystemSounds.Beep.Play();
             cnfmBox.ShowDialog();
+
+            owner.Activate();
 
             if (result)
             {
@@ -32,9 +48,14 @@ namespace H1EmuLauncher.Classes
             }
         }
 
-        public static MessageBoxResult AddServer()
+        public static MessageBoxResult AddServer(Window owner)
         {
             AddServer addServer = new AddServer();
+
+            if (owner != null)
+                addServer.Owner = owner;
+            else
+                addServer.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             if (!string.IsNullOrEmpty(Launcher.newServerName) || !string.IsNullOrEmpty(Launcher.newServerIp))
             {
@@ -45,6 +66,8 @@ namespace H1EmuLauncher.Classes
             }
 
             addServer.ShowDialog();
+
+            owner.Activate();
 
             if (result)
             {
