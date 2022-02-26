@@ -635,8 +635,7 @@ namespace H1EmuLauncher
 
             // Reload pages
             ContentDownloader.UpdateLang();
-            SteamFramePanel.Refresh();
-            playButton.Content = FindResource("item8").ToString();
+            steamFramePanel.Refresh();
         }
 
         public bool doContinue = true;

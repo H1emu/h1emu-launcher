@@ -588,7 +588,7 @@ namespace H1EmuLauncher
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        Launcher.launcherInstance.SteamFramePanel.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
+                        Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
                         _2FA.twoFacInstruction = System.Windows.Application.Current.FindResource("item78").ToString();
                     }));
 
@@ -600,7 +600,7 @@ namespace H1EmuLauncher
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        Launcher.launcherInstance.SteamFramePanel.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
+                        Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
                         _2FA.twoFacInstruction = System.Windows.Application.Current.FindResource("item79").ToString();
                     }));
 
@@ -633,7 +633,7 @@ namespace H1EmuLauncher
                     // Adds the correct language file to the resource dictionary and then loads it.
                     System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
-                    Launcher.launcherInstance.SteamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+                    Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
                     CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", Launcher.launcherInstance);
                 }));
 
@@ -651,7 +651,7 @@ namespace H1EmuLauncher
                     // Adds the correct language file to the resource dictionary and then loads it.
                     System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
-                    Launcher.launcherInstance.SteamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+                    Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
                     CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", Launcher.launcherInstance);
                 }));
 

@@ -19,7 +19,7 @@ namespace H1EmuLauncher.SteamFrame
 
         private void BackToLoginPage(object sender, RoutedEventArgs e)
         {
-            Launcher.launcherInstance.SteamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+            Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
         }
     }
 }
