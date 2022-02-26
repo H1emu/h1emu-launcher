@@ -19,6 +19,12 @@
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_CB2D385B2F72446DBDEA40144BE2F74A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -121,6 +127,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CB2D385B2F72446DBDEA40144BE2F74A"
+            {
+            "SourcePath" = "8:..\\H1EmuLauncher\\Resources\\Icon.ico"
+            "TargetName" = "8:Icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -178,7 +204,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
         "ProductCode" = "8:{1D193A54-CE9A-482B-9C73-56E7B623B782}"
-        "PackageCode" = "8:{FC2803E7-EDC5-47D2-9A13-EE514FD86FFB}"
+        "PackageCode" = "8:{89759612-95C3-477A-A317-11A6DD1C0FAF}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -411,7 +437,7 @@
             "Target" = "8:_1E5157BB4D924619AB78964D3BBB406B"
             "Folder" = "8:_DFC0AEE07CB443F2B26516AD4FDC7BAE"
             "WorkingFolder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
-            "Icon" = "8:"
+            "Icon" = "8:_CB2D385B2F72446DBDEA40144BE2F74A"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A7EC6F0933E7420E98E2D83CA7CFE3F3"
@@ -425,7 +451,7 @@
             "Target" = "8:_1E5157BB4D924619AB78964D3BBB406B"
             "Folder" = "8:_FE33475BAF5F4793B032F3B6CA71BE92"
             "WorkingFolder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
-            "Icon" = "8:"
+            "Icon" = "8:_CB2D385B2F72446DBDEA40144BE2F74A"
             "Feature" = "8:"
             }
         }
