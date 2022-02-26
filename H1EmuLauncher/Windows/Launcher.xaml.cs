@@ -410,7 +410,7 @@ namespace H1EmuLauncher
                                 return;
                         }
 
-                        /*Process process = new Process()
+                        Process process = new Process()
                         {
                             StartInfo = new ProcessStartInfo($"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe", $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}")
                             {
@@ -420,7 +420,7 @@ namespace H1EmuLauncher
                             }
                         };
 
-                        process.Start();*/
+                        process.Start();
                     }
                     else if (gameVersion == "processBeingUsed")
                     {
