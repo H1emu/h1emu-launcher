@@ -435,7 +435,7 @@ namespace H1EmuLauncher
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item58").ToString(), this);
+                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                         }));
 
                         return;

@@ -97,7 +97,7 @@ namespace H1EmuLauncher.Classes
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item58").ToString(), Launcher.launcherInstance);
+                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
                     }));
 
                     return;
