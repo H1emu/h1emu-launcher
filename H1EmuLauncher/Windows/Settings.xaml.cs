@@ -342,6 +342,11 @@ namespace H1EmuLauncher
                 return;
             }
 
+            foreach (var process in Process.GetProcessesByName("node.exe"))
+            {
+                process.Kill();
+            }
+
             new Thread(() =>
             {
                 var watch = Stopwatch.StartNew();
@@ -424,6 +429,11 @@ namespace H1EmuLauncher
 
         public void DownloadServerStable(object sender, RoutedEventArgs e)
         {
+            foreach (var process in Process.GetProcessesByName("node.exe"))
+            {
+                process.Kill();
+            }
+
             new Thread(() =>
             {
                 var watch = Stopwatch.StartNew();

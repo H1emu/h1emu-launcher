@@ -20,7 +20,8 @@ namespace H1EmuLauncher.Classes
             SystemSounds.Beep.Play();
             newBox.ShowDialog();
 
-            owner.Activate();
+            if (owner != null)
+                owner.Activate();
         }
 
         public static MessageBoxResult ShowResult(string text, Window owner = null)
@@ -36,7 +37,8 @@ namespace H1EmuLauncher.Classes
             SystemSounds.Beep.Play();
             cnfmBox.ShowDialog();
 
-            owner.Activate();
+            if (owner != null)
+                owner.Activate();
 
             if (result)
             {
@@ -67,7 +69,8 @@ namespace H1EmuLauncher.Classes
 
             addServer.ShowDialog();
 
-            owner.Activate();
+            if (owner != null)
+                owner.Activate();
 
             if (result)
             {

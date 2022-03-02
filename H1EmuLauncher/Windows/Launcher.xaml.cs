@@ -657,9 +657,7 @@ namespace H1EmuLauncher
             if (!doContinue)
                 return;
 
-            ButtonAutomationPeer peer = new ButtonAutomationPeer(fauxPrevImage);
-            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
-            invokeProv.Invoke();
+            Carousel.PreviousImage();
 
             doContinue = false;
         }
@@ -671,21 +669,9 @@ namespace H1EmuLauncher
             if (!doContinue)
                 return;
 
-            ButtonAutomationPeer peer = new ButtonAutomationPeer(fauxNextImage);
-            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
-            invokeProv.Invoke();
+            Carousel.NextImage();
 
             doContinue = false;
-        }
-
-        private void FauxPrevImageClick(object sender, RoutedEventArgs e)
-        {
-            Carousel.PreviousImage();
-        }
-
-        private void FauxNextImageClick(object sender, RoutedEventArgs e)
-        {
-            Carousel.NextImage();
         }
 
         private void CarouselMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)

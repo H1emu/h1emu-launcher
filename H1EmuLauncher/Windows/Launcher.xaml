@@ -151,7 +151,7 @@
     <Window.Triggers>
         <EventTrigger
             RoutedEvent="ButtonBase.Click"
-            SourceName="fauxPrevImage">
+            SourceName="prevImage">
             
             <BeginStoryboard Storyboard="{StaticResource PrevImageAnimationFollow}"/>
             <BeginStoryboard Storyboard="{StaticResource PrevImageAnimation}"/>
@@ -159,7 +159,7 @@
         
         <EventTrigger
             RoutedEvent="ButtonBase.Click"
-            SourceName="fauxNextImage">
+            SourceName="nextImage">
             
             <BeginStoryboard Storyboard="{StaticResource NextImageAnimationFollow}"/>
             <BeginStoryboard Storyboard="{StaticResource NextImageAnimation}"/>
@@ -496,16 +496,6 @@
                                          Background="Transparent"
                                          Foreground="#DB111C"
                                          Maximum="3000"/>
-
-                            <!-- Hidden next button -->
-                            <Button x:Name="fauxNextImage"
-                                    Visibility="Hidden"
-                                    Click="FauxNextImageClick"/>
-
-                            <!-- Hidden previous button -->
-                            <Button x:Name="fauxPrevImage"
-                                    Visibility="Hidden"
-                                    Click="FauxPrevImageClick"/>
                         </Grid>
                     </Grid>
                 </Grid>
