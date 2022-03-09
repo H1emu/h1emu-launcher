@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -105,8 +106,6 @@ namespace H1EmuLauncher.Classes
         public static void DownloadImages()
         {
             WebClient wc = new WebClient();
-            int number = 0;
-
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Info.CAROUSEL_MEDIA);
 
             try
@@ -124,12 +123,8 @@ namespace H1EmuLauncher.Classes
                             {
                                 if (match.Success)
                                 {
-                                    number++;
-
-                                    if (number != 1 && number != 2)
-                                    {
+                                    if (match.Groups["name"].ToString().Contains(".png"))
                                         wc.DownloadFile($"{Info.CAROUSEL_MEDIA}{match.Groups["name"]}", $"{imagesFolder}\\{match.Groups["name"]}");
-                                    }
                                 }
                             }
                         }

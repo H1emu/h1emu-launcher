@@ -23,10 +23,13 @@
             <Setter Property="Foreground" Value="Black"></Setter>
             <Setter Property="Margin" Value="0,0,0,0"></Setter>
         </Style>
-        <Style x:Key="HyperLinkStyleUpdate" TargetType="TextBlock">
+        <Style x:Key="HyperLinkStyle" TargetType="TextBlock">
             <Style.Triggers>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Foreground" Value="Gray" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="LightGray"/>
                 </Trigger>
             </Style.Triggers>
         </Style>

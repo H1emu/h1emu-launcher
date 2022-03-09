@@ -13,6 +13,7 @@ namespace H1EmuLauncher
         {
             InitializeComponent();
             addServerInstance = this;
+            Owner = Launcher.launcherInstance;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         UseLayoutRounding="True"
-        Title="Launcher"
+        Title="H1Emu Launcher"
         x:Name="MainLauncher"
         Width="1300"
         Height="750"
@@ -238,17 +238,17 @@
                             <!-- Language selection combobox -->
                             <Grid>
                                 <ComboBox x:Name="LangBox"
-                                    Height="30"
-                                    Margin="10,10,25,0"
-                                    Padding="35,2,10,0"
-                                    VerticalAlignment="Bottom"
-                                    VerticalContentAlignment="Center"
-                                    BorderThickness="2"
-                                    Foreground="White"
-                                    FontSize="15"
-                                    SelectedIndex="-1"
-                                    SelectionChanged="LanguageSelectionChanged"
-                                    Style="{DynamicResource ComboBox}">
+                                          Height="30"
+                                          Margin="10,10,25,0"
+                                          Padding="35,2,10,0"
+                                          VerticalAlignment="Bottom"
+                                          VerticalContentAlignment="Center"
+                                          BorderThickness="2"
+                                          Foreground="White"
+                                          FontSize="15"
+                                          SelectedIndex="-1"
+                                          SelectionChanged="LanguageSelectionChanged"
+                                          Style="{DynamicResource ComboBox}">
                                     
                                     <ComboBoxItem Content="English"/>
                                     <ComboBoxItem Content="Chinese"/>
@@ -279,8 +279,11 @@
                                 Margin="0,10,16,0"
                                 VerticalAlignment="Center">
                                 
-                                <Hyperlink Click="AboutHyperlink">
-                                    <TextBlock Text="{DynamicResource item65}"/>
+                                <Hyperlink Click="AboutHyperlink"
+                                           Foreground="White">
+                                    
+                                    <TextBlock Text="{DynamicResource item65}"
+                                               Style="{DynamicResource HyperLinkStyle}"/>
                                 </Hyperlink>
                             </TextBlock>
 
@@ -343,12 +346,16 @@
 
                                 <Hyperlink
                                     NavigateUri="https://h1emu.com/"
-                                    RequestNavigate="H1Hyperlink">
+                                    RequestNavigate="H1Hyperlink"
+                                    Foreground="White">
                                     
-                                    h1emu.com
+                                    <TextBlock Text="h1emu.com"
+                                               Style="{DynamicResource HyperLinkStyle}"/>
+                                    
+                                </Hyperlink>
                                     
                                     <!-- Context menu to copy link -->
-                                    <Hyperlink.ContextMenu>
+                                    <TextBlock.ContextMenu>
                                         <ContextMenu>
                                             <MenuItem
                                             Header="Copy"
@@ -356,8 +363,7 @@
                                             Style="{DynamicResource PopupMenuItem}"/>
 
                                         </ContextMenu>
-                                    </Hyperlink.ContextMenu>
-                                </Hyperlink>
+                                    </TextBlock.ContextMenu>
                             </TextBlock>
 
                             <Button x:Name="discordLink"
@@ -553,11 +559,12 @@
 
                     <!-- Read full details of update hyperlink -->
                     <TextBlock Margin="6,22,0,0">
-                        <Hyperlink
-                            NavigateUri="https://www.h1emu.com/us/changelog/"
-                            RequestNavigate="FullUpdatesHyperlink">
+                        <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/"
+                                   RequestNavigate="FullUpdatesHyperlink"
+                                   Foreground="White">
                             
-                            <TextBlock Text="{DynamicResource item61}"/>
+                            <TextBlock Text="{DynamicResource item61}"
+                                       Style="{DynamicResource HyperLinkStyle}"/>
                         </Hyperlink>
                         
                         <!-- Context menu to copy link -->
@@ -581,12 +588,11 @@
                     
                     <!-- You must own the game in order to download message -->
                     <StackPanel Margin="12,20,30,0">
-                        <RichTextBox
-                            Background="Transparent"
-                            Foreground="White"
-                            BorderThickness="0"
-                            IsReadOnly="True"
-                            Cursor="Arrow">
+                        <RichTextBox Background="Transparent"
+                                     Foreground="White"
+                                     BorderThickness="0"
+                                     IsReadOnly="True"
+                                     Cursor="Arrow">
                             
                             <FlowDocument>
                                 <Paragraph>
@@ -716,20 +722,57 @@
 
             <!-- Footer -->
             <DockPanel Grid.Row="2">
+
+                <!-- Settings icon -->
+                <Image Source="..\Resources\Settings.png"
+                       RenderOptions.BitmapScalingMode="Fant"
+                       Width="18"
+                       Margin="35,0,0,0"
+                       VerticalAlignment="Center"
+                       RenderTransformOrigin=".5,.5">
+
+                    <Image.RenderTransform>
+                        <RotateTransform x:Name="rotateSettingsIcon" Angle="0"/>
+                    </Image.RenderTransform>
+                </Image>
+
+                <!-- Hyperlink to open settings menu -->
                 <TextBlock
-                    Margin="35,1,0,0"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left">
+                    Margin="8,2,0,0"
+                    VerticalAlignment="Center">
                     
                     <!-- Hyperlink for settings window -->
-                    <Hyperlink Click="Hyperlink_Click">
-                        <TextBlock Text="{DynamicResource item62}"/>
+                    <Hyperlink Click="Hyperlink_Click"
+                               Foreground="White">
+                        
+                        <TextBlock Text="{DynamicResource item62}"
+                                   Style="{DynamicResource HyperLinkStyle}">
+                            
+                            <TextBlock.Triggers>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard x:Name="beginSettingsIconRotation">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="rotateSettingsIcon"
+                                                             Storyboard.TargetProperty="Angle"
+                                                             By="10"
+                                                             To="90"
+                                                             Duration="0:0:0.5"
+                                                             FillBehavior="Stop"
+                                                             RepeatBehavior="Forever"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <StopStoryboard BeginStoryboardName="beginSettingsIconRotation"/>
+                                </EventTrigger>
+                            </TextBlock.Triggers>
+                        </TextBlock>
                     </Hyperlink>
                 </TextBlock>
 
                 <!-- Copyright notice -->
                 <TextBlock
-                    Margin="0,1,35,0"
+                    Margin="0,2,35,0"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Right"
                     Foreground="White"

@@ -8,7 +8,7 @@
       d:DesignWidth="565"
       d:DesignHeight="140"
       FontFamily="Bahnschrift Light"
-      Title="_2FA">
+      Title="2FA">
     
     <Grid>
         <Grid.RowDefinitions>

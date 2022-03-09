@@ -29,7 +29,7 @@ namespace H1EmuLauncher.SteamFrame
             }
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void StatusLoaded(object sender, RoutedEventArgs e)
         {
             gameDownloadText.Text = $"{Login.version}:";
         }

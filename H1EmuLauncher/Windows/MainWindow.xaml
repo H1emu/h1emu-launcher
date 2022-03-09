@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="H1Emu Update Available"
         MinWidth="450"
         MaxWidth="450"
         MinHeight="270"
@@ -153,7 +153,8 @@
                     
                     <TextBlock
                         Text="{DynamicResource item67}"
-                        MouseDown="NotNowHyperLinkMouseDown"/>
+                        MouseDown="NotNowHyperLinkMouseDown"
+                        Style="{DynamicResource HyperLinkStyle}"/>
                     
                 </Hyperlink>
             </TextBlock>

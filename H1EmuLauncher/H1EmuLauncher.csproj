@@ -7,8 +7,8 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.3.6</AssemblyVersion>
-	  <FileVersion>2.3.6</FileVersion>
+	  <AssemblyVersion>2.3.7</AssemblyVersion>
+	  <FileVersion>2.3.7</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
 	  <Version>2.3.2</Version>
@@ -59,6 +59,7 @@
     <None Remove="Resources\Server.png" />
     <None Remove="Resources\Server_Hover.png" />
     <None Remove="Resources\Server_Pressed.png" />
+    <None Remove="Resources\Settings.png" />
     <None Remove="Resources\Shield.png" />
     <None Remove="Resources\ShowPassword.png" />
     <None Remove="Resources\ShowPassword_Hover.png" />
@@ -233,6 +234,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Server_Pressed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Settings.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Shield.png">

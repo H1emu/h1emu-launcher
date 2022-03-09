@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         UseLayoutRounding="True"
-        Title="Launcher"
+        Title="H1Emu Account Key"
         Width="650"
         Height="320"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterOwner"
         Background="#FF2A2A32"
         FontFamily="Bahnschrift Light"
         FontSize="16"
@@ -125,8 +125,12 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
                     
-                    <Hyperlink Click="UserProfileLink">
-                        <TextBlock x:Name="accountKeyHyperlink"/>
+                    <Hyperlink Click="UserProfileLink"
+                               Foreground="White">
+                        
+                        <TextBlock x:Name="accountKeyHyperlink"
+                                   Style="{DynamicResource HyperLinkStyle}"/>
+                        
                     </Hyperlink>
                     
                     <!-- Context menu to copy link -->

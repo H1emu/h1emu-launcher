@@ -283,9 +283,7 @@ namespace H1EmuLauncher
             Settings settings = new Settings();
 
             if (!settings.CheckDirectory())
-            {
                 return;
-            }
 
             string gameVersion = "";
             string serverIp = "";
@@ -406,8 +404,12 @@ namespace H1EmuLauncher
 
                         if (serverIp == "localhost:1115")
                         {
-                            if (!LaunchLocalServer(gameVersion))
-                                return;
+                            new Thread(() => 
+                            {
+                                if (!LaunchLocalServer(gameVersion))
+                                    return;
+
+                            }).Start();
                         }
 
                         Process process = new Process()

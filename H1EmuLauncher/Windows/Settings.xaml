@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         UseLayoutRounding="True"
-        Title="Launcher"
+        Title="H1Emu Launcher Settings"
         x:Name="MainSettings"
-        Width="740" Height="530"
-        WindowStartupLocation="CenterScreen"
+        Width="740"
+        Height="530"
+        WindowStartupLocation="CenterOwner"
         Background="#FF2A2A32"
         FontFamily="Bahnschrift Light"
         FontSize="16"
@@ -322,8 +323,12 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Left">
                 
-                <Hyperlink Click="AccountKeyClick">
-                    <TextBlock Text="{DynamicResource item154}"/>
+                <Hyperlink Click="AccountKeyClick"
+                           Foreground="White">
+                    
+                    <TextBlock Text="{DynamicResource item154}"
+                               Style="{DynamicResource HyperLinkStyle}"/>
+                    
                 </Hyperlink>
             </TextBlock>
 

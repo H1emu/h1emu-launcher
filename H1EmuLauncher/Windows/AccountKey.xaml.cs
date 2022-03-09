@@ -7,9 +7,13 @@ namespace H1EmuLauncher
 {
     public partial class AccountKey : Window
     {
+        public static AccountKey accountKeyInstance;
+
         public AccountKey()
         {
             InitializeComponent();
+            accountKeyInstance = this;
+            Owner = Settings.settingsInstance;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());

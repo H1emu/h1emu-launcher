@@ -7,8 +7,8 @@
       d:DesignWidth="565"
       d:DesignHeight="140"
       FontFamily="Bahnschrift Light"
-      Title="GameInfo"
-      Loaded="Page_Loaded">
+      Loaded="StatusLoaded"
+      Title="Download Information">
     
     <Grid>
         <Grid.RowDefinitions>

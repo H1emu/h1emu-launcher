@@ -23,6 +23,7 @@ namespace H1EmuLauncher
         {
             InitializeComponent();
             settingsInstance = this;
+            Owner = Launcher.launcherInstance;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
@@ -338,14 +339,7 @@ namespace H1EmuLauncher
         {
             MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item157").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
             if (dr != MessageBoxResult.Yes)
-            {
                 return;
-            }
-
-            foreach (var process in Process.GetProcessesByName("node.exe"))
-            {
-                process.Kill();
-            }
 
             new Thread(() =>
             {
@@ -429,11 +423,6 @@ namespace H1EmuLauncher
 
         public void DownloadServerStable(object sender, RoutedEventArgs e)
         {
-            foreach (var process in Process.GetProcessesByName("node.exe"))
-            {
-                process.Kill();
-            }
-
             new Thread(() =>
             {
                 var watch = Stopwatch.StartNew();
@@ -513,67 +502,6 @@ namespace H1EmuLauncher
         /////////////////////////////
         /// Download Server Files ///
         /////////////////////////////
-
-        public void DeleteOldFiles()
-        {
-            Dispatcher.Invoke(new Action(delegate
-            {
-                settingsProgressText.Text = FindResource("item113").ToString();
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
-            }));
-
-            if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master"))
-            {
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    settingsProgressText.Text = FindResource("item114").ToString();
-                }));
-
-                DirectoryInfo dirInfo = new DirectoryInfo($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
-                var files = dirInfo.GetFiles();
-
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    settingsProgress.Minimum = 0;
-                    settingsProgress.Value = 0;
-                    settingsProgress.Maximum = files.Length;
-                }));
-
-                foreach (FileInfo file in files)
-                {
-                    file.Delete();
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        settingsProgress.Value += 1;
-                    }));
-                }
-
-                var dirs = dirInfo.GetDirectories();
-
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    settingsProgress.Value = 0;
-                    settingsProgress.Maximum = dirs.Length;
-                }));
-
-                foreach (DirectoryInfo dir in dirs)
-                {
-                    dir.Delete(true);
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        settingsProgress.Value += 1;
-                    }));
-                }
-
-                Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles", true);
-
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                    settingsProgress.Maximum = 100;
-                }));
-            }
-        }
 
         public bool DownloadMaster()
         {
@@ -694,6 +622,67 @@ namespace H1EmuLauncher
             // Delete the old .zip file, not needed anymore.
 
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node-v{Info.NODEJS_VERSION}-win-x64.zip");
+        }
+
+        public void DeleteOldFiles()
+        {
+            Dispatcher.Invoke(new Action(delegate
+            {
+                settingsProgressText.Text = FindResource("item113").ToString();
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+            }));
+
+            if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master"))
+            {
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    settingsProgressText.Text = FindResource("item114").ToString();
+                }));
+
+                DirectoryInfo dirInfo = new DirectoryInfo($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
+                var files = dirInfo.GetFiles();
+
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    settingsProgress.Minimum = 0;
+                    settingsProgress.Value = 0;
+                    settingsProgress.Maximum = files.Length;
+                }));
+
+                foreach (FileInfo file in files)
+                {
+                    file.Delete();
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        settingsProgress.Value += 1;
+                    }));
+                }
+
+                var dirs = dirInfo.GetDirectories();
+
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    settingsProgress.Value = 0;
+                    settingsProgress.Maximum = dirs.Length;
+                }));
+
+                foreach (DirectoryInfo dir in dirs)
+                {
+                    dir.Delete(true);
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        settingsProgress.Value += 1;
+                    }));
+                }
+
+                Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles", true);
+
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                    settingsProgress.Maximum = 100;
+                }));
+            }
         }
 
         //////////////////////////
@@ -843,7 +832,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                        CustomMessageBox.Show(Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
                     }));
                 }
                 else if (gameVersion != "15jan2015" && gameVersion != "22dec2016")
@@ -881,14 +870,10 @@ namespace H1EmuLauncher
 
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    if (directory.ShowDialog() == System.Windows.Forms.DialogResult.OK) 
-                    { 
+                    if (directory.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         ma.Set();
-                    }
                     else
-                    {
                         return;
-                    }
                 }));
 
                 ma.WaitOne();
@@ -1021,12 +1006,12 @@ namespace H1EmuLauncher
 
         public void CloseButton(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         public void MoveWindow(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void MainSettingsActivated(object sender, EventArgs e)
