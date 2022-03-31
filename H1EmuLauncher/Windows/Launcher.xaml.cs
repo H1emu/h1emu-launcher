@@ -407,12 +407,8 @@ namespace H1EmuLauncher
 
                         if (serverIp == "localhost:1115")
                         {
-                            new Thread(() => 
-                            {
-                                if (!LaunchLocalServer(gameVersion))
-                                    return;
-
-                            }).Start();
+                            if (!LaunchLocalServer(gameVersion))
+                                return;
                         }
 
                         Process process = new Process()
