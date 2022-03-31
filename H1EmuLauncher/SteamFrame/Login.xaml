@@ -78,7 +78,7 @@
             VerticalContentAlignment="Center"
             FontSize="16"
             PasswordChar="●"
-            KeyDown="TextBox_KeyDown"
+            KeyDown="PasswordBoxKeyDown"
             GotFocus="PasswordBoxGotFocus"
             LostFocus="PasswordBoxLostFocus"
             Style="{DynamicResource PasswordBoxStyle}"/>

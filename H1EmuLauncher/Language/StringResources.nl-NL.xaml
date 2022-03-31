@@ -57,7 +57,7 @@
     <system:String x:Key="item55">gebruikt app branch: {0}</system:String>
     <system:String x:Key="item56">Verwerken depot {0} - {1}</system:String>
     <system:String x:Key="item57">Pre-alocatie opslag...</system:String>
-    <system:String x:Key="item58">Game versie niet ondersteund door H1Emu.\n\nVergeet niet om de gameversie te gebruiken op 15 Januari 2015 of 22 December 2016.</system:String>
+    <system:String x:Key="item58">Spelversie wordt niet ondersteund door H1Emu.\n\nVergeet niet om de spelversie te gebruiken op 15 januari 2015 of 22 december 2016.\n\nJe kunt de launcher gebruiken om een ​​van deze versies te downloaden met de Steam-login op de hoofdpagina.</system:String>
     <system:String x:Key="item59">Steam ID</system:String>
     <system:String x:Key="item60">Wachtwoord</system:String>
     <system:String x:Key="item61">Bekijk alle details van update...</system:String>
@@ -161,4 +161,6 @@
     <system:String x:Key="item168">De server kan niet worden gestart, probeer het opnieuw en als het probleem aanhoudt, meld het dan.\n\nHet opnieuw installeren van serverbestanden kan dit probleem oplossen.</system:String>
     <system:String x:Key="item169">• Launcher gemaakt door @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Financiële Bijdragers</system:String>
+    <system:String x:Key="item171">22 december 2016 versie van het spel, deze is meer up-to-date en wordt ondersteund door het project.</system:String>
+    <system:String x:Key="item172">15 januari 2015 versie van de game, deze ontvangt niet zoveel updates als 2016 en het kan zijn dat er functies ontbreken.</system:String>
 </ResourceDictionary>

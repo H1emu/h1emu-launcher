@@ -27,7 +27,7 @@ namespace H1EmuLauncher.SteamFrame
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
-        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        private void PasswordBoxKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
@@ -132,6 +132,7 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+                        folderBrowser.Description = "Select a folder location for the game to download to.";
 
                         if (folderBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {

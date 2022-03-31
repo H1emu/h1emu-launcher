@@ -57,7 +57,7 @@
     <system:String x:Key="item55">Rama de aplicación:: {0}</system:String>
     <system:String x:Key="item56">Procesando depot {0} - {1}</system:String>
     <system:String x:Key="item57">Pre-asignando espacio en disco...</system:String>
-    <system:String x:Key="item58">Versión de juego no compatible con H1Emu.\n\nRecuerde usar la versión del juego del 15 de Enero de 2015 o del 22 de Diciembre de 2016.</system:String>
+    <system:String x:Key="item58">La versión del juego no es compatible con H1Emu.\n\nRecuerde usar la versión del juego del 15 de enero de 2015 o del 22 de diciembre de 2016.\n\nPuede usar el iniciador para descargar cualquiera de estas versiones con el inicio de sesión de Steam en la página principal.</system:String>
     <system:String x:Key="item59">Nombre de usuario</system:String>
     <system:String x:Key="item60">Contraseña</system:String>
     <system:String x:Key="item61">Ver detalles de la actualización...</system:String>
@@ -162,4 +162,6 @@
     <system:String x:Key="item168">El servidor no pudo iniciarse, inténtelo de nuevo y, si el problema persiste, infórmelo.\n\nReinstalar los archivos del servidor puede solucionar este problema.</system:String>
     <system:String x:Key="item169">• Lanzador hecho por @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Contribuyentes Financieros</system:String>
+    <system:String x:Key="item171">Versión del juego del 22 de diciembre de 2016, más actualizada y compatible con el proyecto.</system:String>
+    <system:String x:Key="item172">Versión del juego del 15 de enero de 2015, no recibe tantas actualizaciones como en 2016 y es posible que carezca de funciones.</system:String>
 </ResourceDictionary>

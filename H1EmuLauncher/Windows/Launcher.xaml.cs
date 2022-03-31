@@ -84,6 +84,9 @@ namespace H1EmuLauncher
 
         private void ServerSelectorChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (serverSelector.SelectedIndex == serverSelector.Items.Count - 1)
+                serverSelector.SelectedIndex = 0;
+
             Properties.Settings.Default.lastServer = serverSelector.SelectedIndex;
             Properties.Settings.Default.Save();
         }

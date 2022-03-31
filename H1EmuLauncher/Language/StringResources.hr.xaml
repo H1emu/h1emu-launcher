@@ -57,7 +57,7 @@
     <system:String x:Key="item55">Korištenjem grane aplikacije: {0}</system:String>
     <system:String x:Key="item56">Procesiranje depoa {0} - {1}</system:String>
     <system:String x:Key="item57">Alociranje prostora...</system:String>
-    <system:String x:Key="item58">Verzija nije podržana od strane H1Emu.\n\nNe zaboravite koristiti verziju igre 15. Siječnja 2015. ili 22. Prosinca 2016.</system:String>
+    <system:String x:Key="item58">H1Emu ne podržava verziju igre.\n\nNe zaboravite koristiti verziju igre od 15. siječnja 2015. ili 22. prosinca 2016.\n\nMožete koristiti pokretač za preuzimanje bilo koje od ovih verzija uz prijavu na Steam na glavnoj stranici.</system:String>
     <system:String x:Key="item59">Korisničko ime</system:String>
     <system:String x:Key="item60">Šifra</system:String>
     <system:String x:Key="item61">Prikaži detalje nove verzije...</system:String>
@@ -162,4 +162,6 @@
     <system:String x:Key="item168">Poslužitelj se nije uspio pokrenuti, pokušajte ponovo. Ako problem potraje, prijavite ga.\n\nPonovno instaliranje datoteka poslužitelja može riješiti ovaj problem.</system:String>
     <system:String x:Key="item169">• Launcher izradio @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Financijski Suradnici</system:String>
+    <system:String x:Key="item171">Verzija igre od 22. prosinca 2016., ovo je ažurnije i podržano od strane projekta.</system:String>
+    <system:String x:Key="item172">Verzija igre od 15. siječnja 2015., ova ne dobiva toliko ažuriranja kao 2016. i možda joj nedostaju značajke.</system:String>
 </ResourceDictionary>

@@ -57,7 +57,7 @@
     <system:String x:Key="item55">Using app branch: {0}</system:String>
     <system:String x:Key="item56">Przetwarzam depot {0} - {1}</system:String>
     <system:String x:Key="item57">Wstępne przydzielanie miejsca na dysku...</system:String>
-    <system:String x:Key="item58">Ta wersja gry nie jest wspierana przez H1Emu.\n\nPamiętaj, aby używać wersji gry 15 Stycznia 2015 lub 22 Grudnia 2016.</system:String>
+    <system:String x:Key="item58">Wersja gry nie jest obsługiwana przez H1Emu.\n\nPamiętaj, aby użyć wersji gry 15 stycznia 2015 lub 22 grudnia 2016.\n\nMożesz użyć programu uruchamiającego, aby pobrać jedną z tych wersji, logując się do Steam na stronie głównej.</system:String>
     <system:String x:Key="item59">Nazwa użytkownika</system:String>
     <system:String x:Key="item60">Hasło</system:String>
     <system:String x:Key="item61">Sprawdź pełen opis aktuzacji...</system:String>
@@ -162,4 +162,6 @@
     <system:String x:Key="item168">Nie udało się uruchomić serwera, spróbuj ponownie, a jeśli problem będzie się powtarzał, zgłoś go.\n\nPonowna instalacja plików serwera może rozwiązać ten problem.</system:String>
     <system:String x:Key="item169">• Launcher stworzony przez @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Współtwórcy Finansowi</system:String>
+    <system:String x:Key="item171">Wersja gry z 22 grudnia 2016, jest bardziej aktualna i wspierana przez projekt.</system:String>
+    <system:String x:Key="item172">Wersja gry z 15 stycznia 2015, nie otrzymuje tak wielu aktualizacji jak 2016 i może brakować jej funkcji.</system:String>
 </ResourceDictionary>

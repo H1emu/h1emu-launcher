@@ -57,7 +57,7 @@
     <system:String x:Key="item55">Using app branch: {0}</system:String>
     <system:String x:Key="item56">Processing depot {0} - {1}</system:String>
     <system:String x:Key="item57">Pre-allocating space...</system:String>
-    <system:String x:Key="item58">Версията на играта не се подържа от H1Emu.\n\nМоля, не забравяйте да използвате версия на играта или на 15 януари 2015 г., или на 22 декември 2016 г.</system:String>
+    <system:String x:Key="item58">Версията на играта не се поддържа от H1Emu.\n\nМоля, не забравяйте да използвате версия на играта 15 януари 2015 г. или 22 декември 2016 г.\n\nМожете да използвате стартовия панел, за да изтеглите някоя от тези версии с входа в Steam на главната страница.</system:String>
     <system:String x:Key="item59">Потребителско име</system:String>
     <system:String x:Key="item60">Парола</system:String>
     <system:String x:Key="item61">Вижте пълни подробности за обновлението...</system:String>
@@ -162,4 +162,6 @@
     <system:String x:Key="item168">Сървърът не се стартира, опитайте отново и ако проблемът продължава, моля, докладвайте го.\n\nПреинсталирането на сървърни файлове може да реши този проблем.</system:String>
     <system:String x:Key="item169">• Стартер, направен от @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Финансови сътрудници</system:String>
+    <system:String x:Key="item171">Версия на играта от 22 декември 2016 г., това е по-актуално и се поддържа от проекта.</system:String>
+    <system:String x:Key="item172">Версия на играта от 15 януари 2015 г., това не получава толкова много актуализации като 2016 г. и може да липсват функции.</system:String>
 </ResourceDictionary>

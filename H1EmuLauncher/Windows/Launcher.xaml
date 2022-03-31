@@ -617,15 +617,13 @@
                         </Grid.RowDefinitions>
 
                         <!-- Steam frame -->
-                        <DockPanel Margin="20,0,30,0">
-                            <Frame x:Name="steamFramePanel"
+                        <Frame x:Name="steamFramePanel"
+                                   Margin="20,0,30,0"
                                    VerticalAlignment="Top"
                                    Source="..\\SteamFrame\Login.xaml"
                                    NavigationUIVisibility="Hidden"
                                    VerticalContentAlignment="Top"
                                    Padding="0" Height="140"/>
-                            
-                        </DockPanel>
                     </Grid>
 
                     <Grid
@@ -670,7 +668,8 @@
                                   VerticalAlignment="Bottom"
                                   Foreground="White"
                                   BorderThickness="2"
-                                  Style="{DynamicResource ComboBox}" SelectionChanged="ServerSelectorChanged">
+                                  SelectionChanged="ServerSelectorChanged"
+                                  Style="{DynamicResource ComboBox}">
                             
                             <ComboBoxItem Content="{DynamicResource item139}"/>
                             <ComboBoxItem Content="{DynamicResource item140}"/>

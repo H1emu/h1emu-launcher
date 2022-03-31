@@ -12,7 +12,7 @@ namespace H1EmuLauncher.Classes
             MsgBox newBox = new MsgBox();
             newBox.text.Text = text;
 
-            if (owner != null)
+            if (owner != null && owner.IsVisible)
                 newBox.Owner = owner;
             else
                 newBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;

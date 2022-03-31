@@ -57,7 +57,7 @@
     <system:String x:Key="item55">Использование ветки приложения: {0}</system:String>
     <system:String x:Key="item56">Обработка depot {0} - {1}</system:String>
     <system:String x:Key="item57">Выделение места...</system:String>
-    <system:String x:Key="item58">Версия игры не поддерживается H1Emu.\n\nНе забудьте использовать версию игры от 15 января 2015 года или 22 декабря 2016 года.</system:String>
+    <system:String x:Key="item58">Версия игры не поддерживается H1Emu.\n\nНе забудьте использовать версию игры от 15 января 2015 года или 22 декабря 2016 года.\n\nВы можете использовать программу запуска для загрузки любой из этих версий, войдя в систему Steam на главной странице.</system:String>
     <system:String x:Key="item59">Имя пользователя</system:String>
     <system:String x:Key="item60">Пароль</system:String>
     <system:String x:Key="item61">Посмотреть полную информацию об обновлении...</system:String>
@@ -162,4 +162,6 @@
     <system:String x:Key="item168">Не удалось запустить сервер, попробуйте еще раз, и, если проблема не исчезнет, ​​сообщите об этом.\n\nПереустановка файлов сервера может решить эту проблему.</system:String>
     <system:String x:Key="item169">• Программа запуска от @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Финансовые спонсоры</system:String>
+    <system:String x:Key="item171">Версия игры от 22 декабря 2016 года, более актуальная и поддерживаемая проектом.</system:String>
+    <system:String x:Key="item172">Версия игры от 15 января 2015 года, она не получает столько обновлений, как версия 2016 года, и в ней могут отсутствовать функции.</system:String>
 </ResourceDictionary>

@@ -33,7 +33,7 @@
     <system:String x:Key="item32">DECEMBER 2016</system:String>
     <system:String x:Key="item33">Are you sure you would like to cancel the download of H1Z1: Just Survive version</system:String>
     <system:String x:Key="item34">Need to download Just Survive?</system:String>
-    <system:String x:Key="item35">Enter your Steam credentials on the left to get started!</system:String>
+    <system:String x:Key="item35">Enter your Steam info on the left and hit the arrow to get started!</system:String>
     <system:String x:Key="item36">Please make sure to fill in the Username and Password boxes.</system:String>
     <system:String x:Key="item37">Successfully downloaded H1Z1: Just Survive version</system:String>
     <system:String x:Key="item38">Successfully cancelled the download of H1Z1: Just Survive version</system:String>
@@ -56,7 +56,7 @@
     <system:String x:Key="item55">Using app branch: {0}</system:String>
     <system:String x:Key="item56">Processing depot {0} - {1}</system:String>
     <system:String x:Key="item57">Pre-allocating space...</system:String>
-    <system:String x:Key="item58">Game version not supported by H1Emu.\n\nPlease remember to use game version either 15th January 2015 or 22nd December 2016.</system:String>
+    <system:String x:Key="item58">Game version not supported by H1Emu.\n\nPlease remember to use game version either 15th January 2015 or 22nd December 2016.\n\nYou can use the launcher to download either of these versions with the Steam login on the main page.</system:String>
     <system:String x:Key="item59">Username</system:String>
     <system:String x:Key="item60">Password</system:String>
     <system:String x:Key="item61">View full details of the update...</system:String>
@@ -161,4 +161,6 @@
     <system:String x:Key="item168">The server failed to start, try again and if the issue persists please report it.\n\nReinstalling server files may fix this issue.</system:String>
     <system:String x:Key="item169">• Launcher made by @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Financial Contributors</system:String>
+    <system:String x:Key="item171">22nd December 2016 game version, this is more up to date and supported by the project.</system:String>
+    <system:String x:Key="item172">15th January 2015 game version, this doesn't recieve as many updates as 2016 and it may lack features.</system:String>
 </ResourceDictionary>

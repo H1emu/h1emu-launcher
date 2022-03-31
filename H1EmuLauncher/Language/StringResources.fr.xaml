@@ -57,7 +57,7 @@
     <system:String x:Key="item55">Utilisation d'une branche d'application: {0}</system:String>
     <system:String x:Key="item56">Dépôt de traitement {0} - {1}</system:String>
     <system:String x:Key="item57">Pré-attribution de l'espace...</system:String>
-    <system:String x:Key="item58">Version du jeu non prise en charge par H1Emu.\n\nN'oubliez pas d'utiliser la version du jeu du 15 Janvier 2015 ou du 22 Décembre 2016.</system:String>
+    <system:String x:Key="item58">Version du jeu non prise en charge par H1Emu.\n\nN'oubliez pas d'utiliser la version du jeu du 15 janvier 2015 ou du 22 décembre 2016.\n\nVous pouvez utiliser le lanceur pour télécharger l'une ou l'autre de ces versions avec la connexion Steam sur la page principale.</system:String>
     <system:String x:Key="item59">Nom d'utilisateur</system:String>
     <system:String x:Key="item60">Mot de passe</system:String>
     <system:String x:Key="item61">Voir tous les détails de la mise à jour...</system:String>
@@ -162,4 +162,6 @@
     <system:String x:Key="item168">Le serveur n'a pas pu démarrer, réessayez et si le problème persiste, veuillez le signaler.\n\nLa réinstallation des fichiers du serveur peut résoudre ce problème.</system:String>
     <system:String x:Key="item169">• Lanceur réalisé par @Eavilaswayce •</system:String>
     <system:String x:Key="item170">Contributeurs Financiers</system:String>
+    <system:String x:Key="item171">Version du jeu du 22 décembre 2016, plus à jour et prise en charge par le projet.</system:String>
+    <system:String x:Key="item172">Version du jeu du 15 janvier 2015, elle ne reçoit pas autant de mises à jour qu'en 2016 et peut manquer de fonctionnalités.</system:String>
 </ResourceDictionary>

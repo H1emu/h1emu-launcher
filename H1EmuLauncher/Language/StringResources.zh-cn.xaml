@@ -57,7 +57,7 @@
     <system:String x:Key="item55">使用游戏分支：{0}</system:String>
     <system:String x:Key="item56">处理数据包 {0} - {1}</system:String>
     <system:String x:Key="item57">预分配空间...</system:String>
-    <system:String x:Key="item58">H1Emu不支持当前游戏版本。\n\n请记住使用 2015 年 1 月 15 日或 2016 年 12 月 22 日的游戏版本。</system:String>
+    <system:String x:Key="item58">H1Emu 不支持游戏版本。\n\n请记住使用 2015 年 1 月 15 日或 2016 年 12 月 22 日的游戏版本。\n\n您可以使用启动器通过主页上的 Steam 登录下载其中任何一个版本。</system:String>
     <system:String x:Key="item59">用户名</system:String>
     <system:String x:Key="item60">这里输入Steam密码</system:String>
     <system:String x:Key="item61">查看最新版本的详细信息...</system:String>
@@ -162,4 +162,6 @@
     <system:String x:Key="item168">服务器无法启动，请重试，如果问题仍然存在，请报告。\n\n重新安装服务器文件可能会解决此问题。</system:String>
     <system:String x:Key="item169">• 启动器由@Eavilaswayce 制作 •</system:String>
     <system:String x:Key="item170">财务贡献者</system:String>
+    <system:String x:Key="item171">2016 年 12 月 22 日版本的游戏，这是最新的并由项目支持。</system:String>
+    <system:String x:Key="item172">2015 年 1 月 15 日版本的游戏，它没有收到 2016 年那么多的更新，并且可能缺少功能。</system:String>
 </ResourceDictionary>
