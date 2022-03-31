@@ -203,15 +203,24 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
+<<<<<<< HEAD
         "ProductCode" = "8:{1316BBD5-AEBC-4731-9DDB-8E562025ECD8}"
         "PackageCode" = "8:{49D544F5-81DB-45D5-82FB-A4B4275BB7D2}"
+=======
+        "ProductCode" = "8:{41BA7761-CEF0-4A06-A5D5-CDAA0B51494C}"
+        "PackageCode" = "8:{D380FC51-557C-438E-81A7-B65A4F3AD7D5}"
+>>>>>>> 37fb1ba91d53276c4f0216fcdb1bd4d5382c5db8
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
+<<<<<<< HEAD
         "ProductVersion" = "8:2.3.9"
+=======
+        "ProductVersion" = "8:2.3.8"
+>>>>>>> 37fb1ba91d53276c4f0216fcdb1bd4d5382c5db8
         "Manufacturer" = "8:H1Emu © 2022"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
@@ -473,7 +482,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_13EF97F92CFE4EE0937DC75F75D5B08E"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:Terminé"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -517,7 +526,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_3BA8CE446DC24389AADAB111E1B2089F"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:Terminé"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
@@ -548,7 +557,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_305872176CE54DCB8E973670648704E6"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:Bienvenue"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -596,7 +605,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_BC9B1AF805A34902A99AEA1F2BF16E53"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:Confirmer l'installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -618,7 +627,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_CDD76334CC2E4F65B484146E6D791685"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:Dossier d'installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -649,7 +658,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_8E6436E827C04DE88AE13D90DFC1F5AC"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:Progression"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -693,7 +702,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_3A01745E226B4B48BF4BE962735172DF"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:Confirmer l'installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -715,7 +724,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_89A9C306AF864A2DB99641DB50FDEC02"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:Bienvenue"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -763,7 +772,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_D890EAB977CF4580AE4D91C8C3E6F74F"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:Dossier d'installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -813,7 +822,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_2A810B8CBD8F42D5B8088DC3A23311BE"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:Progression"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
@@ -855,7 +864,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1E5157BB4D924619AB78964D3BBB406B"
             {
-            "SourcePath" = "8:..\\H1EmuLauncher\\obj\\Debug\\net5.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\H1EmuLauncher\\obj\\Release\\net5.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
