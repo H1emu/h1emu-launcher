@@ -7,13 +7,8 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-<<<<<<< HEAD
 	  <AssemblyVersion>2.3.9</AssemblyVersion>
 	  <FileVersion>2.3.9</FileVersion>
-=======
-	  <AssemblyVersion>2.3.8</AssemblyVersion>
-	  <FileVersion>2.3.8</FileVersion>
->>>>>>> 37fb1ba91d53276c4f0216fcdb1bd4d5382c5db8
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
 	  <Version>2.3.2</Version>
