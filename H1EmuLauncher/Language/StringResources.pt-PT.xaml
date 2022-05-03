@@ -164,4 +164,7 @@
     <system:String x:Key="item170">Contribuintes Financeiros</system:String>
     <system:String x:Key="item171">Versão do jogo de 22 de dezembro de 2016, mais atualizada e apoiada pelo projeto.</system:String>
     <system:String x:Key="item172">Versão de 15 de janeiro de 2015 do jogo, esta não recebe tantas atualizações quanto 2016 e pode não ter recursos.</system:String>
+    <system:String x:Key="item173">Reportar um erro...</system:String>
+    <system:String x:Key="item174">Aqui você pode relatar quaisquer bugs que você tenha experimentado no jogo ao usar os arquivos do servidor H1Emu:</system:String>
+    <system:String x:Key="item175">Aqui você pode relatar quaisquer bugs que você tenha experimentado ao usar o H1Emu Launcher:</system:String>
 </ResourceDictionary>

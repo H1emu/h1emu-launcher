@@ -33,7 +33,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Divider -->
+        <!-- Divider / progress bar -->
         <ProgressBar
             Grid.Row="1"
             Height="2"

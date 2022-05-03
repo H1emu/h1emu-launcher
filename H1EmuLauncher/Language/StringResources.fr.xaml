@@ -164,4 +164,7 @@
     <system:String x:Key="item170">Contributeurs Financiers</system:String>
     <system:String x:Key="item171">Version du jeu du 22 décembre 2016, plus à jour et prise en charge par le projet.</system:String>
     <system:String x:Key="item172">Version du jeu du 15 janvier 2015, elle ne reçoit pas autant de mises à jour qu'en 2016 et peut manquer de fonctionnalités.</system:String>
+    <system:String x:Key="item173">Signaler un bug...</system:String>
+    <system:String x:Key="item174">Ici, vous pouvez signaler tous les bogues que vous avez rencontrés dans le jeu lors de l'utilisation des fichiers du serveur H1Emu:</system:String>
+    <system:String x:Key="item175">Ici, vous pouvez signaler tous les bogues que vous avez rencontrés lors de l'utilisation du lanceur H1Emu:</system:String>
 </ResourceDictionary>

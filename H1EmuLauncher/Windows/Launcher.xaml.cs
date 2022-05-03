@@ -10,8 +10,6 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Text.Json.Serialization;
-using System.Windows.Automation.Peers;
-using System.Windows.Automation.Provider;
 using System.Net;
 using Newtonsoft.Json;
 using H1EmuLauncher.Classes;
@@ -692,6 +690,12 @@ namespace H1EmuLauncher
 
             prevImage.Visibility = Visibility.Hidden;
             nextImage.Visibility = Visibility.Hidden;
+        }
+
+        private void ReportBuglink(object sender, RoutedEventArgs e)
+        {
+            ReportBug reportBug = new ReportBug();
+            reportBug.ShowDialog();
         }
 
         private void AboutHyperlink(object sender, RoutedEventArgs e)

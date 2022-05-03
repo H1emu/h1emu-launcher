@@ -163,4 +163,7 @@
     <system:String x:Key="item170">Financiële Bijdragers</system:String>
     <system:String x:Key="item171">22 december 2016 versie van het spel, deze is meer up-to-date en wordt ondersteund door het project.</system:String>
     <system:String x:Key="item172">15 januari 2015 versie van de game, deze ontvangt niet zoveel updates als 2016 en het kan zijn dat er functies ontbreken.</system:String>
+    <system:String x:Key="item173">Een fout melden...</system:String>
+    <system:String x:Key="item174">Hier kun je eventuele bugs melden die je in het spel hebt ondervonden tijdens het gebruik van de H1Emu Server-bestanden:</system:String>
+    <system:String x:Key="item175">Hier kunt u eventuele bugs melden die u hebt ondervonden tijdens het gebruik van de H1Emu Launcher:</system:String>
 </ResourceDictionary>

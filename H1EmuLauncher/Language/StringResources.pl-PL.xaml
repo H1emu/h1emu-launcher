@@ -164,4 +164,7 @@
     <system:String x:Key="item170">Współtwórcy Finansowi</system:String>
     <system:String x:Key="item171">Wersja gry z 22 grudnia 2016, jest bardziej aktualna i wspierana przez projekt.</system:String>
     <system:String x:Key="item172">Wersja gry z 15 stycznia 2015, nie otrzymuje tak wielu aktualizacji jak 2016 i może brakować jej funkcji.</system:String>
+    <system:String x:Key="item173">Zgłoś błąd...</system:String>
+    <system:String x:Key="item174">Tutaj możesz zgłosić wszelkie błędy, których doświadczyłeś w grze podczas korzystania z plików serwera H1Emu:</system:String>
+    <system:String x:Key="item175">Tutaj możesz zgłosić wszelkie błędy, których doświadczyłeś podczas korzystania z Launchera H1Emu:</system:String>
 </ResourceDictionary>

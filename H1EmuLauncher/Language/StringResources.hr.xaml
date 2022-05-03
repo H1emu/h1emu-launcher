@@ -164,4 +164,7 @@
     <system:String x:Key="item170">Financijski Suradnici</system:String>
     <system:String x:Key="item171">Verzija igre od 22. prosinca 2016., ovo je ažurnije i podržano od strane projekta.</system:String>
     <system:String x:Key="item172">Verzija igre od 15. siječnja 2015., ova ne dobiva toliko ažuriranja kao 2016. i možda joj nedostaju značajke.</system:String>
+    <system:String x:Key="item173">Prijavite grešku...</system:String>
+    <system:String x:Key="item174">Ovdje možete prijaviti sve greške koje ste iskusili u igri dok koristite datoteke poslužitelja H1Emu:</system:String>
+    <system:String x:Key="item175">Ovdje možete prijaviti sve greške koje ste iskusili dok ste koristili H1Emu Launcher:</system:String>
 </ResourceDictionary>

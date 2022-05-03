@@ -163,4 +163,7 @@
     <system:String x:Key="item170">Financial Contributors</system:String>
     <system:String x:Key="item171">22nd December 2016 game version, this is more up to date and supported by the project.</system:String>
     <system:String x:Key="item172">15th January 2015 game version, this doesn't recieve as many updates as 2016 and it may lack features.</system:String>
+    <system:String x:Key="item173">Report a bug...</system:String>
+    <system:String x:Key="item174">Here you can report any bugs that you have experienced in game while using the H1Emu Server files:</system:String>
+    <system:String x:Key="item175">Here you can report any bugs that you have experienced while using the H1Emu Launcher:</system:String>
 </ResourceDictionary>

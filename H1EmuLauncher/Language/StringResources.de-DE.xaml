@@ -164,4 +164,7 @@
     <system:String x:Key="item170">Finanzielle Beitragszahler</system:String>
     <system:String x:Key="item171">Spielversion vom 22. Dezember 2016, diese ist aktueller und wird vom Projekt unterstützt.</system:String>
     <system:String x:Key="item172">Spielversion vom 15. Januar 2015, diese erhält nicht so viele Updates wie 2016 und ihr fehlen möglicherweise Funktionen.</system:String>
+    <system:String x:Key="item173">Melde einen technischen fehler...</system:String>
+    <system:String x:Key="item174">Hier können Sie alle Fehler melden, die Sie im Spiel bei der Verwendung der H1Emu-Serverdateien erlebt haben:</system:String>
+    <system:String x:Key="item175">Hier können Sie Fehler melden, die Ihnen bei der Verwendung des H1Emu Launcher aufgefallen sind:</system:String>
 </ResourceDictionary>

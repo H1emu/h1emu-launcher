@@ -239,7 +239,7 @@
                             <Grid>
                                 <ComboBox x:Name="LangBox"
                                           Height="30"
-                                          Margin="10,10,25,0"
+                                          Margin="10,10,20,0"
                                           Padding="35,2,10,0"
                                           VerticalAlignment="Bottom"
                                           VerticalContentAlignment="Center"
@@ -275,8 +275,22 @@
                                 
                             </Grid>
 
+                            <!-- Report A Bug Hyperlink -->
                             <TextBlock
-                                Margin="0,10,16,0"
+                                Margin="0,10,20,0"
+                                VerticalAlignment="Center">
+                                
+                                <Hyperlink Click="ReportBuglink"
+                                           Foreground="White">
+                                    
+                                    <TextBlock Text="{DynamicResource item173}"
+                                               Style="{DynamicResource HyperLinkStyle}"/>
+                                </Hyperlink>
+                            </TextBlock>
+                            
+                            <!-- About Project Hyperlink -->
+                            <TextBlock
+                                Margin="0,10,20,0"
                                 VerticalAlignment="Center">
                                 
                                 <Hyperlink Click="AboutHyperlink"

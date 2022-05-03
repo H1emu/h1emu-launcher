@@ -164,4 +164,7 @@
     <system:String x:Key="item170">Финансови сътрудници</system:String>
     <system:String x:Key="item171">Версия на играта от 22 декември 2016 г., това е по-актуално и се поддържа от проекта.</system:String>
     <system:String x:Key="item172">Версия на играта от 15 януари 2015 г., това не получава толкова много актуализации като 2016 г. и може да липсват функции.</system:String>
+    <system:String x:Key="item173">Подайте сигнал за грешка...</system:String>
+    <system:String x:Key="item174">Тук можете да докладвате за всички грешки, които сте изпитали в играта, докато използвате файловете на сървъра H1Emu:</system:String>
+    <system:String x:Key="item175">Тук можете да докладвате за всички грешки, които сте изпитали, докато използвате H1Emu Launcher:</system:String>
 </ResourceDictionary>

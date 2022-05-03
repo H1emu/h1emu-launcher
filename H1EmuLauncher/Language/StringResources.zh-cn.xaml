@@ -164,4 +164,7 @@
     <system:String x:Key="item170">财务贡献者</system:String>
     <system:String x:Key="item171">2016 年 12 月 22 日版本的游戏，这是最新的并由项目支持。</system:String>
     <system:String x:Key="item172">2015 年 1 月 15 日版本的游戏，它没有收到 2016 年那么多的更新，并且可能缺少功能。</system:String>
+    <system:String x:Key="item173">报告错误...</system:String>
+    <system:String x:Key="item174">在这里您可以报告您在使用 H1Emu 服务器文件时在游戏中遇到的任何错误：</system:String>
+    <system:String x:Key="item175">在这里您可以报告您在使用 H1Emu Launcher 时遇到的任何错误：</system:String>
 </ResourceDictionary>

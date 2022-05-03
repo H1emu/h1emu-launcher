@@ -145,7 +145,7 @@
                     </TextBlock.ContextMenu>
                 </TextBlock>
 
-                <!-- Plain text box that holds account key in plain text for visibility toggle -->
+                <!-- Plain text box that holds account key for visibility toggle -->
                 <TextBox x:Name="accountKeyBoxShown"
                     Width="540"
                     Height="35"

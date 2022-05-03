@@ -42,6 +42,9 @@
     <Compile Update="Windows\MsgBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\ReportBug.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\Settings.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -56,6 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Windows\Disclaimer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\ReportBug.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Resource Update="Language\StringResources.fr.xaml">

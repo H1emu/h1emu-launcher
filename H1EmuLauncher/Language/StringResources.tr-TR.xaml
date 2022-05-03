@@ -164,4 +164,7 @@
     <system:String x:Key="item170">Finansal Katkıda Bulunanlar</system:String>
     <system:String x:Key="item171">Oyunun 22 Aralık 2016 sürümü, bu daha güncel ve proje tarafından destekleniyor.</system:String>
     <system:String x:Key="item172">Oyunun 15 Ocak 2015 sürümü, bu 2016 kadar çok güncelleme almıyor ve özelliklerden yoksun olabilir.</system:String>
+    <system:String x:Key="item173">Hata bildir...</system:String>
+    <system:String x:Key="item174">H1Emu Sunucu dosyalarını kullanırken oyunda karşılaştığınız hataları buradan bildirebilirsiniz:</system:String>
+    <system:String x:Key="item175">H1Emu Başlatıcı'yı kullanırken karşılaştığınız hataları buradan bildirebilirsiniz:</system:String>
 </ResourceDictionary>

@@ -991,14 +991,14 @@ namespace H1EmuLauncher
 
         private void MainSettingsClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!directoryButton.IsEnabled || !patchButton.IsEnabled || !latestButton.IsEnabled || !stableButton.IsEnabled)
+            if (IsVisible && !directoryButton.IsEnabled)
             {
                 CustomMessageBox.Show(FindResource("item73").ToString(), this);
                 e.Cancel = true;
                 return;
             }
 
-            this.Topmost = true;
+            Topmost = true;
 
             Launcher.launcherInstance.launcherBlur.Radius = 0;
             Launcher.launcherInstance.launcherFade.Visibility = Visibility.Hidden;
