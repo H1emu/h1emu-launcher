@@ -7,8 +7,8 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.4.3</AssemblyVersion>
-	  <FileVersion>2.4.3</FileVersion>
+	  <AssemblyVersion>2.4.4</AssemblyVersion>
+	  <FileVersion>2.4.4</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
 	  <Version>2.3.10</Version>
@@ -99,8 +99,8 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="SteamKit2" Version="2.4.0-Alpha.3" />
-    <PackageReference Include="WpfAnimatedGif" Version="2.0.0" />
+    <PackageReference Include="SteamKit2" Version="2.4.1" />
+    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>

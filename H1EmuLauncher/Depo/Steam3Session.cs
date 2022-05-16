@@ -45,6 +45,7 @@ namespace H1EmuLauncher
 
         public SteamClient steamClient;
         public SteamUser steamUser;
+        public SteamContent steamContent;
 
         readonly SteamApps steamApps;
         readonly SteamCloud steamCloud;
@@ -107,6 +108,7 @@ namespace H1EmuLauncher
             this.steamCloud = this.steamClient.GetHandler<SteamCloud>();
             var steamUnifiedMessages = this.steamClient.GetHandler<SteamUnifiedMessages>();
             this.steamPublishedFile = steamUnifiedMessages.CreateService<IPublishedFile>();
+            this.steamContent = this.steamClient.GetHandler<SteamContent>();
 
             this.callbacks = new CallbackManager( this.steamClient );
 
@@ -341,6 +343,20 @@ namespace H1EmuLauncher
             }
 
             return host;
+        }
+
+        public async Task<ulong> GetDepotManifestRequestCodeAsync(uint depotId, uint appId, ulong manifestId, string branch)
+        {
+            if (bAborted)
+                return 0;
+
+            var requestCode = await steamContent.GetManifestRequestCode(depotId, appId, manifestId, branch);
+
+            Console.WriteLine("Got manifest request code for {0} {1} result: {2}",
+                depotId, manifestId,
+                requestCode);
+
+            return requestCode;
         }
 
         public void CheckAppBetaPassword( uint appid, string password )
