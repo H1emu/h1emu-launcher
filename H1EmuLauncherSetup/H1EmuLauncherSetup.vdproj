@@ -203,15 +203,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
-        "ProductCode" = "8:{7C47CDEF-51F2-41B1-848F-2219A6CEF21D}"
-        "PackageCode" = "8:{73512247-60F9-492D-95F4-D37D2242C07B}"
+        "ProductCode" = "8:{C3919749-4DBD-4732-80E6-74427AA32924}"
+        "PackageCode" = "8:{B4DF9F00-A755-4846-8128-A107B7BEED5D}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.4.6"
+        "ProductVersion" = "8:2.4.7"
         "Manufacturer" = "8:H1Emu © 2022"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
@@ -855,7 +855,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1E5157BB4D924619AB78964D3BBB406B"
             {
-            "SourcePath" = "8:..\\H1EmuLauncher\\obj\\Release\\net5.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\H1EmuLauncher\\obj\\Debug\\net5.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
