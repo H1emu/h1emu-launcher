@@ -151,7 +151,7 @@
     <Window.Triggers>
         <EventTrigger
             RoutedEvent="ButtonBase.Click"
-            SourceName="prevImage">
+            SourceName="triggerPrevImageStoryboard">
             
             <BeginStoryboard Storyboard="{StaticResource PrevImageAnimationFollow}"/>
             <BeginStoryboard Storyboard="{StaticResource PrevImageAnimation}"/>
@@ -159,7 +159,7 @@
         
         <EventTrigger
             RoutedEvent="ButtonBase.Click"
-            SourceName="nextImage">
+            SourceName="triggerNextImageStoryboard">
             
             <BeginStoryboard Storyboard="{StaticResource NextImageAnimationFollow}"/>
             <BeginStoryboard Storyboard="{StaticResource NextImageAnimation}"/>
@@ -497,7 +497,14 @@
                                     Foreground="White"
                                     Visibility="Hidden"
                                     Style="{DynamicResource CarouselButtonNext}"/>
-                            
+
+                            <!-- Trigger next image storyboard -->
+                            <Button x:Name="triggerNextImageStoryboard"
+                                    Click="StoryboardNextImageClick"
+                                    Width="30"
+                                    HorizontalAlignment="Right"
+                                    Visibility="Hidden"/>
+
                             <!-- Previous image button -->
                             <Button x:Name="prevImage"
                                     Click="PrevImageClick"
@@ -507,6 +514,13 @@
                                     Foreground="White"
                                     Visibility="Hidden"
                                     Style="{DynamicResource CarouselButtonPrevious}"/>
+
+                            <!-- Trigger previous image storyboard -->
+                            <Button x:Name="triggerPrevImageStoryboard"
+                                    Click="StoryboardPrevImageClick"
+                                    Width="30"
+                                    HorizontalAlignment="Right"
+                                    Visibility="Hidden"/>
 
                             <!-- Image carousel progress bar -->
                             <ProgressBar x:Name="carouselProgressBar"

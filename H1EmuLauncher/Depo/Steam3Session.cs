@@ -711,7 +711,8 @@ namespace H1EmuLauncher
             {
                 if ( license.AccessToken > 0 )
                 {
-                    PackageTokens.Add( license.PackageID, license.AccessToken );
+                    // This is where the "An item with the same key has already been added: ----" error comes from.
+                    PackageTokens.TryAdd(license.PackageID, license.AccessToken);
                 }
             }
         }

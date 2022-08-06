@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using H1EmuLauncher.Classes;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Windows.Controls.Primitives;
 
 namespace H1EmuLauncher
 {
@@ -656,6 +657,7 @@ namespace H1EmuLauncher
             if (!doContinue)
                 return;
 
+            triggerPrevImageStoryboard.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             Carousel.PreviousImage();
 
             doContinue = false;
@@ -668,10 +670,14 @@ namespace H1EmuLauncher
             if (!doContinue)
                 return;
 
+            triggerNextImageStoryboard.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             Carousel.NextImage();
 
             doContinue = false;
         }
+
+        private void StoryboardNextImageClick(object sender, RoutedEventArgs e) { }
+        private void StoryboardPrevImageClick(object sender, RoutedEventArgs e) { }
 
         private void CarouselMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
