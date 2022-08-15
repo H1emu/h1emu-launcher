@@ -192,7 +192,7 @@
                 Background="#FF2A2A32">
                 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 
@@ -349,12 +349,11 @@
                             VerticalAlignment="Bottom">
                             
                             <!-- Join the community at message -->
-                            <TextBlock
-                                Foreground="White"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Right"
-                                Margin="0,0,25,10"
-                                TextWrapping="Wrap">
+                            <TextBlock Foreground="White"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Right"
+                                       Margin="0,0,25,10"
+                                       TextWrapping="Wrap">
                                 
                                 <TextBlock Text="{DynamicResource item12}"/>
 
@@ -621,21 +620,54 @@
                                      BorderThickness="0"
                                      IsReadOnly="True"
                                      Cursor="Arrow">
-                            
+
                             <FlowDocument>
                                 <Paragraph>
                                     <Run
                                         Foreground="#FFCA1420"
                                         Text="{DynamicResource item10}"/>
-                                    
+
                                     <Run Text="{DynamicResource item11}"/>
-                                    
+
                                 </Paragraph>
                                 <Paragraph Padding="0,10,0,0">
                                     <Run Text="{DynamicResource item50}"/>
                                 </Paragraph>
                             </FlowDocument>
                         </RichTextBox>
+
+                        <!-- H1Emu Chinese Community link -->
+                        <TextBlock Margin="6,46,0,0"
+                                   x:Name="chineseLink"
+                                   Visibility="Collapsed"
+                                   FontFamily="Bahnschrift"
+                                   Text="点击进入 "
+                                   Foreground="White"
+                                   FontWeight="Bold">
+                            
+                            <Hyperlink NavigateUri="https://azaz.ge/"
+                                       RequestNavigate="H1EmuChineseLink"
+                                       Foreground="White">
+                            
+                                <TextBlock Text="H1Emu中文社区"
+                                           Style="{DynamicResource HyperLinkStyle}"
+                                           FontWeight="Bold"/>
+                            </Hyperlink>
+                            
+                            <TextBlock Text="，了解更多中文信息。"
+                                       FontWeight="Bold"/>
+
+                        <!-- Context menu to copy link -->
+                            <TextBlock.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem
+                                        Header="Copy"
+                                        Click="chineseLinkCopy"
+                                        Style="{DynamicResource PopupMenuItem}"/>
+                                
+                                </ContextMenu>
+                            </TextBlock.ContextMenu>  
+                        </TextBlock>
                     </StackPanel>
 
                     <!-- Grid that hosts Steam frame, server selector and play button -->

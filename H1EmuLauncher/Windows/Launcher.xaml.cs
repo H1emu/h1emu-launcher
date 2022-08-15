@@ -481,6 +481,11 @@ namespace H1EmuLauncher
             LoadServers();
             Carousel.BeginImageCarousel();
             LangBox.SelectedIndex = Properties.Settings.Default.language;
+
+            if (LangBox.SelectedIndex == 1)
+                chineseLink.Visibility = Visibility.Visible;
+            else
+                chineseLink.Visibility = Visibility.Collapsed;
         }
 
         public void VersionInformation()
@@ -589,6 +594,11 @@ namespace H1EmuLauncher
         {
             int selectedLanguage = LangBox.SelectedIndex;
 
+            if (selectedLanguage == 1)
+                chineseLink.Visibility = Visibility.Visible;
+            else
+                chineseLink.Visibility = Visibility.Collapsed;
+
             switch (selectedLanguage)
             {
                 // Update and save settings
@@ -679,7 +689,7 @@ namespace H1EmuLauncher
         private void StoryboardNextImageClick(object sender, RoutedEventArgs e) { }
         private void StoryboardPrevImageClick(object sender, RoutedEventArgs e) { }
 
-        private void CarouselMouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        private void CarouselMouseEnter(object sender, MouseEventArgs e)
         {
             Carousel.pauseCarousel.Reset();
 
@@ -687,7 +697,7 @@ namespace H1EmuLauncher
             nextImage.Visibility = Visibility.Visible;
         }
 
-        private void CarouselMouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+        private void CarouselMouseLeave(object sender, MouseEventArgs e)
         {
             if (doContinue) 
             {
@@ -734,6 +744,15 @@ namespace H1EmuLauncher
             });
         }
 
+        private void H1EmuChineseLink(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = e.Uri.AbsoluteUri.ToString(),
+                UseShellExecute = true
+            });
+        }
+
         private void OpenDiscord(object sender, RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo
@@ -754,17 +773,22 @@ namespace H1EmuLauncher
 
         private void patchNotesCopy(object sender, RoutedEventArgs e)
         {
-            System.Windows.Clipboard.SetText(Info.CHANGELOG);
+            Clipboard.SetText(Info.CHANGELOG);
         }
 
         private void websiteLinkCopy(object sender, RoutedEventArgs e)
         {
-            System.Windows.Clipboard.SetText(Info.WEBSITE);
+            Clipboard.SetText(Info.WEBSITE);
         }
 
         private void discordLinkCopy(object sender, RoutedEventArgs e)
         {
-            System.Windows.Clipboard.SetText(Info.DISCORD_LINK);
+            Clipboard.SetText(Info.DISCORD_LINK);
+        }
+
+        private void chineseLinkCopy(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(Info.CHANGELOG);
         }
 
         private void CloseLauncher(object sender, RoutedEventArgs e)

@@ -39,5 +39,7 @@ namespace H1EmuLauncher.Classes
         public static string GITHUB_SERVER_BUG_LINK = "https://github.com/QuentinGruber/h1z1-server/issues/new?assignees=&labels=bug&template=bug_report.md&title=";
 
         public static string GITHUB_LAUNCHER_BUG_LINK = "https://github.com/H1emu/h1emu-launcher/issues/new";
+
+        public static string H1EMU_CHINESE_LINK = "https://azaz.ge/";
     }
 }
