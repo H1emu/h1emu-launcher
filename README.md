@@ -14,5 +14,5 @@
 
 1. Simply download the launcher and run it.
 1. Set the directory of your game in the settings.
-1. From here you can download the patch for the game, the stable, or latest server.
-1. Once directory is set and patch is installed, you can either play on a local server or H1Emu test server (2015 client only for test server).
+1. From here you can install the patch for the game, the stable, or latest server.
+1. Once directory is set, you can either play on a local server or H1Emu test server.
