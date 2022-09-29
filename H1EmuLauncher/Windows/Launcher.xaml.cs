@@ -376,39 +376,16 @@ namespace H1EmuLauncher
                             }
                         }
 
-                        CheckPatchVersion.CheckPatch();
-
-                        ma.WaitOne();
-                        ma.Reset();
-
-                        bool result = true;
-
-                        if (!File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
-                            !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
-                            !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
-                        {
-                            Dispatcher.Invoke(new Action(delegate
-                            {
-                                MessageBoxResult dialogResult = CustomMessageBox.ShowResult(FindResource("item16").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
-                                if (dialogResult == MessageBoxResult.Yes)
-                                {
-                                    result = true;
-                                }
-                                else
-                                {
-                                    result = false;
-                                }
-                            }));
-                        }
-
-                        if (!result)
-                            return;
-
                         if (serverIp == "localhost:1115")
                         {
                             if (!LaunchLocalServer(gameVersion))
                                 return;
                         }
+
+                        CheckPatchVersion.CheckPatch();
+
+                        ma.WaitOne();
+                        ma.Reset();
 
                         Process process = new Process()
                         {

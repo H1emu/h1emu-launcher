@@ -18,6 +18,7 @@ namespace H1EmuLauncher
         public static Settings settingsInstance;
         public static string gameVersion { get; set; }
         public static bool launchAccountKeyWindow;
+        public static bool latest;
 
         public Settings()
         {
@@ -341,6 +342,8 @@ namespace H1EmuLauncher
             if (dr != MessageBoxResult.Yes)
                 return;
 
+            latest = true;
+
             new Thread(() =>
             {
                 var watch = Stopwatch.StartNew();
@@ -423,6 +426,8 @@ namespace H1EmuLauncher
 
         public void DownloadServerStable(object sender, RoutedEventArgs e)
         {
+            latest = false;
+
             new Thread(() =>
             {
                 var watch = Stopwatch.StartNew();
@@ -675,7 +680,15 @@ namespace H1EmuLauncher
                     }));
                 }
 
-                Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles", true);
+                try
+                {
+                    Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles", true);
+                }
+                catch
+                {
+                    CustomMessageBox.Show(FindResource("item168").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                    return;
+                }
 
                 Dispatcher.Invoke(new Action(delegate
                 {

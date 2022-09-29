@@ -4,6 +4,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.IO.Compression;
 using System.Net;
+using System.Windows;
 
 namespace H1EmuLauncher.Classes
 {
@@ -39,78 +40,67 @@ namespace H1EmuLauncher.Classes
         {
             mainMa.Reset();
 
-            try
+            DownloadLatestVersionNumber();
+            mainMa.WaitOne();
+
+            gameVersion = Settings.gameVersion;
+
+            if (gameVersion == "15jan2015")
             {
-                DownloadLatestVersionNumber();
-                mainMa.WaitOne();
-
-                gameVersion = Settings.gameVersion;
-
-                if (gameVersion == "15jan2015")
+                if (Properties.Settings.Default.currentPatchVersion2015 != latestPatchVersion2015 || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
+                    !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
+                    !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
                 {
-                    if (Properties.Settings.Default.currentPatchVersion2015 != latestPatchVersion2015 || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
+                    Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        try
-                        {
-                            System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
-                            {
-                                Launcher.launcherInstance.playButton.IsEnabled = false;
-                                Launcher.launcherInstance.playButton.Content = System.Windows.Application.Current.FindResource("item150").ToString();
-                            }));
-
-                            ApplyPatch2015();
-                        }
-                        catch { }
-                    }
-                }
-                else if (gameVersion == "22dec2016")
-                {
-                    if (Properties.Settings.Default.currentPatchVersion2016 != latestPatchVersion2016 || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
-                    {
-                        try
-                        {
-                            System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
-                            {
-                                Launcher.launcherInstance.playButton.IsEnabled = false;
-                                Launcher.launcherInstance.playButton.Content = System.Windows.Application.Current.FindResource("item150").ToString();
-                            }));
-
-                            ApplyPatch2016();
-                        }
-                        catch { }
-                    }
-                }
-                else if (gameVersion == "processBeingUsed")
-                {
-                    System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
-                    {
-                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
+                        Launcher.launcherInstance.playButton.IsEnabled = false;
+                        Launcher.launcherInstance.playButton.Content = Application.Current.FindResource("item150").ToString();
                     }));
 
-                    return;
-                }
-                else
-                {
-                    System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
-                    {
-                        CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
-                    }));
-
-                    return;
+                    ApplyPatch2015();
                 }
             }
-            catch { }
+            else if (gameVersion == "22dec2016")
+            {
+                if (Properties.Settings.Default.currentPatchVersion2016 != latestPatchVersion2016 || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
+                    !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
+                    !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll") ||
+                    !File.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack"))
+                {
+                    Application.Current.Dispatcher.Invoke(new Action(delegate
+                    {
+                        Launcher.launcherInstance.playButton.IsEnabled = false;
+                        Launcher.launcherInstance.playButton.Content = Application.Current.FindResource("item150").ToString();
+                    }));
+
+                    ApplyPatch2016();
+                }
+            }
+            else if (gameVersion == "processBeingUsed")
+            {
+                Application.Current.Dispatcher.Invoke(new Action(delegate
+                {
+                    CustomMessageBox.Show(Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
+                }));
+
+                return;
+            }
+            else
+            {
+                Application.Current.Dispatcher.Invoke(new Action(delegate
+                {
+                    CustomMessageBox.Show(Application.Current.FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
+                }));
+
+                return;
+            }
 
             Launcher.ma.Set();
 
-            System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
+            Application.Current.Dispatcher.Invoke(new Action(delegate
             {
                 Launcher.launcherInstance.playButton.IsEnabled = true;
-                Launcher.launcherInstance.playButton.Content = System.Windows.Application.Current.FindResource("item8").ToString();
+                Launcher.launcherInstance.playButton.Content = Application.Current.FindResource("item8").ToString();
             }));
         }
 
@@ -212,11 +202,18 @@ namespace H1EmuLauncher.Classes
 
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
 
-            // Delete the BattlEye folder to prevent Steam from launching
+            // Delete the BattlEye folder to prevent Steam from launching.
 
             if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
             {
                 Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\BattlEye", true);
+            }
+
+            // Extract Asset_256.pack to fix blueberries.
+
+            if (!File.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack"))
+            {
+                File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
             }
 
             // Finish.
