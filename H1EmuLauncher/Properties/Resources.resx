@@ -271,4 +271,19 @@
   <data name="Assets_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Assets_256.pack;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Game-Patch-2015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Game-Patch-2015.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Game-Patch-2016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Game-Patch-2016.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Node-16.14.2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Node-16.14.2.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Server-Quickstart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Server-Quickstart.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CustomClientConfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CustomClientConfig.ini;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

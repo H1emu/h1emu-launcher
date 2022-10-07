@@ -12,7 +12,7 @@ namespace H1EmuLauncher.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -96,24 +96,12 @@ namespace H1EmuLauncher.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string currentPatchVersion2015 {
+        public string currentPatchVersion {
             get {
-                return ((string)(this["currentPatchVersion2015"]));
+                return ((string)(this["currentPatchVersion"]));
             }
             set {
-                this["currentPatchVersion2015"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string currentPatchVersion2016 {
-            get {
-                return ((string)(this["currentPatchVersion2016"]));
-            }
-            set {
-                this["currentPatchVersion2016"] = value;
+                this["currentPatchVersion"] = value;
             }
         }
         

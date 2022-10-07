@@ -34,6 +34,7 @@
     <None Remove="Resources\Arrow_Hover.png" />
     <None Remove="Resources\Arrow_Pressed.png" />
     <None Remove="Resources\Assets_256.pack" />
+    <None Remove="Resources\CustomClientConfig.ini" />
     <None Remove="Resources\Discord.png" />
     <None Remove="Resources\Discord_Pressed.png" />
     <None Remove="Resources\DisplayImage.png" />
@@ -43,6 +44,8 @@
     <None Remove="Resources\Folder.png" />
     <None Remove="Resources\Folder_Hover.png" />
     <None Remove="Resources\Folder_Pressed.png" />
+    <None Remove="Resources\Game-Patch-2015.zip" />
+    <None Remove="Resources\Game-Patch-2016.zip" />
     <None Remove="Resources\H1EmuIcon.png" />
     <None Remove="Resources\H1EmuLogo.png" />
     <None Remove="Resources\Icon.ico" />
@@ -53,10 +56,12 @@
     <None Remove="Resources\Minimise_Pressed.png" />
     <None Remove="Resources\NextButton.png" />
     <None Remove="Resources\NextButton_Hover.png" />
+    <None Remove="Resources\Node-16.14.2.zip" />
     <None Remove="Resources\OfflineImage.png" />
     <None Remove="Resources\Padlock.png" />
     <None Remove="Resources\PrevButton.png" />
     <None Remove="Resources\PrevButton_Hover.png" />
+    <None Remove="Resources\Server-Quickstart.zip" />
     <None Remove="Resources\Server.png" />
     <None Remove="Resources\Server_Hover.png" />
     <None Remove="Resources\Server_Pressed.png" />
@@ -165,6 +170,9 @@
     <Resource Include="Resources\Assets_256.pack">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\CustomClientConfig.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Discord.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -187,6 +195,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Folder_Pressed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Game-Patch-2015.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Game-Patch-2016.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\H1EmuIcon.png">
@@ -219,6 +233,9 @@
     <Resource Include="Resources\NextButton_Hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Node-16.14.2.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\OfflineImage.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -229,6 +246,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\PrevButton_Hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Server-Quickstart.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Server.png">

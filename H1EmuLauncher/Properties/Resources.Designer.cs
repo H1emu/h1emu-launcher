@@ -111,6 +111,16 @@ namespace H1EmuLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] CustomClientConfig {
+            get {
+                object obj = ResourceManager.GetObject("CustomClientConfig", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Discord {
@@ -187,6 +197,26 @@ namespace H1EmuLauncher.Properties {
             get {
                 object obj = ResourceManager.GetObject("Folder_Pressed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Game_Patch_2015 {
+            get {
+                object obj = ResourceManager.GetObject("Game-Patch-2015", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Game_Patch_2016 {
+            get {
+                object obj = ResourceManager.GetObject("Game-Patch-2016", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -291,6 +321,16 @@ namespace H1EmuLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Node_16_14_2 {
+            get {
+                object obj = ResourceManager.GetObject("Node-16.14.2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap OfflineImage {
@@ -357,6 +397,16 @@ namespace H1EmuLauncher.Properties {
             get {
                 object obj = ResourceManager.GetObject("Server_Pressed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Server_Quickstart {
+            get {
+                object obj = ResourceManager.GetObject("Server-Quickstart", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

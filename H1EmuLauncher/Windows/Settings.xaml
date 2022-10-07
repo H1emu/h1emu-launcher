@@ -231,7 +231,7 @@
                     <!-- Install latest server button -->
                     <Button x:Name="latestButton"
                             Grid.Row="1"
-                            Click="DownloadServerLatest"
+                            Click="InstallServer"
                             Width="220"
                             Height="40"
                             Margin="20,15,0,0"
@@ -262,7 +262,7 @@
                     <!-- Install stable server button -->
                     <Button x:Name="stableButton"
                             Grid.Row="2"
-                            Click="DownloadServerStable"
+                            Click="InstallServer"
                             Width="220"
                             Height="40"
                             Margin="20,10,0,0"

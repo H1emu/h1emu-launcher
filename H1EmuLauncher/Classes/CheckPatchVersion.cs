@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 using System.IO.Compression;
 using System.Net;
 using System.Windows;
+using System.Diagnostics;
+using System.Windows.Threading;
+using System.Reflection;
 
 namespace H1EmuLauncher.Classes
 {
@@ -13,24 +16,11 @@ namespace H1EmuLauncher.Classes
         public static ManualResetEvent mainMa = new ManualResetEvent(false);
 
         public static string gameVersion;
-        public static string latestPatchVersion2015;
-        public static string latestPatchVersion2016;
+        public static string latestPatchVersion;
 
         public static void DownloadLatestVersionNumber()
         {
-            WebClient wc = new WebClient();
-            wc.Headers.Add("User-Agent", "d-fens HttpClient");
-            string jsonPatch2015 = wc.DownloadString("https://api.github.com/repos/H1emu/h1emu-patch/releases/latest");
-            var jsonDesPatch2015 = JsonConvert.DeserializeObject<dynamic>(jsonPatch2015);
-            string versionNumber = jsonDesPatch2015.tag_name;
-            string versionNumberSub = versionNumber.Substring(1);
-            latestPatchVersion2015 = versionNumberSub;
-
-            WebClient wc2 = new WebClient();
-            wc2.Headers.Add("User-Agent", "d-fens HttpClient");
-            string jsonPatch2016 = wc2.DownloadString("https://api.github.com/repos/H1emu/h1emu-patch-2016/releases/latest");
-            var jsonDesPatch2016 = JsonConvert.DeserializeObject<dynamic>(jsonPatch2016);
-            latestPatchVersion2016 = jsonDesPatch2016.tag_name;
+            latestPatchVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
 
             Settings.installPatchResetEvent.Set();
             mainMa.Set();
@@ -45,54 +35,35 @@ namespace H1EmuLauncher.Classes
 
             gameVersion = Settings.gameVersion;
 
-            if (gameVersion == "15jan2015")
+            switch (gameVersion)
             {
-                if (Properties.Settings.Default.currentPatchVersion2015 != latestPatchVersion2015 || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
+                case "15jan2015":
+                case "22dec2016":
+                    if (Properties.Settings.Default.currentPatchVersion != latestPatchVersion || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
                     !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
                     !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
-                {
+                    {
+                        Application.Current.Dispatcher.Invoke(new Action(delegate
+                        {
+                            Launcher.launcherInstance.playButton.IsEnabled = false;
+                            Launcher.launcherInstance.playButton.Content = Application.Current.FindResource("item150").ToString();
+                        }));
+
+                        ApplyPatch();
+                    }
+                    break;
+                case "processBeingUsed":
                     Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        Launcher.launcherInstance.playButton.IsEnabled = false;
-                        Launcher.launcherInstance.playButton.Content = Application.Current.FindResource("item150").ToString();
+                        CustomMessageBox.Show(Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
                     }));
-
-                    ApplyPatch2015();
-                }
-            }
-            else if (gameVersion == "22dec2016")
-            {
-                if (Properties.Settings.Default.currentPatchVersion2016 != latestPatchVersion2016 || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
-                    !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
-                    !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll") ||
-                    !File.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack"))
-                {
+                    break;
+                default:
                     Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        Launcher.launcherInstance.playButton.IsEnabled = false;
-                        Launcher.launcherInstance.playButton.Content = Application.Current.FindResource("item150").ToString();
+                        CustomMessageBox.Show(Application.Current.FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
                     }));
-
-                    ApplyPatch2016();
-                }
-            }
-            else if (gameVersion == "processBeingUsed")
-            {
-                Application.Current.Dispatcher.Invoke(new Action(delegate
-                {
-                    CustomMessageBox.Show(Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
-                }));
-
-                return;
-            }
-            else
-            {
-                Application.Current.Dispatcher.Invoke(new Action(delegate
-                {
-                    CustomMessageBox.Show(Application.Current.FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
-                }));
-
-                return;
+                    break;
             }
 
             Launcher.ma.Set();
@@ -104,10 +75,9 @@ namespace H1EmuLauncher.Classes
             }));
         }
 
-        public static void ApplyPatch2015()
+        public static void ApplyPatch()
         {
             // Deletes old patch files if any of them are already in the directory, including the .zip in the case of corruption.
-
             if (File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
                 File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
                 File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
@@ -118,107 +88,41 @@ namespace H1EmuLauncher.Classes
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\AssetPatch2015.zip");
             }
-
-            // Actually downloading the patch .zip.
-
-            string patch2015 = "https://github.com/H1emu/h1emu-patch/releases/latest/download/H1emu_patch.zip?" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-
-            ManualResetEvent ma = new ManualResetEvent(false);
-
-            WebClient wc = new WebClient();
-            wc.Headers.Add("User-Agent", "d-fens HttpClient");
-            wc.DownloadFileCompleted += (s, e) =>
-            {
-                ma.Set();
-            };
-
-            var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
-            wc.DownloadFileAsync(new Uri(patch2015), $"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
-
-            ma.WaitOne();
 
             // Unzip all of the files to directory.
-
             try
             {
-                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip", $"{Properties.Settings.Default.activeDirectory}");
+                if (gameVersion == "15jan2015")
+                {
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip", Properties.Resources.Game_Patch_2015);
+                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip", $"{Properties.Settings.Default.activeDirectory}");
+                }
+                else
+                {
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip", Properties.Resources.Game_Patch_2016);
+                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip", $"{Properties.Settings.Default.activeDirectory}");
+                }
             }
             catch { }
 
-            // Delete the downloaded .zip file from GitHub, not needed anymore.
-
-            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
-
-            // Finish
-
-            Properties.Settings.Default.currentPatchVersion2015 = latestPatchVersion2015;
-            Properties.Settings.Default.Save();
-        }
-
-        public static void ApplyPatch2016()
-        {
-            // Deletes old patch files if any of them are already in the directory, including the .zip in the case of corruption.
-
-            if (File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
-                File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
-                File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
-            {
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll");
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll");
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll");
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll");
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll");
+            // Delete the .zip file, not needed anymore.
+            if (gameVersion == "15jan2015")
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
+            else
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
-            }
-
-            // Actually downloading the patch .zip.
-
-            string patch2016 = "https://github.com/H1emu/h1emu-patch-2016/releases/latest/download/H1emu_patch.zip?" + new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds();
-
-            ManualResetEvent ma = new ManualResetEvent(false);
-
-            WebClient wc = new WebClient();
-            wc.Headers.Add("User-Agent", "d-fens HttpClient");
-            wc.DownloadFileCompleted += (s, e) =>
-            {
-                ma.Set();
-            };
-
-            var connectionTest = wc.DownloadString("https://api.github.com/repos/QuentinGruber/h1z1-server/releases/latest");
-            wc.DownloadFileAsync(new Uri(patch2016), $"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
-
-            ma.WaitOne();
-
-            // Unzip the patch files to directory.
-
-            try
-            {
-                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip", $"{Properties.Settings.Default.activeDirectory}");
-            }
-            catch { }
-
-            // Delete the downloaded .zip file, not needed anymore.
-
-            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
-
-            // Delete the BattlEye folder to prevent Steam from launching.
-
-            if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
-            {
-                Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\BattlEye", true);
-            }
 
             // Extract Asset_256.pack to fix blueberries.
-
-            if (!File.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack"))
-            {
+            if (gameVersion == "22dec2016")
                 File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
-            }
+
+            // Replace users ClientConfig.ini with modified version
+            File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\ClientConfig.ini", Properties.Resources.CustomClientConfig);
 
             // Finish.
-
-            Properties.Settings.Default.currentPatchVersion2016 = latestPatchVersion2016;
+            Properties.Settings.Default.currentPatchVersion = latestPatchVersion;
             Properties.Settings.Default.Save();
         }
     }
