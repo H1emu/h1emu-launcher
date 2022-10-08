@@ -13,35 +13,20 @@ namespace H1EmuLauncher.Classes
 {
     class CheckPatchVersion
     {
-        public static ManualResetEvent mainMa = new ManualResetEvent(false);
-
         public static string gameVersion;
-        public static string latestPatchVersion;
-
-        public static void DownloadLatestVersionNumber()
-        {
-            latestPatchVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
-
-            Settings.installPatchResetEvent.Set();
-            mainMa.Set();
-        }
+        public static string latestPatchVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
 
         public static void CheckPatch()
         {
-            mainMa.Reset();
-
-            DownloadLatestVersionNumber();
-            mainMa.WaitOne();
-
             gameVersion = Settings.gameVersion;
 
             switch (gameVersion)
             {
                 case "15jan2015":
                 case "22dec2016":
-                    if (Properties.Settings.Default.currentPatchVersion != latestPatchVersion || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
-                    !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
-                    !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
+                    if (gameVersion == "15jan2015" && Properties.Settings.Default.currentPatchVersion2015 != latestPatchVersion || gameVersion == "22dec2016" && Properties.Settings.Default.currentPatchVersion2016 != latestPatchVersion ||
+                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
+                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
                     {
                         Application.Current.Dispatcher.Invoke(new Action(delegate
                         {
@@ -122,7 +107,11 @@ namespace H1EmuLauncher.Classes
             File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\ClientConfig.ini", Properties.Resources.CustomClientConfig);
 
             // Finish.
-            Properties.Settings.Default.currentPatchVersion = latestPatchVersion;
+            if (gameVersion == "15jan2015")
+                Properties.Settings.Default.currentPatchVersion2015 = latestPatchVersion;
+            else
+                Properties.Settings.Default.currentPatchVersion2016 = latestPatchVersion;
+
             Properties.Settings.Default.Save();
         }
     }

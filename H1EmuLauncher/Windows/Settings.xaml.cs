@@ -16,7 +16,6 @@ namespace H1EmuLauncher
     public partial class Settings : Window
     {
         ProcessStartInfo cmdShell = new ProcessStartInfo();
-        public static ManualResetEvent installPatchResetEvent = new ManualResetEvent(false);
         public static Settings settingsInstance;
         public static string gameVersion { get; set; }
         public static bool launchAccountKeyWindow;
@@ -44,8 +43,6 @@ namespace H1EmuLauncher
         {
             new Thread(() => 
             {
-                installPatchResetEvent.Reset();
-
                 if (!CheckDirectory())
                     return;
 
@@ -57,8 +54,6 @@ namespace H1EmuLauncher
                     case "22dec2016":
                         try
                         {
-                            CheckPatchVersion.DownloadLatestVersionNumber();
-                            installPatchResetEvent.WaitOne();
                             ApplyPatch();
                         }
                         catch (Exception er)
@@ -169,7 +164,11 @@ namespace H1EmuLauncher
             watch.Stop();
             TimeSpan elapsedMs = watch.Elapsed;
 
-            Properties.Settings.Default.currentPatchVersion = CheckPatchVersion.latestPatchVersion;
+            if (gameVersion == "15jan2015")
+                Properties.Settings.Default.currentPatchVersion2015 = CheckPatchVersion.latestPatchVersion;
+            else
+                Properties.Settings.Default.currentPatchVersion2016 = CheckPatchVersion.latestPatchVersion;
+
             Properties.Settings.Default.Save();
 
             EnableButtons();
@@ -609,38 +608,41 @@ namespace H1EmuLauncher
                 CheckGameVersion();
                 EnableButtons();
 
-                if (gameVersion == "15jan2015")
+                switch (gameVersion)
                 {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        CustomMessageBox.Show(FindResource("item71").ToString(), this);
-                    }));
-                }
-                else if (gameVersion == "22dec2016")
-                {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        CustomMessageBox.Show(FindResource("item74").ToString(), this);
-                    }));
-                }
-                else if (gameVersion == "processBeingUsed")
-                {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
-                    }));
+                    case "15jan2015":
 
-                    return;
-                }
-                else
-                {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        currentGame.Text = FindResource("item72").ToString();
-                        CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
-                    }));
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            CustomMessageBox.Show(FindResource("item71").ToString(), this);
+                        }));
 
-                    return;
+                        break;
+                    case "22dec2016":
+
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            CustomMessageBox.Show(FindResource("item74").ToString(), this);
+                        }));
+
+                        break;
+                    case "processBeingUsed":
+
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                        }));
+
+                        break;
+                    default:
+
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            currentGame.Text = FindResource("item72").ToString();
+                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                        }));
+
+                        break;
                 }
 
             }).Start();
