@@ -2,14 +2,12 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
-using System.Net;
 using System.IO.Compression;
 using System.Diagnostics;
 using System.Threading;
 using System.Reflection;
 using H1EmuLauncher.Classes;
 using System.Windows.Controls;
-using SteamKit2.GC.Dota.Internal;
 
 namespace H1EmuLauncher
 {
@@ -175,14 +173,13 @@ namespace H1EmuLauncher
 
             Dispatcher.Invoke(new Action(delegate
             {
-                settingsProgressText.Text = FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
                 Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 settingsProgress.IsIndeterminate = false;
 
                 if (gameVersion == "15jan2015")
-                    CustomMessageBox.Show(FindResource("item102").ToString(), this);
+                    CustomMessageBox.Show(FindResource("item102").ToString() + Environment.NewLine + Environment.NewLine + FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
                 else
-                    CustomMessageBox.Show(FindResource("item104").ToString(), this);
+                    CustomMessageBox.Show(FindResource("item104").ToString() + Environment.NewLine + Environment.NewLine + FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
             }));
         }
 
@@ -200,6 +197,8 @@ namespace H1EmuLauncher
                 if (dr != MessageBoxResult.Yes)
                     return;
             }
+
+            DisableButtons();
 
             new Thread(() =>
             {
@@ -282,15 +281,14 @@ namespace H1EmuLauncher
 
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    settingsProgressText.Text = FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})";
                     Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     settingsProgress.IsIndeterminate = false;
                     settingsProgress.Value = 0;
 
                     if (button.Name == "latestButton")
-                        CustomMessageBox.Show(FindResource("item108").ToString(), this);
+                        CustomMessageBox.Show(FindResource("item108").ToString() + Environment.NewLine + Environment.NewLine + FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
                     else
-                        CustomMessageBox.Show(FindResource("item112").ToString(), this);
+                        CustomMessageBox.Show(FindResource("item112").ToString() + Environment.NewLine + Environment.NewLine + FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
                 }));
 
             }).Start();
@@ -302,8 +300,6 @@ namespace H1EmuLauncher
 
         public bool ExtractMaster()
         {
-            DisableButtons();
-
             // Delete old server files if they exist.
             DeleteOldFiles();
 
@@ -433,6 +429,15 @@ namespace H1EmuLauncher
         {
             gameVersion = "";
 
+            Dispatcher.Invoke(new Action(delegate
+            {
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                directoryButton.IsEnabled = false;
+                patchButton.IsEnabled = false;
+                latestButton.IsEnabled = false;
+                stableButton.IsEnabled = false;
+            }));
+
             if (!File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
             {
                 Dispatcher.Invoke(new Action(delegate
@@ -442,65 +447,61 @@ namespace H1EmuLauncher
 
                 return;
             }
-            else
+
+            Dispatcher.Invoke(new Action(delegate
+            {
+                currentGame.Text = FindResource("item70").ToString();
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+            }));
+
+            Crc32 crc32 = new Crc32();
+            String hash = String.Empty;
+
+            try
+            {
+                using (FileStream fs = File.Open($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe", FileMode.Open))
+                    foreach (byte b in crc32.ComputeHash(fs)) hash += b.ToString("x2").ToLower();
+            }
+            catch (IOException)
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    currentGame.Text = FindResource("item70").ToString();
-                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                    currentGame.Text = FindResource("item120").ToString();
                 }));
 
-                DisableButtons();
+                EnableButtons();
 
-                Crc32 crc32 = new Crc32();
-                String hash = String.Empty;
+                gameVersion = "processBeingUsed";
+                return;
+            }
 
-                try
-                {
-                    using (FileStream fs = File.Open($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe", FileMode.Open))
-                        foreach (byte b in crc32.ComputeHash(fs)) hash += b.ToString("x2").ToLower();
-                }
-                catch (IOException)
-                {
+            switch (hash)
+            {
+                case "53a3d98f": // 15th January 2015
+                    gameVersion = "15jan2015";
+
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        currentGame.Text = FindResource("item120").ToString();
+                        currentGame.Text = $"{FindResource("item122").ToString()} 2015";
                     }));
 
-                    EnableButtons();
+                    break;
+                case "bc5b3ab6": // 22nd December 2016
+                    gameVersion = "22dec2016";
 
-                    gameVersion = "processBeingUsed";
-                    return;
-                }
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        currentGame.Text = $"{FindResource("item122").ToString()} 2016";
+                    }));
 
-                switch (hash)
-                {
-                    case "53a3d98f": // 15th January 2015
-                        gameVersion = "15jan2015";
+                    break;
+                default:
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        currentGame.Text = FindResource("item69").ToString();
+                    }));
 
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            currentGame.Text = $"{FindResource("item122").ToString()} 2015";
-                        }));
-
-                        break;
-                    case "bc5b3ab6": // 22nd December 2016
-                        gameVersion = "22dec2016";
-
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            currentGame.Text = $"{FindResource("item122").ToString()} 2016";
-                        }));
-
-                        break;
-                    default:
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            currentGame.Text = FindResource("item69").ToString();
-                        }));
-
-                        break;
-                }
+                    break;
             }
 
             Dispatcher.Invoke(new Action(delegate
@@ -515,7 +516,6 @@ namespace H1EmuLauncher
             Launcher.launcherInstance.launcherFade.Visibility = Visibility.Visible;
 
             currentVersion.Text = FindResource("item124").ToString() + $"{Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.')}";
-            settingsProgressText.Text = FindResource("item19").ToString();
 
             new Thread(() => 
             {
@@ -685,7 +685,7 @@ namespace H1EmuLauncher
                 patchButton.IsEnabled = false;
                 latestButton.IsEnabled = false;
                 stableButton.IsEnabled = false;
-
+                settingsProgressRow.Visibility = Visibility.Visible;
             }));
         }
 
@@ -698,7 +698,7 @@ namespace H1EmuLauncher
                 patchButton.IsEnabled = true;
                 latestButton.IsEnabled = true;
                 stableButton.IsEnabled = true;
-
+                settingsProgressRow.Visibility = Visibility.Collapsed;
             }));
         }
 
@@ -737,6 +737,8 @@ namespace H1EmuLauncher
         {
             settingsBlur.Radius = 0;
             settingsFade.Visibility = Visibility.Hidden;
+            this.SizeToContent = SizeToContent.Manual;
+            this.SizeToContent = SizeToContent.WidthAndHeight;
         }
 
         private void MainSettingsContentRendered(object sender, EventArgs e)
