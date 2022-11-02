@@ -1038,51 +1038,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <ImageBrush x:Key="Logo.Static.Background" ImageSource="Resources\H1EmuLogo.png" />
-        <ImageBrush x:Key="Logo.MouseOver.Background" ImageSource="Resources\H1EmuLogo.png" />
-        <ImageBrush x:Key="Logo.Pressed.Background" ImageSource="Resources\H1EmuLogo.png" />
-        <Style x:Key="LogoButton" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource UpdateVisual}" />
-            <Setter Property="Background" Value="{StaticResource Logo.Static.Background}" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="Padding" Value="1" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true">
-                            <ContentPresenter
-                                x:Name="contentPresenter"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Focusable="False"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{StaticResource Logo.MouseOver.Background}"/>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{StaticResource Logo.Pressed.Background}"/>
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false" />
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <SolidColorBrush x:Key="UserBox.Static.Border" Color="#DB111C" />
         <SolidColorBrush x:Key="UserBox.Static.Background" Color="#FF2A2A32" />
         <SolidColorBrush x:Key="UserBox.Static.Foreground" Color="white" />

@@ -202,18 +202,12 @@
 
                 <!-- Logo -->
                 <DockPanel>
-                    <Button
+                    <Image
                         Width="220"
                         Margin="35,20,0,12"
                         HorizontalAlignment="Left"
-                        BorderThickness="0"
-                        Click="LogoClick"
-                        Style="{DynamicResource LogoButton}">
-                        
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\H1EmuLogo.png"/>
-                        </Button.Background>
-                    </Button>
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Source="..\Resources\H1EmuLogo.png"/>
                 </DockPanel>
 
                 <!-- Exit/minimise buttons and other info -->

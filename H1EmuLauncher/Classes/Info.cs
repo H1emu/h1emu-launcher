@@ -14,8 +14,6 @@ namespace H1EmuLauncher.Classes
 
         public static string DISCORD_LINK = "https://discord.com/invite/RM6jNkj";
 
-        public static string LOGO_LINK = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley";
-
         public static string CHANGELOG = "https://www.h1emu.com/us/changelog/";
 
         public static string WEBSITE = "https://h1emu.com/";

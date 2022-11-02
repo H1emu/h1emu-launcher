@@ -739,15 +739,6 @@ namespace H1EmuLauncher
             });
         }
 
-        private void LogoClick(object sender, RoutedEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = Info.LOGO_LINK,
-                UseShellExecute = true
-            });
-        }
-
         private void patchNotesCopy(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(Info.CHANGELOG);

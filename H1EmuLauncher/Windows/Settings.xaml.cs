@@ -151,7 +151,7 @@ namespace H1EmuLauncher
             else
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
 
-            // Extract Asset_256.pack to fix blueberries.
+            // Extract Asset_256.pack to fix blackberries.
             if (gameVersion == "22dec2016")
                 File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
 
