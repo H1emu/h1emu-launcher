@@ -33,9 +33,9 @@ namespace H1EmuLauncher
 
             if (File.Exists(filename))
             {
-                using (var fs = File.Open(filename, FileMode.Open))
-                using (var ds = new DeflateStream(fs, CompressionMode.Decompress))
-                    Instance = Serializer.Deserialize<DepotConfigStore>(ds);
+                using var fs = File.Open(filename, FileMode.Open);
+                using var ds = new DeflateStream(fs, CompressionMode.Decompress);
+                Instance = Serializer.Deserialize<DepotConfigStore>(ds);
             }
             else
             {
@@ -50,9 +50,9 @@ namespace H1EmuLauncher
             if (!Loaded)
                 throw new Exception("Saved config before loading");
 
-            using (var fs = File.Open(Instance.FileName, FileMode.Create))
-            using (var ds = new DeflateStream(fs, CompressionMode.Compress))
-                Serializer.Serialize(ds, Instance);
+            using var fs = File.Open(Instance.FileName, FileMode.Create);
+            using var ds = new DeflateStream(fs, CompressionMode.Compress);
+            Serializer.Serialize(ds, Instance);
         }
     }
 }

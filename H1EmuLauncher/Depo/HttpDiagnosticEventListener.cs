@@ -35,7 +35,7 @@ namespace H1EmuLauncher
                 }
             }
 
-            sb.Append(")");
+            sb.Append(')');
             Debug.WriteLine(sb.ToString());
         }
     }

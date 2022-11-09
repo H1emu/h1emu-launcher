@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	  <OutputType>WinExe</OutputType>
-	  <TargetFramework>net5.0-windows</TargetFramework>
+	  <TargetFramework>net6.0-windows</TargetFramework>
 	  <RootNamespace>H1EmuLauncher</RootNamespace>
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
@@ -56,7 +56,7 @@
     <None Remove="Resources\Minimise_Pressed.png" />
     <None Remove="Resources\NextButton.png" />
     <None Remove="Resources\NextButton_Hover.png" />
-    <None Remove="Resources\Node-16.14.2.zip" />
+    <None Remove="Resources\Node-18.12.1.zip" />
     <None Remove="Resources\OfflineImage.png" />
     <None Remove="Resources\Padlock.png" />
     <None Remove="Resources\PrevButton.png" />
@@ -101,6 +101,10 @@
     <Page Remove="Resources\StringResources.tr-TR.xaml" />
     <Page Remove="Resources\StringResources.xaml" />
     <Page Remove="Resources\StringResources.zh-cn.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
@@ -233,7 +237,7 @@
     <Resource Include="Resources\NextButton_Hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Node-16.14.2.zip">
+    <Resource Include="Resources\Node-18.12.1.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\OfflineImage.png">

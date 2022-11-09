@@ -67,12 +67,12 @@ namespace H1EmuLauncher.Classes
             }
 
             // Collection that will be returned.
-            SettingsPropertyValueCollection values = new SettingsPropertyValueCollection();
+            SettingsPropertyValueCollection values = new();
 
             // Iterate thought the properties we get from the designer, checking to see if the setting is in the dictionary
             foreach (SettingsProperty setting in collection)
             {
-                SettingsPropertyValue value = new SettingsPropertyValue(setting);
+                SettingsPropertyValue value = new(setting);
                 value.IsDirty = false;
 
                 // Need the type of the value for the strong typing
@@ -167,7 +167,7 @@ namespace H1EmuLauncher.Classes
         /// This could be overkill a simple key/value pairing would probably do.
         /// </summary>
 
-        private void CreateEmptyConfig()
+        private static void CreateEmptyConfig()
         {
             Directory.CreateDirectory($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher");
 
@@ -225,7 +225,7 @@ namespace H1EmuLauncher.Classes
         /// e.g. <c>Properties.Settings.Default.SettingsKey = @"C:\temp\user.config";</c>
         /// </summary>
 
-        private string UserConfigPath
+        private static string UserConfigPath
         {
             get
             {

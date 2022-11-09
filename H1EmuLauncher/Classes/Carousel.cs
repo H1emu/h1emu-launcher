@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -13,8 +14,8 @@ namespace H1EmuLauncher.Classes
 {
     class Carousel
     {
-        public static ManualResetEvent pauseCarousel = new ManualResetEvent(true);
-        public static List<string> images = new List<string>();
+        public static ManualResetEvent pauseCarousel = new(true);
+        public static List<string> images = new();
         public static int currentIndex = 0;
         public static int lastIndex = 0;
         public static int progress = 0;
@@ -61,7 +62,7 @@ namespace H1EmuLauncher.Classes
                     {
                         System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                         {
-                            ButtonAutomationPeer peer = new ButtonAutomationPeer(Launcher.launcherInstance.nextImage);
+                            ButtonAutomationPeer peer = new(Launcher.launcherInstance.nextImage);
                             IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
                             invokeProv.Invoke();
                         }));
@@ -105,28 +106,28 @@ namespace H1EmuLauncher.Classes
 
         public static void DownloadImages()
         {
-            WebClient wc = new WebClient();
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
+            WebClient wc = new();
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Info.CAROUSEL_MEDIA);
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
 
             try
             {
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                using HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                using StreamReader reader = new(response.GetResponseStream());
+                string html = reader.ReadToEnd();
+                Regex regex = new("<a href=\".*\">(?<name>.*)</a>");
+                MatchCollection matches = regex.Matches(html);
+                if (matches.Count > 0)
                 {
-                    using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                    foreach (Match match in matches.Cast<Match>())
                     {
-                        string html = reader.ReadToEnd();
-                        Regex regex = new Regex("<a href=\".*\">(?<name>.*)</a>");
-                        MatchCollection matches = regex.Matches(html);
-                        if (matches.Count > 0)
+                        if (match.Success)
                         {
-                            foreach (Match match in matches)
-                            {
-                                if (match.Success)
-                                {
-                                    if (match.Groups["name"].ToString().Contains(".png"))
-                                        wc.DownloadFile($"{Info.CAROUSEL_MEDIA}{match.Groups["name"]}", $"{imagesFolder}\\{match.Groups["name"]}");
-                                }
-                            }
+                            if (match.Groups["name"].ToString().Contains(".png"))
+                                wc.DownloadFile($"{Info.CAROUSEL_MEDIA}{match.Groups["name"]}", $"{imagesFolder}\\{match.Groups["name"]}");
                         }
                     }
                 }

@@ -7,50 +7,24 @@ namespace H1EmuLauncher.Classes
     {
         public static ResourceDictionary LoadFile()
         {
-            ResourceDictionary dict = new ResourceDictionary();
+            ResourceDictionary dict = new();
 
-            switch (Properties.Settings.Default.language)
+            dict.Source = Properties.Settings.Default.language switch
             {
-                case 0:
-                    dict.Source = new Uri("Language/StringResources.en.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                case 1:
-                    dict.Source = new Uri("Language/StringResources.zh-CN.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                case 2:
-                    dict.Source = new Uri("Language/StringResources.hr.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                case 3:
-                    dict.Source = new Uri("Language/StringResources.fr.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                case 4:
-                    dict.Source = new Uri("Language/StringResources.tr-TR.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                case 5:
-                    dict.Source = new Uri("Language/StringResources.pl-PL.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                case 6:
-                    dict.Source = new Uri("Language/StringResources.ru-RU.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                case 7:
-                    dict.Source = new Uri("Language/StringResources.nl-NL.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                case 8:
-                    dict.Source = new Uri("Language/StringResources.bg-BG.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                case 9:
-                    dict.Source = new Uri("Language/StringResources.de-DE.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                case 10:
-                    dict.Source = new Uri("Language/StringResources.pt-PT.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                case 11:
-                    dict.Source = new Uri("Language/StringResources.es-ES.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-                default:
-                    dict.Source = new Uri("Language/StringResources.en.xaml", UriKind.RelativeOrAbsolute);
-                    break;
-            }
+                0 => new Uri("Language/StringResources.en.xaml", UriKind.RelativeOrAbsolute),
+                1 => new Uri("Language/StringResources.zh-CN.xaml", UriKind.RelativeOrAbsolute),
+                2 => new Uri("Language/StringResources.hr.xaml", UriKind.RelativeOrAbsolute),
+                3 => new Uri("Language/StringResources.fr.xaml", UriKind.RelativeOrAbsolute),
+                4 => new Uri("Language/StringResources.tr-TR.xaml", UriKind.RelativeOrAbsolute),
+                5 => new Uri("Language/StringResources.pl-PL.xaml", UriKind.RelativeOrAbsolute),
+                6 => new Uri("Language/StringResources.ru-RU.xaml", UriKind.RelativeOrAbsolute),
+                7 => new Uri("Language/StringResources.nl-NL.xaml", UriKind.RelativeOrAbsolute),
+                8 => new Uri("Language/StringResources.bg-BG.xaml", UriKind.RelativeOrAbsolute),
+                9 => new Uri("Language/StringResources.de-DE.xaml", UriKind.RelativeOrAbsolute),
+                10 => new Uri("Language/StringResources.pt-PT.xaml", UriKind.RelativeOrAbsolute),
+                11 => new Uri("Language/StringResources.es-ES.xaml", UriKind.RelativeOrAbsolute),
+                _ => new Uri("Language/StringResources.en.xaml", UriKind.RelativeOrAbsolute),
+            };
 
             return dict;
         }

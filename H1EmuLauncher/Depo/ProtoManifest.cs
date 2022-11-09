@@ -129,33 +129,29 @@ namespace H1EmuLauncher
                 return null;
             }
 
-            using (var ms = new MemoryStream())
-            {
-                using (var fs = File.Open(filename, FileMode.Open))
-                using (var ds = new DeflateStream(fs, CompressionMode.Decompress))
-                    ds.CopyTo(ms);
+            using var ms = new MemoryStream();
+            using (var fs = File.Open(filename, FileMode.Open))
+            using (var ds = new DeflateStream(fs, CompressionMode.Decompress))
+                ds.CopyTo(ms);
 
-                checksum = Util.SHAHash(ms.ToArray());
+            checksum = Util.SHAHash(ms.ToArray());
 
-                ms.Seek(0, SeekOrigin.Begin);
-                return Serializer.Deserialize<ProtoManifest>(ms);
-            }
+            ms.Seek(0, SeekOrigin.Begin);
+            return Serializer.Deserialize<ProtoManifest>(ms);
         }
 
         public void SaveToFile(string filename, out byte[] checksum)
         {
-            using (var ms = new MemoryStream())
-            {
-                Serializer.Serialize(ms, this);
+            using var ms = new MemoryStream();
+            Serializer.Serialize(ms, this);
 
-                checksum = Util.SHAHash(ms.ToArray());
+            checksum = Util.SHAHash(ms.ToArray());
 
-                ms.Seek(0, SeekOrigin.Begin);
+            ms.Seek(0, SeekOrigin.Begin);
 
-                using (var fs = File.Open(filename, FileMode.Create))
-                using (var ds = new DeflateStream(fs, CompressionMode.Compress))
-                    ms.CopyTo(ds);
-            }
+            using var fs = File.Open(filename, FileMode.Create);
+            using var ds = new DeflateStream(fs, CompressionMode.Compress);
+            ms.CopyTo(ds);
         }
     }
 }

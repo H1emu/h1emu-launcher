@@ -13,7 +13,7 @@ namespace H1EmuLauncher
 {
     public partial class Settings : Window
     {
-        ProcessStartInfo cmdShell = new ProcessStartInfo();
+        ProcessStartInfo cmdShell = new();
         public static Settings settingsInstance;
         public static string gameVersion { get; set; }
         public static bool launchAccountKeyWindow;
@@ -229,7 +229,7 @@ namespace H1EmuLauncher
 
                     }));
 
-                    Process p = new Process();
+                    Process p = new();
                     p.StartInfo = cmdShell;
                     p.Start();
 
@@ -331,7 +331,7 @@ namespace H1EmuLauncher
 
             try
             {
-                File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Node.zip", Properties.Resources.Node_16_14_2);
+                File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Node.zip", Properties.Resources.Node_18_12_1);
                 ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Node.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
             }
             catch { }
@@ -357,7 +357,7 @@ namespace H1EmuLauncher
                     settingsProgressText.Text = FindResource("item114").ToString();
                 }));
 
-                DirectoryInfo dirInfo = new DirectoryInfo($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
+                DirectoryInfo dirInfo = new($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
                 var files = dirInfo.GetFiles();
 
                 Dispatcher.Invoke(new Action(delegate
@@ -454,13 +454,13 @@ namespace H1EmuLauncher
                 Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             }));
 
-            Crc32 crc32 = new Crc32();
+            Crc32 crc32 = new();
             String hash = String.Empty;
 
             try
             {
-                using (FileStream fs = File.Open($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe", FileMode.Open))
-                    foreach (byte b in crc32.ComputeHash(fs)) hash += b.ToString("x2").ToLower();
+                using FileStream fs = File.Open($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe", FileMode.Open);
+                foreach (byte b in crc32.ComputeHash(fs)) hash += b.ToString("x2").ToLower();
             }
             catch (IOException)
             {
@@ -482,7 +482,7 @@ namespace H1EmuLauncher
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        currentGame.Text = $"{FindResource("item122").ToString()} 2015";
+                        currentGame.Text = $"{FindResource("item122")} 2015";
                     }));
 
                     break;
@@ -491,7 +491,7 @@ namespace H1EmuLauncher
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        currentGame.Text = $"{FindResource("item122").ToString()} 2016";
+                        currentGame.Text = $"{FindResource("item122")} 2016";
                     }));
 
                     break;
@@ -580,9 +580,9 @@ namespace H1EmuLauncher
         {
             new Thread(() => 
             {
-                ManualResetEvent ma = new ManualResetEvent(false);
+                ManualResetEvent ma = new(false);
 
-                System.Windows.Forms.FolderBrowserDialog directory = new System.Windows.Forms.FolderBrowserDialog();
+                System.Windows.Forms.FolderBrowserDialog directory = new();
 
                 Dispatcher.Invoke(new Action(delegate
                 {
@@ -704,7 +704,7 @@ namespace H1EmuLauncher
 
         private void AccountKeyClick(object sender, RoutedEventArgs e)
         {
-            AccountKey ak = new AccountKey();
+            AccountKey ak = new();
             ak.ShowDialog();
         }
 
@@ -746,7 +746,7 @@ namespace H1EmuLauncher
             // If accountkey argument was specified launch the accountkey window with the argument value
             if (launchAccountKeyWindow)
             {
-                AccountKey ak = new AccountKey();
+                AccountKey ak = new();
                 ak.accountKeyBox.Password = SteamFrame.Login.GetParameter(Launcher.rawArgs, "-accountkey", "");
                 ak.accountKeyHint.Visibility = Visibility.Hidden;
                 ak.ShowDialog();

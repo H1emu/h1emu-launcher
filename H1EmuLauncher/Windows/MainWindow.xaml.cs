@@ -14,7 +14,7 @@ namespace H1EmuLauncher
 {
     public partial class MainWindow : Window
     {
-        Splash sp = new Splash();
+        Splash sp = new();
         string downloadUrl;
         public static string downloadFileName;
 
@@ -36,7 +36,9 @@ namespace H1EmuLauncher
                 try
                 {
                     // Download launcher information from GitHub endpoint
-                    WebClient wc = new WebClient();
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
+                    WebClient wc = new();
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
                     wc.Headers.Add("User-Agent", "d-fens HttpClient");
                     string jsonLauncher = wc.DownloadString(new Uri(Info.LAUNCHER_JSON_API));
 
@@ -106,9 +108,11 @@ namespace H1EmuLauncher
             {
                 try
                 {
-                    ManualResetEvent ma = new ManualResetEvent(false);
+                    ManualResetEvent ma = new(false);
 
-                    WebClient wc = new WebClient();
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
+                    WebClient wc = new();
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
                     wc.DownloadProgressChanged += (s, e) =>
                     {
                         Dispatcher.Invoke(new Action(delegate
@@ -170,7 +174,7 @@ namespace H1EmuLauncher
             notNow.Foreground = new SolidColorBrush(Colors.White);
             Hide();
 
-            Launcher la = new Launcher();
+            Launcher la = new();
             la.Show();
         }
 

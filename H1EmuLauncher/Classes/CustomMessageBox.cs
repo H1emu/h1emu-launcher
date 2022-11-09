@@ -9,7 +9,7 @@ namespace H1EmuLauncher.Classes
 
         public static void Show(string text, Window owner = null)
         {
-            MsgBox newBox = new MsgBox();
+            MsgBox newBox = new();
             newBox.text.Text = text;
 
             if (owner != null && owner.IsVisible)
@@ -26,7 +26,7 @@ namespace H1EmuLauncher.Classes
 
         public static MessageBoxResult ShowResult(string text, Window owner = null)
         {
-            CnfmBox cnfmBox = new CnfmBox();
+            CnfmBox cnfmBox = new();
             cnfmBox.text.Text = text;
 
             if (owner != null)
@@ -52,7 +52,7 @@ namespace H1EmuLauncher.Classes
 
         public static MessageBoxResult AddServer(Window owner)
         {
-            AddServer addServer = new AddServer();
+            AddServer addServer = new();
 
             if (owner != null)
                 addServer.Owner = owner;

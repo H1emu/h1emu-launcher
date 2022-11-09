@@ -26,7 +26,7 @@ namespace H1EmuLauncher
         public const ulong INVALID_MANIFEST_ID = ulong.MaxValue;
         public const string DEFAULT_BRANCH = "Public";
 
-        public static DownloadConfig Config = new DownloadConfig();
+        public static DownloadConfig Config = new();
 
         public static Steam3Session steam3;
         public static Steam3Session.Credentials steam3Credentials;
@@ -719,7 +719,7 @@ namespace H1EmuLauncher
 
         }
 
-        public static CancellationTokenSource tokenSource = new CancellationTokenSource();
+        public static CancellationTokenSource tokenSource = new();
 
         private static async Task DownloadSteam3Async(uint appId, List<DepotDownloadInfo> depots)
         {
@@ -728,14 +728,14 @@ namespace H1EmuLauncher
 
             cdnPool.ExhaustedToken = tokenSource;
 
-            GlobalDownloadCounter downloadCounter = new GlobalDownloadCounter();
+            GlobalDownloadCounter downloadCounter = new();
             var depotsToDownload = new List<DepotFilesData>(depots.Count);
             var allFileNamesAllDepots = new HashSet<String>();
 
             // First, fetch all the manifests for each depot (including previous manifests) and perform the initial setup
             foreach (var depot in depots)
             {
-                var depotFileData = await ProcessDepotManifestAndFiles(tokenSource, appId, depot);
+                var depotFileData = await ProcessDepotManifestAndFiles(tokenSource, appId, depot, cdnPool);
 
                 if (depotFileData != null)
                 {
@@ -771,7 +771,7 @@ namespace H1EmuLauncher
         }
 
         private static async Task<DepotFilesData> ProcessDepotManifestAndFiles(CancellationTokenSource cts, 
-            uint appId, DepotDownloadInfo depot)
+            uint appId, DepotDownloadInfo depot, CDNClientPool cdnPool)
         {
             var depotCounter = new DepotDownloadCounter();
 
@@ -1412,42 +1412,40 @@ namespace H1EmuLauncher
         {
             var txtManifest = Path.Combine(depot.installDir, $"manifest_{depot.id}_{depot.manifestId}.txt");
 
-            using (var sw = new StreamWriter(txtManifest))
+            using var sw = new StreamWriter(txtManifest);
+            sw.WriteLine($"Content Manifest for Depot {depot.id}");
+            sw.WriteLine();
+            sw.WriteLine($"Manifest ID / date     : {depot.manifestId} / {manifest.CreationTime}");
+
+            int numFiles = 0, numChunks = 0;
+            ulong uncompressedSize = 0, compressedSize = 0;
+
+            foreach (var file in manifest.Files)
             {
-                sw.WriteLine($"Content Manifest for Depot {depot.id}");
-                sw.WriteLine();
-                sw.WriteLine($"Manifest ID / date     : {depot.manifestId} / {manifest.CreationTime}");
+                if (file.Flags.HasFlag(EDepotFileFlag.Directory))
+                    continue;
 
-                int numFiles = 0, numChunks = 0;
-                ulong uncompressedSize = 0, compressedSize = 0;
+                numFiles++;
+                numChunks += file.Chunks.Count;
 
-                foreach (var file in manifest.Files)
+                foreach (var chunk in file.Chunks)
                 {
-                    if (file.Flags.HasFlag(EDepotFileFlag.Directory))
-                        continue;
-
-                    numFiles++;
-                    numChunks += file.Chunks.Count;
-
-                    foreach (var chunk in file.Chunks)
-                    {
-                        uncompressedSize += chunk.UncompressedLength;
-                        compressedSize += chunk.CompressedLength;
-                    }
+                    uncompressedSize += chunk.UncompressedLength;
+                    compressedSize += chunk.CompressedLength;
                 }
+            }
 
-                sw.WriteLine($"Total number of files  : {numFiles}");
-                sw.WriteLine($"Total number of chunks : {numChunks}");
-                sw.WriteLine($"Total bytes on disk    : {uncompressedSize}");
-                sw.WriteLine($"Total bytes compressed : {compressedSize}");
-                sw.WriteLine();
-                sw.WriteLine("          Size Chunks File SHA                                 Flags Name");
+            sw.WriteLine($"Total number of files  : {numFiles}");
+            sw.WriteLine($"Total number of chunks : {numChunks}");
+            sw.WriteLine($"Total bytes on disk    : {uncompressedSize}");
+            sw.WriteLine($"Total bytes compressed : {compressedSize}");
+            sw.WriteLine();
+            sw.WriteLine("          Size Chunks File SHA                                 Flags Name");
 
-                foreach (var file in manifest.Files)
-                {
-                    var sha1Hash = BitConverter.ToString(file.FileHash).Replace("-", "");
-                    sw.WriteLine($"{file.TotalSize,14} {file.Chunks.Count,6} {sha1Hash} {file.Flags,5:D} {file.FileName}");
-                }
+            foreach (var file in manifest.Files)
+            {
+                var sha1Hash = BitConverter.ToString(file.FileHash).Replace("-", "");
+                sw.WriteLine($"{file.TotalSize,14} {file.Chunks.Count,6} {sha1Hash} {file.Flags,5:D} {file.FileName}");
             }
         }
     }

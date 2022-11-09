@@ -15,7 +15,7 @@ namespace H1EmuLauncher.SteamFrame
 {
     public partial class Login : Page
     {
-        public static CancellationTokenSource tokenSource = new CancellationTokenSource();
+        public static CancellationTokenSource tokenSource = new();
         static CancellationToken token;
         public static string gameInfo { get; set; }
 
@@ -131,7 +131,7 @@ namespace H1EmuLauncher.SteamFrame
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        System.Windows.Forms.FolderBrowserDialog folderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+                        System.Windows.Forms.FolderBrowserDialog folderBrowser = new();
                         folderBrowser.Description = "Select a folder location for the game to download to.";
 
                         if (folderBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -345,7 +345,7 @@ namespace H1EmuLauncher.SteamFrame
             return IndexOfParam(args, param) > -1;
         }
 
-        public static T GetParameter<T>(string[] args, string param, T defaultValue = default(T))
+        public static T GetParameter<T>(string[] args, string param, T defaultValue = default)
         {
             int index = IndexOfParam(args, param);
 
@@ -360,12 +360,12 @@ namespace H1EmuLauncher.SteamFrame
                 return (T)converter.ConvertFromString(strParam);
             }
 
-            return default(T);
+            return default;
         }
 
         static List<T> GetParameterList<T>(string[] args, string param)
         {
-            List<T> list = new List<T>();
+            List<T> list = new();
             int index = IndexOfParam(args, param);
 
             if (index == -1 || index == (args.Length - 1))

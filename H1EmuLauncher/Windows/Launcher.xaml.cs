@@ -21,9 +21,9 @@ namespace H1EmuLauncher
 {
     public partial class Launcher : Window
     {
-        FileSystemWatcher argsWatcher = new FileSystemWatcher();
-        ProcessStartInfo cmdShell = new ProcessStartInfo();
-        public static ManualResetEvent ma = new ManualResetEvent(false);
+        FileSystemWatcher argsWatcher = new();
+        ProcessStartInfo cmdShell = new();
+        public static ManualResetEvent ma = new(false);
         public static Launcher launcherInstance;
         public static string serverJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
         public static string[] rawArgs = null;
@@ -76,7 +76,7 @@ namespace H1EmuLauncher
         [DllImport("user32.dll")]
         static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        private void BringToFront(Process pTemp)
+        private static void BringToFront(Process pTemp)
         {
             SetForegroundWindow(pTemp.MainWindowHandle);
         }
@@ -236,7 +236,7 @@ namespace H1EmuLauncher
                     serverVersion = "npm run start-2016";
                 }
 
-                Process p = new Process
+                Process p = new()
                 {
                     StartInfo = cmdShell
                 };
@@ -282,11 +282,12 @@ namespace H1EmuLauncher
         {
             ma.Reset();
 
-            Settings settings = new Settings();
+            Settings settings = new();
 
             if (!settings.CheckDirectory())
                 return;
 
+            int gameVersionInt = 0;
             string gameVersion = "";
             string serverIp = "";
             string sessionId = "0";
@@ -350,6 +351,16 @@ namespace H1EmuLauncher
 
                     gameVersion = Settings.gameVersion;
 
+                    switch (gameVersion)
+                    {
+                        case "15jan2015":
+                            gameVersionInt = 1;
+                            break;
+                        case "22dec2016":
+                            gameVersionInt = 2;
+                            break;
+                    }
+
                     if (gameVersion == "15jan2015" || gameVersion == "22dec2016")
                     {
                         if (gameVersion == "15jan2015" && serverIp == "")
@@ -372,7 +383,7 @@ namespace H1EmuLauncher
                             else
                             {
                                 // sessionIdKey is the same as accountKey, couldn't change the name without resetting users settings.
-                                sessionId = Properties.Settings.Default.sessionIdKey;
+                                sessionId = $"{{\"sessionId\":{Properties.Settings.Default.sessionIdKey},\"gameVersion\":{gameVersionInt}}}";
                             }
                         }
 
@@ -387,7 +398,7 @@ namespace H1EmuLauncher
                         ma.WaitOne();
                         ma.Reset();
 
-                        Process process = new Process()
+                        Process process = new()
                         {
                             StartInfo = new ProcessStartInfo($"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe", $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}")
                             {
@@ -433,7 +444,7 @@ namespace H1EmuLauncher
         {
             if (Properties.Settings.Default.firstTimeUse != 1) 
             {
-                Disclaimer dc = new Disclaimer();
+                Disclaimer dc = new();
                 dc.ShowDialog();
             }
 
@@ -475,7 +486,9 @@ namespace H1EmuLauncher
             {
                 // Update version, date published and patch notes code.
 
-                WebClient wc = new WebClient();
+#pragma warning disable SYSLIB0014 // Type or member is obsolete
+                WebClient wc = new();
+#pragma warning restore SYSLIB0014 // Type or member is obsolete
                 wc.Headers.Add("User-Agent", "d-fens HttpClient");
 
                 string jsonServer = wc.DownloadString(new Uri(Info.SERVER_JSON_API));
@@ -562,7 +575,7 @@ namespace H1EmuLauncher
             if (!string.IsNullOrEmpty(SteamFrame.Login.GetParameter(rawArgs, "-accountkey", "")))
             {
                 Settings.launchAccountKeyWindow = true;
-                Settings se = new Settings();
+                Settings se = new();
                 se.ShowDialog();
             }
         }
@@ -687,19 +700,19 @@ namespace H1EmuLauncher
 
         private void ReportBuglink(object sender, RoutedEventArgs e)
         {
-            ReportBug reportBug = new ReportBug();
+            ReportBug reportBug = new();
             reportBug.ShowDialog();
         }
 
         private void AboutHyperlink(object sender, RoutedEventArgs e)
         {
-            AboutPage aboutPage = new AboutPage();
+            AboutPage aboutPage = new();
             aboutPage.ShowDialog();
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            Settings se = new Settings();
+            Settings se = new();
             se.ShowDialog();
         }
 

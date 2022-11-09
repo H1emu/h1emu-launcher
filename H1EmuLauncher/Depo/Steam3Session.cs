@@ -71,7 +71,7 @@ namespace H1EmuLauncher
         // output
         readonly Credentials credentials;
 
-        public static CancellationTokenSource tokenSource = new CancellationTokenSource();
+        public static CancellationTokenSource tokenSource = new();
         CancellationToken token;
 
         static readonly TimeSpan STEAM3_TIMEOUT = TimeSpan.FromSeconds( 30 );
@@ -142,7 +142,7 @@ namespace H1EmuLauncher
         }
 
         public delegate bool WaitCondition();
-        private readonly object steamLock = new object();
+        private readonly object steamLock = new();
 
         public bool WaitUntilCallback( Action submitter, WaitCondition waiter )
         {
@@ -221,7 +221,7 @@ namespace H1EmuLauncher
                 }
             };
 
-            SteamApps.PICSRequest request = new SteamApps.PICSRequest( appId );
+            SteamApps.PICSRequest request = new(appId);
             if ( AppTokens.ContainsKey( appId ) )
             {
                 request.AccessToken = AppTokens[ appId ];
@@ -329,7 +329,7 @@ namespace H1EmuLauncher
             }, () => { return completed; });
         }
 
-        public string ResolveCDNTopLevelHost(string host)
+        public static string ResolveCDNTopLevelHost(string host)
         {
             // SteamPipe CDN shares tokens with all hosts
             if (host.EndsWith(".steampipe.steamcontent.com"))

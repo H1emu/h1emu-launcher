@@ -115,12 +115,10 @@ namespace H1EmuLauncher
 
         public static byte[] SHAHash(byte[] input)
         {
-            using (var sha = SHA1.Create())
-            {
-                var output = sha.ComputeHash(input);
+            using var sha = SHA1.Create();
+            var output = sha.ComputeHash(input);
 
-                return output;
-            }
+            return output;
         }
 
         public static byte[] DecodeHexString(string hex)
@@ -147,7 +145,7 @@ namespace H1EmuLauncher
         public static async Task InvokeAsync(IEnumerable<Func<Task>> taskFactories, int maxDegreeOfParallelism)
         {
             if (taskFactories == null) throw new ArgumentNullException(nameof(taskFactories));
-            if (maxDegreeOfParallelism <= 0) throw new ArgumentException(nameof(maxDegreeOfParallelism));
+            if (maxDegreeOfParallelism <= 0) throw new ArgumentException(null, nameof(maxDegreeOfParallelism));
 
             var queue = taskFactories.ToArray();
 
