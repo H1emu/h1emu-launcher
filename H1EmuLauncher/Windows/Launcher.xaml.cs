@@ -571,8 +571,10 @@ namespace H1EmuLauncher
                 AddServerDetails();
             }
 
+            string accountKey = SteamFrame.Login.GetParameter(rawArgs, "-accountkey", "");
+
             // Launch settings and tell it to open Account Key window
-            if (!string.IsNullOrEmpty(SteamFrame.Login.GetParameter(rawArgs, "-accountkey", "")))
+            if (!string.IsNullOrEmpty(accountKey))
             {
                 Settings.launchAccountKeyWindow = true;
                 Settings se = new();

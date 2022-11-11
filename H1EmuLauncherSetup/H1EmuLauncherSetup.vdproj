@@ -57,10 +57,10 @@
                     "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
                     "ProductCode" = "8:.NETFramework,Version=v4.7.2"
                     }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.5.0.x64"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.6.0.x64"
                     {
-                    "Name" = "8:.NET Desktop Runtime 5.0.13 (x64)"
-                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.5.0.x64"
+                    "Name" = "8:.NET Desktop Runtime 6.0.11 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.6.0.x64"
                     }
                 }
             }
@@ -203,15 +203,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
-        "ProductCode" = "8:{7D50F31E-00DA-41E6-851A-9032D640D518}"
-        "PackageCode" = "8:{26580152-4965-4BFE-974D-3728A1CB8A0C}"
+        "ProductCode" = "8:{1BC88AA3-40AC-41CF-8984-64B430EEF7DD}"
+        "PackageCode" = "8:{3E31B028-E945-47FB-9FD9-8F0CF426BA9E}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.5.2"
+        "ProductVersion" = "8:2.5.3"
         "Manufacturer" = "8:H1Emu © 2022"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
@@ -855,7 +855,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1E5157BB4D924619AB78964D3BBB406B"
             {
-            "SourcePath" = "8:..\\H1EmuLauncher\\obj\\Debug\\net5.0-windows\\apphost.exe"
+            "SourcePath" = "8:..\\H1EmuLauncher\\obj\\Debug\\net6.0-windows\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
