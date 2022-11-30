@@ -383,7 +383,7 @@ namespace H1EmuLauncher
                             else
                             {
                                 // sessionIdKey is the same as accountKey, couldn't change the name without resetting users settings.
-                                sessionId = $"{{\"sessionId\":{Properties.Settings.Default.sessionIdKey},\"gameVersion\":{gameVersionInt}}}";
+                                sessionId = $"{{\"sessionId\":\"{Properties.Settings.Default.sessionIdKey}\",\"gameVersion\":{gameVersionInt}}}";
                             }
                         }
 
