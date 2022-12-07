@@ -88,30 +88,31 @@
             </DockPanel>
         </Grid>
 
-        <!-- Grid for main content inside of darkened area -->
-        <Grid
-            Grid.Row="1"
-            Margin="15,5,15,15"
-            Background="#1C1B22"
-            UseLayoutRounding="True">
-            
+        <!-- Main content in darkened area -->
+        <Border Grid.Row="1"
+                Margin="15,5,15,15"
+                Background="#1C1B22"
+                UseLayoutRounding="True"
+                CornerRadius="5">
+
             <!-- Drop shadow effect -->
-            <Grid.Effect>
+            <Border.Effect>
                 <DropShadowEffect
                     BlurRadius="8"
                     Direction="-90"
                     RenderingBias="Quality"
                     ShadowDepth="1"/>
                 
-            </Grid.Effect>
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="11*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-            
-            <!-- Main message box text -->
-            <TextBlock x:Name="text"
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="11*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <!-- Main message box text -->
+                <TextBlock x:Name="text"
                        Margin="25,10,25,10"
                        Padding="0,5,0,0"
                        VerticalAlignment="Center"
@@ -121,8 +122,8 @@
                        TextWrapping="Wrap"
                        TextAlignment="Center"/>
 
-            <!-- Close msgbox window button -->
-            <Button
+                <!-- Close msgbox window button -->
+                <Button
                 Grid.Row="1"
                 Click="OkButton"
                 RenderOptions.BitmapScalingMode="Fant"
@@ -136,11 +137,12 @@
                 BorderThickness="0"
                 Content="{DynamicResource item92}"
                 Style="{DynamicResource StandardButton}">
-                
-                <Button.Background>
-                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                </Button.Background>
-            </Button>
-        </Grid>
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

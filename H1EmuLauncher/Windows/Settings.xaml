@@ -99,37 +99,38 @@
                 </DockPanel>
             </Grid>
 
-            <!-- Grid for main content inside of darkened area -->
-            <Grid
-                Grid.Row="1"
-                Background="#1C1B22"
-                Margin="25,5,25,0"
-                UseLayoutRounding="True">
-                
+            <!-- Main content in darkened area -->
+            <Border Grid.Row="1"
+                    Background="#1C1B22"
+                    Margin="25,5,25,0"
+                    UseLayoutRounding="True"
+                    CornerRadius="5">
+
                 <!-- Drop shadow effect -->
-                <Grid.Effect>
+                <Border.Effect>
                     <DropShadowEffect
                         BlurRadius="15"
                         Direction="-90"
                         RenderingBias="Quality"
                         ShadowDepth="1"/>
                     
-                </Grid.Effect>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="108"/>
-                    <RowDefinition Height="270"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
-
+                </Border.Effect>
+                
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="108"/>
+                        <RowDefinition Height="270"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
 
-                    <!-- Game directory text -->
-                    <TextBlock
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Game directory text -->
+                        <TextBlock
                         Margin="20,0,0,10"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Left"
@@ -138,8 +139,8 @@
                         Foreground="FloralWhite"
                         Text="{DynamicResource item41}"/>
 
-                    <!-- Active directory textbox -->
-                    <TextBox x:Name="directoryBox"
+                        <!-- Active directory textbox -->
+                        <TextBox x:Name="directoryBox"
                         Grid.Column="1"
                         Height="35"
                         Margin="10,0,20,10"
@@ -147,9 +148,9 @@
                         IsReadOnly="True"
                         Cursor="Arrow"
                         Style="{DynamicResource TextBoxPrimaryStyle}"/>
-                    
-                    <!-- Button to open file explorer to game directory -->
-                    <Button
+
+                        <!-- Button to open file explorer to game directory -->
+                        <Button
                         Grid.Column="1"
                         Click="OpenDirectory"
                         RenderOptions.BitmapScalingMode="Fant"
@@ -159,14 +160,14 @@
                         HorizontalAlignment="Left"
                         BorderThickness="0"
                         Style="{DynamicResource FolderButton}">
-                        
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\Folder.png"/>
-                        </Button.Background>
-                    </Button>
-                    
-                    <!-- Button to select a new game directory -->
-                    <Button x:Name="directoryButton"
+
+                            <Button.Background>
+                                <ImageBrush ImageSource="..\Resources\Folder.png"/>
+                            </Button.Background>
+                        </Button>
+
+                        <!-- Button to select a new game directory -->
+                        <Button x:Name="directoryButton"
                         Grid.Column="1"
                         Click="SelectDirectory"
                         RenderOptions.BitmapScalingMode="Fant"
@@ -176,15 +177,15 @@
                         HorizontalAlignment="Right"
                         BorderThickness="0"
                         Style="{DynamicResource EnterButton}">
-                        
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\Arrow.png"/>
-                        </Button.Background>
-                    </Button>
-                </Grid>
 
-                <!-- Current detected game version -->
-                <TextBlock x:Name="currentGame"
+                            <Button.Background>
+                                <ImageBrush ImageSource="..\Resources\Arrow.png"/>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+
+                    <!-- Current detected game version -->
+                    <TextBlock x:Name="currentGame"
                            Margin="0,0,0,5"
                            VerticalAlignment="Bottom"
                            HorizontalAlignment="Center"
@@ -192,22 +193,22 @@
                            FontFamily="Bahnschrift"
                            FontWeight="Bold"/>
 
-                <!-- Grid to host patch, latest, stable buttons and corresponding textboxes. -->
-                <Grid Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="20"/>
-                    </Grid.RowDefinitions>
+                    <!-- Grid to host patch, latest, stable buttons and corresponding textboxes. -->
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <!-- Install patch button -->
-                    <Button x:Name="patchButton"
+                        <!-- Install patch button -->
+                        <Button x:Name="patchButton"
                             Click="InstallPatch"
                             Width="220"
                             Height="40"
@@ -221,13 +222,13 @@
                             Content="{DynamicResource item42}"
                             Style="{DynamicResource StandardButton}">
 
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                        </Button.Background>
-                    </Button>
+                            <Button.Background>
+                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                            </Button.Background>
+                        </Button>
 
-                    <!-- Patch button text -->
-                    <TextBlock Grid.Column="1"
+                        <!-- Patch button text -->
+                        <TextBlock Grid.Column="1"
                                Width="400"
                                Margin="20"
                                VerticalAlignment="Center"
@@ -236,8 +237,8 @@
                                TextWrapping="Wrap"
                                Text="{DynamicResource item45}"/>
 
-                    <!-- Install latest server button -->
-                    <Button x:Name="latestButton"
+                        <!-- Install latest server button -->
+                        <Button x:Name="latestButton"
                             Grid.Row="1"
                             Click="InstallServer"
                             Width="220"
@@ -252,13 +253,13 @@
                             Content="{DynamicResource item43}"
                             Style="{DynamicResource StandardButton}">
 
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                        </Button.Background>
-                    </Button>
+                            <Button.Background>
+                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                            </Button.Background>
+                        </Button>
 
-                    <!-- Latest server button text -->
-                    <TextBlock Grid.Row="1"
+                        <!-- Latest server button text -->
+                        <TextBlock Grid.Row="1"
                                Grid.Column="1"
                                Width="400"
                                Margin="20"
@@ -268,8 +269,8 @@
                                TextWrapping="Wrap"
                                Text="{DynamicResource item46}"/>
 
-                    <!-- Install stable server button -->
-                    <Button x:Name="stableButton"
+                        <!-- Install stable server button -->
+                        <Button x:Name="stableButton"
                             Grid.Row="2"
                             Click="InstallServer"
                             Width="220"
@@ -284,13 +285,13 @@
                             Content="{DynamicResource item44}"
                             Style="{DynamicResource StandardButton}">
 
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                        </Button.Background>
-                    </Button>
+                            <Button.Background>
+                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                            </Button.Background>
+                        </Button>
 
-                    <!-- Stable server button text -->
-                    <TextBlock Grid.Row="2"
+                        <!-- Stable server button text -->
+                        <TextBlock Grid.Row="2"
                                Grid.Column="1"
                                Width="400"
                                Margin="20"
@@ -299,36 +300,37 @@
                                Foreground="White"
                                TextWrapping="Wrap"
                                Text="{DynamicResource item47}"/>
-                </Grid>
+                    </Grid>
 
-                <!-- Grid for settings progress bar -->
-                <Grid x:Name="settingsProgressRow"
+                    <!-- Grid for settings progress bar -->
+                    <Grid x:Name="settingsProgressRow"
                       Grid.Row="2"
                       Visibility="Collapsed">
-                    
-                    <!-- Status progress bar -->
-                    <ProgressBar x:Name="settingsProgress"
+
+                        <!-- Status progress bar -->
+                        <ProgressBar x:Name="settingsProgress"
                                  Grid.Row="2"
                                  Height="35"
                                  Margin="20,0,20,30"
                                  Style="{DynamicResource ProgressBar}"/>
 
-                    <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
-                    <ProgressBar Grid.Row="2"
+                        <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
+                        <ProgressBar Grid.Row="2"
                                  Height="35"
                                  Margin="20,0,20,30"
                                  Background="Transparent"
                                  Style="{DynamicResource ProgressBar}"/>
 
-                    <!-- Status text to overlay progress bar -->
-                    <TextBlock x:Name="settingsProgressText"
+                        <!-- Status text to overlay progress bar -->
+                        <TextBlock x:Name="settingsProgressText"
                            Grid.Row="2"
                            HorizontalAlignment="Center"
                            Margin="0,8,0,0"
                            Foreground="White"
                            Background="Transparent"/>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Border>
 
             <!-- Hyperlink to open account key window -->
             <TextBlock

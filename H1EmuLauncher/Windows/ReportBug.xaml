@@ -98,117 +98,118 @@
             </Grid>
 
             <!-- Main content in darkened area -->
-            <Grid
-                Grid.Row="1"
-                Margin="25,5,25,25"
-                Background="#1C1B22"
-                UseLayoutRounding="True">
+            <Border Grid.Row="1"
+                    Margin="25,5,25,25"
+                    Background="#1C1B22"
+                    UseLayoutRounding="True"
+                    CornerRadius="5">
 
                 <!-- Drop shadow effect -->
-                <Grid.Effect>
+                <Border.Effect>
                     <DropShadowEffect
                         BlurRadius="15"
                         Direction="-90"
                         RenderingBias="Quality"
                         ShadowDepth="1"/>
+                </Border.Effect>
 
-                </Grid.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!-- Report a bug about the server message -->
-                <TextBlock Text="{DynamicResource item174}"
+                    <!-- Report a bug about the server message -->
+                    <TextBlock Text="{DynamicResource item174}"
                            TextWrapping="Wrap"
                            Foreground="White"
                            TextAlignment="Center"
                            VerticalAlignment="Center"
                            Width="600"/>
 
-                <!-- Hyperlink to report a bug about the server -->
-                <TextBlock
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Grid.Row="1">
+                    <!-- Hyperlink to report a bug about the server -->
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Grid.Row="1">
                     
-                    <Hyperlink Click="ReportBugGithubServer"
-                               Foreground="White">
+                        <Hyperlink Click="ReportBugGithubServer"
+                                   Foreground="White">
                         
-                        <TextBlock x:Name="reportBugGitHubServerLink"
-                                   Style="{DynamicResource HyperLinkStyle}"/>
+                            <TextBlock x:Name="reportBugGitHubServerLink"
+                                       Style="{DynamicResource HyperLinkStyle}"/>
                         
-                    </Hyperlink>
+                        </Hyperlink>
                     
-                    <!-- Context menu to copy link -->
-                    <TextBlock.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem
-                                Click="ReportBugGithubServerLinkCopy"
-                                Header="Copy"
-                                Style="{DynamicResource PopupMenuItem}"/>
+                        <!-- Context menu to copy link -->
+                        <TextBlock.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem
+                                    Click="ReportBugGithubServerLinkCopy"
+                                    Header="Copy"
+                                    Style="{DynamicResource PopupMenuItem}"/>
                             
-                        </ContextMenu>
-                    </TextBlock.ContextMenu>
-                </TextBlock>
+                            </ContextMenu>
+                        </TextBlock.ContextMenu>
+                    </TextBlock>
 
-                <!-- Divider -->
-                <Border Grid.Row="2"
-                        Height="2"
-                        Background="#FFCA1420"
-                        CornerRadius="20"
-                        Margin="50,10,50,15"
-                        VerticalAlignment="Center">
+                        <!-- Divider -->
+                        <Border Grid.Row="2"
+                            Height="2"
+                            Background="#FFCA1420"
+                            CornerRadius="20"
+                            Margin="50,10,50,15"
+                            VerticalAlignment="Center">
 
-                    <!-- Drop shadow effect -->
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="8"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="1"/>
+                            <!-- Drop shadow effect -->
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="1"/>
 
-                    </Border.Effect>
-                </Border>
+                            </Border.Effect>
+                        </Border>
 
-                <!-- Report a bug about the launcher message -->
-                <TextBlock Text="{DynamicResource item175}"
-                           Grid.Row="3"
-                           TextWrapping="Wrap"
-                           Foreground="White"
-                           TextAlignment="Center"
-                           VerticalAlignment="Center"
-                           Width="600"/>
+                        <!-- Report a bug about the launcher message -->
+                        <TextBlock Text="{DynamicResource item175}"
+                               Grid.Row="3"
+                               TextWrapping="Wrap"
+                               Foreground="White"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               Width="600"/>
 
-                <!-- Hyperlink to report a bug about the launcher -->
-                <TextBlock
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Grid.Row="4">
+                        <!-- Hyperlink to report a bug about the launcher -->
+                        <TextBlock
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Grid.Row="4">
                     
-                    <Hyperlink Click="ReportBugGithubLauncher"
-                               Foreground="White">
+                        <Hyperlink Click="ReportBugGithubLauncher"
+                                   Foreground="White">
                         
-                        <TextBlock x:Name="reportBugGitHubLauncherLink"
-                                   Style="{DynamicResource HyperLinkStyle}"/>
+                            <TextBlock x:Name="reportBugGitHubLauncherLink"
+                                       Style="{DynamicResource HyperLinkStyle}"/>
                         
-                    </Hyperlink>
+                        </Hyperlink>
                     
-                    <!-- Context menu to copy link -->
-                    <TextBlock.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem
-                                Click="ReportBugGithubServerLauncherCopy"
-                                Header="Copy"
-                                Style="{DynamicResource PopupMenuItem}"/>
+                        <!-- Context menu to copy link -->
+                        <TextBlock.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem
+                                    Click="ReportBugGithubServerLauncherCopy"
+                                    Header="Copy"
+                                    Style="{DynamicResource PopupMenuItem}"/>
                             
-                        </ContextMenu>
-                    </TextBlock.ContextMenu>
-                </TextBlock>
-            </Grid>
+                            </ContextMenu>
+                        </TextBlock.ContextMenu>
+                    </TextBlock>
+                </Grid>
+            </Border>
         </Grid>
 
         <!-- Background fade on unfocus -->

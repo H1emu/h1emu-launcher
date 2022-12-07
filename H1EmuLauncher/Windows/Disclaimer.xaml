@@ -89,31 +89,32 @@
             </DockPanel>
         </Grid>
 
-        <!-- Grid for main content inside of darkened area -->
-        <Grid
-            Grid.Row="1"
-            Background="#1C1B22"
-            Margin="15,5,15,15"
-            UseLayoutRounding="True">
-            
+        <!-- Main content in darkened area -->
+        <Border Grid.Row="1"
+                Background="#1C1B22"
+                Margin="15,5,15,15"
+                UseLayoutRounding="True"
+                CornerRadius="5">
+
             <!-- Drop shadow effect -->
-            <Grid.Effect>
+            <Border.Effect>
                 <DropShadowEffect
                     BlurRadius="8"
                     Direction="-90"
                     RenderingBias="Quality"
                     ShadowDepth="1"/>
                 
-            </Grid.Effect>
+            </Border.Effect>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="90"/>
-            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="90"/>
+                </Grid.RowDefinitions>
 
-            <!-- Welcome message -->
-            <TextBlock
+                <!-- Welcome message -->
+                <TextBlock
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Center"
                 Foreground="#FFED1C24"
@@ -122,8 +123,8 @@
                 FontFamily="{StaticResource Signika}"
                 Text="{DynamicResource item158}"/>
 
-            <!-- Main disclaimer message -->
-            <TextBlock
+                <!-- Main disclaimer message -->
+                <TextBlock
                 Grid.Row="1"
                 Margin="25,0,25,0"
                 Padding="0,15,0,0"
@@ -187,11 +188,11 @@
                     FontWeight="Light"
                     Foreground="White"
                     Text="{DynamicResource item166}"/>
-                
-            </TextBlock>
 
-            <!-- Continue button -->
-            <Button x:Name="continueButton"
+                </TextBlock>
+
+                <!-- Continue button -->
+                <Button x:Name="continueButton"
                     Grid.Row="2"
                     Click="ContinueButton"
                     RenderOptions.BitmapScalingMode="Fant"
@@ -207,11 +208,12 @@
                     IsEnabled="False"
                     Content="{DynamicResource item167}"
                     Style="{DynamicResource StandardButton}">
-                
-                <Button.Background>
-                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                </Button.Background>
-            </Button>
-        </Grid>
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

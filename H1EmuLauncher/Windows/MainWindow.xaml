@@ -82,31 +82,33 @@
                 </Button>
             </DockPanel>
         </Grid>
-        
-        <Grid
-            Grid.Row="1"
-            Background="#1C1B22"
-            Margin="25,10,25,25"
-            UseLayoutRounding="True">
-            
+
+        <!-- Main content in darkened area -->
+        <Border Grid.Row="1"
+                Background="#1C1B22"
+                Margin="25,10,25,25"
+                UseLayoutRounding="True"
+                CornerRadius="5">
+
             <!-- Drop shadow effect -->
-            <Grid.Effect>
+            <Border.Effect>
                 <DropShadowEffect
                     BlurRadius="10"
                     Direction="-90"
                     RenderingBias="Quality"
                     ShadowDepth="1"/>
                 
-            </Grid.Effect>
+            </Border.Effect>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="85"/>
-            </Grid.RowDefinitions>
-            
-            <!-- Main text message -->
-            <DockPanel Margin="25,0,25,0">
-                <TextBlock
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="85"/>
+                </Grid.RowDefinitions>
+
+                <!-- Main text message -->
+                <DockPanel Margin="25,0,25,0">
+                    <TextBlock
                     Margin="25,0,25,5"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
@@ -116,10 +118,10 @@
                     TextWrapping="Wrap"
                     TextAlignment="Center"
                     Text="{DynamicResource item1}"/>
-            </DockPanel>
+                </DockPanel>
 
-            <!-- Update button -->
-            <Button x:Name="updateButton"
+                <!-- Update button -->
+                <Button x:Name="updateButton"
                     Grid.Row="1"
                     Click="UpdateButtonClick"
                     RenderOptions.BitmapScalingMode="Fant"
@@ -133,14 +135,14 @@
                     BorderThickness="0"
                     Content="{DynamicResource item2}"
                     Style="{DynamicResource StandardButton}">
-                
-                <Button.Background>
-                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                </Button.Background>
-            </Button>
-            
-            <!-- Not now button -->
-            <TextBlock
+
+                    <Button.Background>
+                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                    </Button.Background>
+                </Button>
+
+                <!-- Not now button -->
+                <TextBlock
                 Grid.Row="1"
                 Margin="0,0,0,12"
                 VerticalAlignment="Bottom"
@@ -158,7 +160,8 @@
                     
                 </Hyperlink>
             </TextBlock>
-        </Grid>
+            </Grid>
+        </Border>
 
         <!-- Setup download progress bar -->
         <ProgressBar x:Name="downloadSetupProgress"

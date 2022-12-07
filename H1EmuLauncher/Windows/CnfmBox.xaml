@@ -88,35 +88,36 @@
             </DockPanel>
         </Grid>
 
-        <!-- Grid for main content inside of darkened area -->
-        <Grid
-            Grid.Row="1"
-            Background="#1C1B22"
-            Margin="15,5,15,15"
-            UseLayoutRounding="True">
-            
+        <!-- Main content in darkened area -->
+        <Border Grid.Row="1"
+                Background="#1C1B22"
+                Margin="15,5,15,15"
+                UseLayoutRounding="True"
+                CornerRadius="5">
+
             <!-- Drop shadow effect -->
-            <Grid.Effect>
+            <Border.Effect>
                 <DropShadowEffect
                     BlurRadius="8"
                     Direction="-90"
                     RenderingBias="Quality"
                     ShadowDepth="1"/>
                 
-            </Grid.Effect>
+            </Border.Effect>
             
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Main text message -->
-                <TextBlock x:Name="text"
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30*"/>
+                        <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Main text message -->
+                    <TextBlock x:Name="text"
                            Margin="25,10,25,10"
                            Padding="0,5,0,0"
                            VerticalAlignment="Center"
@@ -126,8 +127,8 @@
                            TextWrapping="Wrap"
                            TextAlignment="Center"/>
 
-                <!-- Yes button -->
-                <Button
+                    <!-- Yes button -->
+                    <Button
                     Grid.Row="1"
                     Click="YesButton"
                     RenderOptions.BitmapScalingMode="Fant"
@@ -142,14 +143,14 @@
                     BorderThickness="0"
                     Content="{DynamicResource item133}"
                     Style="{DynamicResource StandardButton}">
-                    
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                    </Button.Background>
-                </Button>
-                
-                <!-- No button -->
-                <Button
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                        </Button.Background>
+                    </Button>
+
+                    <!-- No button -->
+                    <Button
                     Grid.Row="1"
                     Click="NoButton"
                     RenderOptions.BitmapScalingMode="Fant"
@@ -164,12 +165,13 @@
                     BorderThickness="0"
                     Content="{DynamicResource item134}"
                     Style="{DynamicResource StandardButton}">
-                    
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                    </Button.Background>
-                </Button>
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
             </Grid>
-        </Grid>
+        </Border>
     </Grid>
 </Window>

@@ -297,7 +297,7 @@
 
                             <!-- Minimise Button-->
                             <Button x:Name="MiniButton"
-                                    Click="MiniButtonClick"
+                                    Click="MinimiseButtonClick"
                                     Width="45"
                                     Height="30"
                                     Margin="0,10,4,0"
@@ -404,85 +404,86 @@
                 </DockPanel>
             </Grid>
 
-            <!-- Grid to split the main content in half inside the darkened area -->
-            <Grid
-                Grid.Row="1"
-                Background="#1C1B22"
-                Margin="35,10,35,0"
-                UseLayoutRounding="True">
-                
+            <!-- Main content in darkened area -->
+            <Border Grid.Row="1"
+                    Margin="35,10,35,0"
+                    UseLayoutRounding="True"
+                    Background="#1C1B22"
+                    CornerRadius="5">
+
                 <!-- Drop shadow effect -->
-                <Grid.Effect>
+                <Border.Effect>
                     <DropShadowEffect
                         BlurRadius="15"
                         Direction="-90"
                         RenderingBias="Quality"
                         ShadowDepth="1"/>
                     
-                </Grid.Effect>
+                </Border.Effect>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                </Grid.RowDefinitions>
-
-                <!-- This grid splits the left side in half -->
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="197*"/>
-                        <RowDefinition Height="370*"/>
+                        <RowDefinition Height="2*"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Grid to dock the game image -->
-                    <Grid
+                    <!-- This grid splits the left side in half -->
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="197*"/>
+                            <RowDefinition Height="370*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Grid to dock the game image -->
+                        <Grid
                         Grid.Row="1"
                         Margin="30,27,12,25">
-                        
-                        <Grid x:Name="offlineImage"
-                              RenderOptions.BitmapScalingMode="Fant">
-                            
-                            <Image Source="..\Resources\OfflineImage.png"/>
-                        </Grid>
 
-                        <!-- Image carousel grid -->
-                        <Grid x:Name="imageCarousel"
+                            <Grid x:Name="offlineImage"
+                              RenderOptions.BitmapScalingMode="Fant">
+
+                                <Image Source="..\Resources\OfflineImage.png"/>
+                            </Grid>
+
+                            <!-- Image carousel grid -->
+                            <Grid x:Name="imageCarousel"
                               MouseEnter="CarouselMouseEnter"
                               MouseLeave="CarouselMouseLeave"
                               Visibility="Hidden"
                               ClipToBounds="True">
-                            
-                            <Image x:Name="carouselImageSlider"
-                                   RenderOptions.BitmapScalingMode="Fant">
-                                
-                                <Image.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Image.RenderTransform>
-                            </Image>
-                            
-                            <Image x:Name="carouselImage"
-                                   RenderOptions.BitmapScalingMode="Fant">
-                                
-                                <Image.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform/>
-                                        <SkewTransform/>
-                                        <RotateTransform/>
-                                        <TranslateTransform/>
-                                    </TransformGroup>
-                                </Image.RenderTransform>
-                            </Image>
 
-                            <!-- Next image button -->
-                            <Button x:Name="nextImage"
+                                <Image x:Name="carouselImageSlider"
+                                   RenderOptions.BitmapScalingMode="Fant">
+
+                                    <Image.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Image.RenderTransform>
+                                </Image>
+
+                                <Image x:Name="carouselImage"
+                                   RenderOptions.BitmapScalingMode="Fant">
+
+                                    <Image.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Image.RenderTransform>
+                                </Image>
+
+                                <!-- Next image button -->
+                                <Button x:Name="nextImage"
                                     Click="NextImageClick"
                                     Width="30"
                                     HorizontalAlignment="Right"
@@ -491,15 +492,15 @@
                                     Visibility="Hidden"
                                     Style="{DynamicResource CarouselButtonNext}"/>
 
-                            <!-- Trigger next image storyboard -->
-                            <Button x:Name="triggerNextImageStoryboard"
+                                <!-- Trigger next image storyboard -->
+                                <Button x:Name="triggerNextImageStoryboard"
                                     Click="StoryboardNextImageClick"
                                     Width="30"
                                     HorizontalAlignment="Right"
                                     Visibility="Hidden"/>
 
-                            <!-- Previous image button -->
-                            <Button x:Name="prevImage"
+                                <!-- Previous image button -->
+                                <Button x:Name="prevImage"
                                     Click="PrevImageClick"
                                     Width="30"
                                     HorizontalAlignment="Left"
@@ -508,66 +509,66 @@
                                     Visibility="Hidden"
                                     Style="{DynamicResource CarouselButtonPrevious}"/>
 
-                            <!-- Trigger previous image storyboard -->
-                            <Button x:Name="triggerPrevImageStoryboard"
+                                <!-- Trigger previous image storyboard -->
+                                <Button x:Name="triggerPrevImageStoryboard"
                                     Click="StoryboardPrevImageClick"
                                     Width="30"
                                     HorizontalAlignment="Right"
                                     Visibility="Hidden"/>
 
-                            <!-- Image carousel progress bar -->
-                            <ProgressBar x:Name="carouselProgressBar"
+                                <!-- Image carousel progress bar -->
+                                <ProgressBar x:Name="carouselProgressBar"
                                          Height="5"
                                          VerticalAlignment="Bottom"
                                          BorderThickness="0"
                                          Background="Transparent"
                                          Foreground="#DB111C"
                                          Maximum="3000"/>
+                            </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
 
-                <!-- Update version information -->
-                <StackPanel Margin="25,10,12,0">
-                    <RichTextBox x:Name="titleUpdate"
+                    <!-- Update version information -->
+                    <StackPanel Margin="25,10,12,0">
+                        <RichTextBox x:Name="titleUpdate"
                                  Background="Transparent"
                                  Foreground="White"
                                  BorderThickness="0"
                                  IsReadOnly="True"
                                  Cursor="Arrow">
-                        
-                        <FlowDocument>
-                            <Paragraph
+
+                            <FlowDocument>
+                                <Paragraph
                                 FontSize="32"
                                 FontWeight="Bold"
                                 FontFamily="{DynamicResource Signika}">
-                                
-                                <!-- Version text -->
-                                <Run x:Name="titleUpdateText"
+
+                                    <!-- Version text -->
+                                    <Run x:Name="titleUpdateText"
                                      Foreground="#FFED1C24"
                                      FontSize="44"
                                      Text="{DynamicResource item3}"/>
 
-                                <!-- Update version number -->
-                                <Run x:Name="updateVersion"
+                                    <!-- Update version number -->
+                                    <Run x:Name="updateVersion"
                                      Foreground="#FFED1C24"
                                      FontSize="44"/>
-                                
-                                <!-- Date version was published -->
-                                <Run x:Name="datePublished"
+
+                                    <!-- Date version was published -->
+                                    <Run x:Name="datePublished"
                                      FontFamily="Bahnschrift Light"
                                      FontSize="16"/>
-                                
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
 
-                    <!-- To allow scrolling on touch device -->
-                    <ScrollViewer PanningMode="Both"
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+
+                        <!-- To allow scrolling on touch device -->
+                        <ScrollViewer PanningMode="Both"
                                   VerticalScrollBarVisibility="Hidden">
-                        
-                        <!-- Patch notes textbox -->
-                        <RichTextBox x:Name="patchNotesBox"
+
+                            <!-- Patch notes textbox -->
+                            <RichTextBox x:Name="patchNotesBox"
                                  Height="96"
                                  Margin="0,10,0,0"
                                  Background="Transparent"
@@ -575,11 +576,11 @@
                                  BorderThickness="0"
                                  IsReadOnly="True"
                                  Cursor="Arrow"/>
-                        
-                    </ScrollViewer>
 
-                    <!-- Read full details of update hyperlink -->
-                    <TextBlock Margin="6,22,0,0">
+                        </ScrollViewer>
+
+                        <!-- Read full details of update hyperlink -->
+                        <TextBlock Margin="6,22,0,0">
                         <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/"
                                    RequestNavigate="FullUpdatesHyperlink"
                                    Foreground="White">
@@ -599,39 +600,39 @@
                             </ContextMenu>
                         </TextBlock.ContextMenu>
                     </TextBlock>
-                </StackPanel>
+                    </StackPanel>
 
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="220*"/>
-                        <RowDefinition Height="338*"/>
-                    </Grid.RowDefinitions>
-                    
-                    <!-- You must own the game in order to download message -->
-                    <StackPanel Margin="12,20,30,0">
-                        <RichTextBox Background="Transparent"
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="220*"/>
+                            <RowDefinition Height="338*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- You must own the game in order to download message -->
+                        <StackPanel Margin="12,20,30,0">
+                            <RichTextBox Background="Transparent"
                                      Foreground="White"
                                      BorderThickness="0"
                                      IsReadOnly="True"
                                      Cursor="Arrow">
 
-                            <FlowDocument>
-                                <Paragraph>
-                                    <Run
+                                <FlowDocument>
+                                    <Paragraph>
+                                        <Run
                                         Foreground="#FFCA1420"
                                         Text="{DynamicResource item10}"/>
 
-                                    <Run Text="{DynamicResource item11}"/>
+                                        <Run Text="{DynamicResource item11}"/>
 
-                                </Paragraph>
-                                <Paragraph Padding="0,10,0,0">
-                                    <Run Text="{DynamicResource item50}"/>
-                                </Paragraph>
-                            </FlowDocument>
-                        </RichTextBox>
+                                    </Paragraph>
+                                    <Paragraph Padding="0,10,0,0">
+                                        <Run Text="{DynamicResource item50}"/>
+                                    </Paragraph>
+                                </FlowDocument>
+                            </RichTextBox>
 
-                        <!-- H1Emu Chinese Community link -->
-                        <TextBlock Margin="6,46,0,0"
+                            <!-- H1Emu Chinese Community link -->
+                            <TextBlock Margin="6,46,0,0"
                                    x:Name="chineseLink"
                                    Visibility="Collapsed"
                                    FontFamily="Bahnschrift"
@@ -662,39 +663,39 @@
                                 </ContextMenu>
                             </TextBlock.ContextMenu>  
                         </TextBlock>
-                    </StackPanel>
+                        </StackPanel>
 
-                    <!-- Grid that hosts Steam frame, server selector and play button -->
-                    <Grid Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="140"/>
-                        </Grid.RowDefinitions>
+                        <!-- Grid that hosts Steam frame, server selector and play button -->
+                        <Grid Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="140"/>
+                            </Grid.RowDefinitions>
 
-                        <!-- Steam frame -->
-                        <Frame x:Name="steamFramePanel"
+                            <!-- Steam frame -->
+                            <Frame x:Name="steamFramePanel"
                                    Margin="20,0,30,0"
                                    VerticalAlignment="Top"
                                    Source="..\\SteamFrame\Login.xaml"
                                    NavigationUIVisibility="Hidden"
                                    VerticalContentAlignment="Top"
                                    Padding="0" Height="140"/>
-                    </Grid>
+                        </Grid>
 
-                    <Grid
+                        <Grid
                         Grid.Row="1"
                         Margin="12,0,30,25">
-                        
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <!-- Divider -->
-                        <Border
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Divider -->
+                            <Border
                             Height="1"
                             Background="#FFCA1420"
                             VerticalAlignment="Bottom"
@@ -703,19 +704,19 @@
                             Grid.ColumnSpan="2"
                             RenderOptions.BitmapScalingMode="Fant">
 
-                            <!-- Drop shadow effect -->
-                            <Border.Effect>
-                                <DropShadowEffect
+                                <!-- Drop shadow effect -->
+                                <Border.Effect>
+                                    <DropShadowEffect
                                     BlurRadius="8"
                                     Direction="-90"
                                     RenderingBias="Quality"
                                     ShadowDepth="1"/>
-                                
-                            </Border.Effect>
-                        </Border>
 
-                        <!-- Server selector combobox -->
-                        <ComboBox x:Name="serverSelector"
+                                </Border.Effect>
+                            </Border>
+
+                            <!-- Server selector combobox -->
+                            <ComboBox x:Name="serverSelector"
                                   Height="35"
                                   Margin="7,0,3,5"
                                   Padding="38,8,15,0"
@@ -724,17 +725,17 @@
                                   BorderThickness="2"
                                   SelectionChanged="ServerSelectorChanged"
                                   Style="{DynamicResource ComboBox}">
-                            
-                            <ComboBoxItem Content="{DynamicResource item139}"/>
-                            <ComboBoxItem Content="{DynamicResource item140}"/>
-                            <Separator/>
-                            <ComboBoxItem x:Name="newServer"
+
+                                <ComboBoxItem Content="{DynamicResource item139}"/>
+                                <ComboBoxItem Content="{DynamicResource item140}"/>
+                                <Separator/>
+                                <ComboBoxItem x:Name="newServer"
                                           Content="{DynamicResource item141}"
                                           PreviewMouseLeftButtonDown="AddNewServer"/>
-                        </ComboBox>
+                            </ComboBox>
 
-                        <!-- Delete selected server button -->
-                        <Button
+                            <!-- Delete selected server button -->
+                            <Button
                             Click="DeleteServer"
                             RenderOptions.BitmapScalingMode="Fant"
                             Width="20"
@@ -744,14 +745,14 @@
                             HorizontalAlignment="Left"
                             BorderThickness="0"
                             Style="{DynamicResource DeleteServer}">
-                            
-                            <Button.Background>
-                                <ImageBrush ImageSource="..\Resources\Server.png"/>
-                            </Button.Background>
-                        </Button>
 
-                        <!-- Play button -->
-                        <Button x:Name="playButton"
+                                <Button.Background>
+                                    <ImageBrush ImageSource="..\Resources\Server.png"/>
+                                </Button.Background>
+                            </Button>
+
+                            <!-- Play button -->
+                            <Button x:Name="playButton"
                             Grid.Column="1"
                             Click="LaunchClient"
                             RenderOptions.BitmapScalingMode="Fant"
@@ -764,14 +765,15 @@
                             BorderThickness="0"
                             Content="{DynamicResource item8}"
                             Style="{DynamicResource StandardButton}">
-                            
-                            <Button.Background>
-                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                            </Button.Background>
-                        </Button>
+
+                                <Button.Background>
+                                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                                </Button.Background>
+                            </Button>
+                        </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
+            </Border>
 
             <!-- Footer -->
             <DockPanel Grid.Row="2">

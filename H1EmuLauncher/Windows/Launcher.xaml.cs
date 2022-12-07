@@ -776,7 +776,7 @@ namespace H1EmuLauncher
 
         private void CloseLauncher(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void MainLauncherClosed(object sender, EventArgs e)
@@ -784,14 +784,14 @@ namespace H1EmuLauncher
             Environment.Exit(69);
         }
 
-        private void MiniButtonClick(object sender, RoutedEventArgs e)
+        private void MinimiseButtonClick(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            WindowState = WindowState.Minimized;
         }
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void MainLauncherActivated(object sender, EventArgs e)

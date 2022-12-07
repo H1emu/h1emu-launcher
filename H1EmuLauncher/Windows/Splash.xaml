@@ -41,7 +41,7 @@
             Margin="35,10,35,0"
             IsIndeterminate="True"
             Style="{DynamicResource ProgressBar}">
-            
+
             <!-- Drop shadow effect -->
             <ProgressBar.Effect>
                 <DropShadowEffect
@@ -49,7 +49,7 @@
                     Direction="-90"
                     RenderingBias="Quality"
                     ShadowDepth="1"/>
-                
+
             </ProgressBar.Effect>
         </ProgressBar>
 

@@ -86,30 +86,31 @@
                 </DockPanel>
             </Grid>
 
-            <!-- Grid for main content inside of darkened area -->
-            <Grid
-                Grid.Row="1"
+            <!-- Main content in darkened area -->
+            <Border Grid.Row="1"
                 Background="#1C1B22"
                 Margin="15,5,15,15"
-                UseLayoutRounding="True">
+                UseLayoutRounding="True"
+                CornerRadius="5">
 
                 <!-- Drop shadow effect -->
-                <Grid.Effect>
+                <Border.Effect>
                     <DropShadowEffect
                         BlurRadius="8"
                         Direction="-90"
                         RenderingBias="Quality"
                         ShadowDepth="1"/>
+                    
+                </Border.Effect>
 
-                </Grid.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <!-- Info about account key message -->
-                <TextBlock
+                    <!-- Info about account key message -->
+                    <TextBlock
                     Width="540"
                     Margin="0,16,0,0"
                     VerticalAlignment="Top"
@@ -120,8 +121,8 @@
                     TextWrapping="Wrap"
                     Text="{DynamicResource item156}"/>
 
-                <!-- Hyperlink to obtain user authentication key -->
-                <TextBlock
+                    <!-- Hyperlink to obtain user authentication key -->
+                    <TextBlock
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
                     
@@ -145,8 +146,8 @@
                     </TextBlock.ContextMenu>
                 </TextBlock>
 
-                <!-- Plain text box that holds account key for visibility toggle -->
-                <TextBox x:Name="accountKeyBoxShown"
+                    <!-- Plain text box that holds account key for visibility toggle -->
+                    <TextBox x:Name="accountKeyBoxShown"
                     Width="540"
                     Height="35"
                     Margin="0,0,0,12"
@@ -161,8 +162,8 @@
                     Text="{Binding ElementName=accountKeyBox, Path=Password}"
                     Style="{DynamicResource TextBoxPrimaryStyle}"/>
 
-                <!-- Password box to hold account key -->
-                <PasswordBox x:Name="accountKeyBox"
+                    <!-- Password box to hold account key -->
+                    <PasswordBox x:Name="accountKeyBox"
                     Width="540"
                     Height="35"
                     Margin="0,0,0,12"
@@ -176,8 +177,8 @@
                     LostFocus="AccountKeyLostFocus"
                     Style="{DynamicResource PasswordBoxStyle}"/>
 
-                <!-- Hint for account key textbox -->
-                <TextBlock x:Name="accountKeyHint"
+                    <!-- Hint for account key textbox -->
+                    <TextBlock x:Name="accountKeyHint"
                     Width="540"
                     Height="27"
                     Padding="37,0,37,0"
@@ -189,8 +190,8 @@
                     FontSize="16"
                     Text="{DynamicResource item154}"/>
 
-                <!-- Key image inside of account key textbox -->
-                <Image Source="..\Resources\AccountKey.png"
+                    <!-- Key image inside of account key textbox -->
+                    <Image Source="..\Resources\AccountKey.png"
                     RenderOptions.BitmapScalingMode="Fant"
                     Width="20"
                     Height="20"
@@ -198,8 +199,8 @@
                     VerticalAlignment="Bottom"
                     HorizontalAlignment="Left"/>
 
-                <!-- Password visibility toggle button -->
-                <Button x:Name="showHidePassword"
+                    <!-- Password visibility toggle button -->
+                    <Button x:Name="showHidePassword"
                         Click="ShowHidePasswordClick"
                         RenderOptions.BitmapScalingMode="Fant"
                         Width="24"
@@ -210,13 +211,13 @@
                         BorderThickness="0"
                         Style="{StaticResource ShowPasswordButton}">
 
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\ShowPassword.png"/>
-                    </Button.Background>
-                </Button>
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\ShowPassword.png"/>
+                        </Button.Background>
+                    </Button>
 
-                <!-- Close account key window button -->
-                <Button
+                    <!-- Close account key window button -->
+                    <Button
                     Grid.Row="1"
                     Click="OkCloseAccountKeyWindow"
                     RenderOptions.BitmapScalingMode="Fant"
@@ -231,11 +232,12 @@
                     Content="{DynamicResource item92}"
                     Style="{DynamicResource StandardButton}">
 
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                    </Button.Background>
-                </Button>
-            </Grid>
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Border>
         </Grid>
     </Grid>
 </Window>
