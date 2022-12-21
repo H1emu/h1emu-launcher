@@ -47,7 +47,7 @@
             {
             "Enabled" = "11:TRUE"
             "PromptEnabled" = "11:TRUE"
-            "PrerequisitesLocation" = "2:1"
+            "PrerequisitesLocation" = "2:2"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
                 "Items"
@@ -59,7 +59,7 @@
                     }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.6.0.x64"
                     {
-                    "Name" = "8:.NET Desktop Runtime 6.0.11 (x64)"
+                    "Name" = "8:.NET Desktop Runtime 6.0.12 (x64)"
                     "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.6.0.x64"
                     }
                 }
@@ -204,7 +204,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
         "ProductCode" = "8:{C2DC098D-BF28-43D2-BE32-C4A72CCB8FD7}"
-        "PackageCode" = "8:{B975822E-E6E6-4D72-9F41-BB0D00ECA23B}"
+        "PackageCode" = "8:{EB34412C-FF76-4C3E-A417-EAFE1C3F287C}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
