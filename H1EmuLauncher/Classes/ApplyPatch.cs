@@ -11,7 +11,7 @@ using System.Reflection;
 
 namespace H1EmuLauncher.Classes
 {
-    class CheckPatchVersion
+    class ApplyPatchClass
     {
         public static string gameVersion;
         public static string latestPatchVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
@@ -62,7 +62,7 @@ namespace H1EmuLauncher.Classes
 
         public static void ApplyPatch()
         {
-            // Deletes old patch files if any of them are already in the directory, including the .zip in the case of corruption.
+            // Deletes old patch files if any of them are already in the directory, including the .zip in the case of corruption
             if (File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
                 File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
                 File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
@@ -77,7 +77,7 @@ namespace H1EmuLauncher.Classes
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\AssetPatch2015.zip");
             }
 
-            // Unzip all of the files to directory.
+            // Unzip all of the files to directory
             try
             {
                 if (gameVersion == "15jan2015")
@@ -93,20 +93,27 @@ namespace H1EmuLauncher.Classes
             }
             catch { }
 
-            // Delete the .zip file, not needed anymore.
+            // Delete the .zip file, not needed anymore
             if (gameVersion == "15jan2015")
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
             else
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
 
-            // Extract Asset_256.pack to fix blackberries.
+            // Extract Asset_256.pack to fix blackberries & delete BattlEye folder to prevent Steam from trying to launch the game (2016 only)
             if (gameVersion == "22dec2016")
+            {
                 File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
+
+                if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
+                {
+                    Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\BattlEye", true);
+                }
+            }
 
             // Replace users ClientConfig.ini with modified version
             File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\ClientConfig.ini", Properties.Resources.CustomClientConfig);
 
-            // Finish.
+            // Finish
             if (gameVersion == "15jan2015")
                 Properties.Settings.Default.currentPatchVersion2015 = latestPatchVersion;
             else

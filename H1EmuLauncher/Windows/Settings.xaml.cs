@@ -24,7 +24,7 @@ namespace H1EmuLauncher
             settingsInstance = this;
             Owner = Launcher.launcherInstance;
 
-            // Adds the correct language file to the resource dictionary and then loads it.
+            // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
             cmdShell.FileName = "cmd.exe";
@@ -97,7 +97,7 @@ namespace H1EmuLauncher
 
             DisableButtons();
 
-            // Deletes old patch files if any of them are already in the directory, including the .zip in the case of corruption.
+            // Deletes old patch files if any of them are already in the directory, including the .zip in the case of corruption
             if (File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
                 File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
                 File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
@@ -117,7 +117,7 @@ namespace H1EmuLauncher
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\AssetPatch2015.zip");
             }
 
-            // Unzip all of the files to directory.
+            // Unzip all of the files to directory
             Dispatcher.Invoke(new Action(delegate
             {
                 Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
@@ -140,7 +140,7 @@ namespace H1EmuLauncher
             }
             catch { }
 
-            // Delete the .zip file, not needed anymore.
+            // Delete the .zip file, not needed anymore
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item100").ToString();
@@ -151,21 +151,28 @@ namespace H1EmuLauncher
             else
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
 
-            // Extract Asset_256.pack to fix blackberries.
+            // Extract Asset_256.pack to fix blackberries & delete BattlEye folder to prevent Steam from trying to launch the game (2016 only)
             if (gameVersion == "22dec2016")
+            {
                 File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
+                
+                if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
+                {
+                    Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\BattlEye", true);
+                }
+            }
 
             // Replace users ClientConfig.ini with modified version
             File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\ClientConfig.ini", Properties.Resources.CustomClientConfig);
 
-            // Finish.
+            // Finish
             watch.Stop();
             TimeSpan elapsedMs = watch.Elapsed;
 
             if (gameVersion == "15jan2015")
-                Properties.Settings.Default.currentPatchVersion2015 = CheckPatchVersion.latestPatchVersion;
+                Properties.Settings.Default.currentPatchVersion2015 = ApplyPatchClass.latestPatchVersion;
             else
-                Properties.Settings.Default.currentPatchVersion2016 = CheckPatchVersion.latestPatchVersion;
+                Properties.Settings.Default.currentPatchVersion2016 = ApplyPatchClass.latestPatchVersion;
 
             Properties.Settings.Default.Save();
 
@@ -300,10 +307,10 @@ namespace H1EmuLauncher
 
         public bool ExtractMaster()
         {
-            // Delete old server files if they exist.
+            // Delete old server files if they exist
             DeleteOldFiles();
 
-            // Unzip the server files to directory.
+            // Unzip the server files to directory
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item116").ToString();
@@ -318,10 +325,10 @@ namespace H1EmuLauncher
             }
             catch { }
 
-            // Delete old .zip file, not needed anymore.
+            // Delete old .zip file, not needed anymore
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1Z1-Server-Quickstart-Master.zip");
 
-            // Unzip node files.
+            // Unzip node files
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item118").ToString();
@@ -336,7 +343,7 @@ namespace H1EmuLauncher
             }
             catch { }
 
-            // Delete the old .zip file, not needed anymore.
+            // Delete the old .zip file, not needed anymore
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node.zip");
 
             return true;

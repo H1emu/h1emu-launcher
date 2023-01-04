@@ -371,6 +371,7 @@ namespace H1EmuLauncher
 
                         if (serverIp == Info.H1EMU_SERVER_IP_2015 || serverIp == Info.H1EMU_SERVER_IP_2016)
                         {
+                            // sessionIdKey is the same as accountKey, couldn't change the name without resetting users settings
                             if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
                             {
                                 Dispatcher.Invoke(new Action(delegate
@@ -382,7 +383,6 @@ namespace H1EmuLauncher
                             }
                             else
                             {
-                                // sessionIdKey is the same as accountKey, couldn't change the name without resetting users settings.
                                 sessionId = $"{{\"sessionId\":\"{Properties.Settings.Default.sessionIdKey}\",\"gameVersion\":{gameVersionInt}}}";
                             }
                         }
@@ -393,7 +393,7 @@ namespace H1EmuLauncher
                                 return;
                         }
 
-                        CheckPatchVersion.CheckPatch();
+                        ApplyPatchClass.CheckPatch();
 
                         ma.WaitOne();
                         ma.Reset();
