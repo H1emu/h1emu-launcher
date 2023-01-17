@@ -196,6 +196,9 @@ namespace H1EmuLauncher
 
         public void InstallServer(object sender, RoutedEventArgs e)
         {
+            if (!CheckDirectory())
+                return;
+
             Button button = (Button)sender;
 
             if (button.Name == "latestButton")
@@ -213,9 +216,6 @@ namespace H1EmuLauncher
 
                 try
                 {
-                    if (!CheckDirectory())
-                        return;
-
                     if (!ExtractMaster())
                         return;
 
@@ -268,9 +268,9 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         settingsProgressText.Text = FindResource("item93").ToString();
-                        settingsProgress.Value = 0;
                         Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         settingsProgress.IsIndeterminate = false;
+                        settingsProgress.Value = 0;
 
                         if (button.Name == "latestButton")
                             CustomMessageBox.Show(FindResource("item107").ToString() + $" \"{er.Message}\".", this);
