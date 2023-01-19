@@ -44,8 +44,6 @@ namespace H1EmuLauncher
                 if (!CheckDirectory())
                     return;
 
-                CheckGameVersion();
-
                 switch (gameVersion)
                 {
                     case "15jan2015":
@@ -198,6 +196,29 @@ namespace H1EmuLauncher
         {
             if (!CheckDirectory())
                 return;
+
+            if (gameVersion == "processBeingUsed")
+            {
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    EnableButtons();
+
+                    CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                }));
+
+                return;
+            }
+            else if (string.IsNullOrEmpty(gameVersion))
+            {
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    EnableButtons();
+
+                    CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                }));
+
+                return;
+            }
 
             Button button = (Button)sender;
 
@@ -515,6 +536,8 @@ namespace H1EmuLauncher
             {
                 Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
             }));
+
+            EnableButtons();
         }
 
         public void SettingsLoaded(object sender, RoutedEventArgs e)
@@ -563,7 +586,6 @@ namespace H1EmuLauncher
                 }));
 
                 CheckGameVersion();
-                EnableButtons();
 
                 if (gameVersion == "processBeingUsed")
                 {
@@ -613,7 +635,6 @@ namespace H1EmuLauncher
                     return;
 
                 CheckGameVersion();
-                EnableButtons();
 
                 switch (gameVersion)
                 {
@@ -683,19 +704,6 @@ namespace H1EmuLauncher
             return true;
         }
 
-        public void DisableButtons()
-        {
-            Dispatcher.Invoke(new Action(delegate
-            {
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
-                directoryButton.IsEnabled = false;
-                patchButton.IsEnabled = false;
-                latestButton.IsEnabled = false;
-                stableButton.IsEnabled = false;
-                settingsProgressRow.Visibility = Visibility.Visible;
-            }));
-        }
-
         public void EnableButtons()
         {
             Dispatcher.Invoke(new Action(delegate
@@ -706,6 +714,19 @@ namespace H1EmuLauncher
                 latestButton.IsEnabled = true;
                 stableButton.IsEnabled = true;
                 settingsProgressRow.Visibility = Visibility.Collapsed;
+            }));
+        }
+
+        public void DisableButtons()
+        {
+            Dispatcher.Invoke(new Action(delegate
+            {
+                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                directoryButton.IsEnabled = false;
+                patchButton.IsEnabled = false;
+                latestButton.IsEnabled = false;
+                stableButton.IsEnabled = false;
+                settingsProgressRow.Visibility = Visibility.Visible;
             }));
         }
 
