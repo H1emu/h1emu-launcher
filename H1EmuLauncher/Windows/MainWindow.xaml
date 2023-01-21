@@ -107,18 +107,16 @@
                 </Grid.RowDefinitions>
 
                 <!-- Main text message -->
-                <DockPanel Margin="25,0,25,0">
-                    <TextBlock
-                    Margin="25,0,25,5"
+                <TextBlock
+                    Margin="50,0,50,5"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
-                    FontSize="20"
+                    FontSize="18"
                     FontFamily="Bahnschrift Light"
                     Foreground="FloralWhite"
                     TextWrapping="Wrap"
                     TextAlignment="Center"
                     Text="{DynamicResource item1}"/>
-                </DockPanel>
 
                 <!-- Update button -->
                 <Button x:Name="updateButton"
