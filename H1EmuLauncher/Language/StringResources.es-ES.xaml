@@ -44,7 +44,7 @@
     <system:String x:Key="item42">RE-PARCHEAR</system:String>
     <system:String x:Key="item43">ÚLTIMA</system:String>
     <system:String x:Key="item44">ESTABLE</system:String>
-    <system:String x:Key="item45">Si titnes problemas al cargar el juego, intenta reinstalar el parche.</system:String>
+    <system:String x:Key="item45">Si tiene problemas con el juego, intente volver a instalar el parche o</system:String>
     <system:String x:Key="item46">Haz click aquí para descargar la última compilación del servidor.</system:String>
     <system:String x:Key="item47">Haz click aquí para descargar la última compilación estable del servidor.</system:String>
     <system:String x:Key="item48">Buscando actualizaciones...</system:String>
@@ -133,7 +133,7 @@
     <system:String x:Key="item139">H1Emu Server</system:String>
     <system:String x:Key="item140">Un jugador</system:String>
     <system:String x:Key="item141">Nuevo servidor...</system:String>
-    <system:String x:Key="item142">Exception thrown: {0}</system:String>
+    <system:String x:Key="item142">Exception thrown:</system:String>
     <system:String x:Key="item143">El nombre del servidor ya existe en la lista.</system:String>
     <system:String x:Key="item144">Nombre del servidor...</system:String>
     <system:String x:Key="item145">IP del servidor...</system:String>
@@ -167,4 +167,8 @@
     <system:String x:Key="item173">Reportar un error...</system:String>
     <system:String x:Key="item174">Aquí puede informar cualquier error que haya experimentado en el juego mientras usaba los archivos del servidor H1Emu:</system:String>
     <system:String x:Key="item175">Aquí puede informar cualquier error que haya experimentado al usar H1Emu Launcher:</system:String>
+    <system:String x:Key="item176">borrar tus datos de un solo jugador...</system:String>
+    <system:String x:Key="item177">No se encontraron datos de un solo jugador.</system:String>
+    <system:String x:Key="item178">Eliminar los datos de un jugador puede solucionar cualquier problema al que se esté enfrentando; tenga en cuenta que perderá todo el progreso.\n\n¿Desea continuar?</system:String>
+    <system:String x:Key="item179">Datos de un solo jugador eliminados con éxito.</system:String>
 </ResourceDictionary>

@@ -43,7 +43,7 @@
     <system:String x:Key="item42">RE-PATCH</system:String>
     <system:String x:Key="item43">LATEST</system:String>
     <system:String x:Key="item44">STABLE</system:String>
-    <system:String x:Key="item45">If you are having trouble loading into the game, try re-installing the patch files here.</system:String>
+    <system:String x:Key="item45">If you are having game issues, try re-installing the patch or</system:String>
     <system:String x:Key="item46">Click here to download the latest build of the server.</system:String>
     <system:String x:Key="item47">Click here to download the latest stable build of the server.</system:String>
     <system:String x:Key="item48">Checking for updates...</system:String>
@@ -132,7 +132,7 @@
     <system:String x:Key="item139">H1Emu Server</system:String>
     <system:String x:Key="item140">Singleplayer</system:String>
     <system:String x:Key="item141">New Server...</system:String>
-    <system:String x:Key="item142">Exception thrown: {0}</system:String>
+    <system:String x:Key="item142">Exception thrown:</system:String>
     <system:String x:Key="item143">Server name already exists in list.</system:String>
     <system:String x:Key="item144">Server Name...</system:String>
     <system:String x:Key="item145">Server IP...</system:String>
@@ -166,4 +166,8 @@
     <system:String x:Key="item173">Report a bug...</system:String>
     <system:String x:Key="item174">Here you can report any bugs that you have experienced in game while using the H1Emu Server files:</system:String>
     <system:String x:Key="item175">Here you can report any bugs that you have experienced while using the H1Emu Launcher:</system:String>
+    <system:String x:Key="item176">delete your singleplayer data...</system:String>
+    <system:String x:Key="item177">No singleplayer data found.</system:String>
+    <system:String x:Key="item178">Deleting your singleplayer data may fix any issues you are facing, be warned that you will lose all progress.\n\nWould you like to continue?</system:String>
+    <system:String x:Key="item179">Successfully deleted singleplayer data.</system:String>
 </ResourceDictionary>

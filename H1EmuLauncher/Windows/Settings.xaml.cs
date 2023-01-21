@@ -736,6 +736,31 @@ namespace H1EmuLauncher
             ak.ShowDialog();
         }
 
+        private void DeleteSingleplayerDataClick(object sender, RoutedEventArgs e)
+        {
+            if (!Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\h1emu"))
+            {
+                CustomMessageBox.Show(FindResource("item177").ToString(), this);
+                return;
+            }
+
+            MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item178").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+            if (dr != MessageBoxResult.Yes)
+                return;
+
+            try
+            {
+                Directory.Delete($"{Info.APPLICATION_DATA_PATH}\\h1emu", true);
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
+                return;
+            }
+
+            CustomMessageBox.Show(FindResource("item179").ToString(), this);
+        }
+
         private void MainSettingsClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (IsVisible && !directoryButton.IsEnabled)
@@ -781,6 +806,11 @@ namespace H1EmuLauncher
 
                 launchAccountKeyWindow = false;
             }
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

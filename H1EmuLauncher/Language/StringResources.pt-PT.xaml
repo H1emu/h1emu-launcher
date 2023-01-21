@@ -44,7 +44,7 @@
     <system:String x:Key="item42">RECORRIGIR</system:String>
     <system:String x:Key="item43">RECENTE</system:String>
     <system:String x:Key="item44">ESTÁVEL</system:String>
-    <system:String x:Key="item45">Se estiver a ter dificuldades em carregar o jogo, tente reinstalar os ficheiros de correção aqui.</system:String>
+    <system:String x:Key="item45">Se você estiver tendo problemas com o jogo, tente reinstalar o patch ou</system:String>
     <system:String x:Key="item46">Clique aqui para descarregar a versão recente do servidor.</system:String>
     <system:String x:Key="item47">Clique aqui para descarregar a versão estável do servidor.</system:String>
     <system:String x:Key="item48">A procurar por novas atualizações...</system:String>
@@ -133,7 +133,7 @@
     <system:String x:Key="item139">Servidor H1Emu</system:String>
     <system:String x:Key="item140">Jogador único</system:String>
     <system:String x:Key="item141">Novo servidor...</system:String>
-    <system:String x:Key="item142">Exceção lançada: {0}</system:String>
+    <system:String x:Key="item142">Exceção lançada:</system:String>
     <system:String x:Key="item143">O nome do servidor já existe na lista.</system:String>
     <system:String x:Key="item144">Nome do servidor...</system:String>
     <system:String x:Key="item145">IP do servidor...</system:String>
@@ -167,4 +167,8 @@
     <system:String x:Key="item173">Reportar um erro...</system:String>
     <system:String x:Key="item174">Aqui você pode relatar quaisquer bugs que você tenha experimentado no jogo ao usar os arquivos do servidor H1Emu:</system:String>
     <system:String x:Key="item175">Aqui você pode relatar quaisquer bugs que você tenha experimentado ao usar o H1Emu Launcher:</system:String>
+    <system:String x:Key="item176">exclua seus dados de um jogador...</system:String>
+    <system:String x:Key="item177">Nenhum dado singleplayer encontrado.</system:String>
+    <system:String x:Key="item178">Excluir seus dados de um jogador pode resolver qualquer problema que você esteja enfrentando, esteja avisado de que você perderá todo o progresso.\n\nDeseja continuar?</system:String>
+    <system:String x:Key="item179">Dados de um jogador excluídos com sucesso.</system:String>
 </ResourceDictionary>

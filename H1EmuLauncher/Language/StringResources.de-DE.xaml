@@ -44,7 +44,7 @@
     <system:String x:Key="item42">RE-PATCH</system:String>
     <system:String x:Key="item43">neuste</system:String>
     <system:String x:Key="item44">Stabil</system:String>
-    <system:String x:Key="item45">Wenn Sie Probleme beim Laden des Spiels haben, versuchen Sie, die Patch Dateien hier erneut zu installieren.</system:String>
+    <system:String x:Key="item45">Wenn Sie Spielprobleme haben, versuchen Sie, den Patch erneut zu installieren oder</system:String>
     <system:String x:Key="item46">Klicken Sie hier, um die neueste Version des Servers herunterzuladen.</system:String>
     <system:String x:Key="item47">Klicken Sie hier, um den neuesten stabilen Build des Servers herunterzuladen.</system:String>
     <system:String x:Key="item48">Suche nach Aktualisierungen...</system:String>
@@ -133,7 +133,7 @@
     <system:String x:Key="item139">H1Emu Server</system:String>
     <system:String x:Key="item140">Einzelspieler</system:String>
     <system:String x:Key="item141">Neuer Server...</system:String>
-    <system:String x:Key="item142">Ausnahme setzen: {0}</system:String>
+    <system:String x:Key="item142">Ausnahme setzen:</system:String>
     <system:String x:Key="item143">Servername existiert bereits in der Liste.</system:String>
     <system:String x:Key="item144">Server Name...</system:String>
     <system:String x:Key="item145">Server IP...</system:String>
@@ -167,4 +167,8 @@
     <system:String x:Key="item173">Melde einen technischen fehler...</system:String>
     <system:String x:Key="item174">Hier können Sie alle Fehler melden, die Sie im Spiel bei der Verwendung der H1Emu-Serverdateien erlebt haben:</system:String>
     <system:String x:Key="item175">Hier können Sie Fehler melden, die Ihnen bei der Verwendung des H1Emu Launcher aufgefallen sind:</system:String>
+    <system:String x:Key="item176">Löschen Sie Ihre Singleplayer-Daten...</system:String>
+    <system:String x:Key="item177">Keine Singleplayer-Daten gefunden.</system:String>
+    <system:String x:Key="item178">Durch das Löschen Ihrer Einzelspieler-Daten können eventuell auftretende Probleme behoben werden. Seien Sie gewarnt, dass Sie jeglichen Fortschritt verlieren.\n\nMöchten Sie fortfahren?</system:String>
+    <system:String x:Key="item179">Singleplayer-Daten erfolgreich gelöscht.</system:String>
 </ResourceDictionary>

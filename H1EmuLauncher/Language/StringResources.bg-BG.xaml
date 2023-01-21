@@ -44,7 +44,7 @@
     <system:String x:Key="item42">RE-PATCH</system:String>
     <system:String x:Key="item43">Последен</system:String>
     <system:String x:Key="item44">Стабилен</system:String>
-    <system:String x:Key="item45">Ако имате проблеми да влезете в играта ,опитайте да преинсталирате файловете за пача тук .</system:String>
+    <system:String x:Key="item45">Ако имате проблеми с играта, опитайте да инсталирате отново корекцията или</system:String>
     <system:String x:Key="item46">Натиснете тук за да инсталирате последвата версия на сървъра.</system:String>
     <system:String x:Key="item47">Натиснете тук за да инсталирате последната стабилна версия на сървъра.</system:String>
     <system:String x:Key="item48">Проверка за актуализации...</system:String>
@@ -133,7 +133,7 @@
     <system:String x:Key="item139">H1Emu Сървър</system:String>
     <system:String x:Key="item140">Солова Игра</system:String>
     <system:String x:Key="item141">Нов сървър...</system:String>
-    <system:String x:Key="item142">Exception thrown: {0}</system:String>
+    <system:String x:Key="item142">Exception thrown:</system:String>
     <system:String x:Key="item143">Името на сървъра вече съществува в списъка.</system:String>
     <system:String x:Key="item144">Име на сървъра...</system:String>
     <system:String x:Key="item145">IP адрес на сървара...</system:String>
@@ -167,4 +167,8 @@
     <system:String x:Key="item173">Подайте сигнал за грешка...</system:String>
     <system:String x:Key="item174">Тук можете да докладвате за всички грешки, които сте изпитали в играта, докато използвате файловете на сървъра H1Emu:</system:String>
     <system:String x:Key="item175">Тук можете да докладвате за всички грешки, които сте изпитали, докато използвате H1Emu Launcher:</system:String>
+    <system:String x:Key="item176">изтрий данните си за един играч...</system:String>
+    <system:String x:Key="item177">Няма намерени данни за един играч.</system:String>
+    <system:String x:Key="item178">Изтриването на вашите данни за един играч може да реши всички проблеми, пред които сте изправени, предупреждаваме ви, че ще загубите целия напредък.\n\nИскате ли да продължите?</system:String>
+    <system:String x:Key="item179">Успешно изтрити данни за един играч.</system:String>
 </ResourceDictionary>

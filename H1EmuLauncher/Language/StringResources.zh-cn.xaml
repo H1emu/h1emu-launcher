@@ -44,7 +44,7 @@
     <system:String x:Key="item42">重装补丁</system:String>
     <system:String x:Key="item43">最新版</system:String>
     <system:String x:Key="item44">稳定版</system:String>
-    <system:String x:Key="item45">如果在进入游戏时遇到问题，请在这里尝试重新安装补丁文件。</system:String>
+    <system:String x:Key="item45">如果您遇到游戏问题，请尝试重新安装补丁或</system:String>
     <system:String x:Key="item46">点击 最新版 是下载并安装最新版本的本地服务器。</system:String>
     <system:String x:Key="item47">点击 稳定版 是下载并安装稳定版本地服务器。</system:String>
     <system:String x:Key="item48">正在检查更新...</system:String>
@@ -133,7 +133,7 @@
     <system:String x:Key="item139">H1Emu在线服务器</system:String>
     <system:String x:Key="item140">单机版（本地）</system:String>
     <system:String x:Key="item141">新建服务器...</system:String>
-    <system:String x:Key="item142">运行异常：{0}</system:String>
+    <system:String x:Key="item142">运行异常：</system:String>
     <system:String x:Key="item143">此服务器已存在</system:String>
     <system:String x:Key="item144">服务器名...</system:String>
     <system:String x:Key="item145">服务器IP地址...</system:String>
@@ -167,4 +167,8 @@
     <system:String x:Key="item173">报告错误...</system:String>
     <system:String x:Key="item174">在这里您可以报告您在使用 H1Emu 服务器文件时在游戏中遇到的任何错误：</system:String>
     <system:String x:Key="item175">在这里您可以报告您在使用 H1Emu Launcher 时遇到的任何错误：</system:String>
+    <system:String x:Key="item176">删除你的单人游戏数据...</system:String>
+    <system:String x:Key="item177">未找到单人游戏数据。</system:String>
+    <system:String x:Key="item178">删除你的单人游戏数据可能会解决你面临的任何问题，请注意你将失去所有进度。\n\n你想继续吗？</system:String>
+    <system:String x:Key="item179">成功删除单人游戏数据。</system:String>
 </ResourceDictionary>

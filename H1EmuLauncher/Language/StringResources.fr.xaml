@@ -44,7 +44,7 @@
     <system:String x:Key="item42">RE-PATCH</system:String>
     <system:String x:Key="item43">RECENTE</system:String>
     <system:String x:Key="item44">STABLE</system:String>
-    <system:String x:Key="item45">Si vous avez des problèmes lors du chargement du jeu, essayez de réinstaller les fichiers de correction ici.</system:String>
+    <system:String x:Key="item45">Si vous rencontrez des problèmes de jeu, essayez de réinstaller le correctif ou</system:String>
     <system:String x:Key="item46">Cliquez ici pour télécharger la dernière version du serveur.</system:String>
     <system:String x:Key="item47">Cliquez ici pour télécharger la dernière version stable du serveur.</system:String>
     <system:String x:Key="item48">Vérification des mises à jour...</system:String>
@@ -133,7 +133,7 @@
     <system:String x:Key="item139">Serveur H1Emu</system:String>
     <system:String x:Key="item140">Joueur unique</system:String>
     <system:String x:Key="item141">Nouveau serveur...</system:String>
-    <system:String x:Key="item142">Exception levée: {0}</system:String>
+    <system:String x:Key="item142">Exception levée:</system:String>
     <system:String x:Key="item143">Le nom du serveur existe déjà dans la liste.</system:String>
     <system:String x:Key="item144">Nom du serveur...</system:String>
     <system:String x:Key="item145">IP du serveur...</system:String>
@@ -167,4 +167,8 @@
     <system:String x:Key="item173">Signaler un bug...</system:String>
     <system:String x:Key="item174">Ici, vous pouvez signaler tous les bogues que vous avez rencontrés dans le jeu lors de l'utilisation des fichiers du serveur H1Emu:</system:String>
     <system:String x:Key="item175">Ici, vous pouvez signaler tous les bogues que vous avez rencontrés lors de l'utilisation du lanceur H1Emu:</system:String>
+    <system:String x:Key="item176">supprimer vos données solo...</system:String>
+    <system:String x:Key="item177">Aucune donnée solo trouvée.</system:String>
+    <system:String x:Key="item178">La suppression de vos données solo peut résoudre tous les problèmes auxquels vous êtes confrontés, sachez que vous perdrez toute progression.\n\nVoulez-vous continuer?</system:String>
+    <system:String x:Key="item179">Données solo supprimées avec succès.</system:String>
 </ResourceDictionary>

@@ -44,7 +44,7 @@
     <system:String x:Key="item42">RE-PATCH</system:String>
     <system:String x:Key="item43">LAATSTE</system:String>
     <system:String x:Key="item44">STABIEL</system:String>
-    <system:String x:Key="item45">Als je problemen hebt met het inladen in de game, probeer de patch bestanden opniew te installeren hier.</system:String>
+    <system:String x:Key="item45">Als je spelproblemen hebt, probeer dan de patch opnieuw te installeren of</system:String>
     <system:String x:Key="item46">Klik hier voor de laatste versie van de server te downoaden.</system:String>
     <system:String x:Key="item47">Klik hier voor de laatste stabiele versie van de server te downoaden.</system:String>
     <system:String x:Key="item48">Controlleren op nieuwe versies...</system:String>
@@ -133,7 +133,7 @@
     <system:String x:Key="item139">H1Emu Server</system:String>
     <system:String x:Key="item140">Singleplayer</system:String>
     <system:String x:Key="item141">Niewe Server...</system:String>
-    <system:String x:Key="item142">Gegeven uitzondering: {0}</system:String>
+    <system:String x:Key="item142">Gegeven uitzondering:</system:String>
     <system:String x:Key="item143">Server naam komt al in de lijst voor.</system:String>
     <system:String x:Key="item144">Server Naam...</system:String>
     <system:String x:Key="item145">Server IP...</system:String>
@@ -166,4 +166,8 @@
     <system:String x:Key="item173">Een fout melden...</system:String>
     <system:String x:Key="item174">Hier kun je eventuele bugs melden die je in het spel hebt ondervonden tijdens het gebruik van de H1Emu Server-bestanden:</system:String>
     <system:String x:Key="item175">Hier kunt u eventuele bugs melden die u hebt ondervonden tijdens het gebruik van de H1Emu Launcher:</system:String>
+    <system:String x:Key="item176">verwijder je singleplayer-gegevens...</system:String>
+    <system:String x:Key="item177">Geen singleplayergegevens gevonden.</system:String>
+    <system:String x:Key="item178">Als je je singleplayergegevens verwijdert, kunnen eventuele problemen worden opgelost. Wees gewaarschuwd dat je alle voortgang kwijtraakt.\n\nWilt u doorgaan?</system:String>
+    <system:String x:Key="item179">Singleplayer-gegevens succesvol verwijderd.</system:String>
 </ResourceDictionary>

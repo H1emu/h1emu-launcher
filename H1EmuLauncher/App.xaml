@@ -33,6 +33,16 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Style x:Key="HyperLinkStyleRun" TargetType="Run">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="Gray" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="LightGray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style x:Key="ExitVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>

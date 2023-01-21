@@ -44,7 +44,7 @@
     <system:String x:Key="item42">ПЕРЕПАТЧИТЬ</system:String>
     <system:String x:Key="item43">ПОСЛЕДНИЙ</system:String>
     <system:String x:Key="item44">СТАБИЛЬНЫЙ</system:String>
-    <system:String x:Key="item45">Если у вас возникли проблемы с загрузкой в игру, попробуйте переустановить файлы патча здесь.</system:String>
+    <system:String x:Key="item45">Если у вас возникли проблемы с игрой, попробуйте переустановить патч или</system:String>
     <system:String x:Key="item46">Щелкните здесь, чтобы загрузить последнюю сборку сервера.</system:String>
     <system:String x:Key="item47">Щелкните здесь, чтобы загрузить последнюю стабильную сборку сервера.</system:String>
     <system:String x:Key="item48">Проверка обновлений...</system:String>
@@ -133,7 +133,7 @@
     <system:String x:Key="item139">H1Emu сервер</system:String>
     <system:String x:Key="item140">Одиночная игра</system:String>
     <system:String x:Key="item141">Новый сервер...</system:String>
-    <system:String x:Key="item142">Выброшено исключение: {0}</system:String>
+    <system:String x:Key="item142">Выброшено исключение:</system:String>
     <system:String x:Key="item143">Сервер с таким именем уже сть в списке.</system:String>
     <system:String x:Key="item144">Имя сервера...</system:String>
     <system:String x:Key="item145">IP сервера...</system:String>
@@ -167,4 +167,8 @@
     <system:String x:Key="item173">Сообщить об ошибке...</system:String>
     <system:String x:Key="item174">Здесь вы можете сообщить о любых ошибках, с которыми вы столкнулись в игре при использовании файлов сервера H1Emu:</system:String>
     <system:String x:Key="item175">Здесь вы можете сообщить о любых ошибках, с которыми вы столкнулись при использовании H1Emu Launcher:</system:String>
+    <system:String x:Key="item176">удалите данные одиночной игры...</system:String>
+    <system:String x:Key="item177">Данные одиночной игры не найдены.</system:String>
+    <system:String x:Key="item178">Удаление данных одиночной игры может решить любые проблемы, с которыми вы сталкиваетесь, имейте в виду, что вы потеряете весь прогресс.\n\nХотите продолжить?</system:String>
+    <system:String x:Key="item179">Данные одиночной игры успешно удалены.</system:String>
 </ResourceDictionary>

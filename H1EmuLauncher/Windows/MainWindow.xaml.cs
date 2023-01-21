@@ -138,7 +138,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item142").ToString().Replace("{0}", ex.Message), this);
+                        CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
                     }));
                 }
 

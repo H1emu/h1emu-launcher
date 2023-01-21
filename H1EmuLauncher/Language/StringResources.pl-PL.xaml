@@ -44,7 +44,7 @@
     <system:String x:Key="item42">RE-PATCH</system:String>
     <system:String x:Key="item43">NAJNOWSZA</system:String>
     <system:String x:Key="item44">STABILNA</system:String>
-    <system:String x:Key="item45">Jeśli masz problem z załadowaniem się gry, spróbuj zainstalować ponownie Patch tutaj.</system:String>
+    <system:String x:Key="item45">Jeśli masz problemy z grą, spróbuj ponownie zainstalować łatkę lub</system:String>
     <system:String x:Key="item46">Kliknij tutaj, aby zainstalować najnowszą wersję serwera.</system:String>
     <system:String x:Key="item47">Kliknij tutaj, aby zainstalować stabilną wersję serwera.</system:String>
     <system:String x:Key="item48">Sprawdzanie aktualizacji...</system:String>
@@ -133,7 +133,7 @@
     <system:String x:Key="item139">Serwer H1Emu</system:String>
     <system:String x:Key="item140">Singleplayer</system:String>
     <system:String x:Key="item141">Nowy serwer...</system:String>
-    <system:String x:Key="item142">Wystąpił błąd: {0}</system:String>
+    <system:String x:Key="item142">Wystąpił błąd:</system:String>
     <system:String x:Key="item143">Serwer o tej nazwie już istnieje.</system:String>
     <system:String x:Key="item144">Nazwa serwera...</system:String>
     <system:String x:Key="item145">IP serwera...</system:String>
@@ -167,4 +167,8 @@
     <system:String x:Key="item173">Zgłoś błąd...</system:String>
     <system:String x:Key="item174">Tutaj możesz zgłosić wszelkie błędy, których doświadczyłeś w grze podczas korzystania z plików serwera H1Emu:</system:String>
     <system:String x:Key="item175">Tutaj możesz zgłosić wszelkie błędy, których doświadczyłeś podczas korzystania z Launchera H1Emu:</system:String>
+    <system:String x:Key="item176">usuń swoje dane dla jednego gracza...</system:String>
+    <system:String x:Key="item177">Nie znaleziono danych dla jednego gracza.</system:String>
+    <system:String x:Key="item178">Usunięcie danych trybu jednoosobowego może rozwiązać wszelkie napotkane problemy. Ostrzegamy, że utracisz cały postęp.\n\nCzy chcesz kontynuować?</system:String>
+    <system:String x:Key="item179">Pomyślnie usunięto dane dla jednego gracza.</system:String>
 </ResourceDictionary>

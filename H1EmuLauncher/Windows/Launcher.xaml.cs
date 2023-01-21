@@ -139,7 +139,7 @@ namespace H1EmuLauncher
             }
             catch (Exception ex)
             {
-                CustomMessageBox.Show(FindResource("item142").ToString().Replace("{0}", ex.Message), this);
+                CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
             }
 
             newServerName = null;
@@ -290,7 +290,7 @@ namespace H1EmuLauncher
             int gameVersionInt = 0;
             string gameVersion = "";
             string serverIp = "";
-            string sessionId = "0";
+            string sessionId = "";
 
             new Thread(() =>
             {
@@ -325,22 +325,12 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"Exception thrown: {ex.Message}", this);
+                        CustomMessageBox.Show($"Exception: {ex.Message}", this);
                     }));
                 }
 
                 try
                 {
-                    if (string.IsNullOrEmpty(Properties.Settings.Default.activeDirectory) || Properties.Settings.Default.activeDirectory == "Directory")
-                    {
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            CustomMessageBox.Show(FindResource("item51").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
-                        }));
-
-                        return;
-                    }
-
                     Dispatcher.Invoke(new Action(delegate
                     {
                         settings.CheckGameVersionNewThread();
@@ -385,6 +375,10 @@ namespace H1EmuLauncher
                             {
                                 sessionId = $"{{\"sessionId\":\"{Properties.Settings.Default.sessionIdKey}\",\"gameVersion\":{gameVersionInt}}}";
                             }
+                        }
+                        else
+                        {
+                            sessionId = $"{{\"sessionId\":\"0\",\"gameVersion\":{gameVersionInt}}}";
                         }
 
                         if (serverIp == "localhost:1115")
