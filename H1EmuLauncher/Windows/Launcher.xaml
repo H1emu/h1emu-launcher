@@ -443,17 +443,10 @@
                         Grid.Row="1"
                         Margin="30,27,12,25">
 
-                            <Grid x:Name="offlineImage"
-                              RenderOptions.BitmapScalingMode="Fant">
-
-                                <Image Source="..\Resources\OfflineImage.png"/>
-                            </Grid>
-
                             <!-- Image carousel grid -->
                             <Grid x:Name="imageCarousel"
                               MouseEnter="CarouselMouseEnter"
                               MouseLeave="CarouselMouseLeave"
-                              Visibility="Hidden"
                               ClipToBounds="True">
 
                                 <Image x:Name="carouselImageSlider"

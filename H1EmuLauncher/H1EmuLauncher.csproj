@@ -7,11 +7,11 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.6.1</AssemblyVersion>
-	  <FileVersion>2.6.1</FileVersion>
+	  <AssemblyVersion>2.6.2</AssemblyVersion>
+	  <FileVersion>2.6.2</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>2.6.1</Version>
+	  <Version>2.6.2</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -28,6 +28,12 @@
 
   <ItemGroup>
     <None Remove="Fonts\Signika.ttf" />
+    <None Remove="Resources\1.jpg" />
+    <None Remove="Resources\2.jpg" />
+    <None Remove="Resources\3.jpg" />
+    <None Remove="Resources\4.jpg" />
+    <None Remove="Resources\5.jpg" />
+    <None Remove="Resources\6.jpg" />
     <None Remove="Resources\AccountKey.png" />
     <None Remove="Resources\AccountKey_Hover.png" />
     <None Remove="Resources\AccountKey_Pressed.png" />
@@ -57,7 +63,6 @@
     <None Remove="Resources\NextButton.png" />
     <None Remove="Resources\NextButton_Hover.png" />
     <None Remove="Resources\Node-18.12.1.zip" />
-    <None Remove="Resources\OfflineImage.png" />
     <None Remove="Resources\Padlock.png" />
     <None Remove="Resources\PrevButton.png" />
     <None Remove="Resources\PrevButton_Hover.png" />
@@ -153,6 +158,24 @@
     <Resource Include="Language\StringResources.zh-cn.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\5.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\6.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -238,9 +261,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Node-18.12.1.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\OfflineImage.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Padlock.png">

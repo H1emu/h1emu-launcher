@@ -1,13 +1,16 @@
-﻿using System;
+﻿using H1EmuLauncher.Properties;
+using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text.RegularExpressions;
+using System.Reflection;
+using System.Resources;
 using System.Threading;
+using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace H1EmuLauncher.Classes
@@ -19,39 +22,36 @@ namespace H1EmuLauncher.Classes
         public static int currentIndex = 0;
         public static int lastIndex = 0;
         public static int progress = 0;
-        public static string imagesFolder = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages";
+
+        static internal ImageSource doGetImageSourceFromResource(string psResourceName)
+        {
+            Uri oUri = new Uri("pack://application:,,,/H1EmuLauncher;component/" + psResourceName, UriKind.RelativeOrAbsolute);
+            return BitmapFrame.Create(oUri);
+        }
 
         public static void BeginImageCarousel()
         {
             new Thread(() =>
             {
-                if (!Directory.Exists(imagesFolder))
+                ResourceSet resourceSet = Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
+                foreach (DictionaryEntry entry in resourceSet)
                 {
-                    Directory.CreateDirectory(imagesFolder);
+                    if (int.TryParse(entry.Key.ToString().Replace("_", ""), out _))
+                    {
+                        images.Add($"{entry.Key.ToString().Replace("_", "")}.jpg");
+                    }
                 }
 
-                DownloadImages();
-
-                if (Directory.GetFileSystemEntries(imagesFolder).Length == 0)
-                    return;
-
-                foreach (var fileName in Directory.EnumerateFiles(imagesFolder))
+                Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    images.Add(fileName);
-                }
-
-                System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
-                {
-                    Launcher.launcherInstance.carouselImage.Source = new BitmapImage(new Uri(images[currentIndex]));
-                    Launcher.launcherInstance.offlineImage.Visibility = System.Windows.Visibility.Hidden;
-                    Launcher.launcherInstance.imageCarousel.Visibility = System.Windows.Visibility.Visible;
+                    Launcher.launcherInstance.carouselImage.Source = doGetImageSourceFromResource($"Resources\\{images[currentIndex]}");
                 }));
 
-            for (progress = 0; progress <= 3000; progress++)
+                for (progress = 0; progress <= 3000; progress++)
                 {
                     pauseCarousel.WaitOne();
 
-                    System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
+                    Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
                         Launcher.launcherInstance.carouselProgressBar.Value = progress;
                     }));
@@ -60,7 +60,7 @@ namespace H1EmuLauncher.Classes
 
                     if (progress == 3000)
                     {
-                        System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
+                        Application.Current.Dispatcher.Invoke(new Action(delegate
                         {
                             ButtonAutomationPeer peer = new(Launcher.launcherInstance.nextImage);
                             IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
@@ -73,7 +73,6 @@ namespace H1EmuLauncher.Classes
                 }
 
             }).Start();
-
         }
 
         public static void NextImage()
@@ -86,8 +85,8 @@ namespace H1EmuLauncher.Classes
             if (lastIndex < 0)
                 lastIndex = images.Count - 1;
 
-            Launcher.launcherInstance.carouselImage.Source = new BitmapImage(new Uri(images[lastIndex]));
-            Launcher.launcherInstance.carouselImageSlider.Source = new BitmapImage(new Uri(images[currentIndex]));
+            Launcher.launcherInstance.carouselImage.Source = doGetImageSourceFromResource($"Resources\\{images[lastIndex]}");
+            Launcher.launcherInstance.carouselImageSlider.Source = doGetImageSourceFromResource($"Resources\\{images[currentIndex]}");
         }
 
         public static void PreviousImage()
@@ -100,39 +99,8 @@ namespace H1EmuLauncher.Classes
             if (lastIndex > images.Count - 1)
                 lastIndex = 0;
 
-            Launcher.launcherInstance.carouselImage.Source = new BitmapImage(new Uri(images[lastIndex]));
-            Launcher.launcherInstance.carouselImageSlider.Source = new BitmapImage(new Uri(images[currentIndex]));
-        }
-
-        public static void DownloadImages()
-        {
-#pragma warning disable SYSLIB0014 // Type or member is obsolete
-            WebClient wc = new();
-#pragma warning restore SYSLIB0014 // Type or member is obsolete
-#pragma warning disable SYSLIB0014 // Type or member is obsolete
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(Info.CAROUSEL_MEDIA);
-#pragma warning restore SYSLIB0014 // Type or member is obsolete
-
-            try
-            {
-                using HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                using StreamReader reader = new(response.GetResponseStream());
-                string html = reader.ReadToEnd();
-                Regex regex = new("<a href=\".*\">(?<name>.*)</a>");
-                MatchCollection matches = regex.Matches(html);
-                if (matches.Count > 0)
-                {
-                    foreach (Match match in matches.Cast<Match>())
-                    {
-                        if (match.Success)
-                        {
-                            if (match.Groups["name"].ToString().Contains(".png"))
-                                wc.DownloadFile($"{Info.CAROUSEL_MEDIA}{match.Groups["name"]}", $"{imagesFolder}\\{match.Groups["name"]}");
-                        }
-                    }
-                }
-            }
-            catch { }
+            Launcher.launcherInstance.carouselImage.Source = doGetImageSourceFromResource($"Resources\\{images[lastIndex]}");
+            Launcher.launcherInstance.carouselImageSlider.Source = doGetImageSourceFromResource($"Resources\\{images[currentIndex]}");
         }
     }
 }

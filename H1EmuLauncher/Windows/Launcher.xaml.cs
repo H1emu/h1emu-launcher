@@ -448,11 +448,8 @@ namespace H1EmuLauncher
             if (!File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt"))
                 File.Create($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt");
 
-            try
-            {
+            if (Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages"))
                 Directory.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages", true);
-            }
-            catch { }
 
             argsWatcher.Path = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher";
             argsWatcher.Filter = "args.txt";
