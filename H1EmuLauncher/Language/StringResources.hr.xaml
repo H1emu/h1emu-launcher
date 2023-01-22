@@ -57,7 +57,7 @@
     <system:String x:Key="item55">Korištenjem grane aplikacije: {0}</system:String>
     <system:String x:Key="item56">Procesiranje depoa {0} - {1}</system:String>
     <system:String x:Key="item57">Alociranje prostora...</system:String>
-    <system:String x:Key="item58">H1Emu ne podržava verziju igre.\n\nNe zaboravite koristiti verziju igre od 15. siječnja 2015. ili 22. prosinca 2016.\n\nMožete koristiti pokretač za preuzimanje bilo koje od ovih verzija uz prijavu na Steam na glavnoj stranici.</system:String>
+    <system:String x:Key="item58">H1Emu ne podržava verziju igre.\n\nNe zaboravite koristiti verziju igre od 15. siječnja 2015. ili 22. prosinca 2016.\n\nMorate preuzeti jednu od ovih verzija pomoću ovog pokretača sa svojim Steam računom koji ima Just Survive vlasništvo.</system:String>
     <system:String x:Key="item59">Korisničko ime</system:String>
     <system:String x:Key="item60">Šifra</system:String>
     <system:String x:Key="item61">Prikaži detalje nove verzije...</system:String>

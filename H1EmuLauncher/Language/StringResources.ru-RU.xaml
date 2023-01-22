@@ -57,7 +57,7 @@
     <system:String x:Key="item55">Использование ветки приложения: {0}</system:String>
     <system:String x:Key="item56">Обработка depot {0} - {1}</system:String>
     <system:String x:Key="item57">Выделение места...</system:String>
-    <system:String x:Key="item58">Версия игры не поддерживается H1Emu.\n\nНе забудьте использовать версию игры от 15 января 2015 года или 22 декабря 2016 года.\n\nВы можете использовать программу запуска для загрузки любой из этих версий, войдя в систему Steam на главной странице.</system:String>
+    <system:String x:Key="item58">Версия игры не поддерживается H1Emu.\n\nНе забудьте использовать версию игры от 15 января 2015 года или 22 декабря 2016 года.\n\nВам нужно загрузить одну из этих версий, используя этот лаунчер с вашей учетной записью Steam, которой принадлежит Just Survive.</system:String>
     <system:String x:Key="item59">Имя пользователя</system:String>
     <system:String x:Key="item60">Пароль</system:String>
     <system:String x:Key="item61">Посмотреть полную информацию об обновлении...</system:String>

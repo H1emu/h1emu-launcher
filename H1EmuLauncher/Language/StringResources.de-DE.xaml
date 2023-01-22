@@ -57,7 +57,7 @@
     <system:String x:Key="item55">App Zweig verwenden: {0}</system:String>
     <system:String x:Key="item56">Verarbeitungsdepot {0} - {1}</system:String>
     <system:String x:Key="item57">Vorabzuweisung von Speicherplatz...</system:String>
-    <system:String x:Key="item58">Die Spielversion wird von H1Emu nicht unterstützt.\n\nBitte denken Sie daran, die Spielversion entweder vom 15. Januar 2015 oder vom 22. Dezember 2016 zu verwenden.\n\nSie können den Launcher verwenden, um eine dieser Versionen mit dem Steam-Login auf der Hauptseite herunterzuladen.</system:String>
+    <system:String x:Key="item58">Die Spielversion wird von H1Emu nicht unterstützt.\n\nBitte denken Sie daran, die Spielversion entweder vom 15. Januar 2015 oder vom 22. Dezember 2016 zu verwenden.\n\nSie müssen eine dieser Versionen mit diesem Launcher mit Ihrem Steam-Konto herunterladen, das Just Survive-Eigentümer ist.</system:String>
     <system:String x:Key="item59">Benutzername</system:String>
     <system:String x:Key="item60">Passwort</system:String>
     <system:String x:Key="item61">Alle Details zum Update anzeigen...</system:String>

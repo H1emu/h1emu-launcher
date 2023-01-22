@@ -56,7 +56,7 @@
     <system:String x:Key="item55">Using app branch: {0}</system:String>
     <system:String x:Key="item56">Processing depot {0} - {1}</system:String>
     <system:String x:Key="item57">Pre-allocating space...</system:String>
-    <system:String x:Key="item58">Game version not supported by H1Emu.\n\nPlease remember to use game version either 15th January 2015 or 22nd December 2016.\n\nYou can use the launcher to download either of these versions with the Steam login on the main page.</system:String>
+    <system:String x:Key="item58">Game version not supported by H1Emu.\n\nPlease remember to use game version either 15th January 2015 or 22nd December 2016.\n\nYou need to download one of these versions using this launcher with your Steam account that has Just Survive ownership.</system:String>
     <system:String x:Key="item59">Username</system:String>
     <system:String x:Key="item60">Password</system:String>
     <system:String x:Key="item61">View full details of the update...</system:String>

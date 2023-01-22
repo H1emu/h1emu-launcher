@@ -57,7 +57,7 @@
     <system:String x:Key="item55">Uygulama dalı kullanılıyor: {0}</system:String>
     <system:String x:Key="item56">Depo işleniyor {0} - {1}</system:String>
     <system:String x:Key="item57">Disk alanı tanımlanıyor...</system:String>
-    <system:String x:Key="item58">Oyun sürümü H1Emu tarafından desteklenmiyor.\n\nLütfen 15 Ocak 2015 veya 22 Aralık 2016 oyun sürümünü kullanmayı unutmayın.\n\nBu sürümlerden herhangi birini ana sayfada Steam oturum açma ile indirmek için başlatıcıyı kullanabilirsiniz.</system:String>
+    <system:String x:Key="item58">Oyun sürümü H1Emu tarafından desteklenmiyor.\n\nLütfen 15 Ocak 2015 veya 22 Aralık 2016 oyun sürümünü kullanmayı unutmayın.\n\nJust Survive sahipliğine sahip Steam hesabınızla bu başlatıcıyı kullanarak bu sürümlerden birini indirmeniz gerekiyor.</system:String>
     <system:String x:Key="item59">Kullanıcı adı</system:String>
     <system:String x:Key="item60">Şifre</system:String>
     <system:String x:Key="item61">Güncellemenin tüm detaylarını göster...</system:String>

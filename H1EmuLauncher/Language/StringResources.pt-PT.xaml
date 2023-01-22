@@ -57,7 +57,7 @@
     <system:String x:Key="item55">Utilizar o branch da app: {0}</system:String>
     <system:String x:Key="item56">Depósito de processamento {0} - {1}</system:String>
     <system:String x:Key="item57">Pré-alocação de espaço...</system:String>
-    <system:String x:Key="item58">Versão do jogo não suportada pelo H1Emu.\n\nLembre-se de usar a versão do jogo em 15 de janeiro de 2015 ou 22 de dezembro de 2016.\n\nVocê pode usar o inicializador para baixar qualquer uma dessas versões com o login do Steam na página principal.</system:String>
+    <system:String x:Key="item58">Versão do jogo não suportada pelo H1Emu.\n\nLembre-se de usar a versão do jogo em 15 de janeiro de 2015 ou 22 de dezembro de 2016.\n\nVocê precisa baixar uma dessas versões usando este iniciador com sua conta Steam que possui Just Survive.</system:String>
     <system:String x:Key="item59">Nome de utilizador</system:String>
     <system:String x:Key="item60">Senha</system:String>
     <system:String x:Key="item61">Ver detalhes da atualização...</system:String>
