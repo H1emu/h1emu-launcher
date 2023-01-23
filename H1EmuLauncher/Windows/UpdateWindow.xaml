@@ -1,4 +1,4 @@
-﻿<Window x:Class="H1EmuLauncher.MainWindow"
+﻿<Window x:Class="H1EmuLauncher.UpdateWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,7 +14,8 @@
         WindowStartupLocation="CenterScreen"
         Background="#FF2A2A32"
         Loaded="MainUpdateWindowLoaded"
-        Closing="MainUpdateWindowClosing">
+        Closing="MainUpdateWindowClosing"
+        FontFamily="Bahnschrift">
 
         <!-- Hide window border but keep animations -->
         <WindowChrome.WindowChrome>
@@ -53,13 +54,12 @@
 
             <!-- Logo -->
             <DockPanel>
-                <Image
-                    Source="..\Resources\H1EmuIcon.png"
-                    Width="130"
-                    Height="35"
-                    Margin="23,16,0,0"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Left"/>
+                <Image Source="..\Resources\H1EmuIcon.png"
+                       Width="130"
+                       Height="35"
+                       Margin="23,16,0,0"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left"/>
 
             </DockPanel>
 
@@ -92,11 +92,10 @@
 
             <!-- Drop shadow effect -->
             <Border.Effect>
-                <DropShadowEffect
-                    BlurRadius="10"
-                    Direction="-90"
-                    RenderingBias="Quality"
-                    ShadowDepth="1"/>
+                <DropShadowEffect BlurRadius="10"
+                                  Direction="-90"
+                                  RenderingBias="Quality"
+                                  ShadowDepth="1"/>
                 
             </Border.Effect>
 
@@ -107,32 +106,31 @@
                 </Grid.RowDefinitions>
 
                 <!-- Main text message -->
-                <TextBlock
-                    Margin="50,0,50,5"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    FontSize="18"
-                    FontFamily="Bahnschrift Light"
-                    Foreground="FloralWhite"
-                    TextWrapping="Wrap"
-                    TextAlignment="Center"
-                    Text="{DynamicResource item1}"/>
+                <TextBlock Margin="50,0,50,5"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Light"
+                           Foreground="FloralWhite"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           Text="{DynamicResource item1}"/>
 
                 <!-- Update button -->
                 <Button x:Name="updateButton"
-                    Grid.Row="1"
-                    Click="UpdateButtonClick"
-                    RenderOptions.BitmapScalingMode="Fant"
-                    Width="292"
-                    Height="44"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Center"
-                    Foreground="White"
-                    FontFamily="Arial Black"
-                    FontSize="24"
-                    BorderThickness="0"
-                    Content="{DynamicResource item2}"
-                    Style="{DynamicResource StandardButton}">
+                        Grid.Row="1"
+                        Click="UpdateButtonClick"
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Width="292"
+                        Height="44"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Center"
+                        Foreground="White"
+                        FontFamily="Arial Black"
+                        FontSize="24"
+                        BorderThickness="0"
+                        Content="{DynamicResource item2}"
+                        Style="{DynamicResource StandardButton}">
 
                     <Button.Background>
                         <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
@@ -140,21 +138,19 @@
                 </Button>
 
                 <!-- Not now button -->
-                <TextBlock
-                Grid.Row="1"
-                Margin="0,0,0,12"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Center"
-                FontSize="16">
+                <TextBlock Grid.Row="1"
+                           Margin="0,0,0,12"
+                           VerticalAlignment="Bottom"
+                           HorizontalAlignment="Center"
+                           FontSize="16">
                 
                 <Hyperlink x:Name="notNow"
                            Click="NotNowClick"
                            Foreground="White">
                     
-                    <TextBlock
-                        Text="{DynamicResource item67}"
-                        MouseDown="NotNowHyperLinkMouseDown"
-                        Style="{DynamicResource HyperLinkStyle}"/>
+                    <TextBlock Text="{DynamicResource item67}"
+                               MouseDown="NotNowHyperLinkMouseDown"
+                               Style="{DynamicResource HyperLinkStyle}"/>
                     
                 </Hyperlink>
             </TextBlock>

@@ -72,7 +72,7 @@ namespace H1EmuLauncher.SteamFrame
         {
             if (string.IsNullOrEmpty(usernameBox.Text) || string.IsNullOrEmpty(passwordBox.Password))
             {
-                CustomMessageBox.Show(FindResource("item36").ToString(), Launcher.launcherInstance);
+                CustomMessageBox.Show(FindResource("item36").ToString(), LauncherWindow.launcherInstance);
                 return false;
             }
 
@@ -117,7 +117,7 @@ namespace H1EmuLauncher.SteamFrame
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\GameInfo.xaml", UriKind.Relative));
+                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\GameInfo.xaml", UriKind.Relative));
                     }));
 
                     bool result = true;
@@ -140,7 +140,7 @@ namespace H1EmuLauncher.SteamFrame
                             {
                                 UpdateLang();
 
-                                MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item89").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
+                                MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item89").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance);
                                 if (dr == MessageBoxResult.Yes)
                                 {
                                     ContentDownloader.DEFAULT_DOWNLOAD_DIR = folderBrowser.SelectedPath;
@@ -168,7 +168,7 @@ namespace H1EmuLauncher.SteamFrame
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\DownloadStatus.xaml", UriKind.Relative));
+                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\DownloadStatus.xaml", UriKind.Relative));
                     }));
 
                     string[] args = gameInfo.Split(' ');
@@ -214,7 +214,7 @@ namespace H1EmuLauncher.SteamFrame
                     {
                         DownloadStatus.downloadStatusInstance.gameDownloadText.Text = $"{version}:";
                         DownloadStatus.downloadStatusInstance.downloadProgressText.Text = "Processing...";
-                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
+                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
                     }));
 
                     await ContentDownloader.DownloadAppAsync(appId, depotManifestIds, "Public", null, null, null, false, false).ConfigureAwait(false);
@@ -225,11 +225,11 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         UpdateLang();
-                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                        Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\DownloadComplete.xaml", UriKind.Relative));
+                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\DownloadComplete.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
-                        CustomMessageBox.Show(FindResource("item37").ToString() + $" {version}.", Launcher.launcherInstance);
+                        CustomMessageBox.Show(FindResource("item37").ToString() + $" {version}.", LauncherWindow.launcherInstance);
                     }));
                 }
                 catch (Exception ph) when (ph is TaskCanceledException)
@@ -237,11 +237,11 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         UpdateLang();
-                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                        Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
-                        CustomMessageBox.Show(FindResource("item38").ToString() + $" {version}.", Launcher.launcherInstance);
+                        CustomMessageBox.Show(FindResource("item38").ToString() + $" {version}.", LauncherWindow.launcherInstance);
                     }));
                 }
                 catch (Exception ex) when (ex is ContentDownloaderException || ex is OperationCanceledException)
@@ -249,11 +249,11 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         UpdateLang();
-                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                        Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
-                        CustomMessageBox.Show(FindResource("item39").ToString() + $" \"{ex.Message}\".", Launcher.launcherInstance);
+                        CustomMessageBox.Show(FindResource("item39").ToString() + $" \"{ex.Message}\".", LauncherWindow.launcherInstance);
                     }));
                 }
                 catch (Exception er)
@@ -261,11 +261,11 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         UpdateLang();
-                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                        Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
-                        CustomMessageBox.Show(FindResource("item40").ToString() + $" \"{er.Message}\".", Launcher.launcherInstance);
+                        CustomMessageBox.Show(FindResource("item40").ToString() + $" \"{er.Message}\".", LauncherWindow.launcherInstance);
                     }));
                 }
                 finally

@@ -5,9 +5,9 @@ using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
 {
-    public partial class MsgBox : Window
+    public partial class MessageBoxWindow : Window
     {
-        public MsgBox()
+        public MessageBoxWindow()
         {
             InitializeComponent();
 
@@ -39,28 +39,28 @@ namespace H1EmuLauncher
 
         private void MainMsgBoxLoaded(object sender, RoutedEventArgs e)
         {
-            if (AboutPage.aboutPageInstance != null)
+            if (AboutPageWindow.aboutPageInstance != null)
             {
-                AboutPage.aboutPageInstance.aboutPageBlur.Radius = 15;
-                AboutPage.aboutPageInstance.aboutPageFade.Visibility = Visibility.Visible;
+                AboutPageWindow.aboutPageInstance.aboutPageBlur.Radius = 15;
+                AboutPageWindow.aboutPageInstance.aboutPageFade.Visibility = Visibility.Visible;
             }
 
-            if (AddServer.addServerInstance != null)
+            if (AddServerWindow.addServerInstance != null)
             {
-                AddServer.addServerInstance.addServerBlur.Radius = 15;
-                AddServer.addServerInstance.addServerFade.Visibility = Visibility.Visible;
+                AddServerWindow.addServerInstance.addServerBlur.Radius = 15;
+                AddServerWindow.addServerInstance.addServerFade.Visibility = Visibility.Visible;
             }
 
-            if (Launcher.launcherInstance != null)
+            if (LauncherWindow.launcherInstance != null)
             {
-                Launcher.launcherInstance.launcherBlur.Radius = 15;
-                Launcher.launcherInstance.launcherFade.Visibility = Visibility.Visible;
+                LauncherWindow.launcherInstance.launcherBlur.Radius = 15;
+                LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Visible;
             }
 
-            if (Settings.settingsInstance != null)
+            if (SettingsWindow.settingsInstance != null)
             {
-                Settings.settingsInstance.settingsBlur.Radius = 15;
-                Settings.settingsInstance.settingsFade.Visibility = Visibility.Visible;
+                SettingsWindow.settingsInstance.settingsBlur.Radius = 15;
+                SettingsWindow.settingsInstance.settingsFade.Visibility = Visibility.Visible;
             }
         }
     }

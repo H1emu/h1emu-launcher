@@ -20,9 +20,9 @@ namespace H1EmuLauncher
                 Environment.Exit(69);
             }
 
-            new MainWindow();
+            new UpdateWindow();
 
-            Launcher.rawArgs = e.Args;
+            LauncherWindow.rawArgs = e.Args;
         }
     }
 }

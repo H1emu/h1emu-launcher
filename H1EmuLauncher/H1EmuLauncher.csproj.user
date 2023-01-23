@@ -9,22 +9,22 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Windows\Disclaimer.xaml.cs">
+    <Compile Update="Windows\DisclaimerWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SteamFrame\2FA.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\AboutPage.xaml.cs">
+    <Compile Update="Windows\AboutPageWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\AddServer.xaml.cs">
+    <Compile Update="Windows\AddServerWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\AccountKey.xaml.cs">
+    <Compile Update="Windows\AccountKeyWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\CnfmBox.xaml.cs">
+    <Compile Update="Windows\ConfirmBoxWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SteamFrame\DownloadComplete.xaml.cs">
@@ -33,22 +33,22 @@
     <Compile Update="SteamFrame\GameInfo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\Launcher.xaml.cs">
+    <Compile Update="Windows\LauncherWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SteamFrame\Login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\MsgBox.xaml.cs">
+    <Compile Update="Windows\MessageBoxWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\ReportBug.xaml.cs">
+    <Compile Update="Windows\ReportBugWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\Settings.xaml.cs">
+    <Compile Update="Windows\SettingsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\Splash.xaml.cs">
+    <Compile Update="Windows\SplashWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -58,10 +58,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Windows\Disclaimer.xaml">
+    <Page Update="Windows\DisclaimerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\ReportBug.xaml">
+    <Page Update="Windows\ReportBugWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Resource Update="Language\StringResources.fr.xaml">
@@ -97,16 +97,16 @@
     <Page Update="SteamFrame\2FA.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\AboutPage.xaml">
+    <Page Update="Windows\AboutPageWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\AddServer.xaml">
+    <Page Update="Windows\AddServerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\AccountKey.xaml">
+    <Page Update="Windows\AccountKeyWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\CnfmBox.xaml">
+    <Page Update="Windows\ConfirmBoxWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SteamFrame\DownloadComplete.xaml">
@@ -118,16 +118,16 @@
     <Page Update="SteamFrame\GameInfo.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\Launcher.xaml">
+    <Page Update="Windows\LauncherWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SteamFrame\Login.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\MainWindow.xaml">
+    <Page Update="Windows\UpdateWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\MsgBox.xaml">
+    <Page Update="Windows\MessageBoxWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Resource Update="Language\StringResources.hr.xaml">
@@ -136,10 +136,10 @@
     <Resource Update="Language\StringResources.en.xaml">
       <SubType>Designer</SubType>
     </Resource>
-    <Page Update="Windows\Settings.xaml">
+    <Page Update="Windows\SettingsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\Splash.xaml">
+    <Page Update="Windows\SplashWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

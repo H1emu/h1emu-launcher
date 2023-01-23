@@ -25,85 +25,84 @@
 
         <!-- Username box -->
         <TextBox x:Name="usernameBox"
-            Grid.Row="0"
-            Height="35"
-            Margin="0,0,7,0"
-            Padding="32,0,0,0"
-            VerticalAlignment="Top"
-            VerticalContentAlignment="Center"
-            FontSize="16"
-            GotFocus="UsernameBoxGotFocus"
-            LostFocus="UsernameBoxLostFocus"
-            Style="{DynamicResource TextBoxPrimaryStyle}"/>
+                 Grid.Row="0"
+                 Height="35"
+                 Margin="0,0,7,0"
+                 Padding="32,0,0,0"
+                 VerticalAlignment="Top"
+                 VerticalContentAlignment="Center"
+                 FontSize="16"
+                 GotFocus="UsernameBoxGotFocus"
+                 LostFocus="UsernameBoxLostFocus"
+                 Style="{DynamicResource TextBoxPrimaryStyle}"/>
 
         <!-- Hint for username textbox -->
         <TextBlock x:Name="usernameHint"
-            Grid.Row="0"
-            Height="27"
-            Margin="0,4,7,0"
-            Padding="35,4,0,0"
-            VerticalAlignment="Top"
-            IsHitTestVisible="False"
-            Foreground="White"
-            FontSize="16"
-            Text="{DynamicResource item59}"/>
+                   Grid.Row="0"
+                   Height="27"
+                   Margin="0,4,7,0"
+                   Padding="35,4,0,0"
+                   VerticalAlignment="Top"
+                   IsHitTestVisible="False"
+                   Foreground="White"
+                   FontSize="16"
+                   Text="{DynamicResource item59}"/>
 
         <!-- Image for username textbox -->
         <Image Source="..\Resources\Shield.png"
-            Grid.Row="0"
-            RenderOptions.BitmapScalingMode="Fant"
-            Width="20"
-            Height="20"
-            Margin="8,7,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"/>
+               Grid.Row="0"
+               RenderOptions.BitmapScalingMode="Fant"
+               Width="20"
+               Height="20"
+               Margin="8,7,0,0"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"/>
         
         <!-- Text beside username textbox -->
-        <TextBlock
-            Grid.Column="1"
-            Margin="7,0,0,0"
-            VerticalAlignment="Top"
-            Foreground="White"
-            FontSize="16"
-            TextWrapping="Wrap"
-            Text="{DynamicResource item34}"/>
+        <TextBlock Grid.Column="1"
+                   Margin="7,0,0,0"
+                   VerticalAlignment="Top"
+                   Foreground="White"
+                   FontSize="16"
+                   TextWrapping="Wrap"
+                   Text="{DynamicResource item34}"/>
 
         <!-- Password box -->
         <PasswordBox x:Name="passwordBox"
-            Grid.Row="1"
-            VerticalAlignment="Top"
-            Height="35"
-            Margin="0,0,7,0"
-            Padding="32,0,35,0"
-            VerticalContentAlignment="Center"
-            FontSize="16"
-            PasswordChar="●"
-            KeyDown="PasswordBoxKeyDown"
-            GotFocus="PasswordBoxGotFocus"
-            LostFocus="PasswordBoxLostFocus"
-            Style="{DynamicResource PasswordBoxStyle}"/>
+                     Grid.Row="1"
+                     VerticalAlignment="Top"
+                     Height="35"
+                     Margin="0,0,7,0"
+                     Padding="32,0,35,0"
+                     VerticalContentAlignment="Center"
+                     FontSize="16"
+                     PasswordChar="●"
+                     KeyDown="PasswordBoxKeyDown"
+                     GotFocus="PasswordBoxGotFocus"
+                     LostFocus="PasswordBoxLostFocus"
+                     Style="{DynamicResource PasswordBoxStyle}"/>
 
         <!-- Hint for password textbox -->
         <TextBlock x:Name="passwordHint"
-            Grid.Row="1"
-            Height="27"
-            Margin="0,4,7,0"
-            Padding="35,5,0,0"
-            VerticalAlignment="Top"
-            IsHitTestVisible="False"
-            Foreground="White"
-            FontSize="16"
-            Text="{DynamicResource item60}"/>
+                   Grid.Row="1"
+                   Height="27"
+                   Margin="0,4,7,0"
+                   Padding="35,5,0,0"
+                   VerticalAlignment="Top"
+                   IsHitTestVisible="False"
+                   Foreground="White"
+                   FontSize="16"
+                   Text="{DynamicResource item60}"/>
 
         <!-- Hint for password textbox -->
         <Image Source="..\Resources\Padlock.png"
-            Grid.Row="1"
-            RenderOptions.BitmapScalingMode="Fant"
-            Width="20"
-            Height="20"
-            Margin="8,7,0,0"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Left"/>
+               Grid.Row="1"
+               RenderOptions.BitmapScalingMode="Fant"
+               Width="20"
+               Height="20"
+               Margin="8,7,0,0"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"/>
 
         <!-- Button to submit username and password -->
         <Button x:Name="loginEnterButton"
@@ -136,14 +135,13 @@
                Visibility="Hidden"/>
 
         <!-- Login message -->
-        <TextBlock
-            Grid.Row="1"
-            Grid.Column="1"
-            Margin="7,0,0,0"
-            VerticalAlignment="Top"
-            Foreground="White"
-            FontSize="16"
-            TextWrapping="Wrap"
-            Text="{DynamicResource item35}"/>
+        <TextBlock Grid.Row="1"
+                   Grid.Column="1"
+                   Margin="7,0,0,0"
+                   VerticalAlignment="Top"
+                   Foreground="White"
+                   FontSize="16"
+                   TextWrapping="Wrap"
+                   Text="{DynamicResource item35}"/>
     </Grid>
 </Page>

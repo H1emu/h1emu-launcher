@@ -1,4 +1,4 @@
-﻿<Window x:Class="H1EmuLauncher.ReportBug"
+﻿<Window x:Class="H1EmuLauncher.ReportBugWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -20,21 +20,20 @@
 
     <!-- Hide window border but keep animations -->
     <WindowChrome.WindowChrome>
-        <WindowChrome
-                GlassFrameThickness="0"
-                CornerRadius="0"
-                CaptionHeight="0"
-                ResizeBorderThickness="0"
-                UseAeroCaptionButtons="False"/>
+        <WindowChrome GlassFrameThickness="0"
+                      CornerRadius="0"
+                      CaptionHeight="0"
+                      ResizeBorderThickness="0"
+                      UseAeroCaptionButtons="False"/>
 
     </WindowChrome.WindowChrome>
 
     <Grid>
         <Grid>
 
-            <!-- About page blur on unfocus -->
+            <!-- Report bug window blur on unfocus -->
             <Grid.Effect>
-                <BlurEffect x:Name="aboutPageBlur"
+                <BlurEffect x:Name="reportBugBlur"
                             Radius="0"
                             KernelType="Gaussian"/>
 
@@ -50,9 +49,8 @@
             </Grid.RowDefinitions>
 
             <!-- Grid for logo and exit button -->
-            <Grid
-                MouseLeftButtonDown="Grid_MouseLeftButtonDown"
-                Background="#FF2A2A32">
+            <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown"
+                  Background="#FF2A2A32">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -64,16 +62,14 @@
                 </Grid.RowDefinitions>
 
                 <!-- Logo -->
-                <DockPanel
-                    Height="60"
-                    HorizontalAlignment="Left"
-                    Margin="23,0,0,0">
+                <DockPanel Height="60"
+                           HorizontalAlignment="Left"
+                           Margin="23,0,0,0">
 
-                    <Image
-                        Source="..\Resources\H1EmuIcon.png"
-                        Width="175"
-                        Height="45"
-                        VerticalAlignment="Bottom"/>
+                    <Image Source="..\Resources\H1EmuIcon.png"
+                           Width="175"
+                           Height="45"
+                           VerticalAlignment="Bottom"/>
 
                 </DockPanel>
 
@@ -106,11 +102,10 @@
 
                 <!-- Drop shadow effect -->
                 <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="15"
-                        Direction="-90"
-                        RenderingBias="Quality"
-                        ShadowDepth="1"/>
+                    <DropShadowEffect BlurRadius="15"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"/>
                 </Border.Effect>
 
                 <Grid>
@@ -124,17 +119,16 @@
 
                     <!-- Report a bug about the server message -->
                     <TextBlock Text="{DynamicResource item174}"
-                           TextWrapping="Wrap"
-                           Foreground="White"
-                           TextAlignment="Center"
-                           VerticalAlignment="Center"
-                           Width="600"/>
+                               TextWrapping="Wrap"
+                               Foreground="White"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               Width="600"/>
 
                     <!-- Hyperlink to report a bug about the server -->
-                    <TextBlock
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Grid.Row="1">
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Grid.Row="1">
                     
                         <Hyperlink Click="ReportBugGithubServer"
                                    Foreground="White">
@@ -147,10 +141,9 @@
                         <!-- Context menu to copy link -->
                         <TextBlock.ContextMenu>
                             <ContextMenu>
-                                <MenuItem
-                                    Click="ReportBugGithubServerLinkCopy"
-                                    Header="Copy"
-                                    Style="{DynamicResource PopupMenuItem}"/>
+                                <MenuItem Click="ReportBugGithubServerLinkCopy"
+                                          Header="Copy"
+                                          Style="{DynamicResource PopupMenuItem}"/>
                             
                             </ContextMenu>
                         </TextBlock.ContextMenu>
@@ -158,36 +151,35 @@
 
                         <!-- Divider -->
                         <Border Grid.Row="2"
-                            Height="2"
-                            Background="#FFCA1420"
-                            CornerRadius="20"
-                            Margin="50,10,50,15"
-                            VerticalAlignment="Center">
+                                Height="2"
+                                Background="#FFCA1420"
+                                CornerRadius="20"
+                                Margin="50,10,50,15"
+                                VerticalAlignment="Center">
 
                             <!-- Drop shadow effect -->
                             <Border.Effect>
                                 <DropShadowEffect BlurRadius="8"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="1"/>
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"/>
 
                             </Border.Effect>
                         </Border>
 
                         <!-- Report a bug about the launcher message -->
                         <TextBlock Text="{DynamicResource item175}"
-                               Grid.Row="3"
-                               TextWrapping="Wrap"
-                               Foreground="White"
-                               TextAlignment="Center"
-                               VerticalAlignment="Center"
-                               Width="600"/>
+                                   Grid.Row="3"
+                                   TextWrapping="Wrap"
+                                   Foreground="White"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Width="600"/>
 
                         <!-- Hyperlink to report a bug about the launcher -->
-                        <TextBlock
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Grid.Row="4">
+                        <TextBlock VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Grid.Row="4">
                     
                         <Hyperlink Click="ReportBugGithubLauncher"
                                    Foreground="White">
@@ -200,10 +192,9 @@
                         <!-- Context menu to copy link -->
                         <TextBlock.ContextMenu>
                             <ContextMenu>
-                                <MenuItem
-                                    Click="ReportBugGithubServerLauncherCopy"
-                                    Header="Copy"
-                                    Style="{DynamicResource PopupMenuItem}"/>
+                                <MenuItem Click="ReportBugGithubServerLauncherCopy"
+                                          Header="Copy"
+                                          Style="{DynamicResource PopupMenuItem}"/>
                             
                             </ContextMenu>
                         </TextBlock.ContextMenu>
@@ -213,7 +204,7 @@
         </Grid>
 
         <!-- Background fade on unfocus -->
-        <Rectangle x:Name="aboutPageFade"
+        <Rectangle x:Name="reportBugFade"
                    Fill="#40000000"
                    IsHitTestVisible="False"
                    Visibility="Hidden"/>

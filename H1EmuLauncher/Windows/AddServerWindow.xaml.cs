@@ -5,15 +5,15 @@ using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
 {
-    public partial class AddServer : Window
+    public partial class AddServerWindow : Window
     {
-        public static AddServer addServerInstance;
+        public static AddServerWindow addServerInstance;
 
-        public AddServer()
+        public AddServerWindow()
         {
             InitializeComponent();
             addServerInstance = this;
-            Owner = Launcher.launcherInstance;
+            Owner = LauncherWindow.launcherInstance;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
@@ -78,14 +78,14 @@ namespace H1EmuLauncher
 
         private void AddServerMenuLoaded(object sender, RoutedEventArgs e)
         {
-            Launcher.launcherInstance.launcherBlur.Radius = 15;
-            Launcher.launcherInstance.launcherFade.Visibility = Visibility.Visible;
+            LauncherWindow.launcherInstance.launcherBlur.Radius = 15;
+            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Visible;
         }
 
         private void AddServerMenuClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Launcher.launcherInstance.launcherBlur.Radius = 0;
-            Launcher.launcherInstance.launcherFade.Visibility = Visibility.Hidden;
+            LauncherWindow.launcherInstance.launcherBlur.Radius = 0;
+            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Hidden;
         }
 
         private void AddServerMenuActivated(object sender, EventArgs e)

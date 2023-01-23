@@ -6,15 +6,15 @@ using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
 {
-    public partial class ReportBug : Window
+    public partial class ReportBugWindow : Window
     {
-        public static ReportBug aboutPageInstance;
+        public static ReportBugWindow aboutPageInstance;
 
-        public ReportBug()
+        public ReportBugWindow()
         {
             InitializeComponent();
             aboutPageInstance = this;
-            Owner = Launcher.launcherInstance;
+            Owner = LauncherWindow.launcherInstance;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
@@ -64,20 +64,20 @@ namespace H1EmuLauncher
 
         private void MainReportBugLoaded(object sender, RoutedEventArgs e)
         {
-            Launcher.launcherInstance.launcherBlur.Radius = 15;
-            Launcher.launcherInstance.launcherFade.Visibility = Visibility.Visible;
+            LauncherWindow.launcherInstance.launcherBlur.Radius = 15;
+            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Visible;
         }
 
         private void MainReportBugClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Launcher.launcherInstance.launcherBlur.Radius = 0;
-            Launcher.launcherInstance.launcherFade.Visibility = Visibility.Hidden;
+            LauncherWindow.launcherInstance.launcherBlur.Radius = 0;
+            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Hidden;
         }
 
         private void MainReportBugActivated(object sender, EventArgs e)
         {
-            aboutPageBlur.Radius = 0;
-            aboutPageFade.Visibility = Visibility.Hidden;
+            reportBugBlur.Radius = 0;
+            reportBugFade.Visibility = Visibility.Hidden;
         }
     }
 }

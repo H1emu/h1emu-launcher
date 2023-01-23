@@ -11,20 +11,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Text.Json.Serialization;
 using System.Net;
-using Newtonsoft.Json;
-using H1EmuLauncher.Classes;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using System.Windows.Controls.Primitives;
+using H1EmuLauncher.Classes;
+using Newtonsoft.Json;
 
 namespace H1EmuLauncher
 {
-    public partial class Launcher : Window
+    public partial class LauncherWindow : Window
     {
         FileSystemWatcher argsWatcher = new();
         ProcessStartInfo cmdShell = new();
         public static ManualResetEvent ma = new(false);
-        public static Launcher launcherInstance;
+        public static LauncherWindow launcherInstance;
         public static string serverJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
         public static string[] rawArgs = null;
         public static bool systemWatcherFire = true;
@@ -39,7 +39,7 @@ namespace H1EmuLauncher
             public string SAddress { get; set; }
         }
 
-        public Launcher()
+        public LauncherWindow()
         {
             InitializeComponent();
             launcherInstance = this;
@@ -282,7 +282,7 @@ namespace H1EmuLauncher
         {
             ma.Reset();
 
-            Settings settings = new();
+            SettingsWindow settings = new();
 
             if (!settings.CheckDirectory())
                 return;
@@ -339,7 +339,7 @@ namespace H1EmuLauncher
                     ma.WaitOne();
                     ma.Reset();
 
-                    gameVersion = Settings.gameVersion;
+                    gameVersion = SettingsWindow.gameVersion;
 
                     switch (gameVersion)
                     {
@@ -438,12 +438,12 @@ namespace H1EmuLauncher
         {
             if (Properties.Settings.Default.firstTimeUse != 1) 
             {
-                Disclaimer dc = new();
+                DisclaimerWindow dc = new();
                 dc.ShowDialog();
             }
 
-            if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{MainWindow.downloadFileName}"))
-                File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{MainWindow.downloadFileName}");
+            if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.downloadFileName}"))
+                File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.downloadFileName}");
 
             if (!File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt"))
                 File.Create($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt");
@@ -567,8 +567,8 @@ namespace H1EmuLauncher
             // Launch settings and tell it to open Account Key window
             if (!string.IsNullOrEmpty(accountKey))
             {
-                Settings.launchAccountKeyWindow = true;
-                Settings se = new();
+                SettingsWindow.launchAccountKeyWindow = true;
+                SettingsWindow se = new();
                 se.ShowDialog();
             }
         }
@@ -693,19 +693,19 @@ namespace H1EmuLauncher
 
         private void ReportBuglink(object sender, RoutedEventArgs e)
         {
-            ReportBug reportBug = new();
+            ReportBugWindow reportBug = new();
             reportBug.ShowDialog();
         }
 
         private void AboutHyperlink(object sender, RoutedEventArgs e)
         {
-            AboutPage aboutPage = new();
+            AboutPageWindow aboutPage = new();
             aboutPage.ShowDialog();
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            Settings se = new();
+            SettingsWindow se = new();
             se.ShowDialog();
         }
 

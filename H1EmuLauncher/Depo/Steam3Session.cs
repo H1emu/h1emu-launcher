@@ -1,6 +1,4 @@
-﻿using SteamKit2;
-using SteamKit2.Internal;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,7 +8,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using H1EmuLauncher.Classes;
-using H1EmuLauncher.SteamFrame;
+using SteamKit2;
+using SteamKit2.Internal;
 
 namespace H1EmuLauncher
 {
@@ -309,7 +308,7 @@ namespace H1EmuLauncher
 
                 System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item21").ToString().Replace("{0}", $"{depotKey.DepotID}").Replace("{1}", $"{depotKey.Result}")}";
+                    SteamFrame.DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item21").ToString().Replace("{0}", $"{depotKey.DepotID}").Replace("{1}", $"{depotKey.Result}")}";
                 }));
 
                 Debug.WriteLine($"Got depot key for {depotKey.DepotID} result: {depotKey.Result}");
@@ -604,8 +603,8 @@ namespace H1EmuLauncher
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
-                        _2FA.twoFacInstruction = System.Windows.Application.Current.FindResource("item78").ToString();
+                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
+                        SteamFrame._2FA.twoFacInstruction = System.Windows.Application.Current.FindResource("item78").ToString();
                     }));
 
                     token.WaitHandle.WaitOne();
@@ -616,8 +615,8 @@ namespace H1EmuLauncher
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
-                        _2FA.twoFacInstruction = System.Windows.Application.Current.FindResource("item79").ToString();
+                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
+                        SteamFrame._2FA.twoFacInstruction = System.Windows.Application.Current.FindResource("item79").ToString();
                     }));
 
                     token.WaitHandle.WaitOne();
@@ -649,8 +648,8 @@ namespace H1EmuLauncher
                     // Adds the correct language file to the resource dictionary and then loads it.
                     System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
-                    Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
-                    CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", Launcher.launcherInstance);
+                    LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+                    CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", LauncherWindow.launcherInstance);
                 }));
 
                 Abort(false);
@@ -667,8 +666,8 @@ namespace H1EmuLauncher
                     // Adds the correct language file to the resource dictionary and then loads it.
                     System.Windows.Application.Current.Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
-                    Launcher.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
-                    CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", Launcher.launcherInstance);
+                    LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+                    CustomMessageBox.Show(System.Windows.Application.Current.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", LauncherWindow.launcherInstance);
                 }));
 
                 Abort();

@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Threading;
 using System.IO;
-using Newtonsoft.Json;
 using System.IO.Compression;
-using System.Net;
 using System.Windows;
-using System.Diagnostics;
-using System.Windows.Threading;
 using System.Reflection;
 
 namespace H1EmuLauncher.Classes
@@ -18,7 +13,7 @@ namespace H1EmuLauncher.Classes
 
         public static void CheckPatch()
         {
-            gameVersion = Settings.gameVersion;
+            gameVersion = SettingsWindow.gameVersion;
 
             switch (gameVersion)
             {
@@ -30,8 +25,8 @@ namespace H1EmuLauncher.Classes
                     {
                         Application.Current.Dispatcher.Invoke(new Action(delegate
                         {
-                            Launcher.launcherInstance.playButton.IsEnabled = false;
-                            Launcher.launcherInstance.playButton.Content = Application.Current.FindResource("item150").ToString();
+                            LauncherWindow.launcherInstance.playButton.IsEnabled = false;
+                            LauncherWindow.launcherInstance.playButton.Content = Application.Current.FindResource("item150").ToString();
                         }));
 
                         ApplyPatch();
@@ -40,23 +35,23 @@ namespace H1EmuLauncher.Classes
                 case "processBeingUsed":
                     Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
+                        CustomMessageBox.Show(Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance);
                     }));
                     break;
                 default:
                     Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(Application.Current.FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), Launcher.launcherInstance);
+                        CustomMessageBox.Show(Application.Current.FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance);
                     }));
                     break;
             }
 
-            Launcher.ma.Set();
+            LauncherWindow.ma.Set();
 
             Application.Current.Dispatcher.Invoke(new Action(delegate
             {
-                Launcher.launcherInstance.playButton.IsEnabled = true;
-                Launcher.launcherInstance.playButton.Content = Application.Current.FindResource("item8").ToString();
+                LauncherWindow.launcherInstance.playButton.IsEnabled = true;
+                LauncherWindow.launcherInstance.playButton.Content = Application.Current.FindResource("item8").ToString();
             }));
         }
 

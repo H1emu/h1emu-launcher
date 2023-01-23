@@ -1,5 +1,4 @@
-﻿using SteamKit2;
-using System;
+﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using H1EmuLauncher.Classes;
 using H1EmuLauncher.SteamFrame;
+using SteamKit2;
 using SteamKit2.CDN;
 
 namespace H1EmuLauncher
@@ -1403,7 +1403,7 @@ namespace H1EmuLauncher
                 {
                     DownloadStatus.downloadStatusInstance.downloadProgress.Value = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f;
                     DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{System.Windows.Application.Current.FindResource("item54")} {sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
-                    Launcher.launcherInstance.taskbarIcon.ProgressValue = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize;
+                    LauncherWindow.launcherInstance.taskbarIcon.ProgressValue = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize;
                 }));
             }
         }

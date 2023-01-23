@@ -18,22 +18,19 @@
         </Grid.RowDefinitions>
 
         <!-- Downloading game text -->
-        <RichTextBox
-            FontSize="16"
-            Background="Transparent"
-            BorderThickness="0"
-            Foreground="White"
-            IsReadOnly="True"
-            Cursor="Arrow">
+        <RichTextBox FontSize="16"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     Foreground="White"
+                     IsReadOnly="True"
+                     Cursor="Arrow">
             
             <FlowDocument TextAlignment="Center">
                 <Paragraph>
-                    <Run
-                        Text="{DynamicResource item26}"/>
+                    <Run Text="{DynamicResource item26}"/>
                     <Run
                         Foreground="#FFCA1420" Text="{DynamicResource item135}"/>
-                    <Run
-                        Text="{DynamicResource item27}"/>
+                    <Run Text="{DynamicResource item27}"/>
                     <Run x:Name="gameDownloadText"
                          Foreground="#FFCA1420" Text="----:"/>
                 </Paragraph>
@@ -49,12 +46,11 @@
                      Style="{DynamicResource ProgressBar}"/>
 
         <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
-        <ProgressBar
-            Grid.Row="1"
-            Height="35"
-            VerticalAlignment="Top"
-            Background="Transparent"
-            Style="{DynamicResource ProgressBar}"/>
+        <ProgressBar Grid.Row="1"
+                     Height="35"
+                     VerticalAlignment="Top"
+                     Background="Transparent"
+                     Style="{DynamicResource ProgressBar}"/>
 
         <!-- Status text to overlay progress bar -->
         <TextBlock x:Name="downloadProgressText"

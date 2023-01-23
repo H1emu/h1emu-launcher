@@ -6,23 +6,23 @@ using System.IO.Compression;
 using System.Diagnostics;
 using System.Threading;
 using System.Reflection;
-using H1EmuLauncher.Classes;
 using System.Windows.Controls;
+using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
 {
-    public partial class Settings : Window
+    public partial class SettingsWindow : Window
     {
         ProcessStartInfo cmdShell = new();
-        public static Settings settingsInstance;
+        public static SettingsWindow settingsInstance;
         public static string gameVersion { get; set; }
         public static bool launchAccountKeyWindow;
 
-        public Settings()
+        public SettingsWindow()
         {
             InitializeComponent();
             settingsInstance = this;
-            Owner = Launcher.launcherInstance;
+            Owner = LauncherWindow.launcherInstance;
 
             // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
@@ -118,7 +118,7 @@ namespace H1EmuLauncher
             // Unzip all of the files to directory
             Dispatcher.Invoke(new Action(delegate
             {
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 settingsProgress.IsIndeterminate = true;
                 settingsProgressText.Text = FindResource("item99").ToString();
             }));
@@ -178,7 +178,7 @@ namespace H1EmuLauncher
 
             Dispatcher.Invoke(new Action(delegate
             {
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 settingsProgress.IsIndeterminate = false;
 
                 if (gameVersion == "15jan2015")
@@ -245,13 +245,13 @@ namespace H1EmuLauncher
                         if (button.Name == "latestButton")
                         {
                             settingsProgressText.Text = FindResource("item105").ToString();
-                            Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                            LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                             settingsProgress.IsIndeterminate = true;
                         }
                         else
                         {
                             settingsProgressText.Text = FindResource("item109").ToString();
-                            Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                            LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                             settingsProgress.IsIndeterminate = true;
                         }
 
@@ -289,7 +289,7 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         settingsProgressText.Text = FindResource("item93").ToString();
-                        Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         settingsProgress.IsIndeterminate = false;
                         settingsProgress.Value = 0;
 
@@ -309,7 +309,7 @@ namespace H1EmuLauncher
 
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     settingsProgress.IsIndeterminate = false;
                     settingsProgress.Value = 0;
 
@@ -335,7 +335,7 @@ namespace H1EmuLauncher
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item116").ToString();
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 settingsProgress.IsIndeterminate = true;
             }));
 
@@ -353,7 +353,7 @@ namespace H1EmuLauncher
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item118").ToString();
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 settingsProgress.IsIndeterminate = true;
             }));
 
@@ -375,7 +375,7 @@ namespace H1EmuLauncher
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item113").ToString();
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             }));
 
             if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master"))
@@ -433,7 +433,7 @@ namespace H1EmuLauncher
 
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     settingsProgress.Maximum = 100;
                 }));
             }
@@ -448,7 +448,7 @@ namespace H1EmuLauncher
             new Thread(() => 
             {
                 CheckGameVersion();
-                Launcher.ma.Set();
+                LauncherWindow.ma.Set();
 
             }).Start();
         }
@@ -459,7 +459,7 @@ namespace H1EmuLauncher
 
             Dispatcher.Invoke(new Action(delegate
             {
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 directoryButton.IsEnabled = false;
                 patchButton.IsEnabled = false;
                 latestButton.IsEnabled = false;
@@ -479,7 +479,7 @@ namespace H1EmuLauncher
             Dispatcher.Invoke(new Action(delegate
             {
                 currentGame.Text = FindResource("item70").ToString();
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
             }));
 
             Crc32 crc32 = new();
@@ -534,7 +534,7 @@ namespace H1EmuLauncher
 
             Dispatcher.Invoke(new Action(delegate
             {
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
             }));
 
             EnableButtons();
@@ -542,8 +542,8 @@ namespace H1EmuLauncher
 
         public void SettingsLoaded(object sender, RoutedEventArgs e)
         {
-            Launcher.launcherInstance.launcherBlur.Radius = 15;
-            Launcher.launcherInstance.launcherFade.Visibility = Visibility.Visible;
+            LauncherWindow.launcherInstance.launcherBlur.Radius = 15;
+            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Visible;
 
             currentVersion.Text = FindResource("item124").ToString() + $"{Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.')}";
 
@@ -708,7 +708,7 @@ namespace H1EmuLauncher
         {
             Dispatcher.Invoke(new Action(delegate
             {
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 directoryButton.IsEnabled = true;
                 patchButton.IsEnabled = true;
                 latestButton.IsEnabled = true;
@@ -721,7 +721,7 @@ namespace H1EmuLauncher
         {
             Dispatcher.Invoke(new Action(delegate
             {
-                Launcher.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 directoryButton.IsEnabled = false;
                 patchButton.IsEnabled = false;
                 latestButton.IsEnabled = false;
@@ -732,7 +732,7 @@ namespace H1EmuLauncher
 
         private void AccountKeyClick(object sender, RoutedEventArgs e)
         {
-            AccountKey ak = new();
+            AccountKeyWindow ak = new();
             ak.ShowDialog();
         }
 
@@ -772,8 +772,8 @@ namespace H1EmuLauncher
 
             Topmost = true;
 
-            Launcher.launcherInstance.launcherBlur.Radius = 0;
-            Launcher.launcherInstance.launcherFade.Visibility = Visibility.Hidden;
+            LauncherWindow.launcherInstance.launcherBlur.Radius = 0;
+            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Hidden;
         }
 
         public void CloseButton(object sender, RoutedEventArgs e)
@@ -799,8 +799,8 @@ namespace H1EmuLauncher
             // If accountkey argument was specified launch the accountkey window with the argument value
             if (launchAccountKeyWindow)
             {
-                AccountKey ak = new();
-                ak.accountKeyBox.Password = SteamFrame.Login.GetParameter(Launcher.rawArgs, "-accountkey", "");
+                AccountKeyWindow ak = new();
+                ak.accountKeyBox.Password = SteamFrame.Login.GetParameter(LauncherWindow.rawArgs, "-accountkey", "");
                 ak.accountKeyHint.Visibility = Visibility.Hidden;
                 ak.ShowDialog();
 

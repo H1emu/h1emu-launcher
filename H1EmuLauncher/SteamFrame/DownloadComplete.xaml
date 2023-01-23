@@ -16,32 +16,28 @@
         </Grid.RowDefinitions>
 
         <!-- Download complete message -->
-        <RichTextBox
-            VerticalAlignment="Top"
-            HorizontalAlignment="Center"
-            Margin="0,-2,0,0"
-            FontSize="16"
-            Foreground="White"
-            Background="Transparent"
-            BorderThickness="0"
-            IsReadOnly="True"
-            Cursor="Arrow">
+        <RichTextBox VerticalAlignment="Top"
+                     HorizontalAlignment="Center"
+                     Margin="0,-2,0,0"
+                     FontSize="16"
+                     Foreground="White"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     IsReadOnly="True"
+                     Cursor="Arrow">
             
             <FlowDocument TextAlignment="Center">
                 <Paragraph>
-                    <Run
-                        Foreground="#FFCA1420"
-                        Text="{DynamicResource item23}"/>
+                    <Run Foreground="#FFCA1420"
+                         Text="{DynamicResource item23}"/>
                     <LineBreak/>
-                    <Run
-                        Text="{DynamicResource item24}"/>
+                    <Run Text="{DynamicResource item24}"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
 
         <!-- Back to login page button -->
-        <Button
-                Grid.Row="1"
+        <Button Grid.Row="1"
                 RenderOptions.BitmapScalingMode="Fant"
                 Height="45"
                 VerticalAlignment="Top"

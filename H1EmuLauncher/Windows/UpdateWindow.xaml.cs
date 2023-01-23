@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Media;
 using System.Net;
@@ -9,16 +8,17 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using H1EmuLauncher.Classes;
+using Newtonsoft.Json;
 
 namespace H1EmuLauncher
 {
-    public partial class MainWindow : Window
+    public partial class UpdateWindow : Window
     {
-        Splash sp = new();
+        SplashWindow sp = new();
         string downloadUrl;
         public static string downloadFileName;
 
-        public MainWindow()
+        public UpdateWindow()
         {
             InitializeComponent();
 
@@ -174,7 +174,7 @@ namespace H1EmuLauncher
             notNow.Foreground = new SolidColorBrush(Colors.White);
             Hide();
 
-            Launcher la = new();
+            LauncherWindow la = new();
             la.Show();
         }
 

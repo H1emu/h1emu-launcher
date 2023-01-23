@@ -5,9 +5,9 @@ using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
 {
-    public partial class Splash : Window
+    public partial class SplashWindow : Window
     {
-        public Splash()
+        public SplashWindow()
         {
             InitializeComponent();
 

@@ -1,4 +1,4 @@
-﻿<Window x:Class="H1EmuLauncher.Launcher"
+﻿<Window x:Class="H1EmuLauncher.LauncherWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -12,7 +12,7 @@
         Height="750"
         WindowStartupLocation="CenterScreen"
         Background="#FF2A2A32"
-        FontFamily="Bahnschrift Light"
+        FontFamily="Bahnschrift"
         FontSize="16"
         Loaded="LauncherWindowLoaded"
         Activated="MainLauncherActivated"
@@ -21,12 +21,11 @@
 
         <!-- Hide window border but keep animations -->
         <WindowChrome.WindowChrome>
-            <WindowChrome
-                GlassFrameThickness="0"
-                CornerRadius="0"
-                CaptionHeight="0"
-                ResizeBorderThickness="0"
-                UseAeroCaptionButtons="False"/>
+            <WindowChrome GlassFrameThickness="0"
+                          CornerRadius="0"
+                          CaptionHeight="0"
+                          ResizeBorderThickness="0"
+                          UseAeroCaptionButtons="False"/>
 
         </WindowChrome.WindowChrome>
     
@@ -39,9 +38,8 @@
         <Storyboard x:Key="NextImageAnimation"
                     Completed="StoryboardCompleted">
             
-            <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                Storyboard.TargetName="carouselImage">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                           Storyboard.TargetName="carouselImage">
                 
                 <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="-3"/>
@@ -67,9 +65,8 @@
         <Storyboard x:Key="NextImageAnimationFollow"
                     Completed="StoryboardCompleted">
             
-            <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                Storyboard.TargetName="carouselImageSlider">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                           Storyboard.TargetName="carouselImageSlider">
                 
                 <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="573"/>
                 <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="570"/>
@@ -95,9 +92,8 @@
         <Storyboard x:Key="PrevImageAnimation"
                     Completed="StoryboardCompleted">
             
-            <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                Storyboard.TargetName="carouselImage">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                           Storyboard.TargetName="carouselImage">
                 
                 <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="3"/>
@@ -123,9 +119,8 @@
         <Storyboard x:Key="PrevImageAnimationFollow"
                     Completed="StoryboardCompleted">
             
-            <DoubleAnimationUsingKeyFrames
-                Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                Storyboard.TargetName="carouselImageSlider">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                                           Storyboard.TargetName="carouselImageSlider">
                 
                 <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="-573"/>
                 <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="-570"/>
@@ -150,17 +145,15 @@
     </Window.Resources>
 
     <Window.Triggers>
-        <EventTrigger
-            RoutedEvent="ButtonBase.Click"
-            SourceName="triggerPrevImageStoryboard">
+        <EventTrigger RoutedEvent="ButtonBase.Click"
+                      SourceName="triggerPrevImageStoryboard">
             
             <BeginStoryboard Storyboard="{StaticResource PrevImageAnimationFollow}"/>
             <BeginStoryboard Storyboard="{StaticResource PrevImageAnimation}"/>
         </EventTrigger>
         
-        <EventTrigger
-            RoutedEvent="ButtonBase.Click"
-            SourceName="triggerNextImageStoryboard">
+        <EventTrigger RoutedEvent="ButtonBase.Click"
+                      SourceName="triggerNextImageStoryboard">
             
             <BeginStoryboard Storyboard="{StaticResource NextImageAnimationFollow}"/>
             <BeginStoryboard Storyboard="{StaticResource NextImageAnimation}"/>
@@ -188,9 +181,8 @@
             </Grid.RowDefinitions>
 
             <!-- Grid for logo and exit button & other -->
-            <Grid
-                MouseLeftButtonDown="MoveWindow"
-                Background="#FF2A2A32">
+            <Grid MouseLeftButtonDown="MoveWindow"
+                  Background="#FF2A2A32">
                 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
@@ -203,12 +195,11 @@
 
                 <!-- Logo -->
                 <DockPanel>
-                    <Image
-                        Width="220"
-                        Margin="35,20,0,12"
-                        HorizontalAlignment="Left"
-                        RenderOptions.BitmapScalingMode="Fant"
-                        Source="..\Resources\H1EmuLogo.png"/>
+                    <Image Width="220"
+                           Margin="35,20,0,12"
+                           HorizontalAlignment="Left"
+                           RenderOptions.BitmapScalingMode="Fant"
+                           Source="..\Resources\H1EmuLogo.png"/>
                 </DockPanel>
 
                 <!-- Exit/minimise buttons and other info -->
@@ -225,10 +216,9 @@
                         </Grid.RowDefinitions>
                         
                         <!-- Wraps the about project informational -->
-                        <WrapPanel
-                            Grid.ColumnSpan="2"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right">
+                        <WrapPanel Grid.ColumnSpan="2"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Right">
 
                             <!-- Language selection combobox -->
                             <Grid>
@@ -241,6 +231,7 @@
                                           BorderThickness="2"
                                           Foreground="White"
                                           FontSize="15"
+                                          FontWeight="Light"
                                           SelectedIndex="-1"
                                           SelectionChanged="LanguageSelectionChanged"
                                           Style="{DynamicResource ComboBox}">
@@ -259,21 +250,20 @@
                                     <ComboBoxItem Content="Spanish"/>
                                 </ComboBox>
 
-                                <Image
-                                    Source="..\Resources\Language.png"
-                                    RenderOptions.BitmapScalingMode="Fant"
-                                    Width="16"
-                                    VerticalAlignment="Bottom"
-                                    HorizontalAlignment="Left"
-                                    Margin="21,0,0,7"
-                                    IsHitTestVisible="False"/>
+                                <Image Source="..\Resources\Language.png"
+                                       RenderOptions.BitmapScalingMode="Fant"
+                                       Width="16"
+                                       VerticalAlignment="Bottom"
+                                       HorizontalAlignment="Left"
+                                       Margin="21,0,0,7"
+                                       IsHitTestVisible="False"/>
                                 
                             </Grid>
 
                             <!-- Report A Bug Hyperlink -->
-                            <TextBlock
-                                Margin="0,10,20,0"
-                                VerticalAlignment="Center">
+                            <TextBlock Margin="0,10,20,0"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Light">
                                 
                                 <Hyperlink Click="ReportBuglink"
                                            Foreground="White">
@@ -284,9 +274,9 @@
                             </TextBlock>
                             
                             <!-- About Project Hyperlink -->
-                            <TextBlock
-                                Margin="0,10,20,0"
-                                VerticalAlignment="Center">
+                            <TextBlock Margin="0,10,20,0"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Light">
                                 
                                 <Hyperlink Click="AboutHyperlink"
                                            Foreground="White">
@@ -304,10 +294,7 @@
                                     Margin="0,10,4,0"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Right"
-                                    Foreground="FloralWhite"
                                     BorderThickness="0"
-                                    FontFamily="Arial"
-                                    FontSize="36"
                                     Style="{DynamicResource MinimiseButtonStyle}">
                                 
                                 <Button.Background>
@@ -324,10 +311,7 @@
                                     Margin="0,10,35,0"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Right"
-                                    Foreground="FloralWhite"
                                     BorderThickness="0"
-                                    FontFamily="Arial"
-                                    FontSize="36"
                                     Style="{DynamicResource CloseButtonStyle}">
                                 
                                 <Button.Background>
@@ -337,24 +321,23 @@
                         </WrapPanel>
 
                         <!-- Website and discord components -->
-                        <WrapPanel
-                            Grid.Row="1"
-                            Grid.ColumnSpan="2"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Bottom">
+                        <WrapPanel Grid.Row="1"
+                                   Grid.ColumnSpan="2"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Bottom">
                             
                             <!-- Join the community at message -->
                             <TextBlock Foreground="White"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Right"
-                                       Margin="0,0,25,10">
+                                       Margin="0,0,25,10"
+                                       FontWeight="Light">
                                 
                                 <TextBlock Text="{DynamicResource item12}"/>
 
-                                <Hyperlink
-                                    NavigateUri="https://h1emu.com/"
-                                    RequestNavigate="H1Hyperlink"
-                                    Foreground="White">
+                                <Hyperlink NavigateUri="https://h1emu.com/"
+                                           RequestNavigate="H1Hyperlink"
+                                           Foreground="White">
                                     
                                     <TextBlock Text="h1emu.com"
                                                Style="{DynamicResource HyperLinkStyle}"/>
@@ -391,10 +374,9 @@
 
                                 <Button.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem
-                                            Header="Copy"
-                                            Click="discordLinkCopy"
-                                            Style="{DynamicResource PopupMenuItem}"/>
+                                        <MenuItem Header="Copy"
+                                                  Click="discordLinkCopy"
+                                                  Style="{DynamicResource PopupMenuItem}"/>
                                         
                                     </ContextMenu>
                                 </Button.ContextMenu>
@@ -413,11 +395,10 @@
 
                 <!-- Drop shadow effect -->
                 <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="15"
-                        Direction="-90"
-                        RenderingBias="Quality"
-                        ShadowDepth="1"/>
+                    <DropShadowEffect BlurRadius="15"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"/>
                     
                 </Border.Effect>
 
@@ -439,18 +420,17 @@
                         </Grid.RowDefinitions>
 
                         <!-- Grid to dock the game image -->
-                        <Grid
-                        Grid.Row="1"
-                        Margin="30,27,12,25">
+                        <Grid Grid.Row="1"
+                              Margin="30,27,12,25">
 
                             <!-- Image carousel grid -->
                             <Grid x:Name="imageCarousel"
-                              MouseEnter="CarouselMouseEnter"
-                              MouseLeave="CarouselMouseLeave"
-                              ClipToBounds="True">
+                                  MouseEnter="CarouselMouseEnter"
+                                  MouseLeave="CarouselMouseLeave"
+                                  ClipToBounds="True">
 
                                 <Image x:Name="carouselImageSlider"
-                                   RenderOptions.BitmapScalingMode="Fant">
+                                       RenderOptions.BitmapScalingMode="Fant">
 
                                     <Image.RenderTransform>
                                         <TransformGroup>
@@ -463,7 +443,7 @@
                                 </Image>
 
                                 <Image x:Name="carouselImage"
-                                   RenderOptions.BitmapScalingMode="Fant">
+                                       RenderOptions.BitmapScalingMode="Fant">
 
                                     <Image.RenderTransform>
                                         <TransformGroup>
@@ -477,46 +457,46 @@
 
                                 <!-- Next image button -->
                                 <Button x:Name="nextImage"
-                                    Click="NextImageClick"
-                                    Width="30"
-                                    HorizontalAlignment="Right"
-                                    BorderThickness="0"
-                                    Foreground="White"
-                                    Visibility="Hidden"
-                                    Style="{DynamicResource CarouselButtonNext}"/>
+                                        Click="NextImageClick"
+                                        Width="30"
+                                        HorizontalAlignment="Right"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        Visibility="Hidden"
+                                        Style="{DynamicResource CarouselButtonNext}"/>
 
                                 <!-- Trigger next image storyboard -->
                                 <Button x:Name="triggerNextImageStoryboard"
-                                    Click="StoryboardNextImageClick"
-                                    Width="30"
-                                    HorizontalAlignment="Right"
-                                    Visibility="Hidden"/>
+                                        Click="StoryboardNextImageClick"
+                                        Width="30"
+                                        HorizontalAlignment="Right"
+                                        Visibility="Hidden"/>
 
                                 <!-- Previous image button -->
                                 <Button x:Name="prevImage"
-                                    Click="PrevImageClick"
-                                    Width="30"
-                                    HorizontalAlignment="Left"
-                                    BorderThickness="0"
-                                    Foreground="White"
-                                    Visibility="Hidden"
-                                    Style="{DynamicResource CarouselButtonPrevious}"/>
+                                        Click="PrevImageClick"
+                                        Width="30"
+                                        HorizontalAlignment="Left"
+                                        BorderThickness="0"
+                                        Foreground="White"
+                                        Visibility="Hidden"
+                                        Style="{DynamicResource CarouselButtonPrevious}"/>
 
                                 <!-- Trigger previous image storyboard -->
                                 <Button x:Name="triggerPrevImageStoryboard"
-                                    Click="StoryboardPrevImageClick"
-                                    Width="30"
-                                    HorizontalAlignment="Right"
-                                    Visibility="Hidden"/>
+                                        Click="StoryboardPrevImageClick"
+                                        Width="30"
+                                        HorizontalAlignment="Right"
+                                        Visibility="Hidden"/>
 
                                 <!-- Image carousel progress bar -->
                                 <ProgressBar x:Name="carouselProgressBar"
-                                         Height="5"
-                                         VerticalAlignment="Bottom"
-                                         BorderThickness="0"
-                                         Background="Transparent"
-                                         Foreground="#DB111C"
-                                         Maximum="3000"/>
+                                             Height="5"
+                                             VerticalAlignment="Bottom"
+                                             BorderThickness="0"
+                                             Background="Transparent"
+                                             Foreground="#DB111C"
+                                             Maximum="3000"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -524,33 +504,32 @@
                     <!-- Update version information -->
                     <StackPanel Margin="25,10,12,0">
                         <RichTextBox x:Name="titleUpdate"
-                                 Background="Transparent"
-                                 Foreground="White"
-                                 BorderThickness="0"
-                                 IsReadOnly="True"
-                                 Cursor="Arrow">
+                                     Background="Transparent"
+                                     Foreground="White"
+                                     BorderThickness="0"
+                                     IsReadOnly="True"
+                                     Cursor="Arrow">
 
                             <FlowDocument>
-                                <Paragraph
-                                FontSize="32"
-                                FontWeight="Bold"
-                                FontFamily="{DynamicResource Signika}">
+                                <Paragraph FontSize="32"
+                                           FontWeight="Bold"
+                                           FontFamily="{DynamicResource Signika}">
 
                                     <!-- Version text -->
                                     <Run x:Name="titleUpdateText"
-                                     Foreground="#FFED1C24"
-                                     FontSize="44"
-                                     Text="{DynamicResource item3}"/>
+                                         Foreground="#FFED1C24"
+                                         FontSize="44"
+                                         Text="{DynamicResource item3}"/>
 
                                     <!-- Update version number -->
                                     <Run x:Name="updateVersion"
-                                     Foreground="#FFED1C24"
-                                     FontSize="44"/>
+                                         Foreground="#FFED1C24"
+                                         FontSize="44"/>
 
                                     <!-- Date version was published -->
                                     <Run x:Name="datePublished"
-                                     FontFamily="Bahnschrift Light"
-                                     FontSize="16"/>
+                                         FontFamily="Bahnschrift Light"
+                                         FontSize="16"/>
 
                                 </Paragraph>
                             </FlowDocument>
@@ -562,37 +541,40 @@
 
                             <!-- Patch notes textbox -->
                             <RichTextBox x:Name="patchNotesBox"
-                                 Height="96"
-                                 Margin="0,10,0,0"
-                                 Background="Transparent"
-                                 Foreground="White"
-                                 BorderThickness="0"
-                                 IsReadOnly="True"
-                                 Cursor="Arrow"/>
+                                         Height="96"
+                                         Margin="0,10,0,0"
+                                         Background="Transparent"
+                                         Foreground="White"
+                                         FontWeight="Light"
+                                         BorderThickness="0"
+                                         IsReadOnly="True"
+                                         Cursor="Arrow"/>
 
                         </ScrollViewer>
 
                         <!-- Read full details of update hyperlink -->
-                        <TextBlock Margin="6,22,0,0">
-                        <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/"
-                                   RequestNavigate="FullUpdatesHyperlink"
-                                   Foreground="White">
+                        <TextBlock Margin="6,22,0,0"
+                                   FontWeight="Light">
                             
-                            <TextBlock Text="{DynamicResource item61}"
-                                       Style="{DynamicResource HyperLinkStyle}"/>
-                        </Hyperlink>
+                            <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/"
+                                       RequestNavigate="FullUpdatesHyperlink"
+                                       Foreground="White">
+                            
+                                <TextBlock Text="{DynamicResource item61}"
+                                           Style="{DynamicResource HyperLinkStyle}"/>
+                            </Hyperlink>
                         
-                        <!-- Context menu to copy link -->
-                        <TextBlock.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem
-                                    Header="Copy"
-                                    Click="patchNotesCopy"
-                                    Style="{DynamicResource PopupMenuItem}"/>
+                            <!-- Context menu to copy link -->
+                            <TextBlock.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem
+                                        Header="Copy"
+                                        Click="patchNotesCopy"
+                                        Style="{DynamicResource PopupMenuItem}"/>
                                 
-                            </ContextMenu>
-                        </TextBlock.ContextMenu>
-                    </TextBlock>
+                                </ContextMenu>
+                            </TextBlock.ContextMenu>
+                        </TextBlock>
                     </StackPanel>
 
                     <Grid Grid.Column="1">
@@ -603,59 +585,53 @@
 
                         <!-- You must own the game in order to download message -->
                         <StackPanel Margin="12,20,30,0">
-                            <RichTextBox Background="Transparent"
-                                     Foreground="White"
-                                     BorderThickness="0"
-                                     IsReadOnly="True"
-                                     Cursor="Arrow">
+                            <TextBlock Background="Transparent"
+                                       Foreground="White"
+                                       FontWeight="Light"
+                                       Cursor="Arrow"
+                                       TextWrapping="Wrap">
 
-                                <FlowDocument>
-                                    <Paragraph>
-                                        <Run
-                                        Foreground="#FFCA1420"
-                                        Text="{DynamicResource item10}"/>
-
-                                        <Run Text="{DynamicResource item11}"/>
-
-                                    </Paragraph>
-                                    <Paragraph Padding="0,10,0,0">
-                                        <Run Text="{DynamicResource item50}"/>
-                                    </Paragraph>
-                                </FlowDocument>
-                            </RichTextBox>
+                                <Run Foreground="#FFCA1420"
+                                     Text="{DynamicResource item10}"/>                               
+                                <Run Text="{DynamicResource item11}"/>
+                                <LineBreak/>
+                                <LineBreak/>
+                                <Run Text="{DynamicResource item50}"/>
+                                
+                            </TextBlock>
 
                             <!-- H1Emu Chinese Community link -->
                             <TextBlock Margin="6,46,0,0"
-                                   x:Name="chineseLink"
-                                   Visibility="Collapsed"
-                                   FontFamily="Bahnschrift"
-                                   Text="点击进入 "
-                                   Foreground="White"
-                                   FontWeight="Bold">
+                                       x:Name="chineseLink"
+                                       Visibility="Collapsed"
+                                       FontFamily="Bahnschrift"
+                                       Text="点击进入 "
+                                       Foreground="White"
+                                       FontWeight="Bold">
                             
-                            <Hyperlink NavigateUri="https://azaz.ge/"
-                                       RequestNavigate="H1EmuChineseLink"
-                                       Foreground="White">
+                                <Hyperlink NavigateUri="https://azaz.ge/"
+                                           RequestNavigate="H1EmuChineseLink"
+                                           Foreground="White">
                             
-                                <TextBlock Text="H1Emu中文社区"
-                                           Style="{DynamicResource HyperLinkStyle}"
-                                           FontWeight="Bold"/>
-                            </Hyperlink>
+                                    <TextBlock Text="H1Emu中文社区"
+                                               Style="{DynamicResource HyperLinkStyle}"
+                                               FontWeight="Bold"/>
+                                </Hyperlink>
                             
                             <TextBlock Text="，了解更多中文信息。"
                                        FontWeight="Bold"/>
 
-                        <!-- Context menu to copy link -->
-                            <TextBlock.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem
-                                        Header="Copy"
-                                        Click="chineseLinkCopy"
-                                        Style="{DynamicResource PopupMenuItem}"/>
+                                <!-- Context menu to copy link -->
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem
+                                            Header="Copy"
+                                            Click="chineseLinkCopy"
+                                            Style="{DynamicResource PopupMenuItem}"/>
                                 
-                                </ContextMenu>
-                            </TextBlock.ContextMenu>  
-                        </TextBlock>
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>  
+                            </TextBlock>
                         </StackPanel>
 
                         <!-- Grid that hosts Steam frame, server selector and play button -->
@@ -675,9 +651,8 @@
                                    f:DisableFrameNavigation.Disable="True"/>
                         </Grid>
 
-                        <Grid
-                        Grid.Row="1"
-                        Margin="12,0,30,25">
+                        <Grid Grid.Row="1"
+                              Margin="12,0,30,25">
 
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -689,56 +664,54 @@
                             </Grid.RowDefinitions>
 
                             <!-- Divider -->
-                            <Border
-                            Height="1"
-                            Background="#FFCA1420"
-                            VerticalAlignment="Bottom"
-                            Margin="7,0,0,75"
-                            CornerRadius="20"
-                            Grid.ColumnSpan="2"
-                            RenderOptions.BitmapScalingMode="Fant">
+                            <Border Height="1"
+                                    Background="#FFCA1420"
+                                    VerticalAlignment="Bottom"
+                                    Margin="7,0,0,75"
+                                    CornerRadius="20"
+                                    Grid.ColumnSpan="2"
+                                    RenderOptions.BitmapScalingMode="Fant">
 
                                 <!-- Drop shadow effect -->
                                 <Border.Effect>
-                                    <DropShadowEffect
-                                    BlurRadius="8"
-                                    Direction="-90"
-                                    RenderingBias="Quality"
-                                    ShadowDepth="1"/>
+                                    <DropShadowEffect BlurRadius="8"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="1"/>
 
                                 </Border.Effect>
                             </Border>
 
                             <!-- Server selector combobox -->
                             <ComboBox x:Name="serverSelector"
-                                  Height="35"
-                                  Margin="7,0,3,5"
-                                  Padding="38,8,15,0"
-                                  VerticalAlignment="Bottom"
-                                  Foreground="White"
-                                  BorderThickness="2"
-                                  SelectionChanged="ServerSelectorChanged"
-                                  Style="{DynamicResource ComboBox}">
+                                      Height="35"
+                                      Margin="7,0,3,5"
+                                      Padding="38,8,15,0"
+                                      VerticalAlignment="Bottom"
+                                      Foreground="White"
+                                      FontWeight="Light"
+                                      BorderThickness="2"
+                                      SelectionChanged="ServerSelectorChanged"
+                                      Style="{DynamicResource ComboBox}">
 
                                 <ComboBoxItem Content="{DynamicResource item139}"/>
                                 <ComboBoxItem Content="{DynamicResource item140}"/>
                                 <Separator/>
                                 <ComboBoxItem x:Name="newServer"
-                                          Content="{DynamicResource item141}"
-                                          PreviewMouseLeftButtonDown="AddNewServer"/>
+                                              Content="{DynamicResource item141}"
+                                              PreviewMouseLeftButtonDown="AddNewServer"/>
                             </ComboBox>
 
                             <!-- Delete selected server button -->
-                            <Button
-                            Click="DeleteServer"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="20"
-                            Height="20"
-                            Margin="17,0,0,13"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Left"
-                            BorderThickness="0"
-                            Style="{DynamicResource DeleteServer}">
+                            <Button Click="DeleteServer"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Width="20"
+                                    Height="20"
+                                    Margin="17,0,0,13"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="Left"
+                                    BorderThickness="0"
+                                    Style="{DynamicResource DeleteServer}">
 
                                 <Button.Background>
                                     <ImageBrush ImageSource="..\Resources\Server.png"/>
@@ -747,18 +720,18 @@
 
                             <!-- Play button -->
                             <Button x:Name="playButton"
-                            Grid.Column="1"
-                            Click="LaunchClient"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Height="45"
-                            Margin="12,0,0,0"
-                            VerticalAlignment="Bottom"
-                            Foreground="White"
-                            FontFamily="Arial Black"
-                            FontSize="28"
-                            BorderThickness="0"
-                            Content="{DynamicResource item8}"
-                            Style="{DynamicResource StandardButton}">
+                                    Grid.Column="1"
+                                    Click="LaunchClient"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Height="45"
+                                    Margin="12,0,0,0"
+                                    VerticalAlignment="Bottom"
+                                    Foreground="White"
+                                    FontFamily="Arial Black"
+                                    FontSize="28"
+                                    BorderThickness="0"
+                                    Content="{DynamicResource item8}"
+                                    Style="{DynamicResource StandardButton}">
 
                                 <Button.Background>
                                     <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
@@ -786,9 +759,9 @@
                 </Image>
 
                 <!-- Hyperlink to open settings menu -->
-                <TextBlock
-                    Margin="8,2,0,0"
-                    VerticalAlignment="Center">
+                <TextBlock Margin="8,2,0,0"
+                           VerticalAlignment="Center"
+                           FontWeight="Light">
                     
                     <!-- Hyperlink for settings window -->
                     <Hyperlink Click="Hyperlink_Click"
@@ -820,12 +793,12 @@
                 </TextBlock>
 
                 <!-- Copyright notice -->
-                <TextBlock
-                    Margin="0,2,35,0"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right"
-                    Foreground="White"
-                    Text="{DynamicResource item125}"/>
+                <TextBlock Margin="0,2,35,0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Right"
+                           Foreground="White"
+                           FontWeight="Light"
+                           Text="{DynamicResource item125}"/>
             </DockPanel>
         </Grid>
 

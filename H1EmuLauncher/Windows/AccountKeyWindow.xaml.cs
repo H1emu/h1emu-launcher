@@ -5,15 +5,15 @@ using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
 {
-    public partial class AccountKey : Window
+    public partial class AccountKeyWindow : Window
     {
-        public static AccountKey accountKeyInstance;
+        public static AccountKeyWindow accountKeyInstance;
 
-        public AccountKey()
+        public AccountKeyWindow()
         {
             InitializeComponent();
             accountKeyInstance = this;
-            Owner = Settings.settingsInstance;
+            Owner = SettingsWindow.settingsInstance;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
@@ -65,10 +65,10 @@ namespace H1EmuLauncher
 
         private void AccountKeyLoaded(object sender, RoutedEventArgs e)
         {
-            Settings.settingsInstance.settingsBlur.Radius = 15;
-            Settings.settingsInstance.settingsFade.Visibility = Visibility.Visible;
+            SettingsWindow.settingsInstance.settingsBlur.Radius = 15;
+            SettingsWindow.settingsInstance.settingsFade.Visibility = Visibility.Visible;
 
-            if (!Settings.launchAccountKeyWindow)
+            if (!SettingsWindow.launchAccountKeyWindow)
             {
                 accountKeyBox.Password = Properties.Settings.Default.sessionIdKey;
             }
@@ -79,8 +79,8 @@ namespace H1EmuLauncher
 
         private void AccountKeyWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Settings.settingsInstance.settingsBlur.Radius = 0;
-            Settings.settingsInstance.settingsFade.Visibility = Visibility.Hidden;
+            SettingsWindow.settingsInstance.settingsBlur.Radius = 0;
+            SettingsWindow.settingsInstance.settingsFade.Visibility = Visibility.Hidden;
 
             Properties.Settings.Default.sessionIdKey = accountKeyBox.Password;
             Properties.Settings.Default.Save();

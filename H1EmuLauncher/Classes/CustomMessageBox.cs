@@ -9,7 +9,7 @@ namespace H1EmuLauncher.Classes
 
         public static void Show(string text, Window owner = null)
         {
-            MsgBox newBox = new();
+            MessageBoxWindow newBox = new();
             newBox.text.Text = text;
 
             if (owner != null && owner.IsVisible)
@@ -26,7 +26,7 @@ namespace H1EmuLauncher.Classes
 
         public static MessageBoxResult ShowResult(string text, Window owner = null)
         {
-            CnfmBox cnfmBox = new();
+            ConfirmBoxWindow cnfmBox = new();
             cnfmBox.text.Text = text;
 
             if (owner != null)
@@ -52,19 +52,19 @@ namespace H1EmuLauncher.Classes
 
         public static MessageBoxResult AddServer(Window owner)
         {
-            AddServer addServer = new();
+            AddServerWindow addServer = new();
 
             if (owner != null)
                 addServer.Owner = owner;
             else
                 addServer.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            if (!string.IsNullOrEmpty(Launcher.newServerName) || !string.IsNullOrEmpty(Launcher.newServerIp))
+            if (!string.IsNullOrEmpty(LauncherWindow.newServerName) || !string.IsNullOrEmpty(LauncherWindow.newServerIp))
             {
-                H1EmuLauncher.AddServer.addServerInstance.serverNameBox.Text = Launcher.newServerName;
-                H1EmuLauncher.AddServer.addServerInstance.serverIpBox.Text = Launcher.newServerIp;
-                H1EmuLauncher.AddServer.addServerInstance.serverNameHint.Visibility = Visibility.Hidden;
-                H1EmuLauncher.AddServer.addServerInstance.serverIpHint.Visibility = Visibility.Hidden;
+                AddServerWindow.addServerInstance.serverNameBox.Text = LauncherWindow.newServerName;
+                AddServerWindow.addServerInstance.serverIpBox.Text = LauncherWindow.newServerIp;
+                AddServerWindow.addServerInstance.serverNameHint.Visibility = Visibility.Hidden;
+                AddServerWindow.addServerInstance.serverIpHint.Visibility = Visibility.Hidden;
             }
 
             addServer.ShowDialog();
@@ -74,15 +74,15 @@ namespace H1EmuLauncher.Classes
 
             if (result)
             {
-                Launcher.newServerName = addServer.serverNameBox.Text;
-                Launcher.newServerIp = addServer.serverIpBox.Text;
+                LauncherWindow.newServerName = addServer.serverNameBox.Text;
+                LauncherWindow.newServerIp = addServer.serverIpBox.Text;
 
                 return MessageBoxResult.OK;
             }
             else
             {
-                Launcher.newServerName = null;
-                Launcher.newServerIp = null;
+                LauncherWindow.newServerName = null;
+                LauncherWindow.newServerIp = null;
 
                 return MessageBoxResult.No;
             }
