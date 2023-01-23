@@ -75,7 +75,7 @@ namespace H1EmuLauncher
                     {
                         sp.Close();
 
-                        CustomMessageBox.Show(FindResource("item66").ToString() + $" \"{e.Message}\"." + FindResource("item137").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                        CustomMessageBox.Show($"{FindResource("item66")} \"{e.Message}\".{FindResource("item137").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}")}", this);
 
                         Topmost = true;
                         Close();
@@ -87,7 +87,7 @@ namespace H1EmuLauncher
                     {
                         sp.Close();
 
-                        CustomMessageBox.Show(FindResource("item66").ToString().Replace("{0}", $"\"{ex.Message}\".").Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                        CustomMessageBox.Show(FindResource("item66").ToString().Replace("{0}", $"\"{ex.Message}\".").Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
 
                         Topmost = true;
                         Close();
@@ -142,7 +142,7 @@ namespace H1EmuLauncher
                     }));
                 }
 
-                Environment.Exit(69);
+                Environment.Exit(0);
 
             }).Start();
         }
@@ -156,7 +156,7 @@ namespace H1EmuLauncher
         private void CloseUpdater(object sender, RoutedEventArgs e)
         {
             Topmost = true;
-            Close();
+            Environment.Exit(0);
         }
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)

@@ -62,9 +62,9 @@ namespace H1EmuLauncher
                                 EnableButtons();
 
                                 if (gameVersion == "15jan2015")
-                                    CustomMessageBox.Show(FindResource("item95").ToString() + $" \"{er.Message}\".", this);
+                                    CustomMessageBox.Show($"{FindResource("item95").ToString()} \"{er.Message}\".", this);
                                 else
-                                    CustomMessageBox.Show(FindResource("item97").ToString() + $" \"{er.Message}\".", this);
+                                    CustomMessageBox.Show($"{FindResource("item97").ToString()} \"{er.Message}\".", this);
                             }));
                         }
                         break;
@@ -73,7 +73,7 @@ namespace H1EmuLauncher
                         {
                             EnableButtons();
 
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                         }));
                         break;
                     default:
@@ -81,7 +81,7 @@ namespace H1EmuLauncher
                         {
                             EnableButtons();
 
-                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                         }));
                         break;
                 }
@@ -182,9 +182,9 @@ namespace H1EmuLauncher
                 settingsProgress.IsIndeterminate = false;
 
                 if (gameVersion == "15jan2015")
-                    CustomMessageBox.Show(FindResource("item102").ToString() + Environment.NewLine + Environment.NewLine + FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
+                    CustomMessageBox.Show($"{FindResource("item102")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101").ToString()} {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
                 else
-                    CustomMessageBox.Show(FindResource("item104").ToString() + Environment.NewLine + Environment.NewLine + FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
+                    CustomMessageBox.Show($"{FindResource("item104")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101").ToString()} {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
             }));
         }
 
@@ -203,7 +203,7 @@ namespace H1EmuLauncher
                 {
                     EnableButtons();
 
-                    CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                    CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                 }));
 
                 return;
@@ -214,7 +214,7 @@ namespace H1EmuLauncher
                 {
                     EnableButtons();
 
-                    CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                    CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                 }));
 
                 return;
@@ -224,7 +224,7 @@ namespace H1EmuLauncher
 
             if (button.Name == "latestButton")
             {
-                MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item157").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item157").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                 if (dr != MessageBoxResult.Yes)
                     return;
             }
@@ -294,9 +294,9 @@ namespace H1EmuLauncher
                         settingsProgress.Value = 0;
 
                         if (button.Name == "latestButton")
-                            CustomMessageBox.Show(FindResource("item107").ToString() + $" \"{er.Message}\".", this);
+                            CustomMessageBox.Show($"{FindResource("item107")} \"{er.Message}\".", this);
                         else
-                            CustomMessageBox.Show(FindResource("item111").ToString() + $" \"{er.Message}\".", this);
+                            CustomMessageBox.Show($"{FindResource("item111").ToString()} \"{er.Message}\".", this);
                     }));
 
                     return;
@@ -314,9 +314,9 @@ namespace H1EmuLauncher
                     settingsProgress.Value = 0;
 
                     if (button.Name == "latestButton")
-                        CustomMessageBox.Show(FindResource("item108").ToString() + Environment.NewLine + Environment.NewLine + FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
+                        CustomMessageBox.Show($"{FindResource("item108").ToString()}{Environment.NewLine}{Environment.NewLine}{FindResource("item101").ToString()} {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
                     else
-                        CustomMessageBox.Show(FindResource("item112").ToString() + Environment.NewLine + Environment.NewLine + FindResource("item101").ToString() + $" {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
+                        CustomMessageBox.Show($"{FindResource("item112").ToString()}{Environment.NewLine}{Environment.NewLine}{FindResource("item101").ToString()} {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
                 }));
 
             }).Start();
@@ -427,7 +427,7 @@ namespace H1EmuLauncher
                 }
                 catch
                 {
-                    CustomMessageBox.Show(FindResource("item168").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                    CustomMessageBox.Show(FindResource("item168").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                     return;
                 }
 
@@ -545,7 +545,7 @@ namespace H1EmuLauncher
             LauncherWindow.launcherInstance.launcherBlur.Radius = 15;
             LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Visible;
 
-            currentVersion.Text = FindResource("item124").ToString() + $"{Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.')}";
+            currentVersion.Text = $"{FindResource("item124")}{Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.')}";
 
             new Thread(() => 
             {
@@ -591,7 +591,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(Application.Current.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                        CustomMessageBox.Show(Application.Current.FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                     }));
                 }
                 else if (gameVersion != "15jan2015" && gameVersion != "22dec2016")
@@ -658,7 +658,7 @@ namespace H1EmuLauncher
 
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                         }));
 
                         break;
@@ -667,7 +667,7 @@ namespace H1EmuLauncher
                         Dispatcher.Invoke(new Action(delegate
                         {
                             currentGame.Text = FindResource("item72").ToString();
-                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                         }));
 
                         break;
@@ -744,7 +744,7 @@ namespace H1EmuLauncher
                 return;
             }
 
-            MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item178").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+            MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item178").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
             if (dr != MessageBoxResult.Yes)
                 return;
 

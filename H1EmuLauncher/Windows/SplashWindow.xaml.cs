@@ -17,12 +17,12 @@ namespace H1EmuLauncher
 
         private void SplashScreenMove(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void SplashScreenActivated(object sender, EventArgs e)
         {
-            this.SizeToContent = SizeToContent.Manual;
+            SizeToContent = SizeToContent.Manual;
         }
     }
 }

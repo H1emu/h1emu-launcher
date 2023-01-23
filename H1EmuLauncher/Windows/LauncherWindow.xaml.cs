@@ -219,7 +219,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item52").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                        CustomMessageBox.Show(FindResource("item52").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                     }));
 
                     return false;
@@ -259,7 +259,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item168").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                        CustomMessageBox.Show(FindResource("item168").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                     }));
 
                     return false;
@@ -269,7 +269,7 @@ namespace H1EmuLauncher
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    CustomMessageBox.Show(FindResource("item53").ToString() + $" \"{er.Message}\"", this);
+                    CustomMessageBox.Show($"{FindResource("item53")} \"{er.Message}\"", this);
                 }));
 
                 return false;
@@ -325,7 +325,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"Exception: {ex.Message}", this);
+                        CustomMessageBox.Show($"{FindResource("item142")} \"{ex.Message}\"", this);
                     }));
                 }
 
@@ -408,7 +408,7 @@ namespace H1EmuLauncher
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                         }));
 
                         return;
@@ -417,7 +417,7 @@ namespace H1EmuLauncher
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), this);
+                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                         }));
 
                         return;
@@ -427,7 +427,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item13").ToString() + $" \"{er.Message}\"", this);
+                        CustomMessageBox.Show($"{FindResource("item13")} \"{er.Message}\"", this);
                     }));
                 }
 
@@ -582,48 +582,53 @@ namespace H1EmuLauncher
             else
                 chineseLink.Visibility = Visibility.Collapsed;
 
-            switch (selectedLanguage)
+            try
             {
-                // Update and save settings
-                case 0:
-                    SetLanguageFile.SaveLang(0);
-                    break;
-                case 1:
-                    SetLanguageFile.SaveLang(1);
-                    break;
-                case 2:
-                    SetLanguageFile.SaveLang(2);
-                    break;
-                case 3:
-                    SetLanguageFile.SaveLang(3);
-                    break;
-                case 4:
-                    SetLanguageFile.SaveLang(4);
-                    break;
-                case 5:
-                    SetLanguageFile.SaveLang(5);
-                    break;
-                case 6:
-                    SetLanguageFile.SaveLang(6);
-                    break;
-                case 7:
-                    SetLanguageFile.SaveLang(7);
-                    break;
-                case 8:
-                    SetLanguageFile.SaveLang(8);
-                    break;
-                case 9:
-                    SetLanguageFile.SaveLang(9);
-                    break;
-                case 10:
-                    SetLanguageFile.SaveLang(10);
-                    break;
-                case 11:
-                    SetLanguageFile.SaveLang(11);
-                    break;
-                default:
-                    CustomMessageBox.Show("Error selecting language.", this);
-                    return;
+                switch (selectedLanguage)
+                {
+                    // Update and save settings
+                    case 0:
+                        SetLanguageFile.SaveLang(0);
+                        break;
+                    case 1:
+                        SetLanguageFile.SaveLang(1);
+                        break;
+                    case 2:
+                        SetLanguageFile.SaveLang(2);
+                        break;
+                    case 3:
+                        SetLanguageFile.SaveLang(3);
+                        break;
+                    case 4:
+                        SetLanguageFile.SaveLang(4);
+                        break;
+                    case 5:
+                        SetLanguageFile.SaveLang(5);
+                        break;
+                    case 6:
+                        SetLanguageFile.SaveLang(6);
+                        break;
+                    case 7:
+                        SetLanguageFile.SaveLang(7);
+                        break;
+                    case 8:
+                        SetLanguageFile.SaveLang(8);
+                        break;
+                    case 9:
+                        SetLanguageFile.SaveLang(9);
+                        break;
+                    case 10:
+                        SetLanguageFile.SaveLang(10);
+                        break;
+                    case 11:
+                        SetLanguageFile.SaveLang(11);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show($"{FindResource("item142")} \"{ex.Message}\"", this);
+                return;
             }
 
             // Reload pages
@@ -772,7 +777,7 @@ namespace H1EmuLauncher
 
         private void MainLauncherClosed(object sender, EventArgs e)
         {
-            Environment.Exit(69);
+            Environment.Exit(0);
         }
 
         private void MinimiseButtonClick(object sender, RoutedEventArgs e)
