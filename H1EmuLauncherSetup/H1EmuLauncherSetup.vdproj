@@ -218,7 +218,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
         "ProductCode" = "8:{6F5C0185-03FA-4C4B-ADCB-C125A79C6281}"
-        "PackageCode" = "8:{6C6547F5-7B67-4618-BA96-506100002FC5}"
+        "PackageCode" = "8:{19586666-9E0C-4D33-97CB-15A88F03C34D}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -241,7 +241,7 @@
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:\"C:\\Program Files (x86)\\Microsoft SDKs\\ClickOnce\\SignTool\\signtool.exe\" sign /f \"$(ProjectDir)H1EmuCert.pfx\" /p 3126Ri34 \"$(BuiltOuputPath)\""
+        "PostBuildEvent" = "8:\"C:\\Program Files (x86)\\Microsoft SDKs\\ClickOnce\\SignTool\\signtool.exe\" sign /f \"D:\\Programming\\WPF\\H1EmuLauncherCertificate\\H1EmuCertificate.pfx\" /p 3126Ri34 \"$(BuiltOuputPath)\""
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"
