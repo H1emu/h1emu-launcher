@@ -19,25 +19,26 @@ namespace H1EmuLauncher.SteamFrame
             twoFacInstructionText.Text = twoFacInstruction;
         }
 
+        public void PassAuthCode()
+        {
+            loadingGif.Visibility = Visibility.Visible;
+            twoFAButton.Visibility = Visibility.Hidden;
+
+            Steam3Session.twoauth = authBox.Text.Trim();
+            Steam3Session.tokenSource.Cancel();
+        }
+
         private void _2FAKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
-                loadingGif.Visibility = Visibility.Visible;
-                twoFAButton.Visibility = Visibility.Hidden;
-
-                Steam3Session.twoauth = authBox.Text;
-                Steam3Session.tokenSource.Cancel();
+                PassAuthCode();
             }
         }
 
         private void ContinueButton(object sender, RoutedEventArgs e)
         {
-            loadingGif.Visibility = Visibility.Visible;
-            twoFAButton.Visibility = Visibility.Hidden;
-
-            Steam3Session.twoauth = authBox.Text;
-            Steam3Session.tokenSource.Cancel();
+            PassAuthCode();
         }
 
         private void AuthBoxGotFocus(object sender, RoutedEventArgs e)

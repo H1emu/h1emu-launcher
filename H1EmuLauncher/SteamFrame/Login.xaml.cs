@@ -306,7 +306,7 @@ namespace H1EmuLauncher.SteamFrame
             {
                 do
                 {
-                    Console.Write("Enter account password for \"{0}\": ", username);
+                    Console.Write($"Enter account password for \"{username}\": ");
                     if (Console.IsInputRedirected)
                     {
                         password = Console.ReadLine();
