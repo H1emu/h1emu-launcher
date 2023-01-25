@@ -115,7 +115,7 @@
     <system:String x:Key="item121">H1Z1.exe is currently being used.\n\nClose any open instances of H1Z1.</system:String>
     <system:String x:Key="item122">Current Game Version:</system:String>
     <system:String x:Key="item124">Launcher Version v</system:String>
-    <system:String x:Key="item125">Copyright © 2022 | H1Emu Project</system:String>
+    <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
     <system:String x:Key="item126">Lead Development</system:String>
     <system:String x:Key="item127">Co-Development</system:String>
     <system:String x:Key="item128">Administrators</system:String>

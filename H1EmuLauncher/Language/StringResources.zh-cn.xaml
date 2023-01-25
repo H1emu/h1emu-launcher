@@ -116,7 +116,7 @@
     <system:String x:Key="item121">H1Z1游戏已经启动。\n\n请关闭所有已经启动的H1Z1游戏。</system:String>
     <system:String x:Key="item122">当前游戏版本：</system:String>
     <system:String x:Key="item124">启动器版本 v</system:String>
-    <system:String x:Key="item125">Copyright © 2022 | H1Emu Project</system:String>
+    <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
     <system:String x:Key="item126">领导开发</system:String>
     <system:String x:Key="item127">共同开发</system:String>
     <system:String x:Key="item128">管理员</system:String>

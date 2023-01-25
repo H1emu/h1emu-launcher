@@ -47,7 +47,7 @@
             {
             "Enabled" = "11:TRUE"
             "PromptEnabled" = "11:TRUE"
-            "PrerequisitesLocation" = "2:2"
+            "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
                 "Items"
@@ -59,7 +59,7 @@
                     }
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.6.0.x64"
                     {
-                    "Name" = "8:.NET Desktop Runtime 6.0.12 (x64)"
+                    "Name" = "8:.NET Desktop Runtime 6.0.13 (x64)"
                     "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.6.0.x64"
                     }
                 }
@@ -217,20 +217,20 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
-        "ProductCode" = "8:{C5EFF86E-C966-4FCA-954A-7A2D610C50D0}"
-        "PackageCode" = "8:{BF0A8259-362D-4DE5-8452-2AB8ACFFD688}"
+        "ProductCode" = "8:{1BF714A0-86A9-44FF-87B2-09280A41F06D}"
+        "PackageCode" = "8:{AA63B61F-DC33-43DE-AC0A-A04DC1F30EE4}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.6.4"
+        "ProductVersion" = "8:2.6.6"
         "Manufacturer" = "8:H1Emu © 2022"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
         "Title" = "8:H1Emu Launcher"
-        "Subject" = "8:A launcher application for the H1Emu project."
+        "Subject" = "8:"
         "ARPCONTACT" = "8:H1Emu Project"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:A launcher application for the H1Emu project."
@@ -241,7 +241,7 @@
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:\"C:\\Program Files (x86)\\Microsoft SDKs\\ClickOnce\\SignTool\\signtool.exe\" sign /f \"D:\\Programming\\WPF\\H1EmuLauncherCertificate\\H1EmuCertificate.pfx\" /p 3126Ri34 \"$(BuiltOuputPath)\""
+        "PostBuildEvent" = "8:cd $(ProjectDir)\r\nC:\\Windows\\System32\\iexpress.exe /n /q IExpressPackage.sed"
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"
