@@ -17,6 +17,8 @@ using System.Windows.Controls.Primitives;
 using H1EmuLauncher.Classes;
 using Newtonsoft.Json;
 
+#pragma warning disable SYSLIB0014 // Type or member is obsolete (WebClient)
+
 namespace H1EmuLauncher
 {
     public partial class LauncherWindow : Window
@@ -31,14 +33,6 @@ namespace H1EmuLauncher
         public static string newServerName = null;
         public static string newServerIp = null;
 
-        public class Server
-        {
-            [JsonPropertyName("Server Name")]
-            public string SName { get; set; }
-            [JsonPropertyName("Server Address")]
-            public string SAddress { get; set; }
-        }
-
         public LauncherWindow()
         {
             InitializeComponent();
@@ -50,6 +44,14 @@ namespace H1EmuLauncher
             cmdShell.FileName = "cmd.exe";
             cmdShell.RedirectStandardInput = true;
             cmdShell.UseShellExecute = false;
+        }
+
+        public class Server
+        {
+            [JsonPropertyName("Server Name")]
+            public string SName { get; set; }
+            [JsonPropertyName("Server Address")]
+            public string SAddress { get; set; }
         }
 
         public async void ArgsWatcherChanged(object sender, FileSystemEventArgs e)
@@ -353,15 +355,12 @@ namespace H1EmuLauncher
 
                     if (gameVersion == "15jan2015" || gameVersion == "22dec2016")
                     {
-                        if (gameVersion == "15jan2015" && serverIp == "")
-                            serverIp = Info.H1EMU_SERVER_IP_2015;
+                        if (serverIp == "")
+                            serverIp = Info.H1EMU_SERVER_IP;
 
-                        if (gameVersion == "22dec2016" && serverIp == "")
-                            serverIp = Info.H1EMU_SERVER_IP_2016;
-
-                        if (serverIp == Info.H1EMU_SERVER_IP_2015 || serverIp == Info.H1EMU_SERVER_IP_2016)
+                        if (serverIp == Info.H1EMU_SERVER_IP)
                         {
-                            // sessionIdKey is the same as accountKey, couldn't change the name without resetting users settings
+                            // sessionIdKey is the same as accountKey, not possible change the name without resetting users settings
                             if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
                             {
                                 Dispatcher.Invoke(new Action(delegate
@@ -373,6 +372,9 @@ namespace H1EmuLauncher
                             }
                             else
                             {
+                                //if (!CheckAccountKey.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey))
+                                    //return;
+
                                 sessionId = $"{{\"sessionId\":\"{Properties.Settings.Default.sessionIdKey}\",\"gameVersion\":{gameVersionInt}}}";
                             }
                         }
@@ -475,23 +477,21 @@ namespace H1EmuLauncher
 
             try
             {
-                // Update version, date published and patch notes code.
+                // Update version, date published and patch notes code
 
-#pragma warning disable SYSLIB0014 // Type or member is obsolete
                 WebClient wc = new();
-#pragma warning restore SYSLIB0014 // Type or member is obsolete
                 wc.Headers.Add("User-Agent", "d-fens HttpClient");
 
                 string jsonServer = wc.DownloadString(new Uri(Info.SERVER_JSON_API));
 
-                // Get latest release number and date published for server.
+                // Get latest release number and date published for server
 
                 var jsonDesServer = JsonConvert.DeserializeObject<dynamic>(jsonServer);
                 latestVersion = jsonDesServer.tag_name;
                 latestPatchNotes = jsonDesServer.body;
                 publishDate = jsonDesServer.published_at;
 
-                // Store the latest server version, date and patch notes in the case of no internet.
+                // Cache the latest server version, date and patch notes in the case of no internet
 
                 Properties.Settings.Default.latestServerVersion = latestVersion;
                 Properties.Settings.Default.patchNotes = latestPatchNotes;

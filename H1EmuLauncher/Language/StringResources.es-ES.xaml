@@ -127,7 +127,7 @@
     <system:String x:Key="item133">SÍ</system:String>
     <system:String x:Key="item134">NO</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
-    <system:String x:Key="item136">Translation Staff</system:String>
+    <system:String x:Key="item136">Traductores</system:String>
     <system:String x:Key="item137">\n\n(¿Estás conectado a Internet?)</system:String>
     <system:String x:Key="item138">\n\n(Los archivos no serán eliminados)</system:String>
     <system:String x:Key="item139">H1Emu Server</system:String>
@@ -171,4 +171,7 @@
     <system:String x:Key="item177">No se encontraron datos de un solo jugador.</system:String>
     <system:String x:Key="item178">Eliminar los datos de un jugador puede solucionar cualquier problema al que se esté enfrentando; tenga en cuenta que perderá todo el progreso.\n\n¿Desea continuar?</system:String>
     <system:String x:Key="item179">Datos de un solo jugador eliminados con éxito.</system:String>
+    <system:String x:Key="item180">La clave de cuenta que está utilizando está prohibida.</system:String>
+    <system:String x:Key="item181">La clave de cuenta que está utilizando no es válida en la base de datos de H1Emu.\n\nVerifique que haya escrito la clave correctamente.</system:String>
+    <system:String x:Key="item182">Hubo un error al validar su clave de cuenta:</system:String>
 </ResourceDictionary>

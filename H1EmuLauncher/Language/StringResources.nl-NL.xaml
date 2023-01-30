@@ -127,7 +127,7 @@
     <system:String x:Key="item133">Ja</system:String>
     <system:String x:Key="item134">NEE</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
-    <system:String x:Key="item136">Vertalingen Team</system:String>
+    <system:String x:Key="item136">Vertalers</system:String>
     <system:String x:Key="item137">\n\n(Ben je met het internet verbonden?)</system:String>
     <system:String x:Key="item138">\n\n(bestanden worden niet verwijderd)</system:String>
     <system:String x:Key="item139">H1Emu Server</system:String>
@@ -170,4 +170,7 @@
     <system:String x:Key="item177">Geen singleplayergegevens gevonden.</system:String>
     <system:String x:Key="item178">Als je je singleplayergegevens verwijdert, kunnen eventuele problemen worden opgelost. Wees gewaarschuwd dat je alle voortgang kwijtraakt.\n\nWilt u doorgaan?</system:String>
     <system:String x:Key="item179">Singleplayer-gegevens succesvol verwijderd.</system:String>
+    <system:String x:Key="item180">De accountsleutel die u gebruikt, is verbannen.</system:String>
+    <system:String x:Key="item181">De accountsleutel die u gebruikt, is niet geldig in de H1Emu-database.\n\nControleer of u de sleutel correct hebt ingevoerd.</system:String>
+    <system:String x:Key="item182">Er is een fout opgetreden bij het valideren van uw accountsleutel:</system:String>
 </ResourceDictionary>

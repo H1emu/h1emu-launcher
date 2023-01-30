@@ -10,6 +10,8 @@ using System.Windows.Media;
 using H1EmuLauncher.Classes;
 using Newtonsoft.Json;
 
+#pragma warning disable SYSLIB0014 // Type or member is obsolete (WebClient)
+
 namespace H1EmuLauncher
 {
     public partial class UpdateWindow : Window
@@ -36,9 +38,7 @@ namespace H1EmuLauncher
                 try
                 {
                     // Download launcher information from GitHub endpoint
-#pragma warning disable SYSLIB0014 // Type or member is obsolete
                     WebClient wc = new();
-#pragma warning restore SYSLIB0014 // Type or member is obsolete
                     wc.Headers.Add("User-Agent", "d-fens HttpClient");
                     string jsonLauncher = wc.DownloadString(new Uri(Info.LAUNCHER_JSON_API));
 
@@ -110,9 +110,7 @@ namespace H1EmuLauncher
                 {
                     ManualResetEvent ma = new(false);
 
-#pragma warning disable SYSLIB0014 // Type or member is obsolete
                     WebClient wc = new();
-#pragma warning restore SYSLIB0014 // Type or member is obsolete
                     wc.DownloadProgressChanged += (s, e) =>
                     {
                         Dispatcher.Invoke(new Action(delegate

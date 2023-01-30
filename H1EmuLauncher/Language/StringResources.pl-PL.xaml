@@ -127,7 +127,7 @@
     <system:String x:Key="item133">TAK</system:String>
     <system:String x:Key="item134">NIE</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
-    <system:String x:Key="item136">Tłumaczenie</system:String>
+    <system:String x:Key="item136">Tłumacze</system:String>
     <system:String x:Key="item137">\n\n(Czy jesteś połączony z internetem?)</system:String>
     <system:String x:Key="item138">\n\n(Pliki nie zostaną usunięte)</system:String>
     <system:String x:Key="item139">Serwer H1Emu</system:String>
@@ -171,4 +171,7 @@
     <system:String x:Key="item177">Nie znaleziono danych dla jednego gracza.</system:String>
     <system:String x:Key="item178">Usunięcie danych trybu jednoosobowego może rozwiązać wszelkie napotkane problemy. Ostrzegamy, że utracisz cały postęp.\n\nCzy chcesz kontynuować?</system:String>
     <system:String x:Key="item179">Pomyślnie usunięto dane dla jednego gracza.</system:String>
+    <system:String x:Key="item180">Klucz konta, którego używasz, jest zablokowany.</system:String>
+    <system:String x:Key="item181">Klucz konta, którego używasz, jest nieprawidłowy w bazie danych H1Emu.\n\nSprawdź, czy klucz został wpisany poprawnie.</system:String>
+    <system:String x:Key="item182">Podczas weryfikacji klucza konta wystąpił błąd:</system:String>
 </ResourceDictionary>

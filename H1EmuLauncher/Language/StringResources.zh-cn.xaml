@@ -171,4 +171,7 @@
     <system:String x:Key="item177">未找到单人游戏数据。</system:String>
     <system:String x:Key="item178">删除你的单人游戏数据可能会解决你面临的任何问题，请注意你将失去所有进度。\n\n你想继续吗？</system:String>
     <system:String x:Key="item179">成功删除单人游戏数据。</system:String>
+    <system:String x:Key="item180">您正在使用的帐户密钥已被禁止。</system:String>
+    <system:String x:Key="item181">您使用的帐户密钥在 H1Emu 数据库上无效。\n\n请验证您是否正确键入了密钥。</system:String>
+    <system:String x:Key="item182">验证您的帐户密钥时出错：</system:String>
 </ResourceDictionary>

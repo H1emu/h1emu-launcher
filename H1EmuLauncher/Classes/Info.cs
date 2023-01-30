@@ -8,9 +8,7 @@ namespace H1EmuLauncher.Classes
 
         public static string NODEJS_VERSION = "18.12.1";
 
-        public static string H1EMU_SERVER_IP_2015 = "loginserver.h1emu.com:1115";
-
-        public static string H1EMU_SERVER_IP_2016 = "loginserver.h1emu.com:1115";
+        public static string H1EMU_SERVER_IP = "loginserver.h1emu.com:1115";
 
         public static string DISCORD_LINK = "https://discord.com/invite/RM6jNkj";
 
@@ -33,5 +31,7 @@ namespace H1EmuLauncher.Classes
         public static string GITHUB_LAUNCHER_BUG_LINK = "https://github.com/H1emu/h1emu-launcher/issues/new";
 
         public static string H1EMU_CHINESE_LINK = "https://azaz.ge/";
+
+        public static string H1EMU_ACCOUNT_KEY_CHECK_API = "https://www.h1emu.com/us/thermos/keyvalidator/?key=";
     }
 }

@@ -127,7 +127,7 @@
     <system:String x:Key="item133">OUI</system:String>
     <system:String x:Key="item134">NON</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
-    <system:String x:Key="item136">Equipe de traduction</system:String>
+    <system:String x:Key="item136">Traducteurs</system:String>
     <system:String x:Key="item137">\n\n(Êtes-vous connecté à l'internet?)</system:String>
     <system:String x:Key="item138">\n\n(Les fichiers ne seront pas supprimés)</system:String>
     <system:String x:Key="item139">Serveur H1Emu</system:String>
@@ -171,4 +171,7 @@
     <system:String x:Key="item177">Aucune donnée solo trouvée.</system:String>
     <system:String x:Key="item178">La suppression de vos données solo peut résoudre tous les problèmes auxquels vous êtes confrontés, sachez que vous perdrez toute progression.\n\nVoulez-vous continuer?</system:String>
     <system:String x:Key="item179">Données solo supprimées avec succès.</system:String>
+    <system:String x:Key="item180">La clé de compte que vous utilisez est interdite.</system:String>
+    <system:String x:Key="item181">La clé de compte que vous utilisez n'est pas valide dans la base de données H1Emu.\n\nVeuillez vérifier que vous avez saisi la clé correctement.</system:String>
+    <system:String x:Key="item182">Une erreur s'est produite lors de la validation de votre clé de compte:</system:String>
 </ResourceDictionary>

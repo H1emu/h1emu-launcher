@@ -127,7 +127,7 @@
     <system:String x:Key="item133">EVET</system:String>
     <system:String x:Key="item134">HAYIR</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
-    <system:String x:Key="item136">Çeviri Ekibi</system:String>
+    <system:String x:Key="item136">Çevirmenler</system:String>
     <system:String x:Key="item137">\n\n(Internet'e bağlı mısınız?)</system:String>
     <system:String x:Key="item138">\n\n(Dosyalar silinmeyecek)</system:String>
     <system:String x:Key="item139">H1Emu Sunucusu</system:String>
@@ -171,4 +171,7 @@
     <system:String x:Key="item177">Tek oyunculu veri bulunamadı.</system:String>
     <system:String x:Key="item178">Tek oyunculu verilerinizi silmek, karşılaştığınız sorunları çözebilir, tüm ilerlemenizi kaybedeceğiniz konusunda uyarınız.\n\nDevam etmek istiyor musunuz?</system:String>
     <system:String x:Key="item179">Tek oyunculu veriler başarıyla silindi.</system:String>
+    <system:String x:Key="item180">Kullanmakta olduğunuz Hesap Anahtarı yasaklanmıştır.</system:String>
+    <system:String x:Key="item181">Kullanmakta olduğunuz Hesap Anahtarı, H1Emu veritabanında geçerli değil.\n\nLütfen anahtarı doğru yazdığınızdan emin olun.</system:String>
+    <system:String x:Key="item182">Hesap Anahtarınız doğrulanırken bir hata oluştu:</system:String>
 </ResourceDictionary>

@@ -96,8 +96,8 @@ namespace H1EmuLauncher.SteamFrame
 
             Dispatcher.Invoke(new Action(delegate 
             {
-                username = usernameBox.Text;
-                password = passwordBox.Password;
+                username = usernameBox.Text.Trim();
+                password = passwordBox.Password.Trim();
             }));
 
             try

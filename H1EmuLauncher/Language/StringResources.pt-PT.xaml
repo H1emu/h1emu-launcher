@@ -127,7 +127,7 @@
     <system:String x:Key="item133">SIM</system:String>
     <system:String x:Key="item134">NÃO</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
-    <system:String x:Key="item136">Equipa de Tradução</system:String>
+    <system:String x:Key="item136">Tradutores</system:String>
     <system:String x:Key="item137">\n\n(Está ligado à Internet?)</system:String>
     <system:String x:Key="item138">\n\n(Ficheiros não serão apagados)</system:String>
     <system:String x:Key="item139">Servidor H1Emu</system:String>
@@ -171,4 +171,7 @@
     <system:String x:Key="item177">Nenhum dado singleplayer encontrado.</system:String>
     <system:String x:Key="item178">Excluir seus dados de um jogador pode resolver qualquer problema que você esteja enfrentando, esteja avisado de que você perderá todo o progresso.\n\nDeseja continuar?</system:String>
     <system:String x:Key="item179">Dados de um jogador excluídos com sucesso.</system:String>
+    <system:String x:Key="item180">A chave da conta que você está usando foi banida.</system:String>
+    <system:String x:Key="item181">A chave de conta que você está usando não é válida no banco de dados H1Emu.\n\nPor favor, verifique se você digitou a chave corretamente.</system:String>
+    <system:String x:Key="item182">Ocorreu um erro ao validar sua chave de conta:</system:String>
 </ResourceDictionary>

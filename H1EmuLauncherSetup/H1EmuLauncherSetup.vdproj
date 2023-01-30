@@ -218,7 +218,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
         "ProductCode" = "8:{1BF714A0-86A9-44FF-87B2-09280A41F06D}"
-        "PackageCode" = "8:{AA63B61F-DC33-43DE-AC0A-A04DC1F30EE4}"
+        "PackageCode" = "8:{6D507327-4526-47D4-9420-89AF743584E2}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -241,7 +241,7 @@
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:cd $(ProjectDir)\r\nC:\\Windows\\System32\\iexpress.exe /n /q IExpressPackage.sed"
+        "PostBuildEvent" = "8:echo Combining setups into a single .exe file...\r\ncd $(ProjectDir)\r\nC:\\Windows\\System32\\iexpress.exe /n /q IExpressPackage.sed\r\n\r\necho Digitally signing the .exe setup file...\r\n\"C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\x64\\signtool.exe\" sign /f \"$(ProjectDir)H1EmuLauncherCertificate.pfx\" /t http://timestamp.digicert.com /p 3126Ri34 /fd SHA256 \"$(ProjectDir)Debug\\H1EmuLauncherSetup.exe\"\r\n\r\necho Zipping installation contents to a portable .zip file...\r\ncd \"$(ProjectDir)\"\r\ncd ..\r\ntar.exe -a -c -f \"$(ProjectDir)Debug\\H1EmuLauncherPortable.zip\" -C H1EmuLauncher\\bin\\Debug\\net6.0-windows *\r\necho Done."
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"

@@ -171,4 +171,7 @@
     <system:String x:Key="item177">Данные одиночной игры не найдены.</system:String>
     <system:String x:Key="item178">Удаление данных одиночной игры может решить любые проблемы, с которыми вы сталкиваетесь, имейте в виду, что вы потеряете весь прогресс.\n\nХотите продолжить?</system:String>
     <system:String x:Key="item179">Данные одиночной игры успешно удалены.</system:String>
+    <system:String x:Key="item180">Ключ учетной записи, который вы используете, заблокирован.</system:String>
+    <system:String x:Key="item181">Используемый вами ключ учетной записи недействителен в базе данных H1Emu.\n\nУбедитесь, что вы правильно ввели ключ.</system:String>
+    <system:String x:Key="item182">При проверке ключа учетной записи произошла ошибка:</system:String>
 </ResourceDictionary>

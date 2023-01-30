@@ -127,7 +127,7 @@
     <system:String x:Key="item133">DA</system:String>
     <system:String x:Key="item134">NE</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
-    <system:String x:Key="item136">Prevoditeljsko osoblje</system:String>
+    <system:String x:Key="item136">Prevoditelji</system:String>
     <system:String x:Key="item137">\n\n(Da li imate ostvarenu internet vezu?)</system:String>
     <system:String x:Key="item138">\n\n(Datoteke neće biti izbrisane)</system:String>
     <system:String x:Key="item139">H1Emu Server</system:String>
@@ -171,4 +171,7 @@
     <system:String x:Key="item177">Nisu pronađeni singleplayer podaci.</system:String>
     <system:String x:Key="item178">Brisanje singleplayer podataka moglo bi popraviti problem koji imate, budite upozoreni da će te izgubiti sav progres.\n\nŽelite li nastaviti?</system:String>
     <system:String x:Key="item179">Uspješno izbrisani singleplayer podaci.</system:String>
+    <system:String x:Key="item180">Ključ računa koji koristite je zabranjen.</system:String>
+    <system:String x:Key="item181">Ključ računa koji koristite ne vrijedi na H1Emu bazi podataka.\n\nMolim provjerite da ste upisali ključ ispravno.</system:String>
+    <system:String x:Key="item182">Došlo je do pogreške pri validaciji vašeg ključa računa:</system:String>
 </ResourceDictionary>

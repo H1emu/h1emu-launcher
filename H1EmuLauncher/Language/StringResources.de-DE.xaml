@@ -127,7 +127,7 @@
     <system:String x:Key="item133">JA</system:String>
     <system:String x:Key="item134">NEIN</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
-    <system:String x:Key="item136">Übersetzungspersonal</system:String>
+    <system:String x:Key="item136">Übersetzerinnen</system:String>
     <system:String x:Key="item137">\n\n(Bist du mit dem Internet verbunden?)</system:String>
     <system:String x:Key="item138">\n\n(Dateien werden nicht gelöscht)</system:String>
     <system:String x:Key="item139">H1Emu Server</system:String>
@@ -171,4 +171,7 @@
     <system:String x:Key="item177">Keine Singleplayer-Daten gefunden.</system:String>
     <system:String x:Key="item178">Durch das Löschen Ihrer Einzelspieler-Daten können eventuell auftretende Probleme behoben werden. Seien Sie gewarnt, dass Sie jeglichen Fortschritt verlieren.\n\nMöchten Sie fortfahren?</system:String>
     <system:String x:Key="item179">Singleplayer-Daten erfolgreich gelöscht.</system:String>
+    <system:String x:Key="item180">Der von Ihnen verwendete Kontoschlüssel ist gesperrt.</system:String>
+    <system:String x:Key="item181">Der von Ihnen verwendete Kontoschlüssel ist in der H1Emu-Datenbank nicht gültig.\n\nBitte überprüfen Sie, ob Sie den Schlüssel richtig eingegeben haben.</system:String>
+    <system:String x:Key="item182">Bei der Validierung Ihres Kontoschlüssels ist ein Fehler aufgetreten:</system:String>
 </ResourceDictionary>

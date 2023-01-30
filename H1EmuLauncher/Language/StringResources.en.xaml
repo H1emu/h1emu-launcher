@@ -126,7 +126,7 @@
     <system:String x:Key="item133">YES</system:String>
     <system:String x:Key="item134">NO</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
-    <system:String x:Key="item136">Translation Staff</system:String>
+    <system:String x:Key="item136">Translators</system:String>
     <system:String x:Key="item137">\n\n(Are you connected to the internet?)</system:String>
     <system:String x:Key="item138">\n\n(Files will not be deleted)</system:String>
     <system:String x:Key="item139">H1Emu Server</system:String>
@@ -170,4 +170,7 @@
     <system:String x:Key="item177">No singleplayer data found.</system:String>
     <system:String x:Key="item178">Deleting your singleplayer data may fix any issues you are facing, be warned that you will lose all progress.\n\nWould you like to continue?</system:String>
     <system:String x:Key="item179">Successfully deleted singleplayer data.</system:String>
+    <system:String x:Key="item180">The Account Key you are using is banned.</system:String>
+    <system:String x:Key="item181">The Account Key you are using is not valid on the H1Emu database.\n\nPlease verify you have typed the key correctly.</system:String>
+    <system:String x:Key="item182">There was an error validating your Account Key:</system:String>
 </ResourceDictionary>
