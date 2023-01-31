@@ -7,7 +7,7 @@
         Title="H1Emu Update Available"
         MinWidth="450"
         MaxWidth="450"
-        MinHeight="270"
+        MinHeight="200"
         MaxHeight="670"
         SizeToContent="WidthAndHeight"
         Activated="MainUpdateWindowActivated"
@@ -35,7 +35,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <!-- Grid for logo and exit button -->
@@ -47,10 +47,6 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
 
             <!-- Logo -->
             <DockPanel>
@@ -96,17 +92,19 @@
                                   Direction="-90"
                                   RenderingBias="Quality"
                                   ShadowDepth="1"/>
-                
+
             </Border.Effect>
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="85"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <!-- Main text message -->
-                <TextBlock Margin="50,0,50,5"
+                <TextBlock Margin="50,20,50,20"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"
                            FontSize="18"
@@ -123,7 +121,6 @@
                         RenderOptions.BitmapScalingMode="Fant"
                         Width="292"
                         Height="44"
-                        VerticalAlignment="Top"
                         HorizontalAlignment="Center"
                         Foreground="White"
                         FontFamily="Arial Black"
@@ -138,33 +135,50 @@
                 </Button>
 
                 <!-- Not now button -->
-                <TextBlock Grid.Row="1"
-                           Margin="0,0,0,12"
+                <TextBlock x:Name="notNowGrid"
+                           Grid.Row="2"
+                           Margin="50,15,50,15"
                            VerticalAlignment="Bottom"
                            HorizontalAlignment="Center"
                            FontSize="16">
                 
-                <Hyperlink x:Name="notNow"
-                           Click="NotNowClick"
-                           Foreground="White">
+                    <Hyperlink x:Name="notNow"
+                               Click="NotNowClick"
+                               Foreground="White">
                     
-                    <TextBlock Text="{DynamicResource item67}"
-                               MouseDown="NotNowHyperLinkMouseDown"
-                               Style="{DynamicResource HyperLinkStyle}"/>
+                        <TextBlock Text="{DynamicResource item67}"
+                                   MouseDown="NotNowHyperLinkMouseDown"
+                                   Style="{DynamicResource HyperLinkStyle}"/>
                     
-                </Hyperlink>
-            </TextBlock>
+                    </Hyperlink>
+                </TextBlock>
+
+                <Grid x:Name="progressBarGrid"
+                      Grid.Row="3"
+                      Visibility="Collapsed">
+                    
+                    <!-- Setup download progress bar -->
+                    <ProgressBar x:Name="downloadSetupProgress"
+                                 Height="25"
+                                 Margin="54,20,54,20"
+                                 Style="{DynamicResource ProgressBar}"/>
+
+                    <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
+                    <ProgressBar Height="25"
+                                 Margin="54,20,54,20"
+                                 Background="Transparent"
+                                 Style="{DynamicResource ProgressBar}"/>
+                    
+                    <!-- Status text to overlay progress bar -->
+                    <TextBlock x:Name="downloadSetupProgressText"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0,0,0,1"
+                               Foreground="White"
+                               FontWeight="Light"
+                               Background="Transparent"/>
+                </Grid>
             </Grid>
         </Border>
-
-        <!-- Setup download progress bar -->
-        <ProgressBar x:Name="downloadSetupProgress"
-                     Grid.Row="1"
-                     Height="4"
-                     Margin="25,0,25,10"
-                     VerticalAlignment="Bottom"
-                     Background="Transparent"
-                     Foreground="#DB111C"
-                     BorderThickness="0"/>
     </Grid>
 </Window>

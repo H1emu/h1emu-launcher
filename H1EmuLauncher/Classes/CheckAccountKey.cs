@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Net;
+using System.Net.Http;
 using System.Windows;
-
-#pragma warning disable SYSLIB0014 // Type or member is obsolete (WebClient)
 
 namespace H1EmuLauncher.Classes
 {
@@ -10,48 +8,47 @@ namespace H1EmuLauncher.Classes
     {
         public static bool CheckAccountKeyValidity(string key)
         {
-            WebClient wc = new();
-            wc.Headers.Add("User-Agent", "d-fens HttpClient");
-
             try
             {
-                // If no exception is thrown then key is valid
-                string check = wc.DownloadString(new Uri($"https://www.h1emu.com/us/thermos/keyvalidator/?key={key}"));
-                return true;
-            }
+                HttpResponseMessage result = UpdateWindow.httpClient.GetAsync(new Uri($"{Info.H1EMU_ACCOUNT_KEY_CHECK_API}{key}")).Result;
+                int statusCode = (int)result.StatusCode;
 
-            catch (WebException e)
-            {
-                var response = (HttpWebResponse)e.Response;
-                int code = (int)response.StatusCode;
-
-                switch (code)
+                switch (statusCode)
                 {
-                    case 508: // Banned key
-                        Application.Current.Dispatcher.Invoke(new Action(delegate
-                        {
-                            CustomMessageBox.Show($"{Application.Current.FindResource("item180")}", LauncherWindow.launcherInstance);
-                        }));
-
-                        break;
+                    case 200: // Valid key
+                        return true;
                     case 500: // Invalid key
                         Application.Current.Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show($"{Application.Current.FindResource("item181")}".Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), LauncherWindow.launcherInstance);
+                            CustomMessageBox.Show($"{Application.Current.FindResource("item180")}".Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), LauncherWindow.launcherInstance);
                         }));
 
-                        break;
+                        return false;
+                    case 508: // Banned key
+                        Application.Current.Dispatcher.Invoke(new Action(delegate
+                        {
+                            CustomMessageBox.Show($"{Application.Current.FindResource("item181")}", LauncherWindow.launcherInstance);
+                        }));
+
+                        return false;
+                    default: // Other status code
+                        Application.Current.Dispatcher.Invoke(new Action(delegate
+                        {
+                            CustomMessageBox.Show($"{Application.Current.FindResource("item182")} '{statusCode}'.", LauncherWindow.launcherInstance);
+                        }));
+
+                        return false;
                 }
             }
-            catch (Exception ex) // Other exception was thrown
+            catch (Exception e) // Other exception was thrown
             {
                 Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    CustomMessageBox.Show($"{Application.Current.FindResource("item182")} \"{ex.Message}\"", LauncherWindow.launcherInstance);
+                    CustomMessageBox.Show($"{Application.Current.FindResource("item183")} \"{e.Message}\"", LauncherWindow.launcherInstance);
                 }));
-            }
 
-            return false;
+                return false;
+            }
         }
     }
 }

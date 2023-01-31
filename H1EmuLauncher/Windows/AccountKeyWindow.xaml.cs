@@ -84,7 +84,7 @@ namespace H1EmuLauncher
             SettingsWindow.settingsInstance.settingsBlur.Radius = 0;
             SettingsWindow.settingsInstance.settingsFade.Visibility = Visibility.Hidden;
 
-            Properties.Settings.Default.sessionIdKey = accountKeyBox.Password;
+            Properties.Settings.Default.sessionIdKey = accountKeyBox.Password.Trim();
             Properties.Settings.Default.Save();
         }
 

@@ -499,7 +499,7 @@ namespace H1EmuLauncher
                 else
                 {
                     var contentName = GetAppOrDepotName( INVALID_DEPOT_ID, appId );
-                    throw new ContentDownloaderException( String.Format($"App {appId} ({contentName}) is not available from this account."));
+                    throw new ContentDownloaderException($"App {appId} ({contentName}) is not available from this account.\n\n{System.Windows.Application.Current.FindResource("item15")}");
                 }
             }
 
@@ -628,7 +628,7 @@ namespace H1EmuLauncher
 
             if ( !AccountHasAccess( depotId ) )
             {
-                Debug.WriteLine( "Depot {0} ({1}) is not available from this account.", depotId, contentName );
+                Debug.WriteLine($"App {depotId} ({contentName}) is not available from this account.");
                 return null;
             }
 

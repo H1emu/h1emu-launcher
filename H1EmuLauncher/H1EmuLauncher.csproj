@@ -7,16 +7,18 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.6.6</AssemblyVersion>
-	  <FileVersion>2.6.6</FileVersion>
+	  <AssemblyVersion>2.6.7</AssemblyVersion>
+	  <FileVersion>2.6.7</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>2.6.6</Version>
+	  <Version>2.6.7</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
 	  <Product>H1Emu Launcher</Product>
 	  <Description>A launcher for the H1Emu project.</Description>
+	  <Title>H1Emu Launcher</Title>
+	  <PackageIcon>Icon.ico</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -334,6 +336,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Icon.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

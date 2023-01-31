@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
+using System.IO;
 using System.Media;
 using System.Net;
+using System.Net.Http;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
 using Newtonsoft.Json;
-
-#pragma warning disable SYSLIB0014 // Type or member is obsolete (WebClient)
+using Newtonsoft.Json.Linq;
+using SteamKit2.CDN;
 
 namespace H1EmuLauncher
 {
@@ -19,6 +24,7 @@ namespace H1EmuLauncher
         SplashWindow sp = new();
         string downloadUrl;
         public static string downloadFileName;
+        public static HttpClient httpClient = new();
 
         public UpdateWindow()
         {
@@ -26,6 +32,8 @@ namespace H1EmuLauncher
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+
+            httpClient.DefaultRequestHeaders.Add("User-Agent", "d-fens HttpClient");
 
             sp.Show();
             CheckVersion();
@@ -38,9 +46,8 @@ namespace H1EmuLauncher
                 try
                 {
                     // Download launcher information from GitHub endpoint
-                    WebClient wc = new();
-                    wc.Headers.Add("User-Agent", "d-fens HttpClient");
-                    string jsonLauncher = wc.DownloadString(new Uri(Info.LAUNCHER_JSON_API));
+                    HttpResponseMessage result = httpClient.GetAsync(new Uri(Info.LAUNCHER_JSON_API)).Result;
+                    string jsonLauncher = result.Content.ReadAsStringAsync().Result;
 
                     // Get latest release number and date published for app.
                     var jsonDesLauncher = JsonConvert.DeserializeObject<dynamic>(jsonLauncher);
@@ -69,17 +76,20 @@ namespace H1EmuLauncher
                         }));
                     }
                 }
-                catch (Exception e) when (e.Message == "No such host is known. (api.github.com:443)")
+                catch (AggregateException e) when (e.InnerException is HttpRequestException ex)
                 {
-                    Dispatcher.Invoke(new Action(delegate
+                    if (ex.StatusCode == null)
                     {
-                        sp.Close();
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            sp.Close();
 
-                        CustomMessageBox.Show($"{FindResource("item66")} \"{e.Message}\".{FindResource("item137").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}")}", this);
+                            CustomMessageBox.Show($"{FindResource("item66").ToString().Replace("{0}", $"\"{ex.Message}\".").Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}")}{FindResource("item137").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}")}", this);
 
-                        Topmost = true;
-                        Close();
-                    }));
+                            Topmost = true;
+                            Close();
+                        }));
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -99,6 +109,9 @@ namespace H1EmuLauncher
 
         private void UpdateButtonClick(object sender, RoutedEventArgs e)
         {
+            downloadSetupProgressText.Text = $"{FindResource("item54")} 0%";
+            progressBarGrid.Visibility = Visibility.Visible;
+            notNowGrid.Visibility = Visibility.Collapsed;
             notNow.Foreground = new SolidColorBrush(Colors.Gray);
             notNow.IsEnabled = false;
             updateButton.IsEnabled = false;
@@ -108,23 +121,49 @@ namespace H1EmuLauncher
             {
                 try
                 {
-                    ManualResetEvent ma = new(false);
+                    if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}"))
+                        File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}");
 
-                    WebClient wc = new();
-                    wc.DownloadProgressChanged += (s, e) =>
+                    using (HttpResponseMessage response = httpClient.GetAsync(new Uri(downloadUrl)).Result)
                     {
-                        Dispatcher.Invoke(new Action(delegate
+                        using (Stream contentStream = response.Content.ReadAsStream(), fs = new FileStream($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, false))
                         {
-                            downloadSetupProgress.Value = e.ProgressPercentage;
-                        }));
-                    };
-                    wc.DownloadFileCompleted += (s, e) =>
-                    {
-                        ma.Set();
-                    };
+                            Dispatcher.Invoke(new Action(delegate
+                            {
+                                downloadSetupProgress.Maximum = contentStream.Length;
+                            }));
 
-                    wc.DownloadFileAsync(new Uri(downloadUrl), $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}");
-                    ma.WaitOne();
+                            long totalRead = 0L;
+                            long totalReads = 0L;
+                            byte[] buffer = new byte[8192];
+                            bool isMoreToRead = true;
+
+                            do
+                            {
+                                int read = contentStream.Read(buffer, 0, buffer.Length);
+
+                                if (read == 0)
+                                    isMoreToRead = false;
+                                else
+                                {
+                                    fs.Write(buffer, 0, read);
+
+                                    totalRead += read;
+                                    totalReads += 1;
+
+                                    if (totalRead % 100 == 0)
+                                    {
+                                        Dispatcher.Invoke(new Action(delegate
+                                        {
+                                            downloadSetupProgress.Value = totalRead;
+                                            downloadSetupProgressText.Text = $"{FindResource("item54")} {(float)totalRead / (float)contentStream.Length * 100:0.00}%";
+                                        }));
+                                    }
+                                }
+                            }
+                            while (isMoreToRead);
+                        }
+                    }
 
                     Process.Start(new ProcessStartInfo
                     {
@@ -140,8 +179,17 @@ namespace H1EmuLauncher
                     }));
                 }
 
-                Environment.Exit(0);
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    progressBarGrid.Visibility = Visibility.Collapsed;
+                    notNowGrid.Visibility = Visibility.Visible;
+                    notNow.Foreground = new SolidColorBrush(Colors.White);
+                    notNow.IsEnabled = true;
+                    updateButton.IsEnabled = true;
+                    closeButton.IsEnabled = true;
+                }));
 
+                Environment.Exit(0);
             }).Start();
         }
 
@@ -184,6 +232,7 @@ namespace H1EmuLauncher
         private void MainUpdateWindowActivated(object sender, EventArgs e)
         {
             SizeToContent = SizeToContent.Manual;
+            SizeToContent = SizeToContent.WidthAndHeight;
         }
     }
 }

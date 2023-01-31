@@ -16,16 +16,20 @@ using System.Runtime.InteropServices;
 using System.Windows.Controls.Primitives;
 using H1EmuLauncher.Classes;
 using Newtonsoft.Json;
-
-#pragma warning disable SYSLIB0014 // Type or member is obsolete (WebClient)
+using System.Net.Http;
 
 namespace H1EmuLauncher
 {
     public partial class LauncherWindow : Window
     {
         FileSystemWatcher argsWatcher = new();
-        ProcessStartInfo cmdShell = new();
-        public static ManualResetEvent ma = new(false);
+        ProcessStartInfo cmdShell = new()
+        {
+            FileName = "cmd.exe",
+            RedirectStandardInput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+        };
         public static LauncherWindow launcherInstance;
         public static string serverJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
         public static string[] rawArgs = null;
@@ -40,10 +44,6 @@ namespace H1EmuLauncher
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
-
-            cmdShell.FileName = "cmd.exe";
-            cmdShell.RedirectStandardInput = true;
-            cmdShell.UseShellExecute = false;
         }
 
         public class Server
@@ -213,8 +213,6 @@ namespace H1EmuLauncher
 
         public bool LaunchLocalServer(string gameVersion)
         {
-            ma.Reset();
-
             try
             {
                 if (!Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master\\node_modules"))
@@ -282,8 +280,6 @@ namespace H1EmuLauncher
 
         private void LaunchClient(object sender, RoutedEventArgs e)
         {
-            ma.Reset();
-
             SettingsWindow settings = new();
 
             if (!settings.CheckDirectory())
@@ -333,14 +329,7 @@ namespace H1EmuLauncher
 
                 try
                 {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        settings.CheckGameVersionNewThread();
-                    }));
-
-                    ma.WaitOne();
-                    ma.Reset();
-
+                    settings.CheckGameVersion();
                     gameVersion = SettingsWindow.gameVersion;
 
                     switch (gameVersion)
@@ -390,9 +379,6 @@ namespace H1EmuLauncher
                         }
 
                         ApplyPatchClass.CheckPatch();
-
-                        ma.WaitOne();
-                        ma.Reset();
 
                         Process process = new()
                         {
@@ -478,21 +464,16 @@ namespace H1EmuLauncher
             try
             {
                 // Update version, date published and patch notes code
-
-                WebClient wc = new();
-                wc.Headers.Add("User-Agent", "d-fens HttpClient");
-
-                string jsonServer = wc.DownloadString(new Uri(Info.SERVER_JSON_API));
+                HttpResponseMessage result = UpdateWindow.httpClient.GetAsync(new Uri(Info.SERVER_JSON_API)).Result;
+                string jsonServer = result.Content.ReadAsStringAsync().Result;
 
                 // Get latest release number and date published for server
-
                 var jsonDesServer = JsonConvert.DeserializeObject<dynamic>(jsonServer);
                 latestVersion = jsonDesServer.tag_name;
                 latestPatchNotes = jsonDesServer.body;
                 publishDate = jsonDesServer.published_at;
 
                 // Cache the latest server version, date and patch notes in the case of no internet
-
                 Properties.Settings.Default.latestServerVersion = latestVersion;
                 Properties.Settings.Default.patchNotes = latestPatchNotes;
                 Properties.Settings.Default.publishDate = publishDate;

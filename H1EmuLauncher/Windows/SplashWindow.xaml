@@ -67,6 +67,6 @@
                    FontSize="16"
                    Foreground="White"
                    FontWeight="Light"
-                   Text="{DynamicResource item49}"/>
+                   Text="{DynamicResource item4}"/>
     </Grid>
 </Window>
