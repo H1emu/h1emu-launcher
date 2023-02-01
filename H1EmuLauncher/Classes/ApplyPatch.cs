@@ -46,8 +46,6 @@ namespace H1EmuLauncher.Classes
                     break;
             }
 
-            LauncherWindow.ma.Set();
-
             Application.Current.Dispatcher.Invoke(new Action(delegate
             {
                 LauncherWindow.launcherInstance.playButton.IsEnabled = true;

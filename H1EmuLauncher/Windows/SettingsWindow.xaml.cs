@@ -13,7 +13,13 @@ namespace H1EmuLauncher
 {
     public partial class SettingsWindow : Window
     {
-        ProcessStartInfo cmdShell = new();
+        ProcessStartInfo cmdShell = new()
+        {
+            FileName = "cmd.exe",
+            RedirectStandardInput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true,
+        };
         public static SettingsWindow settingsInstance;
         public static string gameVersion { get; set; }
         public static bool launchAccountKeyWindow;
@@ -26,11 +32,6 @@ namespace H1EmuLauncher
 
             // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
-
-            cmdShell.FileName = "cmd.exe";
-            cmdShell.RedirectStandardInput = true;
-            cmdShell.UseShellExecute = false;
-            cmdShell.CreateNoWindow = true;
         }
 
         //////////////////////
@@ -56,15 +57,12 @@ namespace H1EmuLauncher
                         {
                             Dispatcher.Invoke(new Action(delegate
                             {
-                                settingsProgressText.Text = FindResource("item93").ToString();
-                                settingsProgress.Value = 0;
-
                                 EnableButtons();
 
                                 if (gameVersion == "15jan2015")
-                                    CustomMessageBox.Show($"{FindResource("item95").ToString()} \"{er.Message}\".", this);
+                                    CustomMessageBox.Show($"{FindResource("item95")} \"{er.Message}\".", this);
                                 else
-                                    CustomMessageBox.Show($"{FindResource("item97").ToString()} \"{er.Message}\".", this);
+                                    CustomMessageBox.Show($"{FindResource("item97")} \"{er.Message}\".", this);
                             }));
                         }
                         break;
@@ -288,10 +286,8 @@ namespace H1EmuLauncher
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        settingsProgressText.Text = FindResource("item93").ToString();
                         LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         settingsProgress.IsIndeterminate = false;
-                        settingsProgress.Value = 0;
 
                         if (button.Name == "latestButton")
                             CustomMessageBox.Show($"{FindResource("item107")} \"{er.Message}\".", this);
@@ -442,16 +438,6 @@ namespace H1EmuLauncher
         //////////////////////////
         /// Check Game Version ///
         //////////////////////////
-
-        public void CheckGameVersionNewThread()
-        {
-            new Thread(() => 
-            {
-                CheckGameVersion();
-                LauncherWindow.ma.Set();
-
-            }).Start();
-        }
 
         public void CheckGameVersion()
         {
@@ -607,33 +593,24 @@ namespace H1EmuLauncher
 
         public void SelectDirectory(object sender, RoutedEventArgs e)
         {
+            System.Windows.Forms.FolderBrowserDialog directory = new();
+
+            Dispatcher.Invoke(new Action(delegate
+            {
+                if (directory.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                    return;
+            }));
+
+            Properties.Settings.Default.activeDirectory = directory.SelectedPath;
+            Properties.Settings.Default.Save();
+
+            directoryBox.Text = Properties.Settings.Default.activeDirectory;
+
+            if (!CheckDirectory())
+                return;
+
             new Thread(() => 
             {
-                ManualResetEvent ma = new(false);
-
-                System.Windows.Forms.FolderBrowserDialog directory = new();
-
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    if (directory.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                        ma.Set();
-                    else
-                        return;
-                }));
-
-                ma.WaitOne();
-
-                Properties.Settings.Default.activeDirectory = directory.SelectedPath;
-                Properties.Settings.Default.Save();
-
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                }));
-
-                if (!CheckDirectory())
-                    return;
-
                 CheckGameVersion();
 
                 switch (gameVersion)
@@ -713,6 +690,7 @@ namespace H1EmuLauncher
                 patchButton.IsEnabled = true;
                 latestButton.IsEnabled = true;
                 stableButton.IsEnabled = true;
+                settingsProgress.Value = 0;
                 settingsProgressRow.Visibility = Visibility.Collapsed;
             }));
         }
@@ -790,8 +768,8 @@ namespace H1EmuLauncher
         {
             settingsBlur.Radius = 0;
             settingsFade.Visibility = Visibility.Hidden;
-            this.SizeToContent = SizeToContent.Manual;
-            this.SizeToContent = SizeToContent.WidthAndHeight;
+            SizeToContent = SizeToContent.Manual;
+            SizeToContent = SizeToContent.WidthAndHeight;
         }
 
         private void MainSettingsContentRendered(object sender, EventArgs e)
@@ -806,11 +784,6 @@ namespace H1EmuLauncher
 
                 launchAccountKeyWindow = false;
             }
-        }
-
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
