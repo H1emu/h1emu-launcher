@@ -229,7 +229,7 @@ namespace H1EmuLauncher.SteamFrame
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\DownloadComplete.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
-                        CustomMessageBox.Show(FindResource("item37").ToString() + $" {version}.", LauncherWindow.launcherInstance);
+                        CustomMessageBox.Show($"{FindResource("item37")} {version}.", LauncherWindow.launcherInstance);
                     }));
                 }
                 catch (Exception ph) when (ph is TaskCanceledException)
@@ -241,7 +241,7 @@ namespace H1EmuLauncher.SteamFrame
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
-                        CustomMessageBox.Show(FindResource("item38").ToString() + $" {version}.", LauncherWindow.launcherInstance);
+                        CustomMessageBox.Show($"{FindResource("item38")} {version}.", LauncherWindow.launcherInstance);
                     }));
                 }
                 catch (Exception ex) when (ex is ContentDownloaderException || ex is OperationCanceledException)
@@ -253,7 +253,11 @@ namespace H1EmuLauncher.SteamFrame
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
-                        CustomMessageBox.Show(FindResource("item39").ToString() + $" \"{ex.Message}\".", LauncherWindow.launcherInstance);
+
+                        if (ex.Message.Contains("is not available from this account."))
+                            CustomMessageBox.Show($"{FindResource("item39")} \"{ex.Message}\".\n\n{FindResource("item15")}", LauncherWindow.launcherInstance);
+                        else
+                            CustomMessageBox.Show($"{FindResource("item39")} \"{ex.Message}\".", LauncherWindow.launcherInstance);
                     }));
                 }
                 catch (Exception er)
@@ -265,7 +269,7 @@ namespace H1EmuLauncher.SteamFrame
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
                         loadingGif.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
-                        CustomMessageBox.Show(FindResource("item40").ToString() + $" \"{er.Message}\".", LauncherWindow.launcherInstance);
+                        CustomMessageBox.Show($"{FindResource("item40")} \"{er.Message}\".", LauncherWindow.launcherInstance);
                     }));
                 }
                 finally

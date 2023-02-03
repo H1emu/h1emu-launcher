@@ -140,7 +140,7 @@
                     
                         <!-- Context menu to copy link -->
                         <TextBlock.ContextMenu>
-                            <ContextMenu>
+                            <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                 <MenuItem Click="ReportBugGithubServerLinkCopy"
                                           Header="Copy"
                                           Style="{DynamicResource PopupMenuItem}"/>
@@ -191,7 +191,7 @@
                     
                         <!-- Context menu to copy link -->
                         <TextBlock.ContextMenu>
-                            <ContextMenu>
+                            <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                 <MenuItem Click="ReportBugGithubServerLauncherCopy"
                                           Header="Copy"
                                           Style="{DynamicResource PopupMenuItem}"/>

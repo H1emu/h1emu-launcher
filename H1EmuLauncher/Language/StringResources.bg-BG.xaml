@@ -152,4 +152,5 @@
     <system:String x:Key="item181">Ключът на акаунта, който използвате, е забранен.</system:String>
     <system:String x:Key="item182">Неизвестен код за отговор при проверка на валидността на ключа на вашия акаунт:</system:String>
     <system:String x:Key="item183">Възникна грешка при валидирането на ключа на вашия акаунт:</system:String>
+    <system:String x:Key="item184">Възникна грешка при зареждането на списъка със сървъри:</system:String>
 </ResourceDictionary>

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using H1EmuLauncher.Classes;
@@ -35,6 +37,29 @@ namespace H1EmuLauncher
 
         private void AddButton(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(serverNameBox.Text) || string.IsNullOrEmpty(serverIpBox.Text))
+            {
+                CustomMessageBox.Show(FindResource("item151").ToString());
+                return;
+            }
+
+            if (serverNameBox.Text.Trim() == FindResource("item139").ToString() || serverNameBox.Text.Trim() == FindResource("item140").ToString() || serverNameBox.Text.Trim() == FindResource("item141").ToString())
+            {
+                CustomMessageBox.Show(FindResource("item143").ToString());
+                return;
+            }
+
+            List<LauncherWindow.ServerList> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<LauncherWindow.ServerList>>(File.ReadAllText(LauncherWindow.serverJsonFile));
+
+            foreach (var item in currentjson)
+            {
+                if (item.SName == serverNameBox.Text.Trim())
+                {
+                    CustomMessageBox.Show(FindResource("item143").ToString());
+                    return;
+                }
+            }
+
             CustomMessageBox.result = true;
             this.Topmost = true;
             this.Close();

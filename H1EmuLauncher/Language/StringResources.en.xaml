@@ -152,4 +152,5 @@
     <system:String x:Key="item181">The Account Key you are using is banned.</system:String>
     <system:String x:Key="item182">Unknown response code while checking your Account Key validity:</system:String>
     <system:String x:Key="item183">There was an error validating your Account Key:</system:String>
+    <system:String x:Key="item184">There was an error loading the server list:</system:String>
 </ResourceDictionary>

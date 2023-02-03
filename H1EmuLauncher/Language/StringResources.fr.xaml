@@ -152,4 +152,5 @@
     <system:String x:Key="item181">La clé de compte que vous utilisez est interdite.</system:String>
     <system:String x:Key="item182">Code de réponse inconnu lors de la vérification de la validité de votre clé de compte:</system:String>
     <system:String x:Key="item183">Une erreur s'est produite lors de la validation de votre clé de compte:</system:String>
+    <system:String x:Key="item184">Une erreur s'est produite lors du chargement de la liste des serveurs:</system:String>
 </ResourceDictionary>

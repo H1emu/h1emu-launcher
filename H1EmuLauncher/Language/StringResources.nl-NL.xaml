@@ -151,4 +151,5 @@
     <system:String x:Key="item181">De accountsleutel die u gebruikt, is verbannen.</system:String>
     <system:String x:Key="item182">Onbekende responscode tijdens het controleren van de geldigheid van uw accountsleutel:</system:String>
     <system:String x:Key="item183">Er is een fout opgetreden bij het valideren van uw accountsleutel:</system:String>
+    <system:String x:Key="item184">Er is een fout opgetreden bij het laden van de serverlijst:</system:String>
 </ResourceDictionary>

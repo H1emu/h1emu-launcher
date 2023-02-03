@@ -152,4 +152,5 @@
     <system:String x:Key="item181">La clave de cuenta que está utilizando está prohibida.</system:String>
     <system:String x:Key="item182">Código de respuesta desconocido al verificar la validez de su clave de cuenta:</system:String>
     <system:String x:Key="item183">Hubo un error al validar su clave de cuenta:</system:String>
+    <system:String x:Key="item184">Hubo un error al cargar la lista de servidores:</system:String>
 </ResourceDictionary>

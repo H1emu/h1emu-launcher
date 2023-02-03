@@ -488,6 +488,17 @@ namespace H1EmuLauncher
                 gameVersion = "processBeingUsed";
                 return;
             }
+            catch (Exception e)
+            {
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\".");
+                }));
+
+                EnableButtons();
+
+                return;
+            }
 
             switch (hash)
             {

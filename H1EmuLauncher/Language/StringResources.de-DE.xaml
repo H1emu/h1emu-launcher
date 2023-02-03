@@ -152,4 +152,5 @@
     <system:String x:Key="item181">Der von Ihnen verwendete Kontoschlüssel ist gesperrt.</system:String>
     <system:String x:Key="item182">Unbekannter Antwortcode beim Überprüfen der Gültigkeit Ihres Kontoschlüssels:</system:String>
     <system:String x:Key="item183">Bei der Validierung Ihres Kontoschlüssels ist ein Fehler aufgetreten:</system:String>
+    <system:String x:Key="item184">Beim Laden der Serverliste ist ein Fehler aufgetreten:</system:String>
 </ResourceDictionary>

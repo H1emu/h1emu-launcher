@@ -152,4 +152,5 @@
     <system:String x:Key="item181">Ключ учетной записи, который вы используете, заблокирован.</system:String>
     <system:String x:Key="item182">Неизвестный код ответа при проверке действительности ключа вашей учетной записи:</system:String>
     <system:String x:Key="item183">При проверке ключа учетной записи произошла ошибка:</system:String>
+    <system:String x:Key="item184">При загрузке списка серверов произошла ошибка:</system:String>
 </ResourceDictionary>

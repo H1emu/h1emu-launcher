@@ -152,4 +152,5 @@
     <system:String x:Key="item181">A chave da conta que você está usando foi banida.</system:String>
     <system:String x:Key="item182">Código de resposta desconhecido ao verificar a validade da chave da conta:</system:String>
     <system:String x:Key="item183">Ocorreu um erro ao validar sua chave de conta:</system:String>
+    <system:String x:Key="item184">Ocorreu um erro ao carregar a lista de servidores:</system:String>
 </ResourceDictionary>

@@ -46,7 +46,7 @@ namespace H1EmuLauncher
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
-        public class Server
+        public class ServerList
         {
             [JsonPropertyName("Server Name")]
             public string SName { get; set; }
@@ -97,47 +97,80 @@ namespace H1EmuLauncher
             AddServerDetails();
         }
 
-        public void AddServerDetails()
+        private void LoadServers()
         {
-            MessageBoxResult dr = CustomMessageBox.AddServer(this);
-            if (dr != MessageBoxResult.OK)
+            if (!File.Exists(serverJsonFile))
+                File.WriteAllText(serverJsonFile, "[]");
+
+            try
             {
-                return;
+                // Load all of the servers into the server selector
+                List<ServerList> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
+                foreach (ServerList server in currentjson)
+                {
+                    ComboBoxItem newItem = new ComboBoxItem { Content = server.SName, Style = (Style)FindResource("ComboBoxItemStyle") };
+                    serverSelector.Items.Insert(serverSelector.Items.Count - 2, newItem);
+                }
+
+                // Add an event for only user added servers in the list to delete on right click
+                foreach (var item in serverSelector.Items)
+                {
+                    int index = serverSelector.Items.IndexOf(item);
+                    if (item is ComboBoxItem serverItem)
+                    {
+                        if (index > 1 && index < serverSelector.Items.Count - 2)
+                            serverItem.PreviewMouseRightButtonUp += DeleteServerFromList;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                CustomMessageBox.Show($"{FindResource("item184")} \"{e.Message}\".");
             }
 
             try
             {
-                if (newServerName.Trim() == FindResource("item139").ToString() || newServerName.Trim() == FindResource("item140").ToString() || newServerName.Trim() == FindResource("item141").ToString())
-                {
-                    throw new Exception(FindResource("item143").ToString());
-                }
+                serverSelector.SelectedIndex = Properties.Settings.Default.lastServer;
+            }
+            catch
+            {
+                serverSelector.SelectedIndex = 0;
+            }
+        }
 
-                if (string.IsNullOrEmpty(newServerName) || string.IsNullOrEmpty(newServerIp))
-                {
-                    throw new Exception(FindResource("item151").ToString());
-                }
+        public void AddServerDetails()
+        {
+            MessageBoxResult dr = CustomMessageBox.AddServer(this);
+            if (dr != MessageBoxResult.OK)
+                return;
 
-                List<Server> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<Server>>(File.ReadAllText(serverJsonFile));
+            try
+            {
+                List<ServerList> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
 
-                foreach (var item in currentjson)
-                {
-                    if (item.SName == newServerName.Trim())
-                    {
-                        throw new Exception(FindResource("item143").ToString());
-                    }
-                }
-
-                currentjson.Add(new Server()
+                currentjson.Add(new ServerList()
                 {
                     SName = newServerName.Trim(),
                     SAddress = newServerIp.Trim().Replace(" ", "")
                 });
 
-                var newJson = System.Text.Json.JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
+                string newJson = System.Text.Json.JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(serverJsonFile, newJson);
 
-                serverSelector.Items.Insert(serverSelector.Items.Count - 2, newServerName.Trim());
+                ComboBoxItem newItem = new ComboBoxItem { Content = newServerName.Trim(), Style = (Style)FindResource("ComboBoxItemStyle") };
+                serverSelector.Items.Insert(serverSelector.Items.Count - 2, newItem);
                 serverSelector.SelectedIndex = serverSelector.Items.Count - 3;
+
+                // Add an event for only user added servers in the list to delete on right click
+                foreach (var item in serverSelector.Items)
+                {
+                    int index = serverSelector.Items.IndexOf(item);
+                    if (item is ComboBoxItem serverItem)
+                    {
+                        if (index == serverSelector.Items.Count - 3)
+                            serverItem.PreviewMouseRightButtonUp += DeleteServerFromList;
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -148,67 +181,32 @@ namespace H1EmuLauncher
             newServerIp = null;
         }
 
-        private void DeleteServer(object sender, RoutedEventArgs e)
+        private void DeleteServerFromList(object sender, MouseButtonEventArgs e)
         {
-            if (serverSelector.SelectedIndex == 0 || serverSelector.SelectedIndex == 1 || serverSelector.SelectedIndex == serverSelector.Items.Count - 1 || string.IsNullOrEmpty(serverSelector.Text))
-            {
-                CustomMessageBox.Show(FindResource("item146").ToString(), this);
-                return;
-            }
+            ComboBoxItem senderItem = (ComboBoxItem)sender;
 
             MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item147").ToString(), this);
             if (dr != MessageBoxResult.Yes)
-            {
                 return;
-            }
 
-            List<Server> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<Server>>(File.ReadAllText(serverJsonFile));
+            List<ServerList> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
 
             int index = -1;
 
             foreach (var item in currentjson)
             {
                 index++;
-
-                if (item.SName == serverSelector.Text)
-                {
+                if (item.SName == (string)senderItem.Content)
                     break;
-                }
             }
 
             currentjson.Remove(currentjson[index]);
 
-            var finalJson = System.Text.Json.JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
+            string finalJson = System.Text.Json.JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(serverJsonFile, finalJson);
 
-            serverSelector.Items.Remove(serverSelector.SelectedItem);
-
+            serverSelector.Items.Remove(senderItem);
             serverSelector.SelectedIndex = index + 1;
-        }
-
-        private void LoadServers()
-        {
-            if (!File.Exists(serverJsonFile))
-                File.WriteAllText(serverJsonFile, "[]");
-
-            try
-            {
-                List<Server> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<Server>>(File.ReadAllText(serverJsonFile));
-                foreach (var item in currentjson)
-                {
-                    serverSelector.Items.Insert(serverSelector.Items.Count - 2, item.SName);
-                }
-            }
-            catch { }
-
-            try
-            {
-                serverSelector.SelectedIndex = Properties.Settings.Default.lastServer;
-            }
-            catch
-            {
-                serverSelector.SelectedIndex = 0;
-            }
         }
 
         public bool LaunchLocalServer(string gameVersion)
@@ -306,7 +304,7 @@ namespace H1EmuLauncher
                         }
                     }));
 
-                    List<Server> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<Server>>(File.ReadAllText(serverJsonFile));
+                    List<ServerList> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
 
                     foreach (var item in currentjson)
                     {
@@ -415,7 +413,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"{FindResource("item13")} \"{er.Message}\"", this);
+                        CustomMessageBox.Show($"{FindResource("item13")} \"{er.Message}\".", this);
                     }));
                 }
 

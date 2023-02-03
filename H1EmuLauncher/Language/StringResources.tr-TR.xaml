@@ -152,4 +152,5 @@
     <system:String x:Key="item181">Kullanmakta olduğunuz Hesap Anahtarı yasaklanmıştır.</system:String>
     <system:String x:Key="item182">Hesap Anahtarınızın geçerliliğini kontrol ederken bilinmeyen yanıt kodu:</system:String>
     <system:String x:Key="item183">Hesap Anahtarınız doğrulanırken bir hata oluştu:</system:String>
+    <system:String x:Key="item184">Sunucu listesi yüklenirken bir hata oluştu:</system:String>
 </ResourceDictionary>

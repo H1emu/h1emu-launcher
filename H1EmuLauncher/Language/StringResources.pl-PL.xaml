@@ -152,4 +152,5 @@
     <system:String x:Key="item181">Klucz konta, którego używasz, jest zablokowany.</system:String>
     <system:String x:Key="item182">Nieznany kod odpowiedzi podczas sprawdzania ważności klucza konta:</system:String>
     <system:String x:Key="item183">Podczas weryfikacji klucza konta wystąpił błąd:</system:String>
+    <system:String x:Key="item184">Podczas ładowania listy serwerów wystąpił błąd:</system:String>
 </ResourceDictionary>

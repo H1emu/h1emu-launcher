@@ -42,6 +42,9 @@
     <None Remove="Resources\Arrow_Hover.png" />
     <None Remove="Resources\Arrow_Pressed.png" />
     <None Remove="Resources\Assets_256.pack" />
+    <None Remove="Resources\Copy.png" />
+    <None Remove="Resources\Copy_Hover.png" />
+    <None Remove="Resources\Copy_Pressed.png" />
     <None Remove="Resources\CustomClientConfig.ini" />
     <None Remove="Resources\Discord.png" />
     <None Remove="Resources\Discord_Pressed.png" />
@@ -70,8 +73,6 @@
     <None Remove="Resources\PrevButton_Hover.png" />
     <None Remove="Resources\Server-Quickstart.zip" />
     <None Remove="Resources\Server.png" />
-    <None Remove="Resources\Server_Hover.png" />
-    <None Remove="Resources\Server_Pressed.png" />
     <None Remove="Resources\Settings.png" />
     <None Remove="Resources\Shield.png" />
     <None Remove="Resources\ShowPassword.png" />
@@ -199,6 +200,15 @@
     <Resource Include="Resources\Assets_256.pack">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Copy.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Copy_Hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Copy_Pressed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\CustomClientConfig.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -278,12 +288,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Server.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Server_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Server_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Settings.png">

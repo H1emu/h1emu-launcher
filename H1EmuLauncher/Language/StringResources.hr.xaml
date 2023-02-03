@@ -152,4 +152,5 @@
     <system:String x:Key="item181">Ključ računa koji koristite je zabranjen.</system:String>
     <system:String x:Key="item182">Nepoznati kod odgovora tijekom provjere valjanosti vašeg ključa računa:</system:String>
     <system:String x:Key="item183">Došlo je do pogreške pri validaciji vašeg ključa računa:</system:String>
+    <system:String x:Key="item184">Došlo je do pogreške prilikom učitavanja popisa servera:</system:String>
 </ResourceDictionary>

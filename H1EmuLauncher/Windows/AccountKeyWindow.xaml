@@ -129,7 +129,7 @@
                     
                     <!-- Context menu to copy link -->
                     <TextBlock.ContextMenu>
-                        <ContextMenu>
+                        <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                             <MenuItem Click="AccountKeyLinkCopy"
                                       Header="Copy"
                                       Style="{DynamicResource PopupMenuItem}"/>

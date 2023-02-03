@@ -171,6 +171,36 @@ namespace H1EmuLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Copy {
+            get {
+                object obj = ResourceManager.GetObject("Copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Copy_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Copy_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Copy_Pressed {
+            get {
+                object obj = ResourceManager.GetObject("Copy_Pressed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] CustomClientConfig {
@@ -431,26 +461,6 @@ namespace H1EmuLauncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Server_Hover {
-            get {
-                object obj = ResourceManager.GetObject("Server_Hover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Server_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("Server_Pressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Server_Quickstart {
@@ -558,7 +568,7 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;A new update is available, would you like to update now?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;UPDATE&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Version&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Press launch her [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Please wait&lt;/sys [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources {
             get {
@@ -574,7 +584,7 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Ново обновление е налично,желаете ли да го изтеглите?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Обновление&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Версията&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Натисни пусни  [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Моля Изчакай&lt;/ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_bg_BG {
             get {
@@ -622,7 +632,7 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Une mise à jour est disponible, voulez vous la télécharger?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Mise à jour&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Màj Version&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Appu [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;S&apos;il [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_fr_FR {
             get {
@@ -638,7 +648,7 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Nova verzija je dostupna, želite li ažurirati?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;AŽURIRANJE&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Verzija&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Pritisnite pokreni da  [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Molimo pričekajte&lt;/sys [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_hr {
             get {
@@ -654,7 +664,7 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Een niewe versie is beschikbaar, wilt u deze instaleren?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;INSTALEREN&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versie&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Klik opstarte [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Even geduld a [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_nl_NL {
             get {
@@ -670,7 +680,7 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Dostępna jest nowa aktualizacja, Czy chcesz zaktualizować teraz?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;AKTUALIZACJA&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Wersja&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Uży [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Pro [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_pl_PL {
             get {
@@ -686,7 +696,7 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Uma nova atualização está disponível, quer atualizar agora?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ATUALIZAR&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versão&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Clique em l [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Por favor,  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_pt_PT {
             get {
@@ -702,7 +712,7 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Доступно новое обновление, хотите обновить сейчас?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ОБНОВИТЬ&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Обновление&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Нажмите здесь, чт [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Пожалуйста подожд [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_ru_RU {
             get {
@@ -718,7 +728,7 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Yeni bir güncelleme var, yüklemek ister misiniz?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;GÜNCELLEME&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versiyonu&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Yerel tekli sunucu [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Lütfen bekle&lt;/syst [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_tr_TR {
             get {
@@ -734,8 +744,8 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;有新的更新可用，是否立即更新?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;更新&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;最新版本&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;按 本地服务器 按键启动本地服务器&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;ite [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;请稍等&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item8&quot;&gt;运行游戏&lt;/syst [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_zh_CN {
             get {

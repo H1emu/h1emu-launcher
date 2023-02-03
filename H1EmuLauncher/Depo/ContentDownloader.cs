@@ -14,7 +14,7 @@ using SteamKit2.CDN;
 
 namespace H1EmuLauncher
 {
-    public class ContentDownloaderException : System.Exception
+    public class ContentDownloaderException : Exception
     {
         public ContentDownloaderException( String value ) : base( value ) {}
     }
@@ -499,7 +499,7 @@ namespace H1EmuLauncher
                 else
                 {
                     var contentName = GetAppOrDepotName( INVALID_DEPOT_ID, appId );
-                    throw new ContentDownloaderException($"App {appId} ({contentName}) is not available from this account.\n\n{System.Windows.Application.Current.FindResource("item15")}");
+                    throw new ContentDownloaderException($"App {appId} ({contentName}) is not available from this account.");
                 }
             }
 

@@ -152,4 +152,5 @@
     <system:String x:Key="item181">您正在使用的帐户密钥已被禁止。</system:String>
     <system:String x:Key="item182">检查您的帐户密钥有效性时出现未知响应代码：</system:String>
     <system:String x:Key="item183">验证您的帐户密钥时出错：</system:String>
+    <system:String x:Key="item184">加载服务器列表时出错：</system:String>
 </ResourceDictionary>

@@ -7,21 +7,83 @@
     
     <Application.Resources>
         <FontFamily x:Key="Signika">pack://application:,,,/Fonts/#Signika</FontFamily>
-        <Style BasedOn="{StaticResource {x:Type MenuItem}}" TargetType="{x:Type MenuItem}" x:Key="PopupMenuItem">
+        <Image x:Key="CopyImage" Width="15" Height="15" Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,10,0"/>
+        <Style TargetType="{x:Type MenuItem}" x:Key="PopupMenuItem">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Margin" Value="10,0,10,0"/>
+            <Setter Property="Icon" Value="True"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type MenuItem}">
-                        <Border Background="White">
+                        <Border Background="#1C1B22">
                             <ContentPresenter ContentSource="Header"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="BorderBrush" Value="White"></Setter>
-            <Setter Property="BorderThickness" Value="0,1,0,0"></Setter>
-            <Setter Property="Foreground" Value="Black"></Setter>
-            <Setter Property="Margin" Value="0,0,0,0"></Setter>
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="15" Height="15" Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
+                            <ContentPresenter Content="Copy"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="LightGray"/>
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="15" Height="15" Source="..\Resources\Copy_Hover.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
+                                    <ContentPresenter Content="Copy"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Foreground" Value="DarkGray"/>
+                    <Setter Property="HeaderTemplate">
+                        <Setter.Value>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="15" Height="15" Source="..\Resources\Copy_Pressed.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
+                                    <ContentPresenter Content="Copy"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type ContextMenu}" x:Key="ContextMenuStyle">
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Grid.IsSharedSizeScope" Value="true" />
+            <Setter Property="HasDropShadow" Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContextMenu}">
+                        <Border x:Name="Border" Background="#1C1B22" BorderThickness="1">
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="#FF2A2A32"/>
+                            </Border.BorderBrush>
+                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasDropShadow" Value="true">
+                                <Setter TargetName="Border" Property="Padding" Value="0,3,0,3" />
+                                <Setter TargetName="Border" Property="CornerRadius" Value="4" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style x:Key="HyperLinkStyle" TargetType="TextBlock">
             <Style.Triggers>
@@ -90,20 +152,6 @@
         <ImageBrush x:Key="Button.Pressed.Background" ImageSource="Resources\StandardButton_Pressed.png" />
         <ImageBrush x:Key="Button.Disabled.Background" ImageSource="Resources\StandardButton_Pressed.png" />
         <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="Gray" />
-        <Style x:Key="FocusVisual1">
-            <Setter Property="Control.Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Rectangle
-                            Margin="2"
-                            SnapsToDevicePixels="true"
-                            Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
-                            StrokeDashArray="1 2"
-                            StrokeThickness="1" />
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
         <SolidColorBrush x:Key="TextBox.Static.Background" Color="Transparent" />
         <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
             <Setter Property="OverridesDefaultStyle" Value="true" />
@@ -356,20 +404,20 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <ImageBrush x:Key="Button.Static.Background1" ImageSource="Resources\Folder.png" />
-        <SolidColorBrush x:Key="Button.Static.Border" Color="Transparent" />
-        <ImageBrush x:Key="Button.MouseOver.Background1" ImageSource="Resources\Folder_Hover.png" />
-        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="Transparent" />
-        <ImageBrush x:Key="Button.Pressed.Background1" ImageSource="Resources\Folder_Pressed.png" />
-        <SolidColorBrush x:Key="Button.Pressed.Border" Color="Transparent" />
-        <ImageBrush x:Key="Button.Disabled.Background1" ImageSource="Resources\Folder_Pressed.png" />
-        <SolidColorBrush x:Key="Button.Disabled.Border" Color="Transparent" />
-        <SolidColorBrush x:Key="Button.Disabled.Foreground1" Color="Transparent" />
+        <ImageBrush x:Key="FolderButton.Static.Background" ImageSource="Resources\Folder.png"/>
+        <SolidColorBrush x:Key="FolderButton.Static.Border" Color="Transparent"/>
+        <ImageBrush x:Key="FolderButton.MouseOver.Background" ImageSource="Resources\Folder_Hover.png"/>
+        <SolidColorBrush x:Key="FolderButton.MouseOver.Border" Color="Transparent"/>
+        <ImageBrush x:Key="FolderButton.Pressed.Background" ImageSource="Resources\Folder_Pressed.png"/>
+        <SolidColorBrush x:Key="FolderButton.Pressed.Border" Color="Transparent"/>
+        <ImageBrush x:Key="FolderButton.Disabled.Background" ImageSource="Resources\Folder_Pressed.png"/>
+        <SolidColorBrush x:Key="FolderButton.Disabled.Border" Color="Transparent"/>
+        <SolidColorBrush x:Key="FolderButton.Disabled.Foreground" Color="Transparent"/>
         <Style x:Key="FolderButton" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual2}" />
-            <Setter Property="Background" Value="{StaticResource Button.Static.Background1}" />
-            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual2}"/>
+            <Setter Property="Background" Value="{StaticResource FolderButton.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource FolderButton.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="BorderThickness" Value="1" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -397,17 +445,17 @@
                                 <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{StaticResource Button.MouseOver.Background1}" />
-                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Button.MouseOver.Border}" />
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource FolderButton.MouseOver.Background}" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource FolderButton.MouseOver.Border}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{StaticResource Button.Pressed.Background1}" />
-                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Button.Pressed.Border}" />
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource FolderButton.Pressed.Background}" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource FolderButton.Pressed.Border}" />
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter TargetName="border" Property="Background" Value="{StaticResource Button.Disabled.Background1}" />
-                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Button.Disabled.Border}" />
-                                <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource Button.Disabled.Foreground1}" />
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource FolderButton.Disabled.Background}" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource FolderButton.Disabled.Border}" />
+                                <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource FolderButton.Disabled.Foreground}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -593,7 +641,7 @@
                             x:Name="dropDownBorder"
                             Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
                             BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
-                            BorderThickness="1"
+                            BorderThickness="0"
                             CornerRadius="5">
                             <ScrollViewer x:Name="DropDownScrollViewer">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
@@ -689,30 +737,32 @@
                         Color="Transparent">
                         <Border
                             x:Name="dropDownBorder"
-                            Background="#2B2A33"
-                            BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
-                            BorderThickness="1"
-                            CornerRadius="5">
-                            <ScrollViewer x:Name="DropDownScrollViewer">
-                                <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
-                                    <Canvas
+                            CornerRadius="5"
+                            Background="#FF2A2A32"
+                            BorderBrush="Transparent"
+                            BorderThickness="0">
+                            <Grid Background="Transparent">
+                                <ScrollViewer x:Name="DropDownScrollViewer">
+                                    <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
+                                        <Canvas
                                         x:Name="canvas"
                                         Width="0"
                                         Height="0"
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Top">
-                                        <Rectangle
+                                            <Rectangle
                                             x:Name="opaqueRect"
                                             Width="{Binding ActualWidth, ElementName=dropDownBorder}"
                                             Height="{Binding ActualHeight, ElementName=dropDownBorder}"
-                                            Fill="{Binding Background, ElementName=dropDownBorder}" />
-                                    </Canvas>
-                                    <ItemsPresenter
+                                            Fill="Transparent" />
+                                        </Canvas>
+                                        <ItemsPresenter
                                         x:Name="ItemsPresenter"
                                         KeyboardNavigation.DirectionalNavigation="Contained"
                                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                </Grid>
-                            </ScrollViewer>
+                                    </Grid>
+                                </ScrollViewer>
+                            </Grid>
                         </Border>
                     </theme:SystemDropShadowChrome>
                 </Popup>
@@ -758,25 +808,45 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <Style x:Key="ComboBox" TargetType="{x:Type ComboBox}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual1}" />
-            <Setter Property="Background" Value="{StaticResource ComboBox.Static.Background}" />
-            <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-            <Setter Property="Padding" Value="6,3,5,3" />
-            <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
-            <Setter Property="ScrollViewer.PanningMode" Value="Both" />
-            <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-            <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource ComboBox.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ComboBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Padding" Value="6,3,5,3"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}"/>
             <Style.Triggers>
                 <Trigger Property="IsEditable" Value="true">
-                    <Setter Property="IsTabStop" Value="false" />
-                    <Setter Property="Padding" Value="2" />
-                    <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}" />
+                    <Setter Property="IsTabStop" Value="false"/>
+                    <Setter Property="Padding" Value="2"/>
+                    <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
                 </Trigger>
             </Style.Triggers>
+        </Style>
+        <Style x:Key="ComboBoxItemStyle" TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border x:Name="Border" BorderThickness="1" CornerRadius="5" Padding="6,4,6,4">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="Border">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="#1C1B22"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <Style x:Key="StandardButton" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource UpdateVisual}" />
@@ -1212,54 +1282,6 @@
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource EnterButton.Disabled}" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <ImageBrush x:Key="DeleteServer.Static.Background" ImageSource="Resources\Server.png" />
-        <ImageBrush x:Key="DeleteServer.MouseOver.Background" ImageSource="Resources\Server_Hover.png" />
-        <ImageBrush x:Key="DeleteServer.Pressed.Background" ImageSource="Resources\Server_Pressed.png" />
-        <ImageBrush x:Key="DeleteServer.Disabled" ImageSource="Resources\Server_Pressed.png" />
-        <Style x:Key="DeleteServer" TargetType="{x:Type Button}">
-            <Setter Property="FocusVisualStyle" Value="{StaticResource UpdateVisual}" />
-            <Setter Property="Background" Value="{StaticResource DeleteServer.Static.Background}" />
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="Padding" Value="1" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true">
-                            <ContentPresenter
-                                x:Name="contentPresenter"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Focusable="False"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{StaticResource DeleteServer.MouseOver.Background}" />
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="{StaticResource DeleteServer.Pressed.Background}" />
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
-                                <Setter TargetName="border" Property="Background" Value="{StaticResource DeleteServer.Disabled}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
