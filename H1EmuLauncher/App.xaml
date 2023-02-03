@@ -7,7 +7,6 @@
     
     <Application.Resources>
         <FontFamily x:Key="Signika">pack://application:,,,/Fonts/#Signika</FontFamily>
-        <Image x:Key="CopyImage" Width="15" Height="15" Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,10,0"/>
         <Style TargetType="{x:Type MenuItem}" x:Key="PopupMenuItem">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
             <Setter Property="Foreground" Value="White"/>
@@ -836,7 +835,7 @@
                             <ContentPresenter/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" TargetName="Border">
                                     <Setter.Value>
                                         <SolidColorBrush Color="#1C1B22"/>

@@ -693,8 +693,10 @@
                                       SelectionChanged="ServerSelectorChanged"
                                       Style="{DynamicResource ComboBox}">
 
+
                                 <ComboBoxItem Content="{DynamicResource item139}"
-                                              Style="{DynamicResource ComboBoxItemStyle}"/>
+                                              Style="{DynamicResource ComboBoxItemStyle}">
+                                </ComboBoxItem>
                                 <ComboBoxItem Content="{DynamicResource item140}"
                                               Style="{DynamicResource ComboBoxItemStyle}"/>
                                 <Separator/>

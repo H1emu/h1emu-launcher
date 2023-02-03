@@ -7,11 +7,11 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.6.7</AssemblyVersion>
-	  <FileVersion>2.6.7</FileVersion>
+	  <AssemblyVersion>2.6.8</AssemblyVersion>
+	  <FileVersion>2.6.8</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>2.6.7</Version>
+	  <Version>2.6.8</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
