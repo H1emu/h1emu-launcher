@@ -9,6 +9,9 @@ namespace H1EmuLauncher
 {
     public partial class DisclaimerWindow : Window
     {
+        public int seconds = 10;
+        public DispatcherTimer timer;
+
         public DisclaimerWindow()
         {
             InitializeComponent();
@@ -22,8 +25,8 @@ namespace H1EmuLauncher
             Properties.Settings.Default.firstTimeUse = 1;
             Properties.Settings.Default.Save();
 
-            this.Topmost = true;
-            this.Close();
+            Topmost = true;
+            Close();
         }
 
         private void ContinueButton(object sender, RoutedEventArgs e)
@@ -31,35 +34,33 @@ namespace H1EmuLauncher
             Properties.Settings.Default.firstTimeUse = 1;
             Properties.Settings.Default.Save();
 
-            this.Topmost = true;
-            this.Close();
+            Topmost = true;
+            Close();
         }
 
         private void MoveDisclaimer(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void DisclaimerActivated(object sender, EventArgs e)
         {
-            this.SizeToContent = SizeToContent.Manual;
+            SizeToContent = SizeToContent.Manual;
         }
-
-        public int seconds = 10;
-        public DispatcherTimer timer;
 
         private void timerTick(object sender, EventArgs e)
         {
             seconds--;
 
-            if (seconds == -1) 
+            if (seconds == 0) 
             { 
                 timer.Stop(); 
                 continueButton.Content = FindResource("item167").ToString();
                 continueButton.IsEnabled = true;
                 CloseButton.IsEnabled = true;
             }
-            else { continueButton.Content = seconds.ToString(); }
+            else
+                continueButton.Content = seconds.ToString();
         }
 
         private void DisclaimerLoaded(object sender, RoutedEventArgs e)
@@ -96,6 +97,12 @@ namespace H1EmuLauncher
                 SettingsWindow.settingsInstance.settingsBlur.Radius = 15;
                 SettingsWindow.settingsInstance.settingsFade.Visibility = Visibility.Visible;
             }
+        }
+
+        private void DisclaimerClosed(object sender, EventArgs e)
+        {
+            if (timer.IsEnabled)
+                Environment.Exit(0);
         }
     }
 }

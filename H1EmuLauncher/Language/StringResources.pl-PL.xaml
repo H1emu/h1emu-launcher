@@ -11,7 +11,7 @@
     <system:String x:Key="item11">Musisz posiadać H1Z1: Just Survive na twoim koncie Steam, aby pobrać. Nie wspieramy piractwa.</system:String>
     <system:String x:Key="item12">Dołącz do społeczności: </system:String>
     <system:String x:Key="item13">Błąd podczas startu gry:</system:String>
-    <system:String x:Key="item14">Nie znaleziono gry w podanej ścieżce.</system:String>
+    <system:String x:Key="item14">Nie znaleziono gry w podanej ścieżce.\n\nSprawdź, czy wybrałeś właściwy katalog zawierający pliki gry, można to zrobić w menu Ustawienia.</system:String>
     <system:String x:Key="item15">Dla tej wersji gry nie ma serwera testowego. (Grudzień 2016)</system:String>
     <system:String x:Key="item17">Nie można zalogować się do Steam:</system:String>
     <system:String x:Key="item18">DODAJ</system:String>

@@ -27,8 +27,7 @@ namespace H1EmuLauncher
         {
             FileName = "cmd.exe",
             RedirectStandardInput = true,
-            UseShellExecute = false,
-            CreateNoWindow = true,
+            UseShellExecute = false
         };
         public static LauncherWindow launcherInstance;
         public static string serverJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
@@ -380,8 +379,10 @@ namespace H1EmuLauncher
 
                         Process process = new()
                         {
-                            StartInfo = new ProcessStartInfo($"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe", $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}")
+                            StartInfo = new ProcessStartInfo
                             {
+                                FileName = $"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe",
+                                Arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}",
                                 WindowStyle = ProcessWindowStyle.Normal,
                                 WorkingDirectory = Properties.Settings.Default.activeDirectory,
                                 UseShellExecute = true
@@ -507,7 +508,7 @@ namespace H1EmuLauncher
             }
         }
 
-        private void MainLauncherContentRendered(object sender, EventArgs e)
+        private void LauncherWindowContentRendered(object sender, EventArgs e)
         {
             ExecuteArguments();
         }
@@ -516,12 +517,15 @@ namespace H1EmuLauncher
         {
             // If there are no args return
             if (!(rawArgs.Length > 0))
+            {
+                File.WriteAllText($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt", "");
                 return;
+            }
 
             // Close every other window apart from the launcher window
             foreach (Window window in Application.Current.Windows)
             {
-                if (window.Name != "MainLauncher")
+                if (window.Name != "MainLauncherPage")
                     window.Close();
             }
 
@@ -533,18 +537,11 @@ namespace H1EmuLauncher
             }
 
             // Set the server name and ip textboxes text
-            newServerName = SteamFrame.Login.GetParameter(rawArgs, "-name", "");
-            newServerIp = SteamFrame.Login.GetParameter(rawArgs, "-ip", "");
-
-            if (!string.IsNullOrEmpty(newServerName) || !string.IsNullOrEmpty(newServerIp))
-            {
+            if (!string.IsNullOrEmpty(SteamFrame.Login.GetParameter(rawArgs, "-name", "")) || !string.IsNullOrEmpty(SteamFrame.Login.GetParameter(rawArgs, "-ip", "")))
                 AddServerDetails();
-            }
-
-            string accountKey = SteamFrame.Login.GetParameter(rawArgs, "-accountkey", "");
 
             // Launch settings and tell it to open Account Key window
-            if (!string.IsNullOrEmpty(accountKey))
+            if (!string.IsNullOrEmpty(SteamFrame.Login.GetParameter(rawArgs, "-accountkey", "")))
             {
                 SettingsWindow.launchAccountKeyWindow = true;
                 SettingsWindow se = new();
@@ -754,7 +751,7 @@ namespace H1EmuLauncher
             Close();
         }
 
-        private void MainLauncherClosed(object sender, EventArgs e)
+        private void LauncherWindowClosed(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
@@ -769,7 +766,7 @@ namespace H1EmuLauncher
             DragMove();
         }
 
-        private void MainLauncherActivated(object sender, EventArgs e)
+        private void LauncherWindowActivated(object sender, EventArgs e)
         {
             launcherBlur.Radius = 0;
             launcherFade.Visibility = Visibility.Hidden;

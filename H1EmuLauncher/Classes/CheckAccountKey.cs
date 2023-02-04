@@ -10,7 +10,7 @@ namespace H1EmuLauncher.Classes
         {
             try
             {
-                HttpResponseMessage result = UpdateWindow.httpClient.GetAsync(new Uri($"{Info.H1EMU_ACCOUNT_KEY_CHECK_API}{key}")).Result;
+                HttpResponseMessage result = UpdateWindow.httpClient.GetAsync(new Uri($"{Info.ACCOUNT_KEY_CHECK_API}{key}")).Result;
                 int statusCode = (int)result.StatusCode;
 
                 switch (statusCode)

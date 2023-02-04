@@ -11,7 +11,7 @@
     <system:String x:Key="item11">рябва да притежавате H1Z1: Just Survive във вашия акаунт в Steam, за да го изтеглите. Този проект не поддържа пиратство.</system:String>
     <system:String x:Key="item12">Присъеденете се в общноста на</system:String>
     <system:String x:Key="item13">Грешка при стартирането на играта:</system:String>
-    <system:String x:Key="item14">Играта не е открита в избраната категория.</system:String>
+    <system:String x:Key="item14">Играта не е открита в избраната категория.\n\nПроверете дали сте избрали правилната директория, съдържаща вашите файлове на играта, това може да стане в менюто Настройки.</system:String>
     <system:String x:Key="item15">Трябва да притежавате H1Z1: Just Survive във вашия Steam акаунт, за да изтеглите.</system:String>
     <system:String x:Key="item17">Влизането в Steam профила е неуспешно :</system:String>
     <system:String x:Key="item18">Добави</system:String>
