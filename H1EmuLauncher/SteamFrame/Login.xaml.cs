@@ -222,6 +222,9 @@ namespace H1EmuLauncher.SteamFrame
                     Properties.Settings.Default.activeDirectory = ContentDownloader.DEFAULT_DOWNLOAD_DIR;
                     Properties.Settings.Default.Save();
 
+                    if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\DepotDownloader"))
+                        Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\DepotDownloader", true);
+
                     Dispatcher.Invoke(new Action(delegate
                     {
                         UpdateLang();
