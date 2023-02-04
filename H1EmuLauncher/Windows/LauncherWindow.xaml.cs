@@ -377,7 +377,7 @@ namespace H1EmuLauncher
 
                         ApplyPatchClass.CheckPatch();
 
-                        Process process = new()
+                        Process p = new()
                         {
                             StartInfo = new ProcessStartInfo
                             {
@@ -389,7 +389,7 @@ namespace H1EmuLauncher
                             }
                         };
 
-                        process.Start();
+                        p.Start();
                     }
                     else if (gameVersion == "processBeingUsed")
                     {
@@ -517,10 +517,7 @@ namespace H1EmuLauncher
         {
             // If there are no args return
             if (!(rawArgs.Length > 0))
-            {
-                File.WriteAllText($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt", "");
                 return;
-            }
 
             // Close every other window apart from the launcher window
             foreach (Window window in Application.Current.Windows)
@@ -547,6 +544,9 @@ namespace H1EmuLauncher
                 SettingsWindow se = new();
                 se.ShowDialog();
             }
+
+            File.WriteAllText($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt", "");
+            rawArgs = null;
         }
 
         private void LanguageSelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -107,6 +107,7 @@ namespace H1EmuLauncher
         {
             showKeyButton.Visibility = Visibility.Visible;
             hideKeyButton.Visibility = Visibility.Hidden;
+            accountKeyBox.Password = accountKeyBoxShown.Text;
             accountKeyBoxShown.Text = null;
 
             accountKeyBox.Visibility = Visibility.Visible;

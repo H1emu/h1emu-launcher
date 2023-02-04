@@ -149,7 +149,6 @@
                              Margin="40,10,40,10"
                              Padding="35,0,40,0"
                              VerticalAlignment="Center"
-                             HorizontalAlignment="Center"
                              VerticalContentAlignment="Center"
                              FontSize="16"
                              Visibility="Hidden"
@@ -172,16 +171,17 @@
                                  Style="{DynamicResource PasswordBoxStyle}"/>
 
                     <!-- Hint for account key textbox -->
-                    <TextBlock x:Name="accountKeyHint"
-                               Grid.Row="2"
-                               Height="27"
-                               Margin="40,10,40,10"
-                               Padding="37,0,37,0"
-                               VerticalAlignment="Center"
-                               IsHitTestVisible="False"
-                               Foreground="White"
-                               FontSize="16"
-                               Text="{DynamicResource item154}"/>
+                    <Label x:Name="accountKeyHint"
+                           Grid.Row="2"
+                           Height="27"
+                           Margin="40,10,40,10"
+                           Padding="37,0,37,0"
+                           VerticalAlignment="Center"
+                           VerticalContentAlignment="Center"
+                           IsHitTestVisible="False"
+                           Foreground="White"
+                           FontSize="16"
+                           Content="Account Key..."/>
 
                     <!-- Key image inside of account key textbox -->
                     <Image Source="..\Resources\AccountKey.png"

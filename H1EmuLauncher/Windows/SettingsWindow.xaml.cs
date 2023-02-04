@@ -810,6 +810,7 @@ namespace H1EmuLauncher
             {
                 AccountKeyWindow ak = new();
                 ak.accountKeyBox.Password = SteamFrame.Login.GetParameter(LauncherWindow.rawArgs, "-accountkey", "");
+                LauncherWindow.rawArgs = null;
                 ak.accountKeyHint.Visibility = Visibility.Hidden;
                 ak.ShowDialog();
 
