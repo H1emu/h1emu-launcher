@@ -11,7 +11,7 @@
     <system:String x:Key="item11">Je moet H1Z1: Just Survive op steam hebben om het te kunnen downloaden. Dit project ondersteund geen piraterij.</system:String>
     <system:String x:Key="item12">word lid van de gemeenschap via:</system:String>
     <system:String x:Key="item13">Fout tijdens het opstarten van H1Z1:</system:String>
-    <system:String x:Key="item14">Spel niet gevonden in gespecificeerde map.</system:String>
+    <system:String x:Key="item14">Spel niet gevonden in gespecificeerde map.\n\nControleer of je de juiste map met je spelbestanden hebt geselecteerd, dit kun je doen in het menu Instellingen.</system:String>
     <system:String x:Key="item15">Je moet H1Z1: Just Survive op je Steam-account hebben om te kunnen downloaden.</system:String>
     <system:String x:Key="item17">Kan niet inloggen op Steam:</system:String>
     <system:String x:Key="item18">TOEVOEGEN</system:String>

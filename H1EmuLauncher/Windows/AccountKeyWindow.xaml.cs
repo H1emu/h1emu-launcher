@@ -25,19 +25,19 @@ namespace H1EmuLauncher
 
         private void CloseAccountKeyWindow(object sender, RoutedEventArgs e)
         {
-            this.Topmost = true;
-            this.Close();
+            Topmost = true;
+            Close();
         }
 
         private void OkCloseAccountKeyWindow(object sender, RoutedEventArgs e)
         {
-            this.Topmost = true;
-            this.Close();
+            Topmost = true;
+            Close();
         }
 
         private void AccountKeyDragWindow(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void AccountKeyGotFocus(object sender, RoutedEventArgs e)
@@ -63,6 +63,11 @@ namespace H1EmuLauncher
                 FileName = Info.ACCOUNT_KEY_LINK,
                 UseShellExecute = true
             });
+        }
+
+        private void AccountKeyWindowActivated(object sender, EventArgs e)
+        {
+            SizeToContent = SizeToContent.Manual;
         }
 
         private void AccountKeyLoaded(object sender, RoutedEventArgs e)

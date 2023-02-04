@@ -11,7 +11,7 @@
     <system:String x:Key="item11">Tem de possuir H1Z1: Just Survive na sua conta Steam para fazer download do jogo. Este projecto não apoia a pirataria.</system:String>
     <system:String x:Key="item12">Junta-te à comunidade em</system:String>
     <system:String x:Key="item13">Erro ao iniciar o jogo:</system:String>
-    <system:String x:Key="item14">O jogo não foi encontrado no diretório especificado.</system:String>
+    <system:String x:Key="item14">O jogo não foi encontrado no diretório especificado.\n\nVerifique se você selecionou o diretório correto contendo os arquivos do jogo, isso pode ser feito no menu Configurações.</system:String>
     <system:String x:Key="item15">Aby pobrać, musisz posiadać H1Z1: Just Survive na swoim koncie Steam.</system:String>
     <system:String x:Key="item17">Incapaz de iniciar a sessão no Steam:</system:String>
     <system:String x:Key="item18">ADD</system:String>

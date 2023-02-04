@@ -7,14 +7,16 @@
         UseLayoutRounding="True"
         Title="H1Emu Account Key"
         Width="650"
-        Height="320"
+        Height="auto"
+        SizeToContent="Height"
         WindowStartupLocation="CenterOwner"
         Background="#FF2A2A32"
         FontFamily="Bahnschrift Light"
         FontSize="16"
         ResizeMode="NoResize"
         Loaded="AccountKeyLoaded"
-        Closing="AccountKeyWindowClosing">
+        Closing="AccountKeyWindowClosing"
+        Activated="AccountKeyWindowActivated">
 
     <!-- Hide window border but keep animations -->
     <WindowChrome.WindowChrome>
@@ -34,7 +36,7 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <!-- Grid for logo and exit button -->
@@ -100,14 +102,15 @@
 
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="3*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
                     <!-- Info about account key message -->
-                    <TextBlock Width="540"
-                               Margin="0,16,0,0"
-                               VerticalAlignment="Top"
+                    <TextBlock Margin="40,20,40,10"
+                               VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                TextAlignment="Center"
                                Foreground="White"
@@ -116,7 +119,8 @@
                                Text="{DynamicResource item156}"/>
 
                     <!-- Hyperlink to obtain user authentication key -->
-                    <TextBlock VerticalAlignment="Center"
+                    <TextBlock Grid.Row="1"
+                               Margin="0,10,0,20"
                                HorizontalAlignment="Center">
                     
                     <Hyperlink Click="UserProfileLink"
@@ -140,11 +144,11 @@
 
                     <!-- Plain text box that holds account key for visibility toggle -->
                     <TextBox x:Name="accountKeyBoxShown"
-                             Width="540"
+                             Grid.Row="2"
                              Height="35"
-                             Margin="0,0,0,12"
+                             Margin="40,10,40,10"
                              Padding="35,0,40,0"
-                             VerticalAlignment="Bottom"
+                             VerticalAlignment="Center"
                              HorizontalAlignment="Center"
                              VerticalContentAlignment="Center"
                              FontSize="16"
@@ -155,12 +159,11 @@
 
                     <!-- Password box to hold account key -->
                     <PasswordBox x:Name="accountKeyBox"
-                                 Width="540"
+                                 Grid.Row="2"
                                  Height="35"
-                                 Margin="0,0,0,12"
+                                 Margin="40,10,40,10"
                                  Padding="35,0,40,0"
-                                 VerticalAlignment="Bottom"
-                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
                                  PasswordChar="●"
                                  FontSize="16"
@@ -170,12 +173,11 @@
 
                     <!-- Hint for account key textbox -->
                     <TextBlock x:Name="accountKeyHint"
-                               Width="540"
+                               Grid.Row="2"
                                Height="27"
+                               Margin="40,10,40,10"
                                Padding="37,0,37,0"
-                               Margin="0,0,0,12"
-                               VerticalAlignment="Bottom"
-                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
                                IsHitTestVisible="False"
                                Foreground="White"
                                FontSize="16"
@@ -184,20 +186,22 @@
                     <!-- Key image inside of account key textbox -->
                     <Image Source="..\Resources\AccountKey.png"
                            RenderOptions.BitmapScalingMode="Fant"
+                           Grid.Row="2"
                            Width="20"
                            Height="20"
-                           Margin="50,0,0,20"
-                           VerticalAlignment="Bottom"
+                           Margin="50,0,0,0"
+                           VerticalAlignment="Center"
                            HorizontalAlignment="Left"/>
 
                     <!-- Password visibility show button -->
                     <Button x:Name="showKeyButton"
+                            Grid.Row="2"
                             Click="ShowKey"
                             RenderOptions.BitmapScalingMode="Fant"
                             Width="24"
                             Height="24"
-                            Margin="0,0,50,18"
-                            VerticalAlignment="Bottom"
+                            Margin="0,0,50,0"
+                            VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             BorderThickness="0"
                             Style="{StaticResource ShowKeyButton}">
@@ -209,12 +213,13 @@
 
                     <!-- Password visibility hide button -->
                     <Button x:Name="hideKeyButton"
+                            Grid.Row="2"
                             Click="HideKey"
                             RenderOptions.BitmapScalingMode="Fant"
                             Width="24"
                             Height="24"
-                            Margin="0,0,50,18"
-                            VerticalAlignment="Bottom"
+                            Margin="0,0,50,0"
+                            VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             BorderThickness="0"
                             Visibility="Hidden"
@@ -226,12 +231,13 @@
                     </Button>
 
                     <!-- Close account key window button -->
-                    <Button Grid.Row="1"
+                    <Button Grid.Row="3"
                             Click="OkCloseAccountKeyWindow"
                             RenderOptions.BitmapScalingMode="Fant"
                             Width="100"
                             Height="30"
-                            VerticalAlignment="Center"
+                            Margin="0,20,0,20"
+                            VerticalAlignment="Top"
                             HorizontalAlignment="Center"
                             Foreground="White"
                             FontFamily="Arial Black"

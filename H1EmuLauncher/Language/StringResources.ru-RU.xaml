@@ -11,7 +11,7 @@
     <system:String x:Key="item11">Для загрузки вы должны иметь H1Z1: Just Survive в своей учетной записи Steam. Этот проект не поддерживает пиратство.</system:String>
     <system:String x:Key="item12">Присоединяйтесь к сообществу на</system:String>
     <system:String x:Key="item13">Ошибка запуска игры:</system:String>
-    <system:String x:Key="item14">Игра не найдена в указанной директории.</system:String>
+    <system:String x:Key="item14">Игра не найдена в указанной директории.\n\nПроверьте, что вы выбрали правильный каталог, содержащий ваши игровые файлы, это можно сделать в меню Настройки.</system:String>
     <system:String x:Key="item15">Вы должны иметь H1Z1: Just Survive в своей учетной записи Steam, чтобы загрузить.</system:String>
     <system:String x:Key="item17">Невозможно войти в Steam:</system:String>
     <system:String x:Key="item18">ДОБАВИТЬ</system:String>

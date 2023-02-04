@@ -17,24 +17,24 @@ namespace H1EmuLauncher
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Topmost = true;
-            this.Close();
+            Topmost = true;
+            Close();
         }
 
         private void OkButton(object sender, RoutedEventArgs e)
         {
-            this.Topmost = true;
-            this.Close();
+            Topmost = true;
+            Close();
         }
 
         private void MoveMessageBox(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void MainMsgBoxActivated(object sender, EventArgs e)
         {
-            this.SizeToContent = SizeToContent.Manual;
+            SizeToContent = SizeToContent.Manual;
         }
 
         private void MainMsgBoxLoaded(object sender, RoutedEventArgs e)
