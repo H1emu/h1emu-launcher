@@ -59,6 +59,9 @@
     <None Remove="Resources\Game-Patch-2016.zip" />
     <None Remove="Resources\H1EmuIcon.png" />
     <None Remove="Resources\H1EmuLogo.png" />
+    <None Remove="Resources\HideKey.png" />
+    <None Remove="Resources\HideKey_Hover.png" />
+    <None Remove="Resources\HideKey_Pressed.png" />
     <None Remove="Resources\Icon.ico" />
     <None Remove="Resources\Language.png" />
     <None Remove="Resources\Loading.gif" />
@@ -67,17 +70,19 @@
     <None Remove="Resources\Minimise_Pressed.png" />
     <None Remove="Resources\NextButton.png" />
     <None Remove="Resources\NextButton_Hover.png" />
+    <None Remove="Resources\NextButton_Pressed.png" />
     <None Remove="Resources\Node-18.12.1.zip" />
     <None Remove="Resources\Padlock.png" />
     <None Remove="Resources\PrevButton.png" />
     <None Remove="Resources\PrevButton_Hover.png" />
+    <None Remove="Resources\PrevButton_Pressed.png" />
     <None Remove="Resources\Server-Quickstart.zip" />
     <None Remove="Resources\Server.png" />
     <None Remove="Resources\Settings.png" />
     <None Remove="Resources\Shield.png" />
-    <None Remove="Resources\ShowPassword.png" />
-    <None Remove="Resources\ShowPassword_Hover.png" />
-    <None Remove="Resources\ShowPassword_Pressed.png" />
+    <None Remove="Resources\ShowKey.png" />
+    <None Remove="Resources\ShowKey_Hover.png" />
+    <None Remove="Resources\ShowKey_Pressed.png" />
     <None Remove="Resources\StandardButton.png" />
     <None Remove="Resources\StandardButton_Hover.png" />
     <None Remove="Resources\StandardButton_Pressed.png" />
@@ -248,6 +253,15 @@
     <Resource Include="Resources\H1EmuLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\HideKey.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\HideKey_Hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\HideKey_Pressed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -272,6 +286,9 @@
     <Resource Include="Resources\NextButton_Hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\NextButton_Pressed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Node-18.12.1.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -282,6 +299,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\PrevButton_Hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\PrevButton_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Server-Quickstart.zip">
@@ -296,13 +316,13 @@
     <Resource Include="Resources\Shield.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\ShowPassword.png">
+    <Resource Include="Resources\ShowKey.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\ShowPassword_Hover.png">
+    <Resource Include="Resources\ShowKey_Hover.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\ShowPassword_Pressed.png">
+    <Resource Include="Resources\ShowKey_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\StandardButton.png">

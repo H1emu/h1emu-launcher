@@ -151,7 +151,6 @@
                              Visibility="Hidden"
                              GotFocus="AccountKeyGotFocus"
                              LostFocus="AccountKeyLostFocus"
-                             Text="{Binding ElementName=accountKeyBox, Path=Password}"
                              Style="{DynamicResource TextBoxPrimaryStyle}"/>
 
                     <!-- Password box to hold account key -->
@@ -191,9 +190,9 @@
                            VerticalAlignment="Bottom"
                            HorizontalAlignment="Left"/>
 
-                    <!-- Password visibility toggle button -->
-                    <Button x:Name="showHidePassword"
-                            Click="ShowHidePasswordClick"
+                    <!-- Password visibility show button -->
+                    <Button x:Name="showKeyButton"
+                            Click="ShowKey"
                             RenderOptions.BitmapScalingMode="Fant"
                             Width="24"
                             Height="24"
@@ -201,10 +200,28 @@
                             VerticalAlignment="Bottom"
                             HorizontalAlignment="Right"
                             BorderThickness="0"
-                            Style="{StaticResource ShowPasswordButton}">
+                            Style="{StaticResource ShowKeyButton}">
 
                         <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\ShowPassword.png"/>
+                            <ImageBrush ImageSource="..\Resources\ShowKey.png"/>
+                        </Button.Background>
+                    </Button>
+
+                    <!-- Password visibility hide button -->
+                    <Button x:Name="hideKeyButton"
+                            Click="HideKey"
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Width="24"
+                            Height="24"
+                            Margin="0,0,50,18"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Right"
+                            BorderThickness="0"
+                            Visibility="Hidden"
+                            Style="{StaticResource HideKeyButton}">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\HideKey.png"/>
                         </Button.Background>
                     </Button>
 

@@ -331,6 +331,36 @@ namespace H1EmuLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HideKey {
+            get {
+                object obj = ResourceManager.GetObject("HideKey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HideKey_Hover {
+            get {
+                object obj = ResourceManager.GetObject("HideKey_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HideKey_Pressed {
+            get {
+                object obj = ResourceManager.GetObject("HideKey_Pressed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Icon {
@@ -411,6 +441,16 @@ namespace H1EmuLauncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NextButton_Pressed {
+            get {
+                object obj = ResourceManager.GetObject("NextButton_Pressed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Node_18_12_1 {
@@ -446,6 +486,16 @@ namespace H1EmuLauncher.Properties {
         internal static System.Drawing.Bitmap PrevButton_Hover {
             get {
                 object obj = ResourceManager.GetObject("PrevButton_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PrevButton_Pressed {
+            get {
+                object obj = ResourceManager.GetObject("PrevButton_Pressed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -493,9 +543,9 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShowPassword {
+        internal static System.Drawing.Bitmap ShowKey {
             get {
-                object obj = ResourceManager.GetObject("ShowPassword", resourceCulture);
+                object obj = ResourceManager.GetObject("ShowKey", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -503,9 +553,9 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShowPassword_Hover {
+        internal static System.Drawing.Bitmap ShowKey_Hover {
             get {
-                object obj = ResourceManager.GetObject("ShowPassword_Hover", resourceCulture);
+                object obj = ResourceManager.GetObject("ShowKey_Hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -513,9 +563,9 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShowPassword_Pressed {
+        internal static System.Drawing.Bitmap ShowKey_Pressed {
             get {
-                object obj = ResourceManager.GetObject("ShowPassword_Pressed", resourceCulture);
+                object obj = ResourceManager.GetObject("ShowKey_Pressed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

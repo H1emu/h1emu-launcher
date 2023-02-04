@@ -88,20 +88,24 @@ namespace H1EmuLauncher
             Properties.Settings.Default.Save();
         }
 
-        private void ShowHidePasswordClick(object sender, RoutedEventArgs e)
+        private void ShowKey(object sender, RoutedEventArgs e)
         {
+            showKeyButton.Visibility = Visibility.Hidden;
+            hideKeyButton.Visibility = Visibility.Visible;
             accountKeyBoxShown.Text = accountKeyBox.Password;
 
-            if (accountKeyBox.Visibility == Visibility.Visible)
-            {
-                accountKeyBox.Visibility = Visibility.Hidden;
-                accountKeyBoxShown.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                accountKeyBox.Visibility = Visibility.Visible;
-                accountKeyBoxShown.Visibility = Visibility.Hidden;
-            }
+            accountKeyBox.Visibility = Visibility.Hidden;
+            accountKeyBoxShown.Visibility = Visibility.Visible;
+        }
+
+        private void HideKey(object sender, RoutedEventArgs e)
+        {
+            showKeyButton.Visibility = Visibility.Visible;
+            hideKeyButton.Visibility = Visibility.Hidden;
+            accountKeyBoxShown.Text = null;
+
+            accountKeyBox.Visibility = Visibility.Visible;
+            accountKeyBoxShown.Visibility = Visibility.Hidden;
         }
     }
 }
