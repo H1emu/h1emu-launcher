@@ -11,7 +11,7 @@
     <system:String x:Key="item11">İndirmek için Steam hesabınızda H1Z1: Just Survive oyununa sahip olmanız gereklidir. Bu proje korsan oyunları desteklemez.</system:String>
     <system:String x:Key="item12">Topluluğa bağlanın: </system:String>
     <system:String x:Key="item13">Oyun başlatma hatası:</system:String>
-    <system:String x:Key="item14">Oyun belirtilen klasörde bulunamadı.\n\nOyun dosyalarınızı içeren doğru dizini seçtiğinizden emin olun, bu Ayarlar menüsünden yapılabilir.</system:String>
+    <system:String x:Key="item14">Oyun belirtilen klasörde bulunamadı.</system:String>
     <system:String x:Key="item15">İndirebilmek için Steam hesabınızda H1Z1: Just Survive'a sahip olmalısınız.</system:String>
     <system:String x:Key="item17">Steam'e bağlanılamıyor:</system:String>
     <system:String x:Key="item18">EKLE</system:String>

@@ -18,7 +18,7 @@ namespace H1EmuLauncher
             FileName = "cmd.exe",
             RedirectStandardInput = true,
             UseShellExecute = false,
-            CreateNoWindow = true
+            CreateNoWindow = true,
         };
         public static SettingsWindow settingsInstance;
         public static string gameVersion { get; set; }
@@ -255,11 +255,8 @@ namespace H1EmuLauncher
 
                     }));
 
-                    Process p = new()
-                    {
-                        StartInfo = cmdShell
-                    };
-
+                    Process p = new();
+                    p.StartInfo = cmdShell;
                     p.Start();
 
                     using (StreamWriter sw = p.StandardInput)
@@ -276,29 +273,12 @@ namespace H1EmuLauncher
                                     sw.WriteLine("npm i --production h1z1-server@next");
                                 else
                                     sw.WriteLine("npm i --production h1z1-server@latest");
+
                             }));
                         }
                     }
 
-                    p.WaitForExit(5000);
-
-                    if (p.HasExited)
-                    {
-                        if (button.Name == "latestButton")
-                            Dispatcher.Invoke(new Action(delegate
-                            {
-                                CustomMessageBox.Show(FindResource("item107").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}").Replace(":", ".").Replace("：", "."), this);
-                            }));
-                        else
-                            Dispatcher.Invoke(new Action(delegate
-                            {
-                                CustomMessageBox.Show(FindResource("item111").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}").Replace(":", ".").Replace("：", "."), this);
-                            }));
-
-                        return;
-                    }
-                    else
-                        p.WaitForExit();
+                    p.WaitForExit();
                 }
                 catch (Exception er)
                 {
@@ -703,7 +683,7 @@ namespace H1EmuLauncher
                 Dispatcher.Invoke(new Action(delegate
                 {
                     currentGame.Text = FindResource("item69").ToString();
-                    CustomMessageBox.Show(FindResource("item14").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
+                    CustomMessageBox.Show(FindResource("item14").ToString(), this);
                 }));
 
                 return false;

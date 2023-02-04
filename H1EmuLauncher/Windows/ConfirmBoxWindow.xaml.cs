@@ -18,32 +18,32 @@ namespace H1EmuLauncher
         private void YesButton(object sender, RoutedEventArgs e)
         {
             CustomMessageBox.result = true;
-            Topmost = true;
-            Close();
+            this.Topmost = true;
+            this.Close();
         }
 
         private void NoButton(object sender, RoutedEventArgs e)
         {
             CustomMessageBox.result = false;
-            Topmost = true;
-            Close();
+            this.Topmost = true;
+            this.Close();
         }
 
         private void ExitButton(object sender, RoutedEventArgs e)
         {
             CustomMessageBox.result = false;
-            Topmost = true;
-            Close();
+            this.Topmost = true;
+            this.Close();
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            DragMove();
+            this.DragMove();
         }
 
         private void MainCnfmBoxActivated(object sender, EventArgs e)
         {
-            SizeToContent = SizeToContent.Manual;
+            this.SizeToContent = SizeToContent.Manual;
         }
 
         private void MainCnfmBoxLoaded(object sender, RoutedEventArgs e)

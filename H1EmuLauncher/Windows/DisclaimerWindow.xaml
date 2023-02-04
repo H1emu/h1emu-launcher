@@ -16,8 +16,7 @@
         FontFamily="Bahnschrift"
         FontSize="16"
         Activated="DisclaimerActivated"
-        Loaded="DisclaimerLoaded"
-        Closed="DisclaimerClosed">
+        Loaded="DisclaimerLoaded">
 
         <!-- Hide window border but keep animations -->
         <WindowChrome.WindowChrome>

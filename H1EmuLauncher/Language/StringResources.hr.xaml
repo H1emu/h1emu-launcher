@@ -11,7 +11,7 @@
     <system:String x:Key="item11">Da bi ste igrali H1Z1: Just Survive morate imati kopiju igre na svojem Steam računu. Projekt ne podržava piratstvo.</system:String>
     <system:String x:Key="item12">Pridružite se zajednici klikom na</system:String>
     <system:String x:Key="item13">Pogreška pri pokretanju igrice:</system:String>
-    <system:String x:Key="item14">Igra nije pronađena u navedenom direktoriju.\n\nProvjerite jeste li odabrali ispravan direktorij koji sadrži vaše datoteke igre, to možete učiniti u izborniku Postavke.</system:String>
+    <system:String x:Key="item14">Igra nije pronađena u navedenom direktoriju.</system:String>
     <system:String x:Key="item15">Morate posjedovati H1Z1: Just Survive na svom Steam računu kako biste preuzeli.</system:String>
     <system:String x:Key="item17">Pogreška pri povezivanju sa Steam računom:</system:String>
     <system:String x:Key="item18">DODATI</system:String>

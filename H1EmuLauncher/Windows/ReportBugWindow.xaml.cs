@@ -19,8 +19,8 @@ namespace H1EmuLauncher
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
-            reportBugGitHubServerLink.Text = Info.SERVER_BUG_LINK;
-            reportBugGitHubLauncherLink.Text = Info.LAUNCHER_BUG_LINK;
+            reportBugGitHubServerLink.Text = Info.GITHUB_SERVER_BUG_LINK;
+            reportBugGitHubLauncherLink.Text = Info.GITHUB_LAUNCHER_BUG_LINK;
         }
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -38,28 +38,28 @@ namespace H1EmuLauncher
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = Info.SERVER_BUG_LINK,
+                FileName = Info.GITHUB_SERVER_BUG_LINK,
                 UseShellExecute = true
             });
         }
 
         private void ReportBugGithubServerLinkCopy(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText(Info.SERVER_BUG_LINK);
+            Clipboard.SetText(Info.GITHUB_SERVER_BUG_LINK);
         }
 
         private void ReportBugGithubLauncher(object sender, RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = Info.LAUNCHER_BUG_LINK,
+                FileName = Info.GITHUB_LAUNCHER_BUG_LINK,
                 UseShellExecute = true
             });
         }
 
         private void ReportBugGithubServerLauncherCopy(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText(Info.LAUNCHER_BUG_LINK);
+            Clipboard.SetText(Info.GITHUB_LAUNCHER_BUG_LINK);
         }
 
         private void MainReportBugLoaded(object sender, RoutedEventArgs e)

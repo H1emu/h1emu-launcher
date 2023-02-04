@@ -11,7 +11,7 @@
     <system:String x:Key="item11">Vous devez posséder H1Z1 : Just Survive sur votre compte Steam pour pouvoir le télécharger. Ce projet ne soutient pas le piratage.</system:String>
     <system:String x:Key="item12">Rejoignez la communauté sur</system:String>
     <system:String x:Key="item13">Erreur au lancement du jeu :</system:String>
-    <system:String x:Key="item14">Jeu introuvable dans le répertoire spécifié.\n\nVérifiez que vous avez sélectionné le bon répertoire contenant vos fichiers de jeu, cela peut être fait dans le menu Paramètres.</system:String>
+    <system:String x:Key="item14">Jeu introuvable dans le répertoire spécifié.</system:String>
     <system:String x:Key="item15">Vous devez posséder H1Z1: Just Survive sur votre compte Steam pour pouvoir télécharger.</system:String>
     <system:String x:Key="item17">Impossible de se connecter à Steam :</system:String>
     <system:String x:Key="item18">AJOUTER</system:String>

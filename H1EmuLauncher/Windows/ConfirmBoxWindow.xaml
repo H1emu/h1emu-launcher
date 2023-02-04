@@ -108,7 +108,7 @@
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="30*"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="60"/>
                     </Grid.RowDefinitions>
 
                     <!-- Main text message -->
@@ -123,21 +123,15 @@
                                TextAlignment="Center"
                                FontWeight="Light"/>
 
-                    <Grid Grid.Row="1">
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <!-- Yes button -->
-                        <Button Grid.Row="1"
+                    <!-- Yes button -->
+                    <Button Grid.Row="1"
                             Click="YesButton"
                             RenderOptions.BitmapScalingMode="Fant"
                             Width="120"
                             Height="35"
-                            Margin="0,10,15,20"
+                            Margin="0,0,150,0"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
+                            HorizontalAlignment="Center"
                             Foreground="White"
                             FontFamily="Arial Black"
                             FontSize="20"
@@ -145,21 +139,20 @@
                             Content="{DynamicResource item133}"
                             Style="{DynamicResource StandardButton}">
 
-                            <Button.Background>
-                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                            </Button.Background>
-                        </Button>
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                        </Button.Background>
+                    </Button>
 
-                        <!-- No button -->
-                        <Button Grid.Row="1"
-                                Grid.Column="1"
+                    <!-- No button -->
+                    <Button Grid.Row="1"
                             Click="NoButton"
                             RenderOptions.BitmapScalingMode="Fant"
                             Width="120"
                             Height="35"
-                            Margin="15,10,0,20"
+                            Margin="150,0,0,0"
                             VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
+                            HorizontalAlignment="Center"
                             Foreground="White"
                             FontFamily="Arial Black"
                             FontSize="20"
@@ -167,11 +160,10 @@
                             Content="{DynamicResource item134}"
                             Style="{DynamicResource StandardButton}">
 
-                            <Button.Background>
-                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                            </Button.Background>
-                        </Button>
-                    </Grid>
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                        </Button.Background>
+                    </Button>
                 </Grid>
             </Grid>
         </Border>
