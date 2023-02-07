@@ -124,12 +124,17 @@ namespace H1EmuLauncher
                     if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}"))
                         File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}");
 
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        downloadSetupProgress.IsIndeterminate = true;
+                    }));
                     using (HttpResponseMessage response = httpClient.GetAsync(new Uri(downloadUrl)).Result)
                     {
                         using (Stream contentStream = response.Content.ReadAsStream(), fs = new FileStream($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, false))
                         {
                             Dispatcher.Invoke(new Action(delegate
                             {
+                                downloadSetupProgress.IsIndeterminate = false;
                                 downloadSetupProgress.Maximum = contentStream.Length;
                             }));
 
@@ -157,6 +162,14 @@ namespace H1EmuLauncher
                                         {
                                             downloadSetupProgress.Value = totalRead;
                                             downloadSetupProgressText.Text = $"{FindResource("item54")} {(float)totalRead / (float)contentStream.Length * 100:0.00}%";
+                                        }));
+                                    }
+                                    else if (totalRead == contentStream.Length)
+                                    {
+                                        Dispatcher.Invoke(new Action(delegate
+                                        {
+                                            downloadSetupProgress.Value = downloadSetupProgress.Maximum;
+                                            downloadSetupProgressText.Text = $"{FindResource("item54")} 100%";
                                         }));
                                     }
                                 }
