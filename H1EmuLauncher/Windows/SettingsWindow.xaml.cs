@@ -703,7 +703,11 @@ namespace H1EmuLauncher
                 Dispatcher.Invoke(new Action(delegate
                 {
                     currentGame.Text = FindResource("item69").ToString();
-                    CustomMessageBox.Show(FindResource("item14").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
+
+                    if (this != null && this.Visibility == Visibility.Visible)
+                        CustomMessageBox.Show(FindResource("item14").ToString(), this);
+                    else
+                        CustomMessageBox.Show($"{FindResource("item14")}\n\n{FindResource("item9")}", this);
                 }));
 
                 return false;
@@ -785,16 +789,6 @@ namespace H1EmuLauncher
             LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Hidden;
         }
 
-        public void CloseButton(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        public void MoveWindow(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
-
         private void MainSettingsActivated(object sender, EventArgs e)
         {
             settingsBlur.Radius = 0;
@@ -816,6 +810,16 @@ namespace H1EmuLauncher
 
                 launchAccountKeyWindow = false;
             }
+        }
+
+        public void CloseButton(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        public void MoveWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

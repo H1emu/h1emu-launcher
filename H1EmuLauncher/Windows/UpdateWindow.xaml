@@ -135,14 +135,14 @@
                 </Button>
 
                 <!-- Not now button -->
-                <TextBlock x:Name="notNowGrid"
+                <TextBlock x:Name="notNowText"
                            Grid.Row="2"
                            Margin="50,15,50,15"
                            VerticalAlignment="Bottom"
                            HorizontalAlignment="Center"
                            FontSize="16">
                 
-                    <Hyperlink x:Name="notNow"
+                    <Hyperlink x:Name="notNowHyperlink"
                                Click="NotNowClick"
                                Foreground="White">
                     

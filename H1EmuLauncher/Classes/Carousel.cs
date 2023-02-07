@@ -85,6 +85,8 @@ namespace H1EmuLauncher.Classes
 
             LauncherWindow.launcherInstance.carouselImage.Source = ConvertResourceToImageSource($"Resources\\{images[lastIndex]}");
             LauncherWindow.launcherInstance.carouselImageSlider.Source = ConvertResourceToImageSource($"Resources\\{images[currentIndex]}");
+            LauncherWindow.launcherInstance.NextAnimation.Begin();
+            LauncherWindow.launcherInstance.NextAnimationFollow.Begin();
         }
 
         public static void PreviousImage()
@@ -99,6 +101,8 @@ namespace H1EmuLauncher.Classes
 
             LauncherWindow.launcherInstance.carouselImage.Source = ConvertResourceToImageSource($"Resources\\{images[lastIndex]}");
             LauncherWindow.launcherInstance.carouselImageSlider.Source = ConvertResourceToImageSource($"Resources\\{images[currentIndex]}");
+            LauncherWindow.launcherInstance.PreviousAnimation.Begin();
+            LauncherWindow.launcherInstance.PreviousAnimationFollow.Begin();
         }
     }
 }

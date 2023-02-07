@@ -111,9 +111,9 @@ namespace H1EmuLauncher
         {
             downloadSetupProgressText.Text = $"{FindResource("item54")} 0%";
             progressBarGrid.Visibility = Visibility.Visible;
-            notNowGrid.Visibility = Visibility.Collapsed;
-            notNow.Foreground = new SolidColorBrush(Colors.Gray);
-            notNow.IsEnabled = false;
+            notNowText.Visibility = Visibility.Collapsed;
+            notNowHyperlink.Foreground = new SolidColorBrush(Colors.Gray);
+            notNowHyperlink.IsEnabled = false;
             updateButton.IsEnabled = false;
             closeButton.IsEnabled = false;
 
@@ -182,9 +182,9 @@ namespace H1EmuLauncher
                 Dispatcher.Invoke(new Action(delegate
                 {
                     progressBarGrid.Visibility = Visibility.Collapsed;
-                    notNowGrid.Visibility = Visibility.Visible;
-                    notNow.Foreground = new SolidColorBrush(Colors.White);
-                    notNow.IsEnabled = true;
+                    notNowText.Visibility = Visibility.Visible;
+                    notNowHyperlink.Foreground = new SolidColorBrush(Colors.White);
+                    notNowHyperlink.IsEnabled = true;
                     updateButton.IsEnabled = true;
                     closeButton.IsEnabled = true;
                 }));
@@ -217,22 +217,21 @@ namespace H1EmuLauncher
 
         private void MainUpdateWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            notNow.Foreground = new SolidColorBrush(Colors.White);
             Hide();
 
             LauncherWindow la = new();
             la.Show();
         }
 
-        private void NotNowHyperLinkMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            notNow.Foreground = new SolidColorBrush(Colors.Gray);
-        }
-
         private void MainUpdateWindowActivated(object sender, EventArgs e)
         {
             SizeToContent = SizeToContent.Manual;
             SizeToContent = SizeToContent.WidthAndHeight;
+        }
+
+        private void NotNowHyperLinkMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            notNowHyperlink.Foreground = new SolidColorBrush(Colors.Gray);
         }
     }
 }

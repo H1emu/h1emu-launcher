@@ -86,9 +86,8 @@
         </Button>
 
         <!-- Loading wheel GIF -->
-        <Image gif:ImageBehavior.AnimatedSource="..\Resources/Loading.gif"
+        <Image gif:ImageBehavior.AnimatedSource="..\Resources\Loading.gif"
                x:Name="loadingGif"
-               Grid.Row="1"
                RenderOptions.BitmapScalingMode="Fant"
                VerticalAlignment="Top"
                HorizontalAlignment="Right"

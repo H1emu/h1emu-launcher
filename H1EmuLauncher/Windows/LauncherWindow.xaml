@@ -34,131 +34,56 @@
         <TaskbarItemInfo x:Name="taskbarIcon" Description="H1Emu Launcher"/>
     </Window.TaskbarItemInfo>
 
+    <!-- Image carousel storyboard animations -->
     <Window.Resources>
         <Storyboard x:Key="NextImageAnimation"
                     Completed="StoryboardCompleted">
 
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                                           Storyboard.TargetName="carouselImage">
-
-                <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="-3"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.10" Value="-6"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.15" Value="-12"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.20" Value="-24"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.25" Value="-48"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.30" Value="-96"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.35" Value="-144"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.40" Value="-192"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.60" Value="-381"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.65" Value="-429"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.70" Value="-477"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.75" Value="-525"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.80" Value="-549"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.85" Value="-561"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.90" Value="-567"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.95" Value="-570"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.00" Value="-573"/>
-            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                             Storyboard.TargetName="carouselImage"
+                             From="0" To="-573"
+                             Duration="0:0:1"
+                             AccelerationRatio="0.2"
+                             DecelerationRatio="0.8">
+            </DoubleAnimation>
         </Storyboard>
 
         <Storyboard x:Key="NextImageAnimationFollow"
                     Completed="StoryboardCompleted">
 
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                                           Storyboard.TargetName="carouselImageSlider">
-
-                <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="573"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="570"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.10" Value="567"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.15" Value="561"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.20" Value="549"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.25" Value="525"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.30" Value="477"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.35" Value="429"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.40" Value="381"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.60" Value="192"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.65" Value="144"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.70" Value="96"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.75" Value="48"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.80" Value="24"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.85" Value="12"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.90" Value="6"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.95" Value="3"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.00" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                             Storyboard.TargetName="carouselImageSlider"
+                             From="573" To="0"
+                             Duration="0:0:1"
+                             AccelerationRatio="0.2"
+                             DecelerationRatio="0.8">
+            </DoubleAnimation>
         </Storyboard>
 
         <Storyboard x:Key="PrevImageAnimation"
                     Completed="StoryboardCompleted">
 
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                                           Storyboard.TargetName="carouselImage">
-
-                <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="3"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.10" Value="6"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.15" Value="12"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.20" Value="24"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.25" Value="48"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.30" Value="96"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.35" Value="144"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.40" Value="192"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.60" Value="381"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.65" Value="429"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.70" Value="477"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.75" Value="525"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.80" Value="549"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.85" Value="561"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.90" Value="567"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.95" Value="570"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.00" Value="573"/>
-            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                             Storyboard.TargetName="carouselImage"
+                             From="0" To="573"
+                             Duration="0:0:1"
+                             AccelerationRatio="0.2"
+                             DecelerationRatio="0.8">
+            </DoubleAnimation>
         </Storyboard>
 
         <Storyboard x:Key="PrevImageAnimationFollow"
                     Completed="StoryboardCompleted">
 
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                                           Storyboard.TargetName="carouselImageSlider">
-
-                <EasingDoubleKeyFrame KeyTime="00:00:00.00" Value="-573"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.05" Value="-570"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.10" Value="-567"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.15" Value="-561"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.20" Value="-549"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.25" Value="-525"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.30" Value="-477"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.35" Value="-429"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.40" Value="-381"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.60" Value="-192"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.65" Value="-144"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.70" Value="-96"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.75" Value="-48"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.80" Value="-24"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.85" Value="-12"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.90" Value="-6"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:00.95" Value="-3"/>
-                <EasingDoubleKeyFrame KeyTime="00:00:01.00" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
+                             Storyboard.TargetName="carouselImageSlider"
+                             From="-573" To="0"
+                             Duration="0:0:1"
+                             AccelerationRatio="0.2"
+                             DecelerationRatio="0.8">
+            </DoubleAnimation>
         </Storyboard>
     </Window.Resources>
-
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="ButtonBase.Click"
-                      SourceName="triggerPrevImageStoryboard">
-
-            <BeginStoryboard Storyboard="{StaticResource PrevImageAnimationFollow}"/>
-            <BeginStoryboard Storyboard="{StaticResource PrevImageAnimation}"/>
-        </EventTrigger>
-
-        <EventTrigger RoutedEvent="ButtonBase.Click"
-                      SourceName="triggerNextImageStoryboard">
-
-            <BeginStoryboard Storyboard="{StaticResource NextImageAnimationFollow}"/>
-            <BeginStoryboard Storyboard="{StaticResource NextImageAnimation}"/>
-        </EventTrigger>
-    </Window.Triggers>
 
     <Grid>
         <Grid>
@@ -464,13 +389,6 @@
                                         Visibility="Hidden"
                                         Style="{DynamicResource CarouselButtonNext}"/>
 
-                                <!-- Trigger next image storyboard -->
-                                <Button x:Name="triggerNextImageStoryboard"
-                                        Click="StoryboardNextImageClick"
-                                        Width="30"
-                                        HorizontalAlignment="Right"
-                                        Visibility="Hidden"/>
-
                                 <!-- Previous image button -->
                                 <Button x:Name="prevImage"
                                         Click="PrevImageClick"
@@ -480,13 +398,6 @@
                                         Foreground="White"
                                         Visibility="Hidden"
                                         Style="{DynamicResource CarouselButtonPrevious}"/>
-
-                                <!-- Trigger previous image storyboard -->
-                                <Button x:Name="triggerPrevImageStoryboard"
-                                        Click="StoryboardPrevImageClick"
-                                        Width="30"
-                                        HorizontalAlignment="Right"
-                                        Visibility="Hidden"/>
 
                                 <!-- Image carousel progress bar -->
                                 <ProgressBar x:Name="carouselProgressBar"
@@ -643,7 +554,7 @@
                             <Frame x:Name="steamFramePanel"
                                    Margin="20,0,30,0"
                                    VerticalAlignment="Top"
-                                   Source="..\\SteamFrame\Login.xaml"
+                                   Source="..\SteamFrame\Login.xaml"
                                    NavigationUIVisibility="Hidden"
                                    VerticalContentAlignment="Top"
                                    Padding="0" Height="140"

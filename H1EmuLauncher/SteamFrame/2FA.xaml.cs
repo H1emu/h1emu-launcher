@@ -21,6 +21,12 @@ namespace H1EmuLauncher.SteamFrame
 
         public void PassAuthCode()
         {
+            if (string.IsNullOrEmpty(authBox.Text.Trim()))
+            {
+                CustomMessageBox.Show(FindResource("item19").ToString());
+                return;
+            }
+
             loadingGif.Visibility = Visibility.Visible;
             twoFAButton.Visibility = Visibility.Hidden;
 

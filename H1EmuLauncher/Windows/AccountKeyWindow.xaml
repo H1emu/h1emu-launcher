@@ -123,24 +123,24 @@
                                Margin="0,10,0,20"
                                HorizontalAlignment="Center">
                     
-                    <Hyperlink Click="UserProfileLink"
-                               Foreground="White">
+                        <Hyperlink Click="UserProfileLink"
+                                   Foreground="White">
                         
-                        <TextBlock x:Name="accountKeyHyperlink"
-                                   Style="{DynamicResource HyperLinkStyle}"/>
+                            <TextBlock x:Name="accountKeyHyperlink"
+                                       Style="{DynamicResource HyperLinkStyle}"/>
                         
-                    </Hyperlink>
+                        </Hyperlink>
                     
-                    <!-- Context menu to copy link -->
-                    <TextBlock.ContextMenu>
-                        <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                            <MenuItem Click="AccountKeyLinkCopy"
-                                      Header="Copy"
-                                      Style="{DynamicResource PopupMenuItem}"/>
+                        <!-- Context menu to copy link -->
+                        <TextBlock.ContextMenu>
+                            <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                                <MenuItem Click="AccountKeyLinkCopy"
+                                          Header="Copy"
+                                          Style="{DynamicResource PopupMenuItem}"/>
                             
-                        </ContextMenu>
-                    </TextBlock.ContextMenu>
-                </TextBlock>
+                            </ContextMenu>
+                        </TextBlock.ContextMenu>
+                    </TextBlock>
 
                     <!-- Plain text box that holds account key for visibility toggle -->
                     <TextBox x:Name="accountKeyBoxShown"
@@ -168,20 +168,24 @@
                                  FontSize="16"
                                  GotFocus="AccountKeyGotFocus"
                                  LostFocus="AccountKeyLostFocus"
-                                 Style="{DynamicResource PasswordBoxStyle}"/>
+                                 Style="{DynamicResource PasswordBoxStyle}">
+
+                        <PasswordBox.RenderTransform>
+                            <TranslateTransform x:Name="PasswordBoxTranslateTransform"/>
+                        </PasswordBox.RenderTransform>
+                    </PasswordBox>
 
                     <!-- Hint for account key textbox -->
-                    <Label x:Name="accountKeyHint"
-                           Grid.Row="2"
-                           Height="27"
-                           Margin="40,10,40,10"
-                           Padding="37,0,37,0"
-                           VerticalAlignment="Center"
-                           VerticalContentAlignment="Center"
-                           IsHitTestVisible="False"
-                           Foreground="White"
-                           FontSize="16"
-                           Content="Account Key..."/>
+                    <TextBlock x:Name="accountKeyHint"
+                               Grid.Row="2"
+                               Height="27"
+                               Margin="42,0,40,0"
+                               Padding="37,4,37,0"
+                               VerticalAlignment="Center"
+                               IsHitTestVisible="False"
+                               Foreground="White"
+                               FontSize="16"
+                               Text="{DynamicResource item154}"/>
 
                     <!-- Key image inside of account key textbox -->
                     <Image Source="..\Resources\AccountKey.png"

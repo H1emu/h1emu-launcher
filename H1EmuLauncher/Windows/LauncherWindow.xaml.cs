@@ -17,6 +17,7 @@ using System.Windows.Controls.Primitives;
 using H1EmuLauncher.Classes;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Windows.Media.Animation;
 
 namespace H1EmuLauncher
 {
@@ -36,10 +37,20 @@ namespace H1EmuLauncher
         public static string newServerName = null;
         public static string newServerIp = null;
 
+        public Storyboard NextAnimation;
+        public Storyboard NextAnimationFollow;
+        public Storyboard PreviousAnimation;
+        public Storyboard PreviousAnimationFollow;
+
         public LauncherWindow()
         {
             InitializeComponent();
             launcherInstance = this;
+
+            NextAnimation = FindResource("NextImageAnimation") as Storyboard;
+            NextAnimationFollow = FindResource("NextImageAnimationFollow") as Storyboard;
+            PreviousAnimation = FindResource("PrevImageAnimation") as Storyboard;
+            PreviousAnimationFollow = FindResource("PrevImageAnimationFollow") as Storyboard;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
@@ -631,7 +642,6 @@ namespace H1EmuLauncher
             if (!doContinue)
                 return;
 
-            triggerPrevImageStoryboard.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             Carousel.PreviousImage();
 
             doContinue = false;
@@ -644,14 +654,10 @@ namespace H1EmuLauncher
             if (!doContinue)
                 return;
 
-            triggerNextImageStoryboard.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
             Carousel.NextImage();
 
             doContinue = false;
         }
-
-        private void StoryboardNextImageClick(object sender, RoutedEventArgs e) { }
-        private void StoryboardPrevImageClick(object sender, RoutedEventArgs e) { }
 
         private void CarouselMouseEnter(object sender, MouseEventArgs e)
         {

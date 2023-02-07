@@ -47,8 +47,16 @@ namespace H1EmuLauncher
 
         private void AccountKeyLostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(accountKeyBox.Password))
-                accountKeyHint.Visibility = Visibility.Visible;
+            if (accountKeyBox.Visibility == Visibility.Visible)
+            {
+                if (string.IsNullOrEmpty(accountKeyBox.Password))
+                    accountKeyHint.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(accountKeyBoxShown.Text))
+                    accountKeyHint.Visibility = Visibility.Visible;
+            }
         }
 
         private void AccountKeyLinkCopy(object sender, RoutedEventArgs e)
