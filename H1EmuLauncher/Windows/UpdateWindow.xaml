@@ -38,10 +38,15 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Grainy texture -->
+        <Grid.Background>
+            <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+        </Grid.Background>
+
         <!-- Grid for logo and exit button -->
         <Grid
             MouseLeftButtonDown="MoveWindow"
-            Background="#FF2A2A32">
+            Background="Transparent">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -95,52 +100,59 @@
 
             </Border.Effect>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
+            <Border CornerRadius="5">
 
-                <!-- Main text message -->
-                <TextBlock Margin="50,20,50,20"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           FontSize="18"
-                           FontWeight="Light"
-                           Foreground="FloralWhite"
-                           TextWrapping="Wrap"
-                           TextAlignment="Center"
-                           Text="{DynamicResource item1}"/>
+                <!-- Grainy texture -->
+                <Border.Background>
+                    <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                </Border.Background>
 
-                <!-- Update button -->
-                <Button x:Name="updateButton"
-                        Grid.Row="1"
-                        Click="UpdateButtonClick"
-                        RenderOptions.BitmapScalingMode="Fant"
-                        Width="292"
-                        Height="44"
-                        HorizontalAlignment="Center"
-                        Foreground="White"
-                        FontFamily="Arial Black"
-                        FontSize="24"
-                        BorderThickness="0"
-                        Content="{DynamicResource item2}"
-                        Style="{DynamicResource StandardButton}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
 
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                    </Button.Background>
-                </Button>
+                    <!-- Main text message -->
+                    <TextBlock Margin="50,20,50,20"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="18"
+                               FontWeight="Light"
+                               Foreground="FloralWhite"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"
+                               Text="{DynamicResource item1}"/>
 
-                <!-- Not now button -->
-                <TextBlock x:Name="notNowText"
-                           Grid.Row="2"
-                           Margin="50,15,50,15"
-                           VerticalAlignment="Bottom"
-                           HorizontalAlignment="Center"
-                           FontSize="16">
+                    <!-- Update button -->
+                    <Button x:Name="updateButton"
+                            Grid.Row="1"
+                            Click="UpdateButtonClick"
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Width="292"
+                            Height="44"
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            FontFamily="Arial Black"
+                            FontSize="24"
+                            BorderThickness="0"
+                            Content="{DynamicResource item2}"
+                            Style="{DynamicResource StandardButton}">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                        </Button.Background>
+                    </Button>
+
+                    <!-- Not now button -->
+                    <TextBlock x:Name="notNowText"
+                               Grid.Row="2"
+                               Margin="50,15,50,15"
+                               VerticalAlignment="Bottom"
+                               HorizontalAlignment="Center"
+                               FontSize="16">
                 
                     <Hyperlink x:Name="notNowHyperlink"
                                Click="NotNowClick"
@@ -153,32 +165,33 @@
                     </Hyperlink>
                 </TextBlock>
 
-                <Grid x:Name="progressBarGrid"
-                      Grid.Row="3"
-                      Visibility="Collapsed">
-                    
-                    <!-- Setup download progress bar -->
-                    <ProgressBar x:Name="downloadSetupProgress"
-                                 Height="25"
-                                 Margin="54,20,54,20"
-                                 Style="{DynamicResource ProgressBar}"/>
+                    <Grid x:Name="progressBarGrid"
+                          Grid.Row="3"
+                          Visibility="Collapsed">
 
-                    <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
-                    <ProgressBar Height="25"
-                                 Margin="54,20,54,20"
-                                 Background="Transparent"
-                                 Style="{DynamicResource ProgressBar}"/>
-                    
-                    <!-- Status text to overlay progress bar -->
-                    <TextBlock x:Name="downloadSetupProgressText"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Margin="0,0,0,1"
-                               Foreground="White"
-                               FontWeight="Light"
-                               Background="Transparent"/>
+                        <!-- Setup download progress bar -->
+                        <ProgressBar x:Name="downloadSetupProgress"
+                                     Height="25"
+                                     Margin="54,20,54,20"
+                                     Style="{DynamicResource ProgressBar}"/>
+
+                        <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
+                        <ProgressBar Height="25"
+                                     Margin="54,20,54,20"
+                                     Background="Transparent"
+                                     Style="{DynamicResource ProgressBar}"/>
+
+                        <!-- Status text to overlay progress bar -->
+                        <TextBlock x:Name="downloadSetupProgressText"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,0,1"
+                                   Foreground="White"
+                                   FontWeight="Light"
+                                   Background="Transparent"/>
+                    </Grid>
                 </Grid>
-            </Grid>
+            </Border>
         </Border>
     </Grid>
 </Window>

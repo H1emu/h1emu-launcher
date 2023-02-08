@@ -38,9 +38,14 @@
             <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
 
+        <!-- Grainy texture -->
+        <Grid.Background>
+            <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+        </Grid.Background>
+
         <!-- Grid for logo and exit button -->
-        <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown"
-              Background="#FF2A2A32">
+        <Grid MouseLeftButtonDown="ConfirmBoxMouseLeftButtonDown"
+              Background="Transparent">
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -99,81 +104,89 @@
                                   ShadowDepth="1"/>
                 
             </Border.Effect>
-            
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+
+            <Border CornerRadius="5">
+
+                <!-- Grainy texture -->
+                <Border.Background>
+                    <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                </Border.Background>
 
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30*"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Main text message -->
-                    <TextBlock x:Name="text"
-                               Margin="25,10,25,10"
-                               Padding="0,5,0,0"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Background="Transparent"
-                               Foreground="White"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center"
-                               FontWeight="Light"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="1">
+                        <!-- Main text message -->
+                        <TextBlock x:Name="text"
+                                   Margin="25,10,25,10"
+                                   Padding="0,5,0,0"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Background="Transparent"
+                                   Foreground="White"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   FontWeight="Light"/>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <!-- Yes button -->
-                        <Button Grid.Row="1"
-                            Click="YesButton"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="120"
-                            Height="35"
-                            Margin="0,10,15,20"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            Foreground="White"
-                            FontFamily="Arial Black"
-                            FontSize="20"
-                            BorderThickness="0"
-                            Content="{DynamicResource item133}"
-                            Style="{DynamicResource StandardButton}">
+                        <Grid Grid.Row="1">
 
-                            <Button.Background>
-                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                            </Button.Background>
-                        </Button>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!-- Yes button -->
+                            <Button Grid.Row="1"
+                                    Click="YesButton"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Width="120"
+                                    Height="35"
+                                    Margin="0,10,15,20"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    Foreground="White"
+                                    FontFamily="Arial Black"
+                                    FontSize="20"
+                                    BorderThickness="0"
+                                    Content="{DynamicResource item133}"
+                                    Style="{DynamicResource StandardButton}">
 
-                        <!-- No button -->
-                        <Button Grid.Row="1"
-                                Grid.Column="1"
-                            Click="NoButton"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="120"
-                            Height="35"
-                            Margin="15,10,0,20"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            Foreground="White"
-                            FontFamily="Arial Black"
-                            FontSize="20"
-                            BorderThickness="0"
-                            Content="{DynamicResource item134}"
-                            Style="{DynamicResource StandardButton}">
+                                <Button.Background>
+                                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                                </Button.Background>
+                            </Button>
 
-                            <Button.Background>
-                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                            </Button.Background>
-                        </Button>
+                            <!-- No button -->
+                            <Button Grid.Row="1"
+                                    Grid.Column="1"
+                                    Click="NoButton"
+                                    RenderOptions.BitmapScalingMode="Fant"
+                                    Width="120"
+                                    Height="35"
+                                    Margin="15,10,0,20"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Foreground="White"
+                                    FontFamily="Arial Black"
+                                    FontSize="20"
+                                    BorderThickness="0"
+                                    Content="{DynamicResource item134}"
+                                    Style="{DynamicResource StandardButton}">
+
+                                <Button.Background>
+                                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                                </Button.Background>
+                            </Button>
+                        </Grid>
                     </Grid>
                 </Grid>
-            </Grid>
+            </Border>
         </Border>
     </Grid>
 </Window>

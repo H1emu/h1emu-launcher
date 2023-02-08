@@ -39,9 +39,14 @@
             <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
 
+        <!-- Grainy texture -->
+        <Grid.Background>
+            <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+        </Grid.Background>
+
         <!-- Grid for logo and exit button -->
         <Grid MouseLeftButtonDown="MoveDisclaimer"
-              Background="#FF2A2A32">
+              Background="Transparent">
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -101,104 +106,112 @@
                 
             </Border.Effect>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="90"/>
-                </Grid.RowDefinitions>
+            <Border CornerRadius="5">
 
-                <!-- Welcome message -->
-                <TextBlock VerticalAlignment="Bottom"
-                           HorizontalAlignment="Center"
-                           Foreground="#FFED1C24"
-                           FontSize="32"
-                           FontWeight="Bold"
-                           FontFamily="{StaticResource Signika}"
-                           Text="{DynamicResource item158}"/>
+                <!-- Grainy texture -->
+                <Border.Background>
+                    <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                </Border.Background>
 
-                <!-- Main disclaimer message -->
-                <TextBlock Grid.Row="1"
-                           Margin="25,0,25,0"
-                           Padding="0,15,0,0"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           TextAlignment="Center"
-                           TextWrapping="Wrap"
-                           Cursor="Arrow"
-                           FontFamily="Bahnschrift"
-                           Background="Transparent"
-                           Foreground="White">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="90"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Welcome message -->
+                    <TextBlock VerticalAlignment="Bottom"
+                               HorizontalAlignment="Center"
+                               Foreground="#FFED1C24"
+                               FontSize="32"
+                               FontWeight="Bold"
+                               FontFamily="{StaticResource Signika}"
+                               Text="{DynamicResource item158}"/>
+
+                    <!-- Main disclaimer message -->
+                    <TextBlock Grid.Row="1"
+                               Margin="25,0,25,0"
+                               Padding="0,15,0,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Cursor="Arrow"
+                               FontFamily="Bahnschrift"
+                               Background="Transparent"
+                               Foreground="White">
                 
-                <Run FontWeight="Light"
-                     Foreground="White"
-                     Text="{DynamicResource item159}"/>
+                    <Run FontWeight="Light"
+                         Foreground="White"
+                         Text="{DynamicResource item159}"/>
                 
-                <Run TextDecorations="Underline"
-                     FontWeight="Bold"
-                     Foreground="#FFED1C24"
-                     Text="{DynamicResource item160}"/>
+                    <Run TextDecorations="Underline"
+                         FontWeight="Bold"
+                         Foreground="#FFED1C24"
+                         Text="{DynamicResource item160}"/>
                 
-                <Run FontWeight="Light"
-                     Foreground="White"
-                     Text="{DynamicResource item161}"/>
+                    <Run FontWeight="Light"
+                         Foreground="White"
+                         Text="{DynamicResource item161}"/>
                 
-                <Run TextDecorations="Underline"
-                     FontWeight="Bold"
-                     Foreground="#FFED1C24"
-                     Text="{DynamicResource item162}"/>
+                    <Run TextDecorations="Underline"
+                         FontWeight="Bold"
+                         Foreground="#FFED1C24"
+                         Text="{DynamicResource item162}"/>
                     
-                <Run FontWeight="Light"
-                     Text="."/>
+                    <Run FontWeight="Light"
+                         Text="."/>
                 
-                <LineBreak/>
-                <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
                 
-                <Run FontWeight="Light"
-                     Foreground="White"
-                     Text="{DynamicResource item163}"/>
+                    <Run FontWeight="Light"
+                         Foreground="White"
+                         Text="{DynamicResource item163}"/>
                 
-                <Run TextDecorations="Underline"
-                     FontWeight="Bold"
-                     Foreground="#FFED1C24"
-                     Text="{DynamicResource item164}"/>
+                    <Run TextDecorations="Underline"
+                         FontWeight="Bold"
+                         Foreground="#FFED1C24"
+                         Text="{DynamicResource item164}"/>
                 
-                <Run FontWeight="Light"
-                     Foreground="White"
-                     Text="{DynamicResource item165}"/>
+                    <Run FontWeight="Light"
+                         Foreground="White"
+                         Text="{DynamicResource item165}"/>
                 
-                <LineBreak/>
-                <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
                 
-                <Run FontWeight="Light"
-                     Foreground="White"
-                     Text="{DynamicResource item166}"/>
+                    <Run FontWeight="Light"
+                         Foreground="White"
+                         Text="{DynamicResource item166}"/>
 
-                </TextBlock>
+                    </TextBlock>
 
-                <!-- Continue button -->
-                <Button x:Name="continueButton"
-                        Grid.Row="2"
-                        Click="ContinueButton"
-                        RenderOptions.BitmapScalingMode="Fant"
-                        Width="180"
-                        Height="38"
-                        Margin="0,0,0,10"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Foreground="White"
-                        FontFamily="Arial Black"
-                        FontSize="18"
-                        BorderThickness="0"
-                        IsEnabled="False"
-                        Content="{DynamicResource item167}"
-                        Style="{DynamicResource StandardButton}">
+                    <!-- Continue button -->
+                    <Button x:Name="continueButton"
+                            Grid.Row="2"
+                            Click="ContinueButton"
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Width="180"
+                            Height="38"
+                            Margin="0,0,0,10"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            FontFamily="Arial Black"
+                            FontSize="18"
+                            BorderThickness="0"
+                            IsEnabled="False"
+                            Content="{DynamicResource item167}"
+                            Style="{DynamicResource StandardButton}">
 
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                    </Button.Background>
-                </Button>
-            </Grid>
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Border>
         </Border>
     </Grid>
 </Window>

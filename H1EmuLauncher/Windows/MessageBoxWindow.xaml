@@ -38,9 +38,14 @@
             <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
 
+        <!-- Grainy texture -->
+        <Grid.Background>
+            <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+        </Grid.Background>
+
         <!-- Grid for logo and exit button -->
         <Grid MouseLeftButtonDown="MoveMessageBox"
-              Background="#FF2A2A32">
+              Background="Transparent">
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -100,45 +105,53 @@
                 
             </Border.Effect>
 
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="11*"/>
-                    <RowDefinition Height="auto"/>
-                </Grid.RowDefinitions>
+            <Border CornerRadius="5">
 
-                <!-- Main message box text -->
-                <TextBlock x:Name="text"
-                           Margin="25,10,25,10"
-                           Padding="0,5,0,0"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Center"
-                           Background="Transparent"
-                           Foreground="White"
-                           FontWeight="Light"
-                           TextWrapping="Wrap"
-                           TextAlignment="Center"/>
+                <!-- Grainy texture -->
+                <Border.Background>
+                    <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                </Border.Background>
 
-                <!-- Close msgbox window button -->
-                <Button Grid.Row="1"
-                        Click="OkButton"
-                        RenderOptions.BitmapScalingMode="Fant"
-                        Width="100"
-                        Height="30"
-                        Margin="0,10,0,20"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Foreground="White"
-                        FontFamily="Arial Black"
-                        FontSize="18"
-                        BorderThickness="0"
-                        Content="{DynamicResource item92}"
-                        Style="{DynamicResource StandardButton}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="11*"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
 
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                    </Button.Background>
-                </Button>
-            </Grid>
+                    <!-- Main message box text -->
+                    <TextBlock x:Name="text"
+                               Margin="25,10,25,10"
+                               Padding="0,5,0,0"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               Background="Transparent"
+                               Foreground="White"
+                               FontWeight="Light"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center"/>
+
+                    <!-- Close msgbox window button -->
+                    <Button Grid.Row="1"
+                            Click="OkButton"
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Width="100"
+                            Height="30"
+                            Margin="0,10,0,20"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Foreground="White"
+                            FontFamily="Arial Black"
+                            FontSize="18"
+                            BorderThickness="0"
+                            Content="{DynamicResource item92}"
+                            Style="{DynamicResource StandardButton}">
+
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </Border>
         </Border>
     </Grid>
 </Window>

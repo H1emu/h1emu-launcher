@@ -30,6 +30,11 @@
 
     <Grid>
         <Grid>
+            <!-- Grainy texture -->
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+            </Grid.Background>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -40,8 +45,8 @@
             </Grid.RowDefinitions>
 
             <!-- Grid for logo and exit button -->
-            <Grid Background="#FF2A2A32"
-                  MouseLeftButtonDown="AccountKeyDragWindow">
+            <Grid MouseLeftButtonDown="AccountKeyDragWindow"
+                  Background="Transparent">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -100,28 +105,35 @@
                     
                 </Border.Effect>
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
+                <Border CornerRadius="5">
 
-                    <!-- Info about account key message -->
-                    <TextBlock Margin="40,20,40,10"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               TextAlignment="Center"
-                               Foreground="White"
-                               FontSize="16"
-                               TextWrapping="Wrap"
-                               Text="{DynamicResource item156}"/>
+                    <!-- Grainy texture -->
+                    <Border.Background>
+                        <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                    </Border.Background>
+                    
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
-                    <!-- Hyperlink to obtain user authentication key -->
-                    <TextBlock Grid.Row="1"
-                               Margin="0,10,0,20"
-                               HorizontalAlignment="Center">
+                        <!-- Info about account key message -->
+                        <TextBlock Margin="40,20,40,10"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   Foreground="White"
+                                   FontSize="16"
+                                   TextWrapping="Wrap"
+                                   Text="{DynamicResource item156}"/>
+
+                        <!-- Hyperlink to obtain user authentication key -->
+                        <TextBlock Grid.Row="1"
+                                   Margin="0,10,0,20"
+                                   HorizontalAlignment="Center">
                     
                         <Hyperlink Click="UserProfileLink"
                                    Foreground="White">
@@ -142,119 +154,120 @@
                         </TextBlock.ContextMenu>
                     </TextBlock>
 
-                    <!-- Plain text box that holds account key for visibility toggle -->
-                    <TextBox x:Name="accountKeyBoxShown"
-                             Grid.Row="2"
-                             Height="35"
-                             Margin="40,10,40,10"
-                             Padding="35,0,40,0"
-                             VerticalAlignment="Center"
-                             VerticalContentAlignment="Center"
-                             FontSize="16"
-                             Visibility="Hidden"
-                             GotFocus="AccountKeyGotFocus"
-                             LostFocus="AccountKeyLostFocus"
-                             Style="{DynamicResource TextBoxPrimaryStyle}"/>
-
-                    <!-- Password box to hold account key -->
-                    <PasswordBox x:Name="accountKeyBox"
+                        <!-- Plain text box that holds account key for visibility toggle -->
+                        <TextBox x:Name="accountKeyBoxShown"
                                  Grid.Row="2"
                                  Height="35"
                                  Margin="40,10,40,10"
                                  Padding="35,0,40,0"
                                  VerticalAlignment="Center"
                                  VerticalContentAlignment="Center"
-                                 PasswordChar="●"
                                  FontSize="16"
+                                 Visibility="Hidden"
                                  GotFocus="AccountKeyGotFocus"
                                  LostFocus="AccountKeyLostFocus"
-                                 Style="{DynamicResource PasswordBoxStyle}">
+                                 Style="{DynamicResource TextBoxPrimaryStyle}"/>
 
-                        <PasswordBox.RenderTransform>
-                            <TranslateTransform x:Name="PasswordBoxTranslateTransform"/>
-                        </PasswordBox.RenderTransform>
-                    </PasswordBox>
+                        <!-- Password box to hold account key -->
+                        <PasswordBox x:Name="accountKeyBox"
+                                     Grid.Row="2"
+                                     Height="35"
+                                     Margin="40,10,40,10"
+                                     Padding="35,0,40,0"
+                                     VerticalAlignment="Center"
+                                     VerticalContentAlignment="Center"
+                                     PasswordChar="●"
+                                     FontSize="16"
+                                     GotFocus="AccountKeyGotFocus"
+                                     LostFocus="AccountKeyLostFocus"
+                                     Style="{DynamicResource PasswordBoxStyle}">
 
-                    <!-- Hint for account key textbox -->
-                    <TextBlock x:Name="accountKeyHint"
+                            <PasswordBox.RenderTransform>
+                                <TranslateTransform x:Name="PasswordBoxTranslateTransform"/>
+                            </PasswordBox.RenderTransform>
+                        </PasswordBox>
+
+                        <!-- Hint for account key textbox -->
+                        <TextBlock x:Name="accountKeyHint"
+                                   Grid.Row="2"
+                                   Height="27"
+                                   Margin="42,0,40,0"
+                                   Padding="37,4,37,0"
+                                   VerticalAlignment="Center"
+                                   IsHitTestVisible="False"
+                                   Foreground="White"
+                                   FontSize="16"
+                                   Text="{DynamicResource item154}"/>
+
+                        <!-- Key image inside of account key textbox -->
+                        <Image Source="..\Resources\AccountKey.png"
+                               RenderOptions.BitmapScalingMode="Fant"
                                Grid.Row="2"
-                               Height="27"
-                               Margin="42,0,40,0"
-                               Padding="37,4,37,0"
+                               Width="20"
+                               Height="20"
+                               Margin="50,0,0,0"
                                VerticalAlignment="Center"
-                               IsHitTestVisible="False"
-                               Foreground="White"
-                               FontSize="16"
-                               Text="{DynamicResource item154}"/>
+                               HorizontalAlignment="Left"/> 
 
-                    <!-- Key image inside of account key textbox -->
-                    <Image Source="..\Resources\AccountKey.png"
-                           RenderOptions.BitmapScalingMode="Fant"
-                           Grid.Row="2"
-                           Width="20"
-                           Height="20"
-                           Margin="50,0,0,0"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"/>
+                        <!-- Password visibility show button -->
+                        <Button x:Name="showKeyButton"
+                                Grid.Row="2"
+                                Click="ShowKey"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Width="24"
+                                Height="24"
+                                Margin="0,0,50,0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                BorderThickness="0"
+                                Style="{StaticResource ShowKeyButton}">
 
-                    <!-- Password visibility show button -->
-                    <Button x:Name="showKeyButton"
-                            Grid.Row="2"
-                            Click="ShowKey"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="24"
-                            Height="24"
-                            Margin="0,0,50,0"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            BorderThickness="0"
-                            Style="{StaticResource ShowKeyButton}">
+                            <Button.Background>
+                                <ImageBrush ImageSource="..\Resources\ShowKey.png"/>
+                            </Button.Background>
+                        </Button>
 
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\ShowKey.png"/>
-                        </Button.Background>
-                    </Button>
+                        <!-- Password visibility hide button -->
+                        <Button x:Name="hideKeyButton"
+                                Grid.Row="2"
+                                Click="HideKey"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Width="24"
+                                Height="24"
+                                Margin="0,0,50,0"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                BorderThickness="0"
+                                Visibility="Hidden"
+                                Style="{StaticResource HideKeyButton}">
 
-                    <!-- Password visibility hide button -->
-                    <Button x:Name="hideKeyButton"
-                            Grid.Row="2"
-                            Click="HideKey"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="24"
-                            Height="24"
-                            Margin="0,0,50,0"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            BorderThickness="0"
-                            Visibility="Hidden"
-                            Style="{StaticResource HideKeyButton}">
+                            <Button.Background>
+                                <ImageBrush ImageSource="..\Resources\HideKey.png"/>
+                            </Button.Background>
+                        </Button>
 
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\HideKey.png"/>
-                        </Button.Background>
-                    </Button>
+                        <!-- Close account key window button -->
+                        <Button Grid.Row="3"
+                                Click="OkCloseAccountKeyWindow"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Width="100"
+                                Height="30"
+                                Margin="0,20,0,20"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Center"
+                                Foreground="White"
+                                FontFamily="Arial Black"
+                                FontSize="18"
+                                BorderThickness="0"
+                                Content="{DynamicResource item92}"
+                                Style="{DynamicResource StandardButton}">
 
-                    <!-- Close account key window button -->
-                    <Button Grid.Row="3"
-                            Click="OkCloseAccountKeyWindow"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="100"
-                            Height="30"
-                            Margin="0,20,0,20"
-                            VerticalAlignment="Top"
-                            HorizontalAlignment="Center"
-                            Foreground="White"
-                            FontFamily="Arial Black"
-                            FontSize="18"
-                            BorderThickness="0"
-                            Content="{DynamicResource item92}"
-                            Style="{DynamicResource StandardButton}">
-
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                        </Button.Background>
-                    </Button>
-                </Grid>
+                            <Button.Background>
+                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                </Border>
             </Border>
         </Grid>
     </Grid>

@@ -57,6 +57,7 @@
     <None Remove="Resources\Folder_Pressed.png" />
     <None Remove="Resources\Game-Patch-2015.zip" />
     <None Remove="Resources\Game-Patch-2016.zip" />
+    <None Remove="Resources\Grain.png" />
     <None Remove="Resources\H1EmuIcon.png" />
     <None Remove="Resources\H1EmuLogo.png" />
     <None Remove="Resources\HideKey.png" />
@@ -245,6 +246,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Game-Patch-2016.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Grain.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\H1EmuIcon.png">

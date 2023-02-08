@@ -33,6 +33,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
+        <!-- Grainy texture -->
+        <Grid.Background>
+            <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+        </Grid.Background>
+
         <!-- Divider / progress bar -->
         <ProgressBar Grid.Row="1"
                      Height="2"

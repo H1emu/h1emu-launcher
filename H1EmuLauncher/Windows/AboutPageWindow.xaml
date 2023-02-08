@@ -29,6 +29,10 @@
 
     <Grid>
         <Grid>
+            <!-- Grainy texture -->
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+            </Grid.Background>
             
             <!-- About page blur on unfocus -->
             <Grid.Effect>
@@ -49,7 +53,7 @@
 
             <!-- Grid for logo and exit button -->
             <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown"
-                  Background="#FF2A2A32">
+                  Background="Transparent">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -108,213 +112,221 @@
                     
                 </Border.Effect>
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                <Border CornerRadius="5">
+                    
+                    <!-- Grainy texture -->
+                    <Border.Background>
+                        <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                    </Border.Background>
+                    
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                    <!-- List of everyone who helped on the project -->
-                    <RichTextBox Margin="25,25,25,25"
-                                 Width="600"
-                                 Background="Transparent"
-                                 Foreground="White"
-                                 BorderThickness="0"
-                                 IsReadOnly="True"
-                                 Cursor="Arrow">
+                        <!-- List of everyone who helped on the project -->
+                        <RichTextBox Margin="25,25,25,25"
+                                     Width="600"
+                                     Background="Transparent"
+                                     Foreground="White"
+                                     BorderThickness="0"
+                                     IsReadOnly="True"
+                                     Cursor="Arrow">
 
-                        <FlowDocument>
-                            <Paragraph TextAlignment="Center"
-                                       FontSize="20"
-                                       Foreground="#FFED1C24"
-                                       FontWeight="Light">
+                            <FlowDocument>
+                                <Paragraph TextAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#FFED1C24"
+                                           FontWeight="Light">
 
-                                <!-- Lead development-->
-                                <TextBlock TextDecorations="Underline"
-                                           TextWrapping="Wrap"
-                                           Text="{DynamicResource item126}"/>
-                                
-                            </Paragraph>
+                                    <!-- Lead development-->
+                                    <TextBlock TextDecorations="Underline"
+                                               TextWrapping="Wrap"
+                                               Text="{DynamicResource item126}"/>
 
-                            <Paragraph TextAlignment="Center"
-                                       FontSize="18"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                • Kentin • Meme •
+                                <Paragraph TextAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    • Kentin • Meme •
 
-                            <Paragraph Margin="0,50,0,0"
-                                       TextAlignment="Center"
-                                       FontSize="20"
-                                       Foreground="#FFED1C24"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                <!-- Co-development -->
-                                <TextBlock TextDecorations="Underline"
-                                           TextWrapping="Wrap"
-                                           Text="{DynamicResource item127}"/>
+                                <Paragraph Margin="0,50,0,0"
+                                           TextAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#FFED1C24"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    <!-- Co-development -->
+                                    <TextBlock TextDecorations="Underline"
+                                               TextWrapping="Wrap"
+                                               Text="{DynamicResource item127}"/>
 
-                            <Paragraph TextAlignment="Center"
-                                       FontSize="18"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                • Avcio • HaxMax •
+                                <Paragraph TextAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    • Avcio • HaxMax •
 
-                            <Paragraph Margin="0,50,0,0"
-                                       TextAlignment="Center"
-                                       FontSize="20"
-                                       Foreground="#FFED1C24"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                <!-- Administrators -->
-                                <TextBlock TextDecorations="Underline"
-                                           TextWrapping="Wrap"
-                                           Text="{DynamicResource item128}"/>
+                                <Paragraph Margin="0,50,0,0"
+                                           TextAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#FFED1C24"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    <!-- Administrators -->
+                                    <TextBlock TextDecorations="Underline"
+                                               TextWrapping="Wrap"
+                                               Text="{DynamicResource item128}"/>
 
-                            <Paragraph TextAlignment="Center"
-                                       FontSize="18"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                • Kentin • LcplReaper • Traqnar • Meme •
+                                <Paragraph TextAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    • Kentin • LcplReaper • Traqnar • Meme •
 
-                            <Paragraph Margin="0,50,0,0"
-                                       TextAlignment="Center"
-                                       FontSize="20"
-                                       Foreground="#FFED1C24"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                <!-- Contributors -->
-                                <TextBlock TextDecorations="Underline"
-                                           TextWrapping="Wrap"
-                                           Text="{DynamicResource item129}"/>
+                                <Paragraph Margin="0,50,0,0"
+                                           TextAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#FFED1C24"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    <!-- Contributors -->
+                                    <TextBlock TextDecorations="Underline"
+                                               TextWrapping="Wrap"
+                                               Text="{DynamicResource item129}"/>
 
-                            <Paragraph TextAlignment="Center"
-                                       FontSize="18"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                • Eavilaswayce • Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo • doggo • Ghost • 余科辰 •
+                                <Paragraph TextAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    • Eavilaswayce • Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo • doggo • Ghost • 余科辰 •
 
-                            <Paragraph Margin="0,50,0,0"
-                                       TextAlignment="Center"
-                                       FontSize="20"
-                                       Foreground="#FFED1C24"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                <!-- Moderators -->
-                                <TextBlock TextDecorations="Underline"
-                                           TextWrapping="Wrap"
-                                           Text="{DynamicResource item130}"/>
+                                <Paragraph Margin="0,50,0,0"
+                                           TextAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#FFED1C24"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    <!-- Moderators -->
+                                    <TextBlock TextDecorations="Underline"
+                                               TextWrapping="Wrap"
+                                               Text="{DynamicResource item130}"/>
 
-                            <Paragraph TextAlignment="Center"
-                                       FontSize="18"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                • Meme • Chrisisbrown • Cur7 • Movezie • Skoz •
+                                <Paragraph TextAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    • Meme • Chrisisbrown • Cur7 • Movezie • Skoz •
 
-                            <Paragraph Margin="0,50,0,0"
-                                       TextAlignment="Center"
-                                       FontSize="20"
-                                       Foreground="#FFED1C24"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                <!-- Support -->
-                                <TextBlock TextDecorations="Underline"
-                                           TextWrapping="Wrap"
-                                           Text="{DynamicResource item131}"/>
+                                <Paragraph Margin="0,50,0,0"
+                                           TextAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#FFED1C24"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    <!-- Support -->
+                                    <TextBlock TextDecorations="Underline"
+                                               TextWrapping="Wrap"
+                                               Text="{DynamicResource item131}"/>
 
-                            <Paragraph TextAlignment="Center"
-                                       FontSize="18"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                • rob138us • Dave • Booze (Orphanfeast87) •
+                                <Paragraph TextAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    • rob138us • Dave • Booze (Orphanfeast87) •
 
-                            <Paragraph Margin="0,50,0,0"
-                                       TextAlignment="Center"
-                                       FontSize="20"
-                                       Foreground="#FFED1C24"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                <!-- Translators -->
-                                <TextBlock TextDecorations="Underline"
-                                           TextWrapping="Wrap"
-                                           Text="{DynamicResource item136}"/>
+                                <Paragraph Margin="0,50,0,0"
+                                           TextAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#FFED1C24"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    <!-- Translators -->
+                                    <TextBlock TextDecorations="Underline"
+                                               TextWrapping="Wrap"
+                                               Text="{DynamicResource item136}"/>
 
-                            <Paragraph TextAlignment="Center"
-                                       FontSize="18"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                • YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) •
+                                <Paragraph TextAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    • YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) •
 
-                            <Paragraph Margin="0,50,0,0"
-                                       TextAlignment="Center"
-                                       FontSize="20"
-                                       Foreground="#FFED1C24"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                <!-- Financial contributors -->
-                                <TextBlock TextDecorations="Underline"
-                                           TextWrapping="Wrap"
-                                           Text="{DynamicResource item170}"/>
+                                <Paragraph Margin="0,50,0,0"
+                                           TextAlignment="Center"
+                                           FontSize="20"
+                                           Foreground="#FFED1C24"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    <!-- Financial contributors -->
+                                    <TextBlock TextDecorations="Underline"
+                                               TextWrapping="Wrap"
+                                               Text="{DynamicResource item170}"/>
 
-                            <Paragraph TextAlignment="Center"
-                                       FontSize="18"
-                                       FontWeight="Light">
+                                </Paragraph>
 
-                                • Booze (Orphanfeast87) • Mahoaga • TimmyFPS • LegalViewbot • remapz • Christer D • A Mad Midget • Twin •
+                                <Paragraph TextAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Light">
 
-                            </Paragraph>
+                                    • Booze (Orphanfeast87) • Mahoaga • TimmyFPS • LegalViewbot • remapz • Christer D • A Mad Midget • Twin •
 
-                            <Paragraph Margin="0,60,0,0"
-                                       TextAlignment="Center"
-                                       FontSize="18"
-                                       FontWeight="Light">
-                                
-                                <!-- Special thanks -->
-                                <TextBlock TextDecorations="Underline"
-                                           TextWrapping="Wrap"
-                                           Text="{DynamicResource item132}"/>
+                                </Paragraph>
 
-                            </Paragraph>
+                                <Paragraph Margin="0,60,0,0"
+                                           TextAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Light">
 
-                            <Paragraph Margin="0,100,0,0"
-                                       TextAlignment="Center"
-                                       FontSize="18"
-                                       FontWeight="Light">
+                                    <!-- Special thanks -->
+                                    <TextBlock TextDecorations="Underline"
+                                               TextWrapping="Wrap"
+                                               Text="{DynamicResource item132}"/>
 
-                                <!-- Launcher made by Eavilaswayce -->
-                                <TextBlock TextWrapping="Wrap"
-                                           Text="{DynamicResource item169}"/>
+                                </Paragraph>
 
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
-                </Grid>
+                                <Paragraph Margin="0,100,0,0"
+                                           TextAlignment="Center"
+                                           FontSize="18"
+                                           FontWeight="Light">
+
+                                    <!-- Launcher made by Eavilaswayce -->
+                                    <TextBlock TextWrapping="Wrap"
+                                               Text="{DynamicResource item169}"/>
+
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+                    </Grid>
+                </Border>
             </Border>
         </Grid>
 

@@ -30,6 +30,10 @@
 
     <Grid>
         <Grid>
+            <!-- Grainy texture -->
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+            </Grid.Background>
 
             <!-- Report bug window blur on unfocus -->
             <Grid.Effect>
@@ -50,7 +54,7 @@
 
             <!-- Grid for logo and exit button -->
             <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown"
-                  Background="#FF2A2A32">
+                  Background="Transparent">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -108,27 +112,34 @@
                                       ShadowDepth="1"/>
                 </Border.Effect>
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                <Border CornerRadius="5">
+                    
+                    <!-- Grainy texture -->
+                    <Border.Background>
+                        <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                    </Border.Background>
 
-                    <!-- Report a bug about the server message -->
-                    <TextBlock Text="{DynamicResource item174}"
-                               TextWrapping="Wrap"
-                               Foreground="White"
-                               TextAlignment="Center"
-                               VerticalAlignment="Center"
-                               Width="600"/>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                    <!-- Hyperlink to report a bug about the server -->
-                    <TextBlock VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               Grid.Row="1">
+                        <!-- Report a bug about the server message -->
+                        <TextBlock Text="{DynamicResource item174}"
+                                   TextWrapping="Wrap"
+                                   Foreground="White"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Width="600"/>
+
+                        <!-- Hyperlink to report a bug about the server -->
+                        <TextBlock VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Grid.Row="1">
                     
                         <Hyperlink Click="ReportBugGithubServer"
                                    Foreground="White">
@@ -199,7 +210,8 @@
                             </ContextMenu>
                         </TextBlock.ContextMenu>
                     </TextBlock>
-                </Grid>
+                    </Grid>
+                </Border>
             </Border>
         </Grid>
 

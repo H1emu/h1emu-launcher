@@ -36,7 +36,7 @@ namespace H1EmuLauncher
             Close();
         }
 
-        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ConfirmBoxMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
