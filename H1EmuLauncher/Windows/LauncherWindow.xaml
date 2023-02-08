@@ -165,18 +165,18 @@
                                           SelectionChanged="LanguageSelectionChanged"
                                           Style="{DynamicResource ComboBox}">
 
-                                    <ComboBoxItem Content="English"/>
-                                    <ComboBoxItem Content="Chinese"/>
-                                    <ComboBoxItem Content="Croatian"/>
-                                    <ComboBoxItem Content="French"/>
-                                    <ComboBoxItem Content="Turkish"/>
-                                    <ComboBoxItem Content="Polish"/>
-                                    <ComboBoxItem Content="Russian"/>
-                                    <ComboBoxItem Content="Dutch"/>
-                                    <ComboBoxItem Content="Bulgarian"/>
-                                    <ComboBoxItem Content="German"/>
-                                    <ComboBoxItem Content="Portuguese"/>
-                                    <ComboBoxItem Content="Spanish"/>
+                                    <ComboBoxItem Content="English" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <ComboBoxItem Content="Chinese" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <ComboBoxItem Content="Croatian" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <ComboBoxItem Content="French" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <ComboBoxItem Content="Turkish" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <ComboBoxItem Content="Polish" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <ComboBoxItem Content="Russian" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <ComboBoxItem Content="Dutch" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <ComboBoxItem Content="Bulgarian" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <ComboBoxItem Content="German" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <ComboBoxItem Content="Portuguese" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <ComboBoxItem Content="Spanish" Style="{DynamicResource ComboBoxItemStyle}"/>
                                 </ComboBox>
 
                                 <Image Source="..\Resources\Language.png"
@@ -402,32 +402,32 @@
 
                                     <!-- Next image button -->
                                     <Button x:Name="nextImage"
-                                        Click="NextImageClick"
-                                        Width="30"
-                                        HorizontalAlignment="Right"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        Visibility="Hidden"
-                                        Style="{DynamicResource CarouselButtonNext}"/>
+                                            Click="NextImageClick"
+                                            Width="30"
+                                            HorizontalAlignment="Right"
+                                            BorderThickness="0"
+                                            Foreground="White"
+                                            Visibility="Hidden"
+                                            Style="{DynamicResource CarouselButtonNext}"/>
 
                                     <!-- Previous image button -->
                                     <Button x:Name="prevImage"
-                                        Click="PrevImageClick"
-                                        Width="30"
-                                        HorizontalAlignment="Left"
-                                        BorderThickness="0"
-                                        Foreground="White"
-                                        Visibility="Hidden"
-                                        Style="{DynamicResource CarouselButtonPrevious}"/>
+                                            Click="PrevImageClick"
+                                            Width="30"
+                                            HorizontalAlignment="Left"
+                                            BorderThickness="0"
+                                            Foreground="White"
+                                            Visibility="Hidden"
+                                            Style="{DynamicResource CarouselButtonPrevious}"/>
 
                                     <!-- Image carousel progress bar -->
                                     <ProgressBar x:Name="carouselProgressBar"
-                                             Height="5"
-                                             VerticalAlignment="Bottom"
-                                             BorderThickness="0"
-                                             Background="Transparent"
-                                             Foreground="#DB111C"
-                                             Maximum="3000"/>
+                                                 Height="5"
+                                                 VerticalAlignment="Bottom"
+                                                 BorderThickness="0"
+                                                 Background="Transparent"
+                                                 Foreground="#DB111C"
+                                                 Maximum="3000"/>
                                 </Grid>
                             </Grid>
                         </Grid>
@@ -435,57 +435,51 @@
                         <!-- Update version information -->
                         <StackPanel Margin="25,10,12,0">
                             <RichTextBox x:Name="titleUpdate"
-                                     Background="Transparent"
-                                     Foreground="White"
-                                     BorderThickness="0"
-                                     IsReadOnly="True"
-                                     Cursor="Arrow">
+                                         Background="Transparent"
+                                         Foreground="White"
+                                         BorderThickness="0"
+                                         IsReadOnly="True"
+                                         Cursor="Arrow">
 
                                 <FlowDocument>
                                     <Paragraph FontSize="32"
-                                           FontWeight="Bold"
-                                           FontFamily="{DynamicResource Signika}">
+                                               FontWeight="Bold"
+                                               FontFamily="{DynamicResource Signika}">
 
                                         <!-- Version text -->
                                         <Run x:Name="titleUpdateText"
-                                         Foreground="#FFED1C24"
-                                         FontSize="44"
-                                         Text="{DynamicResource item3}"/>
+                                             Foreground="#FFED1C24"
+                                             FontSize="44"
+                                             Text="{DynamicResource item3}"/>
 
                                         <!-- Update version number -->
                                         <Run x:Name="updateVersion"
-                                         Foreground="#FFED1C24"
-                                         FontSize="44"/>
+                                             Foreground="#FFED1C24"
+                                             FontSize="44"/>
 
                                         <!-- Date version was published -->
                                         <Run x:Name="datePublished"
-                                         FontFamily="Bahnschrift Light"
-                                         FontSize="16"/>
+                                             FontFamily="Bahnschrift Light"
+                                             FontSize="16"/>
 
                                     </Paragraph>
                                 </FlowDocument>
                             </RichTextBox>
 
-                            <!-- To allow scrolling on touch device -->
-                            <ScrollViewer PanningMode="Both"
-                                  VerticalScrollBarVisibility="Hidden">
-
-                                <!-- Patch notes textbox -->
-                                <RichTextBox x:Name="patchNotesBox"
-                                         Height="96"
-                                         Margin="0,10,0,0"
-                                         Background="Transparent"
-                                         Foreground="White"
-                                         FontWeight="Light"
-                                         BorderThickness="0"
-                                         IsReadOnly="True"
-                                         Cursor="Arrow"/>
-
-                            </ScrollViewer>
+                            <!-- Patch notes textbox -->
+                            <RichTextBox x:Name="patchNotesBox"
+                                             Height="96"
+                                             Margin="0,10,0,0"
+                                             Background="Transparent"
+                                             Foreground="White"
+                                             FontWeight="Light"
+                                             BorderThickness="0"
+                                             IsReadOnly="True"
+                                             Cursor="Arrow"/>
 
                             <!-- Read full details of update hyperlink -->
                             <TextBlock Margin="6,22,0,0"
-                                   FontWeight="Light">
+                                       FontWeight="Light">
                             
                             <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/"
                                        RequestNavigate="FullUpdatesHyperlink"
@@ -517,10 +511,10 @@
                             <!-- You must own the game in order to download message -->
                             <StackPanel Margin="12,20,30,0">
                                 <TextBlock Background="Transparent"
-                                       Foreground="White"
-                                       FontWeight="Light"
-                                       Cursor="Arrow"
-                                       TextWrapping="Wrap">
+                                           Foreground="White"
+                                           FontWeight="Light"
+                                           Cursor="Arrow"
+                                           TextWrapping="Wrap">
 
                                 <Run Foreground="#FFCA1420"
                                      Text="{DynamicResource item10}"/>                               
@@ -533,12 +527,12 @@
 
                                 <!-- H1Emu Chinese Community link -->
                                 <TextBlock Margin="6,46,0,0"
-                                       x:Name="chineseLink"
-                                       Visibility="Collapsed"
-                                       FontFamily="Bahnschrift"
-                                       Text="点击进入 "
-                                       Foreground="White"
-                                       FontWeight="Bold">
+                                           x:Name="chineseLink"
+                                           Visibility="Collapsed"
+                                           FontFamily="Bahnschrift"
+                                           Text="点击进入 "
+                                           Foreground="White"
+                                           FontWeight="Bold">
                             
                                 <Hyperlink NavigateUri="https://azaz.ge/"
                                            RequestNavigate="H1EmuChineseLink"
@@ -555,10 +549,9 @@
                                 <!-- Context menu to copy link -->
                                 <TextBlock.ContextMenu>
                                     <ContextMenu>
-                                        <MenuItem
-                                            Header="Copy"
-                                            Click="chineseLinkCopy"
-                                            Style="{DynamicResource PopupMenuItem}"/>
+                                        <MenuItem Header="Copy"
+                                                  Click="chineseLinkCopy"
+                                                  Style="{DynamicResource PopupMenuItem}"/>
                                 
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>  
@@ -573,17 +566,17 @@
 
                                 <!-- Steam frame -->
                                 <Frame x:Name="steamFramePanel"
-                                   Margin="20,0,30,0"
-                                   VerticalAlignment="Top"
-                                   Source="..\SteamFrame\Login.xaml"
-                                   NavigationUIVisibility="Hidden"
-                                   VerticalContentAlignment="Top"
-                                   Padding="0" Height="140"
-                                   f:DisableFrameNavigation.Disable="True"/>
+                                       Margin="20,0,30,0"
+                                       VerticalAlignment="Top"
+                                       Source="..\SteamFrame\Login.xaml"
+                                       NavigationUIVisibility="Hidden"
+                                       VerticalContentAlignment="Top"
+                                       Padding="0" Height="140"
+                                       f:DisableFrameNavigation.Disable="True"/>
                             </Grid>
 
                             <Grid Grid.Row="1"
-                              Margin="12,0,30,25">
+                                  Margin="12,0,30,25">
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -596,71 +589,72 @@
 
                                 <!-- Divider -->
                                 <Border Height="1"
-                                    Background="#FFCA1420"
-                                    VerticalAlignment="Bottom"
-                                    Margin="7,0,0,75"
-                                    CornerRadius="20"
-                                    Grid.ColumnSpan="2"
-                                    RenderOptions.BitmapScalingMode="Fant">
+                                        Background="#FFCA1420"
+                                        VerticalAlignment="Bottom"
+                                        Margin="7,0,0,75"
+                                        CornerRadius="20"
+                                        Grid.ColumnSpan="2"
+                                        RenderOptions.BitmapScalingMode="Fant">
 
                                     <!-- Drop shadow effect -->
                                     <Border.Effect>
                                         <DropShadowEffect BlurRadius="8"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="1"/>
+                                                          Direction="-90"
+                                                          RenderingBias="Quality"
+                                                          ShadowDepth="1"/>
 
                                     </Border.Effect>
                                 </Border>
 
                                 <!-- Server selector combobox -->
                                 <ComboBox x:Name="serverSelector"
-                                      Height="35"
-                                      Margin="7,0,3,5"
-                                      Padding="38,8,15,0"
-                                      VerticalAlignment="Bottom"
-                                      Foreground="White"
-                                      FontWeight="Light"
-                                      BorderThickness="2"
-                                      SelectionChanged="ServerSelectorChanged"
-                                      Style="{DynamicResource ComboBox}">
+                                          Height="35"
+                                          Margin="7,0,3,5"
+                                          Padding="38,8,15,0"
+                                          VerticalAlignment="Bottom"
+                                          Foreground="White"
+                                          FontWeight="Light"
+                                          BorderThickness="2"
+                                          SelectionChanged="ServerSelectorChanged"
+                                          Style="{DynamicResource ComboBox}">
 
 
                                     <ComboBoxItem Content="{DynamicResource item139}"
-                                              Style="{DynamicResource ComboBoxItemStyle}">
+                                                  Style="{DynamicResource ComboBoxItemStyle}">
                                     </ComboBoxItem>
                                     <ComboBoxItem Content="{DynamicResource item140}"
-                                              Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <Separator/>
+                                                  Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    <Separator Background="#444444"/>
                                     <ComboBoxItem x:Name="newServer"
-                                              Content="{DynamicResource item141}"
-                                              PreviewMouseLeftButtonUp="AddNewServer"
-                                              Style="{DynamicResource ComboBoxItemStyle}"/>
+                                                  Content="{DynamicResource item141}"
+                                                  PreviewMouseLeftButtonUp="AddNewServer"
+                                                  Style="{DynamicResource ComboBoxItemStyle}"/>
                                 </ComboBox>
 
                                 <!-- Server selector icon -->
                                 <Image Source="..\Resources\Server.png"
-                                   RenderOptions.BitmapScalingMode="Fant"
-                                   Width="20"
-                                   Height="20"
-                                   Margin="17,0,0,13"
-                                   VerticalAlignment="Bottom"
-                                   HorizontalAlignment="Left"/>
+                                       RenderOptions.BitmapScalingMode="Fant"
+                                       Width="20"
+                                       Height="20"
+                                       Margin="17,0,0,13"
+                                       VerticalAlignment="Bottom"
+                                       HorizontalAlignment="Left"
+                                       IsHitTestVisible="False"/>
 
                                 <!-- Play button -->
                                 <Button x:Name="playButton"
-                                    Grid.Column="1"
-                                    Click="LaunchClient"
-                                    RenderOptions.BitmapScalingMode="Fant"
-                                    Height="45"
-                                    Margin="12,0,0,0"
-                                    VerticalAlignment="Bottom"
-                                    Foreground="White"
-                                    FontFamily="Arial Black"
-                                    FontSize="28"
-                                    BorderThickness="0"
-                                    Content="{DynamicResource item8}"
-                                    Style="{DynamicResource StandardButton}">
+                                        Grid.Column="1"
+                                        Click="LaunchClient"
+                                        RenderOptions.BitmapScalingMode="Fant"
+                                        Height="45"
+                                        Margin="12,0,0,0"
+                                        VerticalAlignment="Bottom"
+                                        Foreground="White"
+                                        FontFamily="Arial Black"
+                                        FontSize="28"
+                                        BorderThickness="0"
+                                        Content="{DynamicResource item8}"
+                                        Style="{DynamicResource StandardButton}">
 
                                     <Button.Background>
                                         <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
