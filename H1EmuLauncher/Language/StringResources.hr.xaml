@@ -14,6 +14,7 @@
     <system:String x:Key="item13">Pogreška pri pokretanju igrice:</system:String>
     <system:String x:Key="item14">Igra nije pronađena u navedenom direktoriju.</system:String>
     <system:String x:Key="item15">Morate posjedovati H1Z1: Just Survive na svom Steam računu kako biste preuzeli.</system:String>
+    <system:String x:Key="item16">Došlo je do jedne ili više grešaka:</system:String>
     <system:String x:Key="item17">Pogreška pri povezivanju sa Steam računom:</system:String>
     <system:String x:Key="item18">DODATI</system:String>
     <system:String x:Key="item19">Obavezno ispunite polje Auth Code.</system:String>
@@ -42,7 +43,9 @@
     <system:String x:Key="item46">Kliknite ovdje za preuzimanje najnovije verzije servera.</system:String>
     <system:String x:Key="item47">Kliknite ovdje za preuzimanje najnovije stabilne verzije servera.</system:String>
     <system:String x:Key="item48">Traženje nove verzije...</system:String>
+    <system:String x:Key="item49">Neke informacije možda nedostaju.</system:String>
     <system:String x:Key="item50">Nakon prijave Steam računom, provjerite da vaš e-mail ima mogućnost primanja 2-Auth koda.</system:String>
+    <system:String x:Key="item51">Odaberite mapu u koju želite preuzeti igru.</system:String>
     <system:String x:Key="item52">Nemate instalirane datoteke servera.\n\nInstalirajte ih odlaskom u Postavke.</system:String>
     <system:String x:Key="item53">Pogreška pri pokretanju servera:</system:String>
     <system:String x:Key="item54">Preuzimanje...</system:String>
@@ -93,7 +96,7 @@
     <system:String x:Key="item116">Raspakiravanje datoteka servera...</system:String>
     <system:String x:Key="item118">Raspakiravanje node datotka...</system:String>
     <system:String x:Key="item120">Molim vas zatvorite H1Z1.</system:String>
-    <system:String x:Key="item121">H1Z1.exe je trenutno u korištenju.\n\nZatvorite bilo koju inačicu H1Z1.</system:String>
+    <system:String x:Key="item121">H1Z1.exe je trenutno u korištenju.\n\nZatvorite sve otvorene instance H1Z1.</system:String>
     <system:String x:Key="item122">Trenutna verzija igre:</system:String>
     <system:String x:Key="item124">Verzija launchera v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
@@ -108,7 +111,7 @@
     <system:String x:Key="item134">NE</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
     <system:String x:Key="item136">Prevoditelji</system:String>
-    <system:String x:Key="item137">\n\n(Da li imate ostvarenu internet vezu?)</system:String>
+    <system:String x:Key="item137">(Da li imate ostvarenu internet vezu?)</system:String>
     <system:String x:Key="item138">\n\n(Datoteke neće biti izbrisane)</system:String>
     <system:String x:Key="item139">H1Emu Server</system:String>
     <system:String x:Key="item140">Igraj sam</system:String>
@@ -155,4 +158,5 @@
     <system:String x:Key="item182">Nepoznati kod odgovora tijekom provjere valjanosti vašeg ključa računa:</system:String>
     <system:String x:Key="item183">Došlo je do pogreške pri validaciji vašeg ključa računa:</system:String>
     <system:String x:Key="item184">Došlo je do pogreške prilikom učitavanja popisa servera:</system:String>
+    <system:String x:Key="item185">Skripta za instalaciju poslužitelja rano se i neočekivano zatvorila.</system:String>
 </ResourceDictionary>

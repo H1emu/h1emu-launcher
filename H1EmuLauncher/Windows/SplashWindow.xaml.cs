@@ -1,6 +1,6 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
@@ -12,6 +12,7 @@ namespace H1EmuLauncher
             InitializeComponent();
 
             // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
@@ -20,9 +21,26 @@ namespace H1EmuLauncher
             DragMove();
         }
 
-        private void SplashScreenActivated(object sender, EventArgs e)
+        public bool IsCompleted = false;
+
+        private void SplashScreenClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            SizeToContent = SizeToContent.Manual;
+            if (!IsCompleted)
+            {
+                e.Cancel = true;
+                Storyboard sb = FindResource("CloseSplashScreen") as Storyboard;
+
+                if (sb != null)
+                {
+                    sb.Completed += (s, _) =>
+                    {
+                        IsCompleted = true;
+                        Close();
+                    };
+
+                    sb.Begin();
+                }
+            }
         }
     }
 }

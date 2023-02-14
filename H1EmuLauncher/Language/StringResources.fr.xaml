@@ -14,6 +14,7 @@
     <system:String x:Key="item13">Erreur au lancement du jeu :</system:String>
     <system:String x:Key="item14">Jeu introuvable dans le répertoire spécifié.</system:String>
     <system:String x:Key="item15">Vous devez posséder H1Z1: Just Survive sur votre compte Steam pour pouvoir télécharger.</system:String>
+    <system:String x:Key="item16">Une ou plusieurs erreurs se sont produites:</system:String>
     <system:String x:Key="item17">Impossible de se connecter à Steam :</system:String>
     <system:String x:Key="item18">AJOUTER</system:String>
     <system:String x:Key="item19">Assurez-vous de remplir la case Code d'authentification.</system:String>
@@ -42,7 +43,9 @@
     <system:String x:Key="item46">Cliquez ici pour télécharger la dernière version du serveur.</system:String>
     <system:String x:Key="item47">Cliquez ici pour télécharger la dernière version stable du serveur.</system:String>
     <system:String x:Key="item48">Vérification des mises à jour...</system:String>
+    <system:String x:Key="item49">Certaines informations peuvent être manquantes.</system:String>
     <system:String x:Key="item50">Veuillez vous assurer que vos emails sont ouverts pour le code 2-Auth après vous être connecté à votre compte Steam.</system:String>
+    <system:String x:Key="item51">Sélectionnez un dossier dans lequel vous souhaitez télécharger le jeu.</system:String>
     <system:String x:Key="item52">Vous ne semblez pas avoir installé les fichiers du serveur.\n\nInstall Installez-les dans le menu Paramètres.</system:String>
     <system:String x:Key="item53">Erreur de lancement du serveur:</system:String>
     <system:String x:Key="item54">Téléchargement en cours...</system:String>
@@ -93,7 +96,7 @@
     <system:String x:Key="item116">Décompression des fichiers du serveur...</system:String>
     <system:String x:Key="item118">Décompression des fichiers de nœuds...</system:String>
     <system:String x:Key="item120">Veuillez fermer H1Z1.</system:String>
-    <system:String x:Key="item121">H1Z1.exe est actuellement en cours d'utilisation.\n\nVeuillez fermez toutes applications d'H1Z1 en cours d'utilisations.</system:String>
+    <system:String x:Key="item121">H1Z1.exe est actuellement en cours d'utilisation.\n\nVeuillez fermer toutes les instances ouvertes de H1Z1.</system:String>
     <system:String x:Key="item122">Version actuelle du jeu:</system:String>
     <system:String x:Key="item124">Version du launcher v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
@@ -108,7 +111,7 @@
     <system:String x:Key="item134">NON</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
     <system:String x:Key="item136">Traducteurs</system:String>
-    <system:String x:Key="item137">\n\n(Êtes-vous connecté à l'internet?)</system:String>
+    <system:String x:Key="item137">(Êtes-vous connecté à l'internet?)</system:String>
     <system:String x:Key="item138">\n\n(Les fichiers ne seront pas supprimés)</system:String>
     <system:String x:Key="item139">Serveur H1Emu</system:String>
     <system:String x:Key="item140">Joueur unique</system:String>
@@ -155,4 +158,5 @@
     <system:String x:Key="item182">Code de réponse inconnu lors de la vérification de la validité de votre clé de compte:</system:String>
     <system:String x:Key="item183">Une erreur s'est produite lors de la validation de votre clé de compte:</system:String>
     <system:String x:Key="item184">Une erreur s'est produite lors du chargement de la liste des serveurs:</system:String>
+    <system:String x:Key="item185">Le script d'installation du serveur s'est fermé tôt et de manière inattendue.</system:String>
 </ResourceDictionary>

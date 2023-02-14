@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
@@ -10,6 +11,8 @@ namespace H1EmuLauncher
     public partial class AddServerWindow : Window
     {
         public static AddServerWindow addServerInstance;
+        public Storyboard UnfocusPropertiesAnimationShow;
+        public Storyboard UnfocusPropertiesAnimationHide;
 
         public AddServerWindow()
         {
@@ -17,13 +20,17 @@ namespace H1EmuLauncher
             addServerInstance = this;
             Owner = LauncherWindow.launcherInstance;
 
+            UnfocusPropertiesAnimationShow = FindResource("UnfocusPropertiesShow") as Storyboard;
+            UnfocusPropertiesAnimationHide = FindResource("UnfocusPropertiesHide") as Storyboard;
+
             // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
         private void AddServerTopBar(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
         private void ServerIpBoxKeyDown(object sender, KeyEventArgs e)
@@ -39,13 +46,13 @@ namespace H1EmuLauncher
         {
             if (string.IsNullOrEmpty(serverNameBox.Text) || string.IsNullOrEmpty(serverIpBox.Text))
             {
-                CustomMessageBox.Show(FindResource("item151").ToString());
+                CustomMessageBox.Show(FindResource("item151").ToString(), this);
                 return;
             }
 
             if (serverNameBox.Text.Trim() == FindResource("item139").ToString() || serverNameBox.Text.Trim() == FindResource("item140").ToString() || serverNameBox.Text.Trim() == FindResource("item141").ToString())
             {
-                CustomMessageBox.Show(FindResource("item143").ToString());
+                CustomMessageBox.Show(FindResource("item143").ToString(), this);
                 return;
             }
 
@@ -55,28 +62,28 @@ namespace H1EmuLauncher
             {
                 if (item.SName == serverNameBox.Text.Trim())
                 {
-                    CustomMessageBox.Show(FindResource("item143").ToString());
+                    CustomMessageBox.Show(FindResource("item143").ToString(), this);
                     return;
                 }
             }
 
             CustomMessageBox.result = true;
-            this.Topmost = true;
-            this.Close();
+            Topmost = true;
+            Close();
         }
 
-        private void CloseAddServerMenu(object sender, RoutedEventArgs e)
+        private void CloseAddServer(object sender, RoutedEventArgs e)
         {
             CustomMessageBox.result = false;
-            this.Topmost = true;
-            this.Close();
+            Topmost = true;
+            Close();
         }
 
         private void CancelButton(object sender, RoutedEventArgs e)
         {
             CustomMessageBox.result = false;
-            this.Topmost = true;
-            this.Close();
+            Topmost = true;
+            Close();
         }
 
         private void ServerNameGotFocus(object sender, RoutedEventArgs e)
@@ -101,22 +108,33 @@ namespace H1EmuLauncher
                 serverIpHint.Visibility = Visibility.Visible;
         }
 
-        private void AddServerMenuLoaded(object sender, RoutedEventArgs e)
+        private void AddServerLoaded(object sender, RoutedEventArgs e)
         {
-            LauncherWindow.launcherInstance.launcherBlur.Radius = 15;
-            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Visible;
+            LauncherWindow.launcherInstance.UnfocusPropertiesAnimationShow.Begin();
         }
 
-        private void AddServerMenuClosing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            LauncherWindow.launcherInstance.launcherBlur.Radius = 0;
-            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Hidden;
-        }
+        public bool IsCompleted = false;
 
-        private void AddServerMenuActivated(object sender, EventArgs e)
+        private void AddServerClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            addServerBlur.Radius = 0;
-            addServerFade.Visibility = Visibility.Hidden;
+            if (!IsCompleted)
+            {
+                LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
+
+                e.Cancel = true;
+                Storyboard sb = FindResource("CloseAddServer") as Storyboard;
+
+                if (sb != null)
+                {
+                    sb.Completed += (s, _) =>
+                    {
+                        IsCompleted = true;
+                        Close();
+                    };
+
+                    sb.Begin();
+                }
+            }
         }
     }
 }

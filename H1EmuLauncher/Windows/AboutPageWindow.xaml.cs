@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
@@ -16,6 +17,7 @@ namespace H1EmuLauncher
             Owner = LauncherWindow.launcherInstance;
 
             // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
@@ -32,20 +34,31 @@ namespace H1EmuLauncher
 
         private void MainAboutLoaded(object sender, RoutedEventArgs e)
         {
-            LauncherWindow.launcherInstance.launcherBlur.Radius = 15;
-            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Visible;
+            LauncherWindow.launcherInstance.UnfocusPropertiesAnimationShow.Begin();
         }
+
+        public bool IsCompleted = false;
 
         private void MainAboutClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            LauncherWindow.launcherInstance.launcherBlur.Radius = 0;
-            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Hidden;
-        }
+            if (!IsCompleted)
+            {
+                LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
 
-        private void MainAboutActivated(object sender, EventArgs e)
-        {
-            aboutPageBlur.Radius = 0;
-            aboutPageFade.Visibility = Visibility.Hidden;
+                e.Cancel = true;
+                Storyboard sb = FindResource("CloseAbout") as Storyboard;
+
+                if (sb != null)
+                {
+                    sb.Completed += (s, _) =>
+                    {
+                        IsCompleted = true;
+                        Close();
+                    };
+
+                    sb.Begin();
+                }
+            }
         }
     }
 }

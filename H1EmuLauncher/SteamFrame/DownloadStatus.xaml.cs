@@ -5,7 +5,7 @@ using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SteamFrame
 {
-    public partial class DownloadStatus : Page
+    public partial class DownloadStatus : UserControl
     {
         public static DownloadStatus downloadStatusInstance;
 
@@ -14,6 +14,7 @@ namespace H1EmuLauncher.SteamFrame
             InitializeComponent();
 
             // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
             downloadStatusInstance = this;

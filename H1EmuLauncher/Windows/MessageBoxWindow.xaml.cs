@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
@@ -12,6 +13,7 @@ namespace H1EmuLauncher
             InitializeComponent();
 
             // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
@@ -32,35 +34,60 @@ namespace H1EmuLauncher
             DragMove();
         }
 
-        private void MainMsgBoxActivated(object sender, EventArgs e)
-        {
-            SizeToContent = SizeToContent.Manual;
-        }
-
         private void MainMsgBoxLoaded(object sender, RoutedEventArgs e)
         {
-            if (AboutPageWindow.aboutPageInstance != null)
+            if (Owner != null)
             {
-                AboutPageWindow.aboutPageInstance.aboutPageBlur.Radius = 15;
-                AboutPageWindow.aboutPageInstance.aboutPageFade.Visibility = Visibility.Visible;
+                switch (Owner.Name)
+                {
+                    case "AddServer":
+                        AddServerWindow.addServerInstance.UnfocusPropertiesAnimationShow.Begin();
+                        break;
+                    case "Launcher":
+                        LauncherWindow.launcherInstance.UnfocusPropertiesAnimationShow.Begin();
+                        break;
+                    case "Settings":
+                        SettingsWindow.settingsInstance.UnfocusPropertiesAnimationShow.Begin();
+                        break;
+                }
             }
+        }
 
-            if (AddServerWindow.addServerInstance != null)
-            {
-                AddServerWindow.addServerInstance.addServerBlur.Radius = 15;
-                AddServerWindow.addServerInstance.addServerFade.Visibility = Visibility.Visible;
-            }
+        public bool IsCompleted = false;
 
-            if (LauncherWindow.launcherInstance != null)
+        private void MessageBoxClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!IsCompleted)
             {
-                LauncherWindow.launcherInstance.launcherBlur.Radius = 15;
-                LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Visible;
-            }
+                if (Owner != null)
+                {
+                    switch (Owner.Name)
+                    {
+                        case "AddServer":
+                            AddServerWindow.addServerInstance.UnfocusPropertiesAnimationHide.Begin();
+                            break;
+                        case "Launcher":
+                            LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
+                            break;
+                        case "Settings":
+                            SettingsWindow.settingsInstance.UnfocusPropertiesAnimationHide.Begin();
+                            break;
+                    }
+                }
 
-            if (SettingsWindow.settingsInstance != null)
-            {
-                SettingsWindow.settingsInstance.settingsBlur.Radius = 15;
-                SettingsWindow.settingsInstance.settingsFade.Visibility = Visibility.Visible;
+                e.Cancel = true;
+                Storyboard sb = FindResource("CloseMessageBox") as Storyboard;
+
+                if (sb != null)
+                {
+                    sb.Completed += (s, _) =>
+                    {
+                        IsCompleted = true;
+                        Close();
+                    };
+
+                    sb.Begin();
+                }
             }
         }
     }

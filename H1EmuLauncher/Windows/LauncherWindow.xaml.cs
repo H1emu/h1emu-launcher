@@ -7,17 +7,17 @@ using System.Text.Json;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Text.Json.Serialization;
 using System.Net;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
-using System.Windows.Controls.Primitives;
-using H1EmuLauncher.Classes;
-using Newtonsoft.Json;
 using System.Net.Http;
 using System.Windows.Media.Animation;
+using System.Linq;
+using H1EmuLauncher.Classes;
+using System.Windows.Media;
+using Microsoft.Win32;
 
 namespace H1EmuLauncher
 {
@@ -37,22 +37,27 @@ namespace H1EmuLauncher
         public static string newServerName = null;
         public static string newServerIp = null;
 
-        public Storyboard NextAnimation;
-        public Storyboard NextAnimationFollow;
-        public Storyboard PreviousAnimation;
-        public Storyboard PreviousAnimationFollow;
+        public Storyboard CarouselNextAnimation;
+        public Storyboard CarouselNextAnimationFollow;
+        public Storyboard CarouselPreviousAnimation;
+        public Storyboard CarouselPreviousAnimationFollow;
+        public Storyboard UnfocusPropertiesAnimationShow;
+        public Storyboard UnfocusPropertiesAnimationHide;
 
         public LauncherWindow()
         {
             InitializeComponent();
             launcherInstance = this;
 
-            NextAnimation = FindResource("NextImageAnimation") as Storyboard;
-            NextAnimationFollow = FindResource("NextImageAnimationFollow") as Storyboard;
-            PreviousAnimation = FindResource("PrevImageAnimation") as Storyboard;
-            PreviousAnimationFollow = FindResource("PrevImageAnimationFollow") as Storyboard;
+            CarouselNextAnimation = FindResource("CarouselNextImageAnimation") as Storyboard;
+            CarouselNextAnimationFollow = FindResource("CarouselNextImageAnimationFollow") as Storyboard;
+            CarouselPreviousAnimation = FindResource("CarouselPrevImageAnimation") as Storyboard;
+            CarouselPreviousAnimationFollow = FindResource("CarouselPrevImageAnimationFollow") as Storyboard;
+            UnfocusPropertiesAnimationShow = FindResource("UnfocusPropertiesShow") as Storyboard;
+            UnfocusPropertiesAnimationHide = FindResource("UnfocusPropertiesHide") as Storyboard;
 
             // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
@@ -95,6 +100,9 @@ namespace H1EmuLauncher
 
         private void ServerSelectorChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!IsLoaded)
+                return;
+
             if (serverSelector.SelectedIndex == serverSelector.Items.Count - 1)
                 serverSelector.SelectedIndex = 0;
 
@@ -129,21 +137,32 @@ namespace H1EmuLauncher
                     if (item is ComboBoxItem serverItem)
                     {
                         if (index > 1 && index < serverSelector.Items.Count - 2)
-                            serverItem.PreviewMouseRightButtonUp += DeleteServerFromList;
+                        {
+                            serverItem.PreviewMouseRightButtonUp += ItemRightMouseButtonUp;
+                            ContextMenu deleteMenu = new ContextMenu();
+                            deleteMenu.Style = (Style)FindResource("ContextMenuStyle");
+                            serverItem.ContextMenu = deleteMenu;
+                            MenuItem deleteOption = new MenuItem();
+                            deleteOption.Header = "Delete";
+                            deleteOption.Style = (Style)FindResource("DeleteMenuItem");
+                            deleteOption.Click += DeleteServerFromList;
+                            deleteMenu.Items.Add(deleteOption);
+                        }
                     }
                 }
             }
             catch (Exception e)
             {
-                CustomMessageBox.Show($"{FindResource("item184")} \"{e.Message}\".");
+                CustomMessageBox.Show($"{FindResource("item184")} \"{e.Message}\".", this);
             }
 
             try
             {
                 serverSelector.SelectedIndex = Properties.Settings.Default.lastServer;
             }
-            catch
+            catch (Exception e)
             {
+                Debug.WriteLine($"Error loading last selected server: \"{e.Message}\". Setting selected server index to 0.");
                 serverSelector.SelectedIndex = 0;
             }
         }
@@ -156,7 +175,7 @@ namespace H1EmuLauncher
 
             try
             {
-                List<ServerList> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
+                List<ServerList> currentjson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
 
                 currentjson.Add(new ServerList()
                 {
@@ -164,7 +183,7 @@ namespace H1EmuLauncher
                     SAddress = newServerIp.Trim().Replace(" ", "")
                 });
 
-                string newJson = System.Text.Json.JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
+                string newJson = JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(serverJsonFile, newJson);
 
                 ComboBoxItem newItem = new ComboBoxItem { Content = newServerName.Trim(), Style = (Style)FindResource("ComboBoxItemStyle") };
@@ -178,7 +197,17 @@ namespace H1EmuLauncher
                     if (item is ComboBoxItem serverItem)
                     {
                         if (index == serverSelector.Items.Count - 3)
-                            serverItem.PreviewMouseRightButtonUp += DeleteServerFromList;
+                        {
+                            serverItem.PreviewMouseRightButtonUp += ItemRightMouseButtonUp;
+                            ContextMenu deleteMenu = new ContextMenu();
+                            deleteMenu.Style = (Style)FindResource("ContextMenuStyle");
+                            serverItem.ContextMenu = deleteMenu;
+                            MenuItem deleteOption = new MenuItem();
+                            deleteOption.Header = "Delete";
+                            deleteOption.Style = (Style)FindResource("DeleteMenuItem");
+                            deleteOption.Click += DeleteServerFromList;
+                            deleteMenu.Items.Add(deleteOption);
+                        }
                     }
                 }
             }
@@ -191,10 +220,28 @@ namespace H1EmuLauncher
             newServerIp = null;
         }
 
-        private void DeleteServerFromList(object sender, MouseButtonEventArgs e)
+        private void ServerSelectorPreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            ComboBoxItem senderItem = (ComboBoxItem)sender;
+            foreach (var item in serverSelector.Items)
+            {
+                if (item is ComboBoxItem serverItem)
+                {
+                    serverItem.Style = (Style)FindResource("ComboBoxItemStyle");
+                }
+            }
+        }
 
+        public ComboBoxItem itemRightClicked;
+
+        private void ItemRightMouseButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            itemRightClicked = (ComboBoxItem)sender;
+            itemRightClicked.Style = (Style)FindResource("ComboBoxItemStyleSelected");
+            System.Windows.Forms.Application.DoEvents();
+        }
+
+        private void DeleteServerFromList(object sender, RoutedEventArgs e)
+        {
             MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item147").ToString(), this);
             if (dr != MessageBoxResult.Yes)
                 return;
@@ -206,7 +253,7 @@ namespace H1EmuLauncher
             foreach (var item in currentjson)
             {
                 index++;
-                if (item.SName == (string)senderItem.Content)
+                if (item.SName == (string)itemRightClicked.Content)
                     break;
             }
 
@@ -215,11 +262,11 @@ namespace H1EmuLauncher
             string finalJson = System.Text.Json.JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(serverJsonFile, finalJson);
 
-            serverSelector.Items.Remove(senderItem);
+            serverSelector.Items.Remove(itemRightClicked);
             serverSelector.SelectedIndex = index + 1;
         }
 
-        public bool LaunchLocalServer(string gameVersion)
+        public bool LaunchLocalServer(string gameVersionString)
         {
             try
             {
@@ -233,13 +280,13 @@ namespace H1EmuLauncher
                     return false;
                 }
 
-                string serverVersion = "";
+                string serverVersion = string.Empty;
 
-                if (gameVersion == "15jan2015")
+                if (gameVersionString == "15jan2015")
                 {
                     serverVersion = "npm start";
                 }
-                else if (gameVersion == "22dec2016")
+                else if (gameVersionString == "22dec2016")
                 {
                     serverVersion = "npm run start-2016";
                 }
@@ -294,9 +341,9 @@ namespace H1EmuLauncher
                 return;
 
             int gameVersionInt = 0;
-            string gameVersion = "";
-            string serverIp = "";
-            string sessionId = "";
+            string gameVersionString = string.Empty;
+            string serverIp = string.Empty;
+            string sessionId = string.Empty;
 
             new Thread(() =>
             {
@@ -338,9 +385,9 @@ namespace H1EmuLauncher
                 try
                 {
                     settings.CheckGameVersion();
-                    gameVersion = SettingsWindow.gameVersion;
+                    gameVersionString = SettingsWindow.gameVersionString;
 
-                    switch (gameVersion)
+                    switch (gameVersionString)
                     {
                         case "15jan2015":
                             gameVersionInt = 1;
@@ -350,7 +397,7 @@ namespace H1EmuLauncher
                             break;
                     }
 
-                    if (gameVersion == "15jan2015" || gameVersion == "22dec2016")
+                    if (gameVersionString == "15jan2015" || gameVersionString == "22dec2016")
                     {
                         if (serverIp == "")
                             serverIp = Info.H1EMU_SERVER_IP;
@@ -382,7 +429,7 @@ namespace H1EmuLauncher
 
                         if (serverIp == "localhost:1115")
                         {
-                            if (!LaunchLocalServer(gameVersion))
+                            if (!LaunchLocalServer(gameVersionString))
                                 return;
                         }
 
@@ -402,7 +449,7 @@ namespace H1EmuLauncher
 
                         p.Start();
                     }
-                    else if (gameVersion == "processBeingUsed")
+                    else if (gameVersionString == "processBeingUsed")
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
@@ -436,6 +483,7 @@ namespace H1EmuLauncher
         {
             if (Properties.Settings.Default.firstTimeUse != 1) 
             {
+                Hide();
                 DisclaimerWindow dc = new();
                 dc.ShowDialog();
             }
@@ -457,9 +505,9 @@ namespace H1EmuLauncher
             VersionInformation();
             LoadServers();
             Carousel.BeginImageCarousel();
-            LangBox.SelectedIndex = Properties.Settings.Default.language;
+            LanguageBox.SelectedIndex = Properties.Settings.Default.language;
 
-            if (LangBox.SelectedIndex == 1)
+            if (LanguageBox.SelectedIndex == 1)
                 chineseLink.Visibility = Visibility.Visible;
             else
                 chineseLink.Visibility = Visibility.Collapsed;
@@ -467,21 +515,27 @@ namespace H1EmuLauncher
 
         public void VersionInformation()
         {
-            string latestVersion = null;
-            string latestPatchNotes = null;
-            string publishDate = null;
-
             try
             {
                 // Update version, date published and patch notes code
                 HttpResponseMessage result = UpdateWindow.httpClient.GetAsync(new Uri(Info.SERVER_JSON_API)).Result;
-                string jsonServer = result.Content.ReadAsStringAsync().Result;
 
-                // Get latest release number and date published for server
-                var jsonDesServer = JsonConvert.DeserializeObject<dynamic>(jsonServer);
-                latestVersion = jsonDesServer.tag_name;
-                latestPatchNotes = jsonDesServer.body;
-                publishDate = jsonDesServer.published_at;
+                // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
+                if (result.StatusCode != HttpStatusCode.OK)
+                    throw new Exception($"{char.ToUpper(result.ReasonPhrase.First())}{result.ReasonPhrase.Substring(1)}");
+
+                // Get latest release number, date published, and patch notes for server
+                string jsonServer = result.Content.ReadAsStringAsync().Result;
+                JsonEndPoints.Server.Root jsonDesServer = JsonSerializer.Deserialize<JsonEndPoints.Server.Root>(jsonServer);
+                string latestVersion = jsonDesServer.tag_name;
+                string latestPatchNotes = jsonDesServer.body;
+                string publishDate = jsonDesServer.published_at.ToString();
+
+                // Display the content on the launcher
+                DateTime date = DateTime.ParseExact(publishDate, "G", CultureInfo.InvariantCulture);
+                datePublished.Text = $" ({date:dd MMMM yyyy})";
+                updateVersion.Text = $" {latestVersion}";
+                patchNotesBox.Text = latestPatchNotes;
 
                 // Cache the latest server version, date and patch notes in the case of no internet
                 Properties.Settings.Default.latestServerVersion = latestVersion;
@@ -489,39 +543,17 @@ namespace H1EmuLauncher
                 Properties.Settings.Default.publishDate = publishDate;
                 Properties.Settings.Default.Save();
             }
-            catch { }
-
-            if (!string.IsNullOrEmpty(latestVersion) || !string.IsNullOrEmpty(latestPatchNotes) || !string.IsNullOrEmpty(publishDate))
+            catch
             {
-                try
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.publishDate))
                 {
-                    var date = DateTime.ParseExact(publishDate, "G", CultureInfo.InvariantCulture);
-
-                    updateVersion.Text = $" {latestVersion}";
-                    datePublished.Text = $"({date:dd MMMM yyyy})";
-                    patchNotesBox.Document.Blocks.Clear();
-                    patchNotesBox.Document.Blocks.Add(new Paragraph(new Run(latestPatchNotes)));
+                    DateTime date = DateTime.ParseExact(Properties.Settings.Default.publishDate, "G", CultureInfo.InvariantCulture);
+                    datePublished.Text = $" ({date:dd MMMM yyyy})";
                 }
-                catch { }
-            }
-            else
-            {
-                try
-                {
-                    var date = DateTime.ParseExact(Properties.Settings.Default.publishDate, "G", CultureInfo.InvariantCulture);
 
-                    updateVersion.Text = $" {Properties.Settings.Default.latestServerVersion}";
-                    datePublished.Text = $"({date:dd MMMM yyyy})";
-                    patchNotesBox.Document.Blocks.Clear();
-                    patchNotesBox.Document.Blocks.Add(new Paragraph(new Run(Properties.Settings.Default.patchNotes)));
-                }
-                catch { }
+                updateVersion.Text = $" {Properties.Settings.Default.latestServerVersion}";
+                patchNotesBox.Text = Properties.Settings.Default.patchNotes;
             }
-        }
-
-        private void LauncherWindowContentRendered(object sender, EventArgs e)
-        {
-            ExecuteArguments();
         }
 
         public void ExecuteArguments()
@@ -562,7 +594,10 @@ namespace H1EmuLauncher
 
         private void LanguageSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int selectedLanguage = LangBox.SelectedIndex;
+            if (!IsLoaded)
+                return;
+
+            int selectedLanguage = LanguageBox.SelectedIndex;
 
             if (selectedLanguage == 1)
                 chineseLink.Visibility = Visibility.Visible;
@@ -619,7 +654,6 @@ namespace H1EmuLauncher
             }
 
             // Reload pages
-            ContentDownloader.UpdateLang();
             steamFramePanel.Refresh();
         }
 
@@ -627,18 +661,14 @@ namespace H1EmuLauncher
 
         private void StoryboardCompleted(object sender, EventArgs e)
         {
-            Carousel.progress = 0;
-            carouselProgressBar.Value = 0;
-
-            Carousel.pauseCarousel.Set();
+            Carousel.playCarousel.Stop();
+            Carousel.playCarousel.Begin();
 
             doContinue = true;
         }
 
         private void PrevImageClick(object sender, RoutedEventArgs e)
         {
-            Carousel.pauseCarousel.Reset();
-
             if (!doContinue)
                 return;
 
@@ -649,8 +679,6 @@ namespace H1EmuLauncher
 
         private void NextImageClick(object sender, RoutedEventArgs e)
         {
-            Carousel.pauseCarousel.Reset();
-
             if (!doContinue)
                 return;
 
@@ -661,7 +689,7 @@ namespace H1EmuLauncher
 
         private void CarouselMouseEnter(object sender, MouseEventArgs e)
         {
-            Carousel.pauseCarousel.Reset();
+            Carousel.playCarousel.Pause();
 
             prevImage.Visibility = Visibility.Visible;
             nextImage.Visibility = Visibility.Visible;
@@ -669,10 +697,7 @@ namespace H1EmuLauncher
 
         private void CarouselMouseLeave(object sender, MouseEventArgs e)
         {
-            if (doContinue) 
-            {
-                Carousel.pauseCarousel.Set();
-            }
+            Carousel.playCarousel.Resume();
 
             prevImage.Visibility = Visibility.Hidden;
             nextImage.Visibility = Visibility.Hidden;
@@ -752,30 +777,78 @@ namespace H1EmuLauncher
             Clipboard.SetText(Info.CHANGELOG);
         }
 
+        private void LauncherWindowContentRendered(object sender, EventArgs e)
+        {
+            ExecuteArguments();
+        }
+
+        private void MinimiseButtonClick(object sender, RoutedEventArgs e)
+        {
+            Launcher.RenderTransformOrigin = new Point(0.5, 1);
+
+            Storyboard sb = FindResource("MinimiseLauncher") as Storyboard;
+
+            if (sb != null)
+            {
+                sb.Completed += (s, _) =>
+                {
+                    WindowState = WindowState.Minimized;
+                    sb.Stop();
+                };
+
+                sb.Begin();
+            }
+        }
+
+        private void LauncherStateChanged(object sender, EventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+            {
+                Storyboard sb = FindResource("RestoreLauncher") as Storyboard;
+
+                if (sb != null)
+                {
+                    sb.Completed += (s, _) =>
+                    {
+                        Launcher.RenderTransformOrigin = new Point(0.5, 0.5);
+                        sb.Stop();
+                    };
+
+                    sb.Begin();
+                }
+            }
+        }
+
+        public bool IsCompleted = false;
+
+        private void LauncherClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!IsCompleted)
+            {
+                e.Cancel = true;
+                Storyboard sb = FindResource("CloseLauncher") as Storyboard;
+
+                if (sb != null)
+                {
+                    sb.Completed += (s, _) =>
+                    {
+                        IsCompleted = true;
+                        Environment.Exit(0);
+                    };
+
+                    sb.Begin();
+                }
+            }
+        }
+
         private void CloseLauncher(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-        private void LauncherWindowClosed(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void MinimiseButtonClick(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
         private void MoveWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
-        }
-
-        private void LauncherWindowActivated(object sender, EventArgs e)
-        {
-            launcherBlur.Radius = 0;
-            launcherFade.Visibility = Visibility.Hidden;
         }
     }
 }

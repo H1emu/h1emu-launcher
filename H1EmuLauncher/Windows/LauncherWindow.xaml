@@ -7,85 +7,197 @@
         mc:Ignorable="d"
         UseLayoutRounding="True"
         Title="H1Emu Launcher"
-        x:Name="MainLauncherPage"
+        x:Name="Launcher"
         Width="1300"
         Height="750"
-        Background="#FF2A2A32"
         FontFamily="Bahnschrift"
         FontSize="16"
         WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        RenderTransformOrigin="0.5, 0.5"
+        Background="Transparent"
         Loaded="LauncherWindowLoaded"
-        Activated="LauncherWindowActivated"
         ContentRendered="LauncherWindowContentRendered"
-        Closed="LauncherWindowClosed">
+        Closing="LauncherClosing"
+        StateChanged="LauncherStateChanged">
 
-    <!-- Hide window border but keep animations -->
-    <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="0"
-                          CornerRadius="0"
-                          CaptionHeight="0"
-                          ResizeBorderThickness="0"
-                          UseAeroCaptionButtons="False"/>
+    <Window.RenderTransform>
+        <ScaleTransform x:Name="WindowScaleTransform"/>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    </WindowChrome.WindowChrome>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+
+                        <DoubleAnimation Storyboard.TargetName="Launcher"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+    
+    <!-- Image carousel storyboard animations -->
+    <Window.Resources>
+        <ResourceDictionary>
+            <Storyboard x:Key="CarouselNextImageAnimation"
+                        Completed="StoryboardCompleted">
+                <DoubleAnimation Storyboard.TargetName="carouselImageTranslate"
+                                 Storyboard.TargetProperty="(TranslateTransform.X)"
+                                 From="0" To="-573"
+                                 Duration="0:0:1"
+                                 AccelerationRatio="0.2"
+                                 DecelerationRatio="0.8">
+                </DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="CarouselNextImageAnimationFollow"
+                        Completed="StoryboardCompleted">
+
+                <DoubleAnimation Storyboard.TargetName="carouselImageFollowTranslate"
+                                 Storyboard.TargetProperty="(TranslateTransform.X)"
+                                 From="573" To="0"
+                                 Duration="0:0:1"
+                                 AccelerationRatio="0.2"
+                                 DecelerationRatio="0.8">
+                </DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="CarouselPrevImageAnimation"
+                        Completed="StoryboardCompleted">
+
+                <DoubleAnimation Storyboard.TargetName="carouselImageTranslate"
+                                 Storyboard.TargetProperty="(TranslateTransform.X)"
+                                 From="0" To="573"
+                                 Duration="0:0:1"
+                                 AccelerationRatio="0.2"
+                                 DecelerationRatio="0.8">
+                </DoubleAnimation>
+            </Storyboard>
+            <Storyboard x:Key="CarouselPrevImageAnimationFollow"
+                        Completed="StoryboardCompleted">
+
+                <DoubleAnimation Storyboard.TargetName="carouselImageFollowTranslate"
+                                 Storyboard.TargetProperty="(TranslateTransform.X)"
+                                 From="-573" To="0"
+                                 Duration="0:0:1"
+                                 AccelerationRatio="0.2"
+                                 DecelerationRatio="0.8">
+                </DoubleAnimation>
+            </Storyboard>
+
+            <Storyboard x:Key="CloseLauncher">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="Launcher"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+            <Storyboard x:Key="MinimiseLauncher">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="0.8"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="0.8"/>
+
+                <DoubleAnimation Storyboard.TargetName="Launcher"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="0.8"/>
+            </Storyboard>
+            <Storyboard x:Key="RestoreLauncher">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="0" To="1"
+                                 Duration="0:0:0.2"
+                                 AccelerationRatio="0.8"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="0" To="1"
+                                 Duration="0:0:0.2"
+                                 AccelerationRatio="0.8"/>
+
+                <DoubleAnimation Storyboard.TargetName="Launcher"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0" To="1"
+                                 Duration="0:0:0.2"
+                                 AccelerationRatio="0.8"/>
+            </Storyboard>
+            <Storyboard x:Key="UnfocusPropertiesShow">
+                <DoubleAnimation Storyboard.TargetName="launcherFade"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0" To="1"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="launcherBlur"
+                                 Storyboard.TargetProperty="Radius"
+                                 From="0" To="15"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+            <Storyboard x:Key="UnfocusPropertiesHide">
+                <DoubleAnimation Storyboard.TargetName="launcherFade"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="launcherBlur"
+                                 Storyboard.TargetProperty="Radius"
+                                 From="15" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
 
     <!-- Tasbar icon info -->
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo x:Name="taskbarIcon" Description="H1Emu Launcher"/>
     </Window.TaskbarItemInfo>
 
-    <!-- Image carousel storyboard animations -->
-    <Window.Resources>
-        <Storyboard x:Key="NextImageAnimation"
-                    Completed="StoryboardCompleted">
-
-            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                             Storyboard.TargetName="carouselImage"
-                             From="0" To="-573"
-                             Duration="0:0:1"
-                             AccelerationRatio="0.2"
-                             DecelerationRatio="0.8">
-            </DoubleAnimation>
-        </Storyboard>
-
-        <Storyboard x:Key="NextImageAnimationFollow"
-                    Completed="StoryboardCompleted">
-
-            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                             Storyboard.TargetName="carouselImageSlider"
-                             From="573" To="0"
-                             Duration="0:0:1"
-                             AccelerationRatio="0.2"
-                             DecelerationRatio="0.8">
-            </DoubleAnimation>
-        </Storyboard>
-
-        <Storyboard x:Key="PrevImageAnimation"
-                    Completed="StoryboardCompleted">
-
-            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                             Storyboard.TargetName="carouselImage"
-                             From="0" To="573"
-                             Duration="0:0:1"
-                             AccelerationRatio="0.2"
-                             DecelerationRatio="0.8">
-            </DoubleAnimation>
-        </Storyboard>
-
-        <Storyboard x:Key="PrevImageAnimationFollow"
-                    Completed="StoryboardCompleted">
-
-            <DoubleAnimation Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)"
-                             Storyboard.TargetName="carouselImageSlider"
-                             From="-573" To="0"
-                             Duration="0:0:1"
-                             AccelerationRatio="0.2"
-                             DecelerationRatio="0.8">
-            </DoubleAnimation>
-        </Storyboard>
-    </Window.Resources>
-
-    <Grid>
+    <Grid Background="#FF2A2A32">
         <Grid>
             <!-- Grainy texture -->
             <Grid.Background>
@@ -98,10 +210,6 @@
                             Radius="0"
                             KernelType="Gaussian"/>
             </Grid.Effect>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="25*"/>
@@ -117,11 +225,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
+                
                 <!-- Logo -->
                 <DockPanel>
                     <Image Width="220"
@@ -151,7 +255,7 @@
 
                             <!-- Language selection combobox -->
                             <Grid>
-                                <ComboBox x:Name="LangBox"
+                                <ComboBox x:Name="LanguageBox"
                                           Height="30"
                                           Margin="10,10,20,0"
                                           Padding="35,2,10,0"
@@ -161,7 +265,7 @@
                                           Foreground="White"
                                           FontSize="15"
                                           FontWeight="Light"
-                                          SelectedIndex="-1"
+                                          SelectedIndex="0"
                                           SelectionChanged="LanguageSelectionChanged"
                                           Style="{DynamicResource ComboBox}">
 
@@ -224,12 +328,7 @@
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Right"
                                     BorderThickness="0"
-                                    Style="{DynamicResource MinimiseButtonStyle}">
-
-                                <Button.Background>
-                                    <ImageBrush ImageSource="/Resources/Minimise.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Style="{DynamicResource MinimiseButtonStyle}"/>
 
                             <!-- Exit button -->
                             <Button x:Name="ExitButton"
@@ -241,12 +340,7 @@
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Right"
                                     BorderThickness="0"
-                                    Style="{DynamicResource CloseButtonStyle}">
-
-                                <Button.Background>
-                                    <ImageBrush ImageSource="/Resources/Exit.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Style="{DynamicResource CloseButtonStyle}"/>
                         </WrapPanel>
 
                         <!-- Website and discord components -->
@@ -278,7 +372,7 @@
                                         <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                             <MenuItem Header="Copy"
                                                       Click="websiteLinkCopy"
-                                                      Style="{DynamicResource PopupMenuItem}">
+                                                      Style="{DynamicResource CopyMenuItem}">
                                             </MenuItem>
                                         </ContextMenu>
                                     </TextBlock.ContextMenu>
@@ -301,10 +395,10 @@
                                 </Button.Background>
 
                                 <Button.ContextMenu>
-                                    <ContextMenu>
+                                    <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                         <MenuItem Header="Copy"
                                                   Click="discordLinkCopy"
-                                                  Style="{DynamicResource PopupMenuItem}"/>
+                                                  Style="{DynamicResource CopyMenuItem}"/>
 
                                     </ContextMenu>
                                 </Button.ContextMenu>
@@ -356,17 +450,7 @@
 
                             <!-- Grid to dock the game image -->
                             <Grid Grid.Row="1"
-                                  Margin="30,27,12,25">
-
-                                <!-- Drop shadow effect -->
-                                <Grid.Effect>
-                                    <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="1"
-                                                      Opacity="0.2"/>
-
-                                </Grid.Effect>
+                                  Margin="30,27,10,25">
 
                                 <!-- Image carousel grid -->
                                 <Grid x:Name="imageCarousel"
@@ -374,29 +458,22 @@
                                       MouseLeave="CarouselMouseLeave"
                                       ClipToBounds="True">
 
-                                    <Image x:Name="carouselImageSlider"
-                                           RenderOptions.BitmapScalingMode="Fant">
+                                    <Image x:Name="carouselImage"
+                                           Source="..\Resources\2.jpg"
+                                           RenderOptions.BitmapScalingMode="Fant"
+                                           Stretch="Fill">
 
                                         <Image.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform/>
-                                                <SkewTransform/>
-                                                <RotateTransform/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
+                                            <TranslateTransform x:Name="carouselImageTranslate"/>
                                         </Image.RenderTransform>
                                     </Image>
 
-                                    <Image x:Name="carouselImage"
-                                           RenderOptions.BitmapScalingMode="Fant">
+                                    <Image x:Name="carouselImageFollow"
+                                           RenderOptions.BitmapScalingMode="Fant"
+                                           Stretch="Fill">
 
                                         <Image.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform/>
-                                                <SkewTransform/>
-                                                <RotateTransform/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
+                                            <TranslateTransform x:Name="carouselImageFollowTranslate"/>
                                         </Image.RenderTransform>
                                     </Image>
 
@@ -420,86 +497,100 @@
                                             Visibility="Hidden"
                                             Style="{DynamicResource CarouselButtonPrevious}"/>
 
-                                    <!-- Image carousel progress bar -->
-                                    <ProgressBar x:Name="carouselProgressBar"
-                                                 Height="5"
-                                                 VerticalAlignment="Bottom"
-                                                 BorderThickness="0"
-                                                 Background="Transparent"
-                                                 Foreground="#DB111C"
-                                                 Maximum="3000"/>
+                                    <Border x:Name="carouselRectangleGrid"
+                                            VerticalAlignment="Bottom">
+
+                                        <Grid>
+                                            <!-- Fill space to get width -->
+                                            <Rectangle Fill="Transparent"
+                                                       Height="4"/>
+
+                                            <!-- Image carousel progress bar -->
+                                            <Rectangle x:Name="carouselRectangle"
+                                                       Fill="#DB111C"
+                                                       Height="4"
+                                                       HorizontalAlignment="Left"/>
+                                        </Grid>
+                                    </Border>
                                 </Grid>
+
+                                <!-- Drop shadow effect -->
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="1"
+                                                      Opacity="0.2"/>
+
+                                </Grid.Effect>
                             </Grid>
                         </Grid>
 
                         <!-- Update version information -->
                         <StackPanel Margin="25,10,12,0">
-                            <RichTextBox x:Name="titleUpdate"
-                                         Background="Transparent"
-                                         Foreground="White"
-                                         BorderThickness="0"
-                                         IsReadOnly="True"
-                                         Cursor="Arrow">
+                            <TextBlock x:Name="titleUpdate"
+                                       Background="Transparent"
+                                       Foreground="White"
+                                       Cursor="Arrow">
 
-                                <FlowDocument>
-                                    <Paragraph FontSize="32"
-                                               FontWeight="Bold"
-                                               FontFamily="{DynamicResource Signika}">
+                                <!-- Version text -->
+                                <Run x:Name="titleUpdateText"
+                                     Foreground="#FFED1C24"
+                                     FontFamily="{DynamicResource Signika}"
+                                     FontSize="44"
+                                     FontWeight="Bold"
+                                     Text="{DynamicResource item3}"/>
 
-                                        <!-- Version text -->
-                                        <Run x:Name="titleUpdateText"
-                                             Foreground="#FFED1C24"
-                                             FontSize="44"
-                                             Text="{DynamicResource item3}"/>
+                                <!-- Update version number -->
+                                <Run x:Name="updateVersion"
+                                     Foreground="#FFED1C24"
+                                     FontFamily="{DynamicResource Signika}"
+                                     FontSize="44"
+                                     FontWeight="Bold"/>
 
-                                        <!-- Update version number -->
-                                        <Run x:Name="updateVersion"
-                                             Foreground="#FFED1C24"
-                                             FontSize="44"/>
-
-                                        <!-- Date version was published -->
-                                        <Run x:Name="datePublished"
-                                             FontFamily="Bahnschrift Light"
-                                             FontSize="16"/>
-
-                                    </Paragraph>
-                                </FlowDocument>
-                            </RichTextBox>
+                                <!-- Date version was published -->
+                                <Run x:Name="datePublished"
+                                     FontFamily="Bahnschrift Light"
+                                     FontSize="16"/>
+                            </TextBlock>
 
                             <!-- Patch notes textbox -->
-                            <RichTextBox x:Name="patchNotesBox"
-                                             Height="96"
-                                             Margin="0,10,0,0"
-                                             Background="Transparent"
-                                             Foreground="White"
-                                             FontWeight="Light"
-                                             BorderThickness="0"
-                                             IsReadOnly="True"
-                                             Cursor="Arrow"/>
+                            <ScrollViewer Height="104"
+                                          VerticalScrollBarVisibility="Hidden">
+                                
+                                <TextBlock x:Name="patchNotesBox"
+                                           Margin="0,10,0,0"
+                                           Background="Transparent"
+                                           Foreground="White"
+                                           FontWeight="Light"
+                                           Cursor="Arrow"
+                                           TextWrapping="Wrap"/>
+                                
+                            </ScrollViewer>
 
                             <!-- Read full details of update hyperlink -->
                             <TextBlock Margin="6,22,0,0"
                                        FontWeight="Light">
                             
-                            <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/"
-                                       RequestNavigate="FullUpdatesHyperlink"
-                                       Foreground="White">
+                                <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/"
+                                           RequestNavigate="FullUpdatesHyperlink"
+                                           Foreground="White">
                             
-                                <TextBlock Text="{DynamicResource item61}"
-                                           Style="{DynamicResource HyperLinkStyle}"/>
-                            </Hyperlink>
+                                    <TextBlock Text="{DynamicResource item61}"
+                                               Style="{DynamicResource HyperLinkStyle}"/>
+                                </Hyperlink>
                         
-                            <!-- Context menu to copy link -->
-                            <TextBlock.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem
-                                        Header="Copy"
-                                        Click="patchNotesCopy"
-                                        Style="{DynamicResource PopupMenuItem}"/>
+                                <!-- Context menu to copy link -->
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                                        <MenuItem
+                                            Header="Copy"
+                                            Click="patchNotesCopy"
+                                            Style="{DynamicResource CopyMenuItem}"/>
                                 
-                                </ContextMenu>
-                            </TextBlock.ContextMenu>
-                        </TextBlock>
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
                         </StackPanel>
 
                         <Grid Grid.Column="1">
@@ -509,7 +600,7 @@
                             </Grid.RowDefinitions>
 
                             <!-- You must own the game in order to download message -->
-                            <StackPanel Margin="12,20,30,0">
+                            <StackPanel Margin="20,20,30,0">
                                 <TextBlock Background="Transparent"
                                            Foreground="White"
                                            FontWeight="Light"
@@ -517,10 +608,13 @@
                                            TextWrapping="Wrap">
 
                                 <Run Foreground="#FFCA1420"
-                                     Text="{DynamicResource item10}"/>                               
+                                     Text="{DynamicResource item10}"/>
+                                    
                                 <Run Text="{DynamicResource item11}"/>
+                                    
                                 <LineBreak/>
                                 <LineBreak/>
+                                    
                                 <Run Text="{DynamicResource item50}"/>
 
                                 </TextBlock>
@@ -534,24 +628,24 @@
                                            Foreground="White"
                                            FontWeight="Bold">
                             
-                                <Hyperlink NavigateUri="https://azaz.ge/"
-                                           RequestNavigate="H1EmuChineseLink"
-                                           Foreground="White">
+                                    <Hyperlink NavigateUri="https://azaz.ge/"
+                                               RequestNavigate="H1EmuChineseLink"
+                                               Foreground="White">
                             
-                                    <TextBlock Text="H1Emu中文社区"
-                                               Style="{DynamicResource HyperLinkStyle}"
-                                               FontWeight="Bold"/>
-                                </Hyperlink>
+                                        <TextBlock Text="H1Emu中文社区"
+                                                   Style="{DynamicResource HyperLinkStyle}"
+                                                   FontWeight="Bold"/>
+                                    </Hyperlink>
                             
-                            <TextBlock Text="，了解更多中文信息。"
-                                       FontWeight="Bold"/>
+                                <TextBlock Text="，了解更多中文信息。"
+                                           FontWeight="Bold"/>
 
                                 <!-- Context menu to copy link -->
                                 <TextBlock.ContextMenu>
-                                    <ContextMenu>
+                                    <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                         <MenuItem Header="Copy"
                                                   Click="chineseLinkCopy"
-                                                  Style="{DynamicResource PopupMenuItem}"/>
+                                                  Style="{DynamicResource CopyMenuItem}"/>
                                 
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>  
@@ -567,11 +661,10 @@
                                 <!-- Steam frame -->
                                 <Frame x:Name="steamFramePanel"
                                        Margin="20,0,30,0"
+                                       Height="140"
                                        VerticalAlignment="Top"
                                        Source="..\SteamFrame\Login.xaml"
                                        NavigationUIVisibility="Hidden"
-                                       VerticalContentAlignment="Top"
-                                       Padding="0" Height="140"
                                        f:DisableFrameNavigation.Disable="True"/>
                             </Grid>
 
@@ -609,22 +702,26 @@
                                 <!-- Server selector combobox -->
                                 <ComboBox x:Name="serverSelector"
                                           Height="35"
-                                          Margin="7,0,3,5"
+                                          Margin="7,0,7,5"
                                           Padding="38,8,15,0"
                                           VerticalAlignment="Bottom"
                                           Foreground="White"
                                           FontWeight="Light"
                                           BorderThickness="2"
+                                          SelectedIndex="0"
                                           SelectionChanged="ServerSelectorChanged"
+                                          PreviewMouseDown="ServerSelectorPreviewMouseDown"
                                           Style="{DynamicResource ComboBox}">
 
 
                                     <ComboBoxItem Content="{DynamicResource item139}"
-                                                  Style="{DynamicResource ComboBoxItemStyle}">
-                                    </ComboBoxItem>
+                                                  Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    
                                     <ComboBoxItem Content="{DynamicResource item140}"
                                                   Style="{DynamicResource ComboBoxItemStyle}"/>
+                                    
                                     <Separator Background="#444444"/>
+                                    
                                     <ComboBoxItem x:Name="newServer"
                                                   Content="{DynamicResource item141}"
                                                   PreviewMouseLeftButtonUp="AddNewServer"
@@ -647,19 +744,14 @@
                                         Click="LaunchClient"
                                         RenderOptions.BitmapScalingMode="Fant"
                                         Height="45"
-                                        Margin="12,0,0,0"
+                                        Margin="7,0,0,0"
                                         VerticalAlignment="Bottom"
                                         Foreground="White"
                                         FontFamily="Arial Black"
                                         FontSize="28"
                                         BorderThickness="0"
                                         Content="{DynamicResource item8}"
-                                        Style="{DynamicResource StandardButton}">
-
-                                    <Button.Background>
-                                        <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                                    </Button.Background>
-                                </Button>
+                                        Style="{DynamicResource StandardButton}"/>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -675,7 +767,7 @@
                        Width="18"
                        Margin="35,0,0,0"
                        VerticalAlignment="Center"
-                       RenderTransformOrigin=".5,.5">
+                       RenderTransformOrigin="0.5, 0.5">
 
                     <Image.RenderTransform>
                         <RotateTransform x:Name="rotateSettingsIcon" Angle="0"/>
@@ -700,7 +792,7 @@
                                         <Storyboard>
                                             <DoubleAnimation Storyboard.TargetName="rotateSettingsIcon"
                                                              Storyboard.TargetProperty="Angle"
-                                                             By="10"
+                                                             By="0"
                                                              To="90"
                                                              Duration="0:0:0.5"
                                                              FillBehavior="Stop"
@@ -730,7 +822,7 @@
         <Rectangle x:Name="launcherFade"
                    Fill="#40000000"
                    IsHitTestVisible="False"
-                   Visibility="Hidden"/>
+                   Opacity="0"/>
 
     </Grid>
 </Window>

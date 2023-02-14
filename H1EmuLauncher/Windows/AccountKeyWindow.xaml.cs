@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
@@ -18,6 +19,7 @@ namespace H1EmuLauncher
             Owner = SettingsWindow.settingsInstance;
 
             // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
             accountKeyHyperlink.Text = Info.ACCOUNT_KEY_LINK;
@@ -73,32 +75,45 @@ namespace H1EmuLauncher
             });
         }
 
-        private void AccountKeyWindowActivated(object sender, EventArgs e)
-        {
-            SizeToContent = SizeToContent.Manual;
-        }
-
         private void AccountKeyLoaded(object sender, RoutedEventArgs e)
         {
-            SettingsWindow.settingsInstance.settingsBlur.Radius = 15;
-            SettingsWindow.settingsInstance.settingsFade.Visibility = Visibility.Visible;
+            SettingsWindow.settingsInstance.UnfocusPropertiesAnimationShow.Begin();
 
             if (!SettingsWindow.launchAccountKeyWindow)
-            {
                 accountKeyBox.Password = Properties.Settings.Default.sessionIdKey;
-            }
 
             if (!string.IsNullOrEmpty(accountKeyBox.Password))
                 accountKeyHint.Visibility = Visibility.Hidden;
         }
 
+        public bool IsCompleted = false;
+
         private void AccountKeyWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            SettingsWindow.settingsInstance.settingsBlur.Radius = 0;
-            SettingsWindow.settingsInstance.settingsFade.Visibility = Visibility.Hidden;
+            if (!IsCompleted)
+            {
+                if (accountKeyBox.Visibility == Visibility.Hidden)
+                    accountKeyBox.Password = accountKeyBoxShown.Text;
 
-            Properties.Settings.Default.sessionIdKey = accountKeyBox.Password.Trim();
-            Properties.Settings.Default.Save();
+                Properties.Settings.Default.sessionIdKey = accountKeyBox.Password.Trim();
+                Properties.Settings.Default.Save();
+
+                SettingsWindow.settingsInstance.UnfocusPropertiesAnimationHide.Begin();
+
+                e.Cancel = true;
+                Storyboard sb = FindResource("CloseAccountKey") as Storyboard;
+
+                if (sb != null)
+                {
+                    sb.Completed += (s, _) =>
+                    {
+                        IsCompleted = true;
+                        Close();
+                    };
+
+                    sb.Begin();
+                }
+            }
         }
 
         private void ShowKey(object sender, RoutedEventArgs e)

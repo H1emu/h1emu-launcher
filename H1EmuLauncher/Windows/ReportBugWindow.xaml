@@ -5,81 +5,127 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="H1Emu About Page"
-        x:Name="MainAbout"
-        Width="1000"
-        Height="450"
+        x:Name="ReportBug"
+        Width="750"
+        Height="420"
         WindowStartupLocation="CenterOwner"
-        Background="#FF2A2A32"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        RenderTransformOrigin="0.5, 0.5"
+        Background="Transparent"
         FontFamily="Bahnschrift"
         FontWeight="Light"
         FontSize="16"
-        ResizeMode="NoResize"
         Loaded="MainReportBugLoaded"
-        Closing="MainReportBugClosing"
-        Activated="MainReportBugActivated">
+        Closing="MainReportBugClosing">
 
-    <!-- Hide window border but keep animations -->
-    <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="0"
-                      CornerRadius="0"
-                      CaptionHeight="0"
-                      ResizeBorderThickness="0"
-                      UseAeroCaptionButtons="False"/>
+    <Window.RenderTransform>
+        <ScaleTransform x:Name="WindowScaleTransform"/>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    </WindowChrome.WindowChrome>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    <Grid>
+                        <DoubleAnimation Storyboard.TargetName="ReportBug"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Storyboard x:Key="CloseReportBug">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="ReportBug"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#FF2A2A32">
         <Grid>
-            <!-- Grainy texture -->
-            <Grid.Background>
-                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-            </Grid.Background>
+            <Grid>
+                <!-- Grainy texture -->
+                <Grid.Background>
+                    <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                </Grid.Background>
 
-            <!-- Report bug window blur on unfocus -->
-            <Grid.Effect>
-                <BlurEffect x:Name="reportBugBlur"
+                <!-- Report bug window blur on unfocus -->
+                <Grid.Effect>
+                    <BlurEffect x:Name="reportBugBlur"
                             Radius="0"
                             KernelType="Gaussian"/>
 
-            </Grid.Effect>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="5*"/>
-            </Grid.RowDefinitions>
-
-            <!-- Grid for logo and exit button -->
-            <Grid MouseLeftButtonDown="Grid_MouseLeftButtonDown"
-                  Background="Transparent">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                </Grid.Effect>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
 
-                <!-- Logo -->
-                <DockPanel Height="60"
+                <!-- Grid for logo and exit button -->
+                <Grid MouseLeftButtonDown="ReportBugTopBarMouseLeftButtonDown"
+                  Background="Transparent">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Logo -->
+                    <DockPanel Height="60"
                            HorizontalAlignment="Left"
                            Margin="23,0,0,0">
 
-                    <Image Source="..\Resources\H1EmuIcon.png"
+                        <Image Source="..\Resources\H1EmuIcon.png"
                            Width="175"
                            Height="45"
                            VerticalAlignment="Bottom"/>
 
-                </DockPanel>
+                    </DockPanel>
 
-                <!-- Exit button -->
-                <DockPanel Grid.Column="1">
-                    <Button x:Name="CloseButton"
+                    <!-- Exit button -->
+                    <DockPanel Grid.Column="1">
+                        <Button x:Name="CloseButton"
                             RenderOptions.BitmapScalingMode="Fant"
                             Width="44"
                             Height="30"
@@ -87,139 +133,133 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             BorderThickness="0"
-                            Click="CloseButton_Click"
-                            Style="{StaticResource CloseButtonStyle}">
+                            Click="CloseButtonClick"
+                            Style="{StaticResource CloseButtonStyle}"/>
+                    </DockPanel>
+                </Grid>
 
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\Exit.png"/>
-                        </Button.Background>
-                    </Button>
-                </DockPanel>
-            </Grid>
-
-            <!-- Main content in darkened area -->
-            <Border Grid.Row="1"
+                <!-- Main content in darkened area -->
+                <Border Grid.Row="1"
                     Margin="25,5,25,25"
                     Background="#1C1B22"
                     UseLayoutRounding="True"
                     CornerRadius="5">
 
-                <!-- Drop shadow effect -->
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="15"
+                    <!-- Drop shadow effect -->
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15"
                                       Direction="-90"
                                       RenderingBias="Quality"
                                       ShadowDepth="1"/>
-                </Border.Effect>
+                    </Border.Effect>
 
-                <Border CornerRadius="5">
-                    
-                    <!-- Grainy texture -->
-                    <Border.Background>
-                        <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-                    </Border.Background>
+                    <Border CornerRadius="5">
 
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                        <!-- Grainy texture -->
+                        <Border.Background>
+                            <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                        </Border.Background>
 
-                        <!-- Report a bug about the server message -->
-                        <TextBlock Text="{DynamicResource item174}"
-                                   TextWrapping="Wrap"
-                                   Foreground="White"
-                                   TextAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Width="600"/>
-
-                        <!-- Hyperlink to report a bug about the server -->
-                        <TextBlock VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Grid.Row="1">
-                    
-                        <Hyperlink Click="ReportBugGithubServer"
-                                   Foreground="White">
-                        
-                            <TextBlock x:Name="reportBugGitHubServerLink"
-                                       Style="{DynamicResource HyperLinkStyle}"/>
-                        
-                        </Hyperlink>
-                    
-                        <!-- Context menu to copy link -->
-                        <TextBlock.ContextMenu>
-                            <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                <MenuItem Click="ReportBugGithubServerLinkCopy"
-                                          Header="Copy"
-                                          Style="{DynamicResource PopupMenuItem}"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
                             
-                            </ContextMenu>
-                        </TextBlock.ContextMenu>
-                    </TextBlock>
+                            <!-- Hyperlink to report a bug about the server -->
+                            <TextBlock VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Margin="50,0,50,0"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap"
+                                       Foreground="White">
+                                
+                                <Run Text="{DynamicResource item174}"/>
+                    
+                                <LineBreak/>
+                                <LineBreak/>
+                                
+                                <Hyperlink Click="ReportBugGithubServer"
+                                           Foreground="White">
+                        
+                                    <Run x:Name="reportBugGitHubServerLink"
+                                         Style="{DynamicResource HyperLinkStyleRun}"/>
+                        
+                                </Hyperlink>
+                    
+                                <!-- Context menu to copy link -->
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                                        <MenuItem Click="ReportBugGithubServerLinkCopy"
+                                                  Header="Copy"
+                                                  Style="{DynamicResource CopyMenuItem}"/>
+                            
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
 
-                        <!-- Divider -->
-                        <Border Grid.Row="2"
-                                Height="2"
-                                Background="#FFCA1420"
-                                CornerRadius="20"
-                                Margin="50,10,50,15"
-                                VerticalAlignment="Center">
+                            <!-- Divider -->
+                            <Border Grid.Row="1"
+                                    Height="2"
+                                    Background="#FFCA1420"
+                                    CornerRadius="20"
+                                    Margin="50,10,50,10"
+                                    VerticalAlignment="Center">
 
-                            <!-- Drop shadow effect -->
-                            <Border.Effect>
-                                <DropShadowEffect BlurRadius="8"
+                                <!-- Drop shadow effect -->
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="8"
                                                   Direction="-90"
                                                   RenderingBias="Quality"
                                                   ShadowDepth="1"/>
 
-                            </Border.Effect>
-                        </Border>
-
-                        <!-- Report a bug about the launcher message -->
-                        <TextBlock Text="{DynamicResource item175}"
-                                   Grid.Row="3"
-                                   TextWrapping="Wrap"
-                                   Foreground="White"
-                                   TextAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Width="600"/>
-
-                        <!-- Hyperlink to report a bug about the launcher -->
-                        <TextBlock VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   Grid.Row="4">
-                    
-                        <Hyperlink Click="ReportBugGithubLauncher"
-                                   Foreground="White">
-                        
-                            <TextBlock x:Name="reportBugGitHubLauncherLink"
-                                       Style="{DynamicResource HyperLinkStyle}"/>
-                        
-                        </Hyperlink>
-                    
-                        <!-- Context menu to copy link -->
-                        <TextBlock.ContextMenu>
-                            <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                <MenuItem Click="ReportBugGithubServerLauncherCopy"
-                                          Header="Copy"
-                                          Style="{DynamicResource PopupMenuItem}"/>
+                                </Border.Effect>
+                            </Border>
                             
-                            </ContextMenu>
-                        </TextBlock.ContextMenu>
-                    </TextBlock>
-                    </Grid>
+                            <!-- Hyperlink to report a bug about the launcher -->
+                            <TextBlock VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Grid.Row="2"
+                                       Margin="50,0,50,0"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap"
+                                       Foreground="White">
+                    
+                                <Run Text="{DynamicResource item175}"/>
+                                
+                                <LineBreak/>
+                                <LineBreak/>
+                                
+                                <Hyperlink Click="ReportBugGithubLauncher"
+                                           Foreground="White">
+                        
+                                    <Run x:Name="reportBugGitHubLauncherLink"
+                                               Style="{DynamicResource HyperLinkStyleRun}"/>
+                        
+                                </Hyperlink>
+                    
+                                <!-- Context menu to copy link -->
+                                <TextBlock.ContextMenu>
+                                    <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                                        <MenuItem Click="ReportBugGithubServerLauncherCopy"
+                                                  Header="Copy"
+                                                  Style="{DynamicResource CopyMenuItem}"/>
+                            
+                                    </ContextMenu>
+                                </TextBlock.ContextMenu>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
                 </Border>
-            </Border>
+            </Grid>
+
+            <!-- Background fade on unfocus -->
+            <Rectangle x:Name="reportBugFade"
+                       Fill="#40000000"
+                       IsHitTestVisible="False"
+                       Visibility="Hidden"/>
+
         </Grid>
-
-        <!-- Background fade on unfocus -->
-        <Rectangle x:Name="reportBugFade"
-                   Fill="#40000000"
-                   IsHitTestVisible="False"
-                   Visibility="Hidden"/>
-
     </Grid>
 </Window>

@@ -9,15 +9,16 @@
     <system:String x:Key="item8">运行游戏</system:String>
     <system:String x:Key="item9">检查您是否选择了包含游戏文件的正确目录，这可以在“设置”菜单中完成。</system:String>
     <system:String x:Key="item10">注意</system:String>
-    <system:String x:Key="item11">你的steam账户中必须要有H1Z1：Just Survive这个游戏才能下载游戏本体，本项目不支持盗版。</system:String>
+    <system:String x:Key="item11">你的Steam账户中必须要有H1Z1：Just Survive这个游戏才能下载游戏本体，本项目不支持盗版。</system:String>
     <system:String x:Key="item12">加入社区在</system:String>
     <system:String x:Key="item13">启动游戏错误：</system:String>
     <system:String x:Key="item14">未在指定的目录中找到游戏。</system:String>
     <system:String x:Key="item15">您必须在 Steam 帐户上拥有 H1Z1：Just Survive 才能下载。</system:String>
+    <system:String x:Key="item16">发生一个或多个错误：</system:String>
     <system:String x:Key="item17">无法登录到Steam:</system:String>
     <system:String x:Key="item18">添加</system:String>
     <system:String x:Key="item19">请务必填写授权码框。</system:String>
-    <system:String x:Key="item21">获取数据包密钥 {0} 结果： {1}</system:String>
+    <system:String x:Key="item21">获取数据包密钥 {0} 结果：{1}</system:String>
     <system:String x:Key="item23">下载完成！</system:String>
     <system:String x:Key="item24">需要下载其他版本吗？按下面的登录按钮返回Steam登录界面！</system:String>
     <system:String x:Key="item25">登录</system:String>
@@ -42,7 +43,9 @@
     <system:String x:Key="item46">点击 最新版 是下载并安装最新版本的本地服务器。</system:String>
     <system:String x:Key="item47">点击 稳定版 是下载并安装稳定版本地服务器。</system:String>
     <system:String x:Key="item48">正在检查更新...</system:String>
+    <system:String x:Key="item49">某些信息可能会丢失。</system:String>
     <system:String x:Key="item50">登录Steam账号后请正确输入你的Steam令牌。</system:String>
+    <system:String x:Key="item51">选择您希望将游戏下载到的文件夹。</system:String>
     <system:String x:Key="item52">你没有安装单机服务器。\n\n请到左下角游戏配置菜单中安装单机服务器。</system:String>
     <system:String x:Key="item53">单机服务器启动错误：</system:String>
     <system:String x:Key="item54">正在下载...</system:String>
@@ -93,7 +96,7 @@
     <system:String x:Key="item116">正在解压服务器文件...</system:String>
     <system:String x:Key="item118">正在解压服务器运行环境...</system:String>
     <system:String x:Key="item120">请关闭已经启动的H1Z1游戏。</system:String>
-    <system:String x:Key="item121">H1Z1游戏已经启动。\n\n请关闭所有已经启动的H1Z1游戏。</system:String>
+    <system:String x:Key="item121">H1Z1游戏已经启动。\n\n请关闭所有打开的 H1Z1 实例。</system:String>
     <system:String x:Key="item122">当前游戏版本：</system:String>
     <system:String x:Key="item124">启动器版本 v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
@@ -108,7 +111,7 @@
     <system:String x:Key="item134">否</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
     <system:String x:Key="item136">翻译人员</system:String>
-    <system:String x:Key="item137">\n\n您是否已连接到互联网？</system:String>
+    <system:String x:Key="item137">您是否已连接到互联网？</system:String>
     <system:String x:Key="item138">\n\n(文件不会被删除)</system:String>
     <system:String x:Key="item139">H1Emu在线服务器</system:String>
     <system:String x:Key="item140">单机版（本地）</system:String>
@@ -155,4 +158,5 @@
     <system:String x:Key="item182">检查您的帐户密钥有效性时出现未知响应代码：</system:String>
     <system:String x:Key="item183">验证您的帐户密钥时出错：</system:String>
     <system:String x:Key="item184">加载服务器列表时出错：</system:String>
+    <system:String x:Key="item185">服务器安装脚本意外提前关闭。</system:String>
 </ResourceDictionary>

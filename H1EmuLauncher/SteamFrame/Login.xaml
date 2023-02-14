@@ -1,16 +1,33 @@
-﻿<Page x:Class="H1EmuLauncher.SteamFrame.Login"
+﻿<UserControl x:Class="H1EmuLauncher.SteamFrame.Login"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:gif="http://wpfanimatedgif.codeplex.com"
       mc:Ignorable="d" 
       d:DesignWidth="565"
       d:DesignHeight="140"
       FontFamily="Bahnschrift Light"
-      UseLayoutRounding="True"
-      Title="Steam Login">
-    
+      UseLayoutRounding="True">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Storyboard x:Key="LoadingIconAnimation">
+                <DoubleAnimation Storyboard.TargetName="loadingIconRotateTransform"
+                                 Storyboard.TargetProperty="Angle"
+                                 By="0"
+                                 To="360"
+                                 Duration="0:0:0.8"
+                                 FillBehavior="Stop"
+                                 RepeatBehavior="Forever"/>
+            </Storyboard>
+
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <!-- Main Grid -->
     <Grid>
         <Grid.RowDefinitions>
@@ -123,16 +140,22 @@
         </Button>
 
         <!-- Loading wheel GIF -->
-        <Image gif:ImageBehavior.AnimatedSource="..\Resources/Loading.gif"
-               x:Name="loadingGif"
+        <Image x:Name="loadingIcon"
                Grid.Row="1"
+               Source="..\Resources\Loading.png"
                RenderOptions.BitmapScalingMode="Fant"
+               RenderTransformOrigin="0.5, 0.5"
                VerticalAlignment="Top"
                HorizontalAlignment="Right"
                Margin="0,7,17,0"
                Height="20"
                Width="20"
-               Visibility="Hidden"/>
+               Visibility="Hidden">
+
+            <Image.RenderTransform>
+                <RotateTransform x:Name="loadingIconRotateTransform" Angle="0"/>
+            </Image.RenderTransform>
+        </Image>
 
         <!-- Login message -->
         <TextBlock Grid.Row="1"
@@ -144,4 +167,4 @@
                    TextWrapping="Wrap"
                    Text="{DynamicResource item35}"/>
     </Grid>
-</Page>
+</UserControl>

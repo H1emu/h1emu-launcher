@@ -2,6 +2,7 @@
 using System.Media;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using H1EmuLauncher.Classes;
 
@@ -17,6 +18,7 @@ namespace H1EmuLauncher
             InitializeComponent();
 
             // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
@@ -41,11 +43,6 @@ namespace H1EmuLauncher
         private void MoveDisclaimer(object sender, MouseButtonEventArgs e)
         {
             DragMove();
-        }
-
-        private void DisclaimerActivated(object sender, EventArgs e)
-        {
-            SizeToContent = SizeToContent.Manual;
         }
 
         private void timerTick(object sender, EventArgs e)
@@ -73,36 +70,36 @@ namespace H1EmuLauncher
             timer.Start();
 
             continueButton.Content = seconds.ToString();
-
-            if (AboutPageWindow.aboutPageInstance != null)
-            {
-                AboutPageWindow.aboutPageInstance.aboutPageBlur.Radius = 15;
-                AboutPageWindow.aboutPageInstance.aboutPageFade.Visibility = Visibility.Visible;
-            }
-
-            if (AddServerWindow.addServerInstance != null)
-            {
-                AddServerWindow.addServerInstance.addServerBlur.Radius = 15;
-                AddServerWindow.addServerInstance.addServerFade.Visibility = Visibility.Visible;
-            }
-
-            if (LauncherWindow.launcherInstance != null)
-            {
-                LauncherWindow.launcherInstance.launcherBlur.Radius = 15;
-                LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Visible;
-            }
-
-            if (SettingsWindow.settingsInstance != null)
-            {
-                SettingsWindow.settingsInstance.settingsBlur.Radius = 15;
-                SettingsWindow.settingsInstance.settingsFade.Visibility = Visibility.Visible;
-            }
         }
 
         private void DisclaimerClosed(object sender, EventArgs e)
         {
             if (timer.IsEnabled)
                 Environment.Exit(0);
+
+            LauncherWindow.launcherInstance.Show();
+        }
+
+        public bool IsCompleted = false;
+
+        private void DisclaimerClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!IsCompleted)
+            {
+                e.Cancel = true;
+                Storyboard sb = FindResource("CloseDisclaimer") as Storyboard;
+
+                if (sb != null)
+                {
+                    sb.Completed += (s, _) =>
+                    {
+                        IsCompleted = true;
+                        Close();
+                    };
+
+                    sb.Begin();
+                }
+            }
         }
     }
 }

@@ -14,6 +14,7 @@
     <system:String x:Key="item13">Ошибка запуска игры:</system:String>
     <system:String x:Key="item14">Игра не найдена в указанной директории.</system:String>
     <system:String x:Key="item15">Вы должны иметь H1Z1: Just Survive в своей учетной записи Steam, чтобы загрузить.</system:String>
+    <system:String x:Key="item16">Произошла одна или несколько ошибок:</system:String>
     <system:String x:Key="item17">Невозможно войти в Steam:</system:String>
     <system:String x:Key="item18">ДОБАВИТЬ</system:String>
     <system:String x:Key="item19">Обязательно заполните поле Код авторизации.</system:String>
@@ -42,7 +43,9 @@
     <system:String x:Key="item46">Щелкните здесь, чтобы загрузить последнюю сборку сервера.</system:String>
     <system:String x:Key="item47">Щелкните здесь, чтобы загрузить последнюю стабильную сборку сервера.</system:String>
     <system:String x:Key="item48">Проверка обновлений...</system:String>
+    <system:String x:Key="item49">Некоторая информация может отсутствовать.</system:String>
     <system:String x:Key="item50">Проверьте вашу электронную почту для кода 2-факторной аутентификации после входа в свою учетную запись Steam.</system:String>
+    <system:String x:Key="item51">Выберите папку, в которую вы хотите загрузить игру.</system:String>
     <system:String x:Key="item52">Похоже, у вас не установлены файлы сервера.\n\nУстановите их в меню настроек.</system:String>
     <system:String x:Key="item53">Ошибка запуска сервера:</system:String>
     <system:String x:Key="item54">Загрузка...</system:String>
@@ -93,7 +96,7 @@
     <system:String x:Key="item116">Распаковка файлов сервера...</system:String>
     <system:String x:Key="item118">Распаковка файлов NodeJS...</system:String>
     <system:String x:Key="item120">Пожалуйста закройте H1Z1.</system:String>
-    <system:String x:Key="item121">H1Z1.exe в настоящее время используется.\n\nЗакройте все экземпляры H1Z1.</system:String>
+    <system:String x:Key="item121">H1Z1.exe в настоящее время используется.\n\nПожалуйста, закройте все открытые экземпляры H1Z1.</system:String>
     <system:String x:Key="item122">Текущая версия игры:</system:String>
     <system:String x:Key="item124">Версия лаунчера v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
@@ -108,7 +111,7 @@
     <system:String x:Key="item134">НЕТ</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
     <system:String x:Key="item136">Переводчики</system:String>
-    <system:String x:Key="item137">\n\n(Вы подключены к Интернету?)</system:String>
+    <system:String x:Key="item137">(Вы подключены к Интернету?)</system:String>
     <system:String x:Key="item138">\n\n(Файлы не будут удалены)</system:String>
     <system:String x:Key="item139">H1Emu сервер</system:String>
     <system:String x:Key="item140">Одиночная игра</system:String>
@@ -155,4 +158,5 @@
     <system:String x:Key="item182">Неизвестный код ответа при проверке действительности ключа вашей учетной записи:</system:String>
     <system:String x:Key="item183">При проверке ключа учетной записи произошла ошибка:</system:String>
     <system:String x:Key="item184">При загрузке списка серверов произошла ошибка:</system:String>
+    <system:String x:Key="item185">Сценарий установки сервера закрылся раньше и неожиданно.</system:String>
 </ResourceDictionary>

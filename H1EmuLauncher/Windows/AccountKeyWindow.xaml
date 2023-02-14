@@ -4,40 +4,90 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
+        x:Name="AccountKey"
         UseLayoutRounding="True"
         Title="H1Emu Account Key"
         Width="650"
         Height="auto"
         SizeToContent="Height"
         WindowStartupLocation="CenterOwner"
-        Background="#FF2A2A32"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        RenderTransformOrigin="0.5, 0.5"
+        Background="Transparent"
         FontFamily="Bahnschrift Light"
         FontSize="16"
-        ResizeMode="NoResize"
         Loaded="AccountKeyLoaded"
-        Closing="AccountKeyWindowClosing"
-        Activated="AccountKeyWindowActivated">
+        Closing="AccountKeyWindowClosing">
 
-    <!-- Hide window border but keep animations -->
-    <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="0"
-                      CornerRadius="0"
-                      CaptionHeight="0"
-                      ResizeBorderThickness="0"
-                      UseAeroCaptionButtons="False"/>
+    <Window.RenderTransform>
+        <ScaleTransform x:Name="WindowScaleTransform"/>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    </WindowChrome.WindowChrome>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    <Grid>
+                        <DoubleAnimation Storyboard.TargetName="AccountKey"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+    
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Storyboard x:Key="CloseAccountKey">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="AccountKey"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#FF2A2A32">
         <Grid>
             <!-- Grainy texture -->
             <Grid.Background>
                 <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
             </Grid.Background>
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
@@ -52,10 +102,6 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="60"/>
-                </Grid.RowDefinitions>
 
                 <!-- Logo -->
                 <DockPanel Height="60"
@@ -80,12 +126,7 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             BorderThickness="0"
-                            Style="{StaticResource CloseButtonStyle}">
-
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\Exit.png"/>
-                        </Button.Background>
-                    </Button>
+                            Style="{StaticResource CloseButtonStyle}"/>
                 </DockPanel>
             </Grid>
 
@@ -148,7 +189,7 @@
                             <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                 <MenuItem Click="AccountKeyLinkCopy"
                                           Header="Copy"
-                                          Style="{DynamicResource PopupMenuItem}"/>
+                                          Style="{DynamicResource CopyMenuItem}"/>
                             
                             </ContextMenu>
                         </TextBlock.ContextMenu>
@@ -260,12 +301,7 @@
                                 FontSize="18"
                                 BorderThickness="0"
                                 Content="{DynamicResource item92}"
-                                Style="{DynamicResource StandardButton}">
-
-                            <Button.Background>
-                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                            </Button.Background>
-                        </Button>
+                                Style="{DynamicResource StandardButton}"/>
                     </Grid>
                 </Border>
             </Border>

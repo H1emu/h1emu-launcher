@@ -1,37 +1,28 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using H1EmuLauncher.Classes;
+using System.Windows.Media.Animation;
 
 namespace H1EmuLauncher.SteamFrame
 {
-    public partial class _2FA : Page
+    public partial class _2FA : UserControl
     {
-        public static string twoFacInstruction;
+        public static Storyboard loadingAnimation;
+        public static int twoFacInstruction;
 
         public _2FA()
         {
             InitializeComponent();
 
             // Adds the correct language file to the resource dictionary and then loads it.
-            Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+            Resources.MergedDictionaries.Add(Classes.SetLanguageFile.LoadFile());
 
-            twoFacInstructionText.Text = twoFacInstruction;
-        }
+            loadingAnimation = FindResource("LoadingIconAnimation") as Storyboard;
 
-        public void PassAuthCode()
-        {
-            if (string.IsNullOrEmpty(authBox.Text.Trim()))
-            {
-                CustomMessageBox.Show(FindResource("item19").ToString());
-                return;
-            }
-
-            loadingGif.Visibility = Visibility.Visible;
-            twoFAButton.Visibility = Visibility.Hidden;
-
-            Steam3Session.twoauth = authBox.Text.Trim();
-            Steam3Session.tokenSource.Cancel();
+            if (twoFacInstruction == 1)
+                twoFacInstructionText.Text = LauncherWindow.launcherInstance.FindResource("item78").ToString();
+            else
+                twoFacInstructionText.Text = LauncherWindow.launcherInstance.FindResource("item79").ToString();
         }
 
         private void _2FAKeyDown(object sender, KeyEventArgs e)
@@ -45,6 +36,22 @@ namespace H1EmuLauncher.SteamFrame
         private void ContinueButton(object sender, RoutedEventArgs e)
         {
             PassAuthCode();
+        }
+
+        public void PassAuthCode()
+        {
+            if (string.IsNullOrEmpty(authBox.Text.Trim()))
+            {
+                Classes.CustomMessageBox.Show(FindResource("item19").ToString(), LauncherWindow.launcherInstance);
+                return;
+            }
+
+            twoFAButton.Visibility = Visibility.Hidden;
+            loadingIcon.Visibility = Visibility.Visible;
+            loadingAnimation.Begin();
+
+            Steam3Session.twoauth = authBox.Text.Trim();
+            Steam3Session.tokenSource.Cancel();
         }
 
         private void AuthBoxGotFocus(object sender, RoutedEventArgs e)

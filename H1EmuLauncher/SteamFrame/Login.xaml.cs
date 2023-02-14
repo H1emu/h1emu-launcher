@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
+using System.Windows.Threading;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SteamFrame
 {
-    public partial class Login : Page
+    public partial class Login : UserControl
     {
+        public static Storyboard loadingAnimation;
         public static CancellationTokenSource tokenSource = new();
         static CancellationToken token;
         public static string gameInfo { get; set; }
@@ -24,6 +27,16 @@ namespace H1EmuLauncher.SteamFrame
             InitializeComponent();
 
             // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
+            Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+
+            loadingAnimation = FindResource("LoadingIconAnimation") as Storyboard;
+        }
+
+        public void UpdateLang()
+        {
+            // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
@@ -31,36 +44,13 @@ namespace H1EmuLauncher.SteamFrame
         {
             if (e.Key == Key.Enter)
             {
-                if (!NullLoginCheck())
+                if (string.IsNullOrEmpty(usernameBox.Text) || string.IsNullOrEmpty(passwordBox.Password))
                 {
+                    CustomMessageBox.Show(FindResource("item36").ToString(), LauncherWindow.launcherInstance);
                     return;
                 }
-                else
-                {
-                    loadingGif.Visibility = Visibility.Visible;
-                    loginEnterButton.Visibility = Visibility.Hidden;
 
-                    new Thread(() =>
-                    {
-                        TryLoginDownload();
-
-                    }).Start();
-                }
-            }
-        }
-
-        private void LoginButton(object sender, RoutedEventArgs e)
-        {
-            if (!NullLoginCheck())
-            {
-                return;
-            }
-            else
-            {
-                loadingGif.Visibility = Visibility.Visible;
-                loginEnterButton.Visibility = Visibility.Hidden;
-
-                new Thread(() => 
+                new Thread(() =>
                 {
                     TryLoginDownload();
 
@@ -68,26 +58,22 @@ namespace H1EmuLauncher.SteamFrame
             }
         }
 
-        public bool NullLoginCheck()
+        private void LoginButton(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(usernameBox.Text) || string.IsNullOrEmpty(passwordBox.Password))
             {
                 CustomMessageBox.Show(FindResource("item36").ToString(), LauncherWindow.launcherInstance);
-                return false;
+                return;
             }
 
-            return true;
+            new Thread(() =>
+            {
+                TryLoginDownload();
+
+            }).Start();
         }
 
-        public void UpdateLang()
-        {
-            Resources.MergedDictionaries.Clear();
-
-            // Adds the correct language file to the resource dictionary and then loads it.
-            Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
-        }
-
-        public static string version = "";
+        public static string version = string.Empty;
 
         public async void TryLoginDownload()
         {
@@ -98,6 +84,10 @@ namespace H1EmuLauncher.SteamFrame
             {
                 username = usernameBox.Text.Trim();
                 password = passwordBox.Password.Trim();
+
+                loginEnterButton.Visibility = Visibility.Hidden;
+                loadingIcon.Visibility = Visibility.Visible;
+                loadingAnimation.Begin();
             }));
 
             try
@@ -118,6 +108,7 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\GameInfo.xaml", UriKind.Relative));
+                        _2FA.loadingAnimation.Stop();
                     }));
 
                     bool result = true;
@@ -132,7 +123,7 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         System.Windows.Forms.FolderBrowserDialog folderBrowser = new();
-                        folderBrowser.Description = "Select a folder location for the game to download to.";
+                        folderBrowser.Description = LauncherWindow.launcherInstance.FindResource("item51").ToString();
 
                         if (folderBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
@@ -230,7 +221,8 @@ namespace H1EmuLauncher.SteamFrame
                         UpdateLang();
                         LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\DownloadComplete.xaml", UriKind.Relative));
-                        loadingGif.Visibility = Visibility.Hidden;
+                        loadingAnimation.Stop();
+                        loadingIcon.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
                         CustomMessageBox.Show($"{FindResource("item37")} {version}.", LauncherWindow.launcherInstance);
                     }));
@@ -242,7 +234,8 @@ namespace H1EmuLauncher.SteamFrame
                         UpdateLang();
                         LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
-                        loadingGif.Visibility = Visibility.Hidden;
+                        loadingAnimation.Stop();
+                        loadingIcon.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
                         CustomMessageBox.Show($"{FindResource("item38")} {version}.", LauncherWindow.launcherInstance);
                     }));
@@ -254,7 +247,8 @@ namespace H1EmuLauncher.SteamFrame
                         UpdateLang();
                         LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
-                        loadingGif.Visibility = Visibility.Hidden;
+                        loadingAnimation.Stop();
+                        loadingIcon.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
 
                         if (ex.Message.Contains("is not available from this account."))
@@ -270,7 +264,8 @@ namespace H1EmuLauncher.SteamFrame
                         UpdateLang();
                         LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
-                        loadingGif.Visibility = Visibility.Hidden;
+                        loadingAnimation.Stop();
+                        loadingIcon.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
                         CustomMessageBox.Show($"{FindResource("item40")} \"{er.Message}\".", LauncherWindow.launcherInstance);
                     }));
@@ -286,7 +281,8 @@ namespace H1EmuLauncher.SteamFrame
 
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    loadingGif.Visibility = Visibility.Hidden;
+                    loadingAnimation.Stop();
+                    loadingIcon.Visibility = Visibility.Hidden;
                     loginEnterButton.Visibility = Visibility.Visible;
                 }));
             }

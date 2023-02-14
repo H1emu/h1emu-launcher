@@ -14,6 +14,7 @@
     <system:String x:Key="item13">Oyun başlatma hatası:</system:String>
     <system:String x:Key="item14">Oyun belirtilen klasörde bulunamadı.</system:String>
     <system:String x:Key="item15">İndirebilmek için Steam hesabınızda H1Z1: Just Survive'a sahip olmalısınız.</system:String>
+    <system:String x:Key="item16">Bir veya daha fazla hata oluştu:</system:String>
     <system:String x:Key="item17">Steam'e bağlanılamıyor:</system:String>
     <system:String x:Key="item18">EKLE</system:String>
     <system:String x:Key="item19">Lütfen Kimlik Doğrulama Kodu kutusunu doldurduğunuzdan emin olun.</system:String>
@@ -42,7 +43,9 @@
     <system:String x:Key="item46">Sunucuların son halini indirmek için buraya tıklayın.</system:String>
     <system:String x:Key="item47">Sunucuların son kararlı halini indirmek için buraya tıklayın.</system:String>
     <system:String x:Key="item48">Güncellemeler kontrol ediliyor...</system:String>
+    <system:String x:Key="item49">Bazı bilgiler eksik olabilir.</system:String>
     <system:String x:Key="item50">Lütfen Steam hesabınıza girdikten sonra ikili-güvenlik adımı için e-postanızın açık olduğundan emin olun.</system:String>
+    <system:String x:Key="item51">Oyunun indirilmesini istediğiniz klasörü seçin.</system:String>
     <system:String x:Key="item52">Sunucu dosyalarını yüklemediniz.\n\nBu işlemi Ayarlar menüsünden yapınız.</system:String>
     <system:String x:Key="item53">Sunucu başlatma hatası:</system:String>
     <system:String x:Key="item54">İndiriliyor...</system:String>
@@ -93,7 +96,7 @@
     <system:String x:Key="item116">Sunucu dosyaları açılıyor...</system:String>
     <system:String x:Key="item118">Node dosyaları açılıyor...</system:String>
     <system:String x:Key="item120">Lütfen H1Z1'i kapatın.</system:String>
-    <system:String x:Key="item121">H1Z1.exe şu anda kullanımda.\n\nAçık olan H1Z1 uygulamalarını kapatın..</system:String>
+    <system:String x:Key="item121">H1Z1.exe şu anda kullanımda.\n\nLütfen açık H1Z1 örneklerini kapatın.</system:String>
     <system:String x:Key="item122">Mevcut oyun versiyonu:</system:String>
     <system:String x:Key="item124">Başlatıcı Versiyonu v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
@@ -108,7 +111,7 @@
     <system:String x:Key="item134">HAYIR</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
     <system:String x:Key="item136">Çevirmenler</system:String>
-    <system:String x:Key="item137">\n\n(Internet'e bağlı mısınız?)</system:String>
+    <system:String x:Key="item137">(Internet'e bağlı mısınız?)</system:String>
     <system:String x:Key="item138">\n\n(Dosyalar silinmeyecek)</system:String>
     <system:String x:Key="item139">H1Emu Sunucusu</system:String>
     <system:String x:Key="item140">Tek Oyuncu</system:String>
@@ -155,4 +158,5 @@
     <system:String x:Key="item182">Hesap Anahtarınızın geçerliliğini kontrol ederken bilinmeyen yanıt kodu:</system:String>
     <system:String x:Key="item183">Hesap Anahtarınız doğrulanırken bir hata oluştu:</system:String>
     <system:String x:Key="item184">Sunucu listesi yüklenirken bir hata oluştu:</system:String>
+    <system:String x:Key="item185">Sunucu yükleme komut dosyası erken ve beklenmedik bir şekilde kapandı.</system:String>
 </ResourceDictionary>

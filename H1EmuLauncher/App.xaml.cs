@@ -1,10 +1,8 @@
-﻿using H1EmuLauncher.Classes;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Windows;
+using System.Windows.Media.Animation;
 
 namespace H1EmuLauncher
 {
@@ -17,12 +15,17 @@ namespace H1EmuLauncher
         {
             if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
-                File.WriteAllText($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt", string.Join(" ", e.Args));
+                File.WriteAllText($"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt", string.Join(" ", e.Args));
                 Environment.Exit(0);
             }
 
             LauncherWindow.rawArgs = e.Args;
             new UpdateWindow();
+        }
+
+        private void StoryboardCompleted(object sender, EventArgs e)
+        {
+            MessageBox.Show("balls");
         }
     }
 }

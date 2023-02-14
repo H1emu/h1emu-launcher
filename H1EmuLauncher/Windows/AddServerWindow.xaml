@@ -6,30 +6,108 @@
         mc:Ignorable="d"
         UseLayoutRounding="True"
         Title="H1Emu Add Server"
-        x:Name="AddServerMenu"
+        x:Name="AddServer"
         Width="420"
         Height="300"
         WindowStartupLocation="CenterOwner"
-        Background="#FF2A2A32"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        RenderTransformOrigin="0.5, 0.5"
+        Background="Transparent"
         FontFamily="Bahnschrift"
         FontSize="16"
-        ResizeMode="NoResize"
-        Loaded="AddServerMenuLoaded"
-        Closing="AddServerMenuClosing"
-        Activated="AddServerMenuActivated">
+        Loaded="AddServerLoaded"
+        Closing="AddServerClosing">
 
-        <!-- Hide window border but keep animations -->
-        <WindowChrome.WindowChrome>
-            <WindowChrome
-                GlassFrameThickness="0"
-                CornerRadius="0"
-                CaptionHeight="0"
-                ResizeBorderThickness="0"
-                UseAeroCaptionButtons="False"/>
-            
-        </WindowChrome.WindowChrome>
+    <Window.RenderTransform>
+        <ScaleTransform x:Name="WindowScaleTransform"/>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    <Grid>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+
+                        <DoubleAnimation Storyboard.TargetName="AddServer"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Storyboard x:Key="CloseAddServer">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="AddServer"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+            <Storyboard x:Key="UnfocusPropertiesShow">
+                <DoubleAnimation Storyboard.TargetName="addServerFade"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0" To="1"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="addServerBlur"
+                                 Storyboard.TargetProperty="Radius"
+                                 From="0" To="15"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+            <Storyboard x:Key="UnfocusPropertiesHide">
+                <DoubleAnimation Storyboard.TargetName="addServerFade"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="addServerBlur"
+                                 Storyboard.TargetProperty="Radius"
+                                 From="15" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#FF2A2A32">
         <Grid>
 
             <!-- Grainy texture -->
@@ -42,12 +120,8 @@
                 <BlurEffect x:Name="addServerBlur"
                             Radius="0"
                             KernelType="Gaussian"/>
-                
-            </Grid.Effect>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+            </Grid.Effect>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"/>
@@ -79,19 +153,14 @@
                 <DockPanel Grid.Column="1">
                     <Button x:Name="ExitButton"
                             RenderOptions.BitmapScalingMode="Fant"
-                            Click="CloseAddServerMenu"
+                            Click="CloseAddServer"
                             Width="44"
                             Height="30"
                             Margin="0,0,15,0"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             BorderThickness="0"
-                            Style="{StaticResource CloseButtonStyle}">
-                        
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\Exit.png"/>
-                        </Button.Background>
-                    </Button>
+                            Style="{StaticResource CloseButtonStyle}"/>
                 </DockPanel>
             </Grid>
 
@@ -198,12 +267,7 @@
                                 FontSize="22"
                                 BorderThickness="0"
                                 Content="{DynamicResource item18}"
-                                Style="{DynamicResource StandardButton}">
-
-                            <Button.Background>
-                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                            </Button.Background>
-                        </Button>
+                                Style="{DynamicResource StandardButton}"/>
 
                         <!-- Cancel button -->
                         <Button Grid.Row="2"
@@ -220,12 +284,7 @@
                                 FontSize="22"
                                 BorderThickness="0"
                                 Content="{DynamicResource item28}"
-                                Style="{DynamicResource StandardButton}">
-
-                            <Button.Background>
-                                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                            </Button.Background>
-                        </Button>
+                                Style="{DynamicResource StandardButton}"/>
                     </Grid>
                 </Border>
             </Border>
@@ -235,7 +294,7 @@
         <Rectangle x:Name="addServerFade"
                    Fill="#40000000"
                    IsHitTestVisible="False"
-                   Visibility="Hidden"/>
+                   Opacity="0"/>
 
     </Grid>
 </Window>

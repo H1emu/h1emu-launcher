@@ -4,60 +4,116 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="H1Emu Splash Screen"
+        Title="Splash Screen"
         x:Name="SplashScreen"
         MinHeight="100"
         MaxHeight="100"
         MinWidth="400"
         MaxWidth="800"
         SizeToContent="WidthAndHeight"
-        Background="#1C1B22"
         WindowStartupLocation="CenterScreen"
-        Activated="SplashScreenActivated"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        RenderTransformOrigin="0.5, 0.5"
+        Background="Transparent"
+        Closing="SplashScreenClosing"
         FontFamily="Bahnschrift">
 
-        <!-- Hide window border but keep animations -->
-        <WindowChrome.WindowChrome>
-            <WindowChrome GlassFrameThickness="0"
-                          CornerRadius="0"
-                          CaptionHeight="0"
-                          ResizeBorderThickness="0"
-                          UseAeroCaptionButtons="False"/>
+    <Window.RenderTransform>
+        <ScaleTransform x:Name="WindowScaleTransform"/>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-        </WindowChrome.WindowChrome>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    <Grid MouseLeftButtonDown="SplashScreenMove">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+                        <DoubleAnimation Storyboard.TargetName="SplashScreen"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
 
-        <!-- Grainy texture -->
-        <Grid.Background>
-            <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-        </Grid.Background>
+    <Window.Resources>
+        <ResourceDictionary>
 
-        <!-- Divider / progress bar -->
-        <ProgressBar Grid.Row="1"
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Storyboard x:Key="CloseSplashScreen">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="SplashScreen"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#1C1B22">
+        <Grid MouseLeftButtonDown="SplashScreenMove">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Grainy texture -->
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+            </Grid.Background>
+
+            <!-- Divider / progress bar -->
+            <ProgressBar Grid.Row="1"
                      Height="2"
                      Background="#FFCA1420"
                      Margin="35,10,35,0"
                      IsIndeterminate="True"
                      Style="{DynamicResource ProgressBar}">
 
-            <!-- Drop shadow effect -->
-            <ProgressBar.Effect>
-                <DropShadowEffect BlurRadius="8"
+                <!-- Drop shadow effect -->
+                <ProgressBar.Effect>
+                    <DropShadowEffect BlurRadius="8"
                                   Direction="-90"
                                   RenderingBias="Quality"
                                   ShadowDepth="1"/>
 
-            </ProgressBar.Effect>
-        </ProgressBar>
+                </ProgressBar.Effect>
+            </ProgressBar>
 
-        <!-- Checking for updates text -->
-        <TextBlock Padding="20,0,20,0"
+            <!-- Checking for updates text -->
+            <TextBlock Padding="20,0,20,0"
                    VerticalAlignment="Bottom"
                    TextAlignment="Center"
                    FontSize="30"
@@ -65,13 +121,14 @@
                    FontWeight="Light"
                    Text="{DynamicResource item48}"/>
 
-        <!-- Please wait text -->
-        <TextBlock Grid.Row="2"
+            <!-- Please wait text -->
+            <TextBlock Grid.Row="2"
                    Padding="0,11,0,0"
                    TextAlignment="Center"
                    FontSize="16"
                    Foreground="White"
                    FontWeight="Light"
                    Text="{DynamicResource item4}"/>
+        </Grid>
     </Grid>
 </Window>

@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
@@ -17,21 +18,22 @@ namespace H1EmuLauncher
             Owner = LauncherWindow.launcherInstance;
 
             // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
             reportBugGitHubServerLink.Text = Info.SERVER_BUG_LINK;
             reportBugGitHubLauncherLink.Text = Info.LAUNCHER_BUG_LINK;
         }
 
-        private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ReportBugTopBarMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void CloseButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Topmost = true;
-            this.Close();
+            Topmost = true;
+            Close();
         }
 
         private void ReportBugGithubServer(object sender, RoutedEventArgs e)
@@ -64,20 +66,31 @@ namespace H1EmuLauncher
 
         private void MainReportBugLoaded(object sender, RoutedEventArgs e)
         {
-            LauncherWindow.launcherInstance.launcherBlur.Radius = 15;
-            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Visible;
+            LauncherWindow.launcherInstance.UnfocusPropertiesAnimationShow.Begin();
         }
+
+        public bool IsCompleted = false;
 
         private void MainReportBugClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            LauncherWindow.launcherInstance.launcherBlur.Radius = 0;
-            LauncherWindow.launcherInstance.launcherFade.Visibility = Visibility.Hidden;
-        }
+            if (!IsCompleted)
+            {
+                LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
 
-        private void MainReportBugActivated(object sender, EventArgs e)
-        {
-            reportBugBlur.Radius = 0;
-            reportBugFade.Visibility = Visibility.Hidden;
+                e.Cancel = true;
+                Storyboard sb = FindResource("CloseReportBug") as Storyboard;
+
+                if (sb != null)
+                {
+                    sb.Completed += (s, _) =>
+                    {
+                        IsCompleted = true;
+                        Close();
+                    };
+
+                    sb.Begin();
+                }
+            }
         }
     }
 }

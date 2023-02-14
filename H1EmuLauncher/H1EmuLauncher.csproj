@@ -7,11 +7,11 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.7.1</AssemblyVersion>
-	  <FileVersion>2.7.1</FileVersion>
+	  <AssemblyVersion>2.7.2</AssemblyVersion>
+	  <FileVersion>2.7.2</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>2.7.1</Version>
+	  <Version>2.7.2</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -46,6 +46,9 @@
     <None Remove="Resources\Copy_Hover.png" />
     <None Remove="Resources\Copy_Pressed.png" />
     <None Remove="Resources\CustomClientConfig.ini" />
+    <None Remove="Resources\Delete.png" />
+    <None Remove="Resources\Delete_Hover.png" />
+    <None Remove="Resources\Delete_Pressed.png" />
     <None Remove="Resources\Discord.png" />
     <None Remove="Resources\Discord_Pressed.png" />
     <None Remove="Resources\DisplayImage.png" />
@@ -65,10 +68,8 @@
     <None Remove="Resources\HideKey_Pressed.png" />
     <None Remove="Resources\Icon.ico" />
     <None Remove="Resources\Language.png" />
-    <None Remove="Resources\Loading.gif" />
+    <None Remove="Resources\Loading.png" />
     <None Remove="Resources\Minimise.png" />
-    <None Remove="Resources\Minimise_Hover.png" />
-    <None Remove="Resources\Minimise_Pressed.png" />
     <None Remove="Resources\NextButton.png" />
     <None Remove="Resources\NextButton_Hover.png" />
     <None Remove="Resources\NextButton_Pressed.png" />
@@ -122,9 +123,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="SteamKit2" Version="2.4.1" />
-    <PackageReference Include="WpfAnimatedGif" Version="2.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -218,6 +217,15 @@
     <Resource Include="Resources\CustomClientConfig.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Delete.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Delete_Hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Delete_Pressed.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Discord.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -272,16 +280,10 @@
     <Resource Include="Resources\Language.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Loading.gif">
+    <Resource Include="Resources\Loading.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Minimise.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Minimise_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Minimise_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\NextButton.png">
@@ -330,12 +332,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\StandardButton.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\StandardButton_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\StandardButton_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

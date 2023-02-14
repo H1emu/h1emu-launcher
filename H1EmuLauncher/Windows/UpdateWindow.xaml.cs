@@ -1,27 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Media;
 using System.Net;
 using System.Net.Http;
-using System.Net.Sockets;
 using System.Reflection;
+using System.Text.Json;
 using System.Threading;
 using System.Windows;
+using System.Windows.Automation;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using SteamKit2.CDN;
 
 namespace H1EmuLauncher
 {
     public partial class UpdateWindow : Window
     {
         SplashWindow sp = new();
+        string online;
+        string local;
         string downloadUrl;
         public static string downloadFileName;
         public static HttpClient httpClient = new();
@@ -31,6 +33,7 @@ namespace H1EmuLauncher
             InitializeComponent();
 
             // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
             httpClient.DefaultRequestHeaders.Add("User-Agent", "d-fens HttpClient");
@@ -47,49 +50,43 @@ namespace H1EmuLauncher
                 {
                     // Download launcher information from GitHub endpoint
                     HttpResponseMessage result = httpClient.GetAsync(new Uri(Info.LAUNCHER_JSON_API)).Result;
-                    string jsonLauncher = result.Content.ReadAsStringAsync().Result;
+
+                    // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
+                    if (result.StatusCode != HttpStatusCode.OK)
+                        throw new Exception($"{char.ToUpper(result.ReasonPhrase.First())}{result.ReasonPhrase.Substring(1)}");
 
                     // Get latest release number and date published for app.
-                    var jsonDesLauncher = JsonConvert.DeserializeObject<dynamic>(jsonLauncher);
-                    string online = $"{jsonDesLauncher.tag_name}".Substring(1);
-                    string local = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
-                    downloadUrl = jsonDesLauncher.assets[0].browser_download_url;
-                    downloadFileName = jsonDesLauncher.assets[0].name;
-
-                    if (local == online)
-                    {
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            sp.Close();
-
-                            Topmost = true;
-                            Close();
-                        }));
-                    }
-                    else
-                    {
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            sp.Close();
-
-                            Show();
-                        }));
-                    }
+                    string jsonLauncher = result.Content.ReadAsStringAsync().Result;
+                    JsonEndPoints.Launcher.Root jsonLauncherDes = JsonSerializer.Deserialize<JsonEndPoints.Launcher.Root>(jsonLauncher);
+                    online = jsonLauncherDes.tag_name.Substring(1);
+                    local = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
+                    downloadUrl = jsonLauncherDes.assets[0].browser_download_url;
+                    downloadFileName = jsonLauncherDes.assets[0].name;
                 }
-                catch (AggregateException e) when (e.InnerException is HttpRequestException ex)
+                catch (AggregateException e)
                 {
-                    if (ex.StatusCode == null)
+                    string exceptionList = string.Empty;
+                    foreach (Exception exception in e.InnerExceptions)
+                        exceptionList += $"\n\n{exception.GetType().Name}: {exception.Message}";
+
+                    if (e.InnerException is HttpRequestException ex)
                     {
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            sp.Close();
+                        if (ex.StatusCode == null)
+                            exceptionList += $"\n\n{FindResource("item137")}";
 
-                            CustomMessageBox.Show($"{FindResource("item66").ToString().Replace("{0}", $"\"{ex.Message}\".").Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}")}{FindResource("item137").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}")}", this);
-
-                            Topmost = true;
-                            Close();
-                        }));
                     }
+
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        sp.Close();
+
+                        CustomMessageBox.Show($"{FindResource("item66")} {FindResource("item16")}{exceptionList}\n\n{FindResource("item49")}", this);
+
+                        Topmost = true;
+                        Close();
+                    }));
+
+                    return;
                 }
                 catch (Exception ex)
                 {
@@ -97,10 +94,32 @@ namespace H1EmuLauncher
                     {
                         sp.Close();
 
-                        CustomMessageBox.Show(FindResource("item66").ToString().Replace("{0}", $"\"{ex.Message}\".").Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
+                        CustomMessageBox.Show($"{FindResource("item66")} \"{ex.Message}\"\n\n{FindResource("item49")}", this);
 
                         Topmost = true;
                         Close();
+                    }));
+
+                    return;
+                }
+
+                if (local == online)
+                {
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        sp.Close();
+
+                        Topmost = true;
+                        Close();
+                    }));
+                }
+                else
+                {
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        sp.Close();
+
+                        Show();
                     }));
                 }
 
@@ -128,9 +147,14 @@ namespace H1EmuLauncher
                     {
                         downloadSetupProgress.IsIndeterminate = true;
                     }));
-                    using (HttpResponseMessage response = httpClient.GetAsync(new Uri(downloadUrl)).Result)
+
+                    using (HttpResponseMessage result = httpClient.GetAsync(new Uri(downloadUrl)).Result)
                     {
-                        using (Stream contentStream = response.Content.ReadAsStream(), fs = new FileStream($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, false))
+                        // Throw an exception if we didn't get the correct response, with the first letter capitalised in the message
+                        if (result.StatusCode != HttpStatusCode.OK)
+                            throw new Exception($"{char.ToUpper(result.ReasonPhrase.First())}{result.ReasonPhrase.Substring(1)}");
+
+                        using (Stream contentStream = result.Content.ReadAsStream(), fs = new FileStream($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, false))
                         {
                             Dispatcher.Invoke(new Action(delegate
                             {
@@ -184,11 +208,22 @@ namespace H1EmuLauncher
                         UseShellExecute = true
                     });
                 }
-                catch (Exception ex)
+                catch (AggregateException ex)
+                {
+                    string exceptionList = string.Empty;
+                    foreach (Exception exception in ex.InnerExceptions)
+                        exceptionList += $"\n\n{exception}";
+
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        CustomMessageBox.Show($"{FindResource("item16")}{exceptionList}\n\n{FindResource("item49")}", this);
+                    }));
+                }
+                catch (Exception es)
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
+                        CustomMessageBox.Show($"{FindResource("item142")} {es.Message}", this);
                     }));
                 }
 
@@ -200,9 +235,9 @@ namespace H1EmuLauncher
                     notNowHyperlink.IsEnabled = true;
                     updateButton.IsEnabled = true;
                     closeButton.IsEnabled = true;
+                    Environment.Exit(0);
                 }));
 
-                Environment.Exit(0);
             }).Start();
         }
 
@@ -228,23 +263,33 @@ namespace H1EmuLauncher
             SystemSounds.Beep.Play();
         }
 
+        public bool IsCompleted = false;
+
         private void MainUpdateWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Hide();
+            if (!IsCompleted)
+            {
+                e.Cancel = true;
+                Storyboard sb = FindResource("CloseUpdate") as Storyboard;
 
-            LauncherWindow la = new();
-            la.Show();
-        }
+                if (sb != null)
+                {
+                    sb.Completed += (s, _) =>
+                    {
+                        IsCompleted = true;
+                        Close();
+                    };
 
-        private void MainUpdateWindowActivated(object sender, EventArgs e)
-        {
-            SizeToContent = SizeToContent.Manual;
-            SizeToContent = SizeToContent.WidthAndHeight;
-        }
+                    sb.Begin();
+                }
+            }
+            else
+            {
+                Hide();
 
-        private void NotNowHyperLinkMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            notNowHyperlink.Foreground = new SolidColorBrush(Colors.Gray);
+                LauncherWindow la = new();
+                la.Show();
+            }
         }
     }
 }

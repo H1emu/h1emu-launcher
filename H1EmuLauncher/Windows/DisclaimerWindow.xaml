@@ -5,213 +5,250 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="H1Emu Disclaimer"
-        x:Name="MainMsgBox"
-        MinWidth="550"
+        x:Name="Disclaimer"
         MaxWidth="600"
-        MinHeight="200"
-        MaxHeight="10000"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
-        Background="#FF2A2A32"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        RenderTransformOrigin="0.5, 0.5"
+        Background="Transparent"
         FontFamily="Bahnschrift"
         FontSize="16"
-        Activated="DisclaimerActivated"
         Loaded="DisclaimerLoaded"
+        Closing="DisclaimerClosing"
         Closed="DisclaimerClosed">
 
-        <!-- Hide window border but keep animations -->
-        <WindowChrome.WindowChrome>
-            <WindowChrome GlassFrameThickness="0"
-                          CornerRadius="0"
-                          CaptionHeight="0"
-                          ResizeBorderThickness="0"
-                          UseAeroCaptionButtons="False"/>
+    <Window.RenderTransform>
+        <ScaleTransform x:Name="WindowScaleTransform"/>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-        </WindowChrome.WindowChrome>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="30*"/>
-        </Grid.RowDefinitions>
+                        <DoubleAnimation Storyboard.TargetName="Disclaimer"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+    
+    <Window.Resources>
+        <ResourceDictionary>
 
-        <!-- Grainy texture -->
-        <Grid.Background>
-            <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-        </Grid.Background>
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
-        <!-- Grid for logo and exit button -->
-        <Grid MouseLeftButtonDown="MoveDisclaimer"
-              Background="Transparent">
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            
+            <Storyboard x:Key="CloseDisclaimer">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="Disclaimer"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#FF2A2A32">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
-            <!-- Logo -->
-            <DockPanel Height="40"
-                       HorizontalAlignment="Left"
-                       Margin="14,2,0,0">
+            <!-- Grainy texture -->
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+            </Grid.Background>
 
-                <Image Source="..\Resources\H1EmuIcon.png"
-                       Width="150"
-                       Height="40"
-                       Margin="0,4,0,0"/>
+            <!-- Grid for logo and exit button -->
+            <Grid MouseLeftButtonDown="MoveDisclaimer"
+                  Background="Transparent">
 
-            </DockPanel>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- Exit button -->
-            <DockPanel Grid.Column="1">
-                <Button x:Name="CloseButton"
-                        IsEnabled="False"
-                        RenderOptions.BitmapScalingMode="Fant"
-                        Width="45"
-                        Height="30"
-                        VerticalAlignment="Center"
-                        HorizontalAlignment="Right"
-                        BorderThickness="0"
-                        Margin="0,0,15,0"
-                        Click="CloseButton_Click"
-                        Style="{StaticResource CloseButtonStyle}">
-                    
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\Exit.png"/>
-                    </Button.Background>
-                </Button>
-            </DockPanel>
-        </Grid>
+                <!-- Logo -->
+                <DockPanel Height="40"
+                           HorizontalAlignment="Left"
+                           Margin="14,2,0,0">
 
-        <!-- Main content in darkened area -->
-        <Border Grid.Row="1"
-                Background="#1C1B22"
-                Margin="15,5,15,15"
-                UseLayoutRounding="True"
-                CornerRadius="5">
+                    <Image Source="..\Resources\H1EmuIcon.png"
+                           Width="150"
+                           Height="40"
+                           Margin="0,4,0,0"/>
 
-            <!-- Drop shadow effect -->
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="8"
-                                  Direction="-90"
-                                  RenderingBias="Quality"
-                                  ShadowDepth="1"/>
-                
-            </Border.Effect>
+                </DockPanel>
 
-            <Border CornerRadius="5">
-
-                <!-- Grainy texture -->
-                <Border.Background>
-                    <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-                </Border.Background>
-
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="60"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="90"/>
-                    </Grid.RowDefinitions>
-
-                    <!-- Welcome message -->
-                    <TextBlock VerticalAlignment="Bottom"
-                               HorizontalAlignment="Center"
-                               Foreground="#FFED1C24"
-                               FontSize="32"
-                               FontWeight="Bold"
-                               FontFamily="{StaticResource Signika}"
-                               Text="{DynamicResource item158}"/>
-
-                    <!-- Main disclaimer message -->
-                    <TextBlock Grid.Row="1"
-                               Margin="25,0,25,0"
-                               Padding="0,15,0,0"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               TextAlignment="Center"
-                               TextWrapping="Wrap"
-                               Cursor="Arrow"
-                               FontFamily="Bahnschrift"
-                               Background="Transparent"
-                               Foreground="White">
-                
-                    <Run FontWeight="Light"
-                         Foreground="White"
-                         Text="{DynamicResource item159}"/>
-                
-                    <Run TextDecorations="Underline"
-                         FontWeight="Bold"
-                         Foreground="#FFED1C24"
-                         Text="{DynamicResource item160}"/>
-                
-                    <Run FontWeight="Light"
-                         Foreground="White"
-                         Text="{DynamicResource item161}"/>
-                
-                    <Run TextDecorations="Underline"
-                         FontWeight="Bold"
-                         Foreground="#FFED1C24"
-                         Text="{DynamicResource item162}"/>
-                    
-                    <Run FontWeight="Light"
-                         Text="."/>
-                
-                    <LineBreak/>
-                    <LineBreak/>
-                
-                    <Run FontWeight="Light"
-                         Foreground="White"
-                         Text="{DynamicResource item163}"/>
-                
-                    <Run TextDecorations="Underline"
-                         FontWeight="Bold"
-                         Foreground="#FFED1C24"
-                         Text="{DynamicResource item164}"/>
-                
-                    <Run FontWeight="Light"
-                         Foreground="White"
-                         Text="{DynamicResource item165}"/>
-                
-                    <LineBreak/>
-                    <LineBreak/>
-                
-                    <Run FontWeight="Light"
-                         Foreground="White"
-                         Text="{DynamicResource item166}"/>
-
-                    </TextBlock>
-
-                    <!-- Continue button -->
-                    <Button x:Name="continueButton"
-                            Grid.Row="2"
-                            Click="ContinueButton"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="180"
-                            Height="38"
-                            Margin="0,0,0,10"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
-                            Foreground="White"
-                            FontFamily="Arial Black"
-                            FontSize="18"
-                            BorderThickness="0"
+                <!-- Exit button -->
+                <DockPanel Grid.Column="1">
+                    <Button x:Name="CloseButton"
                             IsEnabled="False"
-                            Content="{DynamicResource item167}"
-                            Style="{DynamicResource StandardButton}">
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Width="45"
+                            Height="30"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Right"
+                            BorderThickness="0"
+                            Margin="0,0,15,0"
+                            Click="CloseButton_Click"
+                            Style="{StaticResource CloseButtonStyle}"/>
+                </DockPanel>
+            </Grid>
 
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                        </Button.Background>
-                    </Button>
-                </Grid>
+            <!-- Main content in darkened area -->
+            <Border Grid.Row="1"
+                    Background="#1C1B22"
+                    Margin="15,5,15,15"
+                    UseLayoutRounding="True"
+                    CornerRadius="5">
+
+                <!-- Drop shadow effect -->
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="8"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"/>
+
+                </Border.Effect>
+
+                <Border CornerRadius="5">
+
+                    <!-- Grainy texture -->
+                    <Border.Background>
+                        <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                    </Border.Background>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Welcome message -->
+                        <TextBlock Margin="0,30,0,10"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   Foreground="#FFED1C24"
+                                   FontSize="32"
+                                   FontWeight="Bold"
+                                   FontFamily="{StaticResource Signika}"
+                                   Text="{DynamicResource item158}"/>
+
+                        <!-- Main disclaimer message -->
+                        <TextBlock Grid.Row="1"
+                                   Margin="25,0,25,0"
+                                   Padding="0,15,0,15"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   Cursor="Arrow"
+                                   FontFamily="Bahnschrift"
+                                   Background="Transparent"
+                                   Foreground="White">
+                
+                        <Run FontWeight="Light"
+                             Foreground="White"
+                             Text="{DynamicResource item159}"/>
+                
+                        <Run TextDecorations="Underline"
+                             FontWeight="Bold"
+                             Foreground="#FFED1C24"
+                             Text="{DynamicResource item160}"/>
+                
+                        <Run FontWeight="Light"
+                             Foreground="White"
+                             Text="{DynamicResource item161}"/>
+                
+                        <Run TextDecorations="Underline"
+                             FontWeight="Bold"
+                             Foreground="#FFED1C24"
+                             Text="{DynamicResource item162}"/>
+                    
+                        <Run FontWeight="Light"
+                             Text="."/>
+                
+                        <LineBreak/>
+                        <LineBreak/>
+                
+                        <Run FontWeight="Light"
+                             Foreground="White"
+                             Text="{DynamicResource item163}"/>
+                
+                        <Run TextDecorations="Underline"
+                             FontWeight="Bold"
+                             Foreground="#FFED1C24"
+                             Text="{DynamicResource item164}"/>
+                
+                        <Run FontWeight="Light"
+                             Foreground="White"
+                             Text="{DynamicResource item165}"/>
+                
+                        <LineBreak/>
+                        <LineBreak/>
+                
+                        <Run FontWeight="Light"
+                             Foreground="White"
+                             Text="{DynamicResource item166}"/>
+
+                        </TextBlock>
+
+                        <!-- Continue button -->
+                        <Button x:Name="continueButton"
+                                Grid.Row="2"
+                                Click="ContinueButton"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Width="180"
+                                Height="38"
+                                Margin="0,30,0,30"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
+                                Foreground="White"
+                                FontFamily="Arial Black"
+                                FontSize="18"
+                                BorderThickness="0"
+                                IsEnabled="False"
+                                Content="{DynamicResource item167}"
+                                Style="{DynamicResource StandardButton}"/>
+                    </Grid>
+                </Border>
             </Border>
-        </Border>
+        </Grid>
     </Grid>
 </Window>

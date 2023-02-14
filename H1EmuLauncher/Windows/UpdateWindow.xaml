@@ -4,69 +4,120 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="H1Emu Update Available"
+        Title="Update Available"
+        x:Name="Update"
         MinWidth="450"
         MaxWidth="450"
         MinHeight="200"
         MaxHeight="670"
         SizeToContent="WidthAndHeight"
-        Activated="MainUpdateWindowActivated"
         WindowStartupLocation="CenterScreen"
-        Background="#FF2A2A32"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        RenderTransformOrigin="0.5, 0.5"
+        Background="Transparent"
         Loaded="MainUpdateWindowLoaded"
         Closing="MainUpdateWindowClosing"
         FontFamily="Bahnschrift">
 
-        <!-- Hide window border but keep animations -->
-        <WindowChrome.WindowChrome>
-            <WindowChrome
-                GlassFrameThickness="0"
-                CornerRadius="0"
-                CaptionHeight="0"
-                ResizeBorderThickness="0"
-                UseAeroCaptionButtons="False"/>
+    <Window.RenderTransform>
+        <ScaleTransform x:Name="WindowScaleTransform"/>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-        </WindowChrome.WindowChrome>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+                        <DoubleAnimation Storyboard.TargetName="Update"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
+    <Window.Resources>
+        <ResourceDictionary>
 
-        <!-- Grainy texture -->
-        <Grid.Background>
-            <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-        </Grid.Background>
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
 
-        <!-- Grid for logo and exit button -->
-        <Grid
+            <Storyboard x:Key="CloseUpdate">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="Update"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#FF2A2A32">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Grainy texture -->
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+            </Grid.Background>
+
+            <!-- Grid for logo and exit button -->
+            <Grid
             MouseLeftButtonDown="MoveWindow"
             Background="Transparent">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <!-- Logo -->
-            <DockPanel>
-                <Image Source="..\Resources\H1EmuIcon.png"
+                <!-- Logo -->
+                <DockPanel>
+                    <Image Source="..\Resources\H1EmuIcon.png"
                        Width="130"
                        Height="35"
                        Margin="23,16,0,0"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left"/>
 
-            </DockPanel>
+                </DockPanel>
 
-            <!-- Exit button -->
-            <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
-                <Button x:Name="closeButton"
+                <!-- Exit button -->
+                <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
+                    <Button x:Name="closeButton"
                         RenderOptions.BitmapScalingMode="Fant"
                         Width="44"
                         Height="30"
@@ -75,48 +126,43 @@
                         BorderThickness="0"
                         Click="CloseUpdater"
                         Margin="0,5,25,0"
-                        Style="{StaticResource CloseButtonStyle}">
-                    
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\Exit.png"/>
-                    </Button.Background>
-                </Button>
-            </DockPanel>
-        </Grid>
+                        Style="{StaticResource CloseButtonStyle}"/>
+                </DockPanel>
+            </Grid>
 
-        <!-- Main content in darkened area -->
-        <Border Grid.Row="1"
+            <!-- Main content in darkened area -->
+            <Border Grid.Row="1"
                 Background="#1C1B22"
                 Margin="25,10,25,25"
                 UseLayoutRounding="True"
                 CornerRadius="5">
 
-            <!-- Drop shadow effect -->
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="10"
+                <!-- Drop shadow effect -->
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10"
                                   Direction="-90"
                                   RenderingBias="Quality"
                                   ShadowDepth="1"/>
 
-            </Border.Effect>
+                </Border.Effect>
 
-            <Border CornerRadius="5">
+                <Border CornerRadius="5">
 
-                <!-- Grainy texture -->
-                <Border.Background>
-                    <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-                </Border.Background>
+                    <!-- Grainy texture -->
+                    <Border.Background>
+                        <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                    </Border.Background>
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
 
-                    <!-- Main text message -->
-                    <TextBlock Margin="50,20,50,20"
+                        <!-- Main text message -->
+                        <TextBlock Margin="50,20,50,20"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                FontSize="18"
@@ -126,8 +172,8 @@
                                TextAlignment="Center"
                                Text="{DynamicResource item1}"/>
 
-                    <!-- Update button -->
-                    <Button x:Name="updateButton"
+                        <!-- Update button -->
+                        <Button x:Name="updateButton"
                             Grid.Row="1"
                             Click="UpdateButtonClick"
                             RenderOptions.BitmapScalingMode="Fant"
@@ -139,59 +185,54 @@
                             FontSize="24"
                             BorderThickness="0"
                             Content="{DynamicResource item2}"
-                            Style="{DynamicResource StandardButton}">
+                            Style="{DynamicResource StandardButton}"/>
 
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                        </Button.Background>
-                    </Button>
-
-                    <!-- Not now button -->
-                    <TextBlock x:Name="notNowText"
+                        <!-- Not now button -->
+                        <TextBlock x:Name="notNowText"
                                Grid.Row="2"
                                Margin="50,15,50,15"
                                VerticalAlignment="Bottom"
                                HorizontalAlignment="Center"
                                FontSize="16">
                 
-                    <Hyperlink x:Name="notNowHyperlink"
-                               Click="NotNowClick"
-                               Foreground="White">
+                        <Hyperlink x:Name="notNowHyperlink"
+                                   Click="NotNowClick"
+                                   Foreground="White">
                     
-                        <TextBlock Text="{DynamicResource item67}"
-                                   MouseDown="NotNowHyperLinkMouseDown"
-                                   Style="{DynamicResource HyperLinkStyle}"/>
+                            <TextBlock Text="{DynamicResource item67}"
+                                       Style="{DynamicResource HyperLinkStyle}"/>
                     
-                    </Hyperlink>
-                </TextBlock>
+                        </Hyperlink>
+                    </TextBlock>
 
-                    <Grid x:Name="progressBarGrid"
+                        <Grid x:Name="progressBarGrid"
                           Grid.Row="3"
                           Visibility="Collapsed">
 
-                        <!-- Setup download progress bar -->
-                        <ProgressBar x:Name="downloadSetupProgress"
+                            <!-- Setup download progress bar -->
+                            <ProgressBar x:Name="downloadSetupProgress"
                                      Height="25"
                                      Margin="54,20,54,20"
                                      Style="{DynamicResource ProgressBar}"/>
 
-                        <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
-                        <ProgressBar Height="25"
+                            <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
+                            <ProgressBar Height="25"
                                      Margin="54,20,54,20"
                                      Background="Transparent"
                                      Style="{DynamicResource ProgressBar}"/>
 
-                        <!-- Status text to overlay progress bar -->
-                        <TextBlock x:Name="downloadSetupProgressText"
+                            <!-- Status text to overlay progress bar -->
+                            <TextBlock x:Name="downloadSetupProgressText"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    Margin="0,0,0,1"
                                    Foreground="White"
                                    FontWeight="Light"
                                    Background="Transparent"/>
+                        </Grid>
                     </Grid>
-                </Grid>
+                </Border>
             </Border>
-        </Border>
+        </Grid>
     </Grid>
 </Window>

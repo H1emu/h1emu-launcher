@@ -6,31 +6,110 @@
         mc:Ignorable="d"
         UseLayoutRounding="True"
         Title="H1Emu Launcher Settings"
-        x:Name="MainSettings"
-        Width="740"
+        x:Name="Settings"
+        Width="auto"
         Height="auto"
         WindowStartupLocation="CenterOwner"
-        Background="#FF2A2A32"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        RenderTransformOrigin="0.5, 0.5"
+        Background="Transparent"
         FontFamily="Bahnschrift"
         FontSize="16"
-        ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         Loaded="SettingsLoaded"
-        Closing="MainSettingsClosing"
-        Activated="MainSettingsActivated"
-        ContentRendered="MainSettingsContentRendered">
+        Closing="SettingsClosing"
+        ContentRendered="SettingsContentRendered">
 
-        <!-- Hide window border but keep animations -->
-        <WindowChrome.WindowChrome>
-            <WindowChrome GlassFrameThickness="0"
-                          CornerRadius="0"
-                          CaptionHeight="0"
-                          ResizeBorderThickness="0"
-                          UseAeroCaptionButtons="False"/>
+    <Window.RenderTransform>
+        <ScaleTransform x:Name="WindowScaleTransform"/>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-        </WindowChrome.WindowChrome>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    <Grid>
+                        <DoubleAnimation Storyboard.TargetName="Settings"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Storyboard x:Key="CloseSettings">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="Settings"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+            <Storyboard x:Key="UnfocusPropertiesShow">
+                <DoubleAnimation Storyboard.TargetName="settingsFade"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="0" To="1"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="settingsBlur"
+                                 Storyboard.TargetProperty="Radius"
+                                 From="0" To="15"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+            <Storyboard x:Key="UnfocusPropertiesHide">
+                <DoubleAnimation Storyboard.TargetName="settingsFade"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="settingsBlur"
+                                 Storyboard.TargetProperty="Radius"
+                                 From="15" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#FF2A2A32">
         <Grid>
             <!-- Grainy texture -->
             <Grid.Background>
@@ -42,12 +121,8 @@
                 <BlurEffect x:Name="settingsBlur"
                             Radius="0"
                             KernelType="Gaussian"/>
-                
-            </Grid.Effect>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+            </Grid.Effect>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -90,12 +165,7 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             BorderThickness="0"
-                            Style="{StaticResource CloseButtonStyle}">
-                        
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\Exit.png"/>
-                        </Button.Background>
-                    </Button>
+                            Style="{StaticResource CloseButtonStyle}"/>
                 </DockPanel>
             </Grid>
 
@@ -225,32 +295,29 @@
                                     FontSize="24"
                                     BorderThickness="0"
                                     Content="{DynamicResource item42}"
-                                    Style="{DynamicResource StandardButton}">
-
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Style="{DynamicResource StandardButton}"/>
 
                             <!-- Patch button text -->
                             <TextBlock Grid.Column="1"
                                        Width="400"
-                                       Margin="0"
+                                       Margin="0,0,20,0"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        Foreground="White"
                                        FontWeight="Light"
                                        TextWrapping="Wrap">
 
-                            <Run Text="{DynamicResource item45}"/>
+                                <Run Text="{DynamicResource item45}"/>
                             
-                            <Hyperlink Click="DeleteSingleplayerDataClick"
-                                       Foreground="White">
+                                <Hyperlink x:Name="deleteSinglePlayerDataHyperLink"
+                                           Click="DeleteSingleplayerDataClick"
+                                           Foreground="White">
                                     
-                                <Run Text="{DynamicResource item176}"
-                                     Style="{DynamicResource HyperLinkStyleRun}"/>
+                                    <Run Text="{DynamicResource item176}"
+                                         Style="{DynamicResource HyperLinkStyleRun}"
+                                         Cursor="Hand"/>
 
-                            </Hyperlink>
+                                </Hyperlink>
                             </TextBlock>
 
                             <!-- Install latest server button -->
@@ -267,18 +334,13 @@
                                     FontSize="24"
                                     BorderThickness="0"
                                     Content="{DynamicResource item43}"
-                                    Style="{DynamicResource StandardButton}">
-
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Style="{DynamicResource StandardButton}"/>
 
                             <!-- Latest server button text -->
                             <TextBlock Grid.Row="1"
                                        Grid.Column="1"
                                        Width="400"
-                                       Margin="20"
+                                       Margin="0,0,20,0"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        Foreground="White"
@@ -300,18 +362,13 @@
                                     FontSize="24"
                                     BorderThickness="0"
                                     Content="{DynamicResource item44}"
-                                    Style="{DynamicResource StandardButton}">
-
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Style="{DynamicResource StandardButton}"/>
 
                             <!-- Stable server button text -->
                             <TextBlock Grid.Row="2"
                                        Grid.Column="1"
                                        Width="400"
-                                       Margin="20"
+                                       Margin="0,0,20,0"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        Foreground="White"
@@ -321,44 +378,45 @@
                         </Grid>
 
                         <!-- Grid for settings progress bar -->
-                        <Grid x:Name="settingsProgressRow"
-                              Grid.Row="2"
-                              Visibility="Collapsed">
+                        <Border x:Name="settingsProgressRow"
+                                Grid.Row="2"
+                                Visibility="Collapsed">
 
-                            <!-- Status progress bar -->
-                            <ProgressBar x:Name="settingsProgress"
+                            <Grid x:Name="settingsProgressRowContent">
+                                <!-- Status progress bar -->
+                                <ProgressBar x:Name="settingsProgressBar"
                                          Grid.Row="2"
                                          Height="35"
                                          Margin="20,0,20,30"
                                          Style="{DynamicResource ProgressBar}"/>
 
-                            <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
-                            <ProgressBar Grid.Row="2"
+                                <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
+                                <ProgressBar Grid.Row="2"
                                          Height="35"
                                          Margin="20,0,20,30"
                                          Background="Transparent"
                                          Style="{DynamicResource ProgressBar}"/>
 
-                            <!-- Status text to overlay progress bar -->
-                            <TextBlock x:Name="settingsProgressText"
+                                <!-- Status text to overlay progress bar -->
+                                <TextBlock x:Name="settingsProgressText"
                                        Grid.Row="2"
                                        HorizontalAlignment="Center"
                                        Margin="0,8,0,0"
                                        Foreground="White"
                                        FontWeight="Light"
                                        Background="Transparent"/>
-                        </Grid>
+                            </Grid>
+                        </Border>
                     </Grid>
                 </Border>
             </Border>
 
             <!-- Hyperlink to open account key window -->
-            <TextBlock
-                    Grid.Row="2"
-                    Foreground="White"
-                    Margin="25,1,0,0"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Left">
+            <TextBlock Grid.Row="2"
+                       Foreground="White"
+                       Margin="25,1,0,0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left">
                 
                     <Hyperlink Click="AccountKeyClick"
                                Foreground="White"
@@ -386,7 +444,7 @@
         <Rectangle x:Name="settingsFade"
                    Fill="#40000000"
                    IsHitTestVisible="False"
-                   Visibility="Hidden"/>
+                   Opacity="0"/>
 
     </Grid>
 </Window>

@@ -14,6 +14,7 @@
     <system:String x:Key="item13">Грешка при стартирането на играта:</system:String>
     <system:String x:Key="item14">Играта не е открита в избраната категория.</system:String>
     <system:String x:Key="item15">Трябва да притежавате H1Z1: Just Survive във вашия Steam акаунт, за да изтеглите.</system:String>
+    <system:String x:Key="item16">Възникнаха една или повече грешки:</system:String>
     <system:String x:Key="item17">Влизането в Steam профила е неуспешно :</system:String>
     <system:String x:Key="item18">Добави</system:String>
     <system:String x:Key="item19">Моля, не забравяйте да попълните полето Auth Code.</system:String>
@@ -42,13 +43,15 @@
     <system:String x:Key="item46">Натиснете тук за да инсталирате последвата версия на сървъра.</system:String>
     <system:String x:Key="item47">Натиснете тук за да инсталирате последната стабилна версия на сървъра.</system:String>
     <system:String x:Key="item48">Проверка за актуализации...</system:String>
+    <system:String x:Key="item49">Част от информацията може да липсва.</system:String>
     <system:String x:Key="item50">Моля  уверете се ,че вашият имейл е отворен за 2 факторната защита след като влезете във вашият акаунт.</system:String>
+    <system:String x:Key="item51">Изберете папка, в която искате да изтеглите играта.</system:String>
     <system:String x:Key="item52">Вие нямате сървърните файлове инсталиране.\n\nИнстарирайте ги в Настройки.</system:String>
     <system:String x:Key="item53">Имаше грешка при пускането на сървъра.:</system:String>
     <system:String x:Key="item54">Изтегляне...</system:String>
-    <system:String x:Key="item55">Using app branch: {0}</system:String>
-    <system:String x:Key="item56">Processing depot {0} - {1}</system:String>
-    <system:String x:Key="item57">Pre-allocating space...</system:String>
+    <system:String x:Key="item55">Използване на клон на приложението: {0}</system:String>
+    <system:String x:Key="item56">Депо за обработка {0} - {1}</system:String>
+    <system:String x:Key="item57">Предварително разпределяне на място...</system:String>
     <system:String x:Key="item58">Версията на играта не се поддържа от H1Emu.\n\nМоля, не забравяйте да използвате версия на играта 15 януари 2015 г. или 22 декември 2016 г.\n\nТрябва да изтеглите една от тези версии, като използвате този стартер с вашия акаунт в Steam, който притежава Just Survive.</system:String>
     <system:String x:Key="item59">Потребителско име...</system:String>
     <system:String x:Key="item60">Парола...</system:String>
@@ -83,8 +86,8 @@
     <system:String x:Key="item102">Файловете за версия 2015 са изтеглени.</system:String>
     <system:String x:Key="item104">Файлове за версия 2016год. са инсталирани.</system:String>
     <system:String x:Key="item105">Инстариране на последната версия на сървъра...</system:String>
-    <system:String x:Key="item107">There was an error installing the latest server:</system:String>
-    <system:String x:Key="item108">The latest server has been installed.</system:String>
+    <system:String x:Key="item107">Възникна грешка при инсталирането на най-новия сървър:</system:String>
+    <system:String x:Key="item108">Най-новият сървър е инсталиран.</system:String>
     <system:String x:Key="item109">Инсталиране на стабилна версия на сървъра...</system:String>
     <system:String x:Key="item111">Имаше грешка при инсталирането на стабилната версия на сървъра:</system:String>
     <system:String x:Key="item112">Стабилната версия на сървъра е инсталирана.</system:String>
@@ -93,7 +96,7 @@
     <system:String x:Key="item116">Разархивиране на сърварната информация...</system:String>
     <system:String x:Key="item118">Разархивиране node files...</system:String>
     <system:String x:Key="item120">Моля затворете H1Z1.</system:String>
-    <system:String x:Key="item121">H1Z1.exe се използва.\n\nЗатворете всички отворени прозорци на H1Z1.</system:String>
+    <system:String x:Key="item121">H1Z1.exe се използва.\n\nМоля, затворете всички отворени копия на H1Z1.</system:String>
     <system:String x:Key="item122">Сегашна версия на играта:</system:String>
     <system:String x:Key="item124">Версия на стартера v</system:String>
     <system:String x:Key="item125">Авторски права © 2023 | H1Emu Project</system:String>
@@ -108,7 +111,7 @@
     <system:String x:Key="item134">Не</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
     <system:String x:Key="item136">Преводачи</system:String>
-    <system:String x:Key="item137">\n\n(Свързанили сте към интернет?)</system:String>
+    <system:String x:Key="item137">(Свързанили сте към интернет?)</system:String>
     <system:String x:Key="item138">\n\n(Файловете няма да бъдат изтрити)</system:String>
     <system:String x:Key="item139">H1Emu Сървър</system:String>
     <system:String x:Key="item140">Солова Игра</system:String>
@@ -155,4 +158,5 @@
     <system:String x:Key="item182">Неизвестен код за отговор при проверка на валидността на ключа на вашия акаунт:</system:String>
     <system:String x:Key="item183">Възникна грешка при валидирането на ключа на вашия акаунт:</system:String>
     <system:String x:Key="item184">Възникна грешка при зареждането на списъка със сървъри:</system:String>
+    <system:String x:Key="item185">Инсталационният скрипт на сървъра се затвори рано и неочаквано.</system:String>
 </ResourceDictionary>

@@ -10,17 +10,17 @@ using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 
 namespace H1EmuLauncher.Classes
 {
     class Carousel
     {
-        public static ManualResetEvent pauseCarousel = new(true);
+        public static Storyboard playCarousel;
         public static List<string> images = new();
         public static int currentIndex = 0;
         public static int lastIndex = 0;
-        public static int progress = 0;
 
         public static ImageSource ConvertResourceToImageSource(string psResourceName)
         {
@@ -42,33 +42,21 @@ namespace H1EmuLauncher.Classes
 
                 Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    LauncherWindow.launcherInstance.carouselImage.Source = ConvertResourceToImageSource($"Resources\\{images[currentIndex]}");
+                    DoubleAnimation carouselImageRectangle = new DoubleAnimation(0, LauncherWindow.launcherInstance.carouselRectangleGrid.ActualWidth, new Duration(TimeSpan.FromSeconds(5)));
+                    carouselImageRectangle.AccelerationRatio = 0.2;
+                    carouselImageRectangle.DecelerationRatio = 0.2;
+                    carouselImageRectangle.SetValue(Storyboard.TargetProperty, LauncherWindow.launcherInstance.carouselRectangle);
+                    carouselImageRectangle.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(FrameworkElement.WidthProperty));
+
+                    playCarousel = new Storyboard();
+                    playCarousel.Children.Add(carouselImageRectangle);
+                    playCarousel.Completed += (s, _) => 
+                    {
+                        NextImage();
+                    };
+                    playCarousel.Begin();
+
                 }));
-
-                for (progress = 0; progress <= 3000; progress++)
-                {
-                    pauseCarousel.WaitOne();
-
-                    Application.Current.Dispatcher.Invoke(new Action(delegate
-                    {
-                        LauncherWindow.launcherInstance.carouselProgressBar.Value = progress;
-                    }));
-
-                    Thread.Sleep(1);
-
-                    if (progress == 3000)
-                    {
-                        Application.Current.Dispatcher.Invoke(new Action(delegate
-                        {
-                            ButtonAutomationPeer peer = new(LauncherWindow.launcherInstance.nextImage);
-                            IInvokeProvider invokeProv = peer.GetPattern(PatternInterface.Invoke) as IInvokeProvider;
-                            invokeProv.Invoke();
-                        }));
-
-                        Thread.Sleep(1000);
-                        progress = 0;
-                    }
-                }
 
             }).Start();
         }
@@ -84,9 +72,9 @@ namespace H1EmuLauncher.Classes
                 lastIndex = images.Count - 1;
 
             LauncherWindow.launcherInstance.carouselImage.Source = ConvertResourceToImageSource($"Resources\\{images[lastIndex]}");
-            LauncherWindow.launcherInstance.carouselImageSlider.Source = ConvertResourceToImageSource($"Resources\\{images[currentIndex]}");
-            LauncherWindow.launcherInstance.NextAnimation.Begin();
-            LauncherWindow.launcherInstance.NextAnimationFollow.Begin();
+            LauncherWindow.launcherInstance.carouselImageFollow.Source = ConvertResourceToImageSource($"Resources\\{images[currentIndex]}");
+            LauncherWindow.launcherInstance.CarouselNextAnimation.Begin();
+            LauncherWindow.launcherInstance.CarouselNextAnimationFollow.Begin();
         }
 
         public static void PreviousImage()
@@ -100,9 +88,9 @@ namespace H1EmuLauncher.Classes
                 lastIndex = 0;
 
             LauncherWindow.launcherInstance.carouselImage.Source = ConvertResourceToImageSource($"Resources\\{images[lastIndex]}");
-            LauncherWindow.launcherInstance.carouselImageSlider.Source = ConvertResourceToImageSource($"Resources\\{images[currentIndex]}");
-            LauncherWindow.launcherInstance.PreviousAnimation.Begin();
-            LauncherWindow.launcherInstance.PreviousAnimationFollow.Begin();
+            LauncherWindow.launcherInstance.carouselImageFollow.Source = ConvertResourceToImageSource($"Resources\\{images[currentIndex]}");
+            LauncherWindow.launcherInstance.CarouselPreviousAnimation.Begin();
+            LauncherWindow.launcherInstance.CarouselPreviousAnimationFollow.Begin();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<Page x:Class="H1EmuLauncher.SteamFrame.DownloadComplete"
+﻿<UserControl x:Class="H1EmuLauncher.SteamFrame.DownloadComplete"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,8 +6,17 @@
       mc:Ignorable="d" 
       d:DesignWidth="565"
       d:DesignHeight="140"
-      FontFamily="Bahnschrift Light"
-      Title="Download Complete">
+      FontFamily="Bahnschrift Light">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -16,25 +25,20 @@
         </Grid.RowDefinitions>
 
         <!-- Download complete message -->
-        <RichTextBox VerticalAlignment="Top"
-                     HorizontalAlignment="Center"
-                     Margin="0,-2,0,0"
-                     FontSize="16"
-                     Foreground="White"
-                     Background="Transparent"
-                     BorderThickness="0"
-                     IsReadOnly="True"
-                     Cursor="Arrow">
+        <TextBlock VerticalAlignment="Top"
+                   HorizontalAlignment="Center"
+                   Margin="0,-2,0,0"
+                   FontSize="16"
+                   Foreground="White"
+                   Background="Transparent"
+                   Cursor="Arrow"
+                   TextAlignment="Center">
             
-            <FlowDocument TextAlignment="Center">
-                <Paragraph>
-                    <Run Foreground="#FFCA1420"
-                         Text="{DynamicResource item23}"/>
-                    <LineBreak/>
-                    <Run Text="{DynamicResource item24}"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
+            <Run Foreground="#FFCA1420"
+                 Text="{DynamicResource item23}"/>
+            <LineBreak/>
+            <Run Text="{DynamicResource item24}"/>
+        </TextBlock>
 
         <!-- Back to login page button -->
         <Button Grid.Row="1"
@@ -49,11 +53,6 @@
                 Width="270"
                 BorderThickness="0"
                 Content="{DynamicResource item25}"
-                Style="{DynamicResource StandardButton}">
-
-            <Button.Background>
-                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-            </Button.Background>
-        </Button>
+                Style="{DynamicResource StandardButton}"/>
     </Grid>
-</Page>
+</UserControl>

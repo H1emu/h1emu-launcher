@@ -14,6 +14,7 @@
     <system:String x:Key="item13">Erro ao iniciar o jogo:</system:String>
     <system:String x:Key="item14">O jogo não foi encontrado no diretório especificado.</system:String>
     <system:String x:Key="item15">Aby pobrać, musisz posiadać H1Z1: Just Survive na swoim koncie Steam.</system:String>
+    <system:String x:Key="item16">Ocorreu um ou mais erros:</system:String>
     <system:String x:Key="item17">Incapaz de iniciar a sessão no Steam:</system:String>
     <system:String x:Key="item18">ADD</system:String>
     <system:String x:Key="item19">Certifique-se de preencher a caixa Auth Code.</system:String>
@@ -42,7 +43,9 @@
     <system:String x:Key="item46">Clique aqui para descarregar a versão recente do servidor.</system:String>
     <system:String x:Key="item47">Clique aqui para descarregar a versão estável do servidor.</system:String>
     <system:String x:Key="item48">A procurar por novas atualizações...</system:String>
+    <system:String x:Key="item49">Algumas informações podem estar faltando.</system:String>
     <system:String x:Key="item50">Por favor, certifique-se de inserir o código de autenticação após iniciar a sua conta Steam.</system:String>
+    <system:String x:Key="item51">Selecione uma pasta onde você gostaria que o jogo fosse baixado.</system:String>
     <system:String x:Key="item52">Não tem os ficheiros de servidor instalados.\n\n Instale os ficheiros através do menu Definições.</system:String>
     <system:String x:Key="item53">Erro ao iniciar o servidor:</system:String>
     <system:String x:Key="item54">A descarregar...</system:String>
@@ -93,7 +96,7 @@
     <system:String x:Key="item116">A descompactar ficheiros do servidor...</system:String>
     <system:String x:Key="item118">A descompactar ficheiros node...</system:String>
     <system:String x:Key="item120">Por favor desligue o H1Z1.</system:String>
-    <system:String x:Key="item121">H1Z1.exe está a ser usado.\n\n Feche todas as instâncias do H1Z1.</system:String>
+    <system:String x:Key="item121">H1Z1.exe está a ser usado.\n\nFeche todas as instâncias abertas de H1Z1.</system:String>
     <system:String x:Key="item122">Versão atual do jogo:</system:String>
     <system:String x:Key="item124">Launcher version v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
@@ -108,7 +111,7 @@
     <system:String x:Key="item134">NÃO</system:String>
     <system:String x:Key="item135">H1Z1: Just Survive</system:String>
     <system:String x:Key="item136">Tradutores</system:String>
-    <system:String x:Key="item137">\n\n(Está ligado à Internet?)</system:String>
+    <system:String x:Key="item137">(Está ligado à Internet?)</system:String>
     <system:String x:Key="item138">\n\n(Ficheiros não serão apagados)</system:String>
     <system:String x:Key="item139">Servidor H1Emu</system:String>
     <system:String x:Key="item140">Jogador único</system:String>
@@ -155,4 +158,5 @@
     <system:String x:Key="item182">Código de resposta desconhecido ao verificar a validade da chave da conta:</system:String>
     <system:String x:Key="item183">Ocorreu um erro ao validar sua chave de conta:</system:String>
     <system:String x:Key="item184">Ocorreu um erro ao carregar a lista de servidores:</system:String>
+    <system:String x:Key="item185">O script de instalação do servidor fechou cedo e inesperadamente.</system:String>
 </ResourceDictionary>

@@ -5,46 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="H1Emu About Page"
-        x:Name="MainAbout"
+        x:Name="About"
         Width="800"
         Height="500"
         WindowStartupLocation="CenterOwner"
-        Background="#FF2A2A32"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        RenderTransformOrigin="0.5, 0.5"
+        Background="Transparent"
         FontFamily="Bahnschrift"
         FontSize="16"
-        ResizeMode="NoResize"
         Loaded="MainAboutLoaded"
-        Closing="MainAboutClosing"
-        Activated="MainAboutActivated">
+        Closing="MainAboutClosing">
 
-        <!-- Hide window border but keep animations -->
-        <WindowChrome.WindowChrome>
-            <WindowChrome GlassFrameThickness="0"
-                          CornerRadius="0"
-                          CaptionHeight="0"
-                          ResizeBorderThickness="0"
-                          UseAeroCaptionButtons="False"/>
+    <Window.RenderTransform>
+        <ScaleTransform x:Name="WindowScaleTransform"/>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-        </WindowChrome.WindowChrome>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    <Grid>
+                        <DoubleAnimation Storyboard.TargetName="About"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <Window.Resources>
+        <ResourceDictionary>
+            
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Storyboard x:Key="CloseAbout">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="About"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#FF2A2A32">
         <Grid>
             <!-- Grainy texture -->
             <Grid.Background>
                 <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
             </Grid.Background>
-            
-            <!-- About page blur on unfocus -->
-            <Grid.Effect>
-                <BlurEffect x:Name="aboutPageBlur"
-                            Radius="0"
-                            KernelType="Gaussian"/>
-                
-            </Grid.Effect>
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -60,10 +101,6 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
                 <!-- Logo -->
                 <DockPanel Height="60"
                            HorizontalAlignment="Left"
@@ -73,7 +110,7 @@
                            Width="175"
                            Height="45"
                            VerticalAlignment="Bottom"/>
-                    
+
                 </DockPanel>
 
                 <!-- Exit button -->
@@ -87,12 +124,7 @@
                             HorizontalAlignment="Right"
                             BorderThickness="0"
                             Click="CloseButton_Click"
-                            Style="{StaticResource CloseButtonStyle}">
-
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\Exit.png"/>
-                        </Button.Background>
-                    </Button>
+                            Style="{StaticResource CloseButtonStyle}"/>
                 </DockPanel>
             </Grid>
 
@@ -109,232 +141,191 @@
                                       Direction="-90"
                                       RenderingBias="Quality"
                                       ShadowDepth="1"/>
-                    
+
                 </Border.Effect>
 
                 <Border CornerRadius="5">
-                    
+
                     <!-- Grainy texture -->
                     <Border.Background>
                         <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
                     </Border.Background>
-                    
+
                     <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                        <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                            <!-- List of everyone who helped on the project -->
+                            <TextBlock Margin="25,25,25,25"
+                                       Width="600"
+                                       Background="Transparent"
+                                       Cursor="Arrow"
+                                       TextAlignment="Center"
+                                       FontWeight="Light"
+                                       TextWrapping="Wrap">
 
-                        <!-- List of everyone who helped on the project -->
-                        <RichTextBox Margin="25,25,25,25"
-                                     Width="600"
-                                     Background="Transparent"
-                                     Foreground="White"
-                                     BorderThickness="0"
-                                     IsReadOnly="True"
-                                     Cursor="Arrow">
+                            <!-- Lead development-->
+                            <Run FontSize="20"
+                                 Foreground="#FFED1C24"
+                                 TextDecorations="Underline"
+                                 Text="{DynamicResource item126}"/>
 
-                            <FlowDocument>
-                                <Paragraph TextAlignment="Center"
-                                           FontSize="20"
-                                           Foreground="#FFED1C24"
-                                           FontWeight="Light">
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="• Kentin • Meme •"/>
+                            
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <!-- Co-development-->
+                            <Run FontSize="20"
+                                 Foreground="#FFED1C24"
+                                 FontWeight="Light"
+                                 TextDecorations="Underline"
+                                 Text="{DynamicResource item127}"/>
 
-                                    <!-- Lead development-->
-                                    <TextBlock TextDecorations="Underline"
-                                               TextWrapping="Wrap"
-                                               Text="{DynamicResource item126}"/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="• Avcio • HaxMax •"/>
 
-                                </Paragraph>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <!-- Administrators -->
+                            <Run FontSize="20"
+                                 Foreground="#FFED1C24"
+                                 FontWeight="Light"
+                                 TextDecorations="Underline"
+                                 Text="{DynamicResource item128}"/>
+                            
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="• Kentin • LcplReaper • Traqnar • Meme •"/>
 
-                                <Paragraph TextAlignment="Center"
-                                           FontSize="18"
-                                           FontWeight="Light">
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <!-- Contributors -->
+                            <Run FontSize="20"
+                                 Foreground="#FFED1C24"
+                                 FontWeight="Light"
+                                 TextDecorations="Underline"
+                                 Text="{DynamicResource item129}"/>
+                            
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="• Eavilaswayce • Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo • doggo • Ghost • 余科辰 •"/>
 
-                                    • Kentin • Meme •
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <!-- Moderators -->
+                            <Run FontSize="20"
+                                 Foreground="#FFED1C24"
+                                 FontWeight="Light"
+                                 TextDecorations="Underline"
+                                 Text="{DynamicResource item130}"/>
+                            
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="• Meme • Chrisisbrown • Cur7 • Movezie • Skoz •"/>
+                            
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                                
+                            <!-- Support -->
+                            <Run FontSize="20"
+                                 Foreground="#FFED1C24"
+                                 FontWeight="Light"
+                                 TextDecorations="Underline"
+                                 Text="{DynamicResource item131}"/>
 
-                                </Paragraph>
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="• rob138us • Dave • Booze (Orphanfeast87) •"/>
 
-                                <Paragraph Margin="0,50,0,0"
-                                           TextAlignment="Center"
-                                           FontSize="20"
-                                           Foreground="#FFED1C24"
-                                           FontWeight="Light">
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <!-- Translators -->
+                            <Run FontSize="20"
+                                 Foreground="#FFED1C24"
+                                 FontWeight="Light"
+                                 TextDecorations="Underline"
+                                 Text="{DynamicResource item136}"/>
 
-                                    <!-- Co-development -->
-                                    <TextBlock TextDecorations="Underline"
-                                               TextWrapping="Wrap"
-                                               Text="{DynamicResource item127}"/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="• YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) •"/>
 
-                                </Paragraph>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <!-- Financial contributors -->
+                            <Run FontSize="20"
+                                 Foreground="#FFED1C24"
+                                 FontWeight="Light"
+                                 TextDecorations="Underline"
+                                 Text="{DynamicResource item170}"/>
 
-                                <Paragraph TextAlignment="Center"
-                                           FontSize="18"
-                                           FontWeight="Light">
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="• Booze (Orphanfeast87) • Mahoaga • TimmyFPS • LegalViewbot • remapz • Christer D • A Mad Midget • Twin •"/>
 
-                                    • Avcio • HaxMax •
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="{DynamicResource item132}"/>
+                            
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="{DynamicResource item169}"/>
 
-                                </Paragraph>
-
-                                <Paragraph Margin="0,50,0,0"
-                                           TextAlignment="Center"
-                                           FontSize="20"
-                                           Foreground="#FFED1C24"
-                                           FontWeight="Light">
-
-                                    <!-- Administrators -->
-                                    <TextBlock TextDecorations="Underline"
-                                               TextWrapping="Wrap"
-                                               Text="{DynamicResource item128}"/>
-
-                                </Paragraph>
-
-                                <Paragraph TextAlignment="Center"
-                                           FontSize="18"
-                                           FontWeight="Light">
-
-                                    • Kentin • LcplReaper • Traqnar • Meme •
-
-                                </Paragraph>
-
-                                <Paragraph Margin="0,50,0,0"
-                                           TextAlignment="Center"
-                                           FontSize="20"
-                                           Foreground="#FFED1C24"
-                                           FontWeight="Light">
-
-                                    <!-- Contributors -->
-                                    <TextBlock TextDecorations="Underline"
-                                               TextWrapping="Wrap"
-                                               Text="{DynamicResource item129}"/>
-
-                                </Paragraph>
-
-                                <Paragraph TextAlignment="Center"
-                                           FontSize="18"
-                                           FontWeight="Light">
-
-                                    • Eavilaswayce • Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo • doggo • Ghost • 余科辰 •
-
-                                </Paragraph>
-
-                                <Paragraph Margin="0,50,0,0"
-                                           TextAlignment="Center"
-                                           FontSize="20"
-                                           Foreground="#FFED1C24"
-                                           FontWeight="Light">
-
-                                    <!-- Moderators -->
-                                    <TextBlock TextDecorations="Underline"
-                                               TextWrapping="Wrap"
-                                               Text="{DynamicResource item130}"/>
-
-                                </Paragraph>
-
-                                <Paragraph TextAlignment="Center"
-                                           FontSize="18"
-                                           FontWeight="Light">
-
-                                    • Meme • Chrisisbrown • Cur7 • Movezie • Skoz •
-
-                                </Paragraph>
-
-                                <Paragraph Margin="0,50,0,0"
-                                           TextAlignment="Center"
-                                           FontSize="20"
-                                           Foreground="#FFED1C24"
-                                           FontWeight="Light">
-
-                                    <!-- Support -->
-                                    <TextBlock TextDecorations="Underline"
-                                               TextWrapping="Wrap"
-                                               Text="{DynamicResource item131}"/>
-
-                                </Paragraph>
-
-                                <Paragraph TextAlignment="Center"
-                                           FontSize="18"
-                                           FontWeight="Light">
-
-                                    • rob138us • Dave • Booze (Orphanfeast87) •
-
-                                </Paragraph>
-
-                                <Paragraph Margin="0,50,0,0"
-                                           TextAlignment="Center"
-                                           FontSize="20"
-                                           Foreground="#FFED1C24"
-                                           FontWeight="Light">
-
-                                    <!-- Translators -->
-                                    <TextBlock TextDecorations="Underline"
-                                               TextWrapping="Wrap"
-                                               Text="{DynamicResource item136}"/>
-
-                                </Paragraph>
-
-                                <Paragraph TextAlignment="Center"
-                                           FontSize="18"
-                                           FontWeight="Light">
-
-                                    • YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) •
-
-                                </Paragraph>
-
-                                <Paragraph Margin="0,50,0,0"
-                                           TextAlignment="Center"
-                                           FontSize="20"
-                                           Foreground="#FFED1C24"
-                                           FontWeight="Light">
-
-                                    <!-- Financial contributors -->
-                                    <TextBlock TextDecorations="Underline"
-                                               TextWrapping="Wrap"
-                                               Text="{DynamicResource item170}"/>
-
-                                </Paragraph>
-
-                                <Paragraph TextAlignment="Center"
-                                           FontSize="18"
-                                           FontWeight="Light">
-
-                                    • Booze (Orphanfeast87) • Mahoaga • TimmyFPS • LegalViewbot • remapz • Christer D • A Mad Midget • Twin •
-
-                                </Paragraph>
-
-                                <Paragraph Margin="0,60,0,0"
-                                           TextAlignment="Center"
-                                           FontSize="18"
-                                           FontWeight="Light">
-
-                                    <!-- Special thanks -->
-                                    <TextBlock TextDecorations="Underline"
-                                               TextWrapping="Wrap"
-                                               Text="{DynamicResource item132}"/>
-
-                                </Paragraph>
-
-                                <Paragraph Margin="0,100,0,0"
-                                           TextAlignment="Center"
-                                           FontSize="18"
-                                           FontWeight="Light">
-
-                                    <!-- Launcher made by Eavilaswayce -->
-                                    <TextBlock TextWrapping="Wrap"
-                                               Text="{DynamicResource item169}"/>
-
-                                </Paragraph>
-                            </FlowDocument>
-                        </RichTextBox>
+                            </TextBlock>
+                        </ScrollViewer>
                     </Grid>
                 </Border>
             </Border>
         </Grid>
-
-        <!-- Background fade on unfocus -->
-        <Rectangle x:Name="aboutPageFade"
-                   Fill="#40000000"
-                   IsHitTestVisible="False"
-                   Visibility="Hidden"/>
-
     </Grid>
 </Window>

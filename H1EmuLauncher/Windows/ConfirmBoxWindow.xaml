@@ -4,74 +4,125 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="CnfmBox"
-        x:Name="MainCnfmBox"
+        x:Name="ConfirmBox"
+        Title="Confirm"
         MinWidth="350"
         MaxWidth="1200"
         MinHeight="220"
         MaxHeight="900"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
-        Background="#FF2A2A32"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="NoResize"
+        RenderTransformOrigin="0.5, 0.5"
+        Background="Transparent"
         FontFamily="Bahnschrift"
         FontSize="16"
-        ResizeMode="NoResize"
-        Activated="MainCnfmBoxActivated"
-        Loaded="MainCnfmBoxLoaded">
+        Loaded="MainCnfmBoxLoaded"
+        Closing="ConfirmBoxClosing">
 
-        <!-- Hide window border but keep animations -->
-        <WindowChrome.WindowChrome>
-            <WindowChrome GlassFrameThickness="0"
-                          CornerRadius="0"
-                          CaptionHeight="0"
-                          ResizeBorderThickness="0"
-                          UseAeroCaptionButtons="False"/>
+    <Window.RenderTransform>
+        <ScaleTransform x:Name="WindowScaleTransform"/>
+    </Window.RenderTransform>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <EventTrigger.Actions>
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-        </WindowChrome.WindowChrome>
+                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                         From="0.9" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="45"/>
-            <RowDefinition Height="30*"/>
-        </Grid.RowDefinitions>
+                        <DoubleAnimation Storyboard.TargetName="ConfirmBox"
+                                         Storyboard.TargetProperty="Opacity"
+                                         From="0" To="1"
+                                         Duration="0:0:0.1"
+                                         AccelerationRatio="1"/>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger.Actions>
+        </EventTrigger>
+    </Window.Triggers>
 
-        <!-- Grainy texture -->
-        <Grid.Background>
-            <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-        </Grid.Background>
+    <Window.Resources>
+        <ResourceDictionary>
 
-        <!-- Grid for logo and exit button -->
-        <Grid MouseLeftButtonDown="ConfirmBoxMouseLeftButtonDown"
-              Background="Transparent">
-            
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Storyboard x:Key="CloseConfirmBox">
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
+                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
+                                 From="1" To="0.9"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="ConfirmBox"
+                                 Storyboard.TargetProperty="Opacity"
+                                 From="1" To="0"
+                                 Duration="0:0:0.1"
+                                 AccelerationRatio="1"/>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Background="#FF2A2A32">
+        <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="30*"/>
             </Grid.RowDefinitions>
 
-            <!-- Logo -->
-            <DockPanel Height="40"
+            <!-- Grainy texture -->
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+            </Grid.Background>
+
+            <!-- Grid for logo and exit button -->
+            <Grid MouseLeftButtonDown="ConfirmBoxMouseLeftButtonDown"
+              Background="Transparent">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Logo -->
+                <DockPanel Height="40"
                        HorizontalAlignment="Left"
                        Margin="14,2,0,0">
 
-                <Image Source="..\Resources\H1EmuIcon.png"
+                    <Image Source="..\Resources\H1EmuIcon.png"
                        Width="104"
                        Height="28"
                        Margin="0,4,0,0"
                        VerticalAlignment="Center"/>
 
-            </DockPanel>
+                </DockPanel>
 
-            <!-- Exit button -->
-            <DockPanel Grid.Column="1">
-                <Button x:Name="CloseButton"
+                <!-- Exit button -->
+                <DockPanel Grid.Column="1">
+                    <Button x:Name="CloseButton"
                         Click="ExitButton"
                         RenderOptions.BitmapScalingMode="Fant"
                         Width="39"
@@ -80,42 +131,32 @@
                         VerticalAlignment="Bottom"
                         HorizontalAlignment="Right"
                         BorderThickness="0"
-                        Style="{StaticResource CloseButtonStyle}">
-                    
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\Exit.png"/>
-                    </Button.Background>
-                </Button>
-            </DockPanel>
-        </Grid>
+                        Style="{StaticResource CloseButtonStyle}"/>
+                </DockPanel>
+            </Grid>
 
-        <!-- Main content in darkened area -->
-        <Border Grid.Row="1"
+            <!-- Main content in darkened area -->
+            <Border Grid.Row="1"
                 Background="#1C1B22"
                 Margin="15,5,15,15"
                 UseLayoutRounding="True"
                 CornerRadius="5">
 
-            <!-- Drop shadow effect -->
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="8"
+                <!-- Drop shadow effect -->
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="8"
                                   Direction="-90"
                                   RenderingBias="Quality"
                                   ShadowDepth="1"/>
-                
-            </Border.Effect>
 
-            <Border CornerRadius="5">
+                </Border.Effect>
 
-                <!-- Grainy texture -->
-                <Border.Background>
-                    <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-                </Border.Background>
+                <Border CornerRadius="5">
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                    <!-- Grainy texture -->
+                    <Border.Background>
+                        <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                    </Border.Background>
 
                     <Grid>
                         <Grid.RowDefinitions>
@@ -125,7 +166,7 @@
 
                         <!-- Main text message -->
                         <TextBlock x:Name="text"
-                                   Margin="25,10,25,10"
+                                   Margin="25,20,25,10"
                                    Padding="0,5,0,0"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
@@ -141,13 +182,14 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
+                            
                             <!-- Yes button -->
                             <Button Grid.Row="1"
                                     Click="YesButton"
                                     RenderOptions.BitmapScalingMode="Fant"
                                     Width="120"
                                     Height="35"
-                                    Margin="0,10,15,20"
+                                    Margin="0,30,15,20"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Right"
                                     Foreground="White"
@@ -155,12 +197,7 @@
                                     FontSize="20"
                                     BorderThickness="0"
                                     Content="{DynamicResource item133}"
-                                    Style="{DynamicResource StandardButton}">
-
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Style="{DynamicResource StandardButton}"/>
 
                             <!-- No button -->
                             <Button Grid.Row="1"
@@ -169,7 +206,7 @@
                                     RenderOptions.BitmapScalingMode="Fant"
                                     Width="120"
                                     Height="35"
-                                    Margin="15,10,0,20"
+                                    Margin="15,30,0,20"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Left"
                                     Foreground="White"
@@ -177,16 +214,11 @@
                                     FontSize="20"
                                     BorderThickness="0"
                                     Content="{DynamicResource item134}"
-                                    Style="{DynamicResource StandardButton}">
-
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-                                </Button.Background>
-                            </Button>
+                                    Style="{DynamicResource StandardButton}"/>
                         </Grid>
                     </Grid>
-                </Grid>
+                </Border>
             </Border>
-        </Border>
+        </Grid>
     </Grid>
 </Window>

@@ -1,4 +1,4 @@
-﻿<Page x:Class="H1EmuLauncher.SteamFrame.GameInfo"
+﻿<UserControl x:Class="H1EmuLauncher.SteamFrame.GameInfo"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,9 +6,18 @@
       mc:Ignorable="d" 
       d:DesignWidth="565"
       d:DesignHeight="140"
-      FontFamily="Bahnschrift Light"
-      Title="Version Selection">
-    
+      FontFamily="Bahnschrift Light">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -19,23 +28,6 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
-        <!-- Choose version message -->
-        <RichTextBox FontSize="16"
-                     Background="Transparent"
-                     BorderThickness="0"
-                     Foreground="White"
-                     IsReadOnly="True"
-                     Cursor="Arrow">
-            
-            <FlowDocument>
-                <Paragraph TextAlignment="Center">
-                    <Run Text="{DynamicResource item29}"/>
-                    <Run Foreground="#FFCA1420" Text="{DynamicResource item135}"/>
-                    <Run Text="{DynamicResource item30}"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
 
         <!-- 2016 Button -->
         <Button Click="Button2016"
@@ -48,13 +40,8 @@
                 FontSize="24"
                 BorderThickness="0"
                 Content="{DynamicResource item32}"
-                Style="{DynamicResource StandardButton}">
+                Style="{DynamicResource StandardButton}"/>
 
-            <Button.Background>
-                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-            </Button.Background>
-        </Button>
-        
         <!-- 2016 Button Description -->
         <TextBlock Grid.Column="1"
                    Margin="5,0,0,0"
@@ -76,12 +63,7 @@
                 FontSize="24"
                 BorderThickness="0"
                 Content="{DynamicResource item31}"
-                Style="{DynamicResource StandardButton}">
-
-            <Button.Background>
-                <ImageBrush ImageSource="..\Resources\StandardButton.png"/>
-            </Button.Background>
-        </Button>
+                Style="{DynamicResource StandardButton}"/>
 
         <!-- 2015 Button Description -->
         <TextBlock Grid.Column="1"
@@ -94,4 +76,4 @@
                    IsEnabled="False"
                    Text="{DynamicResource item172}"/>
     </Grid>
-</Page>
+</UserControl>
