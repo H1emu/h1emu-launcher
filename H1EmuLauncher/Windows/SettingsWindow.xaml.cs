@@ -188,9 +188,9 @@ namespace H1EmuLauncher
                 settingsProgressBar.IsIndeterminate = false;
 
                 if (gameVersionString == "15jan2015")
-                    CustomMessageBox.Show($"{FindResource("item102")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")}{elapsedMs.ToString($"m\\ ss\\.ff\\s").TrimStart('m', '0').Replace("00", "0")})", this);
+                    CustomMessageBox.Show($"{FindResource("item102")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", this);
                 else
-                    CustomMessageBox.Show($"{FindResource("item104")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")}{elapsedMs.ToString($"m\\ ss\\.ff\\s").TrimStart('m', '0').Replace("00", "0")})", this);
+                    CustomMessageBox.Show($"{FindResource("item104")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", this);
             }));
         }
 
@@ -325,9 +325,9 @@ namespace H1EmuLauncher
                     settingsProgressBar.Value = 0;
 
                     if (button.Name == "latestButton")
-                        CustomMessageBox.Show($"{FindResource("item108")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
+                        CustomMessageBox.Show($"{FindResource("item108")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", this);
                     else
-                        CustomMessageBox.Show($"{FindResource("item112")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {elapsedMs.ToString($"hh\\hmm\\m\\ ss\\.ff\\s").TrimStart(' ', 'h', 'm', 's', '0')})", this);
+                        CustomMessageBox.Show($"{FindResource("item112")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", this);
                 }));
 
             }).Start();
@@ -687,10 +687,10 @@ namespace H1EmuLauncher
                 {
                     currentGame.Text = FindResource("item69").ToString();
 
-                    if (this != null && this.Visibility == Visibility.Visible)
+                    if (this != null && Visibility == Visibility.Visible)
                         CustomMessageBox.Show(FindResource("item14").ToString(), this);
                     else
-                        CustomMessageBox.Show($"{FindResource("item14")}\n\n{FindResource("item9")}", this);
+                        CustomMessageBox.Show($"{FindResource("item14")}\n\n{FindResource("item9")}", LauncherWindow.launcherInstance);
                 }));
 
                 return false;
@@ -712,7 +712,8 @@ namespace H1EmuLauncher
                 isExecutingTasks = false;
 
                 settingsProgressBar.Value = 0;
-                DoubleAnimation hide = new(0, new Duration(TimeSpan.FromMilliseconds(150)))
+                settingsProgressRowContent.Measure(new Size(settingsProgressRow.MaxWidth, settingsProgressRow.MaxHeight));
+                DoubleAnimation hide = new(settingsProgressRowContent.DesiredSize.Height, 0, new Duration(TimeSpan.FromMilliseconds(150)))
                 {
                     AccelerationRatio = 0.4,
                     DecelerationRatio = 0.4

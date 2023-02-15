@@ -7,7 +7,6 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Threading;
 using H1EmuLauncher.SteamFrame;
 using SteamKit2;
 using SteamKit2.CDN;
@@ -184,7 +183,6 @@ namespace H1EmuLauncher
         {
             if ( appId == INVALID_APP_ID )
                 return 0;
-
 
             var depots = ContentDownloader.GetSteam3AppSection( appId, EAppInfoSection.Depots );
             var branches = depots[ "branches" ];
@@ -387,79 +385,6 @@ namespace H1EmuLauncher
 
             steam3.TryWaitForLoginKey();
             steam3.Disconnect();
-        }
-
-        public static async Task DownloadPubfileAsync( uint appId, ulong publishedFileId )
-        {
-            var details = steam3.GetPublishedFileDetails( appId, publishedFileId );
-
-            if ( !string.IsNullOrEmpty( details?.file_url ) )
-            {
-                await DownloadWebFile( appId, details.filename, details.file_url );
-            }
-            else if ( details?.hcontent_file > 0 )
-            {
-                await DownloadAppAsync( appId, new List<(uint, ulong)>() { ( appId, details.hcontent_file ) }, DEFAULT_BRANCH, null, null, null, false, true );
-            }
-            else
-            {
-                Debug.WriteLine( "Unable to locate manifest ID for published file {0}", publishedFileId );
-            }
-        }
-
-        public static async Task DownloadUGCAsync( uint appId, ulong ugcId )
-        {
-            SteamCloud.UGCDetailsCallback details = null;
-
-            if ( steam3.steamUser.SteamID.AccountType != EAccountType.AnonUser )
-            {
-                details = steam3.GetUGCDetails( ugcId );
-            } 
-            else
-            {
-                Debug.WriteLine( $"Unable to query UGC details for {ugcId} from an anonymous account" );
-            }
-
-            if ( !string.IsNullOrEmpty( details?.URL ) )
-            {
-                await DownloadWebFile( appId, details.FileName, details.URL );
-            }
-            else
-            {
-                await DownloadAppAsync( appId, new List<(uint, ulong)>() { ( appId, ugcId ) }, DEFAULT_BRANCH, null, null, null, false, true );
-            }
-        }
-
-        private static async Task DownloadWebFile( uint appId, string fileName, string url )
-        {
-            string installDir;
-            if (!CreateDirectories(appId, 0, out installDir))
-            {
-                Debug.WriteLine("Error: Unable to create install directories!");
-                return;
-            }
-
-            var stagingDir = Path.Combine( installDir, STAGING_DIR );
-            var fileStagingPath = Path.Combine( stagingDir, fileName );
-            var fileFinalPath = Path.Combine( installDir, fileName );
-
-            Directory.CreateDirectory( Path.GetDirectoryName( fileFinalPath ) );
-            Directory.CreateDirectory( Path.GetDirectoryName( fileStagingPath ) );
-
-            using (var file = File.OpenWrite(fileStagingPath))
-            using (var client = HttpClientFactory.CreateHttpClient())
-            {
-                Debug.WriteLine( "Downloading {0}", fileName );
-                var responseStream = await client.GetStreamAsync( url );
-                await responseStream.CopyToAsync( file );
-            }
-
-            if ( File.Exists( fileFinalPath ) )
-            {
-                File.Delete( fileFinalPath );
-            }
-
-            File.Move( fileStagingPath, fileFinalPath );
         }
 
         public static async Task DownloadAppAsync( uint appId, List<(uint depotId, ulong manifestId)> depotManifestIds, string branch, string os, string arch, string language, bool lv, bool isUgc )
