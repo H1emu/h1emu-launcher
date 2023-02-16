@@ -227,13 +227,20 @@
                 </Grid.ColumnDefinitions>
                 
                 <!-- Logo -->
-                <DockPanel>
-                    <Image Width="220"
-                           Margin="35,20,0,12"
-                           HorizontalAlignment="Left"
-                           RenderOptions.BitmapScalingMode="Fant"
-                           Source="..\Resources\H1EmuLogo.png"/>
-                </DockPanel>
+                <Image Width="220"
+                       Margin="35,20,0,12"
+                       HorizontalAlignment="Left"
+                       RenderOptions.BitmapScalingMode="Fant"
+                       Source="..\Resources\H1EmuLogo.png">
+
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.4"/>
+                    </Image.Effect>
+                </Image>
 
                 <!-- Exit/minimise buttons and other info -->
                 <DockPanel Grid.Column="1">
@@ -281,6 +288,14 @@
                                     <ComboBoxItem Content="German" Style="{DynamicResource ComboBoxItemStyle}"/>
                                     <ComboBoxItem Content="Portuguese" Style="{DynamicResource ComboBoxItemStyle}"/>
                                     <ComboBoxItem Content="Spanish" Style="{DynamicResource ComboBoxItemStyle}"/>
+
+                                    <ComboBox.Effect>
+                                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.2"/>
+                                    </ComboBox.Effect>
                                 </ComboBox>
 
                                 <Image Source="..\Resources\Language.png"
@@ -290,7 +305,7 @@
                                        HorizontalAlignment="Left"
                                        Margin="21,0,0,7"
                                        IsHitTestVisible="False"/>
-
+                                
                             </Grid>
 
                             <!-- Report A Bug Hyperlink -->
@@ -304,6 +319,14 @@
                                     <TextBlock Text="{DynamicResource item173}"
                                                Style="{DynamicResource HyperLinkStyle}"/>
                                 </Hyperlink>
+                                
+                                <TextBlock.Effect>
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="0"
+                                                      Opacity="0.4"/>
+                                </TextBlock.Effect>
                             </TextBlock>
 
                             <!-- About Project Hyperlink -->
@@ -317,6 +340,14 @@
                                     <TextBlock Text="{DynamicResource item65}"
                                                Style="{DynamicResource HyperLinkStyle}"/>
                                 </Hyperlink>
+                                
+                                <TextBlock.Effect>
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="0"
+                                                      Opacity="0.4"/>
+                                </TextBlock.Effect>
                             </TextBlock>
 
                             <!-- Minimise Button-->
@@ -328,7 +359,16 @@
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Right"
                                     BorderThickness="0"
-                                    Style="{DynamicResource MinimiseButtonStyle}"/>
+                                    Style="{DynamicResource MinimiseButtonStyle}">
+
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="0"
+                                                      Opacity="0.2"/>
+                                </Button.Effect>
+                            </Button>
 
                             <!-- Exit button -->
                             <Button x:Name="ExitButton"
@@ -340,11 +380,21 @@
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Right"
                                     BorderThickness="0"
-                                    Style="{DynamicResource CloseButtonStyle}"/>
+                                    Style="{DynamicResource CloseButtonStyle}">
+
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="0"
+                                                      Opacity="0.2"/>
+                                </Button.Effect>
+                            </Button>
                         </WrapPanel>
 
                         <!-- Website and discord components -->
                         <WrapPanel Grid.Row="1"
+                                   Grid.Column="1"
                                    Grid.ColumnSpan="2"
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Bottom">
@@ -376,6 +426,14 @@
                                             </MenuItem>
                                         </ContextMenu>
                                     </TextBlock.ContextMenu>
+                                
+                                <TextBlock.Effect>
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="0"
+                                                      Opacity="0.4"/>
+                                </TextBlock.Effect>
                             </TextBlock>
 
                             <Button x:Name="discordLink"
@@ -390,10 +448,6 @@
                                     BorderThickness="0"
                                     Style="{DynamicResource DiscordButton}">
 
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Resources\Discord.png"/>
-                                </Button.Background>
-
                                 <Button.ContextMenu>
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                         <MenuItem Header="Copy"
@@ -402,6 +456,14 @@
 
                                     </ContextMenu>
                                 </Button.ContextMenu>
+
+                                <Button.Effect>
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="0"
+                                                      Opacity="0.2"/>
+                                </Button.Effect>
                             </Button>
                         </WrapPanel>
                     </Grid>
@@ -703,8 +765,9 @@
                                 <ComboBox x:Name="serverSelector"
                                           Height="35"
                                           Margin="7,0,7,5"
-                                          Padding="38,8,15,0"
+                                          Padding="38,2,15,0"
                                           VerticalAlignment="Bottom"
+                                          VerticalContentAlignment="Center"
                                           Foreground="White"
                                           FontWeight="Light"
                                           BorderThickness="2"

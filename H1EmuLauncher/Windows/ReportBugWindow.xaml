@@ -104,7 +104,7 @@
 
                 <!-- Grid for logo and exit button -->
                 <Grid MouseLeftButtonDown="ReportBugTopBarMouseLeftButtonDown"
-                  Background="Transparent">
+                      Background="Transparent">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -113,44 +113,61 @@
 
                     <!-- Logo -->
                     <DockPanel Height="60"
-                           HorizontalAlignment="Left"
-                           Margin="23,0,0,0">
+                               HorizontalAlignment="Left"
+                               Margin="23,0,0,15">
 
                         <Image Source="..\Resources\H1EmuIcon.png"
-                           Width="175"
-                           Height="45"
-                           VerticalAlignment="Bottom"/>
+                               Width="175"
+                               Height="45"
+                               VerticalAlignment="Bottom">
 
+                            <Image.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.4"/>
+                            </Image.Effect>
+                        </Image>
                     </DockPanel>
 
                     <!-- Exit button -->
                     <DockPanel Grid.Column="1">
                         <Button x:Name="CloseButton"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="44"
-                            Height="30"
-                            Margin="0,0,25,0"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            BorderThickness="0"
-                            Click="CloseButtonClick"
-                            Style="{StaticResource CloseButtonStyle}"/>
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Width="44"
+                                Height="30"
+                                Margin="0,0,25,10"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Right"
+                                BorderThickness="0"
+                                Click="CloseButtonClick"
+                                Style="{StaticResource CloseButtonStyle}">
+
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.2"/>
+                            </Button.Effect>
+                        </Button>
                     </DockPanel>
                 </Grid>
 
                 <!-- Main content in darkened area -->
                 <Border Grid.Row="1"
-                    Margin="25,5,25,25"
-                    Background="#1C1B22"
-                    UseLayoutRounding="True"
-                    CornerRadius="5">
+                        Margin="25,5,25,25"
+                        Background="#1C1B22"
+                        UseLayoutRounding="True"
+                        CornerRadius="5">
 
                     <!-- Drop shadow effect -->
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="15"
-                                      Direction="-90"
-                                      RenderingBias="Quality"
-                                      ShadowDepth="1"/>
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="1"/>
                     </Border.Effect>
 
                     <Border CornerRadius="5">

@@ -270,7 +270,7 @@ namespace H1EmuLauncher
         {
             try
             {
-                if (!Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master\\node_modules"))
+                if (!Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles\\h1z1-server-QuickStart-master\\node_modules"))
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
@@ -302,8 +302,8 @@ namespace H1EmuLauncher
                 {
                     if (sw.BaseStream.CanWrite)
                     {
-                        sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1emuServersFiles\\h1z1-server-QuickStart-master\\node-v{Info.NODEJS_VERSION}-win-x64");
-                        sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServersFiles\\h1z1-server-QuickStart-master");
+                        sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles\\h1z1-server-QuickStart-master\\node-v{Info.NODEJS_VERSION}-win-x64");
+                        sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles\\h1z1-server-QuickStart-master");
                         sw.WriteLine(serverVersion);
                     }
                 }
@@ -691,16 +691,55 @@ namespace H1EmuLauncher
         {
             Carousel.playCarousel.Pause();
 
-            prevImage.Visibility = Visibility.Visible;
             nextImage.Visibility = Visibility.Visible;
+            prevImage.Visibility = Visibility.Visible;
+
+            DoubleAnimation showImageControlsNext = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(100)));
+            showImageControlsNext.AccelerationRatio = 0.2;
+            showImageControlsNext.DecelerationRatio = 0.2;
+            showImageControlsNext.SetValue(Storyboard.TargetProperty, nextImage);
+            showImageControlsNext.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(OpacityProperty));
+
+            Storyboard playShowImageControlsNext = new Storyboard();
+            playShowImageControlsNext.Children.Add(showImageControlsNext);
+            playShowImageControlsNext.Begin();
+
+            DoubleAnimation showImageControlsPrev = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(100)));
+            showImageControlsPrev.AccelerationRatio = 0.2;
+            showImageControlsPrev.DecelerationRatio = 0.2;
+            showImageControlsPrev.SetValue(Storyboard.TargetProperty, prevImage);
+            showImageControlsPrev.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(OpacityProperty));
+
+            Storyboard playShowImageControlsPrev = new Storyboard();
+            playShowImageControlsPrev.Children.Add(showImageControlsPrev);
+            playShowImageControlsPrev.Begin();
         }
 
         private void CarouselMouseLeave(object sender, MouseEventArgs e)
         {
             Carousel.playCarousel.Resume();
 
-            prevImage.Visibility = Visibility.Hidden;
-            nextImage.Visibility = Visibility.Hidden;
+            DoubleAnimation showImageControlsNext = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(100)));
+            showImageControlsNext.AccelerationRatio = 0.2;
+            showImageControlsNext.DecelerationRatio = 0.2;
+            showImageControlsNext.SetValue(Storyboard.TargetProperty, nextImage);
+            showImageControlsNext.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(OpacityProperty));
+
+            Storyboard playShowImageControlsNext = new Storyboard();
+            playShowImageControlsNext.Children.Add(showImageControlsNext);
+            playShowImageControlsNext.Completed += (s, o) => { nextImage.Visibility = Visibility.Hidden; };
+            playShowImageControlsNext.Begin();
+
+            DoubleAnimation showImageControlsPrev = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(100)));
+            showImageControlsPrev.AccelerationRatio = 0.2;
+            showImageControlsPrev.DecelerationRatio = 0.2;
+            showImageControlsPrev.SetValue(Storyboard.TargetProperty, prevImage);
+            showImageControlsPrev.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(OpacityProperty));
+
+            Storyboard playShowImageControlsPrev = new Storyboard();
+            playShowImageControlsPrev.Children.Add(showImageControlsPrev);
+            playShowImageControlsPrev.Completed += (s, o) => { prevImage.Visibility = Visibility.Hidden; };
+            playShowImageControlsPrev.Begin();
         }
 
         private void ReportBuglink(object sender, RoutedEventArgs e)

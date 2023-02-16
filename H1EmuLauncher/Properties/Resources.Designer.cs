@@ -253,6 +253,16 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Discord_Hover {
+            get {
+                object obj = ResourceManager.GetObject("Discord_Hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Discord_Pressed {
             get {
                 object obj = ResourceManager.GetObject("Discord_Pressed", resourceCulture);

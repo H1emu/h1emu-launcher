@@ -58,6 +58,7 @@
     <system:String x:Key="item61">Bekijk alle details van update...</system:String>
     <system:String x:Key="item62">Instellingen...</system:String>
     <system:String x:Key="item63">En een speciale dank aan iedereen die zich aan de gemeenschap heeft gesloten en de motivatie levendig heeft gehouden!</system:String>
+    <system:String x:Key="item64">Stack trace-informatie:</system:String>
     <system:String x:Key="item65">Over het project...</system:String>
     <system:String x:Key="item66">Ophalen Github informatie mislukt:</system:String>
     <system:String x:Key="item67">Niet nu</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">Auth Code</system:String>
     <system:String x:Key="item78">Voer de tweefactorauthenticatiecode in die naar je Steam-app is verzonden.</system:String>
     <system:String x:Key="item79">Voer de tweefactorauthenticatiecode in die naar uw e-mail is verzonden.</system:String>
+    <system:String x:Key="item80">Kan installatiebestand niet downloaden:</system:String>
     <system:String x:Key="item84">Kon geen deopt vinden om te downloaden voor app {0}</system:String>
     <system:String x:Key="item85">Depot {0} staat niet in lijst voor app {1}</system:String>
     <system:String x:Key="item89">De geselecteerde map is niet leeg.\n\nWit u toch verder gaan?</system:String>
@@ -158,4 +160,6 @@
     <system:String x:Key="item183">Er is een fout opgetreden bij het valideren van uw accountsleutel:</system:String>
     <system:String x:Key="item184">Er is een fout opgetreden bij het laden van de serverlijst:</system:String>
     <system:String x:Key="item185">Het serverinstallatiescript is vroeg en onverwacht afgesloten.</system:String>
+    <system:String x:Key="item186">Er is een fout opgetreden bij het openen van het installatiebestand:</system:String>
+    <system:String x:Key="item187">Als deze fout zich blijft voordoen, probeer dan het installatiebestand handmatig te downloaden en uit te voeren.</system:String>
 </ResourceDictionary>

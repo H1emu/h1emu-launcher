@@ -58,6 +58,7 @@
     <system:String x:Key="item61">Güncellemenin tüm detaylarını göster...</system:String>
     <system:String x:Key="item62">Ayarlar...</system:String>
     <system:String x:Key="item63">ve Topluluk'a katılan ve motivasyonu yüksek tutan herkese özel bir teşekkür!</system:String>
+    <system:String x:Key="item64">Yığın izleme bilgileri:</system:String>
     <system:String x:Key="item65">Proje hakkında...</system:String>
     <system:String x:Key="item66">GitHub Bilgisi alınamadı:</system:String>
     <system:String x:Key="item67">Şimdi değil</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">Erişim Kodu</system:String>
     <system:String x:Key="item78">Lütfen Steam uygulamanıza gönderilen iki faktörlü kimlik doğrulama kodunu girin.</system:String>
     <system:String x:Key="item79">Lütfen e-postanıza gönderilen iki faktörlü doğrulama kodunu giriniz.</system:String>
+    <system:String x:Key="item80">Kurulum dosyası indirilemiyor:</system:String>
     <system:String x:Key="item84">{0} uygulaması için depo dosyası bulunamadı.</system:String>
     <system:String x:Key="item85">{0} deposu {1} uygulaması için listelenmedi.</system:String>
     <system:String x:Key="item89">Seçilen klasör boş değil.\n\nYine de devam etmek istiyor musunuz?</system:String>
@@ -159,4 +161,6 @@
     <system:String x:Key="item183">Hesap Anahtarınız doğrulanırken bir hata oluştu:</system:String>
     <system:String x:Key="item184">Sunucu listesi yüklenirken bir hata oluştu:</system:String>
     <system:String x:Key="item185">Sunucu yükleme komut dosyası erken ve beklenmedik bir şekilde kapandı.</system:String>
+    <system:String x:Key="item186">Yükleme dosyası açılırken bir hata oluştu:</system:String>
+    <system:String x:Key="item187">Bu hata devam ederse, yükleme dosyasını manuel olarak indirmeyi ve çalıştırmayı deneyin.</system:String>
 </ResourceDictionary>

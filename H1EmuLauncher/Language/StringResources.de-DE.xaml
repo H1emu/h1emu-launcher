@@ -58,6 +58,7 @@
     <system:String x:Key="item61">Alle Details zum Update anzeigen...</system:String>
     <system:String x:Key="item62">Einstellungen...</system:String>
     <system:String x:Key="item63">Und ein besonderes Dankeschön an alle, die sich der Community angeschlossen und die Motivation am Leben erhalten haben!</system:String>
+    <system:String x:Key="item64">Stack-Trace-Informationen:</system:String>
     <system:String x:Key="item65">Über das Projekt...</system:String>
     <system:String x:Key="item66">GitHub-Informationen können nicht abgerufen werden:</system:String>
     <system:String x:Key="item67">Nicht jetzt</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">Authentifizierungscode</system:String>
     <system:String x:Key="item78">Bitte geben Sie den Zwei-Faktor-Authentifizierungscode ein, der an Ihre Steam-App gesendet wurde.</system:String>
     <system:String x:Key="item79">Bitte geben Sie den Zwei-Faktor-Authentifizierungscode ein, der an Ihre E-Mail gesendet wurde.</system:String>
+    <system:String x:Key="item80">Installationsdatei kann nicht heruntergeladen werden:</system:String>
     <system:String x:Key="item84">Es konnten keine Depots zum Herunterladen für die App gefunden werden {0}</system:String>
     <system:String x:Key="item85">Depot {0} nicht für die App gelistet {1}</system:String>
     <system:String x:Key="item89">Das ausgewählte Verzeichnis ist nicht leer.\n\nMöchten Sie trotzdem fortfahren?</system:String>
@@ -159,4 +161,6 @@
     <system:String x:Key="item183">Bei der Validierung Ihres Kontoschlüssels ist ein Fehler aufgetreten:</system:String>
     <system:String x:Key="item184">Beim Laden der Serverliste ist ein Fehler aufgetreten:</system:String>
     <system:String x:Key="item185">Das Server-Installationsskript wurde vorzeitig und unerwartet geschlossen.</system:String>
+    <system:String x:Key="item186">Beim Öffnen der Installationsdatei ist ein Fehler aufgetreten:</system:String>
+    <system:String x:Key="item187">Wenn dieser Fehler weiterhin besteht, versuchen Sie, die Installationsdatei manuell herunterzuladen und auszuführen.</system:String>
 </ResourceDictionary>

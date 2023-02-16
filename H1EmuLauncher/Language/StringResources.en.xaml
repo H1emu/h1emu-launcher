@@ -58,6 +58,7 @@
     <system:String x:Key="item61">View full details of the update...</system:String>
     <system:String x:Key="item62">Settings...</system:String>
     <system:String x:Key="item63">And a special thanks to everyone who joined the community and kept the motivation alive!</system:String>
+    <system:String x:Key="item64">Stack trace information:</system:String>
     <system:String x:Key="item65">About the project...</system:String>
     <system:String x:Key="item66">Unable to retrieve GitHub information:</system:String>
     <system:String x:Key="item67">Not Now</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">Auth Code</system:String>
     <system:String x:Key="item78">Please enter the two factor authentication code sent to your Steam app.</system:String>
     <system:String x:Key="item79">Please enter the two factor authentication code sent to your email.</system:String>
+    <system:String x:Key="item80">Unable to download installation file:</system:String>
     <system:String x:Key="item84">Couldn't find any depots to download for app {0}</system:String>
     <system:String x:Key="item85">Depot {0} not listed for app {1}</system:String>
     <system:String x:Key="item89">The selected directory is not empty.\n\nWould you like to continue anyway?</system:String>
@@ -159,4 +161,6 @@
     <system:String x:Key="item183">There was an error validating your Account Key:</system:String>
     <system:String x:Key="item184">There was an error loading the server list:</system:String>
     <system:String x:Key="item185">The server install script closed early and unexpectedly.</system:String>
+    <system:String x:Key="item186">There was an error opening the installation file:</system:String>
+    <system:String x:Key="item187">If this error persists, try downloading and running the installation file manually.</system:String>
 </ResourceDictionary>

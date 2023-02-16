@@ -111,8 +111,16 @@
                        Height="35"
                        Margin="23,16,0,0"
                        VerticalAlignment="Top"
-                       HorizontalAlignment="Left"/>
+                       HorizontalAlignment="Left">
 
+                        <Image.Effect>
+                            <DropShadowEffect BlurRadius="15"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="0"
+                                              Opacity="0.4"/>
+                        </Image.Effect>
+                    </Image>
                 </DockPanel>
 
                 <!-- Exit button -->
@@ -126,7 +134,16 @@
                         BorderThickness="0"
                         Click="CloseUpdater"
                         Margin="0,5,25,0"
-                        Style="{StaticResource CloseButtonStyle}"/>
+                        Style="{StaticResource CloseButtonStyle}">
+
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="0"
+                                                      Opacity="0.2"/>
+                        </Button.Effect>
+                    </Button>
                 </DockPanel>
             </Grid>
 

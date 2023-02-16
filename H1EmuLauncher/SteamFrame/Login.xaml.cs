@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using H1EmuLauncher.Classes;
+using SteamKit2.Internal;
 
 namespace H1EmuLauncher.SteamFrame
 {
@@ -108,7 +109,9 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\GameInfo.xaml", UriKind.Relative));
-                        _2FA.loadingAnimation.Stop();
+                        
+                        if (_2FA.loadingAnimation != null)
+                            _2FA.loadingAnimation.Stop();
                     }));
 
                     bool result = true;
@@ -185,20 +188,14 @@ namespace H1EmuLauncher.SteamFrame
                         depotManifestIds.AddRange(zippedDepotManifest);
                     }
                     else
-                    {
                         depotManifestIds.AddRange(depotIdList.Select(depotId => (depotId, ContentDownloader.INVALID_MANIFEST_ID)));
-                    }
 
                     foreach (ulong manifestVersion in manifestIdList)
                     {
                         if (manifestVersion == 1930886153446950288)
-                        {
                             version = "2015";
-                        }
                         else if (manifestVersion == 8395659676467739522)
-                        {
                             version = "2016";
-                        }
                     }
 
                     Dispatcher.Invoke(new Action(delegate
@@ -231,12 +228,7 @@ namespace H1EmuLauncher.SteamFrame
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        UpdateLang();
-                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
-                        loadingAnimation.Stop();
-                        loadingIcon.Visibility = Visibility.Hidden;
-                        loginEnterButton.Visibility = Visibility.Visible;
+                        BackToLogin();
                         CustomMessageBox.Show($"{FindResource("item38")} {version}.", LauncherWindow.launcherInstance);
                     }));
                 }
@@ -244,13 +236,7 @@ namespace H1EmuLauncher.SteamFrame
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        UpdateLang();
-                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
-                        loadingAnimation.Stop();
-                        loadingIcon.Visibility = Visibility.Hidden;
-                        loginEnterButton.Visibility = Visibility.Visible;
-
+                        BackToLogin();
                         if (ex.Message.Contains("is not available from this account."))
                             CustomMessageBox.Show($"{FindResource("item39")} \"{ex.Message}\".\n\n{FindResource("item15")}", LauncherWindow.launcherInstance);
                         else
@@ -261,18 +247,16 @@ namespace H1EmuLauncher.SteamFrame
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        UpdateLang();
-                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
-                        loadingAnimation.Stop();
-                        loadingIcon.Visibility = Visibility.Hidden;
-                        loginEnterButton.Visibility = Visibility.Visible;
-                        CustomMessageBox.Show($"{FindResource("item40")} \"{er.Message}\".", LauncherWindow.launcherInstance);
+                        BackToLogin();
+                        CustomMessageBox.Show($"{FindResource("item40")} \"{er.Message}\".\n\n{FindResource("item64")} \"{er.StackTrace.Trim()}\"", LauncherWindow.launcherInstance);
                     }));
                 }
                 finally
                 {
                     ContentDownloader.ShutdownSteam3();
+
+                    username = null;
+                    password = null;
                 }
             }
             else
@@ -281,9 +265,10 @@ namespace H1EmuLauncher.SteamFrame
 
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    loadingAnimation.Stop();
-                    loadingIcon.Visibility = Visibility.Hidden;
-                    loginEnterButton.Visibility = Visibility.Visible;
+                    BackToLogin();
+
+                    if (_2FA.loadingAnimation != null)
+                        _2FA.loadingAnimation.Stop();
                 }));
             }
 
@@ -298,9 +283,16 @@ namespace H1EmuLauncher.SteamFrame
                 DepotConfigStore.Instance = null;
             }
             catch { }
+        }
 
-            username = null;
-            password = null;
+        public void BackToLogin()
+        {
+            UpdateLang();
+            LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+            LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+            loadingAnimation.Stop();
+            loadingIcon.Visibility = Visibility.Hidden;
+            loginEnterButton.Visibility = Visibility.Visible;
         }
 
         static bool InitializeSteam(string username, string password)

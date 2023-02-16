@@ -58,6 +58,7 @@
     <system:String x:Key="item61">Вижте пълни подробности за обновлението...</system:String>
     <system:String x:Key="item62">Настройки...</system:String>
     <system:String x:Key="item63">Специално благодарим на всеки ,които се присъедини към обществото и държа надеждата жива!</system:String>
+    <system:String x:Key="item64">Информация за проследяване на стека:</system:String>
     <system:String x:Key="item65">За проекта...</system:String>
     <system:String x:Key="item66">Не може да се извлече информация от GitHub:</system:String>
     <system:String x:Key="item67">Не сега</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">Потвърджаващ код код:</system:String>
     <system:String x:Key="item78">Моля, въведете двуфакторния код за удостоверяване, изпратен до вашето приложение Steam.</system:String>
     <system:String x:Key="item79">Моля, въведете двуфакторния код за удостоверяване, изпратен на вашия имейл.</system:String>
+    <system:String x:Key="item80">Не може да се изтегли инсталационният файл:</system:String>
     <system:String x:Key="item84">Не можах да намеря депа за изтегляне за приложението {0}</system:String>
     <system:String x:Key="item85">Депо {0} не е в списъка за приложение {1}</system:String>
     <system:String x:Key="item89">Избраната директория  не е празна.\n\nИзкате ли да продължите въпреки това?</system:String>
@@ -159,4 +161,6 @@
     <system:String x:Key="item183">Възникна грешка при валидирането на ключа на вашия акаунт:</system:String>
     <system:String x:Key="item184">Възникна грешка при зареждането на списъка със сървъри:</system:String>
     <system:String x:Key="item185">Инсталационният скрипт на сървъра се затвори рано и неочаквано.</system:String>
+    <system:String x:Key="item186">Възникна грешка при отваряне на инсталационния файл:</system:String>
+    <system:String x:Key="item187">Ако тази грешка продължава, опитайте да изтеглите и стартирате инсталационния файл ръчно.</system:String>
 </ResourceDictionary>

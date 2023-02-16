@@ -58,6 +58,7 @@
     <system:String x:Key="item61">Ver detalles de la actualización...</system:String>
     <system:String x:Key="item62">Configuración...</system:String>
     <system:String x:Key="item63">¡Gracias a todos los que se unieron a la comunidad y mantuvieron la motivación en el proyecto!</system:String>
+    <system:String x:Key="item64">Información de seguimiento de la pila:</system:String>
     <system:String x:Key="item65">Sobre el proyecto...</system:String>
     <system:String x:Key="item66">No se pudo obtener la información de GitHub:</system:String>
     <system:String x:Key="item67">Ahora no</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">Código de autorización</system:String>
     <system:String x:Key="item78">Ingrese el código de autenticación de dos factores enviado a su aplicación Steam.</system:String>
     <system:String x:Key="item79">Ingrese el código de autenticación de dos factores enviado a su correo electrónico.</system:String>
+    <system:String x:Key="item80">No se puede descargar el archivo de instalación:</system:String>
     <system:String x:Key="item84">No se encontró ningún depot de descarga para la aplicación {0}</system:String>
     <system:String x:Key="item85">Depot {0} no listado para aplicación {1}</system:String>
     <system:String x:Key="item89">El directorio seleccionado no está vacío.\n\n¿Continuar de todas formas?</system:String>
@@ -159,4 +161,6 @@
     <system:String x:Key="item183">Hubo un error al validar su clave de cuenta:</system:String>
     <system:String x:Key="item184">Hubo un error al cargar la lista de servidores:</system:String>
     <system:String x:Key="item185">El script de instalación del servidor se cerró antes de tiempo y de forma inesperada.</system:String>
+    <system:String x:Key="item186">Hubo un error al abrir el archivo de instalación:</system:String>
+    <system:String x:Key="item187">Si este error persiste, intente descargar y ejecutar el archivo de instalación manualmente.</system:String>
 </ResourceDictionary>

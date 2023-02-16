@@ -58,6 +58,7 @@
     <system:String x:Key="item61">Посмотреть полную информацию об обновлении...</system:String>
     <system:String x:Key="item62">Настройки...</system:String>
     <system:String x:Key="item63">И отдельное спасибо всем, кто присоединился к сообществу и поддерживает нас!</system:String>
+    <system:String x:Key="item64">Информация о трассировке стека:</system:String>
     <system:String x:Key="item65">О проекте...</system:String>
     <system:String x:Key="item66">Невозможно получить информацию GitHub:</system:String>
     <system:String x:Key="item67">Не сейчас</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">Код авторизации</system:String>
     <system:String x:Key="item78">Пожалуйста, введите код двухфакторной аутентификации, отправленный в ваше приложение Steam.</system:String>
     <system:String x:Key="item79">Пожалуйста, введите код двухфакторной аутентификации, отправленный на вашу электронную почту.</system:String>
+    <system:String x:Key="item80">Не удалось загрузить установочный файл:</system:String>
     <system:String x:Key="item84">Не удалось найти depot для загрузки приложения {0}</system:String>
     <system:String x:Key="item85">Depot {0} нет в списке для приложения {1}</system:String>
     <system:String x:Key="item89">Выбранная директория не пустая.\n\nВы хотите продолжить?</system:String>
@@ -159,4 +161,6 @@
     <system:String x:Key="item183">При проверке ключа учетной записи произошла ошибка:</system:String>
     <system:String x:Key="item184">При загрузке списка серверов произошла ошибка:</system:String>
     <system:String x:Key="item185">Сценарий установки сервера закрылся раньше и неожиданно.</system:String>
+    <system:String x:Key="item186">При открытии установочного файла произошла ошибка:</system:String>
+    <system:String x:Key="item187">Если эта ошибка повторяется, попробуйте загрузить и запустить установочный файл вручную.</system:String>
 </ResourceDictionary>

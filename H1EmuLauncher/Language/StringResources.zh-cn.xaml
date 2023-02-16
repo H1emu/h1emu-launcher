@@ -58,6 +58,7 @@
     <system:String x:Key="item61">查看最新版本的详细信息...</system:String>
     <system:String x:Key="item62">游戏配置...</system:String>
     <system:String x:Key="item63">感谢每一位富有激情且长期活跃在社区的人！</system:String>
+    <system:String x:Key="item64">堆栈跟踪信息：</system:String>
     <system:String x:Key="item65">关于此项目...</system:String>
     <system:String x:Key="item66">未能获取GitHub信息：</system:String>
     <system:String x:Key="item67">暂不更新</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">令牌</system:String>
     <system:String x:Key="item78">请输入发送到您的 Steam 应用的两因素验证码。</system:String>
     <system:String x:Key="item79">请输入发送到您的电子邮件的两因素验证码。</system:String>
+    <system:String x:Key="item80">无法下载安装文件：</system:String>
     <system:String x:Key="item84">未找到任何可以下载此游戏的 {0} 的数据包</system:String>
     <system:String x:Key="item85">数据包 {0} 不在游戏 {1} 列表中</system:String>
     <system:String x:Key="item89">你选择的不是空目录。\n\n确认要请继续下载吗？</system:String>
@@ -159,4 +161,6 @@
     <system:String x:Key="item183">验证您的帐户密钥时出错：</system:String>
     <system:String x:Key="item184">加载服务器列表时出错：</system:String>
     <system:String x:Key="item185">服务器安装脚本意外提前关闭。</system:String>
+    <system:String x:Key="item186">打开安装文件时出错：</system:String>
+    <system:String x:Key="item187">如果此错误仍然存​​在，请尝试手动下载并运行安装文件。</system:String>
 </ResourceDictionary>

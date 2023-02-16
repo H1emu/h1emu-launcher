@@ -58,6 +58,7 @@
     <system:String x:Key="item61">Voir tous les détails de la mise à jour...</system:String>
     <system:String x:Key="item62">Paramètres...</system:String>
     <system:String x:Key="item63">Et un grand merci à tous ceux qui ont rejoint la communauté et qui encouragent les développeurs!</system:String>
+    <system:String x:Key="item64">Informations sur la trace de la pile:</system:String>
     <system:String x:Key="item65">A propos du projet...</system:String>
     <system:String x:Key="item66">Impossible de récupérer les informations GitHub:</system:String>
     <system:String x:Key="item67">Pas maintenant</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">Code d'autorisation</system:String>
     <system:String x:Key="item78">Veuillez saisir le code d'authentification à deux facteurs envoyé à votre application Steam.</system:String>
     <system:String x:Key="item79">Veuillez saisir le code d'authentification à deux facteurs envoyé à votre adresse e-mail.</system:String>
+    <system:String x:Key="item80">Impossible de télécharger le fichier d'installation :</system:String>
     <system:String x:Key="item84">Impossible de trouver des dépôts à télécharger pour l'application. {0}</system:String>
     <system:String x:Key="item85">Dépôt {0} non listé pour l'application {1}</system:String>
     <system:String x:Key="item89">Le répertoire sélectionné n'est pas vide.\n\nVoulez-vous continuer quand même?</system:String>
@@ -159,4 +161,6 @@
     <system:String x:Key="item183">Une erreur s'est produite lors de la validation de votre clé de compte:</system:String>
     <system:String x:Key="item184">Une erreur s'est produite lors du chargement de la liste des serveurs:</system:String>
     <system:String x:Key="item185">Le script d'installation du serveur s'est fermé tôt et de manière inattendue.</system:String>
+    <system:String x:Key="item186">Une erreur s'est produite lors de l'ouverture du fichier d'installation:</system:String>
+    <system:String x:Key="item187">Si cette erreur persiste, essayez de télécharger et d'exécuter le fichier d'installation manuellement.</system:String>
 </ResourceDictionary>

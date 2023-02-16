@@ -58,6 +58,7 @@
     <system:String x:Key="item61">Ver detalhes da atualização...</system:String>
     <system:String x:Key="item62">Definições...</system:String>
     <system:String x:Key="item63">E um agradecimento especial a todos os que aderiram à comunidade e mantiveram viva a motivação!</system:String>
+    <system:String x:Key="item64">Informações de rastreamento de pilha:</system:String>
     <system:String x:Key="item65">Sobre o projeto...</system:String>
     <system:String x:Key="item66">Incapaz de recuperar informações do GitHub:</system:String>
     <system:String x:Key="item67">Agora não</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">código de autenticação</system:String>
     <system:String x:Key="item78">Digite o código de autenticação de dois fatores enviado ao seu aplicativo Steam.</system:String>
     <system:String x:Key="item79">Insira o código de autenticação de dois fatores enviado para o seu e-mail.</system:String>
+    <system:String x:Key="item80">Não foi possível baixar o arquivo de instalação:</system:String>
     <system:String x:Key="item84">Não foi possível encontrar depósitos para descarregar para a App {0}</system:String>
     <system:String x:Key="item85">Depósito {0} não listado para a App {1}</system:String>
     <system:String x:Key="item89">A pasta seleccionada não está vazia.\n\n Deseja continuar de qualquer forma?</system:String>
@@ -159,4 +161,6 @@
     <system:String x:Key="item183">Ocorreu um erro ao validar sua chave de conta:</system:String>
     <system:String x:Key="item184">Ocorreu um erro ao carregar a lista de servidores:</system:String>
     <system:String x:Key="item185">O script de instalação do servidor fechou cedo e inesperadamente.</system:String>
+    <system:String x:Key="item186">Ocorreu um erro ao abrir o arquivo de instalação:</system:String>
+    <system:String x:Key="item187">Se o erro persistir, tente baixar e executar o arquivo de instalação manualmente.</system:String>
 </ResourceDictionary>

@@ -58,6 +58,7 @@
     <system:String x:Key="item61">Prikaži detalje nove verzije...</system:String>
     <system:String x:Key="item62">Postavke...</system:String>
     <system:String x:Key="item63">I posebna zahvala svima koji su se pridružili našoj zajednici i što su nas motivirali da nastavimo!</system:String>
+    <system:String x:Key="item64">Podaci o praćenju hrpa:</system:String>
     <system:String x:Key="item65">O projektu...</system:String>
     <system:String x:Key="item66">Nemoguće dohvatiti informacije s GitHuba:</system:String>
     <system:String x:Key="item67">Ne sada</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">Autentikacijski Kod</system:String>
     <system:String x:Key="item78">Unesite dvofaktorni kod za provjeru autentičnosti koji je poslan vašoj aplikaciji Steam.</system:String>
     <system:String x:Key="item79">Unesite dvofaktorni kod za autentifikaciju poslan na Vašu e-poštu.</system:String>
+    <system:String x:Key="item80">Nije moguće preuzeti instalacijsku datoteku:</system:String>
     <system:String x:Key="item84">Nije pronađen nijedan depo za preuzimanje aplikacije {0}</system:String>
     <system:String x:Key="item85">Depo {0} nije na popisu za aplikaciju {1}</system:String>
     <system:String x:Key="item89">Odabran direktorij nije prazan.\n\nDa li ste sigurni da želite nastaviti?</system:String>
@@ -159,4 +161,6 @@
     <system:String x:Key="item183">Došlo je do pogreške pri validaciji vašeg ključa računa:</system:String>
     <system:String x:Key="item184">Došlo je do pogreške prilikom učitavanja popisa servera:</system:String>
     <system:String x:Key="item185">Skripta za instalaciju poslužitelja rano se i neočekivano zatvorila.</system:String>
+    <system:String x:Key="item186">Došlo je do pogreške pri otvaranju instalacijske datoteke:</system:String>
+    <system:String x:Key="item187">Ako se ova pogreška nastavi, pokušajte ručno preuzeti i pokrenuti instalacijsku datoteku.</system:String>
 </ResourceDictionary>

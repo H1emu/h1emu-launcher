@@ -58,6 +58,7 @@
     <system:String x:Key="item61">Sprawdź pełen opis aktuzacji...</system:String>
     <system:String x:Key="item62">Ustawienia...</system:String>
     <system:String x:Key="item63">Specjalne podziękowania dla wszystkich, którzy dołączyli do społeczności!</system:String>
+    <system:String x:Key="item64">Informacje o śledzeniu stosu:</system:String>
     <system:String x:Key="item65">O nas...</system:String>
     <system:String x:Key="item66">Nie można pobrać informacji z GitHub:</system:String>
     <system:String x:Key="item67">Nie teraz</system:String>
@@ -73,6 +74,7 @@
     <system:String x:Key="item77">Klucz Autoryzacji</system:String>
     <system:String x:Key="item78">Wprowadź dwuskładnikowy kod uwierzytelniający wysłany do Twojej aplikacji Steam.</system:String>
     <system:String x:Key="item79">Wprowadź dwuskładnikowy kod uwierzytelniający wysłany na Twój adres e-mail.</system:String>
+    <system:String x:Key="item80">Nie można pobrać pliku instalacyjnego:</system:String>
     <system:String x:Key="item84">Nie udało się znaleźć żadnego depota do pobrania dla aplikacji {0}</system:String>
     <system:String x:Key="item85">Depot {0} nie istnieje dla aplikacji {1}</system:String>
     <system:String x:Key="item89">Określona ścieżka nie jest pusta.\n\nCzy chcesz kontynuować mimo to?</system:String>
@@ -159,4 +161,6 @@
     <system:String x:Key="item183">Podczas weryfikacji klucza konta wystąpił błąd:</system:String>
     <system:String x:Key="item184">Podczas ładowania listy serwerów wystąpił błąd:</system:String>
     <system:String x:Key="item185">Skrypt instalacyjny serwera został zamknięty przedwcześnie i nieoczekiwanie.</system:String>
+    <system:String x:Key="item186">Wystąpił błąd podczas otwierania pliku instalacyjnego:</system:String>
+    <system:String x:Key="item187">Jeśli ten błąd będzie się powtarzał, spróbuj ręcznie pobrać i uruchomić plik instalacyjny.</system:String>
 </ResourceDictionary>

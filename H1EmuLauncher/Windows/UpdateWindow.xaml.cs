@@ -185,7 +185,7 @@ namespace H1EmuLauncher
                                         Dispatcher.Invoke(new Action(delegate
                                         {
                                             downloadSetupProgress.Value = totalRead;
-                                            downloadSetupProgressText.Text = $"{FindResource("item54")} {(float)totalRead / (float)contentStream.Length * 100:0.00}%";
+                                            downloadSetupProgressText.Text = $"{FindResource("item54")} {(float)totalRead / contentStream.Length * 100:0.00}%";
                                         }));
                                     }
                                     else if (totalRead == contentStream.Length)
@@ -201,12 +201,6 @@ namespace H1EmuLauncher
                             while (isMoreToRead);
                         }
                     }
-
-                    Process.Start(new ProcessStartInfo
-                    {
-                        FileName = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}",
-                        UseShellExecute = true
-                    });
                 }
                 catch (AggregateException ex)
                 {
@@ -216,14 +210,30 @@ namespace H1EmuLauncher
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"{FindResource("item16")}{exceptionList}\n\n{FindResource("item49")}", this);
+                        CustomMessageBox.Show($"{FindResource("item80")} {FindResource("item16")}{exceptionList}\n\n{FindResource("item49")}", this);
                     }));
                 }
                 catch (Exception es)
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"{FindResource("item142")} {es.Message}", this);
+                        CustomMessageBox.Show($"{FindResource("item80")} \"{es.Message}\".\n\n{FindResource("item64")} \"{es.StackTrace.Trim()}\"", this);
+                    }));
+                }
+
+                try
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}",
+                        UseShellExecute = true
+                    });
+                }
+                catch (Exception ph)
+                {
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        CustomMessageBox.Show($"{FindResource("item186")} \"{ph.Message}\"\n\n{FindResource("item187")}.", this);
                     }));
                 }
 

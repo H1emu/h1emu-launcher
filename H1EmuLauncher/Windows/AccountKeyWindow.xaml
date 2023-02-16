@@ -111,8 +111,16 @@
                     <Image Source="..\Resources\H1EmuIcon.png"
                            Width="140"
                            Height="40"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center">
 
+                        <Image.Effect>
+                            <DropShadowEffect BlurRadius="15"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="0"
+                                              Opacity="0.4"/>
+                        </Image.Effect>
+                    </Image>
                 </DockPanel>
 
                 <!-- Exit button -->
@@ -126,7 +134,16 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             BorderThickness="0"
-                            Style="{StaticResource CloseButtonStyle}"/>
+                            Style="{StaticResource CloseButtonStyle}">
+
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="0"
+                                                      Opacity="0.2"/>
+                        </Button.Effect>
+                    </Button>
                 </DockPanel>
             </Grid>
 
