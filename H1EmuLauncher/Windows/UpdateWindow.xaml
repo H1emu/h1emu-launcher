@@ -85,19 +85,23 @@
     <Grid Background="#FF2A2A32">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <!-- Grainy texture -->
             <Grid.Background>
-                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                <ImageBrush ImageSource="..\Resources\Grain.png"
+                            Opacity="0.5"
+                            TileMode="Tile"
+                            ViewportUnits="Absolute"
+                            Viewport="0,0,512,512"/>
+                
             </Grid.Background>
 
             <!-- Grid for logo and exit button -->
-            <Grid
-            MouseLeftButtonDown="MoveWindow"
-            Background="Transparent">
+            <Grid MouseLeftButtonDown="MoveWindow"
+                  Background="Transparent">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -105,61 +109,58 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
-                <DockPanel>
-                    <Image Source="..\Resources\H1EmuIcon.png"
+                <Image Source="..\Resources\H1EmuIcon.png"
                        Width="130"
                        Height="35"
-                       Margin="23,16,0,0"
+                       Margin="13,14,0,0"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left">
 
-                        <Image.Effect>
-                            <DropShadowEffect BlurRadius="15"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="0"
-                                              Opacity="0.4"/>
-                        </Image.Effect>
-                    </Image>
-                </DockPanel>
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.4"/>
+                    </Image.Effect>
+                </Image>
 
                 <!-- Exit button -->
-                <DockPanel Grid.Column="1" Grid.Row="0" Margin="0">
-                    <Button x:Name="closeButton"
+                <Button x:Name="closeButton"
+                        Grid.Column="1"
                         RenderOptions.BitmapScalingMode="Fant"
                         Width="44"
                         Height="30"
-                        VerticalAlignment="Center"
+                        VerticalAlignment="Top"
                         HorizontalAlignment="Right"
                         BorderThickness="0"
                         Click="CloseUpdater"
-                        Margin="0,5,25,0"
+                        Margin="0,14,15,0"
                         Style="{StaticResource CloseButtonStyle}">
 
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.2"/>
-                        </Button.Effect>
-                    </Button>
-                </DockPanel>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
             </Grid>
 
             <!-- Main content in darkened area -->
             <Border Grid.Row="1"
-                Background="#1C1B22"
-                Margin="25,10,25,25"
-                UseLayoutRounding="True"
-                CornerRadius="5">
+                    Background="#1C1B22"
+                    Margin="15,10,15,15"
+                    UseLayoutRounding="True"
+                    CornerRadius="5">
 
                 <!-- Drop shadow effect -->
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="10"
-                                  Direction="-90"
-                                  RenderingBias="Quality"
-                                  ShadowDepth="1"/>
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"/>
 
                 </Border.Effect>
 
@@ -180,73 +181,75 @@
 
                         <!-- Main text message -->
                         <TextBlock Margin="50,20,50,20"
-                               VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
-                               FontSize="18"
-                               FontWeight="Light"
-                               Foreground="FloralWhite"
-                               TextWrapping="Wrap"
-                               TextAlignment="Center"
-                               Text="{DynamicResource item1}"/>
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   FontSize="18"
+                                   FontWeight="Light"
+                                   Foreground="FloralWhite"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Text="{DynamicResource item1}"/>
 
                         <!-- Update button -->
                         <Button x:Name="updateButton"
-                            Grid.Row="1"
-                            Click="UpdateButtonClick"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="292"
-                            Height="44"
-                            HorizontalAlignment="Center"
-                            Foreground="White"
-                            FontFamily="Arial Black"
-                            FontSize="24"
-                            BorderThickness="0"
-                            Content="{DynamicResource item2}"
-                            Style="{DynamicResource StandardButton}"/>
+                                Grid.Row="1"
+                                Click="UpdateButtonClick"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Width="292"
+                                Height="44"
+                                HorizontalAlignment="Center"
+                                Foreground="White"
+                                FontFamily="Arial Black"
+                                FontSize="24"
+                                BorderThickness="0"
+                                Content="{DynamicResource item2}"
+                                Style="{DynamicResource StandardButton}"/>
 
                         <!-- Not now button -->
                         <TextBlock x:Name="notNowText"
-                               Grid.Row="2"
-                               Margin="50,15,50,15"
-                               VerticalAlignment="Bottom"
-                               HorizontalAlignment="Center"
-                               FontSize="16">
-                
-                        <Hyperlink x:Name="notNowHyperlink"
-                                   Click="NotNowClick"
-                                   Foreground="White">
-                    
-                            <TextBlock Text="{DynamicResource item67}"
-                                       Style="{DynamicResource HyperLinkStyle}"/>
-                    
-                        </Hyperlink>
-                    </TextBlock>
-
-                        <Grid x:Name="progressBarGrid"
-                          Grid.Row="3"
-                          Visibility="Collapsed">
-
-                            <!-- Setup download progress bar -->
-                            <ProgressBar x:Name="downloadSetupProgress"
-                                     Height="25"
-                                     Margin="54,20,54,20"
-                                     Style="{DynamicResource ProgressBar}"/>
-
-                            <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
-                            <ProgressBar Height="25"
-                                     Margin="54,20,54,20"
-                                     Background="Transparent"
-                                     Style="{DynamicResource ProgressBar}"/>
-
-                            <!-- Status text to overlay progress bar -->
-                            <TextBlock x:Name="downloadSetupProgressText"
+                                   Grid.Row="2"
+                                   Margin="50,15,50,15"
+                                   VerticalAlignment="Bottom"
                                    HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Margin="0,0,0,1"
-                                   Foreground="White"
-                                   FontWeight="Light"
-                                   Background="Transparent"/>
-                        </Grid>
+                                   FontSize="16">
+                
+                            <Hyperlink x:Name="notNowHyperlink"
+                                        Click="NotNowClick"
+                                        Foreground="White">
+                    
+                                <TextBlock Text="{DynamicResource item67}"
+                                            Style="{DynamicResource HyperLinkStyle}"/>
+                    
+                            </Hyperlink>
+                        </TextBlock>
+
+                        <Border x:Name="updateProgressBarRow"
+                                Grid.Row="3"
+                                Visibility="Collapsed">
+
+                            <Grid x:Name="updateProgressBarRowContent">
+                                <!-- Setup download progress bar -->
+                                <ProgressBar x:Name="downloadSetupProgress"
+                                             Height="25"
+                                             Margin="64,20,64,20"
+                                             Style="{DynamicResource ProgressBar}"/>
+
+                                <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
+                                <ProgressBar Height="25"
+                                             Margin="64,20,64,20"
+                                             Background="Transparent"
+                                             Style="{DynamicResource ProgressBar}"/>
+
+                                <!-- Status text to overlay progress bar -->
+                                <TextBlock x:Name="downloadSetupProgressText"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Margin="0,0,0,1"
+                                           Foreground="White"
+                                           FontWeight="Light"
+                                           Background="Transparent"/>
+                            </Grid>
+                        </Border>
                     </Grid>
                 </Border>
             </Border>

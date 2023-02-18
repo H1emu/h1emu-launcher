@@ -97,7 +97,7 @@
 
             <!-- Grid for logo and exit button -->
             <Grid MouseLeftButtonDown="MoveMessageBox"
-              Background="Transparent">
+                  Background="Transparent">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -105,48 +105,43 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
-                <DockPanel Margin="14,2,0,0"
-                       Height="40"
-                       HorizontalAlignment="Left">
-
-                    <Image Source="..\Resources\H1EmuIcon.png"
+                <Image Source="..\Resources\H1EmuIcon.png"
                        Width="104"
                        Height="28"
-                       Margin="0,4,0,0"
-                       VerticalAlignment="Center">
+                       Margin="14,12,0,0"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left">
 
-                        <Image.Effect>
-                            <DropShadowEffect BlurRadius="15"
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="15"
                                               Direction="-90"
                                               RenderingBias="Quality"
                                               ShadowDepth="0"
                                               Opacity="0.4"/>
-                        </Image.Effect>
-                    </Image>
-                </DockPanel>
+                    </Image.Effect>
+                </Image>
 
                 <!-- Exit button -->
-                <DockPanel Grid.Column="1">
-                    <Button x:Name="CloseButton"
+                <Button x:Name="CloseButton"
+                        Grid.Column="1"
                         Click="CloseButton_Click"
                         RenderOptions.BitmapScalingMode="Fant"
                         Width="38"
                         Height="25"
-                        Margin="0,5,15,7"
-                        VerticalAlignment="Bottom"
+                        Margin="0,12,15,0"
+                        VerticalAlignment="Top"
                         HorizontalAlignment="Right"
                         BorderThickness="0"
                         Style="{StaticResource CloseButtonStyle}">
 
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.2"/>
-                        </Button.Effect>
-                    </Button>
-                </DockPanel>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
             </Grid>
 
             <!-- Main content in darkened area -->
@@ -159,9 +154,9 @@
                 <!-- Drop shadow effect -->
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="8"
-                                  Direction="-90"
-                                  RenderingBias="Quality"
-                                  ShadowDepth="1"/>
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"/>
 
                 </Border.Effect>
 

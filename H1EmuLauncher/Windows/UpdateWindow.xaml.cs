@@ -37,6 +37,7 @@ namespace H1EmuLauncher
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
             httpClient.DefaultRequestHeaders.Add("User-Agent", "d-fens HttpClient");
+            httpClient.Timeout = TimeSpan.FromMinutes(10);
 
             sp.Show();
             CheckVersion();
@@ -73,7 +74,6 @@ namespace H1EmuLauncher
                     {
                         if (ex.StatusCode == null)
                             exceptionList += $"\n\n{FindResource("item137")}";
-
                     }
 
                     Dispatcher.Invoke(new Action(delegate
@@ -128,13 +128,7 @@ namespace H1EmuLauncher
 
         private void UpdateButtonClick(object sender, RoutedEventArgs e)
         {
-            downloadSetupProgressText.Text = $"{FindResource("item54")} 0%";
-            progressBarGrid.Visibility = Visibility.Visible;
-            notNowText.Visibility = Visibility.Collapsed;
-            notNowHyperlink.Foreground = new SolidColorBrush(Colors.Gray);
-            notNowHyperlink.IsEnabled = false;
-            updateButton.IsEnabled = false;
-            closeButton.IsEnabled = false;
+            DisableButtons();
 
             new Thread(() =>
             {
@@ -148,77 +142,91 @@ namespace H1EmuLauncher
                         downloadSetupProgress.IsIndeterminate = true;
                     }));
 
-                    using (HttpResponseMessage result = httpClient.GetAsync(new Uri(downloadUrl)).Result)
+                    HttpResponseMessage result = httpClient.GetAsync(new Uri(downloadUrl)).Result;
+
+                    // Throw an exception if we didn't get the correct response, with the first letter capitalised in the message
+                    if (result.StatusCode != HttpStatusCode.OK)
+                        throw new Exception($"{char.ToUpper(result.ReasonPhrase.First())}{result.ReasonPhrase.Substring(1)}");
+
+                    Stream contentStream = result.Content.ReadAsStream();
+                    FileStream fs = new FileStream($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, false);
+
+                    Dispatcher.Invoke(new Action(delegate
                     {
-                        // Throw an exception if we didn't get the correct response, with the first letter capitalised in the message
-                        if (result.StatusCode != HttpStatusCode.OK)
-                            throw new Exception($"{char.ToUpper(result.ReasonPhrase.First())}{result.ReasonPhrase.Substring(1)}");
+                        downloadSetupProgress.IsIndeterminate = false;
+                        downloadSetupProgress.Maximum = contentStream.Length;
+                    }));
 
-                        using (Stream contentStream = result.Content.ReadAsStream(), fs = new FileStream($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, false))
+                    long totalRead = 0L;
+                    long totalReads = 0L;
+                    byte[] buffer = new byte[8192];
+                    bool isMoreToRead = true;
+
+                    do
+                    {
+                        int read = contentStream.Read(buffer, 0, buffer.Length);
+
+                        if (read == 0)
+                            isMoreToRead = false;
+                        else
                         {
-                            Dispatcher.Invoke(new Action(delegate
+                            fs.Write(buffer, 0, read);
+
+                            totalRead += read;
+                            totalReads += 1;
+
+                            if (totalRead % 100 == 0)
                             {
-                                downloadSetupProgress.IsIndeterminate = false;
-                                downloadSetupProgress.Maximum = contentStream.Length;
-                            }));
-
-                            long totalRead = 0L;
-                            long totalReads = 0L;
-                            byte[] buffer = new byte[8192];
-                            bool isMoreToRead = true;
-
-                            do
-                            {
-                                int read = contentStream.Read(buffer, 0, buffer.Length);
-
-                                if (read == 0)
-                                    isMoreToRead = false;
-                                else
+                                Dispatcher.Invoke(new Action(delegate
                                 {
-                                    fs.Write(buffer, 0, read);
-
-                                    totalRead += read;
-                                    totalReads += 1;
-
-                                    if (totalRead % 100 == 0)
-                                    {
-                                        Dispatcher.Invoke(new Action(delegate
-                                        {
-                                            downloadSetupProgress.Value = totalRead;
-                                            downloadSetupProgressText.Text = $"{FindResource("item54")} {(float)totalRead / contentStream.Length * 100:0.00}%";
-                                        }));
-                                    }
-                                    else if (totalRead == contentStream.Length)
-                                    {
-                                        Dispatcher.Invoke(new Action(delegate
-                                        {
-                                            downloadSetupProgress.Value = downloadSetupProgress.Maximum;
-                                            downloadSetupProgressText.Text = $"{FindResource("item54")} 100%";
-                                        }));
-                                    }
-                                }
+                                    downloadSetupProgress.Value = totalRead;
+                                    downloadSetupProgressText.Text = $"{FindResource("item54")} {(float)totalRead / contentStream.Length * 100:0.00}%";
+                                }));
                             }
-                            while (isMoreToRead);
+                            else if (totalRead == contentStream.Length)
+                            {
+                                Dispatcher.Invoke(new Action(delegate
+                                {
+                                    downloadSetupProgress.Value = downloadSetupProgress.Maximum;
+                                    downloadSetupProgressText.Text = $"{FindResource("item54")} 100%";
+                                }));
+                            }
                         }
                     }
+                    while (isMoreToRead);
+
+                    contentStream.Close();
+                    fs.Close();
                 }
                 catch (AggregateException ex)
                 {
                     string exceptionList = string.Empty;
                     foreach (Exception exception in ex.InnerExceptions)
-                        exceptionList += $"\n\n{exception}";
+                        exceptionList += $"\n\n{exception.GetType().Name}: {exception.Message}";
+
+                    if (ex.InnerException is HttpRequestException er)
+                    {
+                        if (er.StatusCode == null)
+                            exceptionList += $"\n\n{FindResource("item137")}";
+                    }
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"{FindResource("item80")} {FindResource("item16")}{exceptionList}\n\n{FindResource("item49")}", this);
+                        EnableButtons();
+                        CustomMessageBox.Show($"{FindResource("item80")} {FindResource("item16")}{exceptionList}", this);
                     }));
+
+                    return;
                 }
                 catch (Exception es)
                 {
+                    EnableButtons();
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"{FindResource("item80")} \"{es.Message}\".\n\n{FindResource("item64")} \"{es.StackTrace.Trim()}\"", this);
+                        CustomMessageBox.Show($"{FindResource("item80")} \"{es.Message}\".\n\n{FindResource("item64")} \"{es.StackTrace.Trim()}\".", this);
                     }));
+
+                    return;
                 }
 
                 try
@@ -233,22 +241,61 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"{FindResource("item186")} \"{ph.Message}\"\n\n{FindResource("item187")}.", this);
+                        EnableButtons();
+                        CustomMessageBox.Show($"{FindResource("item186")} \"{ph.Message}\"\n\n{FindResource("item187")}", this);
                     }));
+
+                    return;
                 }
 
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    progressBarGrid.Visibility = Visibility.Collapsed;
-                    notNowText.Visibility = Visibility.Visible;
-                    notNowHyperlink.Foreground = new SolidColorBrush(Colors.White);
-                    notNowHyperlink.IsEnabled = true;
-                    updateButton.IsEnabled = true;
-                    closeButton.IsEnabled = true;
-                    Environment.Exit(0);
+                    EnableButtons();
                 }));
 
+                Environment.Exit(0);
+
             }).Start();
+        }
+
+        public void EnableButtons()
+        {
+            updateProgressBarRow.Visibility = Visibility.Collapsed;
+            notNowText.Visibility = Visibility.Visible;
+            notNowHyperlink.Foreground = new SolidColorBrush(Colors.White);
+            notNowHyperlink.IsEnabled = true;
+            updateButton.IsEnabled = true;
+            closeButton.IsEnabled = true;
+
+            downloadSetupProgress.Value = 0;
+            updateProgressBarRowContent.Measure(new Size(updateProgressBarRow.MaxWidth, updateProgressBarRow.MaxHeight));
+            DoubleAnimation hide = new(updateProgressBarRowContent.DesiredSize.Height, 0, new Duration(TimeSpan.FromMilliseconds(150)))
+            {
+                AccelerationRatio = 0.4,
+                DecelerationRatio = 0.4
+            };
+            hide.Completed += (s, _) => updateProgressBarRow.Visibility = Visibility.Collapsed;
+            updateProgressBarRow.BeginAnimation(HeightProperty, hide);
+        }
+
+        public void DisableButtons()
+        {
+            downloadSetupProgressText.Text = $"{FindResource("item54")} 0%";
+            updateProgressBarRow.Visibility = Visibility.Visible;
+            notNowText.Visibility = Visibility.Collapsed;
+            notNowHyperlink.Foreground = new SolidColorBrush(Colors.Gray);
+            notNowHyperlink.IsEnabled = false;
+            updateButton.IsEnabled = false;
+            closeButton.IsEnabled = false;
+
+            updateProgressBarRow.Visibility = Visibility.Visible;
+            updateProgressBarRowContent.Measure(new Size(updateProgressBarRow.MaxWidth, updateProgressBarRow.MaxHeight));
+            DoubleAnimation show = new(0, updateProgressBarRowContent.DesiredSize.Height, new Duration(TimeSpan.FromMilliseconds(150)))
+            {
+                AccelerationRatio = 0.4,
+                DecelerationRatio = 0.4
+            };
+            updateProgressBarRow.BeginAnimation(HeightProperty, show);
         }
 
         private void NotNowClick(object sender, RoutedEventArgs e)

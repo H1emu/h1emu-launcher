@@ -8,7 +8,7 @@
     <Setting Name="latestServerVersion" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="publishDate" Type="System.String" Scope="User">
+    <Setting Name="publishDate" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="patchNotes" Type="System.String" Scope="User">

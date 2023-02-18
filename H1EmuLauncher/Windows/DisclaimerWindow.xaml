@@ -90,7 +90,12 @@
 
             <!-- Grainy texture -->
             <Grid.Background>
-                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                <ImageBrush ImageSource="..\Resources\Grain.png"
+                            Opacity="0.5"
+                            TileMode="Tile"
+                            ViewportUnits="Absolute"
+                            Viewport="0,0,512,512"/>
+                
             </Grid.Background>
 
             <!-- Grid for logo and exit button -->
@@ -103,48 +108,44 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
-                <DockPanel Height="40"
-                           HorizontalAlignment="Left"
-                           Margin="14,2,0,0">
+                <Image Source="..\Resources\H1EmuIcon.png"
+                       Width="150"
+                       Height="40"
+                       Margin="13,15,0,0"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left">
 
-                    <Image Source="..\Resources\H1EmuIcon.png"
-                           Width="150"
-                           Height="40"
-                           Margin="0,4,0,0">
-
-                        <Image.Effect>
-                            <DropShadowEffect BlurRadius="15"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="0"
-                                              Opacity="0.4"/>
-                        </Image.Effect>
-                    </Image>
-                </DockPanel>
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.4"/>
+                    </Image.Effect>
+                </Image>
 
                 <!-- Exit button -->
-                <DockPanel Grid.Column="1">
-                    <Button x:Name="CloseButton"
-                            IsEnabled="False"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="45"
-                            Height="30"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            BorderThickness="0"
-                            Margin="0,0,15,0"
-                            Click="CloseButton_Click"
-                            Style="{StaticResource CloseButtonStyle}">
+                <Button x:Name="CloseButton"
+                        Grid.Column="1"
+                        IsEnabled="False"
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Width="45"
+                        Height="30"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        BorderThickness="0"
+                        Margin="0,15,15,0"
+                        Click="CloseButton_Click"
+                        Style="{StaticResource CloseButtonStyle}">
 
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.2"/>
-                        </Button.Effect>
-                    </Button>
-                </DockPanel>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
             </Grid>
 
             <!-- Main content in darkened area -->

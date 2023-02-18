@@ -8,7 +8,7 @@
         Title="Confirm"
         MinWidth="350"
         MaxWidth="1200"
-        MinHeight="220"
+        MinHeight="210"
         MaxHeight="900"
         SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
@@ -108,48 +108,43 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
-                <DockPanel Height="40"
-                           HorizontalAlignment="Left"
-                           Margin="14,2,0,0">
+                <Image Source="..\Resources\H1EmuIcon.png"
+                       Width="104"
+                       Height="28"
+                       Margin="14,12,0,0"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left">
 
-                    <Image Source="..\Resources\H1EmuIcon.png"
-                           Width="104"
-                           Height="28"
-                           Margin="0,4,0,0"
-                           VerticalAlignment="Center">
-
-                        <Image.Effect>
-                            <DropShadowEffect BlurRadius="15"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="0"
-                                              Opacity="0.4"/>
-                        </Image.Effect>
-                    </Image>
-                </DockPanel>
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.4"/>
+                    </Image.Effect>
+                </Image>
 
                 <!-- Exit button -->
-                <DockPanel Grid.Column="1">
-                    <Button x:Name="CloseButton"
-                            Click="ExitButton"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="39"
-                            Height="25"
-                            Margin="0,5,15,7"
-                            VerticalAlignment="Bottom"
-                            HorizontalAlignment="Right"
-                            BorderThickness="0"
-                            Style="{StaticResource CloseButtonStyle}">
+                <Button x:Name="CloseButton"
+                        Grid.Column="1"
+                        Click="ExitButton"
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Width="39"
+                        Height="25"
+                        Margin="0,12,15,0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        BorderThickness="0"
+                        Style="{StaticResource CloseButtonStyle}">
 
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="15"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="0"
-                                              Opacity="0.2"/>
-                        </Button.Effect>
-                    </Button>
-                </DockPanel>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
             </Grid>
 
             <!-- Main content in darkened area -->

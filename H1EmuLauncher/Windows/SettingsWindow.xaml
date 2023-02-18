@@ -125,7 +125,7 @@
             </Grid.Effect>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="80"/>
                 <RowDefinition Height="5*"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
@@ -140,47 +140,43 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
-                <DockPanel Height="60"
-                           Margin="23,5,0,15"
-                           HorizontalAlignment="Left">
+                <Image Source="..\Resources\H1EmuIcon.png"
+                       Width="175"
+                       Height="45"
+                       Margin="23,20,0,0"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left">
 
-                    <Image Source="..\Resources\H1EmuIcon.png"
-                           Width="175"
-                           Height="45"
-                           VerticalAlignment="Bottom">
-
-                        <Image.Effect>
-                            <DropShadowEffect BlurRadius="15"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="0"
-                                              Opacity="0.4"/>
-                        </Image.Effect>
-                    </Image>
-                </DockPanel>
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.4"/>
+                    </Image.Effect>
+                </Image>
 
                 <!-- Exit button -->
-                <DockPanel Grid.Column="1">
-                    <Button x:Name="ExitButton"
-                            Click="CloseButton"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="44"
-                            Height="30"
-                            Margin="0,0,25,2"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            BorderThickness="0"
-                            Style="{StaticResource CloseButtonStyle}">
+                <Button x:Name="ExitButton"
+                        Grid.Column="1"
+                        Click="CloseButton"
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Width="44"
+                        Height="30"
+                        Margin="0,20,25,0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        BorderThickness="0"
+                        Style="{StaticResource CloseButtonStyle}">
 
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.2"/>
-                        </Button.Effect>
-                    </Button>
-                </DockPanel>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
             </Grid>
 
             <!-- Main content in darkened area -->
@@ -399,26 +395,26 @@
                             <Grid x:Name="settingsProgressRowContent">
                                 <!-- Status progress bar -->
                                 <ProgressBar x:Name="settingsProgressBar"
-                                         Grid.Row="2"
-                                         Height="35"
-                                         Margin="20,0,20,30"
-                                         Style="{DynamicResource ProgressBar}"/>
+                                             Grid.Row="2"
+                                             Height="35"
+                                             Margin="20,0,20,30"
+                                             Style="{DynamicResource ProgressBar}"/>
 
                                 <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
                                 <ProgressBar Grid.Row="2"
-                                         Height="35"
-                                         Margin="20,0,20,30"
-                                         Background="Transparent"
-                                         Style="{DynamicResource ProgressBar}"/>
+                                             Height="35"
+                                             Margin="20,0,20,30"
+                                             Background="Transparent"
+                                             Style="{DynamicResource ProgressBar}"/>
 
                                 <!-- Status text to overlay progress bar -->
                                 <TextBlock x:Name="settingsProgressText"
-                                       Grid.Row="2"
-                                       HorizontalAlignment="Center"
-                                       Margin="0,8,0,0"
-                                       Foreground="White"
-                                       FontWeight="Light"
-                                       Background="Transparent"/>
+                                           Grid.Row="2"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,8,0,0"
+                                           Foreground="White"
+                                           FontWeight="Light"
+                                           Background="Transparent"/>
                             </Grid>
                         </Border>
                     </Grid>
@@ -432,15 +428,23 @@
                        VerticalAlignment="Center"
                        HorizontalAlignment="Left">
                 
-                    <Hyperlink Click="AccountKeyClick"
-                               Foreground="White"
-                               FontWeight="Light">
+                <Hyperlink Click="AccountKeyClick"
+                            Foreground="White"
+                            FontWeight="Light">
                     
-                        <TextBlock Text="{DynamicResource item154}"
-                                   Style="{DynamicResource HyperLinkStyle}"/>
+                    <TextBlock Text="{DynamicResource item154}"
+                                Style="{DynamicResource HyperLinkStyle}"/>
                     
-                    </Hyperlink>
-                </TextBlock>
+                </Hyperlink>
+                
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="15"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="0"
+                                      Opacity="0.4"/>
+                </TextBlock.Effect>
+            </TextBlock>
 
             <!-- Current installed version of the launcher number -->
             <TextBlock x:Name="currentVersion"
@@ -450,8 +454,16 @@
                        HorizontalAlignment="Right"
                        Foreground="White"
                        FontWeight="Light"
-                       Text="{DynamicResource item124}"/>
+                       Text="{DynamicResource item124}">
 
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="15"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="0"
+                                      Opacity="0.4"/>
+                </TextBlock.Effect>
+            </TextBlock>
         </Grid>
 
         <!-- Background fade on unfocus -->

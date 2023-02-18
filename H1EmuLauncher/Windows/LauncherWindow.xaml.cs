@@ -528,12 +528,12 @@ namespace H1EmuLauncher
                 string jsonServer = result.Content.ReadAsStringAsync().Result;
                 JsonEndPoints.Server.Root jsonDesServer = JsonSerializer.Deserialize<JsonEndPoints.Server.Root>(jsonServer);
                 string latestVersion = jsonDesServer.tag_name;
+                DateTime publishDate = jsonDesServer.published_at;
                 string latestPatchNotes = jsonDesServer.body;
-                string publishDate = jsonDesServer.published_at.ToString();
 
                 // Display the content on the launcher
-                DateTime date = DateTime.ParseExact(publishDate, "G", CultureInfo.InvariantCulture);
-                datePublished.Text = $" ({date:dd MMMM yyyy})";
+                //DateTime date = DateTime.ParseExact(publishDate, "G", CultureInfo.InvariantCulture);
+                datePublished.Text = $" ({publishDate:dd MMMM yyyy})";
                 updateVersion.Text = $" {latestVersion}";
                 patchNotesBox.Text = latestPatchNotes;
 
@@ -545,13 +545,8 @@ namespace H1EmuLauncher
             }
             catch
             {
-                if (!string.IsNullOrEmpty(Properties.Settings.Default.publishDate))
-                {
-                    DateTime date = DateTime.ParseExact(Properties.Settings.Default.publishDate, "G", CultureInfo.InvariantCulture);
-                    datePublished.Text = $" ({date:dd MMMM yyyy})";
-                }
-
                 updateVersion.Text = $" {Properties.Settings.Default.latestServerVersion}";
+                datePublished.Text = $" ({Properties.Settings.Default.publishDate:dd MMMM yyyy})";
                 patchNotesBox.Text = Properties.Settings.Default.patchNotes;
             }
         }
@@ -727,7 +722,7 @@ namespace H1EmuLauncher
 
             Storyboard playShowImageControlsNext = new Storyboard();
             playShowImageControlsNext.Children.Add(showImageControlsNext);
-            playShowImageControlsNext.Completed += (s, o) => { nextImage.Visibility = Visibility.Hidden; };
+            playShowImageControlsNext.Completed += (s, o) => nextImage.Visibility = Visibility.Hidden;
             playShowImageControlsNext.Begin();
 
             DoubleAnimation showImageControlsPrev = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(100)));
@@ -738,7 +733,7 @@ namespace H1EmuLauncher
 
             Storyboard playShowImageControlsPrev = new Storyboard();
             playShowImageControlsPrev.Children.Add(showImageControlsPrev);
-            playShowImageControlsPrev.Completed += (s, o) => { prevImage.Visibility = Visibility.Hidden; };
+            playShowImageControlsPrev.Completed += (s, o) => prevImage.Visibility = Visibility.Hidden;
             playShowImageControlsPrev.Begin();
         }
 

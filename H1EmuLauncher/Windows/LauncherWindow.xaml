@@ -212,7 +212,7 @@
             </Grid.Effect>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="25*"/>
+                <RowDefinition Height="140"/>
                 <RowDefinition Height="116*"/>
                 <RowDefinition Height="40"/>
             </Grid.RowDefinitions>
@@ -227,9 +227,9 @@
                 </Grid.ColumnDefinitions>
                 
                 <!-- Logo -->
-                <Image Width="220"
-                       Margin="35,20,0,12"
+                <Image Margin="35,20,0,25"
                        HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
                        RenderOptions.BitmapScalingMode="Fant"
                        Source="..\Resources\H1EmuLogo.png">
 
@@ -243,75 +243,71 @@
                 </Image>
 
                 <!-- Exit/minimise buttons and other info -->
-                <DockPanel Grid.Column="1">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                    <!-- Wraps the about project informational -->
+                    <StackPanel Grid.ColumnSpan="2"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right"
+                                Margin="0,20,35,0"
+                                Orientation="Horizontal">
 
-                        <!-- Wraps the about project informational -->
-                        <WrapPanel Grid.ColumnSpan="2"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Right">
+                        <!-- Language selection combobox -->
+                        <Grid>
+                            <ComboBox x:Name="LanguageBox"
+                                      Height="30"
+                                      Margin="0,0,20,0"
+                                      Padding="35,2,10,0"
+                                      VerticalAlignment="Top"
+                                      VerticalContentAlignment="Center"
+                                      BorderThickness="2"
+                                      Foreground="White"
+                                      FontSize="15"
+                                      FontWeight="Light"
+                                      SelectedIndex="0"
+                                      SelectionChanged="LanguageSelectionChanged"
+                                      Style="{DynamicResource ComboBox}">
 
-                            <!-- Language selection combobox -->
-                            <Grid>
-                                <ComboBox x:Name="LanguageBox"
-                                          Height="30"
-                                          Margin="10,10,20,0"
-                                          Padding="35,2,10,0"
-                                          VerticalAlignment="Bottom"
-                                          VerticalContentAlignment="Center"
-                                          BorderThickness="2"
-                                          Foreground="White"
-                                          FontSize="15"
-                                          FontWeight="Light"
-                                          SelectedIndex="0"
-                                          SelectionChanged="LanguageSelectionChanged"
-                                          Style="{DynamicResource ComboBox}">
+                                <ComboBoxItem Content="English" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="Chinese" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="Croatian" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="French" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="Turkish" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="Polish" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="Russian" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="Dutch" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="Bulgarian" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="German" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="Portuguese" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="Spanish" Style="{DynamicResource ComboBoxItemStyle}"/>
 
-                                    <ComboBoxItem Content="English" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <ComboBoxItem Content="Chinese" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <ComboBoxItem Content="Croatian" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <ComboBoxItem Content="French" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <ComboBoxItem Content="Turkish" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <ComboBoxItem Content="Polish" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <ComboBoxItem Content="Russian" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <ComboBoxItem Content="Dutch" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <ComboBoxItem Content="Bulgarian" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <ComboBoxItem Content="German" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <ComboBoxItem Content="Portuguese" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    <ComboBoxItem Content="Spanish" Style="{DynamicResource ComboBoxItemStyle}"/>
-
-                                    <ComboBox.Effect>
-                                        <DropShadowEffect BlurRadius="15"
+                                <ComboBox.Effect>
+                                    <DropShadowEffect BlurRadius="15"
                                           Direction="-90"
                                           RenderingBias="Quality"
                                           ShadowDepth="0"
                                           Opacity="0.2"/>
-                                    </ComboBox.Effect>
-                                </ComboBox>
+                                </ComboBox.Effect>
+                            </ComboBox>
 
-                                <Image Source="..\Resources\Language.png"
+                            <Image Source="..\Resources\Language.png"
                                        RenderOptions.BitmapScalingMode="Fant"
                                        Width="16"
-                                       VerticalAlignment="Bottom"
-                                       HorizontalAlignment="Left"
-                                       Margin="21,0,0,7"
-                                       IsHitTestVisible="False"/>
-                                
-                            </Grid>
-
-                            <!-- Report A Bug Hyperlink -->
-                            <TextBlock Margin="0,10,20,0"
                                        VerticalAlignment="Center"
-                                       FontWeight="Light">
+                                       HorizontalAlignment="Left"
+                                       Margin="12,0,0,0"
+                                       IsHitTestVisible="False"/>
+
+                        </Grid>
+
+                        <!-- Report A Bug Hyperlink -->
+                        <TextBlock Margin="0,0,20,0"
+                                   VerticalAlignment="Center"
+                                   FontWeight="Light">
                                 
                                 <Hyperlink Click="ReportBuglink"
                                            Foreground="White">
@@ -329,10 +325,10 @@
                                 </TextBlock.Effect>
                             </TextBlock>
 
-                            <!-- About Project Hyperlink -->
-                            <TextBlock Margin="0,10,20,0"
-                                       VerticalAlignment="Center"
-                                       FontWeight="Light">
+                        <!-- About Project Hyperlink -->
+                        <TextBlock Margin="0,0,20,0"
+                                   VerticalAlignment="Center"
+                                   FontWeight="Light">
                                 
                                 <Hyperlink Click="AboutHyperlink"
                                            Foreground="White">
@@ -350,61 +346,62 @@
                                 </TextBlock.Effect>
                             </TextBlock>
 
-                            <!-- Minimise Button-->
-                            <Button x:Name="MiniButton"
-                                    Click="MinimiseButtonClick"
-                                    Width="45"
-                                    Height="30"
-                                    Margin="0,10,4,0"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Right"
-                                    BorderThickness="0"
-                                    Style="{DynamicResource MinimiseButtonStyle}">
+                        <!-- Minimise Button-->
+                        <Button x:Name="MiniButton"
+                                Click="MinimiseButtonClick"
+                                Width="45"
+                                Height="30"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right"
+                                BorderThickness="0"
+                                Style="{DynamicResource MinimiseButtonStyle}">
 
-                                <Button.Effect>
-                                    <DropShadowEffect BlurRadius="15"
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
                                                       Direction="-90"
                                                       RenderingBias="Quality"
                                                       ShadowDepth="0"
                                                       Opacity="0.2"/>
-                                </Button.Effect>
-                            </Button>
+                            </Button.Effect>
+                        </Button>
 
-                            <!-- Exit button -->
-                            <Button x:Name="ExitButton"
-                                    Click="CloseLauncher"
-                                    RenderOptions.BitmapScalingMode="Fant"
-                                    Width="45"
-                                    Height="30"
-                                    Margin="0,10,35,0"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Right"
-                                    BorderThickness="0"
-                                    Style="{DynamicResource CloseButtonStyle}">
+                        <!-- Exit button -->
+                        <Button x:Name="ExitButton"
+                                Click="CloseLauncher"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Width="45"
+                                Height="30"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right"
+                                BorderThickness="0"
+                                Style="{DynamicResource CloseButtonStyle}">
 
-                                <Button.Effect>
-                                    <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.2"/>
-                                </Button.Effect>
-                            </Button>
-                        </WrapPanel>
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.2"/>
+                            </Button.Effect>
+                        </Button>
+                    </StackPanel>
 
-                        <!-- Website and discord components -->
-                        <WrapPanel Grid.Row="1"
-                                   Grid.Column="1"
-                                   Grid.ColumnSpan="2"
+                    <!-- Website and discord components -->
+                    <StackPanel Grid.Row="1"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Margin="0,0,35,20">
+
+                        <!-- Join the community at message -->
+                        <TextBlock Foreground="White"
+                                   VerticalAlignment="Center"
                                    HorizontalAlignment="Right"
-                                   VerticalAlignment="Bottom">
-
-                            <!-- Join the community at message -->
-                            <TextBlock Foreground="White"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Right"
-                                       Margin="0,0,25,10"
-                                       FontWeight="Light">
+                                   Margin="0,0,25,0"
+                                   FontWeight="Light">
                                 
                                 <TextBlock Text="{DynamicResource item12}"/>
 
@@ -436,42 +433,40 @@
                                 </TextBlock.Effect>
                             </TextBlock>
 
-                            <Button x:Name="discordLink"
-                                    Grid.Column="1"
-                                    Click="OpenDiscord"
-                                    RenderOptions.BitmapScalingMode="Fant"
-                                    Width="160"
-                                    Height="44"
-                                    Margin="0,0,35,5"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Right"
-                                    BorderThickness="0"
-                                    Style="{DynamicResource DiscordButton}">
+                        <Button x:Name="discordLink"
+                                Grid.Column="1"
+                                Click="OpenDiscord"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Width="160"
+                                Height="44"
+                                VerticalAlignment="Bottom"
+                                HorizontalAlignment="Right"
+                                BorderThickness="0"
+                                Style="{DynamicResource DiscordButton}">
 
-                                <Button.ContextMenu>
-                                    <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                        <MenuItem Header="Copy"
+                            <Button.ContextMenu>
+                                <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                                    <MenuItem Header="Copy"
                                                   Click="discordLinkCopy"
                                                   Style="{DynamicResource CopyMenuItem}"/>
 
-                                    </ContextMenu>
-                                </Button.ContextMenu>
+                                </ContextMenu>
+                            </Button.ContextMenu>
 
-                                <Button.Effect>
-                                    <DropShadowEffect BlurRadius="15"
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
                                                       Direction="-90"
                                                       RenderingBias="Quality"
                                                       ShadowDepth="0"
                                                       Opacity="0.2"/>
-                                </Button.Effect>
-                            </Button>
-                        </WrapPanel>
-                    </Grid>
-                </DockPanel>
+                            </Button.Effect>
+                        </Button>
+                    </StackPanel>
+                </Grid>
             </Grid>
 
             <Border Grid.Row="1"
-                    Margin="35,10,35,0"
+                    Margin="35,0,35,0"
                     UseLayoutRounding="True"
                     Background="#1C1B22"
                     CornerRadius="5">
@@ -835,6 +830,14 @@
                     <Image.RenderTransform>
                         <RotateTransform x:Name="rotateSettingsIcon" Angle="0"/>
                     </Image.RenderTransform>
+
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.4"/>
+                    </Image.Effect>
                 </Image>
 
                 <!-- Hyperlink to open settings menu -->
@@ -869,6 +872,14 @@
                             </TextBlock.Triggers>
                         </TextBlock>
                     </Hyperlink>
+                    
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.4"/>
+                    </TextBlock.Effect>
                 </TextBlock>
 
                 <!-- Copyright notice -->
@@ -877,7 +888,16 @@
                            HorizontalAlignment="Right"
                            Foreground="White"
                            FontWeight="Light"
-                           Text="{DynamicResource item125}"/>
+                           Text="{DynamicResource item125}">
+
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.4"/>
+                    </TextBlock.Effect>
+                </TextBlock>
             </DockPanel>
         </Grid>
 

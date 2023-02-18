@@ -96,39 +96,39 @@
 
             <!-- Divider / progress bar -->
             <ProgressBar Grid.Row="1"
-                     Height="2"
-                     Background="#FFCA1420"
-                     Margin="35,10,35,0"
-                     IsIndeterminate="True"
-                     Style="{DynamicResource ProgressBar}">
+                         Height="2"
+                         Background="#FFCA1420"
+                         Margin="35,0,35,0"
+                         IsIndeterminate="True"
+                         Style="{DynamicResource ProgressBar}">
 
                 <!-- Drop shadow effect -->
                 <ProgressBar.Effect>
                     <DropShadowEffect BlurRadius="8"
-                                  Direction="-90"
-                                  RenderingBias="Quality"
-                                  ShadowDepth="1"/>
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"/>
 
                 </ProgressBar.Effect>
             </ProgressBar>
 
             <!-- Checking for updates text -->
             <TextBlock Padding="20,0,20,0"
-                   VerticalAlignment="Bottom"
-                   TextAlignment="Center"
-                   FontSize="30"
-                   Foreground="White"
-                   FontWeight="Light"
-                   Text="{DynamicResource item48}"/>
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       FontSize="30"
+                       Foreground="White"
+                       FontWeight="Light"
+                       Text="{DynamicResource item48}"/>
 
             <!-- Please wait text -->
             <TextBlock Grid.Row="2"
-                   Padding="0,11,0,0"
-                   TextAlignment="Center"
-                   FontSize="16"
-                   Foreground="White"
-                   FontWeight="Light"
-                   Text="{DynamicResource item4}"/>
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="16"
+                       Foreground="White"
+                       FontWeight="Light"
+                       Text="{DynamicResource item4}"/>
         </Grid>
     </Grid>
 </Window>

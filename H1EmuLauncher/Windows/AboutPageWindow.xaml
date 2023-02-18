@@ -102,47 +102,43 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
-                <DockPanel Height="60"
-                           HorizontalAlignment="Left"
-                           Margin="23,0,0,15">
+                <Image Source="..\Resources\H1EmuIcon.png"
+                       Width="175"
+                       Height="45"
+                       Margin="23,20,0,0"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left">
 
-                    <Image Source="..\Resources\H1EmuIcon.png"
-                           Width="175"
-                           Height="45"
-                           VerticalAlignment="Bottom">
-
-                        <Image.Effect>
-                            <DropShadowEffect BlurRadius="15"
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="15"
                                               Direction="-90"
                                               RenderingBias="Quality"
                                               ShadowDepth="0"
                                               Opacity="0.4"/>
-                        </Image.Effect>
-                    </Image>
-                </DockPanel>
+                    </Image.Effect>
+                </Image>
 
                 <!-- Exit button -->
-                <DockPanel Grid.Column="1">
-                    <Button x:Name="CloseButton"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="44"
-                            Height="30"
-                            Margin="0,0,25,10"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Right"
-                            BorderThickness="0"
-                            Click="CloseButton_Click"
-                            Style="{StaticResource CloseButtonStyle}">
+                <Button x:Name="CloseButton"
+                        Grid.Column="1"
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Width="44"
+                        Height="30"
+                        Margin="0,20,25,0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        BorderThickness="0"
+                        Click="CloseButton_Click"
+                        Style="{StaticResource CloseButtonStyle}">
 
-                        <Button.Effect>
-                            <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.2"/>
-                        </Button.Effect>
-                    </Button>
-                </DockPanel>
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.2"/>
+                    </Button.Effect>
+                </Button>
             </Grid>
 
             <!-- Main content in darkened area -->
@@ -165,7 +161,12 @@
 
                     <!-- Grainy texture -->
                     <Border.Background>
-                        <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                        <ImageBrush ImageSource="..\Resources\Grain.png"
+                                    Opacity="0.5"
+                                    TileMode="Tile"
+                                    ViewportUnits="Absolute"
+                                    Viewport="0,0,512,512"/>
+                        
                     </Border.Background>
 
                     <Grid>
