@@ -16,8 +16,6 @@ using System.Net.Http;
 using System.Windows.Media.Animation;
 using System.Linq;
 using H1EmuLauncher.Classes;
-using System.Windows.Media;
-using Microsoft.Win32;
 
 namespace H1EmuLauncher
 {
