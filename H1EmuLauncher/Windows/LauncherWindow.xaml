@@ -53,7 +53,7 @@
             </EventTrigger.Actions>
         </EventTrigger>
     </Window.Triggers>
-    
+
     <!-- Image carousel storyboard animations -->
     <Window.Resources>
         <ResourceDictionary>
@@ -225,7 +225,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <!-- Logo -->
                 <Image Margin="35,20,0,25"
                        HorizontalAlignment="Left"
@@ -614,7 +614,7 @@
                             <!-- Patch notes textbox -->
                             <ScrollViewer Height="104"
                                           VerticalScrollBarVisibility="Hidden">
-                                
+
                                 <TextBlock x:Name="patchNotesBox"
                                            Margin="0,10,0,0"
                                            Background="Transparent"
@@ -622,7 +622,7 @@
                                            FontWeight="Light"
                                            Cursor="Arrow"
                                            TextWrapping="Wrap"/>
-                                
+
                             </ScrollViewer>
 
                             <!-- Read full details of update hyperlink -->
@@ -774,12 +774,12 @@
 
                                     <ComboBoxItem Content="{DynamicResource item139}"
                                                   Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    
+
                                     <ComboBoxItem Content="{DynamicResource item140}"
                                                   Style="{DynamicResource ComboBoxItemStyle}"/>
-                                    
+
                                     <Separator Background="#444444"/>
-                                    
+
                                     <ComboBoxItem x:Name="newServer"
                                                   Content="{DynamicResource item141}"
                                                   PreviewMouseLeftButtonUp="AddNewServer"

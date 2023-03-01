@@ -103,7 +103,7 @@
     <system:String x:Key="item124">启动器版本 v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
     <system:String x:Key="item126">领导开发</system:String>
-    <system:String x:Key="item127">共同开发</system:String>
+    <system:String x:Key="item127">开发商</system:String>
     <system:String x:Key="item128">管理员</system:String>
     <system:String x:Key="item129">贡献者</system:String>
     <system:String x:Key="item130">版主</system:String>

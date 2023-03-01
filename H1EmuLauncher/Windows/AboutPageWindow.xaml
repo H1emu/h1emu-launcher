@@ -191,26 +191,8 @@
                             
                             <Run FontSize="18"
                                  Foreground="White"
-                                 Text="• Kentin • Meme •"/>
+                                 Text="• Kentin • Meme • Avcio •"/>
                             
-                            <LineBreak/>
-                            <LineBreak/>
-                            <LineBreak/>
-                            
-                            <!-- Co-development-->
-                            <Run FontSize="20"
-                                 Foreground="#FFED1C24"
-                                 FontWeight="Light"
-                                 TextDecorations="Underline"
-                                 Text="{DynamicResource item127}"/>
-
-                            <LineBreak/>
-                            <LineBreak/>
-                            
-                            <Run FontSize="18"
-                                 Foreground="White"
-                                 Text="• Avcio • HaxMax •"/>
-
                             <LineBreak/>
                             <LineBreak/>
                             <LineBreak/>
@@ -227,7 +209,25 @@
                             
                             <Run FontSize="18"
                                  Foreground="White"
-                                 Text="• Kentin • LcplReaper • Traqnar • Meme •"/>
+                                 Text="• LcplReaper • Traqnar • Meme • Avcio •"/>
+
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                                
+                            <!-- Developers -->
+                            <Run FontSize="20"
+                                 Foreground="#FFED1C24"
+                                 FontWeight="Light"
+                                 TextDecorations="Underline"
+                                 Text="{DynamicResource item127}"/>
+                            
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="• Eavilaswayce • Ghost • doggo • KOBUNIX •"/>
 
                             <LineBreak/>
                             <LineBreak/>
@@ -245,7 +245,7 @@
                             
                             <Run FontSize="18"
                                  Foreground="White"
-                                 Text="• Eavilaswayce • Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo • doggo • Ghost • 余科辰 •"/>
+                                 Text="• Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo • Torenka • Moonlighter • Loopa • Cyberhound • Cur7 • 余科辰 •"/>
 
                             <LineBreak/>
                             <LineBreak/>
@@ -263,7 +263,7 @@
                             
                             <Run FontSize="18"
                                  Foreground="White"
-                                 Text="• Meme • Chrisisbrown • Cur7 • Movezie • Skoz •"/>
+                                 Text="• TCM • Tone • Chrisisbrown • Movezie • Andrew~ • RywaZ • Ultrax •"/>
                             
                             <LineBreak/>
                             <LineBreak/>
@@ -281,25 +281,7 @@
                             
                             <Run FontSize="18"
                                  Foreground="White"
-                                 Text="• rob138us • Dave • Booze (Orphanfeast87) •"/>
-
-                            <LineBreak/>
-                            <LineBreak/>
-                            <LineBreak/>
-                            
-                            <!-- Translators -->
-                            <Run FontSize="20"
-                                 Foreground="#FFED1C24"
-                                 FontWeight="Light"
-                                 TextDecorations="Underline"
-                                 Text="{DynamicResource item136}"/>
-
-                            <LineBreak/>
-                            <LineBreak/>
-                            
-                            <Run FontSize="18"
-                                 Foreground="White"
-                                 Text="• YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) •"/>
+                                 Text="• Arrcy • Booze • Dave • rob318us • SONNY •"/>
 
                             <LineBreak/>
                             <LineBreak/>
@@ -317,7 +299,25 @@
                             
                             <Run FontSize="18"
                                  Foreground="White"
-                                 Text="• Booze (Orphanfeast87) • Mahoaga • TimmyFPS • LegalViewbot • remapz • Christer D • A Mad Midget • Twin •"/>
+                                 Text="• Booze • Mahoaga • TimmyFPS • LegalViewbot • remapz • Christer D • A Mad Midget • Twin • piapiacrack • AlvaZhang • RensareN • willow •"/>
+
+                            <LineBreak/>
+                            <LineBreak/>
+                            <LineBreak/>
+                                
+                            <!-- Translators -->
+                            <Run FontSize="20"
+                                 Foreground="#FFED1C24"
+                                 FontWeight="Light"
+                                 TextDecorations="Underline"
+                                 Text="{DynamicResource item136}"/>
+
+                            <LineBreak/>
+                            <LineBreak/>
+                            
+                            <Run FontSize="18"
+                                 Foreground="White"
+                                 Text="• YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) •"/>
 
                             <LineBreak/>
                             <LineBreak/>
@@ -328,7 +328,6 @@
                                  Foreground="White"
                                  Text="{DynamicResource item132}"/>
                             
-                            <LineBreak/>
                             <LineBreak/>
                             <LineBreak/>
                             <LineBreak/>

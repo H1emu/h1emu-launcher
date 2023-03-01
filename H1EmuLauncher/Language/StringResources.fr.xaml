@@ -102,8 +102,8 @@
     <system:String x:Key="item122">Version actuelle du jeu:</system:String>
     <system:String x:Key="item124">Version du launcher v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
-    <system:String x:Key="item126">Lead Development</system:String>
-    <system:String x:Key="item127">Co-Development</system:String>
+    <system:String x:Key="item126">Développement de prospects</system:String>
+    <system:String x:Key="item127">Développeurs</system:String>
     <system:String x:Key="item128">Administrateurs</system:String>
     <system:String x:Key="item129">Contributeurs</system:String>
     <system:String x:Key="item130">Modérateurs</system:String>
