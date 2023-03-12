@@ -4,7 +4,7 @@
 
     <system:String x:Key="item1">Ново обновление е налично,желаете ли да го изтеглите?</system:String>
     <system:String x:Key="item2">Обновление</system:String>
-    <system:String x:Key="item3">Обнови версията</system:String>
+    <system:String x:Key="item3">Версия</system:String>
     <system:String x:Key="item4">Натисни пусни за пуснеш локалният солов сървър.</system:String>
     <system:String x:Key="item8">Играй</system:String>
     <system:String x:Key="item9">Свържи се</system:String>

@@ -590,16 +590,14 @@ namespace H1EmuLauncher
             if (!IsLoaded)
                 return;
 
-            int selectedLanguage = LanguageBox.SelectedIndex;
-
-            if (selectedLanguage == 1)
+            if (LanguageBox.SelectedIndex == 1)
                 chineseLink.Visibility = Visibility.Visible;
             else
                 chineseLink.Visibility = Visibility.Collapsed;
 
             try
             {
-                switch (selectedLanguage)
+                switch (LanguageBox.SelectedIndex)
                 {
                     // Update and save settings
                     case 0:
@@ -637,6 +635,9 @@ namespace H1EmuLauncher
                         break;
                     case 11:
                         SetLanguageFile.SaveLang(11);
+                        break;
+                    case 12:
+                        SetLanguageFile.SaveLang(12);
                         break;
                 }
             }

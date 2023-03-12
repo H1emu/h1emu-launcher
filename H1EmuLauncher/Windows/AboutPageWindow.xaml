@@ -55,7 +55,7 @@
             
             <!-- Load dictionary into xaml resources just so we can see on the designer -->
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+                <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <Storyboard x:Key="CloseAbout">
@@ -317,9 +317,8 @@
                             
                             <Run FontSize="18"
                                  Foreground="White"
-                                 Text="• YuaneKo (Multilingual) • AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) •"/>
+                                 Text="• AZAZ (Chinese) • MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) • SpjonK (Swedish) •"/>
 
-                            <LineBreak/>
                             <LineBreak/>
                             <LineBreak/>
                             <LineBreak/>
@@ -328,7 +327,6 @@
                                  Foreground="White"
                                  Text="{DynamicResource item132}"/>
                             
-                            <LineBreak/>
                             <LineBreak/>
                             <LineBreak/>
                             <LineBreak/>

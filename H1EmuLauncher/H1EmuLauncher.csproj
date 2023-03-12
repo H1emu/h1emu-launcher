@@ -7,11 +7,11 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.7.8</AssemblyVersion>
-	  <FileVersion>2.7.8</FileVersion>
+	  <AssemblyVersion>2.7.9</AssemblyVersion>
+	  <FileVersion>2.7.9</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>2.7.8</Version>
+	  <Version>2.7.9</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -107,13 +107,16 @@
     <Page Remove="Resources\JIGGERBISH.xaml" />
     <Page Remove="Resources\StringResources.bg-BG.xaml" />
     <Page Remove="Resources\StringResources.de-DE.xaml" />
+    <Page Remove="Resources\StringResources.en-EN.xaml" />
     <Page Remove="Resources\StringResources.es-ES.xaml" />
     <Page Remove="Resources\StringResources.fr-FR.xaml" />
+    <Page Remove="Resources\StringResources.hr-HR.xaml" />
     <Page Remove="Resources\StringResources.hr.xaml" />
     <Page Remove="Resources\StringResources.nl-NL.xaml" />
     <Page Remove="Resources\StringResources.pl-PL.xaml" />
     <Page Remove="Resources\StringResources.pt-PT.xaml" />
     <Page Remove="Resources\StringResources.ru-RU.xaml" />
+    <Page Remove="Resources\StringResources.se-SE.xaml" />
     <Page Remove="Resources\StringResources.tr-TR.xaml" />
     <Page Remove="Resources\StringResources.xaml" />
     <Page Remove="Resources\StringResources.zh-cn.xaml" />
@@ -121,6 +124,18 @@
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+    <Resource Include="Language\StringResources.en-EN.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Language\StringResources.fr-FR.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Language\StringResources.hr-HR.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Language\StringResources.se-SE.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -137,16 +152,7 @@
     <Resource Include="Language\StringResources.de-DE.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Language\StringResources.en.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Language\StringResources.es-ES.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Language\StringResources.fr.xaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Language\StringResources.hr.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Language\StringResources.nl-NL.xaml">

@@ -58,15 +58,24 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Resource Update="Language\StringResources.en-EN.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Update="Language\StringResources.se-SE.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Update="Language\StringResources.fr-FR.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Update="Language\StringResources.hr-HR.xaml">
+      <SubType>Designer</SubType>
+    </Resource>
     <Page Update="Windows\DisclaimerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\ReportBugWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Resource Update="Language\StringResources.fr.xaml">
-      <SubType>Designer</SubType>
-    </Resource>
     <Resource Update="Language\StringResources.zh-CN.xaml">
       <SubType>Designer</SubType>
     </Resource>
@@ -130,12 +139,6 @@
     <Page Update="Windows\MessageBoxWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Resource Update="Language\StringResources.hr.xaml">
-      <SubType>Designer</SubType>
-    </Resource>
-    <Resource Update="Language\StringResources.en.xaml">
-      <SubType>Designer</SubType>
-    </Resource>
     <Page Update="Windows\SettingsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

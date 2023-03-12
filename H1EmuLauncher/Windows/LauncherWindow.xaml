@@ -187,7 +187,7 @@
 
             <!-- Load dictionary into xaml resources just so we can see on the designer -->
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+                <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -284,6 +284,7 @@
                                 <ComboBoxItem Content="German" Style="{DynamicResource ComboBoxItemStyle}"/>
                                 <ComboBoxItem Content="Portuguese" Style="{DynamicResource ComboBoxItemStyle}"/>
                                 <ComboBoxItem Content="Spanish" Style="{DynamicResource ComboBoxItemStyle}"/>
+                                <ComboBoxItem Content="Swedish" Style="{DynamicResource ComboBoxItemStyle}"/>
 
                                 <ComboBox.Effect>
                                     <DropShadowEffect BlurRadius="15"

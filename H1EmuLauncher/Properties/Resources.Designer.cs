@@ -625,26 +625,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;A new update is available, would you like to update now?&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;UPDATE&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Version&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Please wait&lt;/sys [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string StringResources {
-            get {
-                return ResourceManager.GetString("StringResources", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
-        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
-        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
-        ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Ново обновление е налично,желаете ли да го изтеглите?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Обновление&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Версията&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Моля Изчакай&lt;/ [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Обнови версията&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Натисни [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_bg_BG {
             get {
@@ -665,6 +649,22 @@ namespace H1EmuLauncher.Properties {
         internal static string StringResources_de_DE {
             get {
                 return ResourceManager.GetString("StringResources_de_DE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;A new update is available, would you like to update now?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;UPDATE&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Version&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Please wait&lt;/sys [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_en_EN {
+            get {
+                return ResourceManager.GetString("StringResources.en-EN", resourceCulture);
             }
         }
         
@@ -696,7 +696,7 @@ namespace H1EmuLauncher.Properties {
         /// </summary>
         internal static string StringResources_fr_FR {
             get {
-                return ResourceManager.GetString("StringResources_fr_FR", resourceCulture);
+                return ResourceManager.GetString("StringResources.fr-FR", resourceCulture);
             }
         }
         
@@ -710,9 +710,9 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Verzija&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Molimo pričekajte&lt;/sys [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string StringResources_hr {
+        internal static string StringResources_hr_HR {
             get {
-                return ResourceManager.GetString("StringResources_hr", resourceCulture);
+                return ResourceManager.GetString("StringResources.hr-HR", resourceCulture);
             }
         }
         
@@ -777,6 +777,22 @@ namespace H1EmuLauncher.Properties {
         internal static string StringResources_ru_RU {
             get {
                 return ResourceManager.GetString("StringResources_ru_RU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;ResourceDictionary xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+        ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+        ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
+        ///
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;En ny uppdatering är tillgänglig, vill du uppdatera nu?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item2&quot;&gt;UPPDATERA&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Version&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Var god vänta&lt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string StringResources_se_SE {
+            get {
+                return ResourceManager.GetString("StringResources.se-SE", resourceCulture);
             }
         }
         

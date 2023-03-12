@@ -12,16 +12,16 @@ namespace H1EmuLauncher.Classes
             switch (Properties.Settings.Default.language)
             {
                 case 0:
-                    dict.Source = new Uri("Language/StringResources.en.xaml", UriKind.RelativeOrAbsolute);
+                    dict.Source = new Uri("Language/StringResources.en-EN.xaml", UriKind.RelativeOrAbsolute);
                     break;
                 case 1:
                     dict.Source = new Uri("Language/StringResources.zh-CN.xaml", UriKind.RelativeOrAbsolute);
                     break;
                 case 2:
-                    dict.Source = new Uri("Language/StringResources.hr.xaml", UriKind.RelativeOrAbsolute);
+                    dict.Source = new Uri("Language/StringResources.hr-HR.xaml", UriKind.RelativeOrAbsolute);
                     break;
                 case 3:
-                    dict.Source = new Uri("Language/StringResources.fr.xaml", UriKind.RelativeOrAbsolute);
+                    dict.Source = new Uri("Language/StringResources.fr-FR.xaml", UriKind.RelativeOrAbsolute);
                     break;
                 case 4:
                     dict.Source = new Uri("Language/StringResources.tr-TR.xaml", UriKind.RelativeOrAbsolute);
@@ -47,8 +47,11 @@ namespace H1EmuLauncher.Classes
                 case 11:
                     dict.Source = new Uri("Language/StringResources.es-ES.xaml", UriKind.RelativeOrAbsolute);
                     break;
+                case 12:
+                    dict.Source = new Uri("Language/StringResources.se-SE.xaml", UriKind.RelativeOrAbsolute);
+                    break;
                 default:
-                    dict.Source = new Uri("Language/StringResources.en.xaml", UriKind.RelativeOrAbsolute);
+                    dict.Source = new Uri("Language/StringResources.en-EN.xaml", UriKind.RelativeOrAbsolute);
                     break;
             }
 

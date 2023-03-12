@@ -22,7 +22,7 @@
             
             <!-- Load dictionary into xaml resources just so we can see on the designer -->
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Language\StringResources.en.xaml"/>
+                <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
