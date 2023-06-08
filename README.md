@@ -13,6 +13,6 @@
 ## How to run the launcher:
 
 1. Simply download the launcher and run it.
-1. Set the directory of your game in the settings.
-1. From here you can install the patch for the game, the stable, or latest server.
-1. Once directory is set, you can either play on a local server or H1Emu test server.
+1. Set the directory of your game in the Settings menu, located bottom left of the launcher.
+1. From here you can install the patch for the game or the stable/latest server files.
+1. Once directory is set, you can either play on a local server or H1Emu official servers if your account key is valid and verified (more info in the official H1Emu Discord).
