@@ -26,7 +26,11 @@ namespace H1EmuLauncher.Classes
                         Application.Current.Dispatcher.Invoke(new Action(delegate
                         {
                             LauncherWindow.launcherInstance.playButton.IsEnabled = false;
-                            LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item150").ToString();
+
+                            if (gameVersionString == "15jan2015" && string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersion2015) || gameVersionString == "22dec2016" && string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersion2016))
+                                LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item150").ToString();
+                            else
+                                LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item188").ToString();
                         }));
 
                         ApplyPatch();
@@ -35,7 +39,7 @@ namespace H1EmuLauncher.Classes
                 case "processBeingUsed":
                     Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance);
+                        CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance, true);
                     }));
                     break;
                 default:

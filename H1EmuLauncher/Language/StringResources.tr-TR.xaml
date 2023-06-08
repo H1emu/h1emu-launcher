@@ -98,7 +98,7 @@
     <system:String x:Key="item116">Sunucu dosyaları açılıyor...</system:String>
     <system:String x:Key="item118">Node dosyaları açılıyor...</system:String>
     <system:String x:Key="item120">Lütfen H1Z1'i kapatın.</system:String>
-    <system:String x:Key="item121">H1Z1.exe şu anda kullanımda.\n\nLütfen açık H1Z1 örneklerini kapatın.</system:String>
+    <system:String x:Key="item121">H1Z1.exe şu anda kullanımda.\n\nLütfen açık H1Z1 örneklerini kapatın.\n\nH1Z1'in tüm işlemlerini sonlandırmak için aşağıdaki butonu kullanabilirsiniz.</system:String>
     <system:String x:Key="item122">Mevcut oyun versiyonu:</system:String>
     <system:String x:Key="item124">Başlatıcı Versiyonu v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
@@ -163,4 +163,6 @@
     <system:String x:Key="item185">Sunucu yükleme komut dosyası erken ve beklenmedik bir şekilde kapandı.</system:String>
     <system:String x:Key="item186">Yükleme dosyası açılırken bir hata oluştu:</system:String>
     <system:String x:Key="item187">Bu hata devam ederse, yükleme dosyasını manuel olarak indirmeyi ve çalıştırmayı deneyin.</system:String>
+    <system:String x:Key="item188">YENİDEN YAMALAMA</system:String>
+    <system:String x:Key="item189">ÖLDÜRMEK</system:String>
 </ResourceDictionary>

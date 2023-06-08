@@ -98,7 +98,7 @@
     <system:String x:Key="item116">Entpacke Serverdatei...</system:String>
     <system:String x:Key="item118">Entpacke node Dateien...</system:String>
     <system:String x:Key="item120">Bitte schließe H1Z1.</system:String>
-    <system:String x:Key="item121">H1Z1.exe wird gerade verwendet\n\nBitte schließen Sie alle offenen Instanzen von H1Z1.</system:String>
+    <system:String x:Key="item121">H1Z1.exe wird gerade verwendet\n\nBitte schließen Sie alle offenen Instanzen von H1Z1.\n\nSie können die Schaltfläche unten verwenden, um alle Prozesse von H1Z1 zu beenden.</system:String>
     <system:String x:Key="item122">Aktuelle Spielversion:</system:String>
     <system:String x:Key="item124">Launcher Version v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
@@ -163,4 +163,6 @@
     <system:String x:Key="item185">Das Server-Installationsskript wurde vorzeitig und unerwartet geschlossen.</system:String>
     <system:String x:Key="item186">Beim Öffnen der Installationsdatei ist ein Fehler aufgetreten:</system:String>
     <system:String x:Key="item187">Wenn dieser Fehler weiterhin besteht, versuchen Sie, die Installationsdatei manuell herunterzuladen und auszuführen.</system:String>
+    <system:String x:Key="item188">NEU-PATCHING</system:String>
+    <system:String x:Key="item189">TÖTEN</system:String>
 </ResourceDictionary>

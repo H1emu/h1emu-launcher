@@ -121,7 +121,7 @@ namespace H1EmuLauncher
             try
             {
                 // Load all of the servers into the server selector
-                List<ServerList> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
+                List<ServerList> currentjson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
                 foreach (ServerList server in currentjson)
                 {
                     ComboBoxItem newItem = new ComboBoxItem { Content = server.SName, Style = (Style)FindResource("ComboBoxItemStyle") };
@@ -244,7 +244,7 @@ namespace H1EmuLauncher
             if (dr != MessageBoxResult.Yes)
                 return;
 
-            List<ServerList> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
+            List<ServerList> currentjson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
 
             int index = -1;
 
@@ -257,7 +257,7 @@ namespace H1EmuLauncher
 
             currentjson.Remove(currentjson[index]);
 
-            string finalJson = System.Text.Json.JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
+            string finalJson = JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(serverJsonFile, finalJson);
 
             serverSelector.Items.Remove(itemRightClicked);
@@ -359,7 +359,7 @@ namespace H1EmuLauncher
                         }
                     }));
 
-                    List<ServerList> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
+                    List<ServerList> currentjson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
 
                     foreach (var item in currentjson)
                     {
@@ -451,7 +451,7 @@ namespace H1EmuLauncher
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, true);
                         }));
 
                         return;
@@ -470,6 +470,8 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
+                        playButton.IsEnabled = true;
+                        playButton.Content = FindResource("item8").ToString();
                         CustomMessageBox.Show($"{FindResource("item13")} \"{er.Message}\".", this);
                     }));
                 }

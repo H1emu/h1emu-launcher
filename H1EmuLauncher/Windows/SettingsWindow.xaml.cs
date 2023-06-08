@@ -79,7 +79,7 @@ namespace H1EmuLauncher
                         {
                             EnableButtons();
 
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, true);
                         }));
                         break;
                     default:
@@ -209,7 +209,7 @@ namespace H1EmuLauncher
                 {
                     EnableButtons();
 
-                    CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
+                    CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, true);
                 }));
 
                 return;
@@ -481,6 +481,7 @@ namespace H1EmuLauncher
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
                     isExecutingTasks = false;
+                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 }));
 
                 gameVersionString = "processBeingUsed";
@@ -490,12 +491,13 @@ namespace H1EmuLauncher
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\".", this);
                     directoryButton.IsEnabled = true;
                     patchButton.IsEnabled = true;
                     latestButton.IsEnabled = true;
                     stableButton.IsEnabled = true;
                     isExecutingTasks = false;
+                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                    CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\".", this);
                 }));
 
                 return;
@@ -591,7 +593,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(Application.Current.FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
+                        CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, true);
                     }));
                 }
                 else if (gameVersionString != "15jan2015" && gameVersionString != "22dec2016")
@@ -649,7 +651,7 @@ namespace H1EmuLauncher
 
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, true);
                         }));
 
                         break;

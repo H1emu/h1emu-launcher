@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
@@ -15,6 +16,15 @@ namespace H1EmuLauncher
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+        }
+
+        private void CloseH1Z1(object sender, RoutedEventArgs e)
+        {
+            foreach (var h1z1Processes in Process.GetProcessesByName("h1z1"))
+                h1z1Processes.Kill();
+
+            Topmost = true;
+            Close();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

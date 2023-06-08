@@ -203,13 +203,13 @@
     <value>..\Language\StringResources.de-DE.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="StringResources.en-EN" type="System.Resources.ResXFileRef, System.Windows.Forms">
-	  <value>..\Language\StringResources.en-EN.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\Language\StringResources.en-EN.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="StringResources_es_ES" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Language\StringResources.es-ES.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="StringResources.fr-FR" type="System.Resources.ResXFileRef, System.Windows.Forms">
-	<value>..\Language\StringResources.fr-FR.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\Language\StringResources.fr-FR.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="StringResources.hr-HR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Language\StringResources.hr-HR.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -227,7 +227,7 @@
     <value>..\Language\StringResources.ru-RU.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="StringResources.se-SE" type="System.Resources.ResXFileRef, System.Windows.Forms">
-	<value>..\Language\StringResources.se-SE.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+    <value>..\Language\StringResources.se-SE.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="StringResources_tr_TR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Language\StringResources.tr-TR.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -237,15 +237,6 @@
   </data>
   <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Assets_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Assets_256.pack;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Game-Patch-2015" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Game-Patch-2015.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Game-Patch-2016" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Game-Patch-2016.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="Server-Quickstart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Server-Quickstart.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -324,5 +315,14 @@
   </data>
   <data name="Discord_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Discord_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Game-Patch-2015" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Game-Patch-2015.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Assets_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Assets_256.pack;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Game-Patch-2016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Game-Patch-2016.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

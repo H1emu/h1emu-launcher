@@ -113,7 +113,7 @@
             </ProgressBar>
 
             <!-- Checking for updates text -->
-            <TextBlock Padding="20,0,20,0"
+            <TextBlock Padding="30,0,30,0"
                        VerticalAlignment="Center"
                        TextAlignment="Center"
                        FontSize="30"

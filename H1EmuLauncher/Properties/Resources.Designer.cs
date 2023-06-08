@@ -627,8 +627,8 @@ namespace H1EmuLauncher.Properties {
         ///
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Ново обновление е налично,желаете ли да го изтеглите?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Обновление&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Обнови версията&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Натисни [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Версия&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Натисни пусни за [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_bg_BG {
             get {

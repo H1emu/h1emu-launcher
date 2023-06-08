@@ -36,7 +36,7 @@
     <system:String x:Key="item39">ContentDownloaderException:</system:String>
     <system:String x:Key="item40">Preuzimanje neuspješno radi neobrađene iznimke:</system:String>
     <system:String x:Key="item41">Direktorij:</system:String>
-    <system:String x:Key="item42">PATCHANJE</system:String>
+    <system:String x:Key="item42">ZAKRPATI</system:String>
     <system:String x:Key="item43">NAJNOVIJI</system:String>
     <system:String x:Key="item44">STABILNI</system:String>
     <system:String x:Key="item45">Ako imate problema s igricom, probajte ponovno instalirati patch ili</system:String>
@@ -98,7 +98,7 @@
     <system:String x:Key="item116">Raspakiravanje datoteka servera...</system:String>
     <system:String x:Key="item118">Raspakiravanje node datotka...</system:String>
     <system:String x:Key="item120">Molim vas zatvorite H1Z1.</system:String>
-    <system:String x:Key="item121">H1Z1.exe je trenutno u korištenju.\n\nZatvorite sve otvorene instance H1Z1.</system:String>
+    <system:String x:Key="item121">H1Z1.exe je trenutno u korištenju.\n\nZatvorite sve otvorene instance H1Z1.\n\nMožete upotrijebiti gumb ispod da prekinete sve procese H1Z1.</system:String>
     <system:String x:Key="item122">Trenutna verzija igre:</system:String>
     <system:String x:Key="item124">Verzija launchera v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
@@ -163,4 +163,6 @@
     <system:String x:Key="item185">Skripta za instalaciju poslužitelja rano se i neočekivano zatvorila.</system:String>
     <system:String x:Key="item186">Došlo je do pogreške pri otvaranju instalacijske datoteke:</system:String>
     <system:String x:Key="item187">Ako se ova pogreška nastavi, pokušajte ručno preuzeti i pokrenuti instalacijsku datoteku.</system:String>
+    <system:String x:Key="item188">RE-ZAKRPATI</system:String>
+    <system:String x:Key="item189">UBITI</system:String>
 </ResourceDictionary>

@@ -7,7 +7,7 @@ namespace H1EmuLauncher.Classes
     {
         public static bool result = false;
 
-        public static void Show(string text, Window owner = null)
+        public static void Show(string text, Window owner = null, bool terminateH1Z1ButtonVisibility = false)
         {
             MessageBoxWindow newBox = new();
             newBox.text.Text = text;
@@ -16,6 +16,9 @@ namespace H1EmuLauncher.Classes
                 newBox.Owner = owner;
             else
                 newBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            if (terminateH1Z1ButtonVisibility)
+                newBox.killH1Z1Button.Visibility = Visibility.Visible;
 
             SystemSounds.Beep.Play();
             newBox.ShowDialog();

@@ -1009,7 +1009,13 @@ namespace H1EmuLauncher
             var stagingDir = depotFilesData.stagingDir;
             var depotDownloadCounter = depotFilesData.depotCounter;
             var oldProtoManifest = depotFilesData.previousManifest;
-            var singleFileName = file.FileName.Substring(file.FileName.LastIndexOf("\\") + 1);
+            string singleFileName = string.Empty;
+
+            try
+            {
+                singleFileName = file.FileName.Substring(file.FileName.LastIndexOf("\\") + 1);
+            }
+            catch { }
 
             ProtoManifest.FileData oldManifestFile = null;
             if (oldProtoManifest != null)
@@ -1064,7 +1070,7 @@ namespace H1EmuLauncher
                         // we have a version of this file, but it doesn't fully match what we want
                         if (Config.VerifyAll)
                         {
-                            Debug.WriteLine("Validating {0}", fileFinalPath);
+                            Console.WriteLine("Validating {0}", fileFinalPath);
                         }
 
                         var matchingChunks = new List<ChunkMatch>();
@@ -1141,8 +1147,7 @@ namespace H1EmuLauncher
                 }
                 else
                 {
-                    // No old manifest or file not in old manifest. We must validate.
-
+                    //No old manifest or file not in old manifest. We must validate.
                     using var fs = File.Open(fileFinalPath, FileMode.Open);
                     if ((ulong)fi.Length != file.TotalSize)
                     {
@@ -1156,7 +1161,7 @@ namespace H1EmuLauncher
                         }
                     }
 
-                    Debug.WriteLine("Validating {0}", fileFinalPath);
+                    Console.WriteLine("Validating {0}", fileFinalPath);
                     neededChunks = Util.ValidateSteam3FileChecksums(fs, file.Chunks.OrderBy(x => x.Offset).ToArray());
                 }
 
@@ -1165,7 +1170,7 @@ namespace H1EmuLauncher
                     lock (depotDownloadCounter)
                     {
                         depotDownloadCounter.SizeDownloaded += file.TotalSize;
-                        Debug.WriteLine("{0,6:#00.00}% {1}", (depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize) * 100.0f, fileFinalPath);
+                        Console.WriteLine("{0,6:#00.00}% {1}", (depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize) * 100.0f, fileFinalPath);
                     }
 
                     return;
@@ -1176,6 +1181,16 @@ namespace H1EmuLauncher
                 {
                     depotDownloadCounter.SizeDownloaded += sizeOnDisk;
                 }
+            }
+
+            var fileIsExecutable = file.Flags.HasFlag(EDepotFileFlag.Executable);
+            if (fileIsExecutable && (!fileDidExist || oldManifestFile == null || !oldManifestFile.Flags.HasFlag(EDepotFileFlag.Executable)))
+            {
+                PlatformUtilities.SetExecutable(fileFinalPath, true);
+            }
+            else if (!fileIsExecutable && oldManifestFile != null && oldManifestFile.Flags.HasFlag(EDepotFileFlag.Executable))
+            {
+                PlatformUtilities.SetExecutable(fileFinalPath, false);
             }
 
             var fileStreamData = new FileStreamData

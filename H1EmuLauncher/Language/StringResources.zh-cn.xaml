@@ -98,7 +98,7 @@
     <system:String x:Key="item116">正在解压服务器文件...</system:String>
     <system:String x:Key="item118">正在解压服务器运行环境...</system:String>
     <system:String x:Key="item120">请关闭已经启动的H1Z1游戏。</system:String>
-    <system:String x:Key="item121">H1Z1游戏已经启动。\n\n请关闭所有打开的 H1Z1 实例。</system:String>
+    <system:String x:Key="item121">H1Z1游戏已经启动。\n\n请关闭所有打开的 H1Z1 实例。\n\n您可以使用下面的按钮来杀死 H1Z1 的所有进程。</system:String>
     <system:String x:Key="item122">当前游戏版本：</system:String>
     <system:String x:Key="item124">启动器版本 v</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
@@ -163,4 +163,6 @@
     <system:String x:Key="item185">服务器安装脚本意外提前关闭。</system:String>
     <system:String x:Key="item186">打开安装文件时出错：</system:String>
     <system:String x:Key="item187">如果此错误仍然存​​在，请尝试手动下载并运行安装文件。</system:String>
+    <system:String x:Key="item188">重新修补</system:String>
+    <system:String x:Key="item189">杀</system:String>
 </ResourceDictionary>

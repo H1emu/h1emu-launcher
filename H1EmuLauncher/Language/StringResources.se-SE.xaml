@@ -98,7 +98,7 @@
     <system:String x:Key="item116">Packar upp serverfiler...</system:String>
     <system:String x:Key="item118">Packar upp anslutningsfiler...</system:String>
     <system:String x:Key="item120">Var god stäng H1Z1.</system:String>
-    <system:String x:Key="item121">H1Z1.exe används för närvarande.\n\nStäng alla öppna program utav H1Z1.</system:String>
+    <system:String x:Key="item121">H1Z1.exe används för närvarande.\n\nStäng alla öppna program utav H1Z1.\n\nDu kan använda knappen nedan för att döda alla processer i H1Z1.</system:String>
     <system:String x:Key="item122">Aktuell spelversion:</system:String>
     <system:String x:Key="item124">Launcher Version v</system:String>
     <system:String x:Key="item125">Upphovsrätt © 2023 | H1Emu Projektet</system:String>
@@ -163,4 +163,6 @@
     <system:String x:Key="item185">Serverinstallationsskriptet stängdes snabbt och oväntat.</system:String>
     <system:String x:Key="item186">Det gick inte att öppna installationsfilen:</system:String>
     <system:String x:Key="item187">Om det här problemet kvarstår, försök då att ladda ner det igen och köra installationsfilen manuellt.</system:String>
+    <system:String x:Key="item188">ÅTERLAPNING</system:String>
+    <system:String x:Key="item189">DÖDA</system:String>
 </ResourceDictionary>
