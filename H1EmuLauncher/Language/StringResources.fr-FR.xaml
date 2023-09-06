@@ -46,7 +46,7 @@
     <system:String x:Key="item49">Certaines informations peuvent être manquantes.</system:String>
     <system:String x:Key="item50">Veuillez vous assurer que vos emails sont ouverts pour le code 2-Auth après vous être connecté à votre compte Steam.</system:String>
     <system:String x:Key="item51">Sélectionnez un dossier dans lequel vous souhaitez télécharger le jeu.</system:String>
-    <system:String x:Key="item52">Vous ne semblez pas avoir installé les fichiers du serveur.\n\nInstall Installez-les dans le menu Paramètres.</system:String>
+    <system:String x:Key="item52">Vous ne semblez pas avoir installé les fichiers du serveur.\n\nInstallez-les dans le menu Paramètres.</system:String>
     <system:String x:Key="item53">Erreur de lancement du serveur:</system:String>
     <system:String x:Key="item54">Téléchargement en cours...</system:String>
     <system:String x:Key="item55">Utilisation d'une branche d'application: {0}</system:String>
