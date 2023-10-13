@@ -50,11 +50,14 @@ namespace H1EmuLauncher.Classes
 
                     playCarousel = new Storyboard();
                     playCarousel.Children.Add(carouselImageRectangle);
-                    playCarousel.Completed += (s, _) => 
+                    playCarousel.Completed += (s, o) => 
                     {
                         NextImage();
                     };
                     playCarousel.Begin();
+
+                    if (LauncherWindow.launcherInstance.imageCarousel.Visibility == Visibility.Hidden)
+                        playCarousel.Stop();
 
                 }));
 

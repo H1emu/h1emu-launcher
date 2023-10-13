@@ -30,7 +30,7 @@
     <system:String x:Key="item33">Weet je zeker dat je de download van H1Z1: Just Survive wilt anuleren?</system:String>
     <system:String x:Key="item34">Wil je Just Survive downloaden?</system:String>
     <system:String x:Key="item35">Geef je Steam inlog gegevens in aan de linkerkant om te beginnen!</system:String>
-    <system:String x:Key="item36">Zorg ervoor dat je je Gebruikersnaam en Wachtwoord invult. </system:String>
+    <system:String x:Key="item36">Zorg ervoor dat je je Gebruikersnaam en Wachtwoord invult.</system:String>
     <system:String x:Key="item37">Succesvol gedownload: H1Z1: Just Survive versie</system:String>
     <system:String x:Key="item38">Download geanuleerd van H1Z1: Just Survive versie</system:String>
     <system:String x:Key="item39">ContentDownloaderException:</system:String>
@@ -45,14 +45,14 @@
     <system:String x:Key="item48">Controlleren op nieuwe versies...</system:String>
     <system:String x:Key="item49">Er kan wat informatie ontbreken.</system:String>
     <system:String x:Key="item50">Zorg ervoor dat je e-mails open zijn voor de 2-Auth-code nadat je bent ingelogd op je Steam-account.</system:String>
-    <system:String x:Key="item51">Selecteer een map waarnaar je de game wilt downloaden.</system:String>
+    <system:String x:Key="item51">Selecteer een map waarnaar je het spel wilt downloaden.</system:String>
     <system:String x:Key="item52">Er zijn geen server bestanden geïnstalleerd installed.\n\nInstaleer deze via het instellingen menu.</system:String>
     <system:String x:Key="item53">Error tijdens het opstarten server:</system:String>
     <system:String x:Key="item54">Downloaden...</system:String>
     <system:String x:Key="item55">gebruikt app branch: {0}</system:String>
     <system:String x:Key="item56">Verwerken depot {0} - {1}</system:String>
     <system:String x:Key="item57">Pre-alocatie opslag...</system:String>
-    <system:String x:Key="item58">Spelversie wordt niet ondersteund door H1Emu.\n\nVergeet niet om de spelversie te gebruiken op 15 januari 2015 of 22 december 2016.\n\nJe moet een van deze versies downloaden met behulp van deze launcher met je Steam-account dat eigendom is van Just Survive.</system:String>
+    <system:String x:Key="item58">Spelversie wordt niet ondersteund door H1Emu.\n\nVergeet niet om de spelversie te gebruiken op 15 januari 2015, 22 december 2016 (Just Survive) of 23 februari 2017 (King of the Kill).\n\nJe moet een van deze versies downloaden met behulp van deze launcher met je Steam-account dat eigendom is van Just Survive.</system:String>
     <system:String x:Key="item59">Steam ID...</system:String>
     <system:String x:Key="item60">Wachtwoord...</system:String>
     <system:String x:Key="item61">Bekijk alle details van update...</system:String>
@@ -65,10 +65,10 @@
     <system:String x:Key="item68">geef bestanden weer...</system:String>
     <system:String x:Key="item69">• Game Versie niet gedetecteerd •</system:String>
     <system:String x:Key="item70">Game versie aan het detecteren...</system:String>
-    <system:String x:Key="item71">Game versie gedetecteerd: 15th January 2015</system:String>
+    <system:String x:Key="item71">Game versie gedetecteerd: 15th January 2015.</system:String>
     <system:String x:Key="item72">• Game Versie Niet ondersteund •</system:String>
     <system:String x:Key="item73">Geieve te wachten tot de huidige taken zijn voltooid.</system:String>
-    <system:String x:Key="item74">Game versie gedetecteerd: 22nd December 2016</system:String>
+    <system:String x:Key="item74">Game versie gedetecteerd: 22nd December 2016.</system:String>
     <system:String x:Key="item75">Locatie</system:String>
     <system:String x:Key="item76">Verwijderen oude patch...</system:String>
     <system:String x:Key="item77">Auth Code</system:String>
@@ -81,12 +81,14 @@
     <system:String x:Key="item91">Verwerken...</system:String>
     <system:String x:Key="item92">OK</system:String>
     <system:String x:Key="item95">Er trad een fout op tijdens het installeren van de 2015 patch:</system:String>
-    <system:String x:Key="item97">Er trad een fout op tijdens het installeren van de 2016 patch:</system:String>
+    <system:String x:Key="item96">Er trad een fout op tijdens het installeren van de 2016 patch:</system:String>
+    <system:String x:Key="item97">Er trad een fout op tijdens het installeren van de KotK patch:</system:String>
     <system:String x:Key="item99">Unzippen patch bestand...</system:String>
     <system:String x:Key="item100">Verwijderen .zip bestand...</system:String>
     <system:String x:Key="item101">Klaar. (Elapsed time:</system:String>
     <system:String x:Key="item102">Patch bestanden voor spel versie 2015 zijn geïnstalleerd.</system:String>
-    <system:String x:Key="item104">Patch bestanden voor spel versie 2016 zijn geïnstalleerd.</system:String>
+    <system:String x:Key="item103">Patch bestanden voor spel versie 2016 zijn geïnstalleerd.</system:String>
+    <system:String x:Key="item104">Patchbestanden voor de KotK zijn geïnstalleerd.</system:String>
     <system:String x:Key="item105">Meest recente server instaleren...</system:String>
     <system:String x:Key="item107">Er was een fout tijdens instaleren van de laatste server:</system:String>
     <system:String x:Key="item108">De laatste server is geïnstalleerd.</system:String>
@@ -115,7 +117,7 @@
     <system:String x:Key="item136">Vertalers</system:String>
     <system:String x:Key="item137">(Ben je met het internet verbonden?)</system:String>
     <system:String x:Key="item138">\n\n(bestanden worden niet verwijderd)</system:String>
-    <system:String x:Key="item139">H1Emu Server</system:String>
+    <system:String x:Key="item139">H1Emu Servers</system:String>
     <system:String x:Key="item140">Singleplayer</system:String>
     <system:String x:Key="item141">Niewe Server...</system:String>
     <system:String x:Key="item142">Gegeven uitzondering:</system:String>
@@ -132,11 +134,10 @@
     <system:String x:Key="item154">Accountsleutel...</system:String>
     <system:String x:Key="item155">Accountsleutel</system:String>
     <system:String x:Key="item156">Om te spelen op H1Emu servers, moet je een Accountsleutel instellen. Je kan dit vinden op profiel op:</system:String>
+    <system:String x:Key="item157">De nieuwste versie van de server is een build in ontwikkeling, wees gewaarschuwd dat deze onstabiel kan zijn en crashes kan veroorzaken.\n\nWilt u doorgaan?</system:String>
     <system:String x:Key="item158">Welkom bij H1Emu!</system:String>
     <system:String x:Key="item159">VOOR JE BEGINT, merk alstublieft op dat dit project enkel de volgende versies ondersteunt:</system:String>
-    <system:String x:Key="item160">15e Januarie 2015</system:String>
     <system:String x:Key="item161">en</system:String>
-    <system:String x:Key="item162">22e December 2016</system:String>
     <system:String x:Key="item163">Alstublieft</system:String>
     <system:String x:Key="item164">NIET</system:String>
     <system:String x:Key="item165">de laatste Steam Versie of een andere, niet opgenoemde versie gebruiken omdat deze niet zullen werken.</system:String>
@@ -164,4 +165,9 @@
     <system:String x:Key="item187">Als deze fout zich blijft voordoen, probeer dan het installatiebestand handmatig te downloaden en uit te voeren.</system:String>
     <system:String x:Key="item188">OPNIEUW PATCHEN</system:String>
     <system:String x:Key="item189">DODEN</system:String>
+    <system:String x:Key="item190">Spelversie gedetecteerd: 23 februari 2017 (King of the Kill).</system:String>
+    <system:String x:Key="item191">Uw H1EmuLauncher is geminimaliseerd naar het systeemvak.</system:String>
+    <system:String x:Key="item192">Verwijderen</system:String>
+    <system:String x:Key="item193">Kopiëren</system:String>
+    <system:String x:Key="item194">Uitgang</system:String>
 </ResourceDictionary>

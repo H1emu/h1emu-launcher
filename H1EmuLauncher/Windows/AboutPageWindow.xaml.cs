@@ -23,13 +23,13 @@ namespace H1EmuLauncher
 
         private void Grid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            this.DragMove();
+            DragMove();
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void CloseAboutPage(object sender, RoutedEventArgs e)
         {
-            this.Topmost = true;
-            this.Close();
+            Topmost = true;
+            Close();
         }
 
         private void MainAboutLoaded(object sender, RoutedEventArgs e)
@@ -50,7 +50,7 @@ namespace H1EmuLauncher
 
                 if (sb != null)
                 {
-                    sb.Completed += (s, _) =>
+                    sb.Completed += (s, o) =>
                     {
                         IsCompleted = true;
                         Close();

@@ -22,7 +22,7 @@ namespace H1EmuLauncher
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void CloseDisclaimer(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.firstTimeUse = 1;
             Properties.Settings.Default.Save();
@@ -91,7 +91,7 @@ namespace H1EmuLauncher
 
                 if (sb != null)
                 {
-                    sb.Completed += (s, _) =>
+                    sb.Completed += (s, o) =>
                     {
                         IsCompleted = true;
                         Close();

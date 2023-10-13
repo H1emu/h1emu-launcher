@@ -283,26 +283,6 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Exit_Hover {
-            get {
-                object obj = ResourceManager.GetObject("Exit_Hover", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Exit_Pressed {
-            get {
-                object obj = ResourceManager.GetObject("Exit_Pressed", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Folder {
             get {
                 object obj = ResourceManager.GetObject("Folder", resourceCulture);
@@ -346,6 +326,16 @@ namespace H1EmuLauncher.Properties {
         internal static byte[] Game_Patch_2016 {
             get {
                 object obj = ResourceManager.GetObject("Game-Patch-2016", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Game_Patch_KotK {
+            get {
+                object obj = ResourceManager.GetObject("Game-Patch-KotK", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -446,6 +436,16 @@ namespace H1EmuLauncher.Properties {
         internal static System.Drawing.Bitmap Minimise {
             get {
                 object obj = ResourceManager.GetObject("Minimise", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MinimiseToSystemTray {
+            get {
+                object obj = ResourceManager.GetObject("MinimiseToSystemTray", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -628,7 +628,7 @@ namespace H1EmuLauncher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Ново обновление е налично,желаете ли да го изтеглите?&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Обновление&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Версия&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Натисни пусни за [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Моля Изчакай&lt;/sy [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_bg_BG {
             get {

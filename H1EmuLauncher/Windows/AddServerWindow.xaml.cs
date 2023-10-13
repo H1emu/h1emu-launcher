@@ -38,7 +38,7 @@ namespace H1EmuLauncher
             if (e.Key == Key.Enter)
             {
                 CustomMessageBox.result = true;
-                this.Close();
+                Close();
             }
         }
 
@@ -60,7 +60,7 @@ namespace H1EmuLauncher
 
             foreach (var item in currentjson)
             {
-                if (item.SName == serverNameBox.Text.Trim())
+                if (item.CustomServerName == serverNameBox.Text.Trim())
                 {
                     CustomMessageBox.Show(FindResource("item143").ToString(), this);
                     return;
@@ -126,7 +126,7 @@ namespace H1EmuLauncher
 
                 if (sb != null)
                 {
-                    sb.Completed += (s, _) =>
+                    sb.Completed += (s, o) =>
                     {
                         IsCompleted = true;
                         Close();

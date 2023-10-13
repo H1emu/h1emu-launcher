@@ -347,8 +347,29 @@
                                 </TextBlock.Effect>
                             </TextBlock>
 
-                        <!-- Minimise Button-->
-                        <Button x:Name="MiniButton"
+                        <!-- Minimise to system tray button-->
+                        <Button x:Name="MinimiseToSystemTrayButton"
+                                Click="MinimiseToSystemTrayButtonClick"
+                                RenderOptions.BitmapScalingMode="Fant"
+                                Width="45"
+                                Height="30"
+                                Margin="0,0,3,0"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right"
+                                BorderThickness="0"
+                                Style="{DynamicResource MinimiseToSystemTrayButtonStyle}">
+
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.2"/>
+                            </Button.Effect>
+                        </Button>
+
+                        <!-- Minimise button-->
+                        <Button x:Name="MinimiseButton"
                                 Click="MinimiseButtonClick"
                                 Width="45"
                                 Height="30"
@@ -418,8 +439,8 @@
                                     <!-- Context menu to copy link -->
                                     <TextBlock.ContextMenu>
                                         <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                            <MenuItem Header="Copy"
-                                                      Click="websiteLinkCopy"
+                                            <MenuItem Click="websiteLinkCopy"
+                                                      Header="{DynamicResource item193}"
                                                       Style="{DynamicResource CopyMenuItem}">
                                             </MenuItem>
                                         </ContextMenu>
@@ -447,19 +468,19 @@
 
                             <Button.ContextMenu>
                                 <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                    <MenuItem Header="Copy"
-                                                  Click="discordLinkCopy"
-                                                  Style="{DynamicResource CopyMenuItem}"/>
+                                    <MenuItem Click="discordLinkCopy"
+                                              Header="{DynamicResource item193}"
+                                              Style="{DynamicResource CopyMenuItem}"/>
 
                                 </ContextMenu>
                             </Button.ContextMenu>
 
                             <Button.Effect>
                                 <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.2"/>
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.2"/>
                             </Button.Effect>
                         </Button>
                     </StackPanel>
@@ -508,12 +529,12 @@
 
                             <!-- Grid to dock the game image -->
                             <Grid Grid.Row="1"
-                                  Margin="30,27,10,25">
+                                  Margin="30,27,10,25"
+                                  MouseEnter="CarouselMouseEnter"
+                                  MouseLeave="CarouselMouseLeave">
 
                                 <!-- Image carousel grid -->
                                 <Grid x:Name="imageCarousel"
-                                      MouseEnter="CarouselMouseEnter"
-                                      MouseLeave="CarouselMouseLeave"
                                       ClipToBounds="True">
 
                                     <Image x:Name="carouselImage"
@@ -572,6 +593,49 @@
                                     </Border>
                                 </Grid>
 
+                                <Grid x:Name="carouselVisibilityButtonGrid">
+                                    
+                                    <!-- Image carousel visibility show button -->
+                                    <Button x:Name="showCarouselButton"
+                                            Click="toggleCarouselImageVisibility"
+                                            RenderOptions.BitmapScalingMode="Fant"
+                                            Width="24"
+                                            Height="24"
+                                            Margin="0,20,0,0"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Center"
+                                            BorderThickness="0"
+                                            Visibility="Hidden"
+                                            Style="{StaticResource ShowKeyButton}">
+
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="..\Resources\ShowKey.png"/>
+                                        </Button.Background>
+                                    </Button>
+
+                                    <!-- Image carousel visibility hide button -->
+                                    <Button x:Name="hideCarouselButton"
+                                            Click="toggleCarouselImageVisibility"
+                                            RenderOptions.BitmapScalingMode="Fant"
+                                            Width="24"
+                                            Height="24"
+                                            Margin="0,20,0,0"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Center"
+                                            BorderThickness="0"
+                                            Visibility="Hidden"
+                                            Style="{StaticResource HideKeyButton}">
+
+                                        <Button.Background>
+                                            <ImageBrush ImageSource="..\Resources\HideKey.png"/>
+                                        </Button.Background>
+                                    </Button>
+                                </Grid>
+
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="..\Resources\4.jpg"/>
+                                </Grid.Background>
+                                
                                 <!-- Drop shadow effect -->
                                 <Grid.Effect>
                                     <DropShadowEffect BlurRadius="15"
@@ -641,10 +705,9 @@
                                 <!-- Context menu to copy link -->
                                 <TextBlock.ContextMenu>
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                        <MenuItem
-                                            Header="Copy"
-                                            Click="patchNotesCopy"
-                                            Style="{DynamicResource CopyMenuItem}"/>
+                                        <MenuItem Click="patchNotesCopy"
+                                                  Header="{DynamicResource item193}"
+                                                  Style="{DynamicResource CopyMenuItem}"/>
                                 
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
@@ -657,7 +720,7 @@
                                 <RowDefinition Height="338*"/>
                             </Grid.RowDefinitions>
 
-                            <!-- You must own the game in order to download message -->
+                            <!-- Must own the game in order to download message -->
                             <StackPanel Margin="20,20,30,0">
                                 <TextBlock Background="Transparent"
                                            Foreground="White"
@@ -701,8 +764,8 @@
                                 <!-- Context menu to copy link -->
                                 <TextBlock.ContextMenu>
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                        <MenuItem Header="Copy"
-                                                  Click="chineseLinkCopy"
+                                        <MenuItem Click="chineseLinkCopy"
+                                                  Header="{DynamicResource item193}"
                                                   Style="{DynamicResource CopyMenuItem}"/>
                                 
                                     </ContextMenu>
@@ -847,7 +910,7 @@
                            FontWeight="Light">
                     
                     <!-- Hyperlink for settings window -->
-                    <Hyperlink Click="Hyperlink_Click"
+                    <Hyperlink Click="HyperlinkClick"
                                Foreground="White">
                         
                         <TextBlock Text="{DynamicResource item62}"

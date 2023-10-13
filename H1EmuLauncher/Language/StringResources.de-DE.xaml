@@ -45,14 +45,14 @@
     <system:String x:Key="item48">Suche nach Aktualisierungen...</system:String>
     <system:String x:Key="item49">Einige Informationen können fehlen.</system:String>
     <system:String x:Key="item50">Bitte stellen Sie sicher, dass Ihre E-Mails für den 2 Auth. Code geöffnet sind, nachdem Sie sich bei Ihrem Steam Konto angemeldet haben.</system:String>
-    <system:String x:Key="item51">Wählen Sie einen Ordner aus, in den Sie das Spiel herunterladen möchten.</system:String>
+    <system:String x:Key="item51">Bitte wählen Sie einen Ordner aus, in den Sie das Spiel herunterladen möchten.</system:String>
     <system:String x:Key="item52">Sie scheinen keine Serverdateien installiert zu haben. Installieren Sie diese im Menü unter Einstellungen.</system:String>
     <system:String x:Key="item53">Fehler beim Starten des Servers:</system:String>
     <system:String x:Key="item54">wird heruntergeladen...</system:String>
     <system:String x:Key="item55">App Zweig verwenden: {0}</system:String>
     <system:String x:Key="item56">Verarbeitungsdepot {0} - {1}</system:String>
     <system:String x:Key="item57">Vorabzuweisung von Speicherplatz...</system:String>
-    <system:String x:Key="item58">Die Spielversion wird von H1Emu nicht unterstützt.\n\nBitte denken Sie daran, die Spielversion entweder vom 15. Januar 2015 oder vom 22. Dezember 2016 zu verwenden.\n\nSie müssen eine dieser Versionen mit diesem Launcher mit Ihrem Steam-Konto herunterladen, das Just Survive-Eigentümer ist.</system:String>
+    <system:String x:Key="item58">Die Spielversion wird von H1Emu nicht unterstützt.\n\nBitte denken Sie daran, die Spielversion entweder vom 15. Januar 2015, vom 22. Dezember 2016 (Just Survive) oder vom 23. Februar 2017 (King of the Kill) zu verwenden.\n\nSie müssen eine dieser Versionen mit diesem Launcher mit Ihrem Steam-Konto herunterladen, das Just Survive-Eigentümer ist.</system:String>
     <system:String x:Key="item59">Benutzername...</system:String>
     <system:String x:Key="item60">Passwort...</system:String>
     <system:String x:Key="item61">Alle Details zum Update anzeigen...</system:String>
@@ -65,10 +65,10 @@
     <system:String x:Key="item68">Dateien anzeigen...</system:String>
     <system:String x:Key="item69">• Spielversion nicht erkannt •</system:String>
     <system:String x:Key="item70">Überprüfe Spielversion...</system:String>
-    <system:String x:Key="item71">Spielversion erkannt: 15. Januar 2015</system:String>
+    <system:String x:Key="item71">Spielversion erkannt: 15. Januar 2015.</system:String>
     <system:String x:Key="item72">• Spielversion wird nicht unterstützt •</system:String>
     <system:String x:Key="item73">Bitte warten Sie, bis die aktuellen Aufgaben abgeschlossen sind.</system:String>
-    <system:String x:Key="item74">Spielversion erkannt: 22. Dezember 2016</system:String>
+    <system:String x:Key="item74">Spielversion erkannt: 22. Dezember 2016.</system:String>
     <system:String x:Key="item75">Verzeichnis</system:String>
     <system:String x:Key="item76">Entferne alten Pach...</system:String>
     <system:String x:Key="item77">Authentifizierungscode</system:String>
@@ -80,13 +80,15 @@
     <system:String x:Key="item89">Das ausgewählte Verzeichnis ist nicht leer.\n\nMöchten Sie trotzdem fortfahren?</system:String>
     <system:String x:Key="item91">wird bearbeitet...</system:String>
     <system:String x:Key="item92">OK</system:String>
-    <system:String x:Key="item95">Beim Installieren des Patches 2015 ist ein Fehler aufgetreten:</system:String>
-    <system:String x:Key="item97">Beim Installieren des Patches 2016 ist ein Fehler aufgetreten:</system:String>
+    <system:String x:Key="item95">Beim Installieren des patches 2015 ist ein Fehler aufgetreten:</system:String>
+    <system:String x:Key="item96">Beim Installieren des patches 2016 ist ein Fehler aufgetreten:</system:String>
+    <system:String x:Key="item97">Beim Installieren des patches KotK ist ein Fehler aufgetreten:</system:String>
     <system:String x:Key="item99">entpacke Pach Dateien...</system:String>
     <system:String x:Key="item100">Lösche .zip Datei...</system:String>
     <system:String x:Key="item101">Fertig. (Verstrichene Zeit:</system:String>
     <system:String x:Key="item102">Patch Dateien für die Spielversion 2015 wurden installiert.</system:String>
-    <system:String x:Key="item104">Patch Dateien für die Spielversion 2016 wurden installiert.</system:String>
+    <system:String x:Key="item103">Patch Dateien für die Spielversion 2016 wurden installiert.</system:String>
+    <system:String x:Key="item104">Patchdateien für KotK wurden installiert.</system:String>
     <system:String x:Key="item105">Neusten Server installieren...</system:String>
     <system:String x:Key="item107">Beim Installieren des neuesten Servers ist ein Fehler aufgetreten:</system:String>
     <system:String x:Key="item108">Der neueste Server wurde installiert.</system:String>
@@ -115,7 +117,7 @@
     <system:String x:Key="item136">Übersetzerinnen</system:String>
     <system:String x:Key="item137">(Bist du mit dem Internet verbunden?)</system:String>
     <system:String x:Key="item138">\n\n(Dateien werden nicht gelöscht)</system:String>
-    <system:String x:Key="item139">H1Emu Server</system:String>
+    <system:String x:Key="item139">H1Emu Servers</system:String>
     <system:String x:Key="item140">Einzelspieler</system:String>
     <system:String x:Key="item141">Neuer Server...</system:String>
     <system:String x:Key="item142">Ausnahme setzen:</system:String>
@@ -135,9 +137,7 @@
     <system:String x:Key="item157">Die neueste Version des Servers ist eine Entwicklungsversion. Seien Sie gewarnt, dass sie instabil sein und Abstürze verursachen kann.\n\nMöchten Sie trotzdem fortfahren?</system:String>
     <system:String x:Key="item158">Willkommen bei H1Emu!</system:String>
     <system:String x:Key="item159">BEVOR SIE BEGINNEN, beachten Sie bitte, dass dieses Projekt nur die folgenden Spielversionen unterstützt:</system:String>
-    <system:String x:Key="item160">15. Januar 2015</system:String>
     <system:String x:Key="item161">und</system:String>
-    <system:String x:Key="item162">22. Dezember 2016</system:String>
     <system:String x:Key="item163">Bitte</system:String>
     <system:String x:Key="item164">NICHT</system:String>
     <system:String x:Key="item165">die neueste Steam Version des Spiels oder eine andere Version, die oben nicht erwähnt wurde, da sie nicht funktioniert.</system:String>
@@ -165,4 +165,9 @@
     <system:String x:Key="item187">Wenn dieser Fehler weiterhin besteht, versuchen Sie, die Installationsdatei manuell herunterzuladen und auszuführen.</system:String>
     <system:String x:Key="item188">NEU-PATCHING</system:String>
     <system:String x:Key="item189">TÖTEN</system:String>
+    <system:String x:Key="item190">Erkannte Spielversion: 23. Februar 2017 (King of the Kill).</system:String>
+    <system:String x:Key="item191">Ihr H1EmuLauncher wurde auf die Taskleiste minimiert.</system:String>
+    <system:String x:Key="item192">Löschen</system:String>
+    <system:String x:Key="item193">Kopieren</system:String>
+    <system:String x:Key="item194">Ausfahrt</system:String>
 </ResourceDictionary>

@@ -45,14 +45,14 @@
     <system:String x:Key="item48">Проверка обновлений...</system:String>
     <system:String x:Key="item49">Некоторая информация может отсутствовать.</system:String>
     <system:String x:Key="item50">Проверьте вашу электронную почту для кода 2-факторной аутентификации после входа в свою учетную запись Steam.</system:String>
-    <system:String x:Key="item51">Выберите папку, в которую вы хотите загрузить игру.</system:String>
+    <system:String x:Key="item51">Пожалуйста, выберите папку, в которую вы хотите загрузить игру.</system:String>
     <system:String x:Key="item52">Похоже, у вас не установлены файлы сервера.\n\nУстановите их в меню настроек.</system:String>
     <system:String x:Key="item53">Ошибка запуска сервера:</system:String>
     <system:String x:Key="item54">Загрузка...</system:String>
     <system:String x:Key="item55">Использование ветки приложения: {0}</system:String>
     <system:String x:Key="item56">Обработка depot {0} - {1}</system:String>
     <system:String x:Key="item57">Выделение места...</system:String>
-    <system:String x:Key="item58">Версия игры не поддерживается H1Emu.\n\nНе забудьте использовать версию игры от 15 января 2015 года или 22 декабря 2016 года.\n\nВам нужно загрузить одну из этих версий, используя этот лаунчер с вашей учетной записью Steam, которой принадлежит Just Survive.</system:String>
+    <system:String x:Key="item58">Версия игры не поддерживается H1Emu.\n\nНе забудьте использовать версию игры от 15 января 2015 г., 22 декабря 2016 г. (Just Survive) или 23 февраля 2017 г. (King of the Kill).\n\nВам нужно загрузить одну из этих версий, используя этот лаунчер с вашей учетной записью Steam, которой принадлежит Just Survive.</system:String>
     <system:String x:Key="item59">Имя пользователя...</system:String>
     <system:String x:Key="item60">Пароль...</system:String>
     <system:String x:Key="item61">Посмотреть полную информацию об обновлении...</system:String>
@@ -65,10 +65,10 @@
     <system:String x:Key="item68">Просмотр файлов...</system:String>
     <system:String x:Key="item69">• Версия игры не обнаружена •</system:String>
     <system:String x:Key="item70">Определение версии игры...</system:String>
-    <system:String x:Key="item71">Версия игры обнаружена: 15 января 2015</system:String>
+    <system:String x:Key="item71">Версия игры обнаружена: 15 января 2015.</system:String>
     <system:String x:Key="item72">• Версия игры не поддерживается •</system:String>
     <system:String x:Key="item73">Подождите завершения текущих задач.</system:String>
-    <system:String x:Key="item74">Версия игры обнаружена: 22 декабря 2016</system:String>
+    <system:String x:Key="item74">Версия игры обнаружена: 22 декабря 2016.</system:String>
     <system:String x:Key="item75">Директория</system:String>
     <system:String x:Key="item76">Удаление старого патча...</system:String>
     <system:String x:Key="item77">Код авторизации</system:String>
@@ -81,12 +81,14 @@
     <system:String x:Key="item91">Обработка...</system:String>
     <system:String x:Key="item92">OK</system:String>
     <system:String x:Key="item95">Ошибка установки патча 2015:</system:String>
-    <system:String x:Key="item97">Ошибка установки патча 2016:</system:String>
+    <system:String x:Key="item96">Ошибка установки патча 2016:</system:String>
+    <system:String x:Key="item97">Ошибка установки патча KotK:</system:String>
     <system:String x:Key="item99">Распаковка файлов патча...</system:String>
     <system:String x:Key="item100">Удаление .zip файла...</system:String>
     <system:String x:Key="item101">Готово. (Потраченное время:</system:String>
     <system:String x:Key="item102">Файлы патча для версии 2015 установлены.</system:String>
-    <system:String x:Key="item104">Файлы патча для версии 2016 установлены.</system:String>
+    <system:String x:Key="item103">Файлы патча для версии 2016 установлены.</system:String>
+    <system:String x:Key="item104">Файлы патчей для KotK установлены.</system:String>
     <system:String x:Key="item105">Установка последней версии сервера...</system:String>
     <system:String x:Key="item107">При установке последней версии сервера произошла ошибка:</system:String>
     <system:String x:Key="item108">Установлена последняя версия сервера.</system:String>
@@ -115,7 +117,7 @@
     <system:String x:Key="item136">Переводчики</system:String>
     <system:String x:Key="item137">(Вы подключены к Интернету?)</system:String>
     <system:String x:Key="item138">\n\n(Файлы не будут удалены)</system:String>
-    <system:String x:Key="item139">H1Emu сервер</system:String>
+    <system:String x:Key="item139">H1Emu Серверы</system:String>
     <system:String x:Key="item140">Одиночная игра</system:String>
     <system:String x:Key="item141">Новый сервер...</system:String>
     <system:String x:Key="item142">Выброшено исключение:</system:String>
@@ -135,9 +137,7 @@
     <system:String x:Key="item157">Последняя версия сервера - это сборка для разработки, имейте в виду, что она может работать нестабильно и вызывать сбои.\n\nВы все равно хотите продолжить?</system:String>
     <system:String x:Key="item158">Добро пожаловать в H1Emu!</system:String>
     <system:String x:Key="item159">ПРЕЖДЕ ЧЕМ НАЧАТЬ, обратите внимание, что этот проект поддерживает только следующие версии игр:</system:String>
-    <system:String x:Key="item160">15 января 2015</system:String>
     <system:String x:Key="item161">а также</system:String>
-    <system:String x:Key="item162">22 декабря 2016 г.</system:String>
     <system:String x:Key="item163">Пожалуйста</system:String>
     <system:String x:Key="item164">НЕ НАДО</system:String>
     <system:String x:Key="item165">используйте последнюю версию игры для Steam или любую другую версию, не упомянутую выше, так как это не сработает.</system:String>
@@ -165,4 +165,9 @@
     <system:String x:Key="item187">Если эта ошибка повторяется, попробуйте загрузить и запустить установочный файл вручную.</system:String>
     <system:String x:Key="item188">ПОВТОРНОЕ ИСПРАВЛЕНИЕ</system:String>
     <system:String x:Key="item189">УБИЙСТВО</system:String>
+    <system:String x:Key="item190">Обнаружена версия игры: 23 февраля 2017 г. (King of the Kill).</system:String>
+    <system:String x:Key="item191">Ваш H1EmuLauncher свернут в системный трей.</system:String>
+    <system:String x:Key="item192">Удалить</system:String>
+    <system:String x:Key="item193">Копировать</system:String>
+    <system:String x:Key="item194">Выход</system:String>
 </ResourceDictionary>

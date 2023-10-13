@@ -19,13 +19,10 @@ namespace H1EmuLauncher
                 Environment.Exit(0);
             }
 
+            Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 30 });
+
             LauncherWindow.rawArgs = e.Args;
             new UpdateWindow();
-        }
-
-        private void StoryboardCompleted(object sender, EventArgs e)
-        {
-            MessageBox.Show("balls");
         }
     }
 }

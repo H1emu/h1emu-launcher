@@ -127,7 +127,7 @@
                 <!-- Exit button -->
                 <Button x:Name="CloseButton"
                         Grid.Column="1"
-                        Click="ExitButton"
+                        Click="CloseConfirmBox"
                         RenderOptions.BitmapScalingMode="Fant"
                         Width="39"
                         Height="25"

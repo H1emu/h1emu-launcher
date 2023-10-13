@@ -126,7 +126,7 @@ namespace H1EmuLauncher.SteamFrame
                     Dispatcher.Invoke(new Action(delegate
                     {
                         System.Windows.Forms.FolderBrowserDialog folderBrowser = new();
-                        folderBrowser.Description = LauncherWindow.launcherInstance.FindResource("item51").ToString();
+                        folderBrowser.Description = FindResource("item51").ToString();
 
                         if (folderBrowser.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {

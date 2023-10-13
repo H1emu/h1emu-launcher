@@ -201,7 +201,7 @@
                         <TextBlock.ContextMenu>
                             <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                 <MenuItem Click="AccountKeyLinkCopy"
-                                          Header="Copy"
+                                          Header="{DynamicResource item193}"
                                           Style="{DynamicResource CopyMenuItem}"/>
                             
                             </ContextMenu>

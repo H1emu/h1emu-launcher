@@ -159,7 +159,7 @@
                 <!-- Exit button -->
                 <Button x:Name="ExitButton"
                         Grid.Column="1"
-                        Click="CloseButton"
+                        Click="CloseSettings"
                         RenderOptions.BitmapScalingMode="Fant"
                         Width="44"
                         Height="30"
@@ -216,7 +216,7 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Game directory text -->
-                            <TextBlock Margin="20,0,0,10"
+                            <TextBlock Margin="20,0,0,11"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
                                        FontSize="16"
@@ -224,7 +224,7 @@
                                        FontWeight="Light"
                                        Text="{DynamicResource item41}"/>
 
-                            <!-- Active directory textbox -->
+                            <!-- Game directory textbox -->
                             <TextBox x:Name="directoryBox"
                                      Grid.Column="1"
                                      Height="35"
@@ -241,7 +241,7 @@
                                     RenderOptions.BitmapScalingMode="Fant"
                                     Width="20"
                                     Height="20"
-                                    Margin="20,0,0,12"
+                                    Margin="20,0,0,10"
                                     HorizontalAlignment="Left"
                                     BorderThickness="0"
                                     Style="{DynamicResource FolderButton}">
@@ -258,7 +258,7 @@
                                     RenderOptions.BitmapScalingMode="Fant"
                                     Width="20"
                                     Height="20"
-                                    Margin="0,0,30,12"
+                                    Margin="0,0,30,10"
                                     HorizontalAlignment="Right"
                                     BorderThickness="0"
                                     Style="{DynamicResource EnterButton}">
@@ -429,11 +429,11 @@
                        HorizontalAlignment="Left">
                 
                 <Hyperlink Click="AccountKeyClick"
-                            Foreground="White"
-                            FontWeight="Light">
+                           Foreground="White"
+                           FontWeight="Light">
                     
                     <TextBlock Text="{DynamicResource item154}"
-                                Style="{DynamicResource HyperLinkStyle}"/>
+                               Style="{DynamicResource HyperLinkStyle}"/>
                     
                 </Hyperlink>
                 

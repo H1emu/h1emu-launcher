@@ -135,7 +135,7 @@
                         HorizontalAlignment="Right"
                         BorderThickness="0"
                         Margin="0,15,15,0"
-                        Click="CloseButton_Click"
+                        Click="CloseDisclaimer"
                         Style="{StaticResource CloseButtonStyle}">
 
                     <Button.Effect>

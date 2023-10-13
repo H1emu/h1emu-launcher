@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
              Startup="ApplicationStartup">
-    
+
     <Application.Resources>
         <FontFamily x:Key="Signika">pack://application:,,,/Fonts/#Signika</FontFamily>
         <Style x:Key="FocusVisual">
@@ -11,7 +11,7 @@
                 <Setter.Value>
                     <ControlTemplate>
                         <Rectangle Margin="2"
-                                   SnapsToDevicePixels="true"
+                                   SnapsToDevicePixels="True"
                                    Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
                                    StrokeDashArray="1 2"
                                    StrokeThickness="1"/>
@@ -48,45 +48,38 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type MenuItem}">
                         <Border Background="#1C1B22">
-                            <ContentPresenter ContentSource="Header"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="15" Height="15" Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
+                                <ContentPresenter ContentSource="Header"/>
+                            </StackPanel>
                         </Border>
                     </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="HeaderTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Width="15" Height="15" Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
-                            <ContentPresenter Content="Copy"/>
-                        </StackPanel>
-                    </DataTemplate>
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Foreground" Value="LightGray"/>
-                    <Setter Property="HeaderTemplate">
+                    <Setter Property="Template">
                         <Setter.Value>
-                            <DataTemplate>
+                            <ControlTemplate TargetType="{x:Type MenuItem}">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Width="15" Height="15" Source="..\Resources\Copy_Hover.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
-                                    <ContentPresenter Content="Copy"/>
+                                    <ContentPresenter ContentSource="Header"/>
                                 </StackPanel>
-                            </DataTemplate>
+                            </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Foreground" Value="DarkGray"/>
-                    <Setter Property="HeaderTemplate">
+                    <Setter Property="Template">
                         <Setter.Value>
-                            <DataTemplate>
+                            <ControlTemplate TargetType="{x:Type MenuItem}">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Width="15" Height="15" Source="..\Resources\Copy_Pressed.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
-                                    <ContentPresenter Content="Copy"/>
+                                    <ContentPresenter ContentSource="Header"/>
                                 </StackPanel>
-                            </DataTemplate>
+                            </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -101,57 +94,42 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type MenuItem}">
                         <Border Background="#1C1B22">
-                            <ContentPresenter ContentSource="Header"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="12" Height="12" Source="..\Resources\Delete.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
+                                <ContentPresenter ContentSource="Header" Margin="0,1,0,0"/>
+                            </StackPanel>
                         </Border>
                     </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Setter Property="HeaderTemplate">
-                <Setter.Value>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Width="13" Height="13" Source="..\Resources\Delete.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
-                            <ContentPresenter>
-                                <ContentPresenter.Content>
-                                    <TextBlock Text="Delete" Padding="0,2,0,0"/>
-                                </ContentPresenter.Content>
-                            </ContentPresenter>
-                        </StackPanel>
-                    </DataTemplate>
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Foreground" Value="LightGray"/>
-                    <Setter Property="HeaderTemplate">
+                    <Setter Property="Template">
                         <Setter.Value>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Width="13" Height="13" Source="..\Resources\Delete_Hover.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
-                                    <ContentPresenter>
-                                        <ContentPresenter.Content>
-                                            <TextBlock Text="Delete" Padding="0,2,0,0"/>
-                                        </ContentPresenter.Content>
-                                    </ContentPresenter>
-                                </StackPanel>
-                            </DataTemplate>
+                            <ControlTemplate TargetType="{x:Type MenuItem}">
+                                <Border Background="#1C1B22">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="12" Height="12" Source="..\Resources\Delete.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
+                                        <ContentPresenter ContentSource="Header" Margin="0,1,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter Property="Foreground" Value="DarkGray"/>
-                    <Setter Property="HeaderTemplate">
+                    <Setter Property="Template">
                         <Setter.Value>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Width="13" Height="13" Source="..\Resources\Delete_Pressed.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
-                                    <ContentPresenter>
-                                        <ContentPresenter.Content>
-                                            <TextBlock Text="Delete" Padding="0,2,0,0"/>
-                                        </ContentPresenter.Content>
-                                    </ContentPresenter>
-                                </StackPanel>
-                            </DataTemplate>
+                            <ControlTemplate TargetType="{x:Type MenuItem}">
+                                <Border Background="#1C1B22">
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Width="12" Height="12" Source="..\Resources\Delete.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
+                                        <ContentPresenter ContentSource="Header" Margin="0,1,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </ControlTemplate>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -160,7 +138,7 @@
         <Style TargetType="{x:Type ContextMenu}" x:Key="ContextMenuStyle">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
             <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="Grid.IsSharedSizeScope" Value="true"/>
+            <Setter Property="Grid.IsSharedSizeScope" Value="True"/>
             <Setter Property="HasDropShadow" Value="True"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -169,7 +147,7 @@
                             <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="HasDropShadow" Value="true">
+                            <Trigger Property="HasDropShadow" Value="True">
                                 <Setter TargetName="Border" Property="Padding" Value="0,3,0,3"/>
                                 <Setter TargetName="Border" Property="CornerRadius" Value="4"/>
                             </Trigger>
@@ -179,8 +157,8 @@
             </Setter>
         </Style>
         <Style x:Key="ComboBoxEditableTextBox" TargetType="{x:Type TextBox}">
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="AllowDrop" Value="True"/>
             <Setter Property="MinWidth" Value="0"/>
             <Setter Property="MinHeight" Value="0"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -192,7 +170,7 @@
                         <ScrollViewer
                             x:Name="PART_ContentHost"
                             Background="Transparent"
-                            Focusable="false"
+                            Focusable="False"
                             HorizontalScrollBarVisibility="Hidden"
                             VerticalScrollBarVisibility="Hidden"/>
                     </ControlTemplate>
@@ -225,7 +203,7 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true">
+                            SnapsToDevicePixels="True">
 
                             <Border x:Name="nextImageButtonContent">
                                 <ContentPresenter
@@ -239,18 +217,18 @@
                             </Border>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
+                            <Trigger Property="IsDefaulted" Value="True">
                                 <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource NextButton.MouseOver.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource NextButton.MouseOver.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
+                            <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource NextButton.Pressed.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource NextButton.Pressed.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
+                            <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource NextButton.Disabled.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource NextButton.Disabled.Border}"/>
                                 <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource NextButton.Disabled.Foreground}"/>
@@ -286,7 +264,7 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true">
+                            SnapsToDevicePixels="True">
                             <ContentPresenter
                                 x:Name="contentPresenter"
                                 Margin="{TemplateBinding Padding}"
@@ -297,18 +275,18 @@
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
+                            <Trigger Property="IsDefaulted" Value="True">
                                 <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource PreviousButton.MouseOver.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PreviousButton.MouseOver.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
+                            <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource PreviousButton.Pressed.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PreviousButton.Pressed.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
+                            <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource PreviousButton.Disabled.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PreviousButton.Disabled.Border}"/>
                                 <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource PreviousButton.Disabled.Foreground}"/>
@@ -344,7 +322,7 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true">
+                            SnapsToDevicePixels="True">
                             <ContentPresenter
                                 x:Name="contentPresenter"
                                 Margin="{TemplateBinding Padding}"
@@ -355,18 +333,18 @@
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
+                            <Trigger Property="IsDefaulted" Value="True">
                                 <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource ShowKeyButton.MouseOver.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ShowKeyButton.MouseOver.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
+                            <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource ShowKeyButton.Pressed.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ShowKeyButton.Pressed.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
+                            <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource ShowKeyButton.Disabled.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ShowKeyButton.Disabled.Border}"/>
                                 <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource ShowKeyButton.Disabled.Foreground}"/>
@@ -402,7 +380,7 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true">
+                            SnapsToDevicePixels="True">
                             <ContentPresenter
                                 x:Name="contentPresenter"
                                 Margin="{TemplateBinding Padding}"
@@ -413,18 +391,18 @@
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
+                            <Trigger Property="IsDefaulted" Value="True">
                                 <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource HideKeyButton.MouseOver.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource HideKeyButton.MouseOver.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
+                            <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource HideKeyButton.Pressed.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource HideKeyButton.Pressed.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
+                            <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource HideKeyButton.Disabled.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource HideKeyButton.Disabled.Border}"/>
                                 <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource HideKeyButton.Disabled.Foreground}"/>
@@ -460,7 +438,7 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true">
+                            SnapsToDevicePixels="True">
                             <ContentPresenter
                                 x:Name="contentPresenter"
                                 Margin="{TemplateBinding Padding}"
@@ -471,18 +449,18 @@
                                 SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
+                            <Trigger Property="IsDefaulted" Value="True">
                                 <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource FolderButton.MouseOver.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource FolderButton.MouseOver.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
+                            <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource FolderButton.Pressed.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource FolderButton.Pressed.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
+                            <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource FolderButton.Disabled.Background}"/>
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource FolderButton.Disabled.Border}"/>
                                 <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource FolderButton.Disabled.Foreground}"/>
@@ -537,9 +515,9 @@
         <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Border" Color="Transparent"/>
         <SolidColorBrush x:Key="TextBox.Static.Background" Color="Transparent"/>
         <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="IsTabStop" Value="false"/>
-            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
             <Setter Property="ClickMode" Value="Press"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -550,7 +528,7 @@
                             BorderBrush="{StaticResource ComboBox.Static.Border}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             CornerRadius="5"
-                            SnapsToDevicePixels="true">
+                            SnapsToDevicePixels="True">
 
                             <Border CornerRadius="5">
                                 <Border
@@ -561,7 +539,7 @@
                                 BorderBrush="Transparent"
                                 BorderThickness="1"
                                 CornerRadius="5"
-                                SnapsToDevicePixels="true">
+                                SnapsToDevicePixels="True">
                                     <Path
                                     x:Name="arrow"
                                     Margin="0"
@@ -579,73 +557,73 @@
                         <ControlTemplate.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
-                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="true"/>
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="True"/>
+                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="False"/>
+                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="False"/>
+                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="True"/>
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Static.Editable.Background}"/>
                                 <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Static.Editable.Border}"/>
                                 <Setter TargetName="splitBorder" Property="Background" Value="{StaticResource ComboBox.Static.Editable.Button.Background}"/>
                                 <Setter TargetName="splitBorder" Property="BorderBrush" Value="{StaticResource ComboBox.Static.Editable.Button.Border}"/>
                             </MultiDataTrigger>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="arrow" Property="Fill" Value="{StaticResource ComboBox.MouseOver.Glyph}"/>
                             </Trigger>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false"/>
+                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="False"/>
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.MouseOver.Background}"/>
                                 <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.MouseOver.Border}"/>
                             </MultiDataTrigger>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
+                                    <Condition Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="True"/>
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.MouseOver.Editable.Background}"/>
                                 <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.MouseOver.Editable.Border}"/>
                                 <Setter TargetName="splitBorder" Property="Background" Value="{StaticResource ComboBox.MouseOver.Editable.Button.Background}"/>
                                 <Setter TargetName="splitBorder" Property="BorderBrush" Value="{StaticResource ComboBox.MouseOver.Editable.Button.Border}"/>
                             </MultiDataTrigger>
-                            <Trigger Property="IsPressed" Value="true">
+                            <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="arrow" Property="Fill" Value="{StaticResource ComboBox.Pressed.Glyph}"/>
                             </Trigger>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false"/>
+                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="False"/>
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Pressed.Background}"/>
                                 <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Pressed.Border}"/>
                             </MultiDataTrigger>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="true"/>
-                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
+                                    <Condition Binding="{Binding IsPressed, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="True"/>
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Pressed.Editable.Background}"/>
                                 <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Pressed.Editable.Border}"/>
                                 <Setter TargetName="splitBorder" Property="Background" Value="{StaticResource ComboBox.Pressed.Editable.Button.Background}"/>
                                 <Setter TargetName="splitBorder" Property="BorderBrush" Value="{StaticResource ComboBox.Pressed.Editable.Button.Border}"/>
                             </MultiDataTrigger>
-                            <Trigger Property="IsEnabled" Value="false">
+                            <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="arrow" Property="Fill" Value="{StaticResource ComboBox.Disabled.Glyph}"/>
                             </Trigger>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="false"/>
+                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False"/>
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="False"/>
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Disabled.Background}"/>
                                 <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Disabled.Border}"/>
                             </MultiDataTrigger>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
-                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="false"/>
-                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="true"/>
+                                    <Condition Binding="{Binding IsEnabled, RelativeSource={RelativeSource Self}}" Value="False"/>
+                                    <Condition Binding="{Binding IsEditable, RelativeSource={RelativeSource AncestorType={x:Type ComboBox}}}" Value="True"/>
                                 </MultiDataTrigger.Conditions>
                                 <Setter TargetName="templateRoot" Property="Background" Value="{StaticResource ComboBox.Disabled.Editable.Background}"/>
                                 <Setter TargetName="templateRoot" Property="BorderBrush" Value="{StaticResource ComboBox.Disabled.Editable.Border}"/>
@@ -658,7 +636,7 @@
             </Setter>
         </Style>
         <ControlTemplate x:Key="ComboBoxEditableTemplate" TargetType="{x:Type ComboBox}">
-            <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
+            <Grid x:Name="templateRoot" SnapsToDevicePixels="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="0" MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"/>
@@ -666,7 +644,7 @@
                 <Popup
                     x:Name="PART_Popup"
                     Grid.ColumnSpan="2"
-                    AllowsTransparency="true"
+                    AllowsTransparency="True"
                     IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
                     Placement="Bottom"
                     PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
@@ -727,34 +705,34 @@
                 </Border>
             </Grid>
             <ControlTemplate.Triggers>
-                <Trigger Property="IsEnabled" Value="false">
+                <Trigger Property="IsEnabled" Value="False">
                     <Setter TargetName="border" Property="Opacity" Value="0.56"/>
                 </Trigger>
-                <Trigger Property="IsKeyboardFocusWithin" Value="true">
+                <Trigger Property="IsKeyboardFocusWithin" Value="True">
                     <Setter Property="Foreground" Value="Black"/>
                 </Trigger>
-                <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true">
+                <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="True">
                     <Setter TargetName="shadow" Property="Margin" Value="0,0,5,5"/>
                     <Setter TargetName="shadow" Property="Color" Value="#71000000"/>
                 </Trigger>
-                <Trigger Property="HasItems" Value="false">
+                <Trigger Property="HasItems" Value="False">
                     <Setter TargetName="dropDownBorder" Property="Height" Value="95"/>
                 </Trigger>
                 <MultiTrigger>
                     <MultiTrigger.Conditions>
-                        <Condition Property="IsGrouping" Value="true"/>
-                        <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                        <Condition Property="IsGrouping" Value="True"/>
+                        <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="False"/>
                     </MultiTrigger.Conditions>
-                    <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                    <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
                 </MultiTrigger>
-                <Trigger SourceName="DropDownScrollViewer" Property="ScrollViewer.CanContentScroll" Value="false">
+                <Trigger SourceName="DropDownScrollViewer" Property="ScrollViewer.CanContentScroll" Value="False">
                     <Setter TargetName="opaqueRect" Property="Canvas.Top" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}"/>
                     <Setter TargetName="opaqueRect" Property="Canvas.Left" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}"/>
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <ControlTemplate x:Key="ComboBoxTemplate" TargetType="{x:Type ComboBox}">
-            <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
+            <Grid x:Name="templateRoot" SnapsToDevicePixels="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="0" MinWidth="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"/>
@@ -763,7 +741,7 @@
                     x:Name="PART_Popup"
                     Grid.ColumnSpan="2"
                     Margin="1"
-                    AllowsTransparency="true"
+                    AllowsTransparency="True"
                     IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                     Placement="Bottom"
                     PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
@@ -828,25 +806,25 @@
                     ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
                     ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
                     ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                    IsHitTestVisible="false"
+                    IsHitTestVisible="False"
                     SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
             </Grid>
             <ControlTemplate.Triggers>
-                <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true">
+                <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="True">
                     <Setter TargetName="shadow" Property="Margin" Value="0,0,5,5"/>
                     <Setter TargetName="shadow" Property="Color" Value="#71000000"/>
                 </Trigger>
-                <Trigger Property="HasItems" Value="false">
+                <Trigger Property="HasItems" Value="False">
                     <Setter TargetName="dropDownBorder" Property="Height" Value="95"/>
                 </Trigger>
                 <MultiTrigger>
                     <MultiTrigger.Conditions>
-                        <Condition Property="IsGrouping" Value="true"/>
-                        <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="false"/>
+                        <Condition Property="IsGrouping" Value="True"/>
+                        <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" Value="False"/>
                     </MultiTrigger.Conditions>
-                    <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                    <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
                 </MultiTrigger>
-                <Trigger SourceName="DropDownScrollViewer" Property="ScrollViewer.CanContentScroll" Value="false">
+                <Trigger SourceName="DropDownScrollViewer" Property="ScrollViewer.CanContentScroll" Value="False">
                     <Setter TargetName="opaqueRect" Property="Canvas.Top" Value="{Binding VerticalOffset, ElementName=DropDownScrollViewer}"/>
                     <Setter TargetName="opaqueRect" Property="Canvas.Left" Value="{Binding HorizontalOffset, ElementName=DropDownScrollViewer}"/>
                 </Trigger>
@@ -895,9 +873,9 @@
         </Style>
         <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
-            <Setter Property="IsTabStop" Value="false"/>
-            <Setter Property="Focusable" Value="false"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="Focusable" Value="False"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Thumb}">
@@ -920,7 +898,7 @@
                     <RowDefinition MaxHeight="0"/>
                 </Grid.RowDefinitions>
                 <Border Grid.RowSpan="3" CornerRadius="2" Background="Transparent"/>
-                <Track Name="PART_Track" Grid.Row="1" IsDirectionReversed="true">
+                <Track Name="PART_Track" Grid.Row="1" IsDirectionReversed="True">
                     <Track.Thumb>
                         <Thumb Style="{StaticResource ScrollBarThumb}" Background="Gray"/>
                     </Track.Thumb>
@@ -944,7 +922,7 @@
         </ControlTemplate>
         <Style x:Key="ScrollBarStyle" TargetType="{x:Type ScrollBar}">
             <Setter Property="SnapsToDevicePixels" Value="True"/>
-            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
             <Style.Triggers>
                 <Trigger Property="Orientation" Value="Horizontal">
                     <Setter Property="Width" Value="Auto"/>
@@ -972,8 +950,8 @@
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
             <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}"/>
             <Style.Triggers>
-                <Trigger Property="IsEditable" Value="true">
-                    <Setter Property="IsTabStop" Value="false"/>
+                <Trigger Property="IsEditable" Value="True">
+                    <Setter Property="IsTabStop" Value="False"/>
                     <Setter Property="Padding" Value="2"/>
                     <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
                 </Trigger>
@@ -1044,7 +1022,7 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true"
+                            SnapsToDevicePixels="True"
                             CornerRadius="5">
                             <Grid>
                                 <Border x:Name="buttonFade" Background="Black" Opacity="0.2" CornerRadius="5"/>
@@ -1129,7 +1107,7 @@
                             <Grid
                                 x:Name="PART_Indicator"
                                 HorizontalAlignment="Left"
-                                ClipToBounds="true">
+                                ClipToBounds="True">
                                 <Rectangle
                                     x:Name="Indicator"
                                     Fill="{TemplateBinding Foreground}"
@@ -1179,7 +1157,7 @@
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
-                            <Trigger Property="IsIndeterminate" Value="true">
+                            <Trigger Property="IsIndeterminate" Value="True">
                                 <Setter TargetName="Indicator" Property="Visibility" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -1187,10 +1165,10 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <ImageBrush x:Key="Min.Static.Background" ImageSource="Resources\Minimise.png"/>
-        <Style x:Key="MinimiseButtonStyle" TargetType="{x:Type Button}">
+        <ImageBrush x:Key="MinimiseToSystemTray.Static.Background" ImageSource="Resources\MinimiseToSystemTray.png"/>
+        <Style x:Key="MinimiseToSystemTrayButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background" Value="{StaticResource Min.Static.Background}"/>
+            <Setter Property="Background" Value="{StaticResource MinimiseToSystemTray.Static.Background}"/>
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
@@ -1199,25 +1177,108 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True">
+
+                            <Border>
+                                <Grid>
+                                    <Border x:Name="buttonFade" Background="Black" Opacity="0"/>
+
+                                    <ContentPresenter x:Name="contentPresenter"
+                                                      Margin="{TemplateBinding Padding}"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      Focusable="False"
+                                                      RecognizesAccessKey="True"
+                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Grid>
+
+                                <Border.Background>
+                                    <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                                </Border.Background>
+                            </Border>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="buttonFade" Property="Opacity" Value="0.2"/>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard FillBehavior="Stop">
+                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             From="0" To="0.2"
+                                                             Duration="0:0:0.1"
+                                                             AccelerationRatio="1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard FillBehavior="Stop">
+                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             From="0.2" To="0"
+                                                             Duration="0:0:0.1"
+                                                             AccelerationRatio="1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="buttonFade" Property="Opacity" Value="0.4"/>
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard FillBehavior="Stop">
+                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             From="0.2" To="0.4"
+                                                             Duration="0:0:0.1"
+                                                             AccelerationRatio="1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="buttonFade" Property="Opacity" Value="0.5"/>
+                                <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="Gray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <ImageBrush x:Key="Minimise.Static.Background" ImageSource="Resources\Minimise.png"/>
+        <Style x:Key="MinimiseButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Minimise.Static.Background}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True">
                             
                             <Border>
                                 <Grid>
                                     <Border x:Name="buttonFade" Background="Black" Opacity="0"/>
 
-                                    <ContentPresenter
-                                    x:Name="contentPresenter"
-                                    Margin="{TemplateBinding Padding}"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    Focusable="False"
-                                    RecognizesAccessKey="True"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    <ContentPresenter x:Name="contentPresenter"
+                                                      Margin="{TemplateBinding Padding}"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      Focusable="False"
+                                                      RecognizesAccessKey="True"
+                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </Grid>
 
                                 <Border.Background>
@@ -1286,25 +1347,23 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True">
 
                             <Border>
                                 <Grid>
                                     <Border x:Name="buttonFade" Background="Black" Opacity="0"/>
 
-                                    <ContentPresenter
-                                    x:Name="contentPresenter"
-                                    Margin="{TemplateBinding Padding}"
-                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                    Focusable="False"
-                                    RecognizesAccessKey="True"
-                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    <ContentPresenter x:Name="contentPresenter"
+                                                      Margin="{TemplateBinding Padding}"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      Focusable="False"
+                                                      RecognizesAccessKey="True"
+                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                                 </Grid>
 
                                 <Border.Background>
@@ -1364,7 +1423,7 @@
         <Style x:Key="DiscordImageStyle" TargetType="{x:Type Image}">
             <Setter Property="FlowDirection" Value="LeftToRight"/>
             <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="true">
+                <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Cursor" Value="Hand"/>
                 </Trigger>
             </Style.Triggers>
@@ -1383,27 +1442,26 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true">
-                            <ContentPresenter
-                                x:Name="contentPresenter"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Focusable="False"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True">
+                            
+                            <ContentPresenter x:Name="contentPresenter"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Focusable="False"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Cursor" Value="Hand"/>
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource Discord.Hover.Background}"/>
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
+                            <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource Discord.Pressed.Background}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -1433,26 +1491,24 @@
             <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="AllowDrop" Value="True"/>
             <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TextBox}">
-                        <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="5"
-                            SnapsToDevicePixels="True">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5"
+                                SnapsToDevicePixels="True">
 
                             <Border CornerRadius="5">
-                                <ScrollViewer
-                                x:Name="PART_ContentHost"
-                                Focusable="false"
-                                HorizontalScrollBarVisibility="Hidden"
-                                VerticalScrollBarVisibility="Hidden"/>
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              Focusable="False"
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollBarVisibility="Hidden"/>
 
                                 <Border.Background>
                                     <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
@@ -1460,13 +1516,13 @@
                             </Border>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="false">
+                            <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="border" Property="Opacity" Value="0.56"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource UserBox.MouseOver.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Trigger Property="IsKeyboardFocused" Value="True">
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource UserBox.Focus.Border}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -1476,8 +1532,8 @@
             <Style.Triggers>
                 <MultiTrigger>
                     <MultiTrigger.Conditions>
-                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
-                        <Condition Property="IsSelectionActive" Value="false"/>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="True"/>
+                        <Condition Property="IsSelectionActive" Value="False"/>
                     </MultiTrigger.Conditions>
                     <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
                 </MultiTrigger>
@@ -1497,26 +1553,24 @@
             <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
             <Setter Property="HorizontalContentAlignment" Value="Left"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
-            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="AllowDrop" Value="True"/>
             <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type PasswordBox}">
-                        <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="5"
-                            SnapsToDevicePixels="True">
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5"
+                                SnapsToDevicePixels="True">
 
                             <Border CornerRadius="5">
-                                <ScrollViewer
-                                x:Name="PART_ContentHost"
-                                Focusable="false"
-                                HorizontalScrollBarVisibility="Hidden"
-                                VerticalScrollBarVisibility="Hidden"/>
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              Focusable="False"
+                                              HorizontalScrollBarVisibility="Hidden"
+                                              VerticalScrollBarVisibility="Hidden"/>
 
                                 <Border.Background>
                                     <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
@@ -1524,13 +1578,13 @@
                             </Border>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsEnabled" Value="false">
+                            <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="border" Property="Opacity" Value="0.56"/>
                             </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PassBox.MouseOver.Border}"/>
                             </Trigger>
-                            <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Trigger Property="IsKeyboardFocused" Value="True">
                                 <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PassBox.Focus.Border}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -1540,8 +1594,8 @@
             <Style.Triggers>
                 <MultiTrigger>
                     <MultiTrigger.Conditions>
-                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
-                        <Condition Property="IsSelectionActive" Value="false"/>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="True"/>
+                        <Condition Property="IsSelectionActive" Value="False"/>
                     </MultiTrigger.Conditions>
                     <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
                 </MultiTrigger>
@@ -1562,32 +1616,28 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="true">
-                            <ContentPresenter
-                                x:Name="contentPresenter"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Focusable="False"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        <Border x:Name="border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                SnapsToDevicePixels="True">
+                            
+                            <ContentPresenter x:Name="contentPresenter"
+                                              Margin="{TemplateBinding Padding}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              Focusable="False"
+                                              RecognizesAccessKey="True"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource EnterButton.MouseOver.Background}"/>
                             </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
+                            <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource EnterButton.Pressed.Background}"/>
                             </Trigger>
-                            <Trigger Property="IsEnabled" Value="false">
+                            <Trigger Property="IsEnabled" Value="False">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource EnterButton.Disabled}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>

@@ -138,7 +138,7 @@
                             VerticalAlignment="Top"
                             HorizontalAlignment="Right"
                             BorderThickness="0"
-                            Click="CloseButtonClick"
+                            Click="CloseReportBug"
                             Style="{StaticResource CloseButtonStyle}">
 
                         <Button.Effect>
@@ -205,7 +205,7 @@
                                 <TextBlock.ContextMenu>
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                         <MenuItem Click="ReportBugGithubServerLinkCopy"
-                                                  Header="Copy"
+                                                  Header="{DynamicResource item193}"
                                                   Style="{DynamicResource CopyMenuItem}"/>
                             
                                     </ContextMenu>
@@ -256,7 +256,7 @@
                                 <TextBlock.ContextMenu>
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                         <MenuItem Click="ReportBugGithubServerLauncherCopy"
-                                                  Header="Copy"
+                                                  Header="{DynamicResource item193}"
                                                   Style="{DynamicResource CopyMenuItem}"/>
                             
                                     </ContextMenu>

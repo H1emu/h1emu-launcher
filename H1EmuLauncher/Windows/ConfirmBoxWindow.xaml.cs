@@ -31,7 +31,7 @@ namespace H1EmuLauncher
             Close();
         }
 
-        private void ExitButton(object sender, RoutedEventArgs e)
+        private void CloseConfirmBox(object sender, RoutedEventArgs e)
         {
             CustomMessageBox.result = false;
             Topmost = true;
@@ -89,7 +89,7 @@ namespace H1EmuLauncher
 
                 if (sb != null)
                 {
-                    sb.Completed += (s, _) =>
+                    sb.Completed += (s, o) =>
                     {
                         IsCompleted = true;
                         Close();

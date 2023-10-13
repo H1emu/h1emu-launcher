@@ -57,6 +57,7 @@ namespace H1EmuLauncher
                 {
                     case "15jan2015":
                     case "22dec2016":
+                    case "kotk":
                         try
                         {
                             ApplyPatch();
@@ -69,7 +70,9 @@ namespace H1EmuLauncher
 
                                 if (gameVersionString == "15jan2015")
                                     CustomMessageBox.Show($"{FindResource("item95")} \"{er.Message}\".", this);
-                                else
+                                else if (gameVersionString == "22dec2016")
+                                    CustomMessageBox.Show($"{FindResource("item96")} \"{er.Message}\".", this);
+                                else if (gameVersionString == "kotk")
                                     CustomMessageBox.Show($"{FindResource("item97")} \"{er.Message}\".", this);
                             }));
                         }
@@ -101,7 +104,7 @@ namespace H1EmuLauncher
 
             DisableButtons();
 
-            // Deletes old patch files if any of them are already in the directory, including the .zip in the case of corruption
+            // Deletes old patch files if any of them are already in the directory, including the .zip in case of corruption
             if (File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
                 File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
                 File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
@@ -116,9 +119,8 @@ namespace H1EmuLauncher
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll");
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\AssetPatch2015.zip");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2015.zip");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
             }
 
             // Unzip all of the files to directory
@@ -133,13 +135,18 @@ namespace H1EmuLauncher
             {
                 if (gameVersionString == "15jan2015")
                 {
-                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip", Properties.Resources.Game_Patch_2015);
-                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip", $"{Properties.Settings.Default.activeDirectory}");
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2015.zip", Properties.Resources.Game_Patch_2015);
+                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2015.zip", $"{Properties.Settings.Default.activeDirectory}");
                 }
-                else
+                else if (gameVersionString == "22dec2016")
                 {
-                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip", Properties.Resources.Game_Patch_2016);
-                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip", $"{Properties.Settings.Default.activeDirectory}");
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", Properties.Resources.Game_Patch_2016);
+                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", $"{Properties.Settings.Default.activeDirectory}");
+                }
+                else if (gameVersionString == "kotk")
+                {
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", Properties.Resources.Game_Patch_KotK);
+                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", $"{Properties.Settings.Default.activeDirectory}");
                 }
             }
             catch { }
@@ -151,18 +158,25 @@ namespace H1EmuLauncher
             }));
 
             if (gameVersionString == "15jan2015")
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2015.zip");
-            else
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Patch2016.zip");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2015.zip");
+            else if (gameVersionString == "22dec2016")
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
+            else if (gameVersionString == "kotk")
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip");
 
-            // Extract Asset_256.pack to fix blackberries & delete BattlEye folder to prevent Steam from trying to launch the game (2016 only)
-            if (gameVersionString == "22dec2016")
+            // Extra patch work for some versions
+            if (gameVersionString == "22dec2016" || gameVersionString == "kotk")
             {
-                File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
-                
+                // Delete BattlEye folder to prevent Steam from trying to launch the game
                 if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
                 {
                     Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\BattlEye", true);
+                }
+
+                if (gameVersionString == "22dec2016")
+                {
+                    // Extract Asset_256.pack to fix blackberries
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
                 }
             }
 
@@ -175,8 +189,10 @@ namespace H1EmuLauncher
 
             if (gameVersionString == "15jan2015")
                 Properties.Settings.Default.currentPatchVersion2015 = ApplyPatchClass.latestPatchVersion;
-            else
+            else if (gameVersionString == "22dec2016")
                 Properties.Settings.Default.currentPatchVersion2016 = ApplyPatchClass.latestPatchVersion;
+            else if (gameVersionString == "kotk")
+                Properties.Settings.Default.currentPatchVersionKotK = ApplyPatchClass.latestPatchVersion;
 
             Properties.Settings.Default.Save();
 
@@ -189,7 +205,9 @@ namespace H1EmuLauncher
 
                 if (gameVersionString == "15jan2015")
                     CustomMessageBox.Show($"{FindResource("item102")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", this);
-                else
+                else if (gameVersionString == "22dec2016")
+                    CustomMessageBox.Show($"{FindResource("item103")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", this);
+                else if (gameVersionString == "kotk")
                     CustomMessageBox.Show($"{FindResource("item104")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", this);
             }));
         }
@@ -505,7 +523,7 @@ namespace H1EmuLauncher
 
             switch (hash)
             {
-                case "53a3d98f": // 15th January 2015
+                case "53a3d98f": // Just Survive: 15th January 2015
                     gameVersionString = "15jan2015";
 
                     Dispatcher.Invoke(new Action(delegate
@@ -514,12 +532,21 @@ namespace H1EmuLauncher
                     }));
 
                     break;
-                case "bc5b3ab6": // 22nd December 2016
+                case "bc5b3ab6": // Just Survive: 22nd December 2016
                     gameVersionString = "22dec2016";
 
                     Dispatcher.Invoke(new Action(delegate
                     {
                         currentGame.Text = $"{FindResource("item122")} 2016";
+                    }));
+
+                    break;
+                case "ec7ffa43": // King of the Kill: 23rd February 2017
+                    gameVersionString = "kotk";
+
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        currentGame.Text = $"{FindResource("item122")} KotK";
                     }));
 
                     break;
@@ -593,10 +620,10 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, true);
+                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, true);
                     }));
                 }
-                else if (gameVersionString != "15jan2015" && gameVersionString != "22dec2016")
+                else if (gameVersionString != "15jan2015" && gameVersionString != "22dec2016" && gameVersionString != "kotk")
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
@@ -620,7 +647,10 @@ namespace H1EmuLauncher
             Properties.Settings.Default.activeDirectory = directory.SelectedPath;
             Properties.Settings.Default.Save();
 
-            directoryBox.Text = Properties.Settings.Default.activeDirectory;
+            if (!string.IsNullOrEmpty(directory.SelectedPath))
+                directoryBox.Text = Properties.Settings.Default.activeDirectory;
+            else
+                directoryBox.Text = FindResource("item75").ToString();
 
             if (!CheckDirectory())
                 return;
@@ -644,6 +674,14 @@ namespace H1EmuLauncher
                         Dispatcher.Invoke(new Action(delegate
                         {
                             CustomMessageBox.Show(FindResource("item74").ToString(), this);
+                        }));
+
+                        break;
+                    case "kotk":
+
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            CustomMessageBox.Show(FindResource("item190").ToString(), this);
                         }));
 
                         break;
@@ -720,7 +758,7 @@ namespace H1EmuLauncher
                     AccelerationRatio = 0.4,
                     DecelerationRatio = 0.4
                 };
-                hide.Completed += (s, _) => settingsProgressRow.Visibility = Visibility.Collapsed;
+                hide.Completed += (s, o) => settingsProgressRow.Visibility = Visibility.Collapsed;
                 settingsProgressRow.BeginAnimation(HeightProperty, hide);
             }));
         }
@@ -766,6 +804,8 @@ namespace H1EmuLauncher
             if (dr != MessageBoxResult.Yes)
                 return;
 
+            deleteSinglePlayerDataHyperLink.IsEnabled = false;
+
             try
             {
                 Directory.Delete($"{Info.APPLICATION_DATA_PATH}\\h1emu", true);
@@ -774,6 +814,10 @@ namespace H1EmuLauncher
             {
                 CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
                 return;
+            }
+            finally
+            {
+                deleteSinglePlayerDataHyperLink.IsEnabled = true;
             }
 
             CustomMessageBox.Show(FindResource("item179").ToString(), this);
@@ -798,7 +842,7 @@ namespace H1EmuLauncher
 
                 if (FindResource("CloseSettings") is Storyboard sb)
                 {
-                    sb.Completed += (s, _) =>
+                    sb.Completed += (s, o) =>
                     {
                         IsCompleted = true;
                         Close();
@@ -824,7 +868,7 @@ namespace H1EmuLauncher
             }
         }
 
-        public void CloseButton(object sender, RoutedEventArgs e)
+        public void CloseSettings(object sender, RoutedEventArgs e)
         {
             Close();
         }

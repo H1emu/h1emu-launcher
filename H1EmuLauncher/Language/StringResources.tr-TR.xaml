@@ -45,14 +45,14 @@
     <system:String x:Key="item48">Güncellemeler kontrol ediliyor...</system:String>
     <system:String x:Key="item49">Bazı bilgiler eksik olabilir.</system:String>
     <system:String x:Key="item50">Lütfen Steam hesabınıza girdikten sonra ikili-güvenlik adımı için e-postanızın açık olduğundan emin olun.</system:String>
-    <system:String x:Key="item51">Oyunun indirilmesini istediğiniz klasörü seçin.</system:String>
+    <system:String x:Key="item51">Lütfen oyunu indirmek istediğiniz klasörü seçin.</system:String>
     <system:String x:Key="item52">Sunucu dosyalarını yüklemediniz.\n\nBu işlemi Ayarlar menüsünden yapınız.</system:String>
     <system:String x:Key="item53">Sunucu başlatma hatası:</system:String>
     <system:String x:Key="item54">İndiriliyor...</system:String>
     <system:String x:Key="item55">Uygulama dalı kullanılıyor: {0}</system:String>
     <system:String x:Key="item56">Depo işleniyor {0} - {1}</system:String>
     <system:String x:Key="item57">Disk alanı tanımlanıyor...</system:String>
-    <system:String x:Key="item58">Oyun sürümü H1Emu tarafından desteklenmiyor.\n\nLütfen 15 Ocak 2015 veya 22 Aralık 2016 oyun sürümünü kullanmayı unutmayın.\n\nJust Survive sahipliğine sahip Steam hesabınızla bu başlatıcıyı kullanarak bu sürümlerden birini indirmeniz gerekiyor.</system:String>
+    <system:String x:Key="item58">Oyun sürümü H1Emu tarafından desteklenmiyor.\n\nLütfen 15 Ocak 2015, 22 Aralık 2016 (Just Survive) veya 23 Şubat 2017 (King of the Kill) oyun versiyonunu kullanmayı unutmayın.\n\nJust Survive sahipliğine sahip Steam hesabınızla bu başlatıcıyı kullanarak bu sürümlerden birini indirmeniz gerekiyor.</system:String>
     <system:String x:Key="item59">Kullanıcı adı...</system:String>
     <system:String x:Key="item60">Şifre...</system:String>
     <system:String x:Key="item61">Güncellemenin tüm detaylarını göster...</system:String>
@@ -65,10 +65,10 @@
     <system:String x:Key="item68">Dosyaları göster...</system:String>
     <system:String x:Key="item69">• Oyun versiyonu tanımlanamadı •</system:String>
     <system:String x:Key="item70">Oyun versiyonu tanımlanıyor...</system:String>
-    <system:String x:Key="item71">Oyun versiyonu: 15 Ocak 2015</system:String>
+    <system:String x:Key="item71">Oyun versiyonu: 15 Ocak 2015.</system:String>
     <system:String x:Key="item72">• Oyun versiyonu desteklenmiyor •</system:String>
     <system:String x:Key="item73">Mevcut işlemler tamamlanırken lütfen bekleyin.</system:String>
-    <system:String x:Key="item74">Oyun versiyonu: 22 Aralık 2016</system:String>
+    <system:String x:Key="item74">Oyun versiyonu: 22 Aralık 2016.</system:String>
     <system:String x:Key="item75">Klasör</system:String>
     <system:String x:Key="item76">Eski yama kaldırılıyor...</system:String>
     <system:String x:Key="item77">Erişim Kodu</system:String>
@@ -81,12 +81,14 @@
     <system:String x:Key="item91">İşleniyor...</system:String>
     <system:String x:Key="item92">Tamam</system:String>
     <system:String x:Key="item95">2015 yaması yüklenirken hata oluştu:</system:String>
-    <system:String x:Key="item97">2016 yaması yüklenirken hata oluştu:</system:String>
+    <system:String x:Key="item96">2016 yaması yüklenirken hata oluştu:</system:String>
+    <system:String x:Key="item97">KotK yaması yüklenirken hata oluştu:</system:String>
     <system:String x:Key="item99">Yama dosyası açılıyor...</system:String>
     <system:String x:Key="item100">.zip dosyası siliniyor...</system:String>
     <system:String x:Key="item101">Tamamlandı. (Süre:</system:String>
     <system:String x:Key="item102">Oyun versiyonu 2015 için yama dosyası yüklendi.</system:String>
-    <system:String x:Key="item104">Oyun versiyonu 2016 için yama dosyası yüklendi.</system:String>
+    <system:String x:Key="item103">Oyun versiyonu 2016 için yama dosyası yüklendi.</system:String>
+    <system:String x:Key="item104">KotK için yama dosyaları yüklenmiştir.</system:String>
     <system:String x:Key="item105">Son sunucular yükleniyor...</system:String>
     <system:String x:Key="item107">Son sunucular yüklenirken hata oluştu:</system:String>
     <system:String x:Key="item108">Son sunucular yüklendi.</system:String>
@@ -115,7 +117,7 @@
     <system:String x:Key="item136">Çevirmenler</system:String>
     <system:String x:Key="item137">(Internet'e bağlı mısınız?)</system:String>
     <system:String x:Key="item138">\n\n(Dosyalar silinmeyecek)</system:String>
-    <system:String x:Key="item139">H1Emu Sunucusu</system:String>
+    <system:String x:Key="item139">H1Emu Sunucular</system:String>
     <system:String x:Key="item140">Tek Oyuncu</system:String>
     <system:String x:Key="item141">Yeni Sunucu...</system:String>
     <system:String x:Key="item142">Olağandışı Durum:</system:String>
@@ -135,9 +137,7 @@
     <system:String x:Key="item157">Sunucunun en son sürümü bir geliştirme yapısıdır, kararsız olabileceği ve çökmelere neden olabileceği konusunda uyarılırsınız.\n\nYine de devam etmek ister misiniz?</system:String>
     <system:String x:Key="item158">H1Emu'ya hoş geldiniz!</system:String>
     <system:String x:Key="item159">BAŞLAMADAN ÖNCE, lütfen bu projenin sadece altta belirtilen oyun versiyonlarını desteklediğini dikkate alınız:</system:String>
-    <system:String x:Key="item160">15 Ocak 2015</system:String>
     <system:String x:Key="item161">ve</system:String>
-    <system:String x:Key="item162">22 Aralık  2016</system:String>
     <system:String x:Key="item163">Lütfen</system:String>
     <system:String x:Key="item164">HİÇBİR ZAMAN</system:String>
     <system:String x:Key="item165">Steam'deki en son sürümünü veya oyunun yukarıda belirtilenlerden başka bir sürümünü inidirip kullanmayınız, aksi takdirde sistem çalışmayacaktır.</system:String>
@@ -165,4 +165,9 @@
     <system:String x:Key="item187">Bu hata devam ederse, yükleme dosyasını manuel olarak indirmeyi ve çalıştırmayı deneyin.</system:String>
     <system:String x:Key="item188">YENİDEN YAMALAMA</system:String>
     <system:String x:Key="item189">ÖLDÜRMEK</system:String>
+    <system:String x:Key="item190">Oyun versiyonu tespit edildi: 23 Şubat 2017 (King of the Kill).</system:String>
+    <system:String x:Key="item191">H1EmuLauncher'ınız sistem tepsisine küçültüldü.</system:String>
+    <system:String x:Key="item192">Silmek</system:String>
+    <system:String x:Key="item193">Kopyala</system:String>
+    <system:String x:Key="item194">Çıkış</system:String>
 </ResourceDictionary>

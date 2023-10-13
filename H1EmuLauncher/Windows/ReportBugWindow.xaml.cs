@@ -30,7 +30,7 @@ namespace H1EmuLauncher
             DragMove();
         }
 
-        private void CloseButtonClick(object sender, RoutedEventArgs e)
+        private void CloseReportBug(object sender, RoutedEventArgs e)
         {
             Topmost = true;
             Close();
@@ -82,7 +82,7 @@ namespace H1EmuLauncher
 
                 if (sb != null)
                 {
-                    sb.Completed += (s, _) =>
+                    sb.Completed += (s, o) =>
                     {
                         IsCompleted = true;
                         Close();

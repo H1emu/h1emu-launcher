@@ -45,14 +45,14 @@
     <system:String x:Key="item48">Söker efter de senaste uppdateringarna...</system:String>
     <system:String x:Key="item49">Viss information kan saknas.</system:String>
     <system:String x:Key="item50">Kolla i din e-post efter 2-Auth-koden när du loggat in på ditt Steam-konto.</system:String>
-    <system:String x:Key="item51">Välj den mapp där du vill att spelet ska laddas ner till.</system:String>
+    <system:String x:Key="item51">Välj en mapp där du vill ladda ner spelet.</system:String>
     <system:String x:Key="item52">Du verkar inte ha serverfiler installerade.\n\nInstallera dessa i menyn Inställningar.</system:String>
     <system:String x:Key="item53">Fel vid start av server:</system:String>
     <system:String x:Key="item54">Laddar ner...</system:String>
     <system:String x:Key="item55">Använder programmets märke: {0}</system:String>
     <system:String x:Key="item56">Laddar minne {0} - {1}</system:String>
     <system:String x:Key="item57">Förtilldelar utrymme...</system:String>
-    <system:String x:Key="item58">Spelversionen stöds inte av H1Emu.\n\nKom ihåg att använda spelversionen antingen från den 15 januari 2015 eller den 22 december 2016.\n\nDu måste ladda ner en av dessa versioner med hjälp av den här Launchern med ditt Steam-konto som äger Just Survive.</system:String>
+    <system:String x:Key="item58">Spelversionen stöds inte av H1Emu.\n\nKom ihåg att använda spelversionen antingen 15 januari 2015, 22 december 2016 (Just Survive) eller 23 februari 2017 (King of the Kill).\n\nDu måste ladda ner en av dessa versioner med hjälp av den här Launchern med ditt Steam-konto som äger Just Survive.</system:String>
     <system:String x:Key="item59">Användarnamn...</system:String>
     <system:String x:Key="item60">Lösenord...</system:String>
     <system:String x:Key="item61">Visa fullständig information om uppdateringen...</system:String>
@@ -65,10 +65,10 @@
     <system:String x:Key="item68">Visa filer...</system:String>
     <system:String x:Key="item69">• Spelversionen hittades inte •</system:String>
     <system:String x:Key="item70">Söker efter spelversionen...</system:String>
-    <system:String x:Key="item71">Spelversion hittad: 15 Januari 2015</system:String>
+    <system:String x:Key="item71">Spelversion hittad: 15 Januari 2015.</system:String>
     <system:String x:Key="item72">• Spelversionen stöds inte •</system:String>
     <system:String x:Key="item73">Var god vänta medans nuvarande uppdrag blir klara.</system:String>
-    <system:String x:Key="item74">Spelversion hittad: 22 December 2016</system:String>
+    <system:String x:Key="item74">Spelversion hittad: 22 December 2016.</system:String>
     <system:String x:Key="item75">Katalog</system:String>
     <system:String x:Key="item76">Tar bort den gamla patchen...</system:String>
     <system:String x:Key="item77">Verifieringskod</system:String>
@@ -81,12 +81,14 @@
     <system:String x:Key="item91">Bearbetar...</system:String>
     <system:String x:Key="item92">OK</system:String>
     <system:String x:Key="item95">Det uppstod ett fel när du skulle installera 2015 patchen:</system:String>
-    <system:String x:Key="item97">Det uppstod ett fel när du skulle installera 2016 patchen:</system:String>
+    <system:String x:Key="item96">Det uppstod ett fel när du skulle installera 2016 patchen:</system:String>
+    <system:String x:Key="item97">Det uppstod ett fel när du skulle installera KotK patchen:</system:String>
     <system:String x:Key="item99">Packar upp patchfiler...</system:String>
     <system:String x:Key="item100">Raderar .zip filen...</system:String>
     <system:String x:Key="item101">Klar. (Det tog:</system:String>
     <system:String x:Key="item102">Patch-filerna för spelversionen 2015 har blivit installerat.</system:String>
-    <system:String x:Key="item104">Patch-filerna för spelversionen 2016 har blivit installerat.</system:String>
+    <system:String x:Key="item103">Patch-filerna för spelversionen 2016 har blivit installerat.</system:String>
+    <system:String x:Key="item104">Patchfiler för KotK har installerats.</system:String>
     <system:String x:Key="item105">Installerar den senaste servern...</system:String>
     <system:String x:Key="item107">Det uppstod ett fel när den senaste servern skulle installeras:</system:String>
     <system:String x:Key="item108">Den senaste servern har installerats.</system:String>
@@ -115,7 +117,7 @@
     <system:String x:Key="item136">Översättare</system:String>
     <system:String x:Key="item137">(Har du internet uppkoppling?)</system:String>
     <system:String x:Key="item138">\n\n(Filerna kommer inte att raderas)</system:String>
-    <system:String x:Key="item139">H1Emu Server</system:String>
+    <system:String x:Key="item139">H1Emu Servrar</system:String>
     <system:String x:Key="item140">Enspelarläge</system:String>
     <system:String x:Key="item141">Ny Server...</system:String>
     <system:String x:Key="item142">Undantag raderad:</system:String>
@@ -135,9 +137,7 @@
     <system:String x:Key="item157">Den senaste versionen av servern är under utveckling, så var beredd på att den kan vara instabil och orsaka krascher.\n\nVill du fortsätta?</system:String>
     <system:String x:Key="item158">Välkommen till H1Emu!</system:String>
     <system:String x:Key="item159">INNAN DU BÖRJAR, observera att detta projekt endast stöder följande spelversioner:</system:String>
-    <system:String x:Key="item160">15 Januari 2015</system:String>
     <system:String x:Key="item161">och</system:String>
-    <system:String x:Key="item162">22 December 2016</system:String>
     <system:String x:Key="item163">Snälla</system:String>
     <system:String x:Key="item164">LÅT BLI</system:String>
     <system:String x:Key="item165">Använder du den senaste steam versionen av spelet, eller någon annan version än de som nämns ovanför så funkar det inte.</system:String>
@@ -165,4 +165,9 @@
     <system:String x:Key="item187">Om det här problemet kvarstår, försök då att ladda ner det igen och köra installationsfilen manuellt.</system:String>
     <system:String x:Key="item188">ÅTERLAPNING</system:String>
     <system:String x:Key="item189">DÖDA</system:String>
+    <system:String x:Key="item190">Spelversion upptäckt: 23 februari 2017 (King of the Kill).</system:String>
+    <system:String x:Key="item191">Din H1EmuLauncher har minimerats till systemfältet.</system:String>
+    <system:String x:Key="item192">Radera</system:String>
+    <system:String x:Key="item193">Kopiera</system:String>
+    <system:String x:Key="item194">Utgång</system:String>
 </ResourceDictionary>

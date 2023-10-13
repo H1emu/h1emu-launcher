@@ -274,7 +274,7 @@ namespace H1EmuLauncher
                 AccelerationRatio = 0.4,
                 DecelerationRatio = 0.4
             };
-            hide.Completed += (s, _) => updateProgressBarRow.Visibility = Visibility.Collapsed;
+            hide.Completed += (s, o) => updateProgressBarRow.Visibility = Visibility.Collapsed;
             updateProgressBarRow.BeginAnimation(HeightProperty, hide);
         }
 
@@ -331,7 +331,7 @@ namespace H1EmuLauncher
 
                 if (sb != null)
                 {
-                    sb.Completed += (s, _) =>
+                    sb.Completed += (s, o) =>
                     {
                         IsCompleted = true;
                         Close();

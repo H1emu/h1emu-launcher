@@ -52,7 +52,7 @@
     <system:String x:Key="item55">Korištenjem grane aplikacije: {0}</system:String>
     <system:String x:Key="item56">Procesiranje depoa {0} - {1}</system:String>
     <system:String x:Key="item57">Alociranje prostora...</system:String>
-    <system:String x:Key="item58">H1Emu ne podržava verziju igre.\n\nNe zaboravite koristiti verziju igre od 15. siječnja 2015. ili 22. prosinca 2016.\n\nMorate preuzeti jednu od ovih verzija pomoću ovog pokretača sa svojim Steam računom koji ima Just Survive vlasništvo.</system:String>
+    <system:String x:Key="item58">H1Emu ne podržava verziju igre.\n\nNe zaboravite koristiti verziju igre ili 15. siječnja 2015., 22. prosinca 2016. (Just Survive) ili 23. veljače 2017. (King of the Kill).\n\nMorate preuzeti jednu od ovih verzija pomoću ovog pokretača sa svojim Steam računom koji ima Just Survive vlasništvo.</system:String>
     <system:String x:Key="item59">Korisničko ime...</system:String>
     <system:String x:Key="item60">Šifra...</system:String>
     <system:String x:Key="item61">Prikaži detalje nove verzije...</system:String>
@@ -65,10 +65,10 @@
     <system:String x:Key="item68">Pregled datoteka...</system:String>
     <system:String x:Key="item69">• Verzija Igre Nije Otkrivena •</system:String>
     <system:String x:Key="item70">Otkrivanje verzije igre...</system:String>
-    <system:String x:Key="item71">Otkrivena verzija igre: 15. siječanj 2015</system:String>
+    <system:String x:Key="item71">Otkrivena verzija igre: 15. siječanj 2015.</system:String>
     <system:String x:Key="item72">• Verzija Igre Nije Podržana •</system:String>
     <system:String x:Key="item73">Molim vas pričekajte da se izvrši trenutni zadatak.</system:String>
-    <system:String x:Key="item74">Otkrivena verzija igre: 22. prosinac 2016</system:String>
+    <system:String x:Key="item74">Otkrivena verzija igre: 22. prosinac 2016.</system:String>
     <system:String x:Key="item75">Direktorij</system:String>
     <system:String x:Key="item76">Brisanje starog patcha...</system:String>
     <system:String x:Key="item77">Autentikacijski Kod</system:String>
@@ -81,12 +81,14 @@
     <system:String x:Key="item91">Procesiranje...</system:String>
     <system:String x:Key="item92">OK</system:String>
     <system:String x:Key="item95">Došlo je do pogreške pri instalaciji 2015 patcha:</system:String>
-    <system:String x:Key="item97">Došlo je do pogreške pri instalaciji 2016 patcha:</system:String>
+    <system:String x:Key="item96">Došlo je do pogreške pri instalaciji 2016 patcha:</system:String>
+    <system:String x:Key="item97">Došlo je do pogreške pri instalaciji KotK patcha:</system:String>
     <system:String x:Key="item99">Raspakiravanje patch datoteka...</system:String>
     <system:String x:Key="item100">Brisanje .zip datoteke...</system:String>
     <system:String x:Key="item101">Zadatak izvršen. (Proteklo vrijeme:</system:String>
     <system:String x:Key="item102">Patch datoke za verziju 2015 su završili sa instalacijom.</system:String>
-    <system:String x:Key="item104">Patch datoke za verziju 2016 su završili sa instalacijom.</system:String>
+    <system:String x:Key="item103">Patch datoke za verziju 2016 su završili sa instalacijom.</system:String>
+    <system:String x:Key="item104">Datoteke zakrpe za KotK su instalirane.</system:String>
     <system:String x:Key="item105">Instalacija najnovije verzije servera u tijeku...</system:String>
     <system:String x:Key="item107">Došlo je do pogreške pri instalaciji najnovije verzije servera:</system:String>
     <system:String x:Key="item108">Uspješno instalirana najnovija verzija servera.</system:String>
@@ -115,7 +117,7 @@
     <system:String x:Key="item136">Prevoditelji</system:String>
     <system:String x:Key="item137">(Da li imate ostvarenu internet vezu?)</system:String>
     <system:String x:Key="item138">\n\n(Datoteke neće biti izbrisane)</system:String>
-    <system:String x:Key="item139">H1Emu Server</system:String>
+    <system:String x:Key="item139">H1Emu Poslužitelji</system:String>
     <system:String x:Key="item140">Igraj sam</system:String>
 	<system:String x:Key="item141">Novi Server...</system:String>
     <system:String x:Key="item142">Bačena iznimka:</system:String>
@@ -135,9 +137,7 @@
     <system:String x:Key="item157">Najnovija verzija servera je development build pa je moguće da zbog nestabilnosti dođe do neočekivanog prekida rada.\n\nDa li ste sigurni da želite nastaviti?</system:String>
     <system:String x:Key="item158">Dobrodošli na H1Emu!</system:String>
     <system:String x:Key="item159">PRIJE NEGO ŠTO NASTAVITE, molim vas imajte na umu da ovaj projekt podržava samo navedene verzije:</system:String>
-    <system:String x:Key="item160">verzija 15 Siječanj 2015</system:String>
     <system:String x:Key="item161">i</system:String>
-    <system:String x:Key="item162">verzija 22 Prosinca 2016</system:String>
     <system:String x:Key="item163">Molim vas</system:String>
     <system:String x:Key="item164">NE POKUŠAVAJTE</system:String>
     <system:String x:Key="item165">pokretati najnoviju Steam verziju igre ili bilo koju drugu verziju koja nije navedena iz razloga što ju neće te moći pokrenuti.</system:String>
@@ -165,4 +165,9 @@
     <system:String x:Key="item187">Ako se ova pogreška nastavi, pokušajte ručno preuzeti i pokrenuti instalacijsku datoteku.</system:String>
     <system:String x:Key="item188">RE-ZAKRPATI</system:String>
     <system:String x:Key="item189">UBITI</system:String>
+    <system:String x:Key="item190">Otkrivena verzija igre: 23. veljače 2017. (King of the Kill).</system:String>
+    <system:String x:Key="item191">Vaš H1EmuLauncher minimiziran je na programsku traku.</system:String>
+    <system:String x:Key="item192">Izbrisati</system:String>
+    <system:String x:Key="item193">Kopirati</system:String>
+    <system:String x:Key="item194">Izlaz</system:String>
 </ResourceDictionary>

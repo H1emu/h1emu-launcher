@@ -128,7 +128,7 @@
                         VerticalAlignment="Top"
                         HorizontalAlignment="Right"
                         BorderThickness="0"
-                        Click="CloseButton_Click"
+                        Click="CloseAboutPage"
                         Style="{StaticResource CloseButtonStyle}">
 
                     <Button.Effect>
@@ -171,6 +171,7 @@
 
                     <Grid>
                         <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                            
                             <!-- List of everyone who helped on the project -->
                             <TextBlock Margin="25,25,25,25"
                                        Width="600"
