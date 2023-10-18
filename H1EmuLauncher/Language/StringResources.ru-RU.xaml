@@ -102,7 +102,7 @@
     <system:String x:Key="item120">Пожалуйста закройте H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe в настоящее время используется.\n\nПожалуйста, закройте все открытые экземпляры H1Z1.\n\nВы можете использовать кнопку ниже, чтобы убить все процессы H1Z1.</system:String>
     <system:String x:Key="item122">Текущая версия игры:</system:String>
-    <system:String x:Key="item124">Версия лаунчера v</system:String>
+    <system:String x:Key="item124">Версия лаунчера</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
     <system:String x:Key="item126">Ведущая разработка</system:String>
     <system:String x:Key="item127">Разработчики</system:String>
@@ -148,9 +148,8 @@
     <system:String x:Key="item170">Финансовые спонсоры</system:String>
     <system:String x:Key="item171">Версия игры от 22 декабря 2016 года, более актуальная и поддерживаемая проектом.</system:String>
     <system:String x:Key="item172">Версия игры от 15 января 2015 года, она не получает столько обновлений, как версия 2016 года, и в ней могут отсутствовать функции.</system:String>
-    <system:String x:Key="item173">Сообщить об ошибке...</system:String>
-    <system:String x:Key="item174">Здесь вы можете сообщить о любых ошибках, с которыми вы столкнулись в игре при использовании файлов сервера H1Emu:</system:String>
-    <system:String x:Key="item175">Здесь вы можете сообщить о любых ошибках, с которыми вы столкнулись при использовании H1Emu Launcher:</system:String>
+    <system:String x:Key="item174">Сообщить об ошибке в файлах сервера H1Emu</system:String>
+    <system:String x:Key="item175">Сообщить об ошибке в программе запуска H1Emu</system:String>
     <system:String x:Key="item176">удаление ваших данных одиночной игры.</system:String>
     <system:String x:Key="item177">Данные одиночной игры не найдены.</system:String>
     <system:String x:Key="item178">Удаление данных одиночной игры может решить любые проблемы, с которыми вы сталкиваетесь, имейте в виду, что вы потеряете весь прогресс.\n\nХотите продолжить?</system:String>
@@ -170,4 +169,21 @@
     <system:String x:Key="item192">Удалить</system:String>
     <system:String x:Key="item193">Копировать</system:String>
     <system:String x:Key="item194">Выход</system:String>
+    <system:String x:Key="item195">Файлы Игры</system:String>
+    <system:String x:Key="item196">Ключ Учетной Записи</system:String>
+    <system:String x:Key="item197">Параметры</system:String>
+    <system:String x:Key="item198">Отчеты об Oшибках</system:String>
+    <system:String x:Key="item199">О</system:String>
+    <system:String x:Key="item200">Выбранный язык</system:String>
+    <system:String x:Key="item201">Отобразить карусель изображений</system:String>
+    <system:String x:Key="item202">Свернуть в системный трей</system:String>
+    <system:String x:Key="item203">На</system:String>
+    <system:String x:Key="item204">Выключенный</system:String>
+    <system:String x:Key="item205">ОТЧЕТ</system:String>
+    <system:String x:Key="item206">Настройки</system:String>
+    <system:String x:Key="item207">Добавить Cервер</system:String>
+    <system:String x:Key="item208">Отказ от Oтветственности</system:String>
+    <system:String x:Key="item209">Сообщение</system:String>
+    <system:String x:Key="item210">Заставка</system:String>
+    <system:String x:Key="item211">Доступно Oбновление</system:String>
 </ResourceDictionary>

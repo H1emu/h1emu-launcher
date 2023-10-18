@@ -102,9 +102,9 @@
     <system:String x:Key="item120">Veuillez fermer H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe est actuellement en cours d'utilisation.\n\nVeuillez fermer toutes les instances ouvertes de H1Z1.\n\nVous pouvez utiliser le bouton ci-dessous pour tuer tous les processus de H1Z1.</system:String>
     <system:String x:Key="item122">Version actuelle du jeu:</system:String>
-    <system:String x:Key="item124">Version du launcher v</system:String>
+    <system:String x:Key="item124">Version du launcher</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
-    <system:String x:Key="item126">Développement de prospects</system:String>
+    <system:String x:Key="item126">Développement de Prospects</system:String>
     <system:String x:Key="item127">Développeurs</system:String>
     <system:String x:Key="item128">Administrateurs</system:String>
     <system:String x:Key="item129">Contributeurs</system:String>
@@ -148,9 +148,8 @@
     <system:String x:Key="item170">Contributeurs Financiers</system:String>
     <system:String x:Key="item171">Version du jeu du 22 décembre 2016, plus à jour et prise en charge par le projet.</system:String>
     <system:String x:Key="item172">Version du jeu du 15 janvier 2015, elle ne reçoit pas autant de mises à jour qu'en 2016 et peut manquer de fonctionnalités.</system:String>
-    <system:String x:Key="item173">Signaler un bug...</system:String>
-    <system:String x:Key="item174">Ici, vous pouvez signaler tous les bogues que vous avez rencontrés dans le jeu lors de l'utilisation des fichiers du serveur H1Emu:</system:String>
-    <system:String x:Key="item175">Ici, vous pouvez signaler tous les bogues que vous avez rencontrés lors de l'utilisation du lanceur H1Emu:</system:String>
+    <system:String x:Key="item174">Signaler un bug avec les fichiers du serveur H1Emu</system:String>
+    <system:String x:Key="item175">Signaler un bug avec le lanceur H1Emu</system:String>
     <system:String x:Key="item176">suppression de vos données solo.</system:String>
     <system:String x:Key="item177">Aucune donnée solo trouvée.</system:String>
     <system:String x:Key="item178">La suppression de vos données solo peut résoudre tous les problèmes auxquels vous êtes confrontés, sachez que vous perdrez toute progression.\n\nVoulez-vous continuer?</system:String>
@@ -170,4 +169,21 @@
     <system:String x:Key="item192">Supprimer</system:String>
     <system:String x:Key="item193">Copie</system:String>
     <system:String x:Key="item194">Sortie</system:String>
+    <system:String x:Key="item195">Fichiers de Jeu</system:String>
+    <system:String x:Key="item196">Clé de Compte</system:String>
+    <system:String x:Key="item197">Possibilités</system:String>
+    <system:String x:Key="item198">Rapports de Bogues</system:String>
+    <system:String x:Key="item199">À propos</system:String>
+    <system:String x:Key="item200">Langue sélectionnée</system:String>
+    <system:String x:Key="item201">Afficher le carrousel d'images</system:String>
+    <system:String x:Key="item202">Réduire dans la barre d'état système</system:String>
+    <system:String x:Key="item203">Sur</system:String>
+    <system:String x:Key="item204">Désactivé</system:String>
+    <system:String x:Key="item205">RAPPORT</system:String>
+    <system:String x:Key="item206">Paramètres</system:String>
+    <system:String x:Key="item207">Ajouter un Serveur</system:String>
+    <system:String x:Key="item208">Clause de Non-responsabilité</system:String>
+    <system:String x:Key="item209">Message</system:String>
+    <system:String x:Key="item210">Écran de Démarrage</system:String>
+    <system:String x:Key="item211">Mise à Jour Disponible</system:String>
 </ResourceDictionary>

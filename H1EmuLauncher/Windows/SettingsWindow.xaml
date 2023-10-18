@@ -5,53 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         UseLayoutRounding="True"
-        Title="H1Emu Launcher Settings"
-        x:Name="Settings"
-        Width="auto"
-        Height="auto"
+        Title="{DynamicResource item206}"
+        MinWidth="735"
+        MaxWidth="735"
         WindowStartupLocation="CenterOwner"
-        WindowStyle="None"
-        AllowsTransparency="True"
+        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
-        RenderTransformOrigin="0.5, 0.5"
-        Background="Transparent"
-        FontFamily="Bahnschrift"
-        FontSize="16"
         SizeToContent="WidthAndHeight"
-        Loaded="SettingsLoaded"
-        Closing="SettingsClosing"
-        ContentRendered="SettingsContentRendered">
+        Background="Transparent"
+        FontFamily="Bahnschrift Light"
+        FontSize="16"
+        Foreground="FloralWhite"
+        Loaded="SettingsWindowLoaded"
+        ContentRendered="SettingsWindowContentRendered"
+        Closing="SettingsWindowClosing">
 
-    <Window.RenderTransform>
-        <ScaleTransform x:Name="WindowScaleTransform"/>
-    </Window.RenderTransform>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Window.Loaded">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-
-                        <DoubleAnimation Storyboard.TargetName="Settings"
-                                         Storyboard.TargetProperty="Opacity"
-                                         From="0" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>
-    </Window.Triggers>
+    <!-- Keep window animations -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+    </WindowChrome.WindowChrome>
 
     <Window.Resources>
         <ResourceDictionary>
@@ -61,25 +33,6 @@
                 <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <Storyboard x:Key="CloseSettings">
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="Settings"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-            </Storyboard>
             <Storyboard x:Key="UnfocusPropertiesShow">
                 <DoubleAnimation Storyboard.TargetName="settingsFade"
                                  Storyboard.TargetProperty="Opacity"
@@ -109,41 +62,44 @@
         </ResourceDictionary>
     </Window.Resources>
 
+    <!-- Window grid -->
     <Grid Background="#FF2A2A32">
+        
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
             <!-- Grainy texture -->
             <Grid.Background>
                 <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
             </Grid.Background>
-            
+
             <!-- Settings blur on unfocus -->
             <Grid.Effect>
                 <BlurEffect x:Name="settingsBlur"
                             Radius="0"
                             KernelType="Gaussian"/>
-
+                
             </Grid.Effect>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="40"/>
-            </Grid.RowDefinitions>
-
             <!-- Grid for logo and exit button -->
-            <Grid MouseLeftButtonDown="MoveWindow"
+            <Grid MouseLeftButtonDown="MoveSettingsWindow"
                   Background="Transparent">
 
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
                 <Image Source="..\Resources\H1EmuIcon.png"
-                       Width="175"
+                       Stretch="Uniform"
                        Height="45"
-                       Margin="23,20,0,0"
+                       Margin="20"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left">
 
@@ -152,21 +108,19 @@
                                           Direction="-90"
                                           RenderingBias="Quality"
                                           ShadowDepth="0"
-                                          Opacity="0.4"/>
+                                          Opacity="0.3"/>
                     </Image.Effect>
                 </Image>
 
                 <!-- Exit button -->
                 <Button x:Name="ExitButton"
-                        Grid.Column="1"
-                        Click="CloseSettings"
-                        RenderOptions.BitmapScalingMode="Fant"
-                        Width="44"
+                        Grid.Column="2"
+                        Click="CloseSettingsWindow"
+                        Width="50"
                         Height="30"
-                        Margin="0,20,25,0"
+                        Margin="20"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Right"
-                        BorderThickness="0"
                         Style="{StaticResource CloseButtonStyle}">
 
                     <Button.Effect>
@@ -174,303 +128,81 @@
                                           Direction="-90"
                                           RenderingBias="Quality"
                                           ShadowDepth="0"
-                                          Opacity="0.2"/>
+                                          Opacity="0.3"/>
                     </Button.Effect>
                 </Button>
             </Grid>
 
-            <!-- Main content in darkened area -->
-            <Border Grid.Row="1"
-                    Background="#1C1B22"
-                    Margin="25,5,25,0"
-                    UseLayoutRounding="True"
-                    CornerRadius="5">
+            <TabControl x:Name="settingsTabControl"
+                        Grid.Row="1"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Margin="20,0,20,20"
+                        Padding="2,0,2,2"
+                        SelectionChanged="SettingsTabControlSelectionChanged">
 
-                <!-- Drop shadow effect -->
-                <Border.Effect>
+                <!-- Game files tab -->
+                <TabItem Header="{DynamicResource item195}"
+                         Style="{StaticResource TabItemStyleFirst}">
+
+                    <TabItem.Content>
+                        <Frame Source="..\SettingsPages\GameFiles.xaml"/>
+                    </TabItem.Content>
+                </TabItem>
+
+                <!-- Account key tab -->
+                <TabItem Header="{DynamicResource item196}"
+                         Style="{StaticResource TabItemStyleMiddle}">
+
+                    <TabItem.Content>
+                        <Frame Source="..\SettingsPages\AccountKey.xaml"/>
+                    </TabItem.Content>
+                </TabItem>
+
+                <!-- Options tab -->
+                <TabItem Header="{DynamicResource item197}"
+                         Style="{StaticResource TabItemStyleMiddle}">
+
+                    <TabItem.Content>
+                        <Frame Source="..\SettingsPages\Options.xaml"/>
+                    </TabItem.Content>
+                </TabItem>
+
+                <!-- Bug reports tab -->
+                <TabItem Header="{DynamicResource item198}"
+                         Style="{StaticResource TabItemStyleMiddle}">
+
+                    <TabItem.Content>
+                        <Frame Source="..\SettingsPages\ReportBug.xaml"/>
+                    </TabItem.Content>
+                </TabItem>
+
+                <!-- About tab -->
+                <TabItem Header="{DynamicResource item199}"
+                         Style="{StaticResource TabItemStyleLast}">
+
+                    <TabItem.Content>
+                        <Frame Source="..\SettingsPages\About.xaml"/>
+                    </TabItem.Content>
+                </TabItem>
+
+                <TabControl.Effect>
+
+                    <!-- Drop shadow effect -->
                     <DropShadowEffect BlurRadius="15"
                                       Direction="-90"
                                       RenderingBias="Quality"
                                       ShadowDepth="1"/>
-                    
-                </Border.Effect>
 
-                <Border CornerRadius="5">
-
-                    <!-- Grainy texture -->
-                    <Border.Background>
-                        <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-                    </Border.Background>
-
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="108"/>
-                            <RowDefinition Height="270"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <!-- Game directory text -->
-                            <TextBlock Margin="20,0,0,11"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       FontSize="16"
-                                       Foreground="FloralWhite"
-                                       FontWeight="Light"
-                                       Text="{DynamicResource item41}"/>
-
-                            <!-- Game directory textbox -->
-                            <TextBox x:Name="directoryBox"
-                                     Grid.Column="1"
-                                     Height="35"
-                                     Margin="10,0,20,10"
-                                     Padding="35,7,35,0"
-                                     IsReadOnly="True"
-                                     Cursor="Arrow"
-                                     FontWeight="Light"
-                                     Style="{DynamicResource TextBoxPrimaryStyle}"/>
-
-                            <!-- Button to open file explorer to game directory -->
-                            <Button Grid.Column="1"
-                                    Click="OpenDirectory"
-                                    RenderOptions.BitmapScalingMode="Fant"
-                                    Width="20"
-                                    Height="20"
-                                    Margin="20,0,0,10"
-                                    HorizontalAlignment="Left"
-                                    BorderThickness="0"
-                                    Style="{DynamicResource FolderButton}">
-
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Resources\Folder.png"/>
-                                </Button.Background>
-                            </Button>
-
-                            <!-- Button to select a new game directory -->
-                            <Button x:Name="directoryButton"
-                                    Grid.Column="1"
-                                    Click="SelectDirectory"
-                                    RenderOptions.BitmapScalingMode="Fant"
-                                    Width="20"
-                                    Height="20"
-                                    Margin="0,0,30,10"
-                                    HorizontalAlignment="Right"
-                                    BorderThickness="0"
-                                    Style="{DynamicResource EnterButton}">
-
-                                <Button.Background>
-                                    <ImageBrush ImageSource="..\Resources\Arrow.png"/>
-                                </Button.Background>
-                            </Button>
-                        </Grid>
-
-                        <!-- Current detected game version -->
-                        <TextBlock x:Name="currentGame"
-                                   Margin="0,0,0,5"
-                                   VerticalAlignment="Bottom"
-                                   HorizontalAlignment="Center"
-                                   Foreground="Gray"
-                                   FontFamily="Bahnschrift"
-                                   FontWeight="Bold"/>
-
-                        <!-- Grid to host patch, latest, stable buttons and corresponding textboxes -->
-                        <Grid Grid.Row="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="20"/>
-                            </Grid.RowDefinitions>
-
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-
-                            <!-- Install patch button -->
-                            <Button x:Name="patchButton"
-                                    Click="InstallPatch"
-                                    Width="220"
-                                    Height="40"
-                                    Margin="20"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Left"
-                                    Foreground="White"
-                                    FontFamily="Arial Black"
-                                    FontSize="24"
-                                    BorderThickness="0"
-                                    Content="{DynamicResource item42}"
-                                    Style="{DynamicResource StandardButton}"/>
-
-                            <!-- Patch button text -->
-                            <TextBlock Grid.Column="1"
-                                       Width="400"
-                                       Margin="0,0,20,0"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
-                                       Foreground="White"
-                                       FontWeight="Light"
-                                       TextWrapping="Wrap">
-
-                                <Run Text="{DynamicResource item45}"/>
-                            
-                                <Hyperlink x:Name="deleteSinglePlayerDataHyperLink"
-                                           Click="DeleteSingleplayerDataClick"
-                                           Foreground="White">
-                                    
-                                    <Run Text="{DynamicResource item176}"
-                                         Style="{DynamicResource HyperLinkStyleRun}"
-                                         Cursor="Hand"/>
-
-                                </Hyperlink>
-                            </TextBlock>
-
-                            <!-- Install latest server button -->
-                            <Button x:Name="latestButton"
-                                    Grid.Row="1"
-                                    Click="InstallServer"
-                                    Width="220"
-                                    Height="40"
-                                    Margin="20"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Left"
-                                    Foreground="White"
-                                    FontFamily="Arial Black"
-                                    FontSize="24"
-                                    BorderThickness="0"
-                                    Content="{DynamicResource item43}"
-                                    Style="{DynamicResource StandardButton}"/>
-
-                            <!-- Latest server button text -->
-                            <TextBlock Grid.Row="1"
-                                       Grid.Column="1"
-                                       Width="400"
-                                       Margin="0,0,20,0"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
-                                       Foreground="White"
-                                       FontWeight="Light"
-                                       TextWrapping="Wrap"
-                                       Text="{DynamicResource item46}"/>
-
-                            <!-- Install stable server button -->
-                            <Button x:Name="stableButton"
-                                    Grid.Row="2"
-                                    Click="InstallServer"
-                                    Width="220"
-                                    Height="40"
-                                    Margin="20"
-                                    VerticalAlignment="Center"
-                                    HorizontalAlignment="Left"
-                                    Foreground="White"
-                                    FontFamily="Arial Black"
-                                    FontSize="24"
-                                    BorderThickness="0"
-                                    Content="{DynamicResource item44}"
-                                    Style="{DynamicResource StandardButton}"/>
-
-                            <!-- Stable server button text -->
-                            <TextBlock Grid.Row="2"
-                                       Grid.Column="1"
-                                       Width="400"
-                                       Margin="0,0,20,0"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
-                                       Foreground="White"
-                                       FontWeight="Light"
-                                       TextWrapping="Wrap"
-                                       Text="{DynamicResource item47}"/>
-                        </Grid>
-
-                        <!-- Grid for settings progress bar -->
-                        <Border x:Name="settingsProgressRow"
-                                Grid.Row="2"
-                                Visibility="Collapsed">
-
-                            <Grid x:Name="settingsProgressRowContent">
-                                <!-- Status progress bar -->
-                                <ProgressBar x:Name="settingsProgressBar"
-                                             Grid.Row="2"
-                                             Height="35"
-                                             Margin="20,0,20,30"
-                                             Style="{DynamicResource ProgressBar}"/>
-
-                                <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
-                                <ProgressBar Grid.Row="2"
-                                             Height="35"
-                                             Margin="20,0,20,30"
-                                             Background="Transparent"
-                                             Style="{DynamicResource ProgressBar}"/>
-
-                                <!-- Status text to overlay progress bar -->
-                                <TextBlock x:Name="settingsProgressText"
-                                           Grid.Row="2"
-                                           HorizontalAlignment="Center"
-                                           Margin="0,8,0,0"
-                                           Foreground="White"
-                                           FontWeight="Light"
-                                           Background="Transparent"/>
-                            </Grid>
-                        </Border>
-                    </Grid>
-                </Border>
-            </Border>
-
-            <!-- Hyperlink to open account key window -->
-            <TextBlock Grid.Row="2"
-                       Foreground="White"
-                       Margin="25,1,0,0"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left">
-                
-                <Hyperlink Click="AccountKeyClick"
-                           Foreground="White"
-                           FontWeight="Light">
-                    
-                    <TextBlock Text="{DynamicResource item154}"
-                               Style="{DynamicResource HyperLinkStyle}"/>
-                    
-                </Hyperlink>
-                
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="15"
-                                      Direction="-90"
-                                      RenderingBias="Quality"
-                                      ShadowDepth="0"
-                                      Opacity="0.4"/>
-                </TextBlock.Effect>
-            </TextBlock>
-
-            <!-- Current installed version of the launcher number -->
-            <TextBlock x:Name="currentVersion"
-                       Grid.Row="2"
-                       Margin="0,1,25,0"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Right"
-                       Foreground="White"
-                       FontWeight="Light"
-                       Text="{DynamicResource item124}">
-
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="15"
-                                      Direction="-90"
-                                      RenderingBias="Quality"
-                                      ShadowDepth="0"
-                                      Opacity="0.4"/>
-                </TextBlock.Effect>
-            </TextBlock>
+                </TabControl.Effect>
+            </TabControl>
         </Grid>
 
         <!-- Background fade on unfocus -->
         <Rectangle x:Name="settingsFade"
                    Fill="#40000000"
                    IsHitTestVisible="False"
-                   Opacity="0"/>
-
+                   Opacity="0"
+                   Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

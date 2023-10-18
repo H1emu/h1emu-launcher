@@ -5,52 +5,37 @@ namespace H1EmuLauncher.Classes
 {
     class CustomMessageBox
     {
-        public static bool result = false;
+        public static MessageBoxResult buttonPressed = MessageBoxResult.OK;
 
-        public static void Show(string text, Window owner = null, bool terminateH1Z1ButtonVisibility = false)
+        public static MessageBoxResult Show(string text, Window owner = null, bool yesButtonVisibility = false, bool noButtonVisibility = false, bool terminateH1Z1ButtonVisibility = false, bool okButtonVisibility = true)
         {
-            MessageBoxWindow newBox = new();
-            newBox.text.Text = text;
+            MessageBoxWindow messageBox = new();
+            messageBox.text.Text = text;
 
-            if (owner != null && owner.IsVisible)
-                newBox.Owner = owner;
-            else
-                newBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            if (yesButtonVisibility)
+                messageBox.confirmYesButton.Visibility = Visibility.Visible;
+
+            if (noButtonVisibility)
+                messageBox.confirmNoButton.Visibility = Visibility.Visible;
 
             if (terminateH1Z1ButtonVisibility)
-                newBox.killH1Z1Button.Visibility = Visibility.Visible;
+                messageBox.killH1Z1Button.Visibility = Visibility.Visible;
 
-            SystemSounds.Beep.Play();
-            newBox.ShowDialog();
+            if (!okButtonVisibility)
+                messageBox.okButton.Visibility = Visibility.Collapsed;
 
-            if (owner != null)
-                owner.Activate();
-        }
-
-        public static MessageBoxResult ShowResult(string text, Window owner = null)
-        {
-            ConfirmBoxWindow cnfmBox = new();
-            cnfmBox.text.Text = text;
-
-            if (owner != null)
-                cnfmBox.Owner = owner;
+            if (owner != null && owner.IsVisible)
+                messageBox.Owner = owner;
             else
-                cnfmBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                messageBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             SystemSounds.Beep.Play();
-            cnfmBox.ShowDialog();
+            messageBox.ShowDialog();
 
             if (owner != null)
                 owner.Activate();
 
-            if (result)
-            {
-                return MessageBoxResult.Yes;
-            }
-            else
-            {
-                return MessageBoxResult.No;
-            }
+            return buttonPressed;
         }
 
         public static MessageBoxResult AddServer(Window owner)
@@ -75,20 +60,10 @@ namespace H1EmuLauncher.Classes
             if (owner != null)
                 owner.Activate();
 
-            if (result)
-            {
-                LauncherWindow.newServerName = addServer.serverNameBox.Text;
-                LauncherWindow.newServerIp = addServer.serverIpBox.Text;
+            LauncherWindow.newServerName = addServer.serverNameBox.Text;
+            LauncherWindow.newServerIp = addServer.serverIpBox.Text;
 
-                return MessageBoxResult.OK;
-            }
-            else
-            {
-                LauncherWindow.newServerName = null;
-                LauncherWindow.newServerIp = null;
-
-                return MessageBoxResult.No;
-            }
+            return buttonPressed;
         }
     }
 }

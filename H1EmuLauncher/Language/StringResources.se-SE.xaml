@@ -102,7 +102,7 @@
     <system:String x:Key="item120">Var god stäng H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe används för närvarande.\n\nStäng alla öppna program utav H1Z1.\n\nDu kan använda knappen nedan för att döda alla processer i H1Z1.</system:String>
     <system:String x:Key="item122">Aktuell spelversion:</system:String>
-    <system:String x:Key="item124">Launcher Version v</system:String>
+    <system:String x:Key="item124">Launcher version</system:String>
     <system:String x:Key="item125">Upphovsrätt © 2023 | H1Emu Projektet</system:String>
     <system:String x:Key="item126">Ledande Utvecklare</system:String>
     <system:String x:Key="item127">Utvecklare</system:String>
@@ -148,9 +148,8 @@
     <system:String x:Key="item170">Finansiella bidragsgivare</system:String>
     <system:String x:Key="item171">22 December 2016 spelversion, är mer aktuell och stöds av projektet.</system:String>
     <system:String x:Key="item172">15 Januari 2015 spelversion, denna får inte lika många uppdateringar som 2016 och det kan sakna funktioner.</system:String>
-    <system:String x:Key="item173">Rapportera en bugg...</system:String>
-    <system:String x:Key="item174">Här kan du rapportera alla buggar som du har upplevt i spelet när du använder H1Emu Server-filer:</system:String>
-    <system:String x:Key="item175">Här kan du rapportera alla buggar som du har upplevt när du använder H1Emu Launcher:</system:String>
+    <system:String x:Key="item174">Rapportera ett fel med H1Emu serverfilerna</system:String>
+    <system:String x:Key="item175">Rapportera ett fel med H1Emu launcher</system:String>
     <system:String x:Key="item176">Radera din Enspelarläge information.</system:String>
     <system:String x:Key="item177">Ingen Enspelarläge information hittades.</system:String>
     <system:String x:Key="item178">Att radera din Enspelarläge information kan lösa eventuella problem du stöter på, men var uppmärksam på att alla dina framsteg går förlorade.\n\nVill du fortsätta?</system:String>
@@ -170,4 +169,21 @@
     <system:String x:Key="item192">Radera</system:String>
     <system:String x:Key="item193">Kopiera</system:String>
     <system:String x:Key="item194">Utgång</system:String>
+    <system:String x:Key="item195">Spelfiler</system:String>
+    <system:String x:Key="item196">Kontonyckel</system:String>
+    <system:String x:Key="item197">Alternativ</system:String>
+    <system:String x:Key="item198">Buggrapporter</system:String>
+    <system:String x:Key="item199">Handla om</system:String>
+    <system:String x:Key="item200">Valt språk</system:String>
+    <system:String x:Key="item201">Visa bildkarusell</system:String>
+    <system:String x:Key="item202">Minimera till systemfältet</system:String>
+    <system:String x:Key="item203">På</system:String>
+    <system:String x:Key="item204">Av</system:String>
+    <system:String x:Key="item205">RAPPORTERA</system:String>
+    <system:String x:Key="item206">Inställningar</system:String>
+    <system:String x:Key="item207">Lägg till Server</system:String>
+    <system:String x:Key="item208">Varning</system:String>
+    <system:String x:Key="item209">Meddelande</system:String>
+    <system:String x:Key="item210">Startbild</system:String>
+    <system:String x:Key="item211">Uppdatering Tillgänglig</system:String>
 </ResourceDictionary>

@@ -7,52 +7,21 @@
         mc:Ignorable="d"
         UseLayoutRounding="True"
         Title="H1Emu Launcher"
-        x:Name="Launcher"
         Width="1300"
         Height="750"
-        FontFamily="Bahnschrift"
-        FontSize="16"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        AllowsTransparency="True"
+        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
-        RenderTransformOrigin="0.5, 0.5"
+        FontFamily="Bahnschrift Light"
+        FontSize="16"
+        Foreground="FloralWhite"
         Background="Transparent"
-        Loaded="LauncherWindowLoaded"
-        ContentRendered="LauncherWindowContentRendered"
-        Closing="LauncherClosing"
-        StateChanged="LauncherStateChanged">
+        Loaded="LauncherWindowLoaded">
 
-    <Window.RenderTransform>
-        <ScaleTransform x:Name="WindowScaleTransform"/>
-    </Window.RenderTransform>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Window.Loaded">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-
-                        <DoubleAnimation Storyboard.TargetName="Launcher"
-                                         Storyboard.TargetProperty="Opacity"
-                                         From="0" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>
-    </Window.Triggers>
+    <!-- Keep window animations -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+    </WindowChrome.WindowChrome>
 
     <!-- Image carousel storyboard animations -->
     <Window.Resources>
@@ -101,63 +70,6 @@
                 </DoubleAnimation>
             </Storyboard>
 
-            <Storyboard x:Key="CloseLauncher">
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="Launcher"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-            </Storyboard>
-            <Storyboard x:Key="MinimiseLauncher">
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                 From="1" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="0.8"/>
-
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                 From="1" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="0.8"/>
-
-                <DoubleAnimation Storyboard.TargetName="Launcher"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="0.8"/>
-            </Storyboard>
-            <Storyboard x:Key="RestoreLauncher">
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                 From="0" To="1"
-                                 Duration="0:0:0.2"
-                                 AccelerationRatio="0.8"/>
-
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                 From="0" To="1"
-                                 Duration="0:0:0.2"
-                                 AccelerationRatio="0.8"/>
-
-                <DoubleAnimation Storyboard.TargetName="Launcher"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="0" To="1"
-                                 Duration="0:0:0.2"
-                                 AccelerationRatio="0.8"/>
-            </Storyboard>
             <Storyboard x:Key="UnfocusPropertiesShow">
                 <DoubleAnimation Storyboard.TargetName="launcherFade"
                                  Storyboard.TargetProperty="Opacity"
@@ -197,8 +109,16 @@
         <TaskbarItemInfo x:Name="taskbarIcon" Description="H1Emu Launcher"/>
     </Window.TaskbarItemInfo>
 
+    <!-- Window grid -->
     <Grid Background="#FF2A2A32">
+
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
             <!-- Grainy texture -->
             <Grid.Background>
                 <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
@@ -211,12 +131,6 @@
                             KernelType="Gaussian"/>
             </Grid.Effect>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="140"/>
-                <RowDefinition Height="116*"/>
-                <RowDefinition Height="40"/>
-            </Grid.RowDefinitions>
-
             <!-- Grid for logo and exit button & other -->
             <Grid MouseLeftButtonDown="MoveWindow"
                   Background="Transparent">
@@ -224,128 +138,39 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
-                <Image Margin="35,20,0,25"
-                       HorizontalAlignment="Left"
-                       VerticalAlignment="Center"
-                       RenderOptions.BitmapScalingMode="Fant"
-                       Source="..\Resources\H1EmuLogo.png">
+                <Image Source="..\Resources\H1EmuLogo.png"
+                       Stretch="Uniform"
+                       Height="108"
+                       Margin="35,25,35,20"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left">
 
                     <Image.Effect>
                         <DropShadowEffect BlurRadius="15"
                                           Direction="-90"
                                           RenderingBias="Quality"
                                           ShadowDepth="0"
-                                          Opacity="0.4"/>
+                                          Opacity="0.3"/>
                     </Image.Effect>
                 </Image>
 
                 <!-- Exit/minimise buttons and other info -->
-                <Grid Grid.Column="1">
+                <Grid Grid.Column="2">
+                    
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Wraps the about project informational -->
-                    <StackPanel Grid.ColumnSpan="2"
-                                VerticalAlignment="Top"
+                    <!-- Application actions -->
+                    <StackPanel VerticalAlignment="Top"
                                 HorizontalAlignment="Right"
-                                Margin="0,20,35,0"
+                                Margin="35,25,35,10"
                                 Orientation="Horizontal">
-
-                        <!-- Language selection combobox -->
-                        <Grid>
-                            <ComboBox x:Name="LanguageBox"
-                                      Height="30"
-                                      Margin="0,0,20,0"
-                                      Padding="35,2,10,0"
-                                      VerticalAlignment="Top"
-                                      VerticalContentAlignment="Center"
-                                      BorderThickness="2"
-                                      Foreground="White"
-                                      FontSize="15"
-                                      FontWeight="Light"
-                                      SelectedIndex="0"
-                                      SelectionChanged="LanguageSelectionChanged"
-                                      Style="{DynamicResource ComboBox}">
-
-                                <ComboBoxItem Content="English" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="Chinese" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="Croatian" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="French" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="Turkish" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="Polish" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="Russian" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="Dutch" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="Bulgarian" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="German" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="Portuguese" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="Spanish" Style="{DynamicResource ComboBoxItemStyle}"/>
-                                <ComboBoxItem Content="Swedish" Style="{DynamicResource ComboBoxItemStyle}"/>
-
-                                <ComboBox.Effect>
-                                    <DropShadowEffect BlurRadius="15"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="0"
-                                          Opacity="0.2"/>
-                                </ComboBox.Effect>
-                            </ComboBox>
-
-                            <Image Source="..\Resources\Language.png"
-                                       RenderOptions.BitmapScalingMode="Fant"
-                                       Width="16"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       Margin="12,0,0,0"
-                                       IsHitTestVisible="False"/>
-
-                        </Grid>
-
-                        <!-- Report A Bug Hyperlink -->
-                        <TextBlock Margin="0,0,20,0"
-                                   VerticalAlignment="Center"
-                                   FontWeight="Light">
-                                
-                                <Hyperlink Click="ReportBuglink"
-                                           Foreground="White">
-                                    
-                                    <TextBlock Text="{DynamicResource item173}"
-                                               Style="{DynamicResource HyperLinkStyle}"/>
-                                </Hyperlink>
-                                
-                                <TextBlock.Effect>
-                                    <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.4"/>
-                                </TextBlock.Effect>
-                            </TextBlock>
-
-                        <!-- About Project Hyperlink -->
-                        <TextBlock Margin="0,0,20,0"
-                                   VerticalAlignment="Center"
-                                   FontWeight="Light">
-                                
-                                <Hyperlink Click="AboutHyperlink"
-                                           Foreground="White">
-                                    
-                                    <TextBlock Text="{DynamicResource item65}"
-                                               Style="{DynamicResource HyperLinkStyle}"/>
-                                </Hyperlink>
-                                
-                                <TextBlock.Effect>
-                                    <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.4"/>
-                                </TextBlock.Effect>
-                            </TextBlock>
 
                         <!-- Minimise to system tray button-->
                         <Button x:Name="MinimiseToSystemTrayButton"
@@ -353,7 +178,7 @@
                                 RenderOptions.BitmapScalingMode="Fant"
                                 Width="45"
                                 Height="30"
-                                Margin="0,0,3,0"
+                                Margin="0,0,4,0"
                                 VerticalAlignment="Top"
                                 HorizontalAlignment="Right"
                                 BorderThickness="0"
@@ -364,7 +189,7 @@
                                                   Direction="-90"
                                                   RenderingBias="Quality"
                                                   ShadowDepth="0"
-                                                  Opacity="0.2"/>
+                                                  Opacity="0.3"/>
                             </Button.Effect>
                         </Button>
 
@@ -384,7 +209,7 @@
                                                       Direction="-90"
                                                       RenderingBias="Quality"
                                                       ShadowDepth="0"
-                                                      Opacity="0.2"/>
+                                                      Opacity="0.3"/>
                             </Button.Effect>
                         </Button>
 
@@ -404,56 +229,53 @@
                                                   Direction="-90"
                                                   RenderingBias="Quality"
                                                   ShadowDepth="0"
-                                                  Opacity="0.2"/>
+                                                  Opacity="0.3"/>
                             </Button.Effect>
                         </Button>
                     </StackPanel>
 
                     <!-- Website and discord components -->
                     <StackPanel Grid.Row="1"
-                                Grid.Column="1"
-                                Grid.ColumnSpan="2"
                                 Orientation="Horizontal"
-                                HorizontalAlignment="Right"
                                 VerticalAlignment="Bottom"
-                                Margin="0,0,35,20">
+                                HorizontalAlignment="Right"
+                                Margin="35,10,35,20">
 
-                        <!-- Join the community at message -->
-                        <TextBlock Foreground="White"
-                                   VerticalAlignment="Center"
+                        <!-- Join the community message -->
+                        <TextBlock VerticalAlignment="Center"
                                    HorizontalAlignment="Right"
                                    Margin="0,0,25,0"
                                    FontWeight="Light">
-                                
-                                <TextBlock Text="{DynamicResource item12}"/>
 
-                                <Hyperlink NavigateUri="https://h1emu.com/"
-                                           RequestNavigate="H1Hyperlink"
-                                           Foreground="White">
+                            <TextBlock.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.3"/>
+                            </TextBlock.Effect>
+                            
+                            <TextBlock Text="{DynamicResource item12}"/>
+
+                            <Hyperlink NavigateUri="https://h1emu.com/"
+                                       RequestNavigate="H1Hyperlink"
+                                       Foreground="FloralWhite">
                                     
-                                    <TextBlock Text="h1emu.com"
-                                               Style="{DynamicResource HyperLinkStyle}"/>
+                                <TextBlock Text="h1emu.com"
+                                           Style="{DynamicResource HyperLinkStyle}"/>
                                     
-                                </Hyperlink>
-                                    
-                                    <!-- Context menu to copy link -->
-                                    <TextBlock.ContextMenu>
-                                        <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                            <MenuItem Click="websiteLinkCopy"
-                                                      Header="{DynamicResource item193}"
-                                                      Style="{DynamicResource CopyMenuItem}">
-                                            </MenuItem>
-                                        </ContextMenu>
-                                    </TextBlock.ContextMenu>
-                                
-                                <TextBlock.Effect>
-                                    <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.4"/>
-                                </TextBlock.Effect>
-                            </TextBlock>
+                            </Hyperlink>
+                            
+                            <!-- Context menu to copy link -->
+                            <TextBlock.ContextMenu>
+                                <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                                    <MenuItem Click="websiteLinkCopy"
+                                              Header="{DynamicResource item193}"
+                                              Style="{DynamicResource CopyMenuItem}">
+                                    </MenuItem>
+                                </ContextMenu>
+                            </TextBlock.ContextMenu>
+                        </TextBlock>
 
                         <Button x:Name="discordLink"
                                 Grid.Column="1"
@@ -466,6 +288,14 @@
                                 BorderThickness="0"
                                 Style="{DynamicResource DiscordButton}">
 
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.3"/>
+                            </Button.Effect>
+
                             <Button.ContextMenu>
                                 <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                     <MenuItem Click="discordLinkCopy"
@@ -474,19 +304,12 @@
 
                                 </ContextMenu>
                             </Button.ContextMenu>
-
-                            <Button.Effect>
-                                <DropShadowEffect BlurRadius="15"
-                                                  Direction="-90"
-                                                  RenderingBias="Quality"
-                                                  ShadowDepth="0"
-                                                  Opacity="0.2"/>
-                            </Button.Effect>
                         </Button>
                     </StackPanel>
                 </Grid>
             </Grid>
 
+            <!-- Main content in darkened area -->
             <Border Grid.Row="1"
                     Margin="35,0,35,0"
                     UseLayoutRounding="True"
@@ -502,7 +325,7 @@
 
                 </Border.Effect>
 
-                <!-- Main content in darkened area -->
+                <!-- Border for grainy texture -->
                 <Border CornerRadius="5">
 
                     <!-- Grainy texture -->
@@ -510,6 +333,7 @@
                         <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
                     </Border.Background>
 
+                    <!-- Grid to split main content in half vertically-->
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -517,147 +341,26 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
 
-                        <!-- This grid splits the left side in half -->
-                        <Grid>
+                        <!-- Grid for patch notes -->
+                        <Grid Grid.Row="1">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="197*"/>
-                                <RowDefinition Height="370*"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <!-- Grid to dock the game image -->
-                            <Grid Grid.Row="1"
-                                  Margin="30,27,10,25"
-                                  MouseEnter="CarouselMouseEnter"
-                                  MouseLeave="CarouselMouseLeave">
-
-                                <!-- Image carousel grid -->
-                                <Grid x:Name="imageCarousel"
-                                      ClipToBounds="True">
-
-                                    <Image x:Name="carouselImage"
-                                           Source="..\Resources\2.jpg"
-                                           RenderOptions.BitmapScalingMode="Fant"
-                                           Stretch="Fill">
-
-                                        <Image.RenderTransform>
-                                            <TranslateTransform x:Name="carouselImageTranslate"/>
-                                        </Image.RenderTransform>
-                                    </Image>
-
-                                    <Image x:Name="carouselImageFollow"
-                                           RenderOptions.BitmapScalingMode="Fant"
-                                           Stretch="Fill">
-
-                                        <Image.RenderTransform>
-                                            <TranslateTransform x:Name="carouselImageFollowTranslate"/>
-                                        </Image.RenderTransform>
-                                    </Image>
-
-                                    <!-- Next image button -->
-                                    <Button x:Name="nextImage"
-                                            Click="NextImageClick"
-                                            Width="30"
-                                            HorizontalAlignment="Right"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            Visibility="Hidden"
-                                            Style="{DynamicResource CarouselButtonNext}"/>
-
-                                    <!-- Previous image button -->
-                                    <Button x:Name="prevImage"
-                                            Click="PrevImageClick"
-                                            Width="30"
-                                            HorizontalAlignment="Left"
-                                            BorderThickness="0"
-                                            Foreground="White"
-                                            Visibility="Hidden"
-                                            Style="{DynamicResource CarouselButtonPrevious}"/>
-
-                                    <Border x:Name="carouselRectangleGrid"
-                                            VerticalAlignment="Bottom">
-
-                                        <Grid>
-                                            <!-- Fill space to get width -->
-                                            <Rectangle Fill="Transparent"
-                                                       Height="4"/>
-
-                                            <!-- Image carousel progress bar -->
-                                            <Rectangle x:Name="carouselRectangle"
-                                                       Fill="#DB111C"
-                                                       Height="4"
-                                                       HorizontalAlignment="Left"/>
-                                        </Grid>
-                                    </Border>
-                                </Grid>
-
-                                <Grid x:Name="carouselVisibilityButtonGrid">
-                                    
-                                    <!-- Image carousel visibility show button -->
-                                    <Button x:Name="showCarouselButton"
-                                            Click="toggleCarouselImageVisibility"
-                                            RenderOptions.BitmapScalingMode="Fant"
-                                            Width="24"
-                                            Height="24"
-                                            Margin="0,20,0,0"
-                                            VerticalAlignment="Top"
-                                            HorizontalAlignment="Center"
-                                            BorderThickness="0"
-                                            Visibility="Hidden"
-                                            Style="{StaticResource ShowKeyButton}">
-
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="..\Resources\ShowKey.png"/>
-                                        </Button.Background>
-                                    </Button>
-
-                                    <!-- Image carousel visibility hide button -->
-                                    <Button x:Name="hideCarouselButton"
-                                            Click="toggleCarouselImageVisibility"
-                                            RenderOptions.BitmapScalingMode="Fant"
-                                            Width="24"
-                                            Height="24"
-                                            Margin="0,20,0,0"
-                                            VerticalAlignment="Top"
-                                            HorizontalAlignment="Center"
-                                            BorderThickness="0"
-                                            Visibility="Hidden"
-                                            Style="{StaticResource HideKeyButton}">
-
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="..\Resources\HideKey.png"/>
-                                        </Button.Background>
-                                    </Button>
-                                </Grid>
-
-                                <Grid.Background>
-                                    <ImageBrush ImageSource="..\Resources\4.jpg"/>
-                                </Grid.Background>
-                                
-                                <!-- Drop shadow effect -->
-                                <Grid.Effect>
-                                    <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="1"
-                                                      Opacity="0.2"/>
-
-                                </Grid.Effect>
-                            </Grid>
-                        </Grid>
-
-                        <!-- Update version information -->
-                        <StackPanel Margin="25,10,12,0">
-                            <TextBlock x:Name="titleUpdate"
+                            <TextBlock Margin="30,0,10,0"
                                        Background="Transparent"
-                                       Foreground="White"
                                        Cursor="Arrow">
 
                                 <!-- Version text -->
-                                <Run x:Name="titleUpdateText"
-                                     Foreground="#FFED1C24"
+                                <Run Foreground="#FFED1C24"
                                      FontFamily="{DynamicResource Signika}"
                                      FontSize="44"
                                      FontWeight="Bold"
@@ -672,18 +375,18 @@
 
                                 <!-- Date version was published -->
                                 <Run x:Name="datePublished"
-                                     FontFamily="Bahnschrift Light"
-                                     FontSize="16"/>
+                                     FontFamily="Bahnschrift Light"/>
                             </TextBlock>
 
                             <!-- Patch notes textbox -->
-                            <ScrollViewer Height="104"
+                            <ScrollViewer Grid.Row="1"
+                                          Margin="30,0,10,0"
                                           VerticalScrollBarVisibility="Hidden">
 
                                 <TextBlock x:Name="patchNotesBox"
                                            Margin="0,10,0,0"
                                            Background="Transparent"
-                                           Foreground="White"
+                                           Foreground="FloralWhite"
                                            FontWeight="Light"
                                            Cursor="Arrow"
                                            TextWrapping="Wrap"/>
@@ -691,75 +394,162 @@
                             </ScrollViewer>
 
                             <!-- Read full details of update hyperlink -->
-                            <TextBlock Margin="6,22,0,0"
-                                       FontWeight="Light">
-                            
+                            <TextBlock Grid.Row="2"
+                                       Margin="30,10,10,15">
+    
                                 <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/"
                                            RequestNavigate="FullUpdatesHyperlink"
-                                           Foreground="White">
-                            
+                                           Foreground="FloralWhite">
+    
                                     <TextBlock Text="{DynamicResource item61}"
                                                Style="{DynamicResource HyperLinkStyle}"/>
                                 </Hyperlink>
-                        
+
                                 <!-- Context menu to copy link -->
                                 <TextBlock.ContextMenu>
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                         <MenuItem Click="patchNotesCopy"
                                                   Header="{DynamicResource item193}"
                                                   Style="{DynamicResource CopyMenuItem}"/>
-                                
+        
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
                             </TextBlock>
-                        </StackPanel>
+                        </Grid>
 
-                        <Grid Grid.Column="1">
+                        <!-- Grid to split left panel in half horizontally -->
+                        <Grid Grid.Row="2">
+
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="220*"/>
-                                <RowDefinition Height="338*"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
 
-                            <!-- Must own the game in order to download message -->
-                            <StackPanel Margin="20,20,30,0">
-                                <TextBlock Background="Transparent"
-                                           Foreground="White"
-                                           FontWeight="Light"
-                                           Cursor="Arrow"
-                                           TextWrapping="Wrap">
+                            <!-- Grid to dock the game image -->
+                            <Grid Grid.Row="1"
+                                  Margin="30,0,10,20">
+
+                                <Grid.Background>
+                                    <ImageBrush ImageSource="..\Resources\4.jpg"/>
+                                </Grid.Background>
+
+                                <!-- Drop shadow effect -->
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="1"
+                                                      Opacity="0.3"/>
+
+                                </Grid.Effect>
+
+                                <!-- Image carousel grid -->
+                                <Grid x:Name="imageCarousel"
+                                      ClipToBounds="True"
+                                      MouseEnter="CarouselMouseEnter"
+                                      MouseLeave="CarouselMouseLeave">
+
+                                    <Image x:Name="carouselImage"
+                                           Source="..\Resources\2.jpg"
+                                           Stretch="Fill"
+                                           RenderOptions.BitmapScalingMode="Fant">
+
+                                        <Image.RenderTransform>
+                                            <TranslateTransform x:Name="carouselImageTranslate"/>
+                                        </Image.RenderTransform>
+                                    </Image>
+
+                                    <Image x:Name="carouselImageFollow"
+                                           Stretch="Fill"
+                                           RenderOptions.BitmapScalingMode="Fant">
+
+                                        <Image.RenderTransform>
+                                            <TranslateTransform x:Name="carouselImageFollowTranslate"/>
+                                        </Image.RenderTransform>
+                                    </Image>
+
+                                    <!-- Next image button -->
+                                    <Button x:Name="nextImage"
+                                            Click="NextImageClick"
+                                            Width="30"
+                                            BorderThickness="0"
+                                            HorizontalAlignment="Right"
+                                            Visibility="Hidden"
+                                            Style="{DynamicResource CarouselButtonNext}"/>
+
+                                    <!-- Previous image button -->
+                                    <Button x:Name="prevImage"
+                                            Click="PrevImageClick"
+                                            Width="30"
+                                            BorderThickness="0"
+                                            HorizontalAlignment="Left"
+                                            Visibility="Hidden"
+                                            Style="{DynamicResource CarouselButtonPrevious}"/>
+
+                                    <!-- Grid for image carousel progress bar -->
+                                    <Grid x:Name="carouselRectangleGrid"
+                                          VerticalAlignment="Bottom">
+
+                                        <!-- Fill space to get width -->
+                                        <Rectangle Fill="Transparent"
+                                                   Height="4"/>
+
+                                        <!-- Image carousel progress bar -->
+                                        <Rectangle x:Name="carouselRectangle"
+                                                   Fill="#DB111C"
+                                                   Height="4"
+                                                   HorizontalAlignment="Left"/>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="1"
+                              Grid.Column="1">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="40"/>
+                            </Grid.RowDefinitions>
+                            
+                            <TextBlock Margin="10,0,30,0"
+                                       Cursor="Arrow"
+                                       TextWrapping="Wrap">
 
                                 <Run Foreground="#FFCA1420"
                                      Text="{DynamicResource item10}"/>
-                                    
+        
                                 <Run Text="{DynamicResource item11}"/>
-                                    
+        
                                 <LineBreak/>
                                 <LineBreak/>
-                                    
+        
                                 <Run Text="{DynamicResource item50}"/>
 
-                                </TextBlock>
+                            </TextBlock>
 
-                                <!-- H1Emu Chinese Community link -->
-                                <TextBlock Margin="6,46,0,0"
-                                           x:Name="chineseLink"
-                                           Visibility="Collapsed"
-                                           FontFamily="Bahnschrift"
-                                           Text="点击进入 "
-                                           Foreground="White"
-                                           FontWeight="Bold">
-                            
-                                    <Hyperlink NavigateUri="https://azaz.ge/"
-                                               RequestNavigate="H1EmuChineseLink"
-                                               Foreground="White">
-                            
-                                        <TextBlock Text="H1Emu中文社区"
-                                                   Style="{DynamicResource HyperLinkStyle}"
-                                                   FontWeight="Bold"/>
-                                    </Hyperlink>
-                            
+                            <!-- H1Emu Chinese Community link -->
+                            <TextBlock x:Name="chineseLink"
+                                       Grid.Row="2"
+                                       Margin="10,0,30,0"
+                                       Visibility="Collapsed"
+                                       FontFamily="Bahnschrift"
+                                       Text="点击进入 "
+                                       FontWeight="Bold">
+
+                                <Hyperlink NavigateUri="https://azaz.ge/"
+                                           RequestNavigate="H1EmuChineseLink"
+                                           Foreground="White">
+
+                                    <TextBlock Text="H1Emu中文社区"
+                                               Style="{DynamicResource HyperLinkStyle}"
+                                               FontWeight="Bold"/>
+                                </Hyperlink>
+
                                 <TextBlock Text="，了解更多中文信息。"
-                                           FontWeight="Bold"/>
+                                            FontWeight="Bold"/>
 
                                 <!-- Context menu to copy link -->
                                 <TextBlock.ContextMenu>
@@ -767,45 +557,45 @@
                                         <MenuItem Click="chineseLinkCopy"
                                                   Header="{DynamicResource item193}"
                                                   Style="{DynamicResource CopyMenuItem}"/>
-                                
+    
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>  
                             </TextBlock>
-                            </StackPanel>
+                        </Grid>
 
-                            <!-- Grid that hosts Steam frame, server selector and play button -->
-                            <Grid Grid.Row="1">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="140"/>
-                                </Grid.RowDefinitions>
+                        <!-- Grid that hosts Steam frame, divider, server selector and play button -->
+                        <Grid Grid.Row="2"
+                              Grid.Column="1">
 
-                                <!-- Steam frame -->
-                                <Frame x:Name="steamFramePanel"
-                                       Margin="20,0,30,0"
-                                       Height="140"
-                                       VerticalAlignment="Top"
-                                       Source="..\SteamFrame\Login.xaml"
-                                       NavigationUIVisibility="Hidden"
-                                       f:DisableFrameNavigation.Disable="True"/>
-                            </Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="1"
-                                  Margin="12,0,30,25">
+                            <!-- Steam frame -->
+                            <Frame x:Name="steamFramePanel"
+                                   Margin="10,0,30,0"
+                                   Height="140"
+                                   VerticalAlignment="Top"
+                                   Source="..\SteamFramePages\Login.xaml"
+                                   NavigationUIVisibility="Hidden"
+                                   f:DisableFrameNavigation.Disable="True"/>
+
+                            <!-- Grid for divider, server selector and play button -->
+                            <Grid Grid.Row="2"
+                                  Margin="10,0,30,0">
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-
                                 <!-- Divider -->
                                 <Border Height="1"
                                         Background="#FFCA1420"
-                                        VerticalAlignment="Bottom"
-                                        Margin="7,0,0,75"
+                                        VerticalAlignment="Top"
+                                        Margin="10,0,30,0"
                                         CornerRadius="20"
                                         Grid.ColumnSpan="2"
                                         RenderOptions.BitmapScalingMode="Fant">
@@ -823,11 +613,11 @@
                                 <!-- Server selector combobox -->
                                 <ComboBox x:Name="serverSelector"
                                           Height="35"
-                                          Margin="7,0,7,5"
+                                          Margin="0,20,10,20"
                                           Padding="38,2,15,0"
-                                          VerticalAlignment="Bottom"
+                                          VerticalAlignment="Center"
                                           VerticalContentAlignment="Center"
-                                          Foreground="White"
+                                          Foreground="FloralWhite"
                                           FontWeight="Light"
                                           BorderThickness="2"
                                           SelectedIndex="0"
@@ -848,15 +638,24 @@
                                                   Content="{DynamicResource item141}"
                                                   PreviewMouseLeftButtonUp="AddNewServer"
                                                   Style="{DynamicResource ComboBoxItemStyle}"/>
+
+                                    <ComboBox.Effect>
+                                        <DropShadowEffect BlurRadius="15"
+                                                          Direction="-90"
+                                                          RenderingBias="Quality"
+                                                          ShadowDepth="0"
+                                                          Opacity="0.3"/>
+                                    </ComboBox.Effect>
                                 </ComboBox>
 
                                 <!-- Server selector icon -->
                                 <Image Source="..\Resources\Server.png"
+                                       Stretch="Uniform"
                                        RenderOptions.BitmapScalingMode="Fant"
                                        Width="20"
                                        Height="20"
-                                       Margin="17,0,0,13"
-                                       VerticalAlignment="Bottom"
+                                       Margin="10,0,0,1"
+                                       VerticalAlignment="Center"
                                        HorizontalAlignment="Left"
                                        IsHitTestVisible="False"/>
 
@@ -866,14 +665,23 @@
                                         Click="LaunchClient"
                                         RenderOptions.BitmapScalingMode="Fant"
                                         Height="45"
-                                        Margin="7,0,0,0"
+                                        Margin="10,20,0,20"
                                         VerticalAlignment="Bottom"
-                                        Foreground="White"
+                                        Foreground="FloralWhite"
                                         FontFamily="Arial Black"
                                         FontSize="28"
                                         BorderThickness="0"
                                         Content="{DynamicResource item8}"
-                                        Style="{DynamicResource StandardButton}"/>
+                                        Style="{DynamicResource StandardButton}">
+
+                                    <Button.Effect>
+                                        <DropShadowEffect BlurRadius="15"
+                                                          Direction="-90"
+                                                          RenderingBias="Quality"
+                                                          ShadowDepth="0"
+                                                          Opacity="0.3"/>
+                                    </Button.Effect>
+                                </Button>
                             </Grid>
                         </Grid>
                     </Grid>
@@ -881,77 +689,86 @@
             </Border>
 
             <!-- Footer -->
-            <DockPanel Grid.Row="2">
+            <Grid Grid.Row="2">
 
-                <!-- Settings icon -->
-                <Image Source="..\Resources\Settings.png"
-                       RenderOptions.BitmapScalingMode="Fant"
-                       Width="18"
-                       Margin="35,0,0,0"
-                       VerticalAlignment="Center"
-                       RenderTransformOrigin="0.5, 0.5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
 
-                    <Image.RenderTransform>
-                        <RotateTransform x:Name="rotateSettingsIcon" Angle="0"/>
-                    </Image.RenderTransform>
-
-                    <Image.Effect>
-                        <DropShadowEffect BlurRadius="15"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="0"
-                                          Opacity="0.4"/>
-                    </Image.Effect>
-                </Image>
-
-                <!-- Hyperlink to open settings menu -->
-                <TextBlock Margin="8,2,0,0"
+                <StackPanel Orientation="Horizontal"
+                            Margin="35,15,35,15">
+                    
+                    <!-- Settings icon -->
+                    <Image Source="..\Resources\Settings.png"
+                           RenderOptions.BitmapScalingMode="Fant"
+                           Width="18"
                            VerticalAlignment="Center"
-                           FontWeight="Light">
-                    
-                    <!-- Hyperlink for settings window -->
-                    <Hyperlink Click="HyperlinkClick"
-                               Foreground="White">
-                        
-                        <TextBlock Text="{DynamicResource item62}"
-                                   Style="{DynamicResource HyperLinkStyle}">
+                           HorizontalAlignment="Left"
+                           RenderTransformOrigin="0.5, 0.5">
 
-                            <TextBlock.Triggers>
-                                <EventTrigger RoutedEvent="MouseEnter">
-                                    <BeginStoryboard x:Name="beginSettingsIconRotation">
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="rotateSettingsIcon"
-                                                             Storyboard.TargetProperty="Angle"
-                                                             By="0"
-                                                             To="90"
-                                                             Duration="0:0:0.5"
-                                                             FillBehavior="Stop"
-                                                             RepeatBehavior="Forever"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="MouseLeave">
-                                    <StopStoryboard BeginStoryboardName="beginSettingsIconRotation"/>
-                                </EventTrigger>
-                            </TextBlock.Triggers>
-                        </TextBlock>
-                    </Hyperlink>
-                    
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="15"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="0"
-                                          Opacity="0.4"/>
-                    </TextBlock.Effect>
-                </TextBlock>
+                        <Image.Effect>
+                            <DropShadowEffect BlurRadius="15"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="0"
+                                              Opacity="0.3"/>
+                        </Image.Effect>
+
+                        <Image.RenderTransform>
+                            <RotateTransform x:Name="rotateSettingsIcon" Angle="0"/>
+                        </Image.RenderTransform>
+                    </Image>
+
+                    <!-- Hyperlink to open settings menu -->
+                    <TextBlock VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="10,0,0,0">
+
+                        <TextBlock.Effect>
+                            <DropShadowEffect BlurRadius="15"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="0"
+                                              Opacity="0.3"/>
+                        </TextBlock.Effect>
+    
+                        <!-- Hyperlink for settings window -->
+                        <Hyperlink Click="HyperlinkClick"
+                                   Foreground="FloralWhite">
+        
+                            <TextBlock Text="{DynamicResource item62}"
+                                       Style="{DynamicResource HyperLinkStyle}">
+
+                                                    <TextBlock.Triggers>
+                                                        <EventTrigger RoutedEvent="MouseEnter">
+                                                            <BeginStoryboard x:Name="beginSettingsIconRotation">
+                                                                <Storyboard>
+                                                                    <DoubleAnimation Storyboard.TargetName="rotateSettingsIcon"
+                                                                 Storyboard.TargetProperty="Angle"
+                                                                 By="0"
+                                                                 To="90"
+                                                                 Duration="0:0:0.5"
+                                                                 FillBehavior="Stop"
+                                                                 RepeatBehavior="Forever"/>
+                                                                </Storyboard>
+                                                            </BeginStoryboard>
+                                                        </EventTrigger>
+                                                        <EventTrigger RoutedEvent="MouseLeave">
+                                                            <StopStoryboard BeginStoryboardName="beginSettingsIconRotation"/>
+                                                        </EventTrigger>
+                                                    </TextBlock.Triggers>
+                            </TextBlock>
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
 
                 <!-- Copyright notice -->
-                <TextBlock Margin="0,2,35,0"
+                <TextBlock Grid.Column="2"
+                           Margin="35,15,35,15"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Right"
-                           Foreground="White"
-                           FontWeight="Light"
                            Text="{DynamicResource item125}">
 
                     <TextBlock.Effect>
@@ -959,10 +776,10 @@
                                           Direction="-90"
                                           RenderingBias="Quality"
                                           ShadowDepth="0"
-                                          Opacity="0.4"/>
+                                          Opacity="0.3"/>
                     </TextBlock.Effect>
                 </TextBlock>
-            </DockPanel>
+            </Grid>
         </Grid>
 
         <!-- Background fade on unfocus -->

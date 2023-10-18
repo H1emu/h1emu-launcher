@@ -308,7 +308,7 @@ namespace H1EmuLauncher
 
                 System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    SteamFrame.DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{LauncherWindow.launcherInstance.FindResource("item21").ToString().Replace("{0}", $"{depotKey.DepotID}").Replace("{1}", $"{depotKey.Result}")}";
+                    SteamFramePages.DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{LauncherWindow.launcherInstance.FindResource("item21").ToString().Replace("{0}", $"{depotKey.DepotID}").Replace("{1}", $"{depotKey.Result}")}";
                 }));
 
                 Debug.WriteLine($"Got depot key for {depotKey.DepotID} result: {depotKey.Result}");
@@ -600,8 +600,8 @@ namespace H1EmuLauncher
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
-                        SteamFrame._2FA.twoFacInstruction = 1;
+                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\2FA.xaml", UriKind.Relative));
+                        SteamFramePages._2FA.twoFacInstruction = 1;
                     }));
 
                     token.WaitHandle.WaitOne();
@@ -612,8 +612,8 @@ namespace H1EmuLauncher
                 {
                     System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\2FA.xaml", UriKind.Relative));
-                        SteamFrame._2FA.twoFacInstruction = 2;
+                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\2FA.xaml", UriKind.Relative));
+                        SteamFramePages._2FA.twoFacInstruction = 2;
                     }));
 
                     token.WaitHandle.WaitOne();
@@ -640,7 +640,7 @@ namespace H1EmuLauncher
             {
                 System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+                    LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\Login.xaml", UriKind.Relative));
                     CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", LauncherWindow.launcherInstance);
                 }));
 
@@ -653,7 +653,7 @@ namespace H1EmuLauncher
             {
                 System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+                    LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\Login.xaml", UriKind.Relative));
                     CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", LauncherWindow.launcherInstance);
                 }));
 

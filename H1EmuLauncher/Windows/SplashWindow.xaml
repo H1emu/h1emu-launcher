@@ -4,52 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Splash Screen"
-        x:Name="SplashScreen"
+        Title="{DynamicResource item210}"
         MinHeight="100"
-        MaxHeight="100"
+        MaxHeight="150"
         MinWidth="400"
         MaxWidth="800"
-        SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        AllowsTransparency="True"
+        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
-        RenderTransformOrigin="0.5, 0.5"
+        SizeToContent="WidthAndHeight"
         Background="Transparent"
-        Closing="SplashScreenClosing"
-        FontFamily="Bahnschrift">
+        FontFamily="Bahnschrift Light"
+        FontSize="16"
+        Foreground="FloralWhite"
+        ContentRendered="SplashScreenWindowContentRendered">
 
-    <Window.RenderTransform>
-        <ScaleTransform x:Name="WindowScaleTransform"/>
-    </Window.RenderTransform>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Window.Loaded">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-
-                        <DoubleAnimation Storyboard.TargetName="SplashScreen"
-                                         Storyboard.TargetProperty="Opacity"
-                                         From="0" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>
-    </Window.Triggers>
+    <!-- Keep window animations -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+    </WindowChrome.WindowChrome>
 
     <Window.Resources>
         <ResourceDictionary>
@@ -58,35 +31,17 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
-            <Storyboard x:Key="CloseSplashScreen">
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="SplashScreen"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
 
+    <!-- Window grid -->
     <Grid Background="#1C1B22">
-        <Grid MouseLeftButtonDown="SplashScreenMove">
+        
+        <Grid MouseLeftButtonDown="MoveSplashScreenWindow">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <!-- Grainy texture -->
@@ -94,7 +49,14 @@
                 <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
             </Grid.Background>
 
-            <!-- Divider / progress bar -->
+            <!-- Checking for updates text -->
+            <TextBlock Margin="30,10,30,10"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"
+                       FontSize="30"
+                       Text="{DynamicResource item48}"/>
+
+            <!-- Divider -->
             <ProgressBar Grid.Row="1"
                          Height="2"
                          Background="#FFCA1420"
@@ -112,22 +74,11 @@
                 </ProgressBar.Effect>
             </ProgressBar>
 
-            <!-- Checking for updates text -->
-            <TextBlock Padding="30,0,30,0"
-                       VerticalAlignment="Center"
-                       TextAlignment="Center"
-                       FontSize="30"
-                       Foreground="White"
-                       FontWeight="Light"
-                       Text="{DynamicResource item48}"/>
-
             <!-- Please wait text -->
             <TextBlock Grid.Row="2"
+                       Margin="30,10,30,10"
                        TextAlignment="Center"
                        VerticalAlignment="Center"
-                       FontSize="16"
-                       Foreground="White"
-                       FontWeight="Light"
                        Text="{DynamicResource item4}"/>
         </Grid>
     </Grid>

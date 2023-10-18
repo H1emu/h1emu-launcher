@@ -16,31 +16,15 @@ namespace H1EmuLauncher
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
-        private void SplashScreenMove(object sender, MouseButtonEventArgs e)
+        private void MoveSplashScreenWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
 
-        public bool IsCompleted = false;
-
-        private void SplashScreenClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void SplashScreenWindowContentRendered(object sender, System.EventArgs e)
         {
-            if (!IsCompleted)
-            {
-                e.Cancel = true;
-                Storyboard sb = FindResource("CloseSplashScreen") as Storyboard;
-
-                if (sb != null)
-                {
-                    sb.Completed += (s, o) =>
-                    {
-                        IsCompleted = true;
-                        Close();
-                    };
-
-                    sb.Begin();
-                }
-            }
+            SizeToContent = SizeToContent.Manual;
+            SizeToContent = SizeToContent.WidthAndHeight;
         }
     }
 }

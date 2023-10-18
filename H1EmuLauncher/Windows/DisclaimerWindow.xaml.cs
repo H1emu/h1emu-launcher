@@ -22,15 +22,6 @@ namespace H1EmuLauncher
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
-        private void CloseDisclaimer(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.firstTimeUse = 1;
-            Properties.Settings.Default.Save();
-
-            Topmost = true;
-            Close();
-        }
-
         private void ContinueButton(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.firstTimeUse = 1;
@@ -40,7 +31,7 @@ namespace H1EmuLauncher
             Close();
         }
 
-        private void MoveDisclaimer(object sender, MouseButtonEventArgs e)
+        private void MoveDisclaimerWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
@@ -54,13 +45,13 @@ namespace H1EmuLauncher
                 timer.Stop(); 
                 continueButton.Content = FindResource("item167").ToString();
                 continueButton.IsEnabled = true;
-                CloseButton.IsEnabled = true;
+                ExitButton.IsEnabled = true;
             }
             else
                 continueButton.Content = seconds.ToString();
         }
 
-        private void DisclaimerLoaded(object sender, RoutedEventArgs e)
+        private void DisclaimerWindowLoaded(object sender, RoutedEventArgs e)
         {
             SystemSounds.Beep.Play();
 
@@ -72,34 +63,27 @@ namespace H1EmuLauncher
             continueButton.Content = seconds.ToString();
         }
 
-        private void DisclaimerClosed(object sender, EventArgs e)
+        private void DisclaimerWindowContentRendered(object sender, EventArgs e)
+        {
+            SizeToContent = SizeToContent.Manual;
+            SizeToContent = SizeToContent.WidthAndHeight;
+        }
+
+        private void CloseDisclaimerWindow(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.firstTimeUse = 1;
+            Properties.Settings.Default.Save();
+
+            Topmost = true;
+            Close();
+        }
+
+        private void DisclaimerWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (timer.IsEnabled)
                 Environment.Exit(0);
 
             LauncherWindow.launcherInstance.Show();
-        }
-
-        public bool IsCompleted = false;
-
-        private void DisclaimerClosing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (!IsCompleted)
-            {
-                e.Cancel = true;
-                Storyboard sb = FindResource("CloseDisclaimer") as Storyboard;
-
-                if (sb != null)
-                {
-                    sb.Completed += (s, o) =>
-                    {
-                        IsCompleted = true;
-                        Close();
-                    };
-
-                    sb.Begin();
-                }
-            }
         }
     }
 }

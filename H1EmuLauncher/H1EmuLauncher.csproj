@@ -7,11 +7,11 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.8.1</AssemblyVersion>
-	  <FileVersion>2.8.1</FileVersion>
+	  <AssemblyVersion>2.8.2</AssemblyVersion>
+	  <FileVersion>2.8.2</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>2.8.1</Version>
+	  <Version>2.8.2</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -340,7 +340,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="SteamFrame\DownloadStatus.xaml.cs">
+    <Compile Update="SteamFramePages\DownloadStatus.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Properties\Resources.Designer.cs">
@@ -374,7 +374,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="SteamFrame\DownloadStatus.xaml">
+    <Page Update="SteamFramePages\DownloadStatus.xaml">
       <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
       <SubType>Designer</SubType>
     </Page>

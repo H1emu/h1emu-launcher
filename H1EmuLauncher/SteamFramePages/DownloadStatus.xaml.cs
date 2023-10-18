@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using H1EmuLauncher.Classes;
 
-namespace H1EmuLauncher.SteamFrame
+namespace H1EmuLauncher.SteamFramePages
 {
     public partial class DownloadStatus : UserControl
     {
@@ -22,12 +22,9 @@ namespace H1EmuLauncher.SteamFrame
 
         private void CancelDownloadButtonClick(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult dr = CustomMessageBox.ShowResult($"{FindResource("item33")} {Login.version}?{FindResource("item138").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine)}", LauncherWindow.launcherInstance);
-
+            MessageBoxResult dr = CustomMessageBox.Show($"{FindResource("item33")} {Login.version}?{FindResource("item138").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine)}", LauncherWindow.launcherInstance, true, true, false, false);
             if (dr == MessageBoxResult.Yes)
-            {
                 ContentDownloader.tokenSource.Cancel();
-            }
         }
 
         private void StatusLoaded(object sender, RoutedEventArgs e)

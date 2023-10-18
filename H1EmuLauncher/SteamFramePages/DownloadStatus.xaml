@@ -1,0 +1,100 @@
+﻿<UserControl x:Class="H1EmuLauncher.SteamFramePages.DownloadStatus"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignWidth="565"
+      d:DesignHeight="140"
+      FontFamily="Bahnschrift Light"
+      FontSize="16"
+      Foreground="FloralWhite"
+      Loaded="StatusLoaded">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Downloading game text -->
+        <TextBlock Margin="0,0,0,15"
+                   Background="Transparent"
+                   HorizontalAlignment="Center">
+
+            <Run Text="{DynamicResource item26}"/>
+            <Run
+                        Foreground="#FFCA1420" Text="{DynamicResource item135}"/>
+            <Run Text="{DynamicResource item27}"/>
+            <Run x:Name="gameDownloadText"
+                         Foreground="#FFCA1420" Text="----:"/>
+        </TextBlock>
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Status progress bar -->
+            <ProgressBar x:Name="downloadProgress"
+                         Height="35"
+                         Margin="0,0,10,0"
+                         Style="{DynamicResource ProgressBar}">
+
+                <ProgressBar.Effect>
+                    <DropShadowEffect BlurRadius="15"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="0"
+                                      Opacity="0.3"/>
+                </ProgressBar.Effect>
+            </ProgressBar>
+
+            <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
+            <ProgressBar Height="35"
+                         Margin="0,0,10,0"
+                         Background="Transparent"
+                         Style="{DynamicResource ProgressBar}"/>
+
+            <!-- Status text to overlay progress bar -->
+            <TextBlock x:Name="downloadProgressText"
+                       Margin="0,0,10,0"
+                       Padding="12,0,12,0"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"/>
+
+            <!-- Cancel download button -->
+            <Button x:Name="cancelDownloadButton"
+                    Grid.Column="1"
+                    Margin="10,0,0,0"
+                    Padding="20,8,20,8"
+                    FontFamily="Arial Black"
+                    BorderThickness="0"
+                    Click="CancelDownloadButtonClick"
+                    Content="{DynamicResource item28}"
+                    Style="{DynamicResource StandardButton}">
+
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="15"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="0"
+                                      Opacity="0.3"/>
+                </Button.Effect>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

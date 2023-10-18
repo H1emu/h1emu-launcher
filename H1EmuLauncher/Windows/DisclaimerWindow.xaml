@@ -4,53 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="H1Emu Disclaimer"
-        x:Name="Disclaimer"
+        Title="{DynamicResource item208}"
         MaxWidth="600"
-        SizeToContent="WidthAndHeight"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        AllowsTransparency="True"
+        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
-        RenderTransformOrigin="0.5, 0.5"
+        SizeToContent="WidthAndHeight"
         Background="Transparent"
-        FontFamily="Bahnschrift"
+        FontFamily="Bahnschrift Light"
         FontSize="16"
-        Loaded="DisclaimerLoaded"
-        Closing="DisclaimerClosing"
-        Closed="DisclaimerClosed">
+        Foreground="FloralWhite"
+        Loaded="DisclaimerWindowLoaded"
+        ContentRendered="DisclaimerWindowContentRendered"
+        Closing="DisclaimerWindowClosing">
 
-    <Window.RenderTransform>
-        <ScaleTransform x:Name="WindowScaleTransform"/>
-    </Window.RenderTransform>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Window.Loaded">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
+    <!-- Keep window animations -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+    </WindowChrome.WindowChrome>
 
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-
-                        <DoubleAnimation Storyboard.TargetName="Disclaimer"
-                                         Storyboard.TargetProperty="Opacity"
-                                         From="0" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>
-    </Window.Triggers>
-    
     <Window.Resources>
         <ResourceDictionary>
 
@@ -58,33 +30,15 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
-            <Storyboard x:Key="CloseDisclaimer">
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="Disclaimer"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
 
+    <!-- Window grid -->
     <Grid Background="#FF2A2A32">
+        
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="65"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
@@ -99,19 +53,20 @@
             </Grid.Background>
 
             <!-- Grid for logo and exit button -->
-            <Grid MouseLeftButtonDown="MoveDisclaimer"
+            <Grid MouseLeftButtonDown="MoveDisclaimerWindow"
                   Background="Transparent">
 
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
                 <Image Source="..\Resources\H1EmuIcon.png"
-                       Width="150"
-                       Height="40"
-                       Margin="13,15,0,0"
+                       Stretch="Uniform"
+                       Height="45"
+                       Margin="20"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left">
 
@@ -120,22 +75,19 @@
                                           Direction="-90"
                                           RenderingBias="Quality"
                                           ShadowDepth="0"
-                                          Opacity="0.4"/>
+                                          Opacity="0.3"/>
                     </Image.Effect>
                 </Image>
 
                 <!-- Exit button -->
-                <Button x:Name="CloseButton"
-                        Grid.Column="1"
-                        IsEnabled="False"
-                        RenderOptions.BitmapScalingMode="Fant"
-                        Width="45"
+                <Button x:Name="ExitButton"
+                        Grid.Column="2"
+                        Click="CloseDisclaimerWindow"
+                        Width="50"
                         Height="30"
+                        Margin="20"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Right"
-                        BorderThickness="0"
-                        Margin="0,15,15,0"
-                        Click="CloseDisclaimer"
                         Style="{StaticResource CloseButtonStyle}">
 
                     <Button.Effect>
@@ -143,7 +95,7 @@
                                           Direction="-90"
                                           RenderingBias="Quality"
                                           ShadowDepth="0"
-                                          Opacity="0.2"/>
+                                          Opacity="0.3"/>
                     </Button.Effect>
                 </Button>
             </Grid>
@@ -151,7 +103,7 @@
             <!-- Main content in darkened area -->
             <Border Grid.Row="1"
                     Background="#1C1B22"
-                    Margin="15,5,15,15"
+                    Margin="20,0,20,20"
                     UseLayoutRounding="True"
                     CornerRadius="5">
 
@@ -164,6 +116,7 @@
 
                 </Border.Effect>
 
+                <!-- Border for grainy texture -->
                 <Border CornerRadius="5">
 
                     <!-- Grainy texture -->
@@ -173,13 +126,17 @@
 
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="15"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="15"/>
                         </Grid.RowDefinitions>
 
                         <!-- Welcome message -->
-                        <TextBlock Margin="0,30,0,10"
+                        <TextBlock Grid.Row="1"
+                                   Margin="20"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Foreground="#FFED1C24"
@@ -189,20 +146,17 @@
                                    Text="{DynamicResource item158}"/>
 
                         <!-- Main disclaimer message -->
-                        <TextBlock Grid.Row="1"
-                                   Margin="25,0,25,0"
+                        <TextBlock Grid.Row="2"
+                                   Margin="20,0,20,0"
                                    Padding="0,15,0,15"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    TextAlignment="Center"
                                    TextWrapping="Wrap"
-                                   Cursor="Arrow"
                                    FontFamily="Bahnschrift"
-                                   Background="Transparent"
-                                   Foreground="White">
+                                   Background="Transparent">
                 
                         <Run FontWeight="Light"
-                             Foreground="White"
                              Text="{DynamicResource item159}"/>
                 
                         <Run TextDecorations="Underline"
@@ -211,7 +165,6 @@
                              Text="{DynamicResource item160}"/>
                 
                         <Run FontWeight="Light"
-                             Foreground="White"
                              Text="{DynamicResource item161}"/>
                 
                         <Run TextDecorations="Underline"
@@ -226,7 +179,6 @@
                         <LineBreak/>
                 
                         <Run FontWeight="Light"
-                             Foreground="White"
                              Text="{DynamicResource item163}"/>
                 
                         <Run TextDecorations="Underline"
@@ -235,35 +187,44 @@
                              Text="{DynamicResource item164}"/>
                 
                         <Run FontWeight="Light"
-                             Foreground="White"
                              Text="{DynamicResource item165}"/>
                 
                         <LineBreak/>
                         <LineBreak/>
                 
                         <Run FontWeight="Light"
-                             Foreground="White"
                              Text="{DynamicResource item166}"/>
 
                         </TextBlock>
 
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="3"
+                                   Margin="20,0,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
+
                         <!-- Continue button -->
                         <Button x:Name="continueButton"
-                                Grid.Row="2"
+                                Grid.Row="4"
                                 Click="ContinueButton"
-                                RenderOptions.BitmapScalingMode="Fant"
-                                Width="180"
-                                Height="38"
-                                Margin="0,30,0,30"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Foreground="White"
+                                Margin="20"
+                                Padding="25,7,25,7"
                                 FontFamily="Arial Black"
-                                FontSize="18"
                                 BorderThickness="0"
                                 IsEnabled="False"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Center"
                                 Content="{DynamicResource item167}"
-                                Style="{DynamicResource StandardButton}"/>
+                                Style="{DynamicResource StandardButton}">
+
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.3"/>
+                            </Button.Effect>
+                        </Button>
                     </Grid>
                 </Border>
             </Border>

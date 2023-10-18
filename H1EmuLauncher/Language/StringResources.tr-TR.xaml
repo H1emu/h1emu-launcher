@@ -102,7 +102,7 @@
     <system:String x:Key="item120">Lütfen H1Z1'i kapatın.</system:String>
     <system:String x:Key="item121">H1Z1.exe şu anda kullanımda.\n\nLütfen açık H1Z1 örneklerini kapatın.\n\nH1Z1'in tüm işlemlerini sonlandırmak için aşağıdaki butonu kullanabilirsiniz.</system:String>
     <system:String x:Key="item122">Mevcut oyun versiyonu:</system:String>
-    <system:String x:Key="item124">Başlatıcı Versiyonu v</system:String>
+    <system:String x:Key="item124">Başlatıcı versiyonu</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
     <system:String x:Key="item126">Ana Geliştirici</system:String>
     <system:String x:Key="item127">Geliştiriciler</system:String>
@@ -148,9 +148,8 @@
     <system:String x:Key="item170">Finansal Katkıda Bulunanlar</system:String>
     <system:String x:Key="item171">Oyunun 22 Aralık 2016 sürümü, bu daha güncel ve proje tarafından destekleniyor.</system:String>
     <system:String x:Key="item172">Oyunun 15 Ocak 2015 sürümü, bu 2016 kadar çok güncelleme almıyor ve özelliklerden yoksun olabilir.</system:String>
-    <system:String x:Key="item173">Hata bildir...</system:String>
-    <system:String x:Key="item174">H1Emu Sunucu dosyalarını kullanırken oyunda karşılaştığınız hataları buradan bildirebilirsiniz:</system:String>
-    <system:String x:Key="item175">H1Emu Başlatıcı'yı kullanırken karşılaştığınız hataları buradan bildirebilirsiniz:</system:String>
+    <system:String x:Key="item174">H1Emu sunucu dosyalarındaki hatayı bildirin</system:String>
+    <system:String x:Key="item175">H1Emu başlatıcısıyla ilgili bir hatayı bildirin</system:String>
     <system:String x:Key="item176">tek oyunculu verilerinizi silme.</system:String>
     <system:String x:Key="item177">Tek oyunculu veri bulunamadı.</system:String>
     <system:String x:Key="item178">Tek oyunculu verilerinizi silmek, karşılaştığınız sorunları çözebilir, tüm ilerlemenizi kaybedeceğiniz konusunda uyarınız.\n\nDevam etmek istiyor musunuz?</system:String>
@@ -170,4 +169,21 @@
     <system:String x:Key="item192">Silmek</system:String>
     <system:String x:Key="item193">Kopyala</system:String>
     <system:String x:Key="item194">Çıkış</system:String>
+    <system:String x:Key="item195">Oyun Dosyaları</system:String>
+    <system:String x:Key="item196">Hesap Anahtarı</system:String>
+    <system:String x:Key="item197">Seçenekler</system:String>
+    <system:String x:Key="item198">Hata Raporları</system:String>
+    <system:String x:Key="item199">Hakkında</system:String>
+    <system:String x:Key="item200">Seçilen dil</system:String>
+    <system:String x:Key="item201">Resim atlıkarıncasını göster</system:String>
+    <system:String x:Key="item202">Sistem tepsisine küçültün</system:String>
+    <system:String x:Key="item203">Açık</system:String>
+    <system:String x:Key="item204">Kapalı</system:String>
+    <system:String x:Key="item205">RAPOR</system:String>
+    <system:String x:Key="item206">Ayarlar</system:String>
+    <system:String x:Key="item207">Sunucu Ekle</system:String>
+    <system:String x:Key="item208">Sorumluluk reddi Beyanı</system:String>
+    <system:String x:Key="item209">İleti</system:String>
+    <system:String x:Key="item210">Başlangıç ​​Ekranı</system:String>
+    <system:String x:Key="item211">Güncelleme Uygun</system:String>
 </ResourceDictionary>

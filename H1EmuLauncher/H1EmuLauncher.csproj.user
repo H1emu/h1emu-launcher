@@ -9,40 +9,43 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="SettingsPages\About.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SettingsPages\AccountKey.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SettingsPages\GameFiles.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SettingsPages\Options.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SettingsPages\ReportBug.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\DisclaimerWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="SteamFrame\2FA.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Windows\AboutPageWindow.xaml.cs">
+    <Compile Update="SteamFramePages\2FA.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\AddServerWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\AccountKeyWindow.xaml.cs">
+    <Compile Update="SteamFramePages\DownloadComplete.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\ConfirmBoxWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="SteamFrame\DownloadComplete.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="SteamFrame\GameInfo.xaml.cs">
+    <Compile Update="SteamFramePages\GameInfo.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\LauncherWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="SteamFrame\Login.xaml.cs">
+    <Compile Update="SteamFramePages\Login.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\MessageBoxWindow.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Windows\ReportBugWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\SettingsWindow.xaml.cs">
@@ -70,10 +73,22 @@
     <Resource Update="Language\StringResources.hr-HR.xaml">
       <SubType>Designer</SubType>
     </Resource>
-    <Page Update="Windows\DisclaimerWindow.xaml">
+    <Page Update="SettingsPages\About.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\ReportBugWindow.xaml">
+    <Page Update="SettingsPages\AccountKey.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SettingsPages\GameFiles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SettingsPages\Options.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SettingsPages\ReportBug.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\DisclaimerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Resource Update="Language\StringResources.zh-CN.xaml">
@@ -103,34 +118,25 @@
     <Resource Update="Language\StringResources.es-ES.xaml">
       <SubType>Designer</SubType>
     </Resource>
-    <Page Update="SteamFrame\2FA.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="Windows\AboutPageWindow.xaml">
+    <Page Update="SteamFramePages\2FA.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\AddServerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\AccountKeyWindow.xaml">
+    <Page Update="SteamFramePages\DownloadComplete.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\ConfirmBoxWindow.xaml">
+    <Page Update="SteamFramePages\DownloadStatus.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SteamFrame\DownloadComplete.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="SteamFrame\DownloadStatus.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="SteamFrame\GameInfo.xaml">
+    <Page Update="SteamFramePages\GameInfo.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\LauncherWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SteamFrame\Login.xaml">
+    <Page Update="SteamFramePages\Login.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\UpdateWindow.xaml">

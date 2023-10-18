@@ -37,7 +37,7 @@ namespace H1EmuLauncher
         {
             if (e.Key == Key.Enter)
             {
-                CustomMessageBox.result = true;
+                CustomMessageBox.buttonPressed = MessageBoxResult.OK;
                 Close();
             }
         }
@@ -67,21 +67,21 @@ namespace H1EmuLauncher
                 }
             }
 
-            CustomMessageBox.result = true;
+            CustomMessageBox.buttonPressed = MessageBoxResult.OK;
             Topmost = true;
             Close();
         }
 
         private void CloseAddServer(object sender, RoutedEventArgs e)
         {
-            CustomMessageBox.result = false;
+            CustomMessageBox.buttonPressed = MessageBoxResult.Cancel;
             Topmost = true;
             Close();
         }
 
         private void CancelButton(object sender, RoutedEventArgs e)
         {
-            CustomMessageBox.result = false;
+            CustomMessageBox.buttonPressed = MessageBoxResult.Cancel;
             Topmost = true;
             Close();
         }
@@ -113,28 +113,15 @@ namespace H1EmuLauncher
             LauncherWindow.launcherInstance.UnfocusPropertiesAnimationShow.Begin();
         }
 
-        public bool IsCompleted = false;
+        private void AddServerContentRendered(object sender, EventArgs e)
+        {
+            SizeToContent = SizeToContent.Manual;
+            SizeToContent = SizeToContent.WidthAndHeight;
+        }
 
         private void AddServerClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!IsCompleted)
-            {
-                LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
-
-                e.Cancel = true;
-                Storyboard sb = FindResource("CloseAddServer") as Storyboard;
-
-                if (sb != null)
-                {
-                    sb.Completed += (s, o) =>
-                    {
-                        IsCompleted = true;
-                        Close();
-                    };
-
-                    sb.Begin();
-                }
-            }
+            LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
         }
     }
 }

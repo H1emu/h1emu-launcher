@@ -1,4 +1,5 @@
-﻿using System;
+﻿using H1EmuLauncher.SettingsPages;
+using System;
 using System.Windows;
 
 namespace H1EmuLauncher.Classes
@@ -65,6 +66,26 @@ namespace H1EmuLauncher.Classes
 
             LauncherWindow.launcherInstance.Resources.MergedDictionaries.Clear();
             LauncherWindow.launcherInstance.Resources.MergedDictionaries.Add(LoadFile());
+
+            SettingsWindow.settingsInstance.Resources.MergedDictionaries.Clear();
+            SettingsWindow.settingsInstance.Resources.MergedDictionaries.Add(LoadFile());
+
+            GameFiles.gameFilesInstance.Resources.MergedDictionaries.Clear();
+            GameFiles.gameFilesInstance.Resources.MergedDictionaries.Add(LoadFile());
+
+            AccountKey.accountKeyInstance.Resources.MergedDictionaries.Clear();
+            AccountKey.accountKeyInstance.Resources.MergedDictionaries.Add(LoadFile());
+
+            Options.optionsInstance.Resources.MergedDictionaries.Clear();
+            Options.optionsInstance.Resources.MergedDictionaries.Add(LoadFile());
+
+            ReportBug.reportBugInstance.Resources.MergedDictionaries.Clear();
+            ReportBug.reportBugInstance.Resources.MergedDictionaries.Add(LoadFile());
+
+            About.aboutInstance.Resources.MergedDictionaries.Clear();
+            About.aboutInstance.Resources.MergedDictionaries.Add(LoadFile());
+
+            Application.Current.Resources.MergedDictionaries.Clear();
         }
     }
 }

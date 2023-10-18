@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using H1EmuLauncher.Classes;
 
-namespace H1EmuLauncher.SteamFrame
+namespace H1EmuLauncher.SteamFramePages
 {
     public partial class GameInfo : UserControl
     {

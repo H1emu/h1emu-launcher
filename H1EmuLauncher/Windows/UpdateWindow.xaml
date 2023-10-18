@@ -4,88 +4,44 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Update Available"
-        x:Name="Update"
-        MinWidth="450"
-        MaxWidth="450"
+        Title="{DynamicResource item211}"
+        MinWidth="350"
+        MaxWidth="350"
         MinHeight="200"
-        MaxHeight="670"
-        SizeToContent="WidthAndHeight"
+        MaxHeight="700"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        AllowsTransparency="True"
+        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
-        RenderTransformOrigin="0.5, 0.5"
+        SizeToContent="WidthAndHeight"
         Background="Transparent"
-        Loaded="MainUpdateWindowLoaded"
-        Closing="MainUpdateWindowClosing"
-        FontFamily="Bahnschrift">
+        FontFamily="Bahnschrift Light"
+        FontSize="16"
+        Foreground="FloralWhite"
+        Loaded="UpdateWindowLoaded"
+        ContentRendered="UpdateWindowContentRendered"
+        Closing="UpdateWindowClosing">
 
-    <Window.RenderTransform>
-        <ScaleTransform x:Name="WindowScaleTransform"/>
-    </Window.RenderTransform>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Window.Loaded">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-
-                        <DoubleAnimation Storyboard.TargetName="Update"
-                                         Storyboard.TargetProperty="Opacity"
-                                         From="0" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>
-    </Window.Triggers>
+    <!-- Keep window animations -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+    </WindowChrome.WindowChrome>
 
     <Window.Resources>
         <ResourceDictionary>
-
+            
             <!-- Load dictionary into xaml resources just so we can see on the designer -->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
-            <Storyboard x:Key="CloseUpdate">
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="Update"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
-
+    
+    <!-- Window grid -->
     <Grid Background="#FF2A2A32">
+        
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
@@ -100,19 +56,20 @@
             </Grid.Background>
 
             <!-- Grid for logo and exit button -->
-            <Grid MouseLeftButtonDown="MoveWindow"
+            <Grid MouseLeftButtonDown="MoveUpdateWindow"
                   Background="Transparent">
 
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
                 <Image Source="..\Resources\H1EmuIcon.png"
-                       Width="130"
-                       Height="35"
-                       Margin="13,14,0,0"
+                       Stretch="Uniform"
+                       Height="30"
+                       Margin="15"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left">
 
@@ -121,21 +78,19 @@
                                           Direction="-90"
                                           RenderingBias="Quality"
                                           ShadowDepth="0"
-                                          Opacity="0.4"/>
+                                          Opacity="0.3"/>
                     </Image.Effect>
                 </Image>
 
                 <!-- Exit button -->
                 <Button x:Name="closeButton"
-                        Grid.Column="1"
-                        RenderOptions.BitmapScalingMode="Fant"
-                        Width="44"
-                        Height="30"
+                        Grid.Column="2"
+                        Click="CloseUpdateWindow"
+                        Width="40"
+                        Height="25"
+                        Margin="15"
                         VerticalAlignment="Top"
                         HorizontalAlignment="Right"
-                        BorderThickness="0"
-                        Click="CloseUpdater"
-                        Margin="0,14,15,0"
                         Style="{StaticResource CloseButtonStyle}">
 
                     <Button.Effect>
@@ -143,7 +98,7 @@
                                           Direction="-90"
                                           RenderingBias="Quality"
                                           ShadowDepth="0"
-                                          Opacity="0.2"/>
+                                          Opacity="0.3"/>
                     </Button.Effect>
                 </Button>
             </Grid>
@@ -151,7 +106,7 @@
             <!-- Main content in darkened area -->
             <Border Grid.Row="1"
                     Background="#1C1B22"
-                    Margin="15,10,15,15"
+                    Margin="15,0,15,15"
                     UseLayoutRounding="True"
                     CornerRadius="5">
 
@@ -164,6 +119,7 @@
 
                 </Border.Effect>
 
+                <!-- Border for grainy texture -->
                 <Border CornerRadius="5">
 
                     <!-- Grainy texture -->
@@ -173,81 +129,103 @@
 
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
 
                         <!-- Main text message -->
-                        <TextBlock Margin="50,20,50,20"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
-                                   FontSize="18"
-                                   FontWeight="Light"
-                                   Foreground="FloralWhite"
+                        <TextBlock Grid.Row="1"
+                                   Margin="50,20,50,20"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"
                                    Text="{DynamicResource item1}"/>
+
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="2"
+                                   Margin="20,0,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
 
                         <!-- Update button -->
                         <Button x:Name="updateButton"
-                                Grid.Row="1"
+                                Grid.Row="3"
                                 Click="UpdateButtonClick"
-                                RenderOptions.BitmapScalingMode="Fant"
-                                Width="292"
-                                Height="44"
-                                HorizontalAlignment="Center"
-                                Foreground="White"
+                                Margin="20,20,20,10"
+                                Padding="25,7,25,7"
                                 FontFamily="Arial Black"
-                                FontSize="24"
                                 BorderThickness="0"
+                                HorizontalAlignment="Center"
                                 Content="{DynamicResource item2}"
-                                Style="{DynamicResource StandardButton}"/>
+                                Style="{DynamicResource StandardButton}">
 
-                        <!-- Not now button -->
+                            <Button.Effect>
+                                <DropShadowEffect BlurRadius="15"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="0"
+                                                  Opacity="0.3"/>
+                            </Button.Effect>
+                        </Button>
+
+                        <!-- Not now hyperlink button -->
                         <TextBlock x:Name="notNowText"
-                                   Grid.Row="2"
-                                   Margin="50,15,50,15"
+                                   Grid.Row="4"
+                                   Margin="20,0,20,20"
+                                   FontSize="14"
                                    VerticalAlignment="Bottom"
-                                   HorizontalAlignment="Center"
-                                   FontSize="16">
+                                   HorizontalAlignment="Center">
                 
                             <Hyperlink x:Name="notNowHyperlink"
-                                        Click="NotNowClick"
-                                        Foreground="White">
+                                       Click="NotNowClick"
+                                       Foreground="FloralWhite">
                     
                                 <TextBlock Text="{DynamicResource item67}"
-                                            Style="{DynamicResource HyperLinkStyle}"/>
+                                           Style="{DynamicResource HyperLinkStyle}"/>
                     
                             </Hyperlink>
                         </TextBlock>
 
+                        <!-- Progress bar for setup download -->
                         <Border x:Name="updateProgressBarRow"
-                                Grid.Row="3"
+                                Grid.Row="5"
                                 Visibility="Collapsed">
-
+                            
                             <Grid x:Name="updateProgressBarRowContent">
-                                <!-- Setup download progress bar -->
+                                
+                                <!-- Main progress bar -->
                                 <ProgressBar x:Name="downloadSetupProgress"
                                              Height="25"
-                                             Margin="64,20,64,20"
-                                             Style="{DynamicResource ProgressBar}"/>
+                                             Margin="20,0,20,20"
+                                             Style="{DynamicResource ProgressBar}">
+                                    
+                                    <ProgressBar.Effect>
+                                        <DropShadowEffect BlurRadius="15"
+                                                          Direction="-90"
+                                                          RenderingBias="Quality"
+                                                          ShadowDepth="0"
+                                                          Opacity="0.2"/>
+                                    </ProgressBar.Effect>
+                                </ProgressBar>
 
                                 <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
                                 <ProgressBar Height="25"
-                                             Margin="64,20,64,20"
+                                             Margin="20,0,20,20"
                                              Background="Transparent"
                                              Style="{DynamicResource ProgressBar}"/>
 
                                 <!-- Status text to overlay progress bar -->
-                                <TextBlock x:Name="downloadSetupProgressText"
-                                           HorizontalAlignment="Center"
+                                <TextBlock x:Name="downloadSetupProgressText" Text="Downloading..."
+                                           Margin="20,0,20,20"
+                                           FontSize="12"
                                            VerticalAlignment="Center"
-                                           Margin="0,0,0,1"
-                                           Foreground="White"
-                                           FontWeight="Light"
-                                           Background="Transparent"/>
+                                           HorizontalAlignment="Center"/>
                             </Grid>
                         </Border>
                     </Grid>

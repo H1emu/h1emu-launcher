@@ -1,0 +1,201 @@
+﻿<Page x:Class="H1EmuLauncher.SettingsPages.About"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:H1EmuLauncher.SettingsPages"
+      mc:Ignorable="d" 
+      d:DesignWidth="735"
+      d:DesignHeight="450"
+      Height="364"
+      Title="About"
+      FontFamily="Bahnschrift"
+      FontSize="16">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Border Background="#1C1B22"
+            UseLayoutRounding="True"
+            CornerRadius="0,5,5,5">
+
+        <Grid>
+            
+            <!-- Grainy texture -->
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+            </Grid.Background>
+
+            <Grid>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+
+                    <!-- List of everyone who helped on the project -->
+                    <TextBlock Margin="25,25,25,25"
+                               Width="600"
+                               Background="Transparent"
+                               Cursor="Arrow"
+                               TextAlignment="Center"
+                               FontWeight="Light"
+                               TextWrapping="Wrap">
+
+                    <!-- Lead development-->
+                    <Run FontSize="18"
+                         Foreground="#FFED1C24"
+                         TextDecorations="Underline"
+                         Text="{DynamicResource item126}"/>
+
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <Run Foreground="FloralWhite"
+                         Text="• Kentin • Meme • Avcio •"/>
+        
+                    <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <!-- Administrators -->
+                    <Run FontSize="18"
+                         Foreground="#FFED1C24"
+                         FontWeight="Light"
+                         TextDecorations="Underline"
+                         Text="{DynamicResource item128}"/>
+        
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <Run Foreground="FloralWhite"
+                         Text="• LcplReaper • Traqnar • Meme • Avcio •"/>
+
+                    <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
+            
+                    <!-- Developers -->
+                    <Run FontSize="18"
+                         Foreground="#FFED1C24"
+                         FontWeight="Light"
+                         TextDecorations="Underline"
+                         Text="{DynamicResource item127}"/>
+        
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <Run Foreground="FloralWhite"
+                         Text="• Eavilaswayce • Ghost • doggo • KOBUNIX •"/>
+
+                    <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <!-- Contributors -->
+                    <Run FontSize="18"
+                         Foreground="#FFED1C24"
+                         FontWeight="Light"
+                         TextDecorations="Underline"
+                         Text="{DynamicResource item129}"/>
+        
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <Run Foreground="FloralWhite"
+                         Text="• Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo • Torenka • Moonlighter • Loopa • Cyberhound • Cur7 • AlzaZhang •"/>
+
+                    <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <!-- Moderators -->
+                    <Run FontSize="18"
+                         Foreground="#FFED1C24"
+                         FontWeight="Light"
+                         TextDecorations="Underline"
+                         Text="{DynamicResource item130}"/>
+        
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <Run Foreground="FloralWhite"
+                         Text="• TCM • Tone • Chrisisbrown • Movezie • Andrew~ • RywaZ • Ultrax •"/>
+        
+                    <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
+            
+                    <!-- Support -->
+                    <Run FontSize="18"
+                         Foreground="#FFED1C24"
+                         FontWeight="Light"
+                         TextDecorations="Underline"
+                         Text="{DynamicResource item131}"/>
+
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <Run Foreground="FloralWhite"
+                         Text="• Arrcy • Booze • Dave • rob318us • SONNY •"/>
+
+                    <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <!-- Financial contributors -->
+                    <Run FontSize="18"
+                         Foreground="#FFED1C24"
+                         FontWeight="Light"
+                         TextDecorations="Underline"
+                         Text="{DynamicResource item170}"/>
+
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <Run Foreground="FloralWhite"
+                         Text="• Booze • Mahoaga • TimmyFPS • LegalViewbot • remapz • Christer D • A Mad Midget • Twin • piapiacrack • AlvaZhang • RensareN • willow •"/>
+
+                    <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
+            
+                    <!-- Translators -->
+                    <Run FontSize="18"
+                         Foreground="#FFED1C24"
+                         FontWeight="Light"
+                         TextDecorations="Underline"
+                         Text="{DynamicResource item136}"/>
+
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <Run Foreground="FloralWhite"
+                         Text="• AlzaZhang (Chinese) • Panda &amp; MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) • SpjonK (Swedish) •"/>
+
+                    <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <!-- Thank to community message -->
+                    <Run Foreground="FloralWhite"
+                         Text="{DynamicResource item132}"/>
+        
+                    <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
+                    <LineBreak/>
+        
+                    <!-- Launcher made by Eavilaswayce message -->
+                    <Run Foreground="FloralWhite"
+                         Text="{DynamicResource item169}"/>
+
+                    </TextBlock>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Border>
+</Page>

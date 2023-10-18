@@ -36,7 +36,10 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="imageCarouselVisibility" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="autoMinimise" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

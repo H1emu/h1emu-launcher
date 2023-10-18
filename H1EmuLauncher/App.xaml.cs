@@ -1,4 +1,5 @@
-﻿using System;
+﻿using H1EmuLauncher.Classes;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
@@ -20,6 +21,10 @@ namespace H1EmuLauncher
             }
 
             Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 30 });
+
+            // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
+            Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
             LauncherWindow.rawArgs = e.Args;
             new UpdateWindow();

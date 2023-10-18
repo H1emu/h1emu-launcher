@@ -7,7 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using H1EmuLauncher.SteamFrame;
+using H1EmuLauncher.SteamFramePages;
 using SteamKit2;
 using SteamKit2.CDN;
 

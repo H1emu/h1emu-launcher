@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="H1EmuLauncher.SteamFrame._2FA"
+﻿<UserControl x:Class="H1EmuLauncher.SteamFramePages._2FA"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,9 @@
       mc:Ignorable="d" 
       d:DesignWidth="565"
       d:DesignHeight="140"
-      FontFamily="Bahnschrift Light">
+      FontFamily="Bahnschrift Light"
+      FontSize="16"
+      Foreground="FloralWhite">
 
     <UserControl.Resources>
         <ResourceDictionary>
@@ -29,6 +31,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -39,56 +42,58 @@
 
         <!-- Textbox to enter auth code -->
         <TextBox x:Name="authBox"
-                 Grid.Row="1"
                  Height="35"
-                 Padding="30,0,35,0"
-                 Margin="0,0,7,0"
+                 Padding="30,1,35,0"
+                 Margin="0,0,10,0"
+                 VerticalAlignment="Center"
                  VerticalContentAlignment="Center"
-                 VerticalAlignment="Top"
                  CharacterCasing="Upper"
                  IsHitTestVisible="True"
-                 FontSize="16"
                  GotFocus="AuthBoxGotFocus"
                  LostFocus="AuthBoxLostFocus"
                  KeyDown="_2FAKeyDown"
-                 Style="{DynamicResource TextBoxPrimaryStyle}"/>
+                 Style="{DynamicResource TextBoxPrimaryStyle}">
+
+            <TextBox.Effect>
+                <DropShadowEffect BlurRadius="15"
+                                  Direction="-90"
+                                  RenderingBias="Quality"
+                                  ShadowDepth="0"
+                                  Opacity="0.3"/>
+            </TextBox.Effect>
+        </TextBox>
 
         <!-- Hint for auth code textbox -->
         <TextBlock x:Name="authHint"
-                   Grid.Row="1"
-                   Padding="35,8,0,0"
-                   Height="35"
-                   VerticalAlignment="Top"
+                   Margin="0,0,10,0"
+                   Padding="35,0,0,0"
+                   VerticalAlignment="Center"
                    IsHitTestVisible="False"
-                   Foreground="White"
-                   FontSize="16"
                    Text="{DynamicResource item77}"/>
 
         <!-- Padlock image -->
         <Image Source="..\Resources\Padlock.png"
-               Grid.Row="1"
                RenderOptions.BitmapScalingMode="Fant"
-               Height="20"
-               Width="25"
-               VerticalAlignment="Top"
+               Width="18"
+               Height="18"
+               VerticalAlignment="Center"
                HorizontalAlignment="Left"
-               Margin="8,7,0,6"/>
+               Margin="10,0,0,1"/>
 
         <!-- Button to submit 2fa code -->
         <Button x:Name="twoFAButton"
-                Grid.Row="1"
                 RenderOptions.BitmapScalingMode="Fant"
-                VerticalAlignment="Top"
+                Height="18"
+                Width="18"
+                VerticalAlignment="Center"
                 HorizontalAlignment="Right"
-                Height="20"
-                Width="20"
-                Margin="0,7,17,0"
+                Margin="0,0,20,1"
                 Click="ContinueButton"
                 BorderThickness="0"
                 Style="{DynamicResource EnterButton}">
             
             <Button.Background>
-                <ImageBrush ImageSource="..\Resources\Arrow.png"/>
+                <ImageBrush ImageSource="..\Resources\Arrow.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
 
@@ -97,11 +102,11 @@
                Source="..\Resources\Loading.png"
                RenderOptions.BitmapScalingMode="Fant"
                RenderTransformOrigin="0.5, 0.5"
-               VerticalAlignment="Top"
+               Margin="0,0,20,1"
+               Height="18"
+               Width="18"
+               VerticalAlignment="Center"
                HorizontalAlignment="Right"
-               Margin="0,7,17,0"
-               Height="20"
-               Width="20"
                Visibility="Hidden">
 
             <Image.RenderTransform>
@@ -112,11 +117,9 @@
         <!-- Please enter 2 factor code text -->
         <TextBlock x:Name="twoFacInstructionText"
                    Grid.Column="1"
-                   Margin="7,0,0,0"
+                   Margin="10,0,0,0"
                    VerticalAlignment="Top"
                    TextWrapping="Wrap"
-                   FontSize="16"
-                   Foreground="White"
                    Text="{DynamicResource item78}"/>
     </Grid>
 </UserControl>

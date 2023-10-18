@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using H1EmuLauncher.Classes;
 
-namespace H1EmuLauncher.SteamFrame
+namespace H1EmuLauncher.SteamFramePages
 {
     public partial class DownloadComplete : UserControl
     {
@@ -18,7 +18,7 @@ namespace H1EmuLauncher.SteamFrame
 
         private void BackToLoginPage(object sender, RoutedEventArgs e)
         {
-            LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFrame\\Login.xaml", UriKind.Relative));
+            LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\Login.xaml", UriKind.Relative));
         }
     }
 }

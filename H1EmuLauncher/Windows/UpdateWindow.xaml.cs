@@ -304,49 +304,34 @@ namespace H1EmuLauncher
             Close();
         }
 
-        private void CloseUpdater(object sender, RoutedEventArgs e)
+        private void MoveUpdateWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void UpdateWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            SystemSounds.Beep.Play();
+        }
+
+        private void UpdateWindowContentRendered(object sender, EventArgs e)
+        {
+            SizeToContent = SizeToContent.Manual;
+            SizeToContent = SizeToContent.WidthAndHeight;
+        }
+
+        private void CloseUpdateWindow(object sender, RoutedEventArgs e)
         {
             Topmost = true;
             Environment.Exit(0);
         }
 
-        private void MoveWindow(object sender, MouseButtonEventArgs e)
+        private void UpdateWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            DragMove();
-        }
+            Hide();
 
-        private void MainUpdateWindowLoaded(object sender, RoutedEventArgs e)
-        {
-            SystemSounds.Beep.Play();
-        }
-
-        public bool IsCompleted = false;
-
-        private void MainUpdateWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (!IsCompleted)
-            {
-                e.Cancel = true;
-                Storyboard sb = FindResource("CloseUpdate") as Storyboard;
-
-                if (sb != null)
-                {
-                    sb.Completed += (s, o) =>
-                    {
-                        IsCompleted = true;
-                        Close();
-                    };
-
-                    sb.Begin();
-                }
-            }
-            else
-            {
-                Hide();
-
-                LauncherWindow la = new();
-                la.Show();
-            }
+            LauncherWindow la = new();
+            la.Show();
         }
     }
 }

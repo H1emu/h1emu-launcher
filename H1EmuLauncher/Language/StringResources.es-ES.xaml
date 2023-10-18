@@ -102,7 +102,7 @@
     <system:String x:Key="item120">Por favor cierra H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe está en ejecución.\n\nCierre todas las instancias abiertas de H1Z1.\n\nPuede usar el botón a continuación para eliminar todos los procesos de H1Z1.</system:String>
     <system:String x:Key="item122">Versión De Juego Actual:</system:String>
-    <system:String x:Key="item124">Versión del launcher v</system:String>
+    <system:String x:Key="item124">Versión del launcher</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
     <system:String x:Key="item126">Desarrolladores líder</system:String>
     <system:String x:Key="item127">Desarrolladores</system:String>
@@ -148,9 +148,8 @@
     <system:String x:Key="item170">Contribuyentes Financieros</system:String>
     <system:String x:Key="item171">Versión del juego del 22 de diciembre de 2016, más actualizada y compatible con el proyecto.</system:String>
     <system:String x:Key="item172">Versión del juego del 15 de enero de 2015, no recibe tantas actualizaciones como en 2016 y es posible que carezca de funciones.</system:String>
-    <system:String x:Key="item173">Reportar un error...</system:String>
-    <system:String x:Key="item174">Aquí puede informar cualquier error que haya experimentado en el juego mientras usaba los archivos del servidor H1Emu:</system:String>
-    <system:String x:Key="item175">Aquí puede informar cualquier error que haya experimentado al usar H1Emu Launcher:</system:String>
+    <system:String x:Key="item174">Informar un error con los archivos del servidor H1Emu</system:String>
+    <system:String x:Key="item175">Informar un error con el lanzador H1Emu</system:String>
     <system:String x:Key="item176">borrando tus datos de un solo jugador.</system:String>
     <system:String x:Key="item177">No se encontraron datos de un solo jugador.</system:String>
     <system:String x:Key="item178">Eliminar los datos de un jugador puede solucionar cualquier problema al que se esté enfrentando; tenga en cuenta que perderá todo el progreso.\n\n¿Desea continuar?</system:String>
@@ -170,4 +169,21 @@
     <system:String x:Key="item192">Borrar</system:String>
     <system:String x:Key="item193">Copiar</system:String>
     <system:String x:Key="item194">Salida</system:String>
+    <system:String x:Key="item195">Archivos de Juego</system:String>
+    <system:String x:Key="item196">Clave de Cuenta</system:String>
+    <system:String x:Key="item197">Opciones</system:String>
+    <system:String x:Key="item198">Informes de Errores</system:String>
+    <system:String x:Key="item199">Acerca de</system:String>
+    <system:String x:Key="item200">Idioma seleccionado</system:String>
+    <system:String x:Key="item201">Mostrar carrusel de imágenes</system:String>
+    <system:String x:Key="item202">Minimizar a la bandeja del sistema</system:String>
+    <system:String x:Key="item203">En</system:String>
+    <system:String x:Key="item204">Apagado</system:String>
+    <system:String x:Key="item205">INFORME</system:String>
+    <system:String x:Key="item206">Configuración</system:String>
+    <system:String x:Key="item207">Agregar Servidor</system:String>
+    <system:String x:Key="item208">Descargo de Responsabilidad</system:String>
+    <system:String x:Key="item209">Mensaje</system:String>
+    <system:String x:Key="item210">Pantalla de Bienvenida</system:String>
+    <system:String x:Key="item211">Actualización Disponible</system:String>
 </ResourceDictionary>

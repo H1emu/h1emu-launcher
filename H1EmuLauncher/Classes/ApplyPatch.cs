@@ -13,7 +13,7 @@ namespace H1EmuLauncher.Classes
 
         public static void CheckPatch()
         {
-            gameVersionString = SettingsWindow.gameVersionString;
+            gameVersionString = SettingsPages.GameFiles.gameVersionString;
 
             switch (gameVersionString)
             {
@@ -49,7 +49,7 @@ namespace H1EmuLauncher.Classes
                 case "processBeingUsed":
                     Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance, true);
+                        CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance, false, false, true);
                     }));
                     break;
                 default:

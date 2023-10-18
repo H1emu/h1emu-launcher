@@ -3,7 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 
-namespace H1EmuLauncher.SteamFrame
+namespace H1EmuLauncher.SteamFramePages
 {
     public partial class _2FA : UserControl
     {

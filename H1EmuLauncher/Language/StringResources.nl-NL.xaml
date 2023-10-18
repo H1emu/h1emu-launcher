@@ -102,7 +102,7 @@
     <system:String x:Key="item120">Sluit alstublieft H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe is momenteel in gebruik.\n\nSluit alle geopende exemplaren van H1Z1.\n\nU kunt de onderstaande knop gebruiken om alle processen van H1Z1 te beëindigen.</system:String>
     <system:String x:Key="item122">Huidige spel versie:</system:String>
-    <system:String x:Key="item124">Launcher versiev</system:String>
+    <system:String x:Key="item124">Launcher versie</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
     <system:String x:Key="item126">Hoofd-Ontwikelaar</system:String>
     <system:String x:Key="item127">Ontwikkelaars</system:String>
@@ -148,9 +148,8 @@
     <system:String x:Key="item170">Financiële Bijdragers</system:String>
     <system:String x:Key="item171">22 december 2016 versie van het spel, deze is meer up-to-date en wordt ondersteund door het project.</system:String>
     <system:String x:Key="item172">15 januari 2015 versie van de game, deze ontvangt niet zoveel updates als 2016 en het kan zijn dat er functies ontbreken.</system:String>
-    <system:String x:Key="item173">Een fout melden...</system:String>
-    <system:String x:Key="item174">Hier kun je eventuele bugs melden die je in het spel hebt ondervonden tijdens het gebruik van de H1Emu Server-bestanden:</system:String>
-    <system:String x:Key="item175">Hier kunt u eventuele bugs melden die u hebt ondervonden tijdens het gebruik van de H1Emu Launcher:</system:String>
+    <system:String x:Key="item174">Rapporteer een bug met de H1Emu serverbestanden</system:String>
+    <system:String x:Key="item175">Rapporteer een bug met het H1Emu opstartprogramma</system:String>
     <system:String x:Key="item176">het verwijderen van uw singleplayer-gegevens.</system:String>
     <system:String x:Key="item177">Geen singleplayergegevens gevonden.</system:String>
     <system:String x:Key="item178">Als je je singleplayergegevens verwijdert, kunnen eventuele problemen worden opgelost. Wees gewaarschuwd dat je alle voortgang kwijtraakt.\n\nWilt u doorgaan?</system:String>
@@ -170,4 +169,21 @@
     <system:String x:Key="item192">Verwijderen</system:String>
     <system:String x:Key="item193">Kopiëren</system:String>
     <system:String x:Key="item194">Uitgang</system:String>
+    <system:String x:Key="item195">Spelbestanden</system:String>
+    <system:String x:Key="item196">Accountsleutel</system:String>
+    <system:String x:Key="item197">Opties</system:String>
+    <system:String x:Key="item198">Foutmeldingen</system:String>
+    <system:String x:Key="item199">Over</system:String>
+    <system:String x:Key="item200">Geselecteerde taal</system:String>
+    <system:String x:Key="item201">Beeldcarrousel weergeven</system:String>
+    <system:String x:Key="item202">Minimaliseren naar systeemvak</system:String>
+    <system:String x:Key="item203">Op</system:String>
+    <system:String x:Key="item204">Uit</system:String>
+    <system:String x:Key="item205">RAPPORT</system:String>
+    <system:String x:Key="item206">Instellingen</system:String>
+    <system:String x:Key="item207">Server Toevoegen</system:String>
+    <system:String x:Key="item208">Vrijwaring</system:String>
+    <system:String x:Key="item209">Bericht</system:String>
+    <system:String x:Key="item210">Opstartscherm</system:String>
+    <system:String x:Key="item211">Update Beschikbaar</system:String>
 </ResourceDictionary>

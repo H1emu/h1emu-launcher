@@ -153,12 +153,25 @@ namespace H1EmuLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool imageCarouselVisibility {
             get {
                 return ((bool)(this["imageCarouselVisibility"]));
             }
             set {
                 this["imageCarouselVisibility"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool autoMinimise {
+            get {
+                return ((bool)(this["autoMinimise"]));
+            }
+            set {
+                this["autoMinimise"] = value;
             }
         }
     }

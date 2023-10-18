@@ -47,6 +47,28 @@ namespace H1EmuLauncher
             InitializeComponent();
             launcherInstance = this;
 
+            // Adds the correct language file to the resource dictionary and then loads it.
+            Resources.MergedDictionaries.Clear();
+            Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+
+            CarouselNextAnimation = FindResource("CarouselNextImageAnimation") as Storyboard;
+            CarouselNextAnimationFollow = FindResource("CarouselNextImageAnimationFollow") as Storyboard;
+            CarouselPreviousAnimation = FindResource("CarouselPrevImageAnimation") as Storyboard;
+            CarouselPreviousAnimationFollow = FindResource("CarouselPrevImageAnimationFollow") as Storyboard;
+            UnfocusPropertiesAnimationShow = FindResource("UnfocusPropertiesShow") as Storyboard;
+            UnfocusPropertiesAnimationHide = FindResource("UnfocusPropertiesHide") as Storyboard;
+
+            ContextMenu notifyIconContextMenu = new();
+            notifyIconContextMenu.Style = (Style)FindResource("ContextMenuStyle");
+            notifyIconContextMenu.PlacementTarget = this;
+
+            MenuItem notifyIconMenuItem = new();
+            notifyIconMenuItem.Style = (Style)FindResource("DeleteMenuItem");
+            notifyIconMenuItem.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item194");
+            notifyIconMenuItem.PreviewMouseLeftButtonDown += (o, s) => { Environment.Exit(0); };
+            notifyIconMenuItem.MouseLeave += (o, s) => { notifyIconContextMenu.IsOpen = false; };
+            notifyIconContextMenu.Items.Add(notifyIconMenuItem);
+
             launcherNotifyIcon.Icon = Properties.Resources.Icon;
             launcherNotifyIcon.Text = "H1EmuLauncher";
             launcherNotifyIcon.MouseDown += (o, s) =>
@@ -59,29 +81,9 @@ namespace H1EmuLauncher
                 }
                 else if (s.Button == System.Windows.Forms.MouseButtons.Right)
                 {
-                    ContextMenu notifyIconContextMenu = new();
-                    notifyIconContextMenu.Style = (Style)FindResource("ContextMenuStyle");
-
-                    MenuItem notifyIconMenuItem = new();
-                    notifyIconMenuItem.Style = (Style)FindResource("DeleteMenuItem");
-                    notifyIconMenuItem.Header = FindResource("item194").ToString();
-                    notifyIconMenuItem.FontSize = 16;
-                    notifyIconMenuItem.PreviewMouseLeftButtonDown += (o, s) => { Environment.Exit(0); };
-                    notifyIconContextMenu.Items.Add(notifyIconMenuItem);
                     notifyIconContextMenu.IsOpen = true;
                 }
             };
-
-            CarouselNextAnimation = FindResource("CarouselNextImageAnimation") as Storyboard;
-            CarouselNextAnimationFollow = FindResource("CarouselNextImageAnimationFollow") as Storyboard;
-            CarouselPreviousAnimation = FindResource("CarouselPrevImageAnimation") as Storyboard;
-            CarouselPreviousAnimationFollow = FindResource("CarouselPrevImageAnimationFollow") as Storyboard;
-            UnfocusPropertiesAnimationShow = FindResource("UnfocusPropertiesShow") as Storyboard;
-            UnfocusPropertiesAnimationHide = FindResource("UnfocusPropertiesHide") as Storyboard;
-
-            // Adds the correct language file to the resource dictionary and then loads it.
-            Resources.MergedDictionaries.Clear();
-            Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
         public class ServerList
@@ -126,8 +128,6 @@ namespace H1EmuLauncher
             // Close every other window apart from the launcher window
             foreach (Window window in Application.Current.Windows)
             {
-                MessageBox.Show(window.Name);
-
                 if (window.Name != Name)
                     window.Close();
             }
@@ -140,15 +140,27 @@ namespace H1EmuLauncher
             }
 
             // Set the server name and ip textboxes text
-            if (!string.IsNullOrEmpty(SteamFrame.Login.GetParameter(rawArgs, "-name", "")) || !string.IsNullOrEmpty(SteamFrame.Login.GetParameter(rawArgs, "-ip", "")))
-                AddServerDetails();
-
-            // Launch settings and tell it to open Account Key window
-            if (!string.IsNullOrEmpty(SteamFrame.Login.GetParameter(rawArgs, "-accountkey", "")))
+            if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-name", "")) || !string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-ip", "")))
             {
-                SettingsWindow.launchAccountKeyWindow = true;
-                SettingsWindow se = new();
-                se.ShowDialog();
+                newServerName = SteamFramePages.Login.GetParameter(rawArgs, "-name", "");
+                newServerIp = SteamFramePages.Login.GetParameter(rawArgs, "-ip", "");
+                AddServerDetails();
+            }
+
+            // Launch settings and tell it to open the Account Key tab
+            if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-accountkey", "")))
+            {
+                if (SettingsWindow.settingsInstance == null)
+                {
+                    SettingsWindow.openAccountKeyPage = true;
+                    SettingsWindow se = new();
+                    se.ShowDialog();
+                }
+                else
+                {
+                    SettingsWindow.openAccountKeyPage = true;
+                    SettingsWindow.SwitchToAccountKeyTab();
+                }
             }
 
             File.WriteAllText($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt", "");
@@ -165,11 +177,6 @@ namespace H1EmuLauncher
 
             Properties.Settings.Default.lastServer = serverSelector.SelectedIndex;
             Properties.Settings.Default.Save();
-        }
-
-        private void AddNewServer(object sender, MouseButtonEventArgs e)
-        {
-            AddServerDetails();
         }
 
         private void LoadServers()
@@ -202,7 +209,7 @@ namespace H1EmuLauncher
 
                             MenuItem deleteOption = new MenuItem();
                             deleteOption.Style = (Style)FindResource("DeleteMenuItem");
-                            deleteOption.Header = FindResource("item192").ToString();
+                            deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
                             deleteOption.Click += DeleteServerFromList;
                             deleteMenu.Items.Add(deleteOption);
                         }
@@ -223,6 +230,11 @@ namespace H1EmuLauncher
                 Debug.WriteLine($"Error loading last selected server: \"{e.Message}\". Setting selected server index to 0.");
                 serverSelector.SelectedIndex = 0;
             }
+        }
+
+        private void AddNewServer(object sender, MouseButtonEventArgs e)
+        {
+            AddServerDetails();
         }
 
         public void AddServerDetails()
@@ -263,7 +275,7 @@ namespace H1EmuLauncher
 
                             MenuItem deleteOption = new MenuItem();
                             deleteOption.Style = (Style)FindResource("DeleteMenuItem");
-                            deleteOption.Header = FindResource("item192").ToString();
+                            deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
                             deleteOption.Click += DeleteServerFromList;
                             deleteMenu.Items.Add(deleteOption);
                         }
@@ -301,7 +313,7 @@ namespace H1EmuLauncher
 
         private void DeleteServerFromList(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult dr = CustomMessageBox.ShowResult(FindResource("item147").ToString(), this);
+            MessageBoxResult dr = CustomMessageBox.Show(FindResource("item147").ToString(), this, true, true, false, false);
             if (dr != MessageBoxResult.Yes)
                 return;
 
@@ -398,9 +410,9 @@ namespace H1EmuLauncher
 
         private void LaunchClient(object sender, RoutedEventArgs e)
         {
-            SettingsWindow settings = new();
+            SettingsPages.GameFiles gameFiles = new();
 
-            if (!settings.CheckDirectory())
+            if (!gameFiles.CheckDirectory())
                 return;
 
             int gameVersionInt = 0;
@@ -447,8 +459,8 @@ namespace H1EmuLauncher
 
                 try
                 {
-                    settings.CheckGameVersion();
-                    gameVersionString = SettingsWindow.gameVersionString;
+                    gameFiles.CheckGameVersion();
+                    gameVersionString = SettingsPages.GameFiles.gameVersionString;
 
                     switch (gameVersionString)
                     {
@@ -515,19 +527,22 @@ namespace H1EmuLauncher
 
                         p.Start();
 
-                        Dispatcher.Invoke(new Action(delegate
+                        if (Properties.Settings.Default.autoMinimise)
                         {
-                            launcherNotifyIcon.Visible = true;
-                            Hide();
-                        }));
+                            Dispatcher.Invoke(new Action(delegate
+                            {
+                                launcherNotifyIcon.Visible = true;
+                                Hide();
+                            }));
 
-                        new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
+                            new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
+                        }
                     }
                     else if (gameVersionString == "processBeingUsed")
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, true);
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, false, false, true);
                         }));
 
                         return;
@@ -581,12 +596,6 @@ namespace H1EmuLauncher
             VersionInformation();
             LoadServers();
             Carousel.BeginImageCarousel();
-            LanguageBox.SelectedIndex = Properties.Settings.Default.language;
-
-            if (LanguageBox.SelectedIndex == 1)
-                chineseLink.Visibility = Visibility.Visible;
-            else
-                chineseLink.Visibility = Visibility.Collapsed;
 
             if (Properties.Settings.Default.imageCarouselVisibility)
             {
@@ -644,72 +653,6 @@ namespace H1EmuLauncher
             }
         }
 
-        private void LanguageSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (!IsLoaded)
-                return;
-
-            if (LanguageBox.SelectedIndex == 1)
-                chineseLink.Visibility = Visibility.Visible;
-            else
-                chineseLink.Visibility = Visibility.Collapsed;
-
-            try
-            {
-                switch (LanguageBox.SelectedIndex)
-                {
-                    // Update and save settings
-                    case 0:
-                        SetLanguageFile.SaveLang(0);
-                        break;
-                    case 1:
-                        SetLanguageFile.SaveLang(1);
-                        break;
-                    case 2:
-                        SetLanguageFile.SaveLang(2);
-                        break;
-                    case 3:
-                        SetLanguageFile.SaveLang(3);
-                        break;
-                    case 4:
-                        SetLanguageFile.SaveLang(4);
-                        break;
-                    case 5:
-                        SetLanguageFile.SaveLang(5);
-                        break;
-                    case 6:
-                        SetLanguageFile.SaveLang(6);
-                        break;
-                    case 7:
-                        SetLanguageFile.SaveLang(7);
-                        break;
-                    case 8:
-                        SetLanguageFile.SaveLang(8);
-                        break;
-                    case 9:
-                        SetLanguageFile.SaveLang(9);
-                        break;
-                    case 10:
-                        SetLanguageFile.SaveLang(10);
-                        break;
-                    case 11:
-                        SetLanguageFile.SaveLang(11);
-                        break;
-                    case 12:
-                        SetLanguageFile.SaveLang(12);
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                CustomMessageBox.Show($"{FindResource("item142")} \"{ex.Message}\"", this);
-                return;
-            }
-
-            // Reload pages
-            steamFramePanel.Refresh();
-        }
-
         public bool doContinue = true;
 
         private void StoryboardCompleted(object sender, EventArgs e)
@@ -744,33 +687,13 @@ namespace H1EmuLauncher
 
         private void CarouselMouseEnter(object sender, MouseEventArgs e)
         {
+            if (Carousel.playCarousel == null)
+                return;
+
             Carousel.playCarousel.Pause();
 
             nextImage.Visibility = Visibility.Visible;
             prevImage.Visibility = Visibility.Visible;
-            carouselVisibilityButtonGrid.Visibility = Visibility.Visible;
-
-            if (imageCarousel.Visibility == Visibility.Visible)
-            {
-                // Display hide image carousel button
-                hideCarouselButton.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                // Display show image carousel button
-                showCarouselButton.Visibility = Visibility.Visible;
-            }
-
-            // Animation for fade in visibility toggle
-            DoubleAnimation showImageControlsVisibilityToggle = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)));
-            showImageControlsVisibilityToggle.AccelerationRatio = 0.2;
-            showImageControlsVisibilityToggle.DecelerationRatio = 0.2;
-            showImageControlsVisibilityToggle.SetValue(Storyboard.TargetProperty, carouselVisibilityButtonGrid);
-            showImageControlsVisibilityToggle.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(OpacityProperty));
-
-            Storyboard playShowImageControlsVisibilityToggle = new Storyboard();
-            playShowImageControlsVisibilityToggle.Children.Add(showImageControlsVisibilityToggle);
-            playShowImageControlsVisibilityToggle.Begin();
 
             // Animation for fade in visibility next image button
             DoubleAnimation showImageControlsNext = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)));
@@ -797,33 +720,10 @@ namespace H1EmuLauncher
 
         private void CarouselMouseLeave(object sender, MouseEventArgs e)
         {
+            if (Carousel.playCarousel == null)
+                return;
+
             Carousel.playCarousel.Resume();
-
-            // Animation for fade out visibility toggle
-            DoubleAnimation showImageControlsVisibilityToggle = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)));
-            showImageControlsVisibilityToggle.AccelerationRatio = 0.2;
-            showImageControlsVisibilityToggle.DecelerationRatio = 0.2;
-            showImageControlsVisibilityToggle.SetValue(Storyboard.TargetProperty, carouselVisibilityButtonGrid);
-            showImageControlsVisibilityToggle.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(OpacityProperty));
-
-            Storyboard playShowImageControlsVisibilityToggle = new Storyboard();
-            playShowImageControlsVisibilityToggle.Children.Add(showImageControlsVisibilityToggle);
-            playShowImageControlsVisibilityToggle.Completed += (s, o) =>
-            {
-                carouselVisibilityButtonGrid.Visibility = Visibility.Hidden;
-
-                if (imageCarousel.Visibility == Visibility.Visible)
-                {
-                    // Display hide image carousel button
-                    hideCarouselButton.Visibility = Visibility.Hidden;
-                }
-                else
-                {
-                    // Display show image carousel button
-                    showCarouselButton.Visibility = Visibility.Hidden;
-                }
-            };
-            playShowImageControlsVisibilityToggle.Begin();
 
             // Animation for fade out visibility next image button
             DoubleAnimation showImageControlsNext = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)));
@@ -848,44 +748,6 @@ namespace H1EmuLauncher
             playShowImageControlsPrev.Children.Add(showImageControlsPrev);
             playShowImageControlsPrev.Completed += (s, o) => prevImage.Visibility = Visibility.Hidden;
             playShowImageControlsPrev.Begin();
-        }
-
-        private void toggleCarouselImageVisibility(object sender, RoutedEventArgs e)
-        {
-            if (imageCarousel.Visibility == Visibility.Visible)
-            {
-                // Hide image carousel
-                Carousel.playCarousel.Stop();
-                imageCarousel.Visibility = Visibility.Hidden;
-                hideCarouselButton.Visibility = Visibility.Hidden;
-                showCarouselButton.Visibility = Visibility.Visible;
-
-                Properties.Settings.Default.imageCarouselVisibility = false;
-                Properties.Settings.Default.Save();
-            }
-            else
-            {
-                // Show image carousel
-                Carousel.playCarousel.Begin();
-                imageCarousel.Visibility = Visibility.Visible;
-                hideCarouselButton.Visibility = Visibility.Visible;
-                showCarouselButton.Visibility = Visibility.Hidden;
-
-                Properties.Settings.Default.imageCarouselVisibility = true;
-                Properties.Settings.Default.Save();
-            }
-        }
-
-        private void ReportBuglink(object sender, RoutedEventArgs e)
-        {
-            ReportBugWindow reportBug = new();
-            reportBug.ShowDialog();
-        }
-
-        private void AboutHyperlink(object sender, RoutedEventArgs e)
-        {
-            AboutPageWindow aboutPage = new();
-            aboutPage.ShowDialog();
         }
 
         private void HyperlinkClick(object sender, RoutedEventArgs e)
@@ -950,11 +812,6 @@ namespace H1EmuLauncher
             Clipboard.SetText(Info.CHANGELOG);
         }
 
-        private void LauncherWindowContentRendered(object sender, EventArgs e)
-        {
-            ExecuteArguments();
-        }
-
         private void MinimiseToSystemTrayButtonClick(object sender, RoutedEventArgs e)
         {
             launcherNotifyIcon.Visible = true;
@@ -965,61 +822,12 @@ namespace H1EmuLauncher
 
         private void MinimiseButtonClick(object sender, RoutedEventArgs e)
         {
-            Launcher.RenderTransformOrigin = new Point(0.5, 1);
-
-            Storyboard sb = FindResource("MinimiseLauncher") as Storyboard;
-
-            if (sb != null)
-            {
-                sb.Completed += (s, o) =>
-                {
-                    WindowState = WindowState.Minimized;
-                    sb.Stop();
-                };
-
-                sb.Begin();
-            }
+            WindowState = WindowState.Minimized;
         }
-
-        private void LauncherStateChanged(object sender, EventArgs e)
-        {
-            if (WindowState == WindowState.Normal)
-            {
-                Storyboard sb = FindResource("RestoreLauncher") as Storyboard;
-
-                if (sb != null)
-                {
-                    sb.Completed += (s, o) =>
-                    {
-                        Launcher.RenderTransformOrigin = new Point(0.5, 0.5);
-                        sb.Stop();
-                    };
-
-                    sb.Begin();
-                }
-            }
-        }
-
-        public bool IsCompleted = false;
 
         private void LauncherClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!IsCompleted)
-            {
-                e.Cancel = true;
-                Storyboard sb = FindResource("CloseLauncher") as Storyboard;
-
-                if (sb != null)
-                {
-                    sb.Completed += (s, o) =>
-                    {
-                        IsCompleted = true;
-                        Environment.Exit(0);
-                    };
-
-                    sb.Begin();
-                }
-            }
+            Environment.Exit(0);
         }
 
         private void MoveWindow(object sender, MouseButtonEventArgs e)

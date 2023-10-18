@@ -102,7 +102,7 @@
     <system:String x:Key="item120">Molim vas zatvorite H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe je trenutno u korištenju.\n\nZatvorite sve otvorene instance H1Z1.\n\nMožete upotrijebiti gumb ispod da prekinete sve procese H1Z1.</system:String>
     <system:String x:Key="item122">Trenutna verzija igre:</system:String>
-    <system:String x:Key="item124">Verzija launchera v</system:String>
+    <system:String x:Key="item124">Verzija launchera</system:String>
     <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
     <system:String x:Key="item126">Vodeći developer</system:String>
     <system:String x:Key="item127">Programeri</system:String>
@@ -148,9 +148,8 @@
     <system:String x:Key="item170">Financijski Suradnici</system:String>
     <system:String x:Key="item171">Verzija igre od 22. prosinca 2016., ovo je ažurnije i podržano od strane projekta.</system:String>
     <system:String x:Key="item172">Verzija igre od 15. siječnja 2015., ova ne dobiva toliko ažuriranja kao 2016. i možda joj nedostaju značajke.</system:String>
-    <system:String x:Key="item173">Prijavite grešku...</system:String>
-    <system:String x:Key="item174">Ovdje možete prijaviti sve greške koje ste iskusili u igri dok koristite datoteke poslužitelja H1Emu:</system:String>
-    <system:String x:Key="item175">Ovdje možete prijaviti sve greške koje ste iskusili dok ste koristili H1Emu Launcher:</system:String>
+    <system:String x:Key="item174">Prijavite grešku s datotekama poslužitelja H1Emu</system:String>
+    <system:String x:Key="item175">Prijavite grešku s H1Emu pokretačem</system:String>
     <system:String x:Key="item176">brisanje vaših podataka za jednog igrača.</system:String>
     <system:String x:Key="item177">Nisu pronađeni singleplayer podaci.</system:String>
     <system:String x:Key="item178">Brisanje singleplayer podataka moglo bi popraviti problem koji imate, budite upozoreni da će te izgubiti sav progres.\n\nŽelite li nastaviti?</system:String>
@@ -170,4 +169,21 @@
     <system:String x:Key="item192">Izbrisati</system:String>
     <system:String x:Key="item193">Kopirati</system:String>
     <system:String x:Key="item194">Izlaz</system:String>
+    <system:String x:Key="item195">Datoteke Igara</system:String>
+    <system:String x:Key="item196">Ključ Računa</system:String>
+    <system:String x:Key="item197">Mogućnosti</system:String>
+    <system:String x:Key="item198">Izvješća o Greškama</system:String>
+    <system:String x:Key="item199">Oko</system:String>
+    <system:String x:Key="item200">Odabrani jezik</system:String>
+    <system:String x:Key="item201">Prikaz karusela slika</system:String>
+    <system:String x:Key="item202">Minimiziraj na programsku traku</system:String>
+    <system:String x:Key="item203">Na</system:String>
+    <system:String x:Key="item204">Isključeno</system:String>
+    <system:String x:Key="item205">IZVJEŠĆE</system:String>
+    <system:String x:Key="item206">Postavke</system:String>
+    <system:String x:Key="item207">Dodaj Poslužitelj</system:String>
+    <system:String x:Key="item208">Odricanje</system:String>
+    <system:String x:Key="item209">Poruka</system:String>
+    <system:String x:Key="item210">Početni Zaslon</system:String>
+    <system:String x:Key="item211">Ažuriranje Dostupno</system:String>
 </ResourceDictionary>

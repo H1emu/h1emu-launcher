@@ -5,51 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         UseLayoutRounding="True"
-        Title="H1Emu Add Server"
-        x:Name="AddServer"
-        Width="420"
-        Height="300"
+        Title="{DynamicResource item207}"
+        MinWidth="400"
         WindowStartupLocation="CenterOwner"
-        WindowStyle="None"
-        AllowsTransparency="True"
+        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
-        RenderTransformOrigin="0.5, 0.5"
+        SizeToContent="WidthAndHeight"
         Background="Transparent"
-        FontFamily="Bahnschrift"
+        FontFamily="Bahnschrift Light"
         FontSize="16"
+        Foreground="FloralWhite"
         Loaded="AddServerLoaded"
+        ContentRendered="AddServerContentRendered"
         Closing="AddServerClosing">
 
-    <Window.RenderTransform>
-        <ScaleTransform x:Name="WindowScaleTransform"/>
-    </Window.RenderTransform>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="Window.Loaded">
-            <EventTrigger.Actions>
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-
-                        <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                         Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                         From="0.9" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-
-                        <DoubleAnimation Storyboard.TargetName="AddServer"
-                                         Storyboard.TargetProperty="Opacity"
-                                         From="0" To="1"
-                                         Duration="0:0:0.1"
-                                         AccelerationRatio="1"/>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger.Actions>
-        </EventTrigger>
-    </Window.Triggers>
+    <!-- Keep window animations -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+    </WindowChrome.WindowChrome>
 
     <Window.Resources>
         <ResourceDictionary>
@@ -59,25 +32,6 @@
                 <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <Storyboard x:Key="CloseAddServer">
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleX)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="WindowScaleTransform"
-                                 Storyboard.TargetProperty="(ScaleTransform.ScaleY)"
-                                 From="1" To="0.9"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="AddServer"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-            </Storyboard>
             <Storyboard x:Key="UnfocusPropertiesShow">
                 <DoubleAnimation Storyboard.TargetName="addServerFade"
                                  Storyboard.TargetProperty="Opacity"
@@ -107,8 +61,14 @@
         </ResourceDictionary>
     </Window.Resources>
 
+    <!-- Window grid -->
     <Grid Background="#FF2A2A32">
+        
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
 
             <!-- Grainy texture -->
             <Grid.Background>
@@ -123,48 +83,42 @@
 
             </Grid.Effect>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
-                <RowDefinition Height="5*"/>
-            </Grid.RowDefinitions>
-
             <!-- Grid for logo and exit button -->
             <Grid MouseLeftButtonDown="AddServerTopBar" 
                   Background="Transparent">
 
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Logo -->
                 <Image Source="..\Resources\H1EmuIcon.png"
-                       Width="140"
-                       Height="40"
-                       Margin="15,15,0,0"
+                       Stretch="Uniform"
+                       Height="30"
+                       Margin="15,15,15,20"
                        VerticalAlignment="Top"
                        HorizontalAlignment="Left">
 
                     <Image.Effect>
                         <DropShadowEffect BlurRadius="15"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="0"
-                                          Opacity="0.4"/>
+                              Direction="-90"
+                              RenderingBias="Quality"
+                              ShadowDepth="0"
+                              Opacity="0.3"/>
                     </Image.Effect>
                 </Image>
 
                 <!-- Exit button -->
-                <Button x:Name="ExitButton"
-                        Grid.Column="1"
-                        RenderOptions.BitmapScalingMode="Fant"
+                <Button x:Name="CloseButton"
+                        Grid.Column="2"
                         Click="CloseAddServer"
-                        Width="44"
-                        Height="30"
-                        Margin="0,0,15,0"
-                        VerticalAlignment="Center"
+                        Width="40"
+                        Height="25"
+                        Margin="15,15,15,20"
+                        VerticalAlignment="Top"
                         HorizontalAlignment="Right"
-                        BorderThickness="0"
                         Style="{StaticResource CloseButtonStyle}">
 
                     <Button.Effect>
@@ -172,7 +126,7 @@
                                           Direction="-90"
                                           RenderingBias="Quality"
                                           ShadowDepth="0"
-                                          Opacity="0.2"/>
+                                          Opacity="0.3"/>
                     </Button.Effect>
                 </Button>
             </Grid>
@@ -180,20 +134,20 @@
             <!-- Main content in darkened area -->
             <Border Grid.Row="1"
                     Background="#1C1B22"
-                    Margin="15,5,15,15"
+                    Margin="15,0,15,15"
                     UseLayoutRounding="True"
                     CornerRadius="5">
 
                 <!-- Drop shadow effect -->
                 <Border.Effect>
-                    <DropShadowEffect
-                        BlurRadius="8"
-                        Direction="-90"
-                        RenderingBias="Quality"
-                        ShadowDepth="1"/>
+                    <DropShadowEffect BlurRadius="8"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"/>
                     
                 </Border.Effect>
 
+                <!-- Border for grainy texture -->
                 <Border CornerRadius="5">
 
                     <!-- Grainy texture -->
@@ -203,101 +157,136 @@
                     
                     <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
 
                         <!-- Server name text box -->
                         <TextBox x:Name="serverNameBox"
-                                 Width="300"
-                                 Height="35"
-                                 Margin="0,12,0,0"
-                                 Padding="10,0,0,0"
-                                 VerticalAlignment="Center"
-                                 HorizontalAlignment="Center"
-                                 VerticalContentAlignment="Center"
-                                 FontSize="16"
-                                 FontWeight="Light"
-                                 GotFocus="ServerNameGotFocus"
+                                 Grid.Row="1"
                                  LostFocus="ServerNameLostFocus"
-                                 Style="{DynamicResource TextBoxPrimaryStyle}"/>
+                                 GotFocus="ServerNameGotFocus"
+                                 Height="35"
+                                 Margin="20,20,20,10"
+                                 Padding="10,0,10,0"
+                                 VerticalContentAlignment="Center"
+                                 Style="{DynamicResource TextBoxPrimaryStyle}">
+
+                            <TextBox.Effect>
+
+                                <!-- Drop shadow effect -->
+                                <DropShadowEffect BlurRadius="15"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </TextBox.Effect>
+                        </TextBox>
 
                         <!-- Hint for server name textbox -->
                         <TextBlock x:Name="serverNameHint"
-                                   Width="300"
-                                   Height="27"
-                                   Margin="0,12,0,0"
-                                   Padding="12,4,0,0"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"
+                                   Grid.Row="1"
+                                   Margin="20,20,20,10"
+                                   Padding="14,0,14,0"
                                    IsHitTestVisible="False"
-                                   Foreground="White"
-                                   FontSize="16"
-                                   FontWeight="Light"
+                                   VerticalAlignment="Center"
                                    Text="{DynamicResource item144}"/>
 
                         <!-- Server IP textbox -->
                         <TextBox x:Name="serverIpBox"
-                                 Grid.Row="1"
-                                 Width="300"
-                                 Height="35"
-                                 Padding="10,0,0,0"
-                                 VerticalAlignment="Center"
-                                 VerticalContentAlignment="Center"
-                                 FontSize="16"
-                                 FontWeight="Light"
+                                 Grid.Row="2"
                                  GotFocus="ServerIPGotFocus"
                                  LostFocus="ServerIPLostFocus"
                                  KeyDown="ServerIpBoxKeyDown"
-                                 Style="{DynamicResource TextBoxPrimaryStyle}"/>
+                                 Height="35"
+                                 Margin="20,10,20,20"
+                                 Padding="10,0,10,0"
+                                 VerticalContentAlignment="Center"
+                                 Style="{DynamicResource TextBoxPrimaryStyle}">
+
+                            <TextBox.Effect>
+
+                                <!-- Drop shadow effect -->
+                                <DropShadowEffect BlurRadius="15"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </TextBox.Effect>
+                        </TextBox>
 
                         <!-- Hint for server IP textbox -->
                         <TextBlock x:Name="serverIpHint"
-                                   Grid.Row="1"
-                                   Width="300"
-                                   Height="24"
-                                   Padding="12,3,0,0"
-                                   VerticalAlignment="Center"
+                                   Grid.Row="2"
+                                   Margin="20,10,20,20"
+                                   Padding="14,0,14,0"
                                    IsHitTestVisible="False"
-                                   Foreground="White"
-                                   FontSize="16"
-                                   FontWeight="Light"
+                                   VerticalAlignment="Center"
                                    Text="{DynamicResource item145}"/>
 
-                        <!-- Add server button -->
-                        <Button Grid.Row="2"
-                                Grid.Column="1"
-                                Click="AddButton"
-                                RenderOptions.BitmapScalingMode="Fant"
-                                Width="140"
-                                Height="38"
-                                Margin="160,0,0,0"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Foreground="White"
-                                FontFamily="Arial Black"
-                                FontSize="22"
-                                BorderThickness="0"
-                                Content="{DynamicResource item18}"
-                                Style="{DynamicResource StandardButton}"/>
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="3"
+                                   Margin="20,0,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
 
-                        <!-- Cancel button -->
-                        <Button Grid.Row="2"
-                                Grid.Column="1"
-                                Click="CancelButton"
-                                RenderOptions.BitmapScalingMode="Fant"
-                                Width="140"
-                                Height="38"
-                                Margin="0,0,160,0"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                Foreground="White"
-                                FontFamily="Arial Black"
-                                FontSize="22"
-                                BorderThickness="0"
-                                Content="{DynamicResource item28}"
-                                Style="{DynamicResource StandardButton}"/>
+                        <Grid Grid.Row="4"
+                              HorizontalAlignment="Center">
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Add server button -->
+                            <Button Click="AddButton"
+                                    Margin="20"
+                                    Padding="25,7,25,7"
+                                    FontFamily="Arial Black"
+                                    BorderThickness="0"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Content="{DynamicResource item18}"
+                                    Style="{DynamicResource StandardButton}">
+
+                                <Button.Effect>
+
+                                    <!-- Drop shadow effect -->
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="1"
+                                                      Opacity="0.3"/>
+                                </Button.Effect>
+                            </Button>
+
+                            <!-- Cancel button -->
+                            <Button Grid.Column="1"
+                                    Click="CancelButton"
+                                    Margin="20"
+                                    Padding="25,7,25,7"
+                                    FontFamily="Arial Black"
+                                    BorderThickness="0"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Content="{DynamicResource item28}"
+                                    Style="{DynamicResource StandardButton}">
+
+                                <Button.Effect>
+
+                                    <!-- Drop shadow effect -->
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="1"
+                                                      Opacity="0.3"/>
+                                </Button.Effect>
+                            </Button>
+                        </Grid>
                     </Grid>
                 </Border>
             </Border>
