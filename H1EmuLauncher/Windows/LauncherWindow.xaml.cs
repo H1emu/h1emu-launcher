@@ -15,6 +15,7 @@ using System.Windows.Media.Animation;
 using System.Linq;
 using H1EmuLauncher.Classes;
 using Microsoft.Toolkit.Uwp.Notifications;
+using System.Media;
 
 namespace H1EmuLauncher
 {
@@ -32,8 +33,6 @@ namespace H1EmuLauncher
         public static string serverJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
         public static string[] rawArgs = null;
         public static bool systemWatcherFire = true;
-        public static string newServerName = null;
-        public static string newServerIp = null;
 
         public Storyboard CarouselNextAnimation;
         public Storyboard CarouselNextAnimationFollow;
@@ -125,13 +124,6 @@ namespace H1EmuLauncher
             if (!(rawArgs.Length > 0))
                 return;
 
-            // Close every other window apart from the launcher window
-            foreach (Window window in Application.Current.Windows)
-            {
-                if (window.Name != Name)
-                    window.Close();
-            }
-
             // If the arguments are launched from browser, remove some stuff
             if (rawArgs[0].Contains("%20"))
             {
@@ -139,22 +131,42 @@ namespace H1EmuLauncher
                 rawArgs = rawArgs[0].Split(" ");
             }
 
-            // Set the server name and ip textboxes text
-            if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-name", "")) || !string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-ip", "")))
+            // If the new server and ip arguments exist, open the Add Server window and tell it to fill in the name and ip fields with the specified argument values
+            if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-servername", "")) || !string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-serverip", "")))
             {
-                newServerName = SteamFramePages.Login.GetParameter(rawArgs, "-name", "");
-                newServerIp = SteamFramePages.Login.GetParameter(rawArgs, "-ip", "");
-                AddServerDetails();
-            }
+                // Close every other window apart from the Launcher and Add Server windows
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.Name != Name && window.Name != "AddServer")
+                        window.Close();
+                }
 
-            // Launch settings and tell it to open the Account Key tab
-            if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-accountkey", "")))
+                string newServerName = SteamFramePages.Login.GetParameter(rawArgs, "-servername", "");
+                string newServerIp = SteamFramePages.Login.GetParameter(rawArgs, "-serverip", "");
+
+                if (AddServerWindow.addServerInstance == null)
+                    CustomMessageBox.AddServer(this, newServerName, newServerIp);
+                else
+                    AddServerWindow.addServerInstance.FillInFields(newServerName, newServerIp);
+            }
+            // If the account key argument exists, open the Settings window and tell it to open the Account Key tab with accountkey argument value
+            else if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-accountkey", "")))
             {
+                // Close every other window apart from the Launcher and Settings windows
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.Name != Name && window.Name != "Settings")
+                        window.Close();
+                }
+
+                SettingsWindow.accountKeyArgument = SteamFramePages.Login.GetParameter(rawArgs, "-accountkey", "");
+
                 if (SettingsWindow.settingsInstance == null)
                 {
                     SettingsWindow.openAccountKeyPage = true;
                     SettingsWindow se = new();
-                    se.ShowDialog();
+                    se.Show();
+                    launcherFade.IsHitTestVisible = true;
                 }
                 else
                 {
@@ -234,61 +246,7 @@ namespace H1EmuLauncher
 
         private void AddNewServer(object sender, MouseButtonEventArgs e)
         {
-            AddServerDetails();
-        }
-
-        public void AddServerDetails()
-        {
-            MessageBoxResult dr = CustomMessageBox.AddServer(this);
-            if (dr != MessageBoxResult.OK)
-                return;
-
-            try
-            {
-                List<ServerList> currentjson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
-
-                currentjson.Add(new ServerList()
-                {
-                    CustomServerName = newServerName.Trim(),
-                    CustomServerIp = newServerIp.Trim().Replace(" ", "")
-                });
-
-                string newJson = JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
-                File.WriteAllText(serverJsonFile, newJson);
-
-                ComboBoxItem newItem = new ComboBoxItem { Content = newServerName.Trim(), Style = (Style)FindResource("ComboBoxItemStyle") };
-                serverSelector.Items.Insert(serverSelector.Items.Count - 2, newItem);
-                serverSelector.SelectedIndex = serverSelector.Items.Count - 3;
-
-                // Add an event for only user added servers in the list to delete on right click
-                foreach (var item in serverSelector.Items)
-                {
-                    int index = serverSelector.Items.IndexOf(item);
-                    if (item is ComboBoxItem serverItem)
-                    {
-                        if (index == serverSelector.Items.Count - 3)
-                        {
-                            serverItem.PreviewMouseRightButtonUp += ItemRightMouseButtonUp;
-                            ContextMenu deleteMenu = new ContextMenu();
-                            deleteMenu.Style = (Style)FindResource("ContextMenuStyle");
-                            serverItem.ContextMenu = deleteMenu;
-
-                            MenuItem deleteOption = new MenuItem();
-                            deleteOption.Style = (Style)FindResource("DeleteMenuItem");
-                            deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
-                            deleteOption.Click += DeleteServerFromList;
-                            deleteMenu.Items.Add(deleteOption);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
-            }
-
-            newServerName = null;
-            newServerIp = null;
+            CustomMessageBox.AddServer(this);
         }
 
         private void ServerSelectorPreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -304,14 +262,14 @@ namespace H1EmuLauncher
 
         public ComboBoxItem itemRightClicked;
 
-        private void ItemRightMouseButtonUp(object sender, MouseButtonEventArgs e)
+        public void ItemRightMouseButtonUp(object sender, MouseButtonEventArgs e)
         {
             itemRightClicked = (ComboBoxItem)sender;
             itemRightClicked.Style = (Style)FindResource("ComboBoxItemStyleSelected");
             System.Windows.Forms.Application.DoEvents();
         }
 
-        private void DeleteServerFromList(object sender, RoutedEventArgs e)
+        public void DeleteServerFromList(object sender, RoutedEventArgs e)
         {
             MessageBoxResult dr = CustomMessageBox.Show(FindResource("item147").ToString(), this, true, true, false, false);
             if (dr != MessageBoxResult.Yes)
@@ -810,6 +768,12 @@ namespace H1EmuLauncher
         private void chineseLinkCopy(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(Info.CHANGELOG);
+        }
+
+        private void LauncherFadeMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (launcherFade.IsHitTestVisible)
+                SystemSounds.Beep.Play();
         }
 
         private void MinimiseToSystemTrayButtonClick(object sender, RoutedEventArgs e)

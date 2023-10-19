@@ -177,8 +177,8 @@
     <system:String x:Key="item200">所选语言</system:String>
     <system:String x:Key="item201">显示图像轮播</system:String>
     <system:String x:Key="item202">最小化到系统托盘</system:String>
-    <system:String x:Key="item203">在</system:String>
-    <system:String x:Key="item204">离开</system:String>
+    <system:String x:Key="item203">是</system:String>
+    <system:String x:Key="item204">否</system:String>
     <system:String x:Key="item205">报告</system:String>
     <system:String x:Key="item206">游戏配置</system:String>
     <system:String x:Key="item207">添加服务器</system:String>

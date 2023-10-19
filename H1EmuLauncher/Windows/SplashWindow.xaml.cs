@@ -7,9 +7,12 @@ namespace H1EmuLauncher
 {
     public partial class SplashWindow : Window
     {
+        public static SplashWindow splashInstance;
+
         public SplashWindow()
         {
             InitializeComponent();
+            splashInstance = this;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Clear();
@@ -25,6 +28,11 @@ namespace H1EmuLauncher
         {
             SizeToContent = SizeToContent.Manual;
             SizeToContent = SizeToContent.WidthAndHeight;
+        }
+
+        private void SplashScreenWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            splashInstance = null;
         }
     }
 }

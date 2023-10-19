@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         UseLayoutRounding="True"
         Title="H1Emu Launcher"
+        x:Name="Launcher"
         Width="1300"
         Height="750"
         WindowStartupLocation="CenterScreen"
@@ -784,6 +785,7 @@
 
         <!-- Background fade on unfocus -->
         <Rectangle x:Name="launcherFade"
+                   MouseDown="LauncherFadeMouseDown"
                    Fill="#40000000"
                    IsHitTestVisible="False"
                    Opacity="0"/>

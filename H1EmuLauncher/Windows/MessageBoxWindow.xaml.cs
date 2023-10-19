@@ -9,9 +9,12 @@ namespace H1EmuLauncher
 {
     public partial class MessageBoxWindow : Window
     {
+        public static MessageBoxWindow messageBoxInstance;
+
         public MessageBoxWindow()
         {
             InitializeComponent();
+            messageBoxInstance = this;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Clear();
@@ -95,6 +98,8 @@ namespace H1EmuLauncher
                         break;
                 }
             }
+
+            messageBoxInstance = null;
         }
     }
 }

@@ -9,7 +9,7 @@
 
             <!-- Load dictionary into xaml resources just so we can see on the designer -->
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
+                <ResourceDictionary Source="Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <FontFamily x:Key="Signika">pack://application:,,,/Fonts/#Signika</FontFamily>
             <Style x:Key="FocusVisual">
@@ -305,7 +305,7 @@
                         <ControlTemplate TargetType="{x:Type MenuItem}">
                             <Border Background="#1C1B22">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="menuItemImage" Width="15" Height="15" Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
+                                    <Image x:Name="menuItemImage" Width="15" Height="15" Source="Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
                                     <ContentPresenter ContentSource="Header"/>
                                 </StackPanel>
                             </Border>
@@ -313,11 +313,11 @@
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Foreground" Value="LightGray"/>
-                                    <Setter TargetName="menuItemImage" Property="Source" Value="..\Resources\Copy_Hover.png"/>
+                                    <Setter TargetName="menuItemImage" Property="Source" Value="Resources\Copy_Hover.png"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
                                     <Setter Property="Foreground" Value="DarkGray"/>
-                                    <Setter TargetName="menuItemImage" Property="Source" Value="..\Resources\Copy_Pressed.png"/>
+                                    <Setter TargetName="menuItemImage" Property="Source" Value="Resources\Copy_Pressed.png"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -334,7 +334,7 @@
                         <ControlTemplate TargetType="{x:Type MenuItem}">
                             <Border Background="#1C1B22">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="menuItemImage" Width="13" Height="13" Source="..\Resources\Delete.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
+                                    <Image x:Name="menuItemImage" Width="13" Height="13" Source="Resources\Delete.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
                                     <ContentPresenter ContentSource="Header" Margin="0,2,0,0"/>
                                 </StackPanel>
                             </Border>
@@ -342,11 +342,11 @@
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Foreground" Value="LightGray"/>
-                                    <Setter TargetName="menuItemImage" Property="Source" Value="..\Resources\Delete_Hover.png"/>
+                                    <Setter TargetName="menuItemImage" Property="Source" Value="Resources\Delete_Hover.png"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
                                     <Setter Property="Foreground" Value="DarkGray"/>
-                                    <Setter TargetName="menuItemImage" Property="Source" Value="..\Resources\Delete_Pressed.png"/>
+                                    <Setter TargetName="menuItemImage" Property="Source" Value="Resources\Delete_Pressed.png"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -1062,7 +1062,7 @@
                                 </Grid.RowDefinitions>
                                 <Border>
                                     <Border.BorderBrush>
-                                        <SolidColorBrush Color="{DynamicResource BorderMediumColor}"/>
+                                        <SolidColorBrush Color="FloralWhite"/>
                                     </Border.BorderBrush>
                                     <ScrollContentPresenter CanContentScroll="False"/>
                                 </Border>

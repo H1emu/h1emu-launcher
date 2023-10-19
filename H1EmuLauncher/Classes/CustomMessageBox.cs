@@ -1,4 +1,5 @@
 ﻿using System.Media;
+using System.Threading;
 using System.Windows;
 
 namespace H1EmuLauncher.Classes
@@ -38,7 +39,7 @@ namespace H1EmuLauncher.Classes
             return buttonPressed;
         }
 
-        public static MessageBoxResult AddServer(Window owner)
+        public static void AddServer(Window owner, string newServerName = null, string newServerIp = null)
         {
             AddServerWindow addServer = new();
 
@@ -47,23 +48,16 @@ namespace H1EmuLauncher.Classes
             else
                 addServer.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-            if (!string.IsNullOrEmpty(LauncherWindow.newServerName) || !string.IsNullOrEmpty(LauncherWindow.newServerIp))
+            if (!string.IsNullOrEmpty(newServerName) || !string.IsNullOrEmpty(newServerIp))
             {
-                AddServerWindow.addServerInstance.serverNameBox.Text = LauncherWindow.newServerName;
-                AddServerWindow.addServerInstance.serverIpBox.Text = LauncherWindow.newServerIp;
+                AddServerWindow.addServerInstance.serverNameBox.Text = newServerName;
+                AddServerWindow.addServerInstance.serverIpBox.Text = newServerIp;
                 AddServerWindow.addServerInstance.serverNameHint.Visibility = Visibility.Hidden;
                 AddServerWindow.addServerInstance.serverIpHint.Visibility = Visibility.Hidden;
             }
 
-            addServer.ShowDialog();
-
-            if (owner != null)
-                owner.Activate();
-
-            LauncherWindow.newServerName = addServer.serverNameBox.Text;
-            LauncherWindow.newServerIp = addServer.serverIpBox.Text;
-
-            return buttonPressed;
+            addServer.Show();
+            LauncherWindow.launcherInstance.launcherFade.IsHitTestVisible = true;
         }
     }
 }

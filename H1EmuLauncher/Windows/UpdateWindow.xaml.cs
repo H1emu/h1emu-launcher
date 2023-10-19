@@ -25,12 +25,14 @@ namespace H1EmuLauncher
         string online;
         string local;
         string downloadUrl;
+        public static UpdateWindow updateInstance;
         public static string downloadFileName;
         public static HttpClient httpClient = new();
 
         public UpdateWindow()
         {
             InitializeComponent();
+            updateInstance = this;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Clear();
@@ -332,6 +334,8 @@ namespace H1EmuLauncher
 
             LauncherWindow la = new();
             la.Show();
+
+            updateInstance = null;
         }
     }
 }

@@ -81,7 +81,7 @@
                         </ComboBox.Effect>
 
                         <ComboBoxItem Content="English" Style="{DynamicResource ComboBoxItemStyle}"/>
-                        <ComboBoxItem Content="简化字" Style="{DynamicResource ComboBoxItemStyle}"/>
+                        <ComboBoxItem Content="简体中文" Style="{DynamicResource ComboBoxItemStyle}"/>
                         <ComboBoxItem Content="Hrvatski" Style="{DynamicResource ComboBoxItemStyle}"/>
                         <ComboBoxItem Content="Français" Style="{DynamicResource ComboBoxItemStyle}"/>
                         <ComboBoxItem Content="Türkçe" Style="{DynamicResource ComboBoxItemStyle}"/>

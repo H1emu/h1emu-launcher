@@ -6,6 +6,7 @@
         mc:Ignorable="d"
         UseLayoutRounding="True"
         Title="{DynamicResource item207}"
+        x:Name="AddServer"
         MinWidth="400"
         WindowStartupLocation="CenterOwner"
         WindowStyle="SingleBorderWindow"

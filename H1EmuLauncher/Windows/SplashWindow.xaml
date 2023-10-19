@@ -17,7 +17,8 @@
         FontFamily="Bahnschrift Light"
         FontSize="16"
         Foreground="FloralWhite"
-        ContentRendered="SplashScreenWindowContentRendered">
+        ContentRendered="SplashScreenWindowContentRendered"
+        Closing="SplashScreenWindowClosing">
 
     <!-- Keep window animations -->
     <WindowChrome.WindowChrome>

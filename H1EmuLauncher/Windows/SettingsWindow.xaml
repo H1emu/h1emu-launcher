@@ -6,6 +6,7 @@
         mc:Ignorable="d"
         UseLayoutRounding="True"
         Title="{DynamicResource item206}"
+        x:Name="Settings"
         MinWidth="735"
         MaxWidth="735"
         WindowStartupLocation="CenterOwner"

@@ -12,10 +12,12 @@ namespace H1EmuLauncher
     {
         public int seconds = 10;
         public DispatcherTimer timer;
+        public static DisclaimerWindow disclaimerInstance;
 
         public DisclaimerWindow()
         {
             InitializeComponent();
+            disclaimerInstance = this;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Clear();
@@ -84,6 +86,7 @@ namespace H1EmuLauncher
                 Environment.Exit(0);
 
             LauncherWindow.launcherInstance.Show();
+            disclaimerInstance = null;
         }
     }
 }

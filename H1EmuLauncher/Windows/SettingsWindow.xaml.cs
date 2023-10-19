@@ -23,6 +23,7 @@ namespace H1EmuLauncher
         };
         public static string gameVersionString { get; set; }
         public static bool openAccountKeyPage;
+        public static string accountKeyArgument;
         public static bool isExecutingTasks;
         public static SettingsWindow settingsInstance;
         public Storyboard UnfocusPropertiesAnimationShow;
@@ -54,18 +55,19 @@ namespace H1EmuLauncher
                 SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxHint.Visibility = Visibility.Hidden;
 
                 if (SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxText.Visibility == Visibility.Visible)
-                    SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxText.Text = SteamFramePages.Login.GetParameter(LauncherWindow.rawArgs, "-accountkey", "");
+                    SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxText.Text = accountKeyArgument;
                 else
-                    SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = SteamFramePages.Login.GetParameter(LauncherWindow.rawArgs, "-accountkey", "");
+                    SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = accountKeyArgument;
             }
             else
             {
                 settingsInstance.settingsTabControl.SelectedIndex = 1;
-                SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = SteamFramePages.Login.GetParameter(LauncherWindow.rawArgs, "-accountkey", "");
+                SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = accountKeyArgument;
             }
 
             LauncherWindow.rawArgs = null;
             openAccountKeyPage = false;
+            accountKeyArgument = null;
         }
 
         private void SettingsTabControlSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -103,9 +105,10 @@ namespace H1EmuLauncher
             if (openAccountKeyPage)
             {
                 settingsTabControl.SelectedIndex = 1;
-                SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = SteamFramePages.Login.GetParameter(LauncherWindow.rawArgs, "-accountkey", "");
+                SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = accountKeyArgument;
                 LauncherWindow.rawArgs = null;
                 openAccountKeyPage = false;
+                accountKeyArgument = null;
             }
         }
 
@@ -124,6 +127,8 @@ namespace H1EmuLauncher
             }
 
             LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
+            LauncherWindow.launcherInstance.launcherFade.IsHitTestVisible = false;
+            settingsInstance = null;
         }
     }
 }

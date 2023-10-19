@@ -149,9 +149,15 @@
                                    Fill="#FF2A2A32"/>
 
                         <!-- Using a UniformGrid here to keep both buttons centered when the collapsed element is set to visible -->
-                        <UniformGrid Grid.Row="3"
-                                     Rows="1"
-                                     HorizontalAlignment="Center">
+                        <Grid Grid.Row="3"
+                              HorizontalAlignment="Center">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
                             
                             <!-- Kill H1Z1 process button -->
                             <Button x:Name="killH1Z1Button"
@@ -179,6 +185,7 @@
 
                             <!-- Confirm yes button -->
                             <Button x:Name="confirmYesButton"
+                                    Grid.Column="1"
                                     Click="ConfirmYesButtonClick"
                                     Margin="20"
                                     Padding="25,7,25,7"
@@ -203,6 +210,7 @@
 
                             <!-- Confirm no button -->
                             <Button x:Name="confirmNoButton"
+                                    Grid.Column="2"
                                     Click="ConfirmNoButtonClick"
                                     Margin="20"
                                     Padding="25,7,25,7"
@@ -227,6 +235,7 @@
 
                             <!-- OK close messagebox window button -->
                             <Button x:Name="okButton"
+                                    Grid.Column="3"
                                     Click="CloseMessageBoxWindow"
                                     Margin="20"
                                     Padding="25,7,25,7"
@@ -247,7 +256,7 @@
                                                       Opacity="0.3"/>
                                 </Button.Effect>
                             </Button>
-                        </UniformGrid>
+                        </Grid>
                     </Grid>
                 </Border>
             </Border>

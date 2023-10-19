@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
@@ -33,6 +35,14 @@ namespace H1EmuLauncher
             DragMove();
         }
 
+        public void FillInFields(string name, string ip)
+        {
+            serverNameBox.Text = name;
+            serverIpBox.Text = ip;
+            serverNameHint.Visibility = Visibility.Hidden;
+            serverIpHint.Visibility = Visibility.Hidden;
+        }
+
         private void ServerIpBoxKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -56,7 +66,7 @@ namespace H1EmuLauncher
                 return;
             }
 
-            List<LauncherWindow.ServerList> currentjson = System.Text.Json.JsonSerializer.Deserialize<List<LauncherWindow.ServerList>>(File.ReadAllText(LauncherWindow.serverJsonFile));
+            List<LauncherWindow.ServerList> currentjson = JsonSerializer.Deserialize<List<LauncherWindow.ServerList>>(File.ReadAllText(LauncherWindow.serverJsonFile));
 
             foreach (var item in currentjson)
             {
@@ -67,21 +77,54 @@ namespace H1EmuLauncher
                 }
             }
 
-            CustomMessageBox.buttonPressed = MessageBoxResult.OK;
-            Topmost = true;
-            Close();
-        }
+            try
+            {
+                currentjson.Add(new LauncherWindow.ServerList()
+                {
+                    CustomServerName = serverNameBox.Text.Trim(),
+                    CustomServerIp = serverIpBox.Text.Trim().Replace(" ", "")
+                });
 
-        private void CloseAddServer(object sender, RoutedEventArgs e)
-        {
-            CustomMessageBox.buttonPressed = MessageBoxResult.Cancel;
+                string newJson = JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(LauncherWindow.serverJsonFile, newJson);
+
+                ComboBoxItem newItem = new ComboBoxItem { Content = serverNameBox.Text.Trim(), Style = (Style)FindResource("ComboBoxItemStyle") };
+                LauncherWindow.launcherInstance.serverSelector.Items.Insert(LauncherWindow.launcherInstance.serverSelector.Items.Count - 2, newItem);
+                LauncherWindow.launcherInstance.serverSelector.SelectedIndex = LauncherWindow.launcherInstance.serverSelector.Items.Count - 3;
+
+                // Add an event for only user added servers in the list to delete on right click
+                foreach (var item in LauncherWindow.launcherInstance.serverSelector.Items)
+                {
+                    int index = LauncherWindow.launcherInstance.serverSelector.Items.IndexOf(item);
+                    if (item is ComboBoxItem serverItem)
+                    {
+                        if (index == LauncherWindow.launcherInstance.serverSelector.Items.Count - 3)
+                        {
+                            serverItem.PreviewMouseRightButtonUp += LauncherWindow.launcherInstance.ItemRightMouseButtonUp;
+                            ContextMenu deleteMenu = new ContextMenu();
+                            deleteMenu.Style = (Style)FindResource("ContextMenuStyle");
+                            serverItem.ContextMenu = deleteMenu;
+
+                            MenuItem deleteOption = new MenuItem();
+                            deleteOption.Style = (Style)FindResource("DeleteMenuItem");
+                            deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
+                            deleteOption.Click += LauncherWindow.launcherInstance.DeleteServerFromList;
+                            deleteMenu.Items.Add(deleteOption);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
+            }
+
             Topmost = true;
             Close();
         }
 
         private void CancelButton(object sender, RoutedEventArgs e)
         {
-            CustomMessageBox.buttonPressed = MessageBoxResult.Cancel;
             Topmost = true;
             Close();
         }
@@ -119,9 +162,18 @@ namespace H1EmuLauncher
             SizeToContent = SizeToContent.WidthAndHeight;
         }
 
+        private void CloseAddServer(object sender, RoutedEventArgs e)
+        {
+            CustomMessageBox.buttonPressed = MessageBoxResult.Cancel;
+            Topmost = true;
+            Close();
+        }
+
         private void AddServerClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
+            LauncherWindow.launcherInstance.launcherFade.IsHitTestVisible = false;
+            addServerInstance = null;
         }
     }
 }
