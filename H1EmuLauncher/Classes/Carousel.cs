@@ -24,7 +24,7 @@ namespace H1EmuLauncher.Classes
 
         public static ImageSource ConvertResourceToImageSource(string psResourceName)
         {
-            return BitmapFrame.Create(new Uri("pack://application:,,,/H1EmuLauncher;component/" + psResourceName, UriKind.RelativeOrAbsolute));
+            return BitmapFrame.Create(new Uri("pack://application:,,,/H1EmuLauncher;component/" + psResourceName, UriKind.Absolute));
         }
 
         public static void BeginImageCarousel()

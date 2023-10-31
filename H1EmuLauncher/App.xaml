@@ -46,7 +46,7 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            <Style x:Key="TabItemStyleFirst" TargetType="{x:Type TabItem}">
+            <Style TargetType="{x:Type TabItem}" x:Key="TabItemStyleFirst">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TabItem}">
@@ -99,7 +99,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style x:Key="TabItemStyleMiddle" TargetType="{x:Type TabItem}">
+            <Style TargetType="{x:Type TabItem}" x:Key="TabItemStyleMiddle">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TabItem}">
@@ -149,7 +149,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style x:Key="TabItemStyleLast" TargetType="{x:Type TabItem}">
+            <Style TargetType="{x:Type TabItem}" x:Key="TabItemStyleLast">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TabItem}">
@@ -202,7 +202,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style x:Key="ToggleButtonStyle" TargetType="{x:Type ToggleButton}">
+            <Style TargetType="{x:Type ToggleButton}" x:Key="ToggleButtonStyle">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -295,58 +295,26 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style TargetType="{x:Type MenuItem}" x:Key="CopyMenuItem">
+            <Style TargetType="{x:Type MenuItem}" x:Key="CustomMenuItem">
                 <Setter Property="Foreground" Value="FloralWhite"/>
                 <Setter Property="FontWeight" Value="Light"/>
-                <Setter Property="Margin" Value="10,0,10,0"/>
                 <Setter Property="Icon" Value="True"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type MenuItem}">
-                            <Border Background="#1C1B22">
+                            <Border Background="#1C1B22" Margin="10,0,10,0">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="menuItemImage" Width="15" Height="15" Source="Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
-                                    <ContentPresenter ContentSource="Header"/>
+                                    <ContentPresenter ContentSource="Icon" Width="12" Height="12" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                                    <ContentPresenter ContentSource="Header" VerticalAlignment="Center" Margin="0,2,0,0"/>
                                 </StackPanel>
                             </Border>
 
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Foreground" Value="LightGray"/>
-                                    <Setter TargetName="menuItemImage" Property="Source" Value="Resources\Copy_Hover.png"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
                                     <Setter Property="Foreground" Value="DarkGray"/>
-                                    <Setter TargetName="menuItemImage" Property="Source" Value="Resources\Copy_Pressed.png"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <Style TargetType="{x:Type MenuItem}" x:Key="DeleteMenuItem">
-                <Setter Property="Foreground" Value="FloralWhite"/>
-                <Setter Property="FontWeight" Value="Light"/>
-                <Setter Property="Margin" Value="10,0,10,0"/>
-                <Setter Property="Icon" Value="True"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type MenuItem}">
-                            <Border Background="#1C1B22">
-                                <StackPanel Orientation="Horizontal">
-                                    <Image x:Name="menuItemImage" Width="13" Height="13" Source="Resources\Delete.png" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0"/>
-                                    <ContentPresenter ContentSource="Header" Margin="0,2,0,0"/>
-                                </StackPanel>
-                            </Border>
-
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="LightGray"/>
-                                    <Setter TargetName="menuItemImage" Property="Source" Value="Resources\Delete_Hover.png"/>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Foreground" Value="DarkGray"/>
-                                    <Setter TargetName="menuItemImage" Property="Source" Value="Resources\Delete_Pressed.png"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

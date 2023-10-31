@@ -70,8 +70,12 @@
                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                         <MenuItem Click="AccountKeyLinkCopy"
                                   Header="{DynamicResource item193}"
-                                  Style="{DynamicResource CopyMenuItem}"/>
-        
+                                  Style="{DynamicResource CustomMenuItem}">
+                            
+                            <MenuItem.Icon>
+                                <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </ContextMenu>
                 </TextBlock.ContextMenu>
             </TextBlock>

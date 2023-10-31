@@ -7,11 +7,11 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.8.3</AssemblyVersion>
-	  <FileVersion>2.8.3</FileVersion>
+	  <AssemblyVersion>2.8.4</AssemblyVersion>
+	  <FileVersion>2.8.4</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>2.8.3</Version>
+	  <Version>2.8.4</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -41,12 +41,8 @@
     <None Remove="Resources\Arrow_Pressed.png" />
     <None Remove="Resources\Assets_256.pack" />
     <None Remove="Resources\Copy.png" />
-    <None Remove="Resources\Copy_Hover.png" />
-    <None Remove="Resources\Copy_Pressed.png" />
     <None Remove="Resources\CustomClientConfig.ini" />
     <None Remove="Resources\Delete.png" />
-    <None Remove="Resources\Delete_Hover.png" />
-    <None Remove="Resources\Delete_Pressed.png" />
     <None Remove="Resources\Discord.png" />
     <None Remove="Resources\Discord_Hover.png" />
     <None Remove="Resources\Discord_Pressed.png" />
@@ -74,6 +70,7 @@
     <None Remove="Resources\NextButton_Pressed.png" />
     <None Remove="Resources\Node-18.12.1.zip" />
     <None Remove="Resources\Padlock.png" />
+    <None Remove="Resources\Play.png" />
     <None Remove="Resources\PrevButton.png" />
     <None Remove="Resources\PrevButton_Hover.png" />
     <None Remove="Resources\PrevButton_Pressed.png" />
@@ -177,22 +174,10 @@
     <Resource Include="Resources\Copy.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Copy_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Copy_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\CustomClientConfig.ini">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Delete.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Delete_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Delete_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Discord.png">
@@ -271,6 +256,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Padlock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Play.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\PrevButton.png">

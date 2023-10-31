@@ -16,11 +16,17 @@ using System.Linq;
 using H1EmuLauncher.Classes;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
+using System.Windows.Controls.Primitives;
+using System.Runtime.InteropServices;
+using System.Windows.Interop;
 
 namespace H1EmuLauncher
 {
     public partial class LauncherWindow : Window
     {
+        ContextMenu notifyIconContextMenu = new();
         System.Windows.Forms.NotifyIcon launcherNotifyIcon = new();
         FileSystemWatcher argsWatcher = new();
         ProcessStartInfo cmdShell = new()
@@ -31,6 +37,7 @@ namespace H1EmuLauncher
         };
         public static LauncherWindow launcherInstance;
         public static string serverJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
+        public static string recentServersFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\recentServers.json";
         public static string[] rawArgs = null;
         public static bool systemWatcherFire = true;
 
@@ -41,6 +48,8 @@ namespace H1EmuLauncher
         public Storyboard UnfocusPropertiesAnimationShow;
         public Storyboard UnfocusPropertiesAnimationHide;
 
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+        public static extern IntPtr SetForegroundWindow(IntPtr hwnd);
         public LauncherWindow()
         {
             InitializeComponent();
@@ -57,17 +66,6 @@ namespace H1EmuLauncher
             UnfocusPropertiesAnimationShow = FindResource("UnfocusPropertiesShow") as Storyboard;
             UnfocusPropertiesAnimationHide = FindResource("UnfocusPropertiesHide") as Storyboard;
 
-            ContextMenu notifyIconContextMenu = new();
-            notifyIconContextMenu.Style = (Style)FindResource("ContextMenuStyle");
-            notifyIconContextMenu.PlacementTarget = this;
-
-            MenuItem notifyIconMenuItem = new();
-            notifyIconMenuItem.Style = (Style)FindResource("DeleteMenuItem");
-            notifyIconMenuItem.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item194");
-            notifyIconMenuItem.PreviewMouseLeftButtonDown += (o, s) => { Environment.Exit(0); };
-            notifyIconMenuItem.MouseLeave += (o, s) => { notifyIconContextMenu.IsOpen = false; };
-            notifyIconContextMenu.Items.Add(notifyIconMenuItem);
-
             launcherNotifyIcon.Icon = Properties.Resources.Icon;
             launcherNotifyIcon.Text = "H1EmuLauncher";
             launcherNotifyIcon.MouseDown += (o, s) =>
@@ -81,6 +79,9 @@ namespace H1EmuLauncher
                 else if (s.Button == System.Windows.Forms.MouseButtons.Right)
                 {
                     notifyIconContextMenu.IsOpen = true;
+                    // Get context menu handle and bring it to the foreground
+                    if (PresentationSource.FromVisual(notifyIconContextMenu) is HwndSource hwndSource)
+                        SetForegroundWindow(hwndSource.Handle);
                 }
             };
         }
@@ -193,26 +194,90 @@ namespace H1EmuLauncher
 
         private void LoadServers()
         {
-            if (!File.Exists(serverJsonFile))
+            if (!File.Exists(serverJsonFile) || string.IsNullOrEmpty(File.ReadAllText(serverJsonFile)))
                 File.WriteAllText(serverJsonFile, "[]");
+
+            if (!File.Exists(recentServersFile) || string.IsNullOrEmpty(File.ReadAllText(recentServersFile)))
+                File.WriteAllText(recentServersFile, "[]");
 
             try
             {
+                // Load options for context menu on the applications' NotifyIcon
+                notifyIconContextMenu.Style = (Style)FindResource("ContextMenuStyle");
+                notifyIconContextMenu.PlacementTarget = this;
+
+                MenuItem notifyIconMenuItemH1EmuServers = new();
+                notifyIconMenuItemH1EmuServers.Style = (Style)FindResource("CustomMenuItem");
+                notifyIconMenuItemH1EmuServers.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) };
+                notifyIconMenuItemH1EmuServers.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item139");
+                notifyIconMenuItemH1EmuServers.Margin = new Thickness(0, 5, 0, 0);
+                notifyIconMenuItemH1EmuServers.PreviewMouseLeftButtonDown += (o, s) =>
+                {
+                    serverSelector.SelectedIndex = 0;
+                    playButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                };
+
+                MenuItem notifyIconMenuItemSingleplayer = new();
+                notifyIconMenuItemSingleplayer.Style = (Style)FindResource("CustomMenuItem");
+                notifyIconMenuItemSingleplayer.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) };
+                notifyIconMenuItemSingleplayer.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item140");
+                notifyIconMenuItemSingleplayer.Margin = new Thickness(0, 5, 0, 0);
+                notifyIconMenuItemSingleplayer.PreviewMouseLeftButtonDown += (o, s) =>
+                {
+                    serverSelector.SelectedIndex = 1;
+                    playButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                };
+
+                Separator itemSeparator = new Separator();
+                itemSeparator.Background = new SolidColorBrush(Color.FromRgb(44, 44, 44));
+                itemSeparator.Margin = new Thickness(0, 7, 10, 2);
+
+                MenuItem notifyIconMenuItemExit = new();
+                notifyIconMenuItemExit.Style = (Style)FindResource("CustomMenuItem");
+                notifyIconMenuItemExit.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) };
+                notifyIconMenuItemExit.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item194");
+                notifyIconMenuItemExit.Margin = new Thickness(0, 5, 0, 5);
+                notifyIconMenuItemExit.PreviewMouseLeftButtonDown += (o, s) => { Environment.Exit(0); };
+
+                notifyIconContextMenu.Items.Add(notifyIconMenuItemH1EmuServers);
+                notifyIconContextMenu.Items.Add(notifyIconMenuItemSingleplayer);
+                notifyIconContextMenu.Items.Add(itemSeparator);
+                notifyIconContextMenu.Items.Add(notifyIconMenuItemExit);
+
+                List<ServerList> currentJsonRecent = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(recentServersFile));
+                foreach (var server in currentJsonRecent)
+                {
+                    MenuItem newItem = new MenuItem();
+                    newItem.Style = (Style)FindResource("CustomMenuItem");
+                    newItem.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) };
+                    newItem.Header = server.CustomServerName;
+                    newItem.Margin = new Thickness(0, 5, 0, 0);
+                    newItem.PreviewMouseLeftButtonDown += LaunchToCustomServerFromNotifyIcon;
+                    notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, newItem);
+                }
+
+                if (notifyIconContextMenu.Items.Count > 4)
+                {
+                    Separator separator = new Separator();
+                    separator.Background = new SolidColorBrush(Color.FromRgb(44, 44, 44));
+                    separator.Margin = new Thickness(0, 7, 10, 2);
+                    notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, separator);
+                }
+
                 // Load all of the servers into the server selector
-                List<ServerList> currentjson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
-                foreach (ServerList server in currentjson)
+                List<ServerList> currentJson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
+                foreach (ServerList server in currentJson)
                 {
                     ComboBoxItem newItem = new ComboBoxItem { Content = server.CustomServerName, Style = (Style)FindResource("ComboBoxItemStyle") };
                     serverSelector.Items.Insert(serverSelector.Items.Count - 2, newItem);
                 }
 
                 // Add an event for only user added servers in the list to delete on right click
-                foreach (var item in serverSelector.Items)
+                for (int i = 0; i <= serverSelector.Items.Count - 1; i++)
                 {
-                    int index = serverSelector.Items.IndexOf(item);
-                    if (item is ComboBoxItem serverItem)
+                    if (serverSelector.Items[i] is ComboBoxItem serverItem)
                     {
-                        if (index > 1 && index < serverSelector.Items.Count - 2)
+                        if (i > 1 && i < serverSelector.Items.Count - 2)
                         {
                             serverItem.PreviewMouseRightButtonUp += ItemRightMouseButtonUp;
                             ContextMenu deleteMenu = new ContextMenu();
@@ -220,7 +285,8 @@ namespace H1EmuLauncher
                             serverItem.ContextMenu = deleteMenu;
 
                             MenuItem deleteOption = new MenuItem();
-                            deleteOption.Style = (Style)FindResource("DeleteMenuItem");
+                            deleteOption.Style = (Style)FindResource("CustomMenuItem");
+                            deleteOption.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) };
                             deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
                             deleteOption.Click += DeleteServerFromList;
                             deleteMenu.Items.Add(deleteOption);
@@ -239,7 +305,7 @@ namespace H1EmuLauncher
             }
             catch (Exception e)
             {
-                Debug.WriteLine($"Error loading last selected server: \"{e.Message}\". Setting selected server index to 0.");
+                CustomMessageBox.Show($"Error loading last selected server: \"{e.Message}\". Setting selected server index to 0.");
                 serverSelector.SelectedIndex = 0;
             }
         }
@@ -254,9 +320,7 @@ namespace H1EmuLauncher
             foreach (var item in serverSelector.Items)
             {
                 if (item is ComboBoxItem serverItem)
-                {
                     serverItem.Style = (Style)FindResource("ComboBoxItemStyle");
-                }
             }
         }
 
@@ -275,24 +339,45 @@ namespace H1EmuLauncher
             if (dr != MessageBoxResult.Yes)
                 return;
 
-            List<ServerList> currentjson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
-
-            int index = -1;
-
-            foreach (var item in currentjson)
+            List<ServerList> currentJson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
+            for (int i = currentJson.Count - 1; i >= 0; i--)
             {
-                index++;
-                if (item.CustomServerName == (string)itemRightClicked.Content)
+                if (currentJson[i].CustomServerName == (string)itemRightClicked.Content) 
+                {
+                    currentJson.Remove(currentJson[i]);
+                    serverSelector.SelectedIndex = i + 1;
                     break;
+                }
             }
 
-            currentjson.Remove(currentjson[index]);
+            List<ServerList> currentJsonRecent = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(recentServersFile));
+            for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
+            {
+                if (currentJsonRecent[i].CustomServerName == (string)itemRightClicked.Content)
+                {
+                    currentJsonRecent.Remove(currentJsonRecent[i]);
+                    for (int j = notifyIconContextMenu.Items.Count - 1; j >= 0; j--)
+                    {
+                        if (notifyIconContextMenu.Items[j] is not MenuItem)
+                            continue;
 
-            string finalJson = JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(serverJsonFile, finalJson);
+                        MenuItem item = (MenuItem)notifyIconContextMenu.Items[j];
+                        if ((string)item.Header == (string)itemRightClicked.Content)
+                            notifyIconContextMenu.Items.Remove(item);
+                    }
+                }
+            }
+
+            if (notifyIconContextMenu.Items.Count == 5)
+                notifyIconContextMenu.Items.RemoveAt(notifyIconContextMenu.Items.Count - 2);
+
+            string finalJsonServers = JsonSerializer.Serialize(currentJson, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(serverJsonFile, finalJsonServers);
+
+            string finalJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(recentServersFile, finalJsonRecentServers);
 
             serverSelector.Items.Remove(itemRightClicked);
-            serverSelector.SelectedIndex = index + 1;
         }
 
         public bool LaunchLocalServer(string gameVersionString)
@@ -394,16 +479,13 @@ namespace H1EmuLauncher
                         }
                     }));
 
-                    List<ServerList> currentjson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
-
-                    foreach (var item in currentjson)
+                    List<ServerList> currentJson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(serverJsonFile));
+                    foreach (ServerList item in currentJson)
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
                             if (item.CustomServerName == serverSelector.Text)
-                            {
                                 serverIp = item.CustomServerIp;
-                            }
                         }));
                     }
                 }
@@ -451,7 +533,7 @@ namespace H1EmuLauncher
                             }
                             else
                             {
-                                // Check the users account key validity to deicde whether to let them connect to the H1Emu login server
+                                // Check the users account key validity to decide whether to let the user connect to the H1Emu login server
                                 //if (!CheckAccountKey.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey))
                                 //return;
 
@@ -485,7 +567,13 @@ namespace H1EmuLauncher
 
                         p.Start();
 
-                        if (Properties.Settings.Default.autoMinimise)
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            if (serverSelector.SelectedIndex != 0 && serverSelector.SelectedIndex != 1 && serverSelector.SelectedIndex != serverSelector.Items.Count - 1 && serverSelector.SelectedIndex != serverSelector.Items.Count - 2)
+                                AddServerToRecentList(serverSelector.Text, serverIp);
+                        }));
+
+                        if (Properties.Settings.Default.autoMinimise && Visibility == Visibility.Visible)
                         {
                             Dispatcher.Invoke(new Action(delegate
                             {
@@ -526,6 +614,101 @@ namespace H1EmuLauncher
                 }
 
             }).Start();
+        }
+
+        private void AddServerToRecentList(string name, string ip)
+        {
+            Dispatcher.Invoke(new Action(delegate
+            {
+                try
+                {
+                    List<ServerList> currentJsonRecent = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(recentServersFile));
+                    for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
+                    {
+                        if (currentJsonRecent[i].CustomServerName == serverSelector.Text)
+                        {
+                            currentJsonRecent.Remove(currentJsonRecent[i]);
+                            for (int j = notifyIconContextMenu.Items.Count - 1; j >= 0; j--)
+                            {
+                                if (notifyIconContextMenu.Items[j] is not MenuItem)
+                                    continue;
+
+                                MenuItem item = (MenuItem)notifyIconContextMenu.Items[j];
+                                if ((string)item.Header == name)
+                                    notifyIconContextMenu.Items.Remove(item);
+                            }
+                        }
+                    }
+
+                    currentJsonRecent.Add(new ServerList()
+                    {
+                        CustomServerName = name.Trim(),
+                        CustomServerIp = ip.Trim().Replace(" ", "")
+                    });
+
+                    string newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
+                    File.WriteAllText(recentServersFile, newJsonRecentServers);
+
+                    MenuItem newItem = new MenuItem();
+                    newItem.Style = (Style)FindResource("CustomMenuItem");
+                    newItem.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) };
+                    newItem.Header = name;
+                    newItem.Margin = new Thickness(0, 5, 0, 0);
+                    newItem.PreviewMouseLeftButtonDown += LaunchToCustomServerFromNotifyIcon;
+                    notifyIconContextMenu.Items.Insert(3, newItem);
+
+                    if (notifyIconContextMenu.Items.Count == 5)
+                    {
+                        Separator separator = new Separator();
+                        separator.Background = new SolidColorBrush(Color.FromRgb(44, 44, 44));
+                        separator.Margin = new Thickness(0, 7, 10, 2);
+                        notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, separator);
+                    }
+
+                    if (notifyIconContextMenu.Items.Count > 10)
+                    {
+                        MenuItem item = (MenuItem)notifyIconContextMenu.Items[notifyIconContextMenu.Items.Count - 3];
+                        for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
+                        {
+                            if (currentJsonRecent[i].CustomServerName == (string)item.Header)
+                                currentJsonRecent.Remove(currentJsonRecent[i]);
+                        }
+
+                        notifyIconContextMenu.Items.RemoveAt(notifyIconContextMenu.Items.Count - 3);
+                        newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
+                        File.WriteAllText(recentServersFile, newJsonRecentServers);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
+                }
+            }));
+        }
+
+        private void LaunchToCustomServerFromNotifyIcon(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                MenuItem clickedMenuItem = (MenuItem)sender;
+                for (int i = 0; i <= serverSelector.Items.Count - 1; i++)
+                {
+                    if (serverSelector.Items[i] is not ComboBoxItem)
+                        continue;
+
+                    ComboBoxItem serverSelectorItem = (ComboBoxItem)serverSelector.Items[i];
+                    if ((string)serverSelectorItem.Content == (string)clickedMenuItem.Header)
+                    {
+                        serverSelector.SelectedIndex = i;
+                        playButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                        break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
+            }
         }
 
         private void LauncherWindowLoaded(object sender, RoutedEventArgs e)

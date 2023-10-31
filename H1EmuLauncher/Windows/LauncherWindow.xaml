@@ -272,7 +272,11 @@
                                 <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                     <MenuItem Click="websiteLinkCopy"
                                               Header="{DynamicResource item193}"
-                                              Style="{DynamicResource CopyMenuItem}">
+                                              Style="{DynamicResource CustomMenuItem}">
+                                        
+                                        <MenuItem.Icon>
+                                            <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
+                                        </MenuItem.Icon>
                                     </MenuItem>
                                 </ContextMenu>
                             </TextBlock.ContextMenu>
@@ -297,12 +301,17 @@
                                                   Opacity="0.3"/>
                             </Button.Effect>
 
+                            <!-- Context menu to copy link -->
                             <Button.ContextMenu>
                                 <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                     <MenuItem Click="discordLinkCopy"
                                               Header="{DynamicResource item193}"
-                                              Style="{DynamicResource CopyMenuItem}"/>
+                                              Style="{DynamicResource CustomMenuItem}">
 
+                                        <MenuItem.Icon>
+                                            <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
                                 </ContextMenu>
                             </Button.ContextMenu>
                         </Button>
@@ -411,8 +420,12 @@
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                         <MenuItem Click="patchNotesCopy"
                                                   Header="{DynamicResource item193}"
-                                                  Style="{DynamicResource CopyMenuItem}"/>
-        
+                                                  Style="{DynamicResource CustomMenuItem}">
+                                            
+                                            <MenuItem.Icon>
+                                                <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
                             </TextBlock>
@@ -557,8 +570,12 @@
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
                                         <MenuItem Click="chineseLinkCopy"
                                                   Header="{DynamicResource item193}"
-                                                  Style="{DynamicResource CopyMenuItem}"/>
-    
+                                                  Style="{DynamicResource CustomMenuItem}">
+                                            
+                                            <MenuItem.Icon>
+                                                <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
+                                            </MenuItem.Icon>
+                                        </MenuItem>
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>  
                             </TextBlock>
@@ -615,7 +632,7 @@
                                 <ComboBox x:Name="serverSelector"
                                           Height="35"
                                           Margin="0,20,10,20"
-                                          Padding="38,2,15,0"
+                                          Padding="38,2,5,0"
                                           VerticalAlignment="Center"
                                           VerticalContentAlignment="Center"
                                           Foreground="FloralWhite"

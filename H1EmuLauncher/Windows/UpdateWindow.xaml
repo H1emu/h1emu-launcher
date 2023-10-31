@@ -202,7 +202,7 @@
                                 <!-- Main progress bar -->
                                 <ProgressBar x:Name="downloadSetupProgress"
                                              Height="25"
-                                             Margin="20,0,20,20"
+                                             Margin="20"
                                              Style="{DynamicResource ProgressBar}">
                                     
                                     <ProgressBar.Effect>
@@ -216,13 +216,13 @@
 
                                 <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
                                 <ProgressBar Height="25"
-                                             Margin="20,0,20,20"
+                                             Margin="20"
                                              Background="Transparent"
                                              Style="{DynamicResource ProgressBar}"/>
 
                                 <!-- Status text to overlay progress bar -->
                                 <TextBlock x:Name="downloadSetupProgressText" Text="Downloading..."
-                                           Margin="20,0,20,20"
+                                           Margin="20"
                                            FontSize="12"
                                            VerticalAlignment="Center"
                                            HorizontalAlignment="Center"/>

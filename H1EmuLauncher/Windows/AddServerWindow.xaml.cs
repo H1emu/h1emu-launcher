@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Imaging;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
@@ -66,9 +67,8 @@ namespace H1EmuLauncher
                 return;
             }
 
-            List<LauncherWindow.ServerList> currentjson = JsonSerializer.Deserialize<List<LauncherWindow.ServerList>>(File.ReadAllText(LauncherWindow.serverJsonFile));
-
-            foreach (var item in currentjson)
+            List<LauncherWindow.ServerList> currentJson = JsonSerializer.Deserialize<List<LauncherWindow.ServerList>>(File.ReadAllText(LauncherWindow.serverJsonFile));
+            foreach (LauncherWindow.ServerList item in currentJson)
             {
                 if (item.CustomServerName == serverNameBox.Text.Trim())
                 {
@@ -79,13 +79,13 @@ namespace H1EmuLauncher
 
             try
             {
-                currentjson.Add(new LauncherWindow.ServerList()
+                currentJson.Add(new LauncherWindow.ServerList()
                 {
                     CustomServerName = serverNameBox.Text.Trim(),
                     CustomServerIp = serverIpBox.Text.Trim().Replace(" ", "")
                 });
 
-                string newJson = JsonSerializer.Serialize(currentjson, new JsonSerializerOptions { WriteIndented = true });
+                string newJson = JsonSerializer.Serialize(currentJson, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(LauncherWindow.serverJsonFile, newJson);
 
                 ComboBoxItem newItem = new ComboBoxItem { Content = serverNameBox.Text.Trim(), Style = (Style)FindResource("ComboBoxItemStyle") };
@@ -93,12 +93,11 @@ namespace H1EmuLauncher
                 LauncherWindow.launcherInstance.serverSelector.SelectedIndex = LauncherWindow.launcherInstance.serverSelector.Items.Count - 3;
 
                 // Add an event for only user added servers in the list to delete on right click
-                foreach (var item in LauncherWindow.launcherInstance.serverSelector.Items)
+                for (int i = 0; i <= LauncherWindow.launcherInstance.serverSelector.Items.Count - 1; i++)
                 {
-                    int index = LauncherWindow.launcherInstance.serverSelector.Items.IndexOf(item);
-                    if (item is ComboBoxItem serverItem)
+                    if (LauncherWindow.launcherInstance.serverSelector.Items[i] is ComboBoxItem serverItem)
                     {
-                        if (index == LauncherWindow.launcherInstance.serverSelector.Items.Count - 3)
+                        if (i == LauncherWindow.launcherInstance.serverSelector.Items.Count - 3)
                         {
                             serverItem.PreviewMouseRightButtonUp += LauncherWindow.launcherInstance.ItemRightMouseButtonUp;
                             ContextMenu deleteMenu = new ContextMenu();
@@ -106,7 +105,8 @@ namespace H1EmuLauncher
                             serverItem.ContextMenu = deleteMenu;
 
                             MenuItem deleteOption = new MenuItem();
-                            deleteOption.Style = (Style)FindResource("DeleteMenuItem");
+                            deleteOption.Style = (Style)FindResource("CustomMenuItem");
+                            deleteOption.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) };
                             deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
                             deleteOption.Click += LauncherWindow.launcherInstance.DeleteServerFromList;
                             deleteMenu.Items.Add(deleteOption);

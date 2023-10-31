@@ -23,7 +23,7 @@ namespace H1EmuLauncher
 
         private void CloseH1Z1Click(object sender, RoutedEventArgs e)
         {
-            foreach (var h1z1Processes in Process.GetProcessesByName("h1z1"))
+            foreach (Process h1z1Processes in Process.GetProcessesByName("h1z1"))
                 h1z1Processes.Kill();
 
             Topmost = true;
