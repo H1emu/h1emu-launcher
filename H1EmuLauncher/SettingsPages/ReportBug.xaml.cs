@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace H1EmuLauncher.SettingsPages
 {
-    /// <summary>
-    /// Interaction logic for ReportBug.xaml
-    /// </summary>
     public partial class ReportBug : Page
     {
         public static ReportBug reportBugInstance;

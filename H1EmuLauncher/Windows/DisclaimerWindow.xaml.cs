@@ -10,9 +10,9 @@ namespace H1EmuLauncher
 {
     public partial class DisclaimerWindow : Window
     {
-        public int seconds = 10;
-        public DispatcherTimer timer;
         public static DisclaimerWindow disclaimerInstance;
+        private DispatcherTimer timer;
+        private int seconds = 10;
 
         public DisclaimerWindow()
         {

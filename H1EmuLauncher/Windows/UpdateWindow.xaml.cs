@@ -10,24 +10,20 @@ using System.Reflection;
 using System.Text.Json;
 using System.Threading;
 using System.Windows;
-using System.Windows.Automation;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
 {
     public partial class UpdateWindow : Window
     {
-        SplashWindow sp = new();
-        string online;
-        string local;
-        string downloadUrl;
-        public static UpdateWindow updateInstance;
         public static string downloadFileName;
+        public static UpdateWindow updateInstance;
         public static HttpClient httpClient = new();
+        private SplashWindow sp = new();
+        private Version online;
+        private Version local;
+        private string downloadUrl;
 
         public UpdateWindow()
         {
@@ -39,7 +35,7 @@ namespace H1EmuLauncher
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
             httpClient.DefaultRequestHeaders.Add("User-Agent", "d-fens HttpClient");
-            httpClient.Timeout = TimeSpan.FromMinutes(10);
+            httpClient.Timeout = TimeSpan.FromMinutes(5);
 
             sp.Show();
             CheckVersion();
@@ -61,8 +57,8 @@ namespace H1EmuLauncher
                     // Get latest release number and date published for app.
                     string jsonLauncher = result.Content.ReadAsStringAsync().Result;
                     JsonEndPoints.Launcher.Root jsonLauncherDes = JsonSerializer.Deserialize<JsonEndPoints.Launcher.Root>(jsonLauncher);
-                    online = jsonLauncherDes.tag_name.Substring(1);
-                    local = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
+                    online = new Version(jsonLauncherDes.tag_name.Substring(1));
+                    local = new Version(Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.'));
                     downloadUrl = jsonLauncherDes.assets[0].browser_download_url;
                     downloadFileName = jsonLauncherDes.assets[0].name;
                 }
@@ -81,13 +77,10 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         sp.Close();
-
-                        CustomMessageBox.Show($"{FindResource("item66")} {FindResource("item16")}{exceptionList}\n\n{FindResource("item49")}", this);
-
                         Topmost = true;
                         Close();
+                        CustomMessageBox.Show($"{FindResource("item66")} {FindResource("item16")}{exceptionList}\n\n{FindResource("item49")}", this);
                     }));
-
                     return;
                 }
                 catch (Exception ex)
@@ -95,24 +88,20 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         sp.Close();
-
-                        CustomMessageBox.Show($"{FindResource("item66")} \"{ex.Message}\"\n\n{FindResource("item49")}", this);
-
                         Topmost = true;
                         Close();
+                        CustomMessageBox.Show($"{FindResource("item66")} \"{ex.Message}\"\n\n{FindResource("item49")}", this);
                     }));
-
                     return;
                 }
 
-                if (local == online)
+                if (local < online)
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
                         sp.Close();
-
-                        Topmost = true;
-                        Close();
+                        Show();
+                        UpdateLauncher();
                     }));
                 }
                 else
@@ -120,18 +109,16 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         sp.Close();
-
-                        Show();
+                        Topmost = true;
+                        Close();
                     }));
                 }
 
             }).Start();
         }
 
-        private void UpdateButtonClick(object sender, RoutedEventArgs e)
+        private void UpdateLauncher()
         {
-            DisableButtons();
-
             new Thread(() =>
             {
                 try
@@ -214,7 +201,6 @@ namespace H1EmuLauncher
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        EnableButtons();
                         CustomMessageBox.Show($"{FindResource("item80")} {FindResource("item16")}{exceptionList}", this);
                     }));
 
@@ -222,7 +208,6 @@ namespace H1EmuLauncher
                 }
                 catch (Exception es)
                 {
-                    EnableButtons();
                     Dispatcher.Invoke(new Action(delegate
                     {
                         CustomMessageBox.Show($"{FindResource("item80")} \"{es.Message}\".\n\n{FindResource("item64")} \"{es.StackTrace.Trim()}\".", this);
@@ -243,67 +228,15 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        EnableButtons();
                         CustomMessageBox.Show($"{FindResource("item186")} \"{ph.Message}\"\n\n{FindResource("item187")}", this);
                     }));
 
                     return;
                 }
 
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    EnableButtons();
-                }));
-
                 Environment.Exit(0);
 
             }).Start();
-        }
-
-        public void EnableButtons()
-        {
-            updateProgressBarRow.Visibility = Visibility.Collapsed;
-            notNowText.Visibility = Visibility.Visible;
-            notNowHyperlink.Foreground = new SolidColorBrush(Colors.White);
-            notNowHyperlink.IsEnabled = true;
-            updateButton.IsEnabled = true;
-            closeButton.IsEnabled = true;
-
-            downloadSetupProgress.Value = 0;
-            updateProgressBarRowContent.Measure(new Size(updateProgressBarRow.MaxWidth, updateProgressBarRow.MaxHeight));
-            DoubleAnimation hide = new(updateProgressBarRowContent.DesiredSize.Height, 0, new Duration(TimeSpan.FromMilliseconds(150)))
-            {
-                AccelerationRatio = 0.4,
-                DecelerationRatio = 0.4
-            };
-            hide.Completed += (s, o) => updateProgressBarRow.Visibility = Visibility.Collapsed;
-            updateProgressBarRow.BeginAnimation(HeightProperty, hide);
-        }
-
-        public void DisableButtons()
-        {
-            downloadSetupProgressText.Text = $"{FindResource("item54")} 0%";
-            updateProgressBarRow.Visibility = Visibility.Visible;
-            notNowText.Visibility = Visibility.Collapsed;
-            notNowHyperlink.Foreground = new SolidColorBrush(Colors.Gray);
-            notNowHyperlink.IsEnabled = false;
-            updateButton.IsEnabled = false;
-            closeButton.IsEnabled = false;
-
-            updateProgressBarRow.Visibility = Visibility.Visible;
-            updateProgressBarRowContent.Measure(new Size(updateProgressBarRow.MaxWidth, updateProgressBarRow.MaxHeight));
-            DoubleAnimation show = new(0, updateProgressBarRowContent.DesiredSize.Height, new Duration(TimeSpan.FromMilliseconds(150)))
-            {
-                AccelerationRatio = 0.4,
-                DecelerationRatio = 0.4
-            };
-            updateProgressBarRow.BeginAnimation(HeightProperty, show);
-        }
-
-        private void NotNowClick(object sender, RoutedEventArgs e)
-        {
-            Topmost = true;
-            Close();
         }
 
         private void MoveUpdateWindow(object sender, MouseButtonEventArgs e)

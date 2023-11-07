@@ -169,7 +169,7 @@
                     <!-- Install patch button -->
                     <Button x:Name="patchButton"
                             Grid.Column="2"
-                            Click="InstallPatch"
+                            Click="InstallPatchButton"
                             Margin="20"
                             Padding="25,7,25,7"
                             BorderThickness="0"
@@ -213,7 +213,7 @@
                     <!-- Install latest server button -->
                     <Button x:Name="latestButton"
                             Grid.Column="2"
-                            Click="InstallServer"
+                            Click="InstallServerButton"
                             Margin="20"
                             Padding="25,7,25,7"
                             BorderThickness="0"
@@ -257,7 +257,7 @@
                     <!-- Install stable server button -->
                     <Button x:Name="stableButton"
                             Grid.Column="2"
-                            Click="InstallServer"
+                            Click="InstallServerButton"
                             Margin="20"
                             Padding="25,7,25,7"
                             BorderThickness="0"

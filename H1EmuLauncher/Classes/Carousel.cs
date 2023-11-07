@@ -35,9 +35,7 @@ namespace H1EmuLauncher.Classes
                 foreach (DictionaryEntry entry in resourceSet)
                 {
                     if (int.TryParse(entry.Key.ToString().Replace("_", ""), out _))
-                    {
                         images.Add($"{entry.Key.ToString().Replace("_", "")}.jpg");
-                    }
                 }
 
                 Application.Current.Dispatcher.Invoke(new Action(delegate

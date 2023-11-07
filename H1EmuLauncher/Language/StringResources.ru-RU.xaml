@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="item1">Доступно новое обновление, хотите обновить сейчас?</system:String>
+    <system:String x:Key="item1">Для игры требуется новое обновление, подождите.</system:String>
     <system:String x:Key="item2">ОБНОВИТЬ</system:String>
     <system:String x:Key="item3">Обновление</system:String>
     <system:String x:Key="item4">Пожалуйста подождите</system:String>
@@ -186,4 +186,6 @@
     <system:String x:Key="item209">Сообщение</system:String>
     <system:String x:Key="item210">Заставка</system:String>
     <system:String x:Key="item211">Доступно Oбновление</system:String>
+    <system:String x:Key="item212">Редактировать</system:String>
+    <system:String x:Key="item213">СОХРАНЯТЬ</system:String>
 </ResourceDictionary>

@@ -50,13 +50,37 @@ namespace H1EmuLauncher.Classes
 
             if (!string.IsNullOrEmpty(newServerName) || !string.IsNullOrEmpty(newServerIp))
             {
-                AddServerWindow.addServerInstance.serverNameBox.Text = newServerName;
-                AddServerWindow.addServerInstance.serverIpBox.Text = newServerIp;
-                AddServerWindow.addServerInstance.serverNameHint.Visibility = Visibility.Hidden;
-                AddServerWindow.addServerInstance.serverIpHint.Visibility = Visibility.Hidden;
+                addServer.serverNameBox.Text = newServerName;
+                addServer.serverIpBox.Text = newServerIp;
+                addServer.serverNameHint.Visibility = Visibility.Hidden;
+                addServer.serverIpHint.Visibility = Visibility.Hidden;
             }
 
             addServer.Show();
+            LauncherWindow.launcherInstance.launcherFade.IsHitTestVisible = true;
+        }
+
+        public static void EditServer(Window owner, int editIndex, string newServerName = null, string newServerIp = null)
+        {
+            AddServerWindow editServer = new();
+
+            if (owner != null)
+                editServer.Owner = owner;
+            else
+                editServer.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            if (!string.IsNullOrEmpty(newServerName) || !string.IsNullOrEmpty(newServerIp))
+            {
+                editServer.serverNameBox.Text = newServerName;
+                editServer.serverIpBox.Text = newServerIp;
+                editServer.serverNameHint.Visibility = Visibility.Hidden;
+                editServer.serverIpHint.Visibility = Visibility.Hidden;
+            }
+
+            editServer.saveServerButton.Content = LauncherWindow.launcherInstance.FindResource("item213").ToString();
+            editServer.editIndex = editIndex;
+
+            editServer.Show();
             LauncherWindow.launcherInstance.launcherFade.IsHitTestVisible = true;
         }
     }

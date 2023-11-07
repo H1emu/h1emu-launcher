@@ -17,7 +17,8 @@
         FontSize="16"
         Foreground="FloralWhite"
         Background="Transparent"
-        Loaded="LauncherWindowLoaded">
+        Loaded="LauncherWindowLoaded"
+        ContentRendered="LauncherWindowContentRendered">
 
     <!-- Keep window animations -->
     <WindowChrome.WindowChrome>
@@ -35,6 +36,7 @@
                                  Duration="0:0:1"
                                  AccelerationRatio="0.2"
                                  DecelerationRatio="0.8">
+                    
                 </DoubleAnimation>
             </Storyboard>
             <Storyboard x:Key="CarouselNextImageAnimationFollow"
@@ -46,6 +48,7 @@
                                  Duration="0:0:1"
                                  AccelerationRatio="0.2"
                                  DecelerationRatio="0.8">
+                    
                 </DoubleAnimation>
             </Storyboard>
             <Storyboard x:Key="CarouselPrevImageAnimation"
@@ -57,6 +60,7 @@
                                  Duration="0:0:1"
                                  AccelerationRatio="0.2"
                                  DecelerationRatio="0.8">
+                    
                 </DoubleAnimation>
             </Storyboard>
             <Storyboard x:Key="CarouselPrevImageAnimationFollow"
@@ -68,6 +72,7 @@
                                  Duration="0:0:1"
                                  AccelerationRatio="0.2"
                                  DecelerationRatio="0.8">
+                    
                 </DoubleAnimation>
             </Storyboard>
 
@@ -433,18 +438,12 @@
 
                         <!-- Grid to split left panel in half horizontally -->
                         <Grid Grid.Row="2">
-
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-
                             <!-- Grid to dock the game image -->
                             <Grid Grid.Row="1"
                                   Margin="30,0,10,20">
 
                                 <Grid.Background>
-                                    <ImageBrush ImageSource="..\Resources\4.jpg"/>
+                                    <ImageBrush ImageSource="..\Resources\Placeholder.jpg"/>
                                 </Grid.Background>
 
                                 <!-- Drop shadow effect -->
@@ -764,12 +763,12 @@
                                                             <BeginStoryboard x:Name="beginSettingsIconRotation">
                                                                 <Storyboard>
                                                                     <DoubleAnimation Storyboard.TargetName="rotateSettingsIcon"
-                                                                 Storyboard.TargetProperty="Angle"
-                                                                 By="0"
-                                                                 To="90"
-                                                                 Duration="0:0:0.5"
-                                                                 FillBehavior="Stop"
-                                                                 RepeatBehavior="Forever"/>
+                                                                                     Storyboard.TargetProperty="Angle"
+                                                                                     By="0"
+                                                                                     To="90"
+                                                                                     Duration="0:0:0.5"
+                                                                                     FillBehavior="Stop"
+                                                                                     RepeatBehavior="Forever"/>
                                                                 </Storyboard>
                                                             </BeginStoryboard>
                                                         </EventTrigger>

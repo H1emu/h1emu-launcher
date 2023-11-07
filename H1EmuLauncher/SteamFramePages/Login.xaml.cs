@@ -12,15 +12,14 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using H1EmuLauncher.Classes;
-using SteamKit2.Internal;
 
 namespace H1EmuLauncher.SteamFramePages
 {
     public partial class Login : UserControl
     {
-        public static Storyboard loadingAnimation;
+        private static Storyboard loadingAnimation;
+        private static CancellationToken token;
         public static CancellationTokenSource tokenSource = new();
-        static CancellationToken token;
         public static string gameInfo { get; set; }
 
         public Login()
@@ -170,10 +169,8 @@ namespace H1EmuLauncher.SteamFramePages
                         if (depotIdList.Count != manifestIdList.Count)
                         {
                             Debug.WriteLine("Error: -manifest requires one id for every -depot specified");
-
                             username = null;
                             password = null;
-
                             return;
                         }
 
@@ -247,7 +244,6 @@ namespace H1EmuLauncher.SteamFramePages
                 finally
                 {
                     ContentDownloader.ShutdownSteam3();
-
                     username = null;
                     password = null;
                 }
@@ -296,16 +292,11 @@ namespace H1EmuLauncher.SteamFramePages
                 {
                     Console.Write($"Enter account password for \"{username}\": ");
                     if (Console.IsInputRedirected)
-                    {
                         password = Console.ReadLine();
-                    }
                     else
-                    {
-                        // Avoid console echoing of password
                         password = Util.ReadPassword();
-                    }
                     Console.WriteLine();
-                } while (String.Empty == password);
+                } while (string.Empty == password);
             }
             else if (username == null)
             {

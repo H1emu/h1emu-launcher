@@ -12,12 +12,11 @@ namespace H1EmuLauncher.SteamFramePages
         public DownloadStatus()
         {
             InitializeComponent();
+            downloadStatusInstance = this;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
-
-            downloadStatusInstance = this;
         }
 
         private void CancelDownloadButtonClick(object sender, RoutedEventArgs e)

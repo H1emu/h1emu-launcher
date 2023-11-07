@@ -7,11 +7,10 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <AssemblyVersion>2.8.4</AssemblyVersion>
-	  <FileVersion>2.8.4</FileVersion>
+	  <FileVersion>2.8.7</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>2.8.4</Version>
+	  <Version>2.8.7</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -19,6 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
+	  <AssemblyVersion>2.8.7</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -47,6 +47,7 @@
     <None Remove="Resources\Discord_Hover.png" />
     <None Remove="Resources\Discord_Pressed.png" />
     <None Remove="Resources\DisplayImage.png" />
+    <None Remove="Resources\Edit.png" />
     <None Remove="Resources\Exit.png" />
     <None Remove="Resources\Folder.png" />
     <None Remove="Resources\Folder_Hover.png" />
@@ -57,6 +58,7 @@
     <None Remove="Resources\Grain.png" />
     <None Remove="Resources\H1EmuIcon.png" />
     <None Remove="Resources\H1EmuLogo.png" />
+    <None Remove="Resources\H1Z1_BE.exe" />
     <None Remove="Resources\HideKey.png" />
     <None Remove="Resources\HideKey_Hover.png" />
     <None Remove="Resources\HideKey_Pressed.png" />
@@ -70,6 +72,7 @@
     <None Remove="Resources\NextButton_Pressed.png" />
     <None Remove="Resources\Node-18.12.1.zip" />
     <None Remove="Resources\Padlock.png" />
+    <None Remove="Resources\Placeholder.jpg" />
     <None Remove="Resources\Play.png" />
     <None Remove="Resources\PrevButton.png" />
     <None Remove="Resources\PrevButton_Hover.png" />
@@ -189,6 +192,9 @@
     <Resource Include="Resources\Discord_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Edit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Exit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -217,6 +223,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\H1EmuLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\H1Z1_BE.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\HideKey.png">
@@ -256,6 +265,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Padlock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Placeholder.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Play.png">

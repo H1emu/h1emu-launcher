@@ -125,6 +125,9 @@ namespace H1EmuLauncher.Classes
                 {
                     // Extract Asset_256.pack to fix blackberries
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
+
+                    // Extract modified BattlEye to provide custom anti-cheat and asset validation
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1Z1_BE.exe", Properties.Resources.H1Z1_BE);
                 }
             }
 

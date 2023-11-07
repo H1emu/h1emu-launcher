@@ -22,8 +22,8 @@ namespace H1EmuLauncher
             CreateNoWindow = true
         };
         public static string gameVersionString { get; set; }
-        public static bool openAccountKeyPage;
         public static string accountKeyArgument;
+        public static bool openAccountKeyPage;
         public static bool isExecutingTasks;
         public static SettingsWindow settingsInstance;
         public Storyboard UnfocusPropertiesAnimationShow;

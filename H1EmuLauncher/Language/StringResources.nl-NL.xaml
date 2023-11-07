@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="item1">Een niewe versie is beschikbaar, wilt u deze instaleren?</system:String>
+    <system:String x:Key="item1">Er is een nieuwe update vereist om te kunnen spelen. Een ogenblik geduld.</system:String>
     <system:String x:Key="item2">INSTALEREN</system:String>
     <system:String x:Key="item3">Versie</system:String>
     <system:String x:Key="item4">Even geduld aub</system:String>
@@ -186,4 +186,6 @@
     <system:String x:Key="item209">Bericht</system:String>
     <system:String x:Key="item210">Opstartscherm</system:String>
     <system:String x:Key="item211">Update Beschikbaar</system:String>
+    <system:String x:Key="item212">Bewerking</system:String>
+    <system:String x:Key="item213">REDDEN</system:String>
 </ResourceDictionary>

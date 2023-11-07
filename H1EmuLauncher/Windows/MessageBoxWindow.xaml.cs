@@ -98,7 +98,6 @@ namespace H1EmuLauncher
                         break;
                 }
             }
-
             messageBoxInstance = null;
         }
     }

@@ -18,9 +18,6 @@ using System.Windows.Shapes;
 
 namespace H1EmuLauncher.SettingsPages
 {
-    /// <summary>
-    /// Interaction logic for AccountKey.xaml
-    /// </summary>
     public partial class AccountKey : Page
     {
         public static AccountKey accountKeyInstance;

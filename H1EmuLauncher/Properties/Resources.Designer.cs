@@ -233,6 +233,16 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Edit {
+            get {
+                object obj = ResourceManager.GetObject("Edit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Exit {
             get {
                 object obj = ResourceManager.GetObject("Exit", resourceCulture);
@@ -327,6 +337,16 @@ namespace H1EmuLauncher.Properties {
             get {
                 object obj = ResourceManager.GetObject("H1EmuLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] H1Z1_BE {
+            get {
+                object obj = ResourceManager.GetObject("H1Z1_BE", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -456,6 +476,16 @@ namespace H1EmuLauncher.Properties {
         internal static System.Drawing.Bitmap Padlock {
             get {
                 object obj = ResourceManager.GetObject("Padlock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Placeholder {
+            get {
+                object obj = ResourceManager.GetObject("Placeholder", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -595,10 +625,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Ново обновление е налично,желаете ли да го изтеглите?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Необходима е нова актуализация за игра, моля, изчакайте.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Обновление&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Версия&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Моля Изчакай&lt;/sy [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Моля Изчакай&lt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_bg_BG {
             get {
@@ -611,10 +641,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Eine neue Aktualisierung ist verfügbar, möchtest du die Aktualisierung jetzt ausführen?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Zum spielen ist ein neues update erforderlich. Bitte warten sie.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Aktualisierung&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Aktualisieren&lt;/system:String&gt;
-        ///     [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;i [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_de_DE {
             get {
@@ -627,10 +657,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;A new update is available, would you like to update now?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;A new update is required to play, please wait.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;UPDATE&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Version&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Please wait&lt;/sys [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Please wait&lt;/system:String [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_en_EN {
             get {
@@ -643,10 +673,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Existe una nueva actualización disponible; ¿quieres actualizar ahora?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Se requiere una nueva actualización para jugar, espera.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ACTUALIZAR&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versión&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot; [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Espere por fa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_es_ES {
             get {
@@ -659,10 +689,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Une mise à jour est disponible, voulez vous la télécharger?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Une nouvelle mise à jour est nécessaire pour jouer, veuillez patienter.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;Mise à jour&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Màj Version&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;S&apos;il [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key= [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_fr_FR {
             get {
@@ -675,10 +705,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Nova verzija je dostupna, želite li ažurirati?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Novi update je potreban za igranje, molim pričekajte.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;AŽURIRANJE&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Verzija&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Molimo pričekajte&lt;/sys [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Molimo pričekaj [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_hr_HR {
             get {
@@ -691,10 +721,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Een niewe versie is beschikbaar, wilt u deze instaleren?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Er is een nieuwe update vereist om te kunnen spelen. Een ogenblik geduld.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;INSTALEREN&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versie&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Even geduld a [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;ite [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_nl_NL {
             get {
@@ -707,10 +737,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Dostępna jest nowa aktualizacja, Czy chcesz zaktualizować teraz?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Aby zagrać, wymagana jest nowa aktualizacja. Proszę czekać.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;AKTUALIZACJA&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Wersja&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Pro [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Proszę c [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_pl_PL {
             get {
@@ -723,10 +753,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Uma nova atualização está disponível, quer atualizar agora?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Uma nova atualização é necessária para jogar, aguarde.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ATUALIZAR&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versão&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Por favor,  [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Por favor, esper [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_pt_PT {
             get {
@@ -739,10 +769,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Доступно новое обновление, хотите обновить сейчас?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Для игры требуется новое обновление, подождите.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ОБНОВИТЬ&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Обновление&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Пожалуйста подожд [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Пожалуйста подождите [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_ru_RU {
             get {
@@ -755,10 +785,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;En ny uppdatering är tillgänglig, vill du uppdatera nu?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;En ny uppdatering krävs för att spela, vänligen vänta.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;UPPDATERA&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Version&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Var god vänta&lt; [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Var god vänta&lt;/ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_se_SE {
             get {
@@ -771,10 +801,10 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Yeni bir güncelleme var, yüklemek ister misiniz?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Oynamak için yeni bir güncelleme gerekiyor, lütfen bekleyin.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;GÜNCELLEME&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Versiyonu&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Lütfen bekle&lt;/syst [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Lütfen [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_tr_TR {
             get {
@@ -787,11 +817,11 @@ namespace H1EmuLauncher.Properties {
         ///                    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
         ///                    xmlns:system=&quot;clr-namespace:System;assembly=mscorlib&quot;&gt;
         ///
-        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;有新的更新可用，是否立即更新?&lt;/system:String&gt;
+        ///    &lt;system:String x:Key=&quot;item1&quot;&gt;启动器必须在更新后才可以使用，请等待更新。&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;更新&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;最新版本&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item4&quot;&gt;请稍等&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item8&quot;&gt;运行游戏&lt;/syst [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item8&quot;&gt;运行游戏 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_zh_CN {
             get {

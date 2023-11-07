@@ -133,8 +133,6 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
 
@@ -153,81 +151,37 @@
                                    Height="1"
                                    Fill="#FF2A2A32"/>
 
-                        <!-- Update button -->
-                        <Button x:Name="updateButton"
-                                Grid.Row="3"
-                                Click="UpdateButtonClick"
-                                Margin="20,20,20,10"
-                                Padding="25,7,25,7"
-                                FontFamily="Arial Black"
-                                BorderThickness="0"
-                                HorizontalAlignment="Center"
-                                Content="{DynamicResource item2}"
-                                Style="{DynamicResource StandardButton}">
+                        <!-- Main progress bar -->
+                        <ProgressBar x:Name="downloadSetupProgress"
+                                     Grid.Row="3"
+                                     Height="25"
+                                     Margin="20"
+                                     Style="{DynamicResource ProgressBar}">
 
-                            <Button.Effect>
+                            <ProgressBar.Effect>
                                 <DropShadowEffect BlurRadius="15"
                                                   Direction="-90"
                                                   RenderingBias="Quality"
                                                   ShadowDepth="0"
-                                                  Opacity="0.3"/>
-                            </Button.Effect>
-                        </Button>
+                                                  Opacity="0.2"/>
+                            </ProgressBar.Effect>
+                        </ProgressBar>
 
-                        <!-- Not now hyperlink button -->
-                        <TextBlock x:Name="notNowText"
-                                   Grid.Row="4"
-                                   Margin="20,0,20,20"
-                                   FontSize="14"
-                                   VerticalAlignment="Bottom"
-                                   HorizontalAlignment="Center">
-                
-                            <Hyperlink x:Name="notNowHyperlink"
-                                       Click="NotNowClick"
-                                       Foreground="FloralWhite">
-                    
-                                <TextBlock Text="{DynamicResource item67}"
-                                           Style="{DynamicResource HyperLinkStyle}"/>
-                    
-                            </Hyperlink>
-                        </TextBlock>
+                        <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
+                        <ProgressBar Grid.Row="3"
+                                     Height="25"
+                                     Margin="20"
+                                     Background="Transparent"
+                                     Style="{DynamicResource ProgressBar}"/>
 
-                        <!-- Progress bar for setup download -->
-                        <Border x:Name="updateProgressBarRow"
-                                Grid.Row="5"
-                                Visibility="Collapsed">
-                            
-                            <Grid x:Name="updateProgressBarRowContent">
-                                
-                                <!-- Main progress bar -->
-                                <ProgressBar x:Name="downloadSetupProgress"
-                                             Height="25"
-                                             Margin="20"
-                                             Style="{DynamicResource ProgressBar}">
-                                    
-                                    <ProgressBar.Effect>
-                                        <DropShadowEffect BlurRadius="15"
-                                                          Direction="-90"
-                                                          RenderingBias="Quality"
-                                                          ShadowDepth="0"
-                                                          Opacity="0.2"/>
-                                    </ProgressBar.Effect>
-                                </ProgressBar>
-
-                                <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
-                                <ProgressBar Height="25"
-                                             Margin="20"
-                                             Background="Transparent"
-                                             Style="{DynamicResource ProgressBar}"/>
-
-                                <!-- Status text to overlay progress bar -->
-                                <TextBlock x:Name="downloadSetupProgressText" Text="Downloading..."
-                                           Margin="20"
-                                           FontSize="12"
-                                           VerticalAlignment="Center"
-                                           HorizontalAlignment="Center"/>
-                            </Grid>
-                        </Border>
+                        <!-- Status text to overlay progress bar -->
+                        <TextBlock x:Name="downloadSetupProgressText"
+                                   Text="Downloading..."
+                                   Grid.Row="3"
+                                   Margin="20"
+                                   FontSize="12"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"/>
                     </Grid>
                 </Border>
             </Border>

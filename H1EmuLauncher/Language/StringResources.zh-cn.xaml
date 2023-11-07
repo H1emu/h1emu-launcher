@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="item1">有新的更新可用，是否立即更新?</system:String>
+    <system:String x:Key="item1">启动器必须在更新后才可以使用，请等待更新。</system:String>
     <system:String x:Key="item2">更新</system:String>
     <system:String x:Key="item3">最新版本</system:String>
     <system:String x:Key="item4">请稍等</system:String>
@@ -168,7 +168,7 @@
     <system:String x:Key="item191">您的H1EmuLauncher已最小化到系统托盘。</system:String>
     <system:String x:Key="item192">删除</system:String>
     <system:String x:Key="item193">复制</system:String>
-    <system:String x:Key="item194">出口</system:String>
+    <system:String x:Key="item194">退出</system:String>
     <system:String x:Key="item195">游戏文件</system:String>
     <system:String x:Key="item196">账户密钥</system:String>
     <system:String x:Key="item197">选项</system:String>
@@ -186,4 +186,6 @@
     <system:String x:Key="item209">信息</system:String>
     <system:String x:Key="item210">启动画面</system:String>
     <system:String x:Key="item211">可用更新</system:String>
+    <system:String x:Key="item212">编辑</system:String>
+    <system:String x:Key="item213">保存</system:String>
 </ResourceDictionary>

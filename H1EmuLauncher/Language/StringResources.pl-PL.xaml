@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="item1">Dostępna jest nowa aktualizacja, Czy chcesz zaktualizować teraz?</system:String>
+    <system:String x:Key="item1">Aby zagrać, wymagana jest nowa aktualizacja. Proszę czekać.</system:String>
     <system:String x:Key="item2">AKTUALIZACJA</system:String>
     <system:String x:Key="item3">Wersja</system:String>
     <system:String x:Key="item4">Proszę czekać</system:String>
@@ -186,4 +186,6 @@
     <system:String x:Key="item209">Wiadomość</system:String>
     <system:String x:Key="item210">Ekran Powitalny</system:String>
     <system:String x:Key="item211">Dostępna Aktualizacja</system:String>
+    <system:String x:Key="item212">Edytować</system:String>
+    <system:String x:Key="item213">RATOWAĆ</system:String>
 </ResourceDictionary>

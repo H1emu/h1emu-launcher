@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace H1EmuLauncher.SettingsPages
 {
-    /// <summary>
-    /// Interaction logic for About.xaml
-    /// </summary>
     public partial class About : Page
     {
         public static About aboutInstance;

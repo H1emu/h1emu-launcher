@@ -58,7 +58,7 @@
 
                 <Grid Grid.Column="2">
 
-                    <ComboBox x:Name="LanguageBox"
+                    <ComboBox x:Name="languageBox"
                               Height="30"
                               Margin="20"
                               Padding="32,2,10,0"

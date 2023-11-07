@@ -10,22 +10,18 @@ using System.Windows.Media.Animation;
 
 namespace H1EmuLauncher.SettingsPages
 {
-    /// <summary>
-    /// Interaction logic for GameFiles.xaml
-    /// </summary>
     public partial class GameFiles : Page
     {
         public static GameFiles gameFilesInstance;
-        readonly ProcessStartInfo cmdShell = new()
+        private ProcessStartInfo cmdShell = new()
         {
             FileName = "cmd.exe",
             RedirectStandardInput = true,
             UseShellExecute = false,
             CreateNoWindow = true
         };
+        private bool isExecutingTasks;
         public static string gameVersionString { get; set; }
-        public static bool launchAccountKeyWindow;
-        public static bool isExecutingTasks;
 
         public GameFiles()
         {
@@ -65,7 +61,6 @@ namespace H1EmuLauncher.SettingsPages
                         directoryBox.Text = Properties.Settings.Default.activeDirectory;
                         currentGame.Text = FindResource("item69").ToString();
                     }));
-
                     return;
                 }
                 else
@@ -78,7 +73,6 @@ namespace H1EmuLauncher.SettingsPages
                         directoryBox.Text = FindResource("item75").ToString();
                         currentGame.Text = FindResource("item69").ToString();
                     }));
-
                     return;
                 }
 
@@ -111,7 +105,7 @@ namespace H1EmuLauncher.SettingsPages
         /// Install Patch ///
         //////////////////////
 
-        public void InstallPatch(object sender, RoutedEventArgs e)
+        public void InstallPatchButton(object sender, RoutedEventArgs e)
         {
             new Thread(() =>
             {
@@ -242,6 +236,9 @@ namespace H1EmuLauncher.SettingsPages
                 {
                     // Extract Asset_256.pack to fix blackberries
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
+
+                    // Extract modified BattlEye to provide custom anti-cheat and asset validation
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1Z1_BE.exe", Properties.Resources.H1Z1_BE);
                 }
             }
 
@@ -281,7 +278,7 @@ namespace H1EmuLauncher.SettingsPages
         /// Install Server ///
         //////////////////////
 
-        public void InstallServer(object sender, RoutedEventArgs e)
+        public void InstallServerButton(object sender, RoutedEventArgs e)
         {
             if (!CheckDirectory())
                 return;
@@ -294,7 +291,6 @@ namespace H1EmuLauncher.SettingsPages
 
                     CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance, false, false, true);
                 }));
-
                 return;
             }
             else if (string.IsNullOrEmpty(gameVersionString))
@@ -305,7 +301,6 @@ namespace H1EmuLauncher.SettingsPages
 
                     CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance);
                 }));
-
                 return;
             }
 
@@ -346,14 +341,9 @@ namespace H1EmuLauncher.SettingsPages
 
                     }));
 
-                    Process p = new()
-                    {
-                        StartInfo = cmdShell
-                    };
-
-                    p.Start();
-
-                    using (StreamWriter sw = p.StandardInput)
+                    Process installServerProcess = new Process { StartInfo = cmdShell };
+                    installServerProcess.Start();
+                    using (StreamWriter sw = installServerProcess.StandardInput)
                     {
                         if (sw.BaseStream.CanWrite)
                         {
@@ -370,13 +360,12 @@ namespace H1EmuLauncher.SettingsPages
                             }));
                         }
                     }
+                    installServerProcess.WaitForExit(5000);
 
-                    p.WaitForExit(5000);
-
-                    if (p.HasExited)
+                    if (installServerProcess.HasExited)
                         throw new Exception(FindResource("item185").ToString());
                     else
-                        p.WaitForExit();
+                        installServerProcess.WaitForExit();
                 }
                 catch (Exception er)
                 {
@@ -392,7 +381,6 @@ namespace H1EmuLauncher.SettingsPages
                         else
                             CustomMessageBox.Show($"{FindResource("item111")} \"{er.Message}\".", SettingsWindow.settingsInstance);
                     }));
-
                     return;
                 }
 
@@ -460,7 +448,6 @@ namespace H1EmuLauncher.SettingsPages
 
             // Delete the old .zip file, not needed anymore
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node.zip");
-
             return true;
         }
 
@@ -505,7 +492,6 @@ namespace H1EmuLauncher.SettingsPages
                 {
                     settingsProgressBar.Value = foldersToDelete;
                 }));
-
                 RecursiveDeleteFolders(dir);
             }
 
@@ -529,16 +515,6 @@ namespace H1EmuLauncher.SettingsPages
                 stableButton.IsEnabled = false;
                 isExecutingTasks = true;
             }));
-
-            if (!File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
-            {
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    currentGame.Text = FindResource("item69").ToString();
-                }));
-
-                return;
-            }
 
             Dispatcher.Invoke(new Action(delegate
             {
@@ -582,7 +558,6 @@ namespace H1EmuLauncher.SettingsPages
                     LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\".", SettingsWindow.settingsInstance);
                 }));
-
                 return;
             }
 
@@ -730,10 +705,8 @@ namespace H1EmuLauncher.SettingsPages
                     else
                         CustomMessageBox.Show($"{FindResource("item14")}\n\n{FindResource("item9")}", LauncherWindow.launcherInstance);
                 }));
-
                 return false;
             }
-
             return true;
         }
 

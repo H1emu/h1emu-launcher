@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="item1">Yeni bir güncelleme var, yüklemek ister misiniz?</system:String>
+    <system:String x:Key="item1">Oynamak için yeni bir güncelleme gerekiyor, lütfen bekleyin.</system:String>
     <system:String x:Key="item2">GÜNCELLEME</system:String>
     <system:String x:Key="item3">Versiyonu</system:String>
     <system:String x:Key="item4">Lütfen bekle</system:String>
@@ -186,4 +186,6 @@
     <system:String x:Key="item209">İleti</system:String>
     <system:String x:Key="item210">Başlangıç ​​Ekranı</system:String>
     <system:String x:Key="item211">Güncelleme Uygun</system:String>
+    <system:String x:Key="item212">Düzenlemek</system:String>
+    <system:String x:Key="item213">KAYDETMEK</system:String>
 </ResourceDictionary>

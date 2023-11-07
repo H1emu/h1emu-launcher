@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="item1">Nova verzija je dostupna, želite li ažurirati?</system:String>
+    <system:String x:Key="item1">Novi update je potreban za igranje, molim pričekajte.</system:String>
     <system:String x:Key="item2">AŽURIRANJE</system:String>
     <system:String x:Key="item3">Verzija</system:String>
     <system:String x:Key="item4">Molimo pričekajte</system:String>
@@ -186,4 +186,6 @@
     <system:String x:Key="item209">Poruka</system:String>
     <system:String x:Key="item210">Početni Zaslon</system:String>
     <system:String x:Key="item211">Ažuriranje Dostupno</system:String>
+    <system:String x:Key="item212">Uredi</system:String>
+    <system:String x:Key="item213">UŠTEDJETI</system:String>
 </ResourceDictionary>

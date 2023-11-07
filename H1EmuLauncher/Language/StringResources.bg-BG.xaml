@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
-    <system:String x:Key="item1">Ново обновление е налично,желаете ли да го изтеглите?</system:String>
+    <system:String x:Key="item1">Необходима е нова актуализация за игра, моля, изчакайте.</system:String>
     <system:String x:Key="item2">Обновление</system:String>
     <system:String x:Key="item3">Версия</system:String>
     <system:String x:Key="item4">Моля Изчакай</system:String>
@@ -186,4 +186,6 @@
     <system:String x:Key="item209">Съобщение</system:String>
     <system:String x:Key="item210">Начален Eкран</system:String>
     <system:String x:Key="item211">Налична Aктуализация</system:String>
+    <system:String x:Key="item212">Pедактиране</system:String>
+    <system:String x:Key="item213">ЗАПАЗЕТЕ</system:String>
 </ResourceDictionary>

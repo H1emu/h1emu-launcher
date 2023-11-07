@@ -19,9 +19,6 @@ using System.Reflection;
 
 namespace H1EmuLauncher.SettingsPages
 {
-    /// <summary>
-    /// Interaction logic for Options.xaml
-    /// </summary>
     public partial class Options : Page
     {
         public static Options optionsInstance;
@@ -38,9 +35,9 @@ namespace H1EmuLauncher.SettingsPages
 
         private void OptionsLoaded(object sender, RoutedEventArgs e)
         {
-            LanguageBox.SelectedIndex = Properties.Settings.Default.language;
+            languageBox.SelectedIndex = Properties.Settings.Default.language;
 
-            if (LanguageBox.SelectedIndex == 1)
+            if (languageBox.SelectedIndex == 1)
                 LauncherWindow.launcherInstance.chineseLink.Visibility = Visibility.Visible;
             else
                 LauncherWindow.launcherInstance.chineseLink.Visibility = Visibility.Collapsed;
@@ -56,17 +53,17 @@ namespace H1EmuLauncher.SettingsPages
 
         private void LanguageSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (!IsLoaded)
+            if (!languageBox.IsLoaded)
                 return;
 
-            if (LanguageBox.SelectedIndex == 1)
+            if (languageBox.SelectedIndex == 1)
                 LauncherWindow.launcherInstance.chineseLink.Visibility = Visibility.Visible;
             else
                 LauncherWindow.launcherInstance.chineseLink.Visibility = Visibility.Collapsed;
 
             try
             {
-                switch (LanguageBox.SelectedIndex)
+                switch (languageBox.SelectedIndex)
                 {
                     // Update and save settings
                     case 0:
