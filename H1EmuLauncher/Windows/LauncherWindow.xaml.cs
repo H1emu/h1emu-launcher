@@ -581,15 +581,15 @@ namespace H1EmuLauncher
                                 {
                                     Show();
                                     Activate();
+                                    launcherNotifyIcon.Visible = false;
                                 }));
-                                launcherNotifyIcon.Visible = false;
                             }
                         };
                         h1Process.Start();
 
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            if (serverSelector.SelectedIndex != 0 && serverSelector.SelectedIndex != 1 && serverSelector.SelectedIndex != serverSelector.Items.Count - 1 && serverSelector.SelectedIndex != serverSelector.Items.Count - 2)
+                            if (serverSelector.SelectedIndex != 0 && serverSelector.SelectedIndex != 1 && serverSelector.SelectedIndex != serverSelector.Items.Count - 1 && serverSelector.SelectedItem is ComboBoxItem)
                                 AddServerToRecentList(serverSelector.Text, serverIp);
                         }));
 
@@ -598,8 +598,8 @@ namespace H1EmuLauncher
                             Dispatcher.Invoke(new Action(delegate
                             {
                                 Hide();
+                                launcherNotifyIcon.Visible = true;
                             }));
-                            launcherNotifyIcon.Visible = true;
                             new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
                         }
                     }
