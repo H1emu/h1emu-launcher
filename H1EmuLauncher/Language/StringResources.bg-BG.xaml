@@ -20,7 +20,7 @@
     <system:String x:Key="item19">• Статус •</system:String>
     <system:String x:Key="item21">Получих депо ключ за {0} резултат: {1}</system:String>
     <system:String x:Key="item23">Инсталирането е готово!</system:String>
-    <system:String x:Key="item24">Трябва да инсталирате друга версия.? Натиснете бутона отдолу за да изтеглете отново!</system:String>
+    <system:String x:Key="item24">Трябва да изтеглите играта отново? Натиснете бутона отдолу за да изтеглете отново!</system:String>
     <system:String x:Key="item25">Влизане</system:String>
     <system:String x:Key="item26">Момента се изтегля:</system:String>
     <system:String x:Key="item27">версия</system:String>

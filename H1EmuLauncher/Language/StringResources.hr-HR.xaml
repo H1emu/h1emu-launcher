@@ -20,7 +20,7 @@
     <system:String x:Key="item19">Obavezno ispunite polje Auth Code.</system:String>
     <system:String x:Key="item21">Dobiven depo kljuć za {0} rezultat: {1}</system:String>
     <system:String x:Key="item23">Preuzimanje dovršeno!</system:String>
-    <system:String x:Key="item24">Potrebna vam je druga verzija? Pritisnite na gumb ispod da bi ste se ponovno prijavili!</system:String>
+    <system:String x:Key="item24">Trebate ponovo preuzeti igru? Pritisnite na gumb ispod da bi ste se ponovno prijavili!</system:String>
     <system:String x:Key="item25">Prijava</system:String>
     <system:String x:Key="item26">Trenutno preuzimanje:</system:String>
     <system:String x:Key="item27">Verzija</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe je trenutno u korištenju.\n\nZatvorite sve otvorene instance H1Z1.\n\nMožete upotrijebiti gumb ispod da prekinete sve procese H1Z1.</system:String>
     <system:String x:Key="item122">Trenutna verzija igre:</system:String>
     <system:String x:Key="item124">Verzija launchera</system:String>
-    <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
+    <system:String x:Key="item125">Copyright © 2024 | H1Emu Project</system:String>
     <system:String x:Key="item126">Vodeći developer</system:String>
     <system:String x:Key="item127">Programeri</system:String>
     <system:String x:Key="item128">Administratori</system:String>

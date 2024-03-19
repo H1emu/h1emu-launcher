@@ -6,12 +6,11 @@
       xmlns:local="clr-namespace:H1EmuLauncher.SettingsPages"
       mc:Ignorable="d" 
       d:DesignWidth="735"
-      d:DesignHeight="450"
+      d:DesignHeight="250"
       Title="GameFiles"
       FontFamily="Bahnschrift Light"
       FontSize="16"
-      Foreground="FloralWhite"
-      Loaded="GameFilesPageLoaded">
+      Foreground="FloralWhite">
 
     <Page.Resources>
         <ResourceDictionary>
@@ -32,8 +31,6 @@
                 <RowDefinition Height="15"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
                 <RowDefinition Height="15"/>
             </Grid.RowDefinitions>
 
@@ -42,93 +39,10 @@
                 <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
             </Grid.Background>
 
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- Game directory text -->
-                <TextBlock Margin="20,0,10,0"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Text="{DynamicResource item41}"/>
-
-                <!-- Grid containing game directory and icons/buttons -->
-                <Grid Grid.Column="1">
-                    
-                    <!-- Game directory textbox -->
-                    <TextBox x:Name="directoryBox"
-                             Grid.Column="1"
-                             Height="35"
-                             Margin="10,20,20,20"
-                             Padding="32,7,32,0"
-                             IsReadOnly="True"
-                             Cursor="Arrow"
-                             Style="{DynamicResource TextBoxPrimaryStyle}">
-
-                        <TextBox.Effect>
-                            
-                            <!-- Drop shadow effect -->
-                            <DropShadowEffect BlurRadius="15"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="1"
-                                              Opacity="0.3"/>
-                        </TextBox.Effect>
-                    </TextBox>
-
-                    <!-- Button to open file explorer to game directory -->
-                    <Button Grid.Column="1"
-                            Click="OpenDirectory"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="18"
-                            Height="18"
-                            Margin="20,0,0,1"
-                            HorizontalAlignment="Left"
-                            BorderThickness="0"
-                            Style="{DynamicResource FolderButton}">
-
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\Folder.png" Stretch="Uniform"/>
-                        </Button.Background>
-                    </Button>
-
-                    <!-- Button to select a new game directory -->
-                    <Button x:Name="directoryButton"
-                            Grid.Column="1"
-                            Click="SelectDirectory"
-                            RenderOptions.BitmapScalingMode="Fant"
-                            Width="18"
-                            Height="18"
-                            Margin="0,0,30,1"
-                            HorizontalAlignment="Right"
-                            BorderThickness="0"
-                            Style="{DynamicResource EnterButton}">
-
-                        <Button.Background>
-                            <ImageBrush ImageSource="..\Resources\Arrow.png" Stretch="Uniform"/>
-                        </Button.Background>
-                    </Button>
-                </Grid>
-            </Grid>
-
-            <!-- Current detected game version -->
-            <TextBlock x:Name="currentGame"
-                       Grid.Row="2"
-                       Margin="0,0,0,20"
-                       Foreground="Gray"
-                       FontFamily="Bahnschrift"
-                       FontWeight="Bold"
-                       FontSize="15"
-                       VerticalAlignment="Bottom"
-                       HorizontalAlignment="Center"/>
-
             <!-- Grid to host patch, latest, stable buttons and corresponding textboxes -->
-            <Grid Grid.Row="3">
-                
+            <Grid Grid.Row="1">
+
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
@@ -136,12 +50,7 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Divider -->
-                <Rectangle Margin="20,0,20,0"
-                           Height="1"
-                           Fill="#FF2A2A32"/>
-
-                <Grid Grid.Row="1">
+                <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
@@ -192,12 +101,12 @@
                 </Grid>
 
                 <!-- Divider -->
-                <Rectangle Grid.Row="2"
+                <Rectangle Grid.Row="1"
                            Margin="20,0,20,0"
                            Height="1"
                            Fill="#FF2A2A32"/>
 
-                <Grid Grid.Row="3">
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
@@ -236,12 +145,12 @@
                 </Grid>
 
                 <!-- Divider -->
-                <Rectangle Grid.Row="4"
+                <Rectangle Grid.Row="3"
                            Margin="20,0,20,0"
                            Height="1"
                            Fill="#FF2A2A32"/>
 
-                <Grid Grid.Row="5">
+                <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="auto"/>
@@ -282,7 +191,7 @@
 
             <!-- Grid for settings progress bar -->
             <Border x:Name="settingsProgressRow"
-                    Grid.Row="4"
+                    Grid.Row="2"
                     Visibility="Collapsed">
 
                 <Grid x:Name="settingsProgressRowContent">

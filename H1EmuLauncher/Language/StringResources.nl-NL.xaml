@@ -20,7 +20,7 @@
     <system:String x:Key="item19">Zorg ervoor dat u het veld Auth-code invult.</system:String>
     <system:String x:Key="item21">Kreeg depotsleutel voor {0} resultaat: {1}</system:String>
     <system:String x:Key="item23">Download voltooid</system:String>
-    <system:String x:Key="item24">Een andere versie nodig? Klik de knop om opnieuw in te loggen!</system:String>
+    <system:String x:Key="item24">Wil je het spel opnieuw downloaden? Klik de knop om opnieuw in te loggen!</system:String>
     <system:String x:Key="item25">Inloggen</system:String>
     <system:String x:Key="item26">aan het downloaden:</system:String>
     <system:String x:Key="item27">versie</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe is momenteel in gebruik.\n\nSluit alle geopende exemplaren van H1Z1.\n\nU kunt de onderstaande knop gebruiken om alle processen van H1Z1 te beëindigen.</system:String>
     <system:String x:Key="item122">Huidige spel versie:</system:String>
     <system:String x:Key="item124">Launcher versie</system:String>
-    <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
+    <system:String x:Key="item125">Copyright © 2024 | H1Emu Project</system:String>
     <system:String x:Key="item126">Hoofd-Ontwikelaar</system:String>
     <system:String x:Key="item127">Ontwikkelaars</system:String>
     <system:String x:Key="item128">Administrators</system:String>

@@ -26,9 +26,6 @@
     <Setting Name="firstTimeUse" Type="System.Int32" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="currentPatchVersion2015" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="currentPatchVersion2016" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>

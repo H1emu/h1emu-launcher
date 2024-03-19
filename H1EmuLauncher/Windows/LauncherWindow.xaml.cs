@@ -39,6 +39,7 @@ namespace H1EmuLauncher
         public static string customServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
         public static string recentServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\recentServers.json";
         public static string[] rawArgs = null;
+        public static string gameVersionString { get; set; }
         public static bool systemWatcherFire = true;
         public static bool executeArguments;
 
@@ -430,9 +431,7 @@ namespace H1EmuLauncher
 
                 string serverVersion = string.Empty;
 
-                if (gameVersionString == "15jan2015")
-                    serverVersion = "npm start";
-                else if (gameVersionString == "22dec2016")
+                if (gameVersionString == "22dec2016")
                     serverVersion = "npm run start-2016";
                 else if (gameVersionString == "kotk")
                 {
@@ -474,13 +473,10 @@ namespace H1EmuLauncher
 
         private void LaunchClient(object sender, RoutedEventArgs e)
         {
-            SettingsPages.GameFiles gameFiles = new();
-
-            if (!gameFiles.CheckDirectory())
+            if (!CheckDirectory())
                 return;
 
             int gameVersionInt = 0;
-            string gameVersionString = string.Empty;
             string serverIp = string.Empty;
             string sessionId = string.Empty;
 
@@ -513,13 +509,9 @@ namespace H1EmuLauncher
 
                 try
                 {
-                    gameFiles.CheckGameVersion();
-                    gameVersionString = SettingsPages.GameFiles.gameVersionString;
+                    CheckGameVersion();
                     switch (gameVersionString)
                     {
-                        case "15jan2015":
-                            gameVersionInt = 1;
-                            break;
                         case "22dec2016":
                             gameVersionInt = 2;
                             break;
@@ -528,7 +520,7 @@ namespace H1EmuLauncher
                             break;
                     }
 
-                    if (gameVersionString == "15jan2015" || gameVersionString == "22dec2016" || gameVersionString == "kotk")
+                    if (gameVersionString == "22dec2016" || gameVersionString == "kotk")
                     {
                         if (string.IsNullOrEmpty(serverIp))
                         {
@@ -775,6 +767,61 @@ namespace H1EmuLauncher
             DisplayVersionInformation();
             LoadServers();
             Carousel.BeginImageCarousel();
+
+            new Thread(() =>
+            {
+                if (!string.IsNullOrEmpty(Properties.Settings.Default.activeDirectory) && Directory.Exists(Properties.Settings.Default.activeDirectory) && File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
+                {
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        directoryBox.Text = Properties.Settings.Default.activeDirectory;
+                    }));
+                }
+                else if (!string.IsNullOrEmpty(Properties.Settings.Default.activeDirectory) && Directory.Exists(Properties.Settings.Default.activeDirectory) && !File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
+                {
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        directoryBox.Text = Properties.Settings.Default.activeDirectory;
+                        currentGame.Text = FindResource("item69").ToString();
+                    }));
+                    return;
+                }
+                else
+                {
+                    Properties.Settings.Default.activeDirectory = "Directory";
+                    Properties.Settings.Default.Save();
+
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        directoryBox.Text = FindResource("item75").ToString();
+                        currentGame.Text = FindResource("item69").ToString();
+                    }));
+                    return;
+                }
+
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    currentGame.Text = FindResource("item70").ToString();
+                }));
+
+                CheckGameVersion();
+
+                if (gameVersionString == "processBeingUsed")
+                {
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance, false, false, true);
+                    }));
+                }
+                else if (gameVersionString != "22dec2016" && gameVersionString != "kotk")
+                {
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        currentGame.Text = FindResource("item72").ToString();
+                    }));
+                }
+
+            }).Start();
         }
 
         private void LauncherWindowContentRendered(object sender, EventArgs e)
@@ -913,6 +960,181 @@ namespace H1EmuLauncher
             playShowImageControlsPrev.Children.Add(showImageControlsPrev);
             playShowImageControlsPrev.Completed += (s, o) => prevImage.Visibility = Visibility.Hidden;
             playShowImageControlsPrev.Begin();
+        }
+
+        public void SelectDirectory(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog selectDirectory = new();
+
+            if (selectDirectory.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                return;
+
+            Properties.Settings.Default.activeDirectory = selectDirectory.SelectedPath;
+            Properties.Settings.Default.Save();
+
+            if (!string.IsNullOrEmpty(selectDirectory.SelectedPath))
+                directoryBox.Text = Properties.Settings.Default.activeDirectory;
+            else
+                directoryBox.Text = FindResource("item75").ToString();
+
+            if (!CheckDirectory())
+                return;
+
+            new Thread(() =>
+            {
+                CheckGameVersion();
+
+                switch (gameVersionString)
+                {
+                    case "22dec2016":
+
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            CustomMessageBox.Show(FindResource("item74").ToString(), SettingsWindow.settingsInstance);
+                        }));
+
+                        break;
+                    case "kotk":
+
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            CustomMessageBox.Show(FindResource("item190").ToString(), SettingsWindow.settingsInstance);
+                        }));
+
+                        break;
+                    case "processBeingUsed":
+
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance, false, false, true);
+                        }));
+
+                        break;
+                    default:
+
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            currentGame.Text = FindResource("item72").ToString();
+                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance);
+                        }));
+
+                        break;
+                }
+
+            }).Start();
+        }
+
+        public bool CheckDirectory()
+        {
+            if (string.IsNullOrEmpty(Properties.Settings.Default.activeDirectory) || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
+            {
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    currentGame.Text = FindResource("item69").ToString();
+
+                    if (this != null && Visibility == Visibility.Visible)
+                        CustomMessageBox.Show(FindResource("item14").ToString(), SettingsWindow.settingsInstance);
+                    else
+                        CustomMessageBox.Show($"{FindResource("item14")}\n\n{FindResource("item9")}", LauncherWindow.launcherInstance);
+                }));
+                return false;
+            }
+            return true;
+        }
+
+        public void OpenDirectory(object sender, RoutedEventArgs e)
+        {
+            if (!CheckDirectory())
+                return;
+
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = Properties.Settings.Default.activeDirectory,
+                UseShellExecute = true
+            });
+        }
+
+        public void CheckGameVersion()
+        {
+            gameVersionString = string.Empty;
+
+            Dispatcher.Invoke(new Action(delegate
+            {
+                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                directoryButton.IsEnabled = false;
+            }));
+
+            Dispatcher.Invoke(new Action(delegate
+            {
+                currentGame.Text = FindResource("item70").ToString();
+                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+            }));
+
+            Crc32 crc32 = new();
+            string hash = string.Empty;
+
+            try
+            {
+                using FileStream fs = File.Open($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe", FileMode.Open);
+                foreach (byte b in crc32.ComputeHash(fs)) hash += b.ToString("x2").ToLower();
+            }
+            catch (IOException)
+            {
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    currentGame.Text = FindResource("item120").ToString();
+                    directoryButton.IsEnabled = true;
+                    taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                }));
+
+                gameVersionString = "processBeingUsed";
+                return;
+            }
+            catch (Exception e)
+            {
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    directoryButton.IsEnabled = true;
+                    taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                    CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\".", SettingsWindow.settingsInstance);
+                }));
+                return;
+            }
+
+            switch (hash)
+            {
+                case "bc5b3ab6": // Just Survive: 22nd December 2016
+                    gameVersionString = "22dec2016";
+
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        currentGame.Text = $"{FindResource("item122")} 2016";
+                    }));
+
+                    break;
+                case "ec7ffa43": // King of the Kill: 23rd February 2017
+                    gameVersionString = "kotk";
+
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        currentGame.Text = $"{FindResource("item122")} KotK";
+                    }));
+
+                    break;
+                default:
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        currentGame.Text = FindResource("item69").ToString();
+                    }));
+
+                    break;
+            }
+
+            Dispatcher.Invoke(new Action(delegate
+            {
+                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                directoryButton.IsEnabled = true;
+            }));
         }
 
         private void HyperlinkClick(object sender, RoutedEventArgs e)

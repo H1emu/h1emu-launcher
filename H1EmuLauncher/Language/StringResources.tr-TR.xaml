@@ -20,7 +20,7 @@
     <system:String x:Key="item19">Lütfen Kimlik Doğrulama Kodu kutusunu doldurduğunuzdan emin olun.</system:String>
     <system:String x:Key="item21">{0} için depo anahtarı mevcut: {1}</system:String>
     <system:String x:Key="item23">İndirme tamamlandı!</system:String>
-    <system:String x:Key="item24">Başka bir versiyon yüklemek ister misiniz? Tekrar girmöek için tuşa alttaki basın!</system:String>
+    <system:String x:Key="item24">Oyunu tekrar indirmeniz mi gerekiyor? Tekrar girmöek için tuşa alttaki basın!</system:String>
     <system:String x:Key="item25">GİRİŞ</system:String>
     <system:String x:Key="item26">İndiriliyor:</system:String>
     <system:String x:Key="item27">Versiyon</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe şu anda kullanımda.\n\nLütfen açık H1Z1 örneklerini kapatın.\n\nH1Z1'in tüm işlemlerini sonlandırmak için aşağıdaki butonu kullanabilirsiniz.</system:String>
     <system:String x:Key="item122">Mevcut oyun versiyonu:</system:String>
     <system:String x:Key="item124">Başlatıcı versiyonu</system:String>
-    <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
+    <system:String x:Key="item125">Copyright © 2024 | H1Emu Project</system:String>
     <system:String x:Key="item126">Ana Geliştirici</system:String>
     <system:String x:Key="item127">Geliştiriciler</system:String>
     <system:String x:Key="item128">Yöneticiler</system:String>

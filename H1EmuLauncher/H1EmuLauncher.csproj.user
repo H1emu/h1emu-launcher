@@ -36,9 +36,6 @@
     <Compile Update="SteamFramePages\DownloadComplete.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="SteamFramePages\GameInfo.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Windows\LauncherWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -128,9 +125,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SteamFramePages\DownloadStatus.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="SteamFramePages\GameInfo.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\LauncherWindow.xaml">

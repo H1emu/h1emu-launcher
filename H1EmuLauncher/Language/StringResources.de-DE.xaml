@@ -20,7 +20,7 @@
     <system:String x:Key="item19">Bitte stellen Sie sicher, dass Sie das Feld Auth-Code ausfüllen.</system:String>
     <system:String x:Key="item21">Depotschlüssel für {0} Ergebnis: {1}</system:String>
     <system:String x:Key="item23">Download abgeschlossen!</system:String>
-    <system:String x:Key="item24">Müssen Sie eine andere Version herunterladen? Drücken Sie die Schaltfläche unten, um sich erneut anzumelden!</system:String>
+    <system:String x:Key="item24">Müssen Sie das Spiel erneut herunterladen? Drücken Sie die Schaltfläche unten, um sich erneut anzumelden!</system:String>
     <system:String x:Key="item25">Anmelden</system:String>
     <system:String x:Key="item26">Wird gerade heruntergeladen:</system:String>
     <system:String x:Key="item27">Version</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe wird gerade verwendet\n\nBitte schließen Sie alle offenen Instanzen von H1Z1.\n\nSie können die Schaltfläche unten verwenden, um alle Prozesse von H1Z1 zu beenden.</system:String>
     <system:String x:Key="item122">Aktuelle Spielversion:</system:String>
     <system:String x:Key="item124">Launcher version</system:String>
-    <system:String x:Key="item125">Copyright © 2023 | H1Emu Project</system:String>
+    <system:String x:Key="item125">Copyright © 2024 | H1Emu Project</system:String>
     <system:String x:Key="item126">Lead Entwickler</system:String>
     <system:String x:Key="item127">Entwickler</system:String>
     <system:String x:Key="item128">Administratoren</system:String>

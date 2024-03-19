@@ -20,7 +20,7 @@
     <system:String x:Key="item19">Se till att fylla i rutan Verifieringskod.</system:String>
     <system:String x:Key="item21">Minnesnycklar för {0} resultat: {1}</system:String>
     <system:String x:Key="item23">Nedladdning klar!</system:String>
-    <system:String x:Key="item24">Behöver du ladda ner en annan version? Tryck på knappen nedan för att logga in igen!</system:String>
+    <system:String x:Key="item24">Behöver du ladda ner spelet igen? Tryck på knappen nedan för att logga in igen!</system:String>
     <system:String x:Key="item25">LOGGA IN</system:String>
     <system:String x:Key="item26">Hämtas just nu:</system:String>
     <system:String x:Key="item27">version</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe används för närvarande.\n\nStäng alla öppna program utav H1Z1.\n\nDu kan använda knappen nedan för att döda alla processer i H1Z1.</system:String>
     <system:String x:Key="item122">Aktuell spelversion:</system:String>
     <system:String x:Key="item124">Launcher version</system:String>
-    <system:String x:Key="item125">Upphovsrätt © 2023 | H1Emu Projektet</system:String>
+    <system:String x:Key="item125">Upphovsrätt © 2024 | H1Emu Projektet</system:String>
     <system:String x:Key="item126">Ledande Utvecklare</system:String>
     <system:String x:Key="item127">Utvecklare</system:String>
     <system:String x:Key="item128">Administratörer</system:String>

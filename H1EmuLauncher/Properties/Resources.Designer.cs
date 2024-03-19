@@ -283,16 +283,6 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Game_Patch_2015 {
-            get {
-                object obj = ResourceManager.GetObject("Game-Patch-2015", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] Game_Patch_2016 {
             get {
                 object obj = ResourceManager.GetObject("Game-Patch-2016", resourceCulture);

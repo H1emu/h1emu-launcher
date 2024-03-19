@@ -20,7 +20,7 @@ namespace H1EmuLauncher.SteamFramePages
         private static Storyboard loadingAnimation;
         private static CancellationToken token;
         public static CancellationTokenSource tokenSource = new();
-        public static string gameInfo { get; set; }
+        public static string gameInfo = "-app 295110 -depot 295111 -manifest 8395659676467739522";
 
         public Login()
         {
@@ -107,8 +107,6 @@ namespace H1EmuLauncher.SteamFramePages
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\GameInfo.xaml", UriKind.Relative));
-                        
                         if (_2FA.loadingAnimation != null)
                             _2FA.loadingAnimation.Stop();
                     }));
@@ -119,8 +117,6 @@ namespace H1EmuLauncher.SteamFramePages
                     tokenSource.Dispose();
                     tokenSource = new CancellationTokenSource();
                     token = tokenSource.Token;
-
-                    token.WaitHandle.WaitOne();
 
                     System.Windows.Forms.FolderBrowserDialog selectDirectory = new();
                     selectDirectory.Description = FindResource("item51").ToString();
@@ -212,6 +208,9 @@ namespace H1EmuLauncher.SteamFramePages
                         loadingIcon.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
                         CustomMessageBox.Show($"{FindResource("item37")} {version}.", LauncherWindow.launcherInstance);
+
+                        LauncherWindow.launcherInstance.directoryBox.Text = Properties.Settings.Default.activeDirectory;
+                        LauncherWindow.launcherInstance.CheckGameVersion();
                     }));
                 }
                 catch (Exception ph) when (ph is TaskCanceledException)

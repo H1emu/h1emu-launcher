@@ -21,10 +21,8 @@ namespace H1EmuLauncher
             UseShellExecute = false,
             CreateNoWindow = true
         };
-        public static string gameVersionString { get; set; }
         public static string accountKeyArgument;
         public static bool openAccountKeyPage;
-        public static bool isExecutingTasks;
         public static SettingsWindow settingsInstance;
         public Storyboard UnfocusPropertiesAnimationShow;
         public Storyboard UnfocusPropertiesAnimationHide;
@@ -119,7 +117,7 @@ namespace H1EmuLauncher
 
         private void SettingsWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (IsVisible && isExecutingTasks)
+            if (IsVisible && SettingsPages.GameFiles.isExecutingTasks)
             {
                 CustomMessageBox.Show(FindResource("item73").ToString(), this);
                 e.Cancel = true;
