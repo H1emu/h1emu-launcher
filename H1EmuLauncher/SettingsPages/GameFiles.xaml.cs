@@ -125,6 +125,8 @@ namespace H1EmuLauncher.SettingsPages
                 {
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", Properties.Resources.Game_Patch_2016);
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", $"{Properties.Settings.Default.activeDirectory}", true);
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip", Properties.Resources.H1EmuVoicePatch);
+                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip", $"{Properties.Settings.Default.activeDirectory}", true);
                 }
                 else if (LauncherWindow.gameVersionString == "kotk")
                 {
@@ -150,7 +152,10 @@ namespace H1EmuLauncher.SettingsPages
             }));
 
             if (LauncherWindow.gameVersionString == "22dec2016")
+            {
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip");
+            }
             else if (LauncherWindow.gameVersionString == "kotk")
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip");
 

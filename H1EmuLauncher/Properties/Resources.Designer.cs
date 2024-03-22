@@ -333,6 +333,16 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] H1EmuVoicePatch {
+            get {
+                object obj = ResourceManager.GetObject("H1EmuVoicePatch", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] H1Z1_BE {
             get {
                 object obj = ResourceManager.GetObject("H1Z1_BE", resourceCulture);

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:H1EmuLauncher.SettingsPages"
       mc:Ignorable="d" 
       d:DesignWidth="735"
-      d:DesignHeight="250"
+      d:DesignHeight="320"
       Title="GameFiles"
       FontFamily="Bahnschrift Light"
       FontSize="16"
@@ -89,7 +89,7 @@
                             Style="{DynamicResource StandardButton}">
 
                         <Button.Effect>
-                            
+
                             <!-- Drop shadow effect -->
                             <DropShadowEffect BlurRadius="15"
                                               Direction="-90"

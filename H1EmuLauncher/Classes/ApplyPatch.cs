@@ -22,7 +22,8 @@ namespace H1EmuLauncher.Classes
                     if (gameVersionString == "kotk" && Properties.Settings.Default.currentPatchVersionKotK != latestPatchVersion ||
                         gameVersionString == "22dec2016" && Properties.Settings.Default.currentPatchVersion2016 != latestPatchVersion || 
                         gameVersionString == "22dec2016" && Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye") ||
-                        gameVersionString == "22dec2016" && Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack") || 
+                        gameVersionString == "22dec2016" && !Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice") ||
+                        gameVersionString == "22dec2016" && !File.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack") || 
                         !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") || 
                         !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") || 
                         !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
@@ -88,6 +89,8 @@ namespace H1EmuLauncher.Classes
                 {
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", Properties.Resources.Game_Patch_2016);
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", $"{Properties.Settings.Default.activeDirectory}", true);
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip", Properties.Resources.H1EmuVoicePatch);
+                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip", $"{Properties.Settings.Default.activeDirectory}", true);
                 }
                 else if (gameVersionString == "kotk")
                 {
@@ -108,7 +111,10 @@ namespace H1EmuLauncher.Classes
 
             // Delete the .zip file, not needed anymore
             if (gameVersionString == "22dec2016")
+            {
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip");
+            }
             else if (gameVersionString == "kotk")
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip");
 

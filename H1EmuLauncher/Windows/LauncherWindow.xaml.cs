@@ -555,6 +555,21 @@ namespace H1EmuLauncher
 
                         ApplyPatchClass.CheckPatch();
 
+                        //Start voice chat client
+                        Process voiceChatClient = new();
+                        if (gameVersionString == "22dec2016")
+                        {
+                            voiceChatClient.StartInfo = new ProcessStartInfo
+                            {
+                                FileName = $"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice\\H1EmuVoice.exe",
+                                WindowStyle = ProcessWindowStyle.Normal,
+                                WorkingDirectory = Properties.Settings.Default.activeDirectory,
+                                UseShellExecute = true
+                            };
+                            voiceChatClient.Start();
+                        }
+
+                        // Start game
                         Process h1Process = new();
                         h1Process.StartInfo = new ProcessStartInfo
                         {
@@ -574,6 +589,9 @@ namespace H1EmuLauncher
                                     Show();
                                     Activate();
                                     launcherNotifyIcon.Visible = false;
+
+                                    if (Process.GetProcessesByName("H1EmuVoice").Length > 0)
+                                        voiceChatClient.CloseMainWindow();
                                 }));
                             }
                         };
