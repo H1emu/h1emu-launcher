@@ -556,7 +556,7 @@ namespace H1EmuLauncher
                         ApplyPatchClass.CheckPatch();
 
                         //Start voice chat client
-                        Process voiceChatClient = new();
+                        /*Process voiceChatClient = new();
                         if (gameVersionString == "22dec2016")
                         {
                             voiceChatClient.StartInfo = new ProcessStartInfo
@@ -567,7 +567,7 @@ namespace H1EmuLauncher
                                 UseShellExecute = true
                             };
                             voiceChatClient.Start();
-                        }
+                        }*/
 
                         // Start game
                         Process h1Process = new();
