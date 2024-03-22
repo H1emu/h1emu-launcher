@@ -563,7 +563,7 @@ namespace H1EmuLauncher
                             {
                                 FileName = $"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice\\H1EmuVoice.exe",
                                 WindowStyle = ProcessWindowStyle.Normal,
-                                WorkingDirectory = Properties.Settings.Default.activeDirectory,
+                                WorkingDirectory = $"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice",
                                 UseShellExecute = true
                             };
                             voiceChatClient.Start();
@@ -590,8 +590,12 @@ namespace H1EmuLauncher
                                     Activate();
                                     launcherNotifyIcon.Visible = false;
 
-                                    if (Process.GetProcessesByName("H1EmuVoice").Length > 0)
-                                        voiceChatClient.CloseMainWindow();
+                                    Process[] processes = Process.GetProcesses();
+                                    foreach (Process process in processes) 
+                                    {
+                                        if (process.ProcessName == "H1EmuVoice")
+                                            process.Kill();
+                                    }
                                 }));
                             }
                         };
