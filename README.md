@@ -1,4 +1,4 @@
-![H1EmuLogo](https://github.com/H1emu/h1emu-launcher/assets/45886829/8bd93c7b-4059-4fc9-9c71-32a4fa8e9ea8)
+![H1EmuLogo](https://github.com/H1emu/h1emu-launcher/assets/45886829/02ce0853-d591-42dc-99f4-a306600705db)
 
 The H1EmuLauncher is an application that aims to make playing the H1Emu project simple and easy without requiring any technical knowledge. It's possible to play on H1Emu verified servers, connect to custom servers using an IP address or simply play Singleplayer mode. The H1EmuLauncher allows players to easily download the correct version of Just Survive, install latest or stable builds of server files, keep patches and required game files needed to play up to date with every release, display new project update information on the main page, direct users to bug report submission pages and more!
 
@@ -14,9 +14,7 @@ The H1EmuLauncher is an application that aims to make playing the H1Emu project 
 ## Credits
 
 - Thanks to ZamZam for having made the various logos of H1emu.
-
 - Thanks to LegendsNeveerrDie for the original concept art.
-
 - Thanks to [Eavilaswayce](https://github.com/Eavilaswayce) and [Relish](https://github.com/aarongarnerm) for creating the application.
 
 ## h1z1-server [![npm version](http://img.shields.io/npm/v/h1z1-server.svg?style=flat)](https://npmjs.org/package/h1z1-server "View this project on npm")
