@@ -1,8 +1,17 @@
-# H1Emu Launcher
+![H1EmuLogo](https://github.com/H1emu/h1emu-launcher/assets/45886829/8bd93c7b-4059-4fc9-9c71-32a4fa8e9ea8)
 
-## h1z1-server [![npm version](http://img.shields.io/npm/v/h1z1-server.svg?style=flat)](https://npmjs.org/package/h1z1-server "View this project on npm")
+The H1EmuLauncher is an application that aims to make playing the H1Emu project simple and easy without requiring any technical knowledge. It's possible to play on H1Emu verified servers, connect to custom servers using an IP address or simply play Singleplayer mode. The H1EmuLauncher allows players to easily download the correct version of Just Survive, install latest or stable builds of server files, keep patches and required game files needed to play up to date with every release, display new project update information on the main page, direct users to bug report submission pages and more!
 
-## Thanks list
+## H1EmuLauncher Tutorial
+
+1. Simply download the launcher installer and run it (accepting the UAC prompt).
+2. Set the directory of your game files using the textbox on the main page via the arrow button.
+3. If you want to play on H1Emu verified servers, you must create an account at [H1Emu](https://h1emu.com) and retrieve your Account Key. Then, navigate to the **Settings > Account Key** page and paste your key into the textbox to save it. You can now start playing by simply hitting the Play button! Note: Account Keys are only needed for H1Emu verified servers.
+4. If you want to connect to custom servers, select the **New Server...** button from the server selector drop down menu, input an IP address and a server name of your choice and hit Play.
+5. If you want to play Singleplayer, navigate to the **Settings > Game Files** page and click either the **Latest** or **Stable** server build. Then, from the server selector drop down menu, select **Singleplayer** and hit Play.
+6. If further assistance is needed, don't hesitate to join the H1Emu Discord server for help at [H1Emu Discord](https://discord.gg/h1emu).
+
+## Credits
 
 - Thanks to ZamZam for having made the various logos of H1emu.
 
@@ -10,9 +19,4 @@
 
 - Thanks to [Eavilaswayce](https://github.com/Eavilaswayce) and [Relish](https://github.com/aarongarnerm) for creating the application.
 
-## How to run the launcher:
-
-1. Simply download the launcher and run it.
-1. Set the directory of your game in the Settings menu, located bottom left of the launcher.
-1. From here you can install the patch for the game or the stable/latest server files.
-1. Once directory is set, you can either play on a local server or H1Emu official servers if your account key is valid and verified (more info in the official H1Emu Discord).
+## h1z1-server [![npm version](http://img.shields.io/npm/v/h1z1-server.svg?style=flat)](https://npmjs.org/package/h1z1-server "View this project on npm")
