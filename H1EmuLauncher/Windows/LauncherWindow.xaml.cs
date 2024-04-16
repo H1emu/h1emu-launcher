@@ -555,7 +555,7 @@ namespace H1EmuLauncher
 
                         ApplyPatchClass.CheckPatch();
 
-                        //Start voice chat client
+                        // Launch voice chat client
                         /*Process voiceChatClient = new();
                         if (gameVersionString == "22dec2016")
                         {
@@ -569,7 +569,7 @@ namespace H1EmuLauncher
                             voiceChatClient.Start();
                         }*/
 
-                        // Start game
+                        // Launch game
                         Process h1Process = new();
                         h1Process.StartInfo = new ProcessStartInfo
                         {
@@ -577,7 +577,8 @@ namespace H1EmuLauncher
                             Arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}",
                             WindowStyle = ProcessWindowStyle.Normal,
                             WorkingDirectory = Properties.Settings.Default.activeDirectory,
-                            UseShellExecute = true
+                            UseShellExecute = true,
+                            Verb = "runas"
                         };
                         h1Process.EnableRaisingEvents = true;
                         h1Process.Exited += (o, s) =>
