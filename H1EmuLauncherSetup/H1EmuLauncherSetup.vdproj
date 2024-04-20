@@ -204,7 +204,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
         "ProductCode" = "8:{57C96A65-C92B-468A-8EA5-60B35FD59456}"
-        "PackageCode" = "8:{CBE982DE-0E6A-4048-AF10-74F9141EBDAA}"
+        "PackageCode" = "8:{11020309-0A11-434A-B3D8-486BDB05D1CC}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
