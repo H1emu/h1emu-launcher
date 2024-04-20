@@ -7,10 +7,10 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>2.9.5</FileVersion>
+	  <FileVersion>2.9.6</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>2.9.5</Version>
+	  <Version>2.9.6</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>2.9.5</AssemblyVersion>
+	  <AssemblyVersion>2.9.6</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -59,12 +59,14 @@
     <None Remove="Resources\H1EmuLogo.png" />
     <None Remove="Resources\H1EmuVoicePatch.zip" />
     <None Remove="Resources\H1Z1_BE.exe" />
+    <None Remove="Resources\H1Z1_FP.exe" />
     <None Remove="Resources\HideKey.png" />
     <None Remove="Resources\HideKey_Hover.png" />
     <None Remove="Resources\HideKey_Pressed.png" />
     <None Remove="Resources\Icon.ico" />
     <None Remove="Resources\Language.png" />
     <None Remove="Resources\Loading.png" />
+    <None Remove="Resources\logo.bmp" />
     <None Remove="Resources\Minimise.png" />
     <None Remove="Resources\MinimiseToSystemTray.png" />
     <None Remove="Resources\NextButton.png" />
@@ -228,6 +230,9 @@
     <Resource Include="Resources\H1Z1_BE.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\H1Z1_FP.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\HideKey.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -244,6 +249,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Loading.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\logo.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Minimise.png">

@@ -7,6 +7,8 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace H1EmuLauncher.SettingsPages
 {
@@ -85,6 +87,10 @@ namespace H1EmuLauncher.SettingsPages
             }).Start();
         }
 
+        ///////////////////
+        /// Apply Patch ///
+        ///////////////////
+
         public void ApplyPatch()
         {
             var watch = Stopwatch.StartNew();
@@ -94,7 +100,7 @@ namespace H1EmuLauncher.SettingsPages
             // Deletes old patch files if any of them are already in the directory, including the .zip in case of corruption
             if (File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
                 File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
-                File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\H1Z1_FP.exe"))
+                File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
@@ -108,7 +114,6 @@ namespace H1EmuLauncher.SettingsPages
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2015.zip");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1Z1_FP.exe");
             }
 
             // Unzip all of the files to directory
@@ -164,9 +169,7 @@ namespace H1EmuLauncher.SettingsPages
             {
                 // Delete BattlEye folder to prevent Steam from trying to launch the game
                 if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
-                {
                     Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\BattlEye", true);
-                }
 
                 if (LauncherWindow.gameVersionString == "22dec2016")
                 {
@@ -175,6 +178,13 @@ namespace H1EmuLauncher.SettingsPages
 
                     // Extract modified BattlEye to provide custom anti-cheat and asset validation
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1Z1_BE.exe", Properties.Resources.H1Z1_BE);
+
+                    // Extract custom H1Z1_FP (Fair Play) anticheat binary
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1Z1_FP.exe", Properties.Resources.H1Z1_FP);
+
+                    // Extract FairPlay logo
+                    Bitmap fairPlayLogo = new Bitmap(Properties.Resources.logo);
+                    fairPlayLogo.Save($"{Properties.Settings.Default.activeDirectory}\\logo.bmp", ImageFormat.Bmp);
                 }
             }
 
@@ -445,7 +455,7 @@ namespace H1EmuLauncher.SettingsPages
                     isExecutingTasks = false;
 
                     settingsProgressBar.Value = 0;
-                    settingsProgressRowContent.Measure(new Size(settingsProgressRow.MaxWidth, settingsProgressRow.MaxHeight));
+                    settingsProgressRowContent.Measure(new System.Windows.Size(settingsProgressRow.MaxWidth, settingsProgressRow.MaxHeight));
                     DoubleAnimation hide = new(settingsProgressRowContent.DesiredSize.Height, 0, new Duration(TimeSpan.FromMilliseconds(150)))
                     {
                         AccelerationRatio = 0.4,
@@ -467,7 +477,7 @@ namespace H1EmuLauncher.SettingsPages
                     isExecutingTasks = true;
 
                     settingsProgressRow.Visibility = Visibility.Visible;
-                    settingsProgressRowContent.Measure(new Size(settingsProgressRow.MaxWidth, settingsProgressRow.MaxHeight));
+                    settingsProgressRowContent.Measure(new System.Windows.Size(settingsProgressRow.MaxWidth, settingsProgressRow.MaxHeight));
                     DoubleAnimation show = new(0, settingsProgressRowContent.DesiredSize.Height, new Duration(TimeSpan.FromMilliseconds(150)))
                     {
                         AccelerationRatio = 0.4,
