@@ -45,7 +45,7 @@ namespace H1EmuLauncher.SettingsPages
                 if (!LauncherWindow.launcherInstance.CheckDirectory())
                     return;
 
-                switch (LauncherWindow.gameVersionString)
+                switch (Properties.Settings.Default.gameVersionString)
                 {
                     case "22dec2016":
                     case "kotk":
@@ -59,9 +59,9 @@ namespace H1EmuLauncher.SettingsPages
                             {
                                 ToggleButtons(true);
 
-                                if (LauncherWindow.gameVersionString == "22dec2016")
+                                if (Properties.Settings.Default.gameVersionString == "22dec2016")
                                     CustomMessageBox.Show($"{FindResource("item96")} \"{er.Message}\".", SettingsWindow.settingsInstance);
-                                else if (LauncherWindow.gameVersionString == "kotk")
+                                else if (Properties.Settings.Default.gameVersionString == "kotk")
                                     CustomMessageBox.Show($"{FindResource("item97")} \"{er.Message}\".", SettingsWindow.settingsInstance);
                             }));
                         }
@@ -126,14 +126,14 @@ namespace H1EmuLauncher.SettingsPages
 
             try
             {
-                if (LauncherWindow.gameVersionString == "22dec2016")
+                if (Properties.Settings.Default.gameVersionString == "22dec2016")
                 {
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", Properties.Resources.Game_Patch_2016);
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", $"{Properties.Settings.Default.activeDirectory}", true);
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip", Properties.Resources.H1EmuVoicePatch);
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip", $"{Properties.Settings.Default.activeDirectory}", true);
                 }
-                else if (LauncherWindow.gameVersionString == "kotk")
+                else if (Properties.Settings.Default.gameVersionString == "kotk")
                 {
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", Properties.Resources.Game_Patch_KotK);
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", $"{Properties.Settings.Default.activeDirectory}", true);
@@ -143,9 +143,9 @@ namespace H1EmuLauncher.SettingsPages
             {
                 Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    if (LauncherWindow.gameVersionString == "22dec2016")
+                    if (Properties.Settings.Default.gameVersionString == "22dec2016")
                         CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item96")}\n\n{e.Message}", LauncherWindow.launcherInstance);
-                    else if (LauncherWindow.gameVersionString == "kotk")
+                    else if (Properties.Settings.Default.gameVersionString == "kotk")
                         CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item97")}\n\n{e.Message}", LauncherWindow.launcherInstance);
                 }));
             }
@@ -156,22 +156,22 @@ namespace H1EmuLauncher.SettingsPages
                 settingsProgressText.Text = FindResource("item100").ToString();
             }));
 
-            if (LauncherWindow.gameVersionString == "22dec2016")
+            if (Properties.Settings.Default.gameVersionString == "22dec2016")
             {
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip");
             }
-            else if (LauncherWindow.gameVersionString == "kotk")
+            else if (Properties.Settings.Default.gameVersionString == "kotk")
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip");
 
             // Extra patch work for some versions
-            if (LauncherWindow.gameVersionString == "22dec2016" || LauncherWindow.gameVersionString == "kotk")
+            if (Properties.Settings.Default.gameVersionString == "22dec2016" || Properties.Settings.Default.gameVersionString == "kotk")
             {
                 // Delete BattlEye folder to prevent Steam from trying to launch the game
                 if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
                     Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\BattlEye", true);
 
-                if (LauncherWindow.gameVersionString == "22dec2016")
+                if (Properties.Settings.Default.gameVersionString == "22dec2016")
                 {
                     // Extract Asset_256.pack to fix blackberries
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
@@ -195,9 +195,9 @@ namespace H1EmuLauncher.SettingsPages
             watch.Stop();
             TimeSpan elapsedMs = watch.Elapsed;
 
-            if (LauncherWindow.gameVersionString == "22dec2016")
+            if (Properties.Settings.Default.gameVersionString == "22dec2016")
                 Properties.Settings.Default.currentPatchVersion2016 = ApplyPatchClass.latestPatchVersion;
-            else if (LauncherWindow.gameVersionString == "kotk")
+            else if (Properties.Settings.Default.gameVersionString == "kotk")
                 Properties.Settings.Default.currentPatchVersionKotK = ApplyPatchClass.latestPatchVersion;
 
             Properties.Settings.Default.Save();
@@ -209,9 +209,9 @@ namespace H1EmuLauncher.SettingsPages
                 LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 settingsProgressBar.IsIndeterminate = false;
 
-                if (LauncherWindow.gameVersionString == "22dec2016")
+                if (Properties.Settings.Default.gameVersionString == "22dec2016")
                     CustomMessageBox.Show($"{FindResource("item103")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", SettingsWindow.settingsInstance);
-                else if (LauncherWindow.gameVersionString == "kotk")
+                else if (Properties.Settings.Default.gameVersionString == "kotk")
                     CustomMessageBox.Show($"{FindResource("item104")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", SettingsWindow.settingsInstance);
             }));
         }
@@ -225,7 +225,7 @@ namespace H1EmuLauncher.SettingsPages
             if (!LauncherWindow.launcherInstance.CheckDirectory())
                 return;
 
-            if (LauncherWindow.gameVersionString == "processBeingUsed")
+            if (Properties.Settings.Default.gameVersionString == "processBeingUsed")
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
@@ -235,7 +235,7 @@ namespace H1EmuLauncher.SettingsPages
                 }));
                 return;
             }
-            else if (string.IsNullOrEmpty(LauncherWindow.gameVersionString))
+            else if (string.IsNullOrEmpty(Properties.Settings.Default.gameVersionString))
             {
                 Dispatcher.Invoke(new Action(delegate
                 {

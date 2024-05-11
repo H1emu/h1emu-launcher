@@ -162,5 +162,17 @@ namespace H1EmuLauncher.Properties {
                 this["autoMinimise"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string gameVersionString {
+            get {
+                return ((string)(this["gameVersionString"]));
+            }
+            set {
+                this["gameVersionString"] = value;
+            }
+        }
     }
 }

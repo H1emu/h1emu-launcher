@@ -39,7 +39,6 @@ namespace H1EmuLauncher
         public static string customServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
         public static string recentServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\recentServers.json";
         public static string[] rawArgs = null;
-        public static string gameVersionString { get; set; }
         public static bool systemWatcherFire = true;
         public static bool executeArguments;
 
@@ -509,8 +508,7 @@ namespace H1EmuLauncher
 
                 try
                 {
-                    CheckGameVersion();
-                    switch (gameVersionString)
+                    switch (Properties.Settings.Default.gameVersionString)
                     {
                         case "22dec2016":
                             gameVersionInt = 2;
@@ -520,7 +518,7 @@ namespace H1EmuLauncher
                             break;
                     }
 
-                    if (gameVersionString == "22dec2016" || gameVersionString == "kotk")
+                    if (Properties.Settings.Default.gameVersionString == "22dec2016" || Properties.Settings.Default.gameVersionString == "kotk")
                     {
                         if (string.IsNullOrEmpty(serverIp))
                         {
@@ -549,7 +547,7 @@ namespace H1EmuLauncher
 
                         if (serverIp == "localhost:1115")
                         {
-                            if (!LaunchLocalServer(gameVersionString))
+                            if (!LaunchLocalServer(Properties.Settings.Default.gameVersionString))
                                 return;
                         }
 
@@ -618,7 +616,7 @@ namespace H1EmuLauncher
                             new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
                         }
                     }
-                    else if (gameVersionString == "processBeingUsed")
+                    else if (Properties.Settings.Default.gameVersionString == "processBeingUsed")
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
@@ -774,7 +772,6 @@ namespace H1EmuLauncher
             {
                 // Show image carousel
                 imageCarousel.Visibility = Visibility.Visible;
-
                 Properties.Settings.Default.imageCarouselVisibility = true;
                 Properties.Settings.Default.Save();
             }
@@ -782,7 +779,6 @@ namespace H1EmuLauncher
             {
                 // Hide image carousel
                 imageCarousel.Visibility = Visibility.Hidden;
-
                 Properties.Settings.Default.imageCarouselVisibility = false;
                 Properties.Settings.Default.Save();
             }
@@ -829,14 +825,14 @@ namespace H1EmuLauncher
 
                 CheckGameVersion();
 
-                if (gameVersionString == "processBeingUsed")
+                if (Properties.Settings.Default.gameVersionString == "processBeingUsed")
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
                         CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance, false, false, true);
                     }));
                 }
-                else if (gameVersionString != "22dec2016" && gameVersionString != "kotk")
+                else if (Properties.Settings.Default.gameVersionString != "22dec2016" && Properties.Settings.Default.gameVersionString != "kotk")
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
@@ -1007,7 +1003,7 @@ namespace H1EmuLauncher
             {
                 CheckGameVersion();
 
-                switch (gameVersionString)
+                switch (Properties.Settings.Default.gameVersionString)
                 {
                     case "22dec2016":
 
@@ -1079,7 +1075,8 @@ namespace H1EmuLauncher
 
         public void CheckGameVersion()
         {
-            gameVersionString = string.Empty;
+            Properties.Settings.Default.gameVersionString = string.Empty;
+            Properties.Settings.Default.Save();
 
             Dispatcher.Invoke(new Action(delegate
             {
@@ -1110,7 +1107,9 @@ namespace H1EmuLauncher
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 }));
 
-                gameVersionString = "processBeingUsed";
+                Properties.Settings.Default.gameVersionString = "processBeingUsed";
+                Properties.Settings.Default.Save();
+
                 return;
             }
             catch (Exception e)
@@ -1127,7 +1126,8 @@ namespace H1EmuLauncher
             switch (hash)
             {
                 case "bc5b3ab6": // Just Survive: 22nd December 2016
-                    gameVersionString = "22dec2016";
+                    Properties.Settings.Default.gameVersionString = "22dec2016";
+                    Properties.Settings.Default.Save();
 
                     Dispatcher.Invoke(new Action(delegate
                     {
@@ -1136,7 +1136,8 @@ namespace H1EmuLauncher
 
                     break;
                 case "ec7ffa43": // King of the Kill: 23rd February 2017
-                    gameVersionString = "kotk";
+                    Properties.Settings.Default.gameVersionString = "kotk";
+                    Properties.Settings.Default.Save();
 
                     Dispatcher.Invoke(new Action(delegate
                     {
@@ -1145,6 +1146,9 @@ namespace H1EmuLauncher
 
                     break;
                 default:
+                    Properties.Settings.Default.gameVersionString = hash;
+                    Properties.Settings.Default.Save();
+
                     Dispatcher.Invoke(new Action(delegate
                     {
                         currentGame.Text = FindResource("item69").ToString();
