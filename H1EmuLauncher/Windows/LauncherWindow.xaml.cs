@@ -829,7 +829,7 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance, false, false, true);
+                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, false, false, true);
                     }));
                 }
                 else if (Properties.Settings.Default.gameVersionString != "22dec2016" && Properties.Settings.Default.gameVersionString != "kotk")
@@ -996,9 +996,6 @@ namespace H1EmuLauncher
             else
                 directoryBox.Text = FindResource("item75").ToString();
 
-            if (!CheckDirectory())
-                return;
-
             new Thread(() =>
             {
                 CheckGameVersion();
@@ -1009,7 +1006,7 @@ namespace H1EmuLauncher
 
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item74").ToString(), SettingsWindow.settingsInstance);
+                            CustomMessageBox.Show(FindResource("item74").ToString(), this);
                         }));
 
                         break;
@@ -1017,7 +1014,7 @@ namespace H1EmuLauncher
 
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item190").ToString(), SettingsWindow.settingsInstance);
+                            CustomMessageBox.Show(FindResource("item190").ToString(), this);
                         }));
 
                         break;
@@ -1025,7 +1022,7 @@ namespace H1EmuLauncher
 
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance, false, false, true);
+                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, false, false, true);
                         }));
 
                         break;
@@ -1034,11 +1031,15 @@ namespace H1EmuLauncher
                         Dispatcher.Invoke(new Action(delegate
                         {
                             currentGame.Text = FindResource("item72").ToString();
-                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance);
+                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                         }));
 
                         break;
                 }
+
+                Properties.Settings.Default.currentPatchVersion2016 = string.Empty;
+                Properties.Settings.Default.currentPatchVersionKotK = string.Empty;
+                Properties.Settings.Default.Save();
 
             }).Start();
         }
@@ -1052,9 +1053,9 @@ namespace H1EmuLauncher
                     currentGame.Text = FindResource("item69").ToString();
 
                     if (this != null && Visibility == Visibility.Visible)
-                        CustomMessageBox.Show(FindResource("item14").ToString(), SettingsWindow.settingsInstance);
+                        CustomMessageBox.Show(FindResource("item14").ToString(), this);
                     else
-                        CustomMessageBox.Show($"{FindResource("item14")}\n\n{FindResource("item9")}", LauncherWindow.launcherInstance);
+                        CustomMessageBox.Show($"{FindResource("item14")}\n\n{FindResource("item9")}", this);
                 }));
                 return false;
             }
@@ -1118,7 +1119,7 @@ namespace H1EmuLauncher
                 {
                     directoryButton.IsEnabled = true;
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                    CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\".", SettingsWindow.settingsInstance);
+                    CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\".", this);
                 }));
                 return;
             }
