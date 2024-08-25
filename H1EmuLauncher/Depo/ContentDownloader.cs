@@ -356,7 +356,7 @@ namespace H1EmuLauncher
                     Username = username,
                     Password = loginKey == null ? password : null,
                     ShouldRememberPassword = Config.RememberPassword,
-                    LoginKey = loginKey,
+                    AccessToken = loginKey,
                     LoginID = Config.LoginID ?? 0x534B32, // "SK2"
                 }
             );

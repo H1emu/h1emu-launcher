@@ -6,7 +6,7 @@ namespace H1EmuLauncher.Classes
     {
         public static string APPLICATION_DATA_PATH = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-        public static string NODEJS_VERSION = "18.12.1";
+        public static string NODEJS_VERSION = "22.7.0";
 
         public static string H1EMU_SERVER_IP = "loginserver.h1emu.com:1115";
 

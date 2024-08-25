@@ -116,27 +116,8 @@ namespace H1EmuLauncher
             this.callbacks.Subscribe<SteamUser.LoggedOnCallback>( LogOnCallback );
             this.callbacks.Subscribe<SteamUser.SessionTokenCallback>( SessionTokenCallback );
             this.callbacks.Subscribe<SteamApps.LicenseListCallback>( LicenseListCallback );
-            this.callbacks.Subscribe<SteamUser.UpdateMachineAuthCallback>( UpdateMachineAuthCallback );
-            this.callbacks.Subscribe<SteamUser.LoginKeyCallback>( LoginKeyCallback );
 
             Debug.WriteLine("Connecting to Steam3...");
-
-            if ( authenticatedUser )
-            {
-                var fi = new FileInfo( String.Format( "{0}.sentryFile", logonDetails.Username ) );
-                if (AccountSettingsStore.Instance.SentryData != null && AccountSettingsStore.Instance.SentryData.ContainsKey(logonDetails.Username))
-                {
-                    logonDetails.SentryFileHash = Util.SHAHash( AccountSettingsStore.Instance.SentryData[ logonDetails.Username ] );
-                }
-                else if ( fi.Exists && fi.Length > 0 )
-                {
-                    var sentryData = File.ReadAllBytes( fi.FullName );
-                    logonDetails.SentryFileHash = Util.SHAHash( sentryData );
-                    AccountSettingsStore.Instance.SentryData[ logonDetails.Username ] = sentryData;
-                    AccountSettingsStore.Save();
-                }
-            }
-
             Connect();
         }
 
@@ -584,14 +565,18 @@ namespace H1EmuLauncher
 
             var isSteamGuard = loggedOn.Result == EResult.AccountLogonDenied;
             var is2FA = loggedOn.Result == EResult.AccountLoginDeniedNeedTwoFactor;
-            var isLoginKey = ContentDownloader.Config.RememberPassword && logonDetails.LoginKey != null && loggedOn.Result == EResult.InvalidPassword;
+            var isAccessToken = ContentDownloader.Config.RememberPassword && logonDetails.AccessToken != null && loggedOn.Result is EResult.InvalidPassword
+                or EResult.InvalidSignature
+                or EResult.AccessDenied
+                or EResult.Expired
+                or EResult.Revoked;
 
-            if (isSteamGuard || is2FA || isLoginKey)
+            if (isSteamGuard || is2FA || isAccessToken)
             {
                 bExpectingDisconnectRemote = true;
                 Abort(false);
 
-                if (!isLoginKey)
+                if (!isAccessToken)
                 {
                     Debug.WriteLine("This account is protected by Steam Guard.");
                 }
@@ -701,47 +686,6 @@ namespace H1EmuLauncher
                     PackageTokens.TryAdd(license.PackageID, license.AccessToken);
                 }
             }
-        }
-
-        private void UpdateMachineAuthCallback(SteamUser.UpdateMachineAuthCallback machineAuth)
-        {
-            var hash = Util.SHAHash(machineAuth.Data);
-            Debug.WriteLine("Got Machine Auth: {0} {1} {2} {3}", machineAuth.FileName, machineAuth.Offset, machineAuth.BytesToWrite, machineAuth.Data.Length, hash);
-
-            AccountSettingsStore.Instance.SentryData[logonDetails.Username] = machineAuth.Data;
-            AccountSettingsStore.Save();
-
-            var authResponse = new SteamUser.MachineAuthDetails
-            {
-                BytesWritten = machineAuth.BytesToWrite,
-                FileName = machineAuth.FileName,
-                FileSize = machineAuth.BytesToWrite,
-                Offset = machineAuth.Offset,
-
-                SentryFileHash = hash, // should be the sha1 hash of the sentry file we just wrote
-
-                OneTimePassword = machineAuth.OneTimePassword, // not sure on this one yet, since we've had no examples of steam using OTPs
-
-                LastError = 0, // result from win32 GetLastError
-                Result = EResult.OK, // if everything went okay, otherwise ~who knows~
-
-                JobID = machineAuth.JobID, // so we respond to the correct server job
-            };
-
-            // send off our response
-            steamUser.SendMachineAuthResponse(authResponse);
-        }
-
-        private void LoginKeyCallback(SteamUser.LoginKeyCallback loginKey)
-        {
-            Debug.WriteLine("Accepted new login key for account {0}", logonDetails.Username);
-
-            AccountSettingsStore.Instance.LoginKeys[logonDetails.Username] = loginKey.LoginKey;
-            AccountSettingsStore.Save();
-
-            steamUser.AcceptNewLoginKey(loginKey);
-
-            bDidReceiveLoginKey = true;
         }
     }
 }

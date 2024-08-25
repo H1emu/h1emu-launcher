@@ -7,10 +7,10 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>2.9.9</FileVersion>
+	  <FileVersion>3.0.0</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>2.9.9</Version>
+	  <Version>3.0.0</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>2.9.9</AssemblyVersion>
+	  <AssemblyVersion>3.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -72,7 +72,7 @@
     <None Remove="Resources\NextButton.png" />
     <None Remove="Resources\NextButton_Hover.png" />
     <None Remove="Resources\NextButton_Pressed.png" />
-    <None Remove="Resources\Node-18.12.1.zip" />
+    <None Remove="Resources\node-v22.7.0-win-x64.zip" />
     <None Remove="Resources\Padlock.png" />
     <None Remove="Resources\Placeholder.jpg" />
     <None Remove="Resources\Play.png" />
@@ -269,7 +269,7 @@
     <Resource Include="Resources\NextButton_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Node-18.12.1.zip">
+    <Resource Include="Resources\node-v22.7.0-win-x64.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Padlock.png">

@@ -483,9 +483,9 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Node_18_12_1 {
+        internal static byte[] node_v22_7_0_win_x64 {
             get {
-                object obj = ResourceManager.GetObject("Node-18.12.1", resourceCulture);
+                object obj = ResourceManager.GetObject("node-v22.7.0-win-x64", resourceCulture);
                 return ((byte[])(obj));
             }
         }
