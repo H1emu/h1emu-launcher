@@ -127,7 +127,7 @@
     <system:String x:Key="item146">No se puede eliminar este campo.</system:String>
     <system:String x:Key="item147">¿Seguro que quieres eliminar este servidor?</system:String>
     <system:String x:Key="item149">Descomprimiendo archivos del paquete...</system:String>
-    <system:String x:Key="item150">PARCHEANDO</system:String>
+    <system:String x:Key="item150">PARCHEANDO...</system:String>
     <system:String x:Key="item151">El nombre o la IP del servidor son inválidos.</system:String>
     <system:String x:Key="item152">Eliminando carpeta de BattlEye...</system:String>
     <system:String x:Key="item153">Al conectarse a los servidores de H1Emu, debes configurar una Clave de Cuenta. Esto se puede hacer desde el menú de Configuración.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">El script de instalación del servidor se cerró antes de tiempo y de forma inesperada.</system:String>
     <system:String x:Key="item186">Hubo un error al abrir el archivo de instalación:</system:String>
     <system:String x:Key="item187">Si este error persiste, intente descargar y ejecutar el archivo de instalación manualmente.</system:String>
-    <system:String x:Key="item188">REPARCHADO</system:String>
+    <system:String x:Key="item188">REPARCHADO...</system:String>
     <system:String x:Key="item189">MATAR</system:String>
     <system:String x:Key="item190">Versión del juego detectada: 23 de febrero de 2017 (King of the Kill).</system:String>
     <system:String x:Key="item191">Su H1EmuLauncher se ha minimizado en la bandeja del sistema.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Actualización Disponible</system:String>
     <system:String x:Key="item212">Editar</system:String>
     <system:String x:Key="item213">AHORRAR</system:String>
+    <system:String x:Key="item214">DE CHEQUES...</system:String>
+    <system:String x:Key="item215">Error al calcular el hash del activo:</system:String>
+    <system:String x:Key="item216">Desinstale cualquier archivo de recurso personalizado (.pack) cuando juegue en cualquier servidor principal o podría resultar en una prohibición.</system:String>
 </ResourceDictionary>

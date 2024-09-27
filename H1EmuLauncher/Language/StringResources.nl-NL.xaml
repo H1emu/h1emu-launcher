@@ -127,7 +127,7 @@
     <system:String x:Key="item146">Kan ingang niet verwijderen.</system:String>
     <system:String x:Key="item147">Wil je de server echt verwijderen?</system:String>
     <system:String x:Key="item149">Unzippen asset bestanden...</system:String>
-    <system:String x:Key="item150">PATCHING</system:String>
+    <system:String x:Key="item150">PATCHING...</system:String>
     <system:String x:Key="item151">Server naam of IP niet geldig.</system:String>
     <system:String x:Key="item152">BattlEye map aan het verwijderen...</system:String>
     <system:String x:Key="item153">Tijdens het verbinden met H1Emu Servers moet je een Accountsleutel instellen. Dit kan je doen via het instellen menu.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">Het serverinstallatiescript is vroeg en onverwacht afgesloten.</system:String>
     <system:String x:Key="item186">Er is een fout opgetreden bij het openen van het installatiebestand:</system:String>
     <system:String x:Key="item187">Als deze fout zich blijft voordoen, probeer dan het installatiebestand handmatig te downloaden en uit te voeren.</system:String>
-    <system:String x:Key="item188">OPNIEUW PATCHEN</system:String>
+    <system:String x:Key="item188">OPNIEUW PATCHEN...</system:String>
     <system:String x:Key="item189">DODEN</system:String>
     <system:String x:Key="item190">Spelversie gedetecteerd: 23 februari 2017 (King of the Kill).</system:String>
     <system:String x:Key="item191">Uw H1EmuLauncher is geminimaliseerd naar het systeemvak.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Update Beschikbaar</system:String>
     <system:String x:Key="item212">Bewerking</system:String>
     <system:String x:Key="item213">REDDEN</system:String>
+    <system:String x:Key="item214">CONTROLEREN...</system:String>
+    <system:String x:Key="item215">Fout bij het berekenen van asset-hash:</system:String>
+    <system:String x:Key="item216">Verwijder eventuele aangepaste asset-bestanden (.pack) als je op een hoofdserver speelt, anders kan dit resulteren in een verbanning.</system:String>
 </ResourceDictionary>

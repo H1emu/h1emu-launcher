@@ -414,6 +414,7 @@ namespace H1EmuLauncher
                 serverSelector.Items.RemoveAt(serverSelector.Items.Count - 2);
         }
 
+        Process startSingleplayerServerProcess;
         public bool LaunchLocalServer(string gameVersionString)
         {
             try
@@ -437,7 +438,7 @@ namespace H1EmuLauncher
                     //serverVersion = "npm run start-2016";
                 }
 
-                Process startSingleplayerServerProcess = new Process { StartInfo = cmdShell };
+                startSingleplayerServerProcess = new Process { StartInfo = cmdShell };
                 startSingleplayerServerProcess.Start();
                 using (StreamWriter sw = startSingleplayerServerProcess.StandardInput)
                 {
@@ -449,7 +450,6 @@ namespace H1EmuLauncher
                     }
                 }
                 startSingleplayerServerProcess.WaitForExit(5000);
-
                 if (startSingleplayerServerProcess.HasExited)
                 {
                     Dispatcher.Invoke(new Action(delegate
@@ -467,12 +467,13 @@ namespace H1EmuLauncher
                 }));
                 return false;
             }
+
             return true;
         }
 
         private void LaunchClient(object sender, RoutedEventArgs e)
         {
-            if (!CheckDirectory())
+            if (!CheckGameVersion(this))
                 return;
 
             int gameVersionInt = 0;
@@ -551,11 +552,16 @@ namespace H1EmuLauncher
                                 return;
                         }
 
+                        // Check that the patch is the latest version
                         ApplyPatchClass.CheckPatch();
+
+                        // If connecting to H1Emu servers, validate assets
+                        //if (serverIp == Info.H1EMU_SERVER_IP)
+                            //CheckAssetsBeforeLaunch.CheckAssets();
 
                         // Launch voice chat client
                         /*Process voiceChatClient = new();
-                        if (gameVersionString == "22dec2016")
+                        if (Properties.Settings.Default.gameVersionString == "22dec2016")
                         {
                             voiceChatClient.StartInfo = new ProcessStartInfo
                             {
@@ -588,15 +594,18 @@ namespace H1EmuLauncher
                                     Show();
                                     Activate();
                                     launcherNotifyIcon.Visible = false;
-
-                                    Process[] processes = Process.GetProcesses();
-                                    foreach (Process process in processes) 
-                                    {
-                                        if (process.ProcessName == "H1EmuVoice")
-                                            process.Kill();
-                                    }
                                 }));
                             }
+
+                            Process[] processes = Process.GetProcesses();
+                            foreach (Process process in processes)
+                            {
+                                if (process.ProcessName == "H1EmuVoice")
+                                    process.Kill();
+                            }
+
+                            if (startSingleplayerServerProcess != null)
+                                startSingleplayerServerProcess.Kill(true);
                         };
                         h1Process.Start();
 
@@ -615,20 +624,6 @@ namespace H1EmuLauncher
                             }));
                             new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
                         }
-                    }
-                    else if (Properties.Settings.Default.gameVersionString == "processBeingUsed")
-                    {
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, false, false, true);
-                        }));
-                    }
-                    else
-                    {
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
-                        }));
                     }
                 }
                 catch (Exception er)
@@ -789,56 +784,7 @@ namespace H1EmuLauncher
 
             new Thread(() =>
             {
-                if (!string.IsNullOrEmpty(Properties.Settings.Default.activeDirectory) && Directory.Exists(Properties.Settings.Default.activeDirectory) && File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
-                {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                    }));
-                }
-                else if (!string.IsNullOrEmpty(Properties.Settings.Default.activeDirectory) && Directory.Exists(Properties.Settings.Default.activeDirectory) && !File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
-                {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                        currentGame.Text = FindResource("item69").ToString();
-                    }));
-                    return;
-                }
-                else
-                {
-                    Properties.Settings.Default.activeDirectory = "Directory";
-                    Properties.Settings.Default.Save();
-
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        directoryBox.Text = FindResource("item75").ToString();
-                        currentGame.Text = FindResource("item69").ToString();
-                    }));
-                    return;
-                }
-
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    currentGame.Text = FindResource("item70").ToString();
-                }));
-
-                CheckGameVersion();
-
-                if (Properties.Settings.Default.gameVersionString == "processBeingUsed")
-                {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, false, false, true);
-                    }));
-                }
-                else if (Properties.Settings.Default.gameVersionString != "22dec2016" && Properties.Settings.Default.gameVersionString != "kotk")
-                {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        currentGame.Text = FindResource("item72").ToString();
-                    }));
-                }
+                CheckGameVersion(this, false, true);
 
             }).Start();
         }
@@ -991,80 +937,16 @@ namespace H1EmuLauncher
             Properties.Settings.Default.activeDirectory = selectDirectory.SelectedPath;
             Properties.Settings.Default.Save();
 
-            if (!string.IsNullOrEmpty(selectDirectory.SelectedPath))
-                directoryBox.Text = Properties.Settings.Default.activeDirectory;
-            else
-                directoryBox.Text = FindResource("item75").ToString();
-
             new Thread(() =>
             {
-                CheckGameVersion();
-
-                switch (Properties.Settings.Default.gameVersionString)
-                {
-                    case "22dec2016":
-
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            CustomMessageBox.Show(FindResource("item74").ToString(), this);
-                        }));
-
-                        break;
-                    case "kotk":
-
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            CustomMessageBox.Show(FindResource("item190").ToString(), this);
-                        }));
-
-                        break;
-                    case "processBeingUsed":
-
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, false, false, true);
-                        }));
-
-                        break;
-                    default:
-
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            currentGame.Text = FindResource("item72").ToString();
-                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
-                        }));
-
-                        break;
-                }
-
-                Properties.Settings.Default.currentPatchVersion2016 = string.Empty;
-                Properties.Settings.Default.currentPatchVersionKotK = string.Empty;
-                Properties.Settings.Default.Save();
+                CheckGameVersion(this, true);
 
             }).Start();
         }
 
-        public bool CheckDirectory()
-        {
-            if (string.IsNullOrEmpty(Properties.Settings.Default.activeDirectory) || !File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
-            {
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    currentGame.Text = FindResource("item69").ToString();
-
-                    if (this != null && Visibility == Visibility.Visible)
-                        CustomMessageBox.Show(FindResource("item14").ToString(), this);
-                    else
-                        CustomMessageBox.Show($"{FindResource("item14")}\n\n{FindResource("item9")}", this);
-                }));
-                return false;
-            }
-            return true;
-        }
-
         public void OpenDirectory(object sender, RoutedEventArgs e)
         {
-            if (!CheckDirectory())
+            if (!Directory.Exists(Properties.Settings.Default.activeDirectory))
                 return;
 
             Process.Start(new ProcessStartInfo
@@ -1074,10 +956,41 @@ namespace H1EmuLauncher
             });
         }
 
-        public void CheckGameVersion()
+        public bool CheckGameVersion(Window callingWindow, bool alerts = false, bool silent = false)
         {
+            Dispatcher.Invoke(new Action(delegate
+            {
+                directoryBox.Text = Properties.Settings.Default.activeDirectory;
+                currentGame.Text = FindResource("item70").ToString();
+            }));
+
             Properties.Settings.Default.gameVersionString = string.Empty;
             Properties.Settings.Default.Save();
+
+            if (!File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
+            {
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    currentGame.Text = FindResource("item69").ToString();
+
+                    if (!silent)
+                    {
+                        if (SettingsWindow.settingsInstance != null && SettingsWindow.settingsInstance.Visibility == Visibility.Visible)
+                            CustomMessageBox.Show(FindResource("item14").ToString(), callingWindow);
+                        else
+                            CustomMessageBox.Show($"{FindResource("item14")}\n\n{FindResource("item9")}", callingWindow);
+                    }
+                }));
+
+                return false;
+            }
+            else if (!Directory.Exists(Properties.Settings.Default.activeDirectory))
+            {
+                Properties.Settings.Default.activeDirectory = "Directory";
+                Properties.Settings.Default.Save();
+
+                return false;
+            }
 
             Dispatcher.Invoke(new Action(delegate
             {
@@ -1101,27 +1014,37 @@ namespace H1EmuLauncher
             }
             catch (IOException)
             {
+                Properties.Settings.Default.gameVersionString = "processBeingUsed";
+                Properties.Settings.Default.Save();
+
                 Dispatcher.Invoke(new Action(delegate
                 {
                     currentGame.Text = FindResource("item120").ToString();
                     directoryButton.IsEnabled = true;
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                    
+                    if (!silent)
+                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), callingWindow, false, false, true);
                 }));
 
-                Properties.Settings.Default.gameVersionString = "processBeingUsed";
-                Properties.Settings.Default.Save();
-
-                return;
+                return false;
             }
             catch (Exception e)
             {
+                Properties.Settings.Default.gameVersionString = string.Empty;
+                Properties.Settings.Default.Save();
+
                 Dispatcher.Invoke(new Action(delegate
                 {
+                    currentGame.Text = FindResource("item142").ToString().Replace(":", ".");
                     directoryButton.IsEnabled = true;
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                    CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\".", this);
+
+                    if (!silent)
+                        CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\".", callingWindow);
                 }));
-                return;
+
+                return false;
             }
 
             switch (hash)
@@ -1133,9 +1056,14 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         currentGame.Text = $"{FindResource("item122")} 2016";
+                        taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                        directoryButton.IsEnabled = true;
+
+                        if (alerts)
+                            CustomMessageBox.Show(FindResource("item74").ToString(), callingWindow);
                     }));
 
-                    break;
+                    return true;
                 case "ec7ffa43": // King of the Kill: 23rd February 2017
                     Properties.Settings.Default.gameVersionString = "kotk";
                     Properties.Settings.Default.Save();
@@ -1143,26 +1071,30 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         currentGame.Text = $"{FindResource("item122")} KotK";
+                        taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                        directoryButton.IsEnabled = true;
+
+                        if (alerts)
+                            CustomMessageBox.Show(FindResource("item190").ToString(), callingWindow);
                     }));
 
-                    break;
+                    return true;
                 default:
                     Properties.Settings.Default.gameVersionString = hash;
                     Properties.Settings.Default.Save();
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        currentGame.Text = FindResource("item69").ToString();
+                        currentGame.Text = FindResource("item72").ToString();
+                        taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                        directoryButton.IsEnabled = true;
+
+                        if (!silent)
+                            CustomMessageBox.Show(FindResource("item72").ToString(), callingWindow);
                     }));
 
-                    break;
+                    return false;
             }
-
-            Dispatcher.Invoke(new Action(delegate
-            {
-                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                directoryButton.IsEnabled = true;
-            }));
         }
 
         private void HyperlinkClick(object sender, RoutedEventArgs e)

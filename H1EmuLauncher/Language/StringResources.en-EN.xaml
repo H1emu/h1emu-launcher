@@ -12,7 +12,7 @@
     <system:String x:Key="item11">You must own H1Z1: Just Survive on your Steam account in order to download. This project does not support piracy.</system:String>
     <system:String x:Key="item12">Join the Community at</system:String>
     <system:String x:Key="item13">Error launching game:</system:String>
-    <system:String x:Key="item14">Game not found in directory.</system:String>
+    <system:String x:Key="item14">Game not found in selected directory.</system:String>
     <system:String x:Key="item15">You must own H1Z1: Just Survive on your Steam account in order to download.</system:String>
     <system:String x:Key="item16">One or more errors occurred:</system:String>
     <system:String x:Key="item17">Unable to login to Steam:</system:String>
@@ -127,7 +127,7 @@
     <system:String x:Key="item146">Cannot delete this entry.</system:String>
     <system:String x:Key="item147">Are you sure you want to delete this server?</system:String>
     <system:String x:Key="item149">Unzipping asset files...</system:String>
-    <system:String x:Key="item150">PATCHING</system:String>
+    <system:String x:Key="item150">PATCHING...</system:String>
     <system:String x:Key="item151">Server name or IP not valid.</system:String>
     <system:String x:Key="item152">Deleting BattlEye folder...</system:String>
     <system:String x:Key="item153">When connecting to H1Emu Servers you must set an Account Key. This can be done in the Settings menu.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">The server install script closed early and unexpectedly.</system:String>
     <system:String x:Key="item186">There was an error opening the installation file:</system:String>
     <system:String x:Key="item187">If this error persists, try downloading and running the installation file manually.</system:String>
-    <system:String x:Key="item188">RE-PATCHING</system:String>
+    <system:String x:Key="item188">RE-PATCHING...</system:String>
     <system:String x:Key="item189">KILL</system:String>
     <system:String x:Key="item190">Game version detected: 23rd February 2017 (King of the Kill).</system:String>
     <system:String x:Key="item191">Your H1EmuLauncher has been minimised to the system tray.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Update Available</system:String>
     <system:String x:Key="item212">Edit</system:String>
     <system:String x:Key="item213">SAVE</system:String>
+    <system:String x:Key="item214">CHECKING...</system:String>
+    <system:String x:Key="item215">Error computing asset hash:</system:String>
+    <system:String x:Key="item216">Please uninstall any custom asset (.pack) files when playing on any H1Emu Main servers or it may result in a ban.</system:String>
 </ResourceDictionary>

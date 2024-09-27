@@ -285,7 +285,7 @@ namespace H1EmuLauncher.Properties {
         /// </summary>
         internal static byte[] Game_Patch_2016 {
             get {
-                object obj = ResourceManager.GetObject("Game-Patch-2016", resourceCulture);
+                object obj = ResourceManager.GetObject("Game_Patch_2016", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -295,7 +295,7 @@ namespace H1EmuLauncher.Properties {
         /// </summary>
         internal static byte[] Game_Patch_KotK {
             get {
-                object obj = ResourceManager.GetObject("Game-Patch-KotK", resourceCulture);
+                object obj = ResourceManager.GetObject("Game_Patch_KotK", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -307,6 +307,16 @@ namespace H1EmuLauncher.Properties {
             get {
                 object obj = ResourceManager.GetObject("Grain", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] H1Emu_Voice_Patch {
+            get {
+                object obj = ResourceManager.GetObject("H1Emu_Voice_Patch", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -327,16 +337,6 @@ namespace H1EmuLauncher.Properties {
             get {
                 object obj = ResourceManager.GetObject("H1EmuLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] H1EmuVoicePatch {
-            get {
-                object obj = ResourceManager.GetObject("H1EmuVoicePatch", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         
@@ -485,7 +485,7 @@ namespace H1EmuLauncher.Properties {
         /// </summary>
         internal static byte[] node_v22_7_0_win_x64 {
             get {
-                object obj = ResourceManager.GetObject("node-v22.7.0-win-x64", resourceCulture);
+                object obj = ResourceManager.GetObject("node_v22_7_0_win_x64", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -565,7 +565,7 @@ namespace H1EmuLauncher.Properties {
         /// </summary>
         internal static byte[] Server_Quickstart {
             get {
-                object obj = ResourceManager.GetObject("Server-Quickstart", resourceCulture);
+                object obj = ResourceManager.GetObject("Server_Quickstart", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -7,10 +7,10 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>3.0.0</FileVersion>
+	  <FileVersion>3.0.1</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>3.0.0</Version>
+	  <Version>3.0.1</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>3.0.0</AssemblyVersion>
+	  <AssemblyVersion>3.0.1</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -54,10 +54,13 @@
     <None Remove="Resources\Folder_Pressed.png" />
     <None Remove="Resources\Game-Patch-2016.zip" />
     <None Remove="Resources\Game-Patch-KotK.zip" />
+    <None Remove="Resources\Game_Patch_2016.zip" />
+    <None Remove="Resources\Game_Patch_KotK.zip" />
     <None Remove="Resources\Grain.png" />
     <None Remove="Resources\H1EmuIcon.png" />
     <None Remove="Resources\H1EmuLogo.png" />
     <None Remove="Resources\H1EmuVoicePatch.zip" />
+    <None Remove="Resources\H1Emu_Voice_Patch.zip" />
     <None Remove="Resources\H1Z1_BE.exe" />
     <None Remove="Resources\H1Z1_FP.exe" />
     <None Remove="Resources\HideKey.png" />
@@ -73,6 +76,7 @@
     <None Remove="Resources\NextButton_Hover.png" />
     <None Remove="Resources\NextButton_Pressed.png" />
     <None Remove="Resources\node-v22.7.0-win-x64.zip" />
+    <None Remove="Resources\node_v22.7.0_win_x64.zip" />
     <None Remove="Resources\Padlock.png" />
     <None Remove="Resources\Placeholder.jpg" />
     <None Remove="Resources\Play.png" />
@@ -81,6 +85,7 @@
     <None Remove="Resources\PrevButton_Pressed.png" />
     <None Remove="Resources\Server-Quickstart.zip" />
     <None Remove="Resources\Server.png" />
+    <None Remove="Resources\Server_Quickstart.zip" />
     <None Remove="Resources\Settings.png" />
     <None Remove="Resources\Shield.png" />
     <None Remove="Resources\ShowKey.png" />
@@ -209,10 +214,10 @@
     <Resource Include="Resources\Folder_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Game-Patch-2016.zip">
+    <Resource Include="Resources\Game_Patch_2016.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Game-Patch-KotK.zip">
+    <Resource Include="Resources\Game_Patch_KotK.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Grain.png">
@@ -224,7 +229,7 @@
     <Resource Include="Resources\H1EmuLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\H1EmuVoicePatch.zip">
+    <Resource Include="Resources\H1Emu_Voice_Patch.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\H1Z1_BE.exe">
@@ -269,7 +274,7 @@
     <Resource Include="Resources\NextButton_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\node-v22.7.0-win-x64.zip">
+    <Resource Include="Resources\node_v22.7.0_win_x64.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Padlock.png">
@@ -290,10 +295,10 @@
     <Resource Include="Resources\PrevButton_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Server-Quickstart.zip">
+    <Resource Include="Resources\Server.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Server.png">
+    <Resource Include="Resources\Server_Quickstart.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Settings.png">

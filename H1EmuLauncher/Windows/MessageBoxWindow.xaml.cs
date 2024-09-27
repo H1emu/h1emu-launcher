@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
@@ -21,11 +22,23 @@ namespace H1EmuLauncher
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
-        private void CloseH1Z1Click(object sender, RoutedEventArgs e)
+        private async void CloseH1Z1Click(object sender, RoutedEventArgs e)
         {
+            killH1Z1Button.IsEnabled = false;
+
             foreach (Process h1z1Processes in Process.GetProcessesByName("h1z1"))
                 h1z1Processes.Kill();
 
+            await Task.Run(() => {
+                WaitForGameClosure:
+                    if (Process.GetProcessesByName("h1z1").Length > 0)
+                        goto WaitForGameClosure;
+            });
+
+            // Check the game version again once the binary is free
+            LauncherWindow.launcherInstance.CheckGameVersion(LauncherWindow.launcherInstance);
+
+            killH1Z1Button.IsEnabled = true;
             Topmost = true;
             Close();
         }

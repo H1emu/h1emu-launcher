@@ -127,7 +127,7 @@
     <system:String x:Key="item146">Vous ne pouvez pas supprimer cette entrée.</system:String>
     <system:String x:Key="item147">Êtes-vous sur de vouloir supprimer ce serveur?</system:String>
     <system:String x:Key="item149">Décompression des fichiers d'assets</system:String>
-    <system:String x:Key="item150">PATCHING</system:String>
+    <system:String x:Key="item150">PATCHING...</system:String>
     <system:String x:Key="item151">Nom du serveur ou IP non valide.</system:String>
     <system:String x:Key="item152">Suppression du dossier BattlEye...</system:String>
     <system:String x:Key="item153">Lors de la connexion aux serveurs H1Emu, vous devez définir une Clé de Compte. Cela peut être fait dans le menu Paramètres.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">Le script d'installation du serveur s'est fermé tôt et de manière inattendue.</system:String>
     <system:String x:Key="item186">Une erreur s'est produite lors de l'ouverture du fichier d'installation:</system:String>
     <system:String x:Key="item187">Si cette erreur persiste, essayez de télécharger et d'exécuter le fichier d'installation manuellement.</system:String>
-    <system:String x:Key="item188">REMISE À JOUR</system:String>
+    <system:String x:Key="item188">REMISE À JOUR...</system:String>
     <system:String x:Key="item189">TUER</system:String>
     <system:String x:Key="item190">Version du jeu détectée: 23 février 2017 (King of the Kill).</system:String>
     <system:String x:Key="item191">Votre H1EmuLauncher a été réduit dans la barre d’état système.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Mise à Jour Disponible</system:String>
     <system:String x:Key="item212">Modifier</system:String>
     <system:String x:Key="item213">SAUVEGARDER</system:String>
+    <system:String x:Key="item214">VÉRIFICATION...</system:String>
+    <system:String x:Key="item215">Erreur lors du calcul du hachage de l'actif:</system:String>
+    <system:String x:Key="item216">Veuillez désinstaller tous les fichiers d'actifs personnalisés (.pack) lors de la lecture sur l'un des serveurs principaux, sinon cela pourrait entraîner une interdiction.</system:String>
 </ResourceDictionary>

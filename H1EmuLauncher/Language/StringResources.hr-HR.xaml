@@ -127,7 +127,7 @@
     <system:String x:Key="item146">Nije moguće izbrisati unos.</system:String>
     <system:String x:Key="item147">Da li ste sigurni da želite izbrisati odabrani server?</system:String>
     <system:String x:Key="item149">Raspakiravanje asset datoteka...</system:String>
-    <system:String x:Key="item150">PATCHANJE</system:String>
+    <system:String x:Key="item150">PATCHANJE...</system:String>
     <system:String x:Key="item151">Naziv ili IP adresa poslužitelja nisu valjani.</system:String>
     <system:String x:Key="item152">Brisanje BattlEye mape...</system:String>
     <system:String x:Key="item153">Prilikom povezivanja na H1Emu servere morate imati zadani Ključ Računa. Ključ možete postaviti u Postavkama.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">Skripta za instalaciju poslužitelja rano se i neočekivano zatvorila.</system:String>
     <system:String x:Key="item186">Došlo je do pogreške pri otvaranju instalacijske datoteke:</system:String>
     <system:String x:Key="item187">Ako se ova pogreška nastavi, pokušajte ručno preuzeti i pokrenuti instalacijsku datoteku.</system:String>
-    <system:String x:Key="item188">RE-ZAKRPATI</system:String>
+    <system:String x:Key="item188">RE-ZAKRPATI...</system:String>
     <system:String x:Key="item189">UBITI</system:String>
     <system:String x:Key="item190">Otkrivena verzija igre: 23. veljače 2017. (King of the Kill).</system:String>
     <system:String x:Key="item191">Vaš H1EmuLauncher minimiziran je na programsku traku.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Ažuriranje Dostupno</system:String>
     <system:String x:Key="item212">Uredi</system:String>
     <system:String x:Key="item213">UŠTEDJETI</system:String>
+    <system:String x:Key="item214">PROVJERAVANJE...</system:String>
+    <system:String x:Key="item215">Pogreška pri izračunavanju raspršivanja sredstava:</system:String>
+    <system:String x:Key="item216">Deinstalirajte sve prilagođene datoteke (.pack) kada igrate na bilo kojem glavnom poslužitelju ili bi to moglo rezultirati zabranom.</system:String>
 </ResourceDictionary>

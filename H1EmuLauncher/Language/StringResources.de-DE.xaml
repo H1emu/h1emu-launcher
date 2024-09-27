@@ -127,7 +127,7 @@
     <system:String x:Key="item146">Dieser Eintrag kann nicht gelöscht werden.</system:String>
     <system:String x:Key="item147">Möchten Sie diesen Server wirklich löschen?</system:String>
     <system:String x:Key="item149">Entpacke anlagen Dateien...</system:String>
-    <system:String x:Key="item150">PATCHEN</system:String>
+    <system:String x:Key="item150">PATCHEN...</system:String>
     <system:String x:Key="item151">Server Name oder IP ungültig.</system:String>
     <system:String x:Key="item152">Lösche das BattlEye Verzeichnis...</system:String>
     <system:String x:Key="item153">Wenn Sie eine Verbindung zu H1Emu-Servern herstellen, müssen Sie einen Kontoschlüssel festlegen. Dies kann im Menü Einstellungen erfolgen.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">Das Server-Installationsskript wurde vorzeitig und unerwartet geschlossen.</system:String>
     <system:String x:Key="item186">Beim Öffnen der Installationsdatei ist ein Fehler aufgetreten:</system:String>
     <system:String x:Key="item187">Wenn dieser Fehler weiterhin besteht, versuchen Sie, die Installationsdatei manuell herunterzuladen und auszuführen.</system:String>
-    <system:String x:Key="item188">NEU-PATCHING</system:String>
+    <system:String x:Key="item188">NEU-PATCHING...</system:String>
     <system:String x:Key="item189">TÖTEN</system:String>
     <system:String x:Key="item190">Erkannte Spielversion: 23. Februar 2017 (King of the Kill).</system:String>
     <system:String x:Key="item191">Ihr H1EmuLauncher wurde auf die Taskleiste minimiert.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Update Verfügbar</system:String>
     <system:String x:Key="item212">Bearbeiten</system:String>
     <system:String x:Key="item213">SPEICHERN</system:String>
+    <system:String x:Key="item214">ÜBERPRÜFUNG...</system:String>
+    <system:String x:Key="item215">Fehler beim Berechnen des Asset-Hashs:</system:String>
+    <system:String x:Key="item216">Bitte deinstallieren Sie alle benutzerdefinierten Asset-Dateien (.pack), wenn Sie auf einem der H1Emu-Hauptserver spielen, da dies sonst zu einem Verbot führen kann.</system:String>
 </ResourceDictionary>

@@ -127,7 +127,7 @@
     <system:String x:Key="item146">无法删除此服务器。</system:String>
     <system:String x:Key="item147">确认要删除这个服务器吗？</system:String>
     <system:String x:Key="item149">正在解压资源文件...</system:String>
-    <system:String x:Key="item150">正在安装补丁</system:String>
+    <system:String x:Key="item150">正在安装补丁...</system:String>
     <system:String x:Key="item151">无效的服务器名字或者IP地址。</system:String>
     <system:String x:Key="item152">正在删除BattlEye目录...</system:String>
     <system:String x:Key="item153">连接到 H1Emu 服务器时，您必须设置帐户密钥。请在游戏配置菜单中贴入认证密钥。</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">服务器安装脚本意外提前关闭。</system:String>
     <system:String x:Key="item186">打开安装文件时出错：</system:String>
     <system:String x:Key="item187">如果此错误仍然存​​在，请尝试手动下载并运行安装文件。</system:String>
-    <system:String x:Key="item188">重新修补</system:String>
+    <system:String x:Key="item188">重新修补...</system:String>
     <system:String x:Key="item189">杀</system:String>
     <system:String x:Key="item190">检测到的游戏版本：2017 年 2 月 23 日（King of the Kill）。</system:String>
     <system:String x:Key="item191">您的H1EmuLauncher已最小化到系统托盘。</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">可用更新</system:String>
     <system:String x:Key="item212">编辑</system:String>
     <system:String x:Key="item213">保存</system:String>
+    <system:String x:Key="item214">检查...</system:String>
+    <system:String x:Key="item215">计算资产哈希值时出错：</system:String>
+    <system:String x:Key="item216">在任何主服务器上玩时请卸载任何自定义资源 (.pack) 文件，否则可能会导致被禁止。</system:String>
 </ResourceDictionary>

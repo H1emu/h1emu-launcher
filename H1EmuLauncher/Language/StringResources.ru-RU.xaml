@@ -127,7 +127,7 @@
     <system:String x:Key="item146">Невозможно удалить эту запись.</system:String>
     <system:String x:Key="item147">Вы уверены, что хотите удалить этот сервер?</system:String>
     <system:String x:Key="item149">Распаковка файлов актива...</system:String>
-    <system:String x:Key="item150">УСТАНОВКА ПАТЧА</system:String>
+    <system:String x:Key="item150">УСТАНОВКА ПАТЧА...</system:String>
     <system:String x:Key="item151">Имя сервера или IP недействителен.</system:String>
     <system:String x:Key="item152">Удаление папки BattlEye...</system:String>
     <system:String x:Key="item153">При подключении к серверам H1Emu вы должны установить Ключ Учетной Записи. Это можно сделать в меню настроек.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">Сценарий установки сервера закрылся раньше и неожиданно.</system:String>
     <system:String x:Key="item186">При открытии установочного файла произошла ошибка:</system:String>
     <system:String x:Key="item187">Если эта ошибка повторяется, попробуйте загрузить и запустить установочный файл вручную.</system:String>
-    <system:String x:Key="item188">ПОВТОРНОЕ ИСПРАВЛЕНИЕ</system:String>
+    <system:String x:Key="item188">ПОВТОРНОЕ ИСПРАВЛЕНИЕ...</system:String>
     <system:String x:Key="item189">УБИЙСТВО</system:String>
     <system:String x:Key="item190">Обнаружена версия игры: 23 февраля 2017 г. (King of the Kill).</system:String>
     <system:String x:Key="item191">Ваш H1EmuLauncher свернут в системный трей.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Доступно Oбновление</system:String>
     <system:String x:Key="item212">Редактировать</system:String>
     <system:String x:Key="item213">СОХРАНЯТЬ</system:String>
+    <system:String x:Key="item214">ПРОВЕРКА...</system:String>
+    <system:String x:Key="item215">Ошибка вычисления хеша актива:</system:String>
+    <system:String x:Key="item216">Пожалуйста, удалите все файлы пользовательских ресурсов (.pack) при игре на любом главном сервере, иначе это может привести к бану.</system:String>
 </ResourceDictionary>

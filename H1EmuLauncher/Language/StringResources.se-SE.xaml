@@ -127,7 +127,7 @@
     <system:String x:Key="item146">Det går inte att ta bort denna post.</system:String>
     <system:String x:Key="item147">Är du säker på att du vill ta bort den här servern?</system:String>
     <system:String x:Key="item149">Packar upp filerna...</system:String>
-    <system:String x:Key="item150">PATCHAR</system:String>
+    <system:String x:Key="item150">PATCHAR...</system:String>
     <system:String x:Key="item151">Servernamn eller IP är inte giltigt.</system:String>
     <system:String x:Key="item152">Tar bort BattlEye-mappen...</system:String>
     <system:String x:Key="item153">När du ansluter till H1Emu-servrar måste du skriva in en kontonyckel. Detta kan göras i menynfliken Inställningar.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">Serverinstallationsskriptet stängdes snabbt och oväntat.</system:String>
     <system:String x:Key="item186">Det gick inte att öppna installationsfilen:</system:String>
     <system:String x:Key="item187">Om det här problemet kvarstår, försök då att ladda ner det igen och köra installationsfilen manuellt.</system:String>
-    <system:String x:Key="item188">ÅTERLAPNING</system:String>
+    <system:String x:Key="item188">ÅTERLAPNING...</system:String>
     <system:String x:Key="item189">DÖDA</system:String>
     <system:String x:Key="item190">Spelversion upptäckt: 23 februari 2017 (King of the Kill).</system:String>
     <system:String x:Key="item191">Din H1EmuLauncher har minimerats till systemfältet.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Uppdatering Tillgänglig</system:String>
     <system:String x:Key="item212">Redigera</system:String>
     <system:String x:Key="item213">SPARA</system:String>
+    <system:String x:Key="item214">KONTROLL...</system:String>
+    <system:String x:Key="item215">Fel vid beräkning av tillgångshash:</system:String>
+    <system:String x:Key="item216">Vänligen avinstallera alla anpassade tillgångsfiler (.pack) när du spelar på huvudservrar, annars kan det resultera i ett förbud.</system:String>
 </ResourceDictionary>

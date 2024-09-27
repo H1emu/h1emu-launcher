@@ -87,7 +87,7 @@ namespace H1EmuLauncher.Classes
                 {
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", Properties.Resources.Game_Patch_2016);
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", $"{Properties.Settings.Default.activeDirectory}", true);
-                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip", Properties.Resources.H1EmuVoicePatch);
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip", Properties.Resources.H1Emu_Voice_Patch);
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip", $"{Properties.Settings.Default.activeDirectory}", true);
                 }
                 else if (Properties.Settings.Default.gameVersionString == "kotk")

@@ -232,9 +232,6 @@
   <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Server-Quickstart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Server-Quickstart.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="CustomClientConfig" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CustomClientConfig.ini;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -295,12 +292,6 @@
   <data name="Discord_Hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Discord_Hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Assets_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Assets_256.pack;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Game-Patch-KotK" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Game-Patch-KotK.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="MinimiseToSystemTray" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MinimiseToSystemTray.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -316,19 +307,28 @@
   <data name="Edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Game-Patch-2016" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Game-Patch-2016.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="H1EmuVoicePatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\H1EmuVoicePatch.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="H1Z1_FP" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\H1Z1_FP.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="node-v22.7.0-win-x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\node-v22.7.0-win-x64.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Assets_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Assets_256.pack;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Game_Patch_2016" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Game_Patch_2016.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Game_Patch_KotK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Game_Patch_KotK.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="H1Emu_Voice_Patch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\H1Emu_Voice_Patch.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="node_v22_7_0_win_x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\node_v22.7.0_win_x64.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Server_Quickstart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Server_Quickstart.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

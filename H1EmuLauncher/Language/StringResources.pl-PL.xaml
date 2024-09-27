@@ -127,7 +127,7 @@
     <system:String x:Key="item146">Nie można tego usunąć.</system:String>
     <system:String x:Key="item147">Czy jesteś pewien, że chcesz usunąć ten serwer?</system:String>
     <system:String x:Key="item149">Rozpakowywanie asseów...</system:String>
-    <system:String x:Key="item150">PATCHOWANIE</system:String>
+    <system:String x:Key="item150">PATCHOWANIE...</system:String>
     <system:String x:Key="item151">Nazwa serwera lub IP nieprawidłowe.</system:String>
     <system:String x:Key="item152">Usuwanie folderu BattlEye...</system:String>
     <system:String x:Key="item153">Łącząc się z serwerami H1Emu, musisz ustawić klucz konta. Możesz to zrobić w ustawieniach.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">Skrypt instalacyjny serwera został zamknięty przedwcześnie i nieoczekiwanie.</system:String>
     <system:String x:Key="item186">Wystąpił błąd podczas otwierania pliku instalacyjnego:</system:String>
     <system:String x:Key="item187">Jeśli ten błąd będzie się powtarzał, spróbuj ręcznie pobrać i uruchomić plik instalacyjny.</system:String>
-    <system:String x:Key="item188">PONOWNE ŁATOWANIE</system:String>
+    <system:String x:Key="item188">PONOWNE ŁATOWANIE...</system:String>
     <system:String x:Key="item189">ZABIĆ</system:String>
     <system:String x:Key="item190">Wykryto wersję gry: 23 lutego 2017 (King of the Kill).</system:String>
     <system:String x:Key="item191">Twój H1EmuLauncher został zminimalizowany do zasobnika systemowego.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Dostępna Aktualizacja</system:String>
     <system:String x:Key="item212">Edytować</system:String>
     <system:String x:Key="item213">RATOWAĆ</system:String>
+    <system:String x:Key="item214">KONTROLA...</system:String>
+    <system:String x:Key="item215">Błąd podczas obliczania skrótu zasobu:</system:String>
+    <system:String x:Key="item216">Odinstaluj wszelkie niestandardowe pliki zasobów (.pack) podczas gry na dowolnym serwerze głównym, w przeciwnym razie może to skutkować banem.</system:String>
 </ResourceDictionary>

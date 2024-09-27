@@ -127,7 +127,7 @@
     <system:String x:Key="item146">Não pode apagar esta entrada.</system:String>
     <system:String x:Key="item147">Tem a certeza que quer apagar este servidor?</system:String>
     <system:String x:Key="item149">A descompactar ficheiros ativos...</system:String>
-    <system:String x:Key="item150">A CORRIGIR</system:String>
+    <system:String x:Key="item150">A CORRIGIR...</system:String>
     <system:String x:Key="item151">Nome do servidor ou IP incorretos.</system:String>
     <system:String x:Key="item152">A eliminar pasta - BattlEye...</system:String>
     <system:String x:Key="item153">Ao ligar aos Servidores H1Emu deve definir uma Chave da Conta. Isto pode ser feito no menu Definições.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">O script de instalação do servidor fechou cedo e inesperadamente.</system:String>
     <system:String x:Key="item186">Ocorreu um erro ao abrir o arquivo de instalação:</system:String>
     <system:String x:Key="item187">Se o erro persistir, tente baixar e executar o arquivo de instalação manualmente.</system:String>
-    <system:String x:Key="item188">RE-PATCHING</system:String>
+    <system:String x:Key="item188">RE-PATCHING...</system:String>
     <system:String x:Key="item189">MATAR</system:String>
     <system:String x:Key="item190">Versão do jogo detectada: 23 de fevereiro de 2017 (King of the Kill).</system:String>
     <system:String x:Key="item191">Seu H1EmuLauncher foi minimizado na bandeja do sistema.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Atualização Disponível</system:String>
     <system:String x:Key="item212">Editar</system:String>
     <system:String x:Key="item213">SALVAR</system:String>
+    <system:String x:Key="item214">VERIFICANDO...</system:String>
+    <system:String x:Key="item215">Erro ao calcular o hash do ativo:</system:String>
+    <system:String x:Key="item216">Desinstale todos os arquivos de recursos personalizados (.pack) ao jogar em qualquer servidor principal ou isso poderá resultar em banimento.</system:String>
 </ResourceDictionary>

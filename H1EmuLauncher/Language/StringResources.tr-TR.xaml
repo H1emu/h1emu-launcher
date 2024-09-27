@@ -127,7 +127,7 @@
     <system:String x:Key="item146">Bu girdi silinemiyor.</system:String>
     <system:String x:Key="item147">Bu sunucuyu silmek istediğinize emin misiniz?</system:String>
     <system:String x:Key="item149">Paket dosyası açılıyor...</system:String>
-    <system:String x:Key="item150">YAMA UYGULANIYOR</system:String>
+    <system:String x:Key="item150">YAMA UYGULANIYOR...</system:String>
     <system:String x:Key="item151">Sunucu adı veya IP geçerli değil.</system:String>
     <system:String x:Key="item152">BattlEye klasörü siliniyor...</system:String>
     <system:String x:Key="item153">H1Emu sunucularına bağlanırken bir Hesap Anahtarı ayarlamalısınız. Bu işlem Ayarlar menüsünden yapılabilir.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">Sunucu yükleme komut dosyası erken ve beklenmedik bir şekilde kapandı.</system:String>
     <system:String x:Key="item186">Yükleme dosyası açılırken bir hata oluştu:</system:String>
     <system:String x:Key="item187">Bu hata devam ederse, yükleme dosyasını manuel olarak indirmeyi ve çalıştırmayı deneyin.</system:String>
-    <system:String x:Key="item188">YENİDEN YAMALAMA</system:String>
+    <system:String x:Key="item188">YENİDEN YAMALAMA...</system:String>
     <system:String x:Key="item189">ÖLDÜRMEK</system:String>
     <system:String x:Key="item190">Oyun versiyonu tespit edildi: 23 Şubat 2017 (King of the Kill).</system:String>
     <system:String x:Key="item191">H1EmuLauncher'ınız sistem tepsisine küçültüldü.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Güncelleme Uygun</system:String>
     <system:String x:Key="item212">Düzenlemek</system:String>
     <system:String x:Key="item213">KAYDETMEK</system:String>
+    <system:String x:Key="item214">KONTROL EDİLİYOR...</system:String>
+    <system:String x:Key="item215">Varlık karması hesaplanırken hata oluştu:</system:String>
+    <system:String x:Key="item216">Lütfen herhangi bir Ana Sunucuda oynarken tüm özel varlık (.pack) dosyalarını kaldırın, aksi takdirde bu durum yasaklanmayla sonuçlanabilir.</system:String>
 </ResourceDictionary>

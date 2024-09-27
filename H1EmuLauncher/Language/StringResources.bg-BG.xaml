@@ -127,7 +127,7 @@
     <system:String x:Key="item146">Не можете да изтрете този вход.</system:String>
     <system:String x:Key="item147">Сигурни ли сте , че искате да изтриете този сървър?</system:String>
     <system:String x:Key="item149">Разархивиране на файлове...</system:String>
-    <system:String x:Key="item150">Поправяне</system:String>
+    <system:String x:Key="item150">Поправяне...</system:String>
     <system:String x:Key="item151">Името на сървара или IP адреса не са верни.</system:String>
     <system:String x:Key="item152">Изтриване на папката на BattlEye ...</system:String>
     <system:String x:Key="item153">Когато се свързвате към сървърите на H1Emu ви трябва ключ за потвърждение. Това може да стане в менюто Настройки.</system:String>
@@ -162,7 +162,7 @@
     <system:String x:Key="item185">Сървърният скрипт спря прекалено рано и неочаквано.</system:String>
     <system:String x:Key="item186">Имаше грешка при отварянето на инсталационният файл:</system:String>
     <system:String x:Key="item187">Ако грешката продължава да се появява, опитайте да изтеглите файловете ръчно.</system:String>
-    <system:String x:Key="item188">ПРЕКРЪПВАНЕ</system:String>
+    <system:String x:Key="item188">ПРЕКРЪПВАНЕ...</system:String>
     <system:String x:Key="item189">УБИЙ</system:String>
     <system:String x:Key="item190">Открита версия на играта: 23 февруари 2017 (King of the Kill).</system:String>
     <system:String x:Key="item191">Вашият H1EmuLauncher е минимизиран в системната област.</system:String>
@@ -188,4 +188,7 @@
     <system:String x:Key="item211">Налична Aктуализация</system:String>
     <system:String x:Key="item212">Pедактиране</system:String>
     <system:String x:Key="item213">ЗАПАЗЕТЕ</system:String>
+    <system:String x:Key="item214">ПРОВЕРКА...</system:String>
+    <system:String x:Key="item215">Грешка при изчисляване на хеша на актива:</system:String>
+    <system:String x:Key="item216">Моля, деинсталирайте всички файлове с персонализирани активи (.pack), когато играете на главните сървъри на H1Emu или това може да доведе до бан.</system:String>
 </ResourceDictionary>

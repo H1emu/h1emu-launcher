@@ -210,7 +210,7 @@ namespace H1EmuLauncher.SteamFramePages
                         CustomMessageBox.Show($"{FindResource("item37")} {version}.", LauncherWindow.launcherInstance);
 
                         LauncherWindow.launcherInstance.directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                        LauncherWindow.launcherInstance.CheckGameVersion();
+                        LauncherWindow.launcherInstance.CheckGameVersion(LauncherWindow.launcherInstance, true);
                     }));
                 }
                 catch (Exception ph) when (ph is TaskCanceledException)
