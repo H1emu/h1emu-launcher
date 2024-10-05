@@ -1,0 +1,297 @@
+﻿<Window x:Class="H1EmuLauncher.ShowServerInstallOptions"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        x:Name="InstallServerFiles"
+        Title="{DynamicResource item209}"
+        MinWidth="450"
+        MaxWidth="1200"
+        MinHeight="210"
+        MaxHeight="900"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="NoResize"
+        SizeToContent="WidthAndHeight"
+        Background="Transparent"
+        FontFamily="Bahnschrift Light"
+        FontSize="16"
+        Foreground="FloralWhite"
+        Loaded="ServerInstallOptionsLoaded"
+        ContentRendered="ServerInstallOptionsContentRendered"
+        Closing="ServerInstallOptionsClosing">
+
+    <!-- Keep window animations -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+    </WindowChrome.WindowChrome>
+
+    <Window.Resources>
+        <ResourceDictionary>
+
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Storyboard x:Key="UnfocusPropertiesShow">
+                <DoubleAnimation Storyboard.TargetName="installServerFilesFade"
+                     Storyboard.TargetProperty="Opacity"
+                     From="0" To="1"
+                     Duration="0:0:0.1"
+                     AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="installServerFilesBlur"
+                     Storyboard.TargetProperty="Radius"
+                     From="0" To="15"
+                     Duration="0:0:0.1"
+                     AccelerationRatio="1"/>
+            </Storyboard>
+            <Storyboard x:Key="UnfocusPropertiesHide">
+                <DoubleAnimation Storyboard.TargetName="installServerFilesFade"
+                     Storyboard.TargetProperty="Opacity"
+                     From="1" To="0"
+                     Duration="0:0:0.1"
+                     AccelerationRatio="1"/>
+
+                <DoubleAnimation Storyboard.TargetName="installServerFilesBlur"
+                     Storyboard.TargetProperty="Radius"
+                     From="15" To="0"
+                     Duration="0:0:0.1"
+                     AccelerationRatio="1"/>
+            </Storyboard>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!-- Window grid -->
+    <Grid Background="#FF2A2A32">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <!-- Grainy texture -->
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+            </Grid.Background>
+
+            <!-- Settings blur on unfocus -->
+            <Grid.Effect>
+                <BlurEffect x:Name="installServerFilesBlur"
+                            Radius="0"
+                            KernelType="Gaussian"/>
+
+            </Grid.Effect>
+
+            <!-- Grid for logo and exit button -->
+            <Grid MouseLeftButtonDown="MoveServerInstallOptionsWindow"
+                  Background="Transparent">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Logo -->
+                <Image Source="..\Resources\H1EmuIcon.png"
+                       Stretch="Uniform"
+                       Height="30"
+                       Margin="15"
+                       VerticalAlignment="Top"
+                       HorizontalAlignment="Left">
+
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="0"
+                                              Opacity="0.3"/>
+                    </Image.Effect>
+                </Image>
+
+                <!-- Exit button -->
+                <Button x:Name="CloseButton"
+                        Grid.Column="2"
+                        Click="CloseServerInstallOptionsWindow"
+                        Width="40"
+                        Height="25"
+                        Margin="15"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource CloseButtonStyle}">
+
+                    <Button.Effect>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.3"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+
+            <!-- Main content in darkened area -->
+            <Border Grid.Row="1"
+                    Margin="15,0,15,15"
+                    Background="#1C1B22"
+                    UseLayoutRounding="True"
+                    CornerRadius="5">
+
+                <!-- Drop shadow effect -->
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="8"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"/>
+
+                </Border.Effect>
+
+                <!-- Border for grainy texture -->
+                <Border CornerRadius="5">
+
+                    <!-- Grainy texture -->
+                    <Border.Background>
+                        <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                    </Border.Background>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Main message box text -->
+                        <TextBlock x:Name="text"
+                                   Grid.Row="1"
+                                   Margin="20"
+                                   Background="Transparent"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"/>
+
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="2"
+                                   Margin="20,0,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
+
+                        <!-- Using a UniformGrid here to keep both buttons centered when the collapsed element is set to visible -->
+                        <Grid Grid.Row="3"
+                              HorizontalAlignment="Center">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Install latest server button -->
+                            <Button x:Name="latestButton"
+                                    Click="InstallServerButton"
+                                    Margin="20"
+                                    Padding="25,7,25,7"
+                                    BorderThickness="0"
+                                    FontFamily="Arial Black"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Content="{DynamicResource item43}"
+                                    Style="{DynamicResource StandardButton}">
+
+                                <Button.Effect>
+
+                                    <!-- Drop shadow effect -->
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="1"
+                                                      Opacity="0.3"/>
+                                </Button.Effect>
+                            </Button>
+
+                            <!-- Install stable server button -->
+                            <Button x:Name="stableButton"
+                                    Grid.Column="1"
+                                    Click="InstallServerButton"
+                                    Margin="20"
+                                    Padding="25,7,25,7"
+                                    BorderThickness="0"
+                                    FontFamily="Arial Black"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Content="{DynamicResource item44}"
+                                    Style="{DynamicResource StandardButton}">
+
+                                <Button.Effect>
+
+                                    <!-- Drop shadow effect -->
+                                    <DropShadowEffect BlurRadius="15"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="1"
+                                                      Opacity="0.3"/>
+                                </Button.Effect>
+                            </Button>
+                        </Grid>
+
+                        <!-- Border for installing server files progress bar -->
+                        <Border x:Name="installServerProgressRow"
+                                Grid.Row="4"
+                                Visibility="Collapsed">
+
+                            <Grid x:Name="installServerProgressRowContent">
+
+                                <!-- Status progress bar -->
+                                <ProgressBar x:Name="installServerProgressBar"
+                                             Height="35"
+                                             Margin="20,10,20,20"
+                                             VerticalAlignment="Center"
+                                             Style="{DynamicResource ProgressBar}">
+
+                                    <ProgressBar.Effect>
+
+                                        <!-- Drop shadow effect -->
+                                        <DropShadowEffect BlurRadius="15"
+                                                          Direction="-90"
+                                                          RenderingBias="Quality"
+                                                          ShadowDepth="1"
+                                                          Opacity="0.3"/>
+                                    </ProgressBar.Effect>
+                                </ProgressBar>
+
+                                <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
+                                <ProgressBar Height="35"
+                                             Margin="20,10,20,20"
+                                             Background="Transparent"
+                                             VerticalAlignment="Center"
+                                             Style="{DynamicResource ProgressBar}"/>
+
+                                <!-- Status text to overlay progress bar -->
+                                <TextBlock x:Name="settingsProgressText"
+                                           Margin="0,0,20,10"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Border>
+        </Grid>
+
+        <!-- Background fade on unfocus -->
+        <Rectangle x:Name="installServerFilesFade"
+                   MouseDown="InstallServerFilesFadeMouseDown"
+                   Fill="#40000000"
+                   IsHitTestVisible="False"
+                   Opacity="0"/>
+    </Grid>
+</Window>

@@ -46,7 +46,7 @@
     <system:String x:Key="item49">Bazı bilgiler eksik olabilir.</system:String>
     <system:String x:Key="item50">Lütfen Steam hesabınıza girdikten sonra ikili-güvenlik adımı için e-postanızın açık olduğundan emin olun.</system:String>
     <system:String x:Key="item51">Lütfen oyunu indirmek istediğiniz klasörü seçin.</system:String>
-    <system:String x:Key="item52">Sunucu dosyalarını yüklemediniz.\n\nBu işlemi Ayarlar menüsünden yapınız.</system:String>
+    <system:String x:Key="item52">Sunucu dosyalarının yüklü olmadığı anlaşılıyor.\n\nBunları şimdi yükleyip devam etmek ister misiniz? Öyleyse En Son veya Kararlı yapıyı seçin.</system:String>
     <system:String x:Key="item53">Sunucu başlatma hatası:</system:String>
     <system:String x:Key="item54">İndiriliyor...</system:String>
     <system:String x:Key="item55">Uygulama dalı kullanılıyor: {0}</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe şu anda kullanımda.\n\nLütfen açık H1Z1 örneklerini kapatın.\n\nH1Z1'in tüm işlemlerini sonlandırmak için aşağıdaki butonu kullanabilirsiniz.</system:String>
     <system:String x:Key="item122">Mevcut oyun versiyonu:</system:String>
     <system:String x:Key="item124">Başlatıcı versiyonu</system:String>
-    <system:String x:Key="item125">Copyright © 2024 | H1Emu Project</system:String>
+    <system:String x:Key="item125">H1Emu © 2024</system:String>
     <system:String x:Key="item126">Ana Geliştirici</system:String>
     <system:String x:Key="item127">Geliştiriciler</system:String>
     <system:String x:Key="item128">Yöneticiler</system:String>

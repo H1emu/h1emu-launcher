@@ -2,15 +2,15 @@
 
   <PropertyGroup>
 	  <OutputType>WinExe</OutputType>
-	  <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
+	  <TargetFramework>net7.0-windows10.0.17763.0</TargetFramework>
 	  <RootNamespace>H1EmuLauncher</RootNamespace>
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>3.0.1</FileVersion>
+	  <FileVersion>3.0.2</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>3.0.1</Version>
+	  <Version>3.0.2</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>3.0.1</AssemblyVersion>
+	  <AssemblyVersion>3.0.2</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

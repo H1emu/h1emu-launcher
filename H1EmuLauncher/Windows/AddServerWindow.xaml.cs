@@ -52,8 +52,10 @@ namespace H1EmuLauncher
         {
             if (e.Key == Key.Enter)
             {
-                CustomMessageBox.buttonPressed = MessageBoxResult.OK;
-                Close();
+                if ((string)saveServerButton.Content == FindResource("item18").ToString())
+                    AddNewServer();
+                else
+                    EditExistingServer(editIndex);
             }
         }
 

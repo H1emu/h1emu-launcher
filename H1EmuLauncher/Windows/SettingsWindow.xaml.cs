@@ -125,7 +125,6 @@ namespace H1EmuLauncher
             }
 
             LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
-            LauncherWindow.launcherInstance.launcherFade.IsHitTestVisible = false;
             settingsInstance = null;
         }
     }

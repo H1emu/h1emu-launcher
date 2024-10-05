@@ -49,25 +49,6 @@ namespace H1EmuLauncher.SettingsPages
 
             new Thread(() =>
             {
-                // Deletes old patch files if any of them are already in the directory, including the .zip in case of corruption
-                if (File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
-                    File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") || File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
-                    File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
-                {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        settingsProgressText.Text = FindResource("item76").ToString();
-                    }));
-
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2015.zip");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
-                }
-
                 // Unzip all of the files to directory
                 Dispatcher.Invoke(new Action(delegate
                 {
@@ -80,52 +61,15 @@ namespace H1EmuLauncher.SettingsPages
                 {
                     if (Properties.Settings.Default.gameVersionString == "22dec2016")
                     {
+                        // Extract main game patch
                         File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", Properties.Resources.Game_Patch_2016);
                         ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", $"{Properties.Settings.Default.activeDirectory}", true);
-                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip", Properties.Resources.H1Emu_Voice_Patch);
-                        ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip", $"{Properties.Settings.Default.activeDirectory}", true);
-                    }
-                    else if (Properties.Settings.Default.gameVersionString == "kotk")
-                    {
-                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", Properties.Resources.Game_Patch_KotK);
-                        ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", $"{Properties.Settings.Default.activeDirectory}", true);
-                    }
-                }
-                catch (Exception e)
-                {
-                    Application.Current.Dispatcher.Invoke(new Action(delegate
-                    {
-                        if (Properties.Settings.Default.gameVersionString == "22dec2016")
-                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item96")}\n\n{e.Message}", LauncherWindow.launcherInstance);
-                        else if (Properties.Settings.Default.gameVersionString == "kotk")
-                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item97")}\n\n{e.Message}", LauncherWindow.launcherInstance);
-                    }));
-                }
 
-                // Delete the .zip file, not needed anymore
-                Dispatcher.Invoke(new Action(delegate
-                {
-                    settingsProgressText.Text = FindResource("item100").ToString();
-                }));
+                        // Extract voice chat patch
+                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1Emu_Voice_Patch.zip", Properties.Resources.H1Emu_Voice_Patch);
+                        ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\H1Emu_Voice_Patch.zip", $"{Properties.Settings.Default.activeDirectory}", true);
 
-                if (Properties.Settings.Default.gameVersionString == "22dec2016")
-                {
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoicePatch.zip");
-                }
-                else if (Properties.Settings.Default.gameVersionString == "kotk")
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip");
-
-                // Extra patch work for some versions
-                if (Properties.Settings.Default.gameVersionString == "22dec2016" || Properties.Settings.Default.gameVersionString == "kotk")
-                {
-                    // Delete BattlEye folder to prevent Steam from trying to launch the game
-                    if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
-                        Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\BattlEye", true);
-
-                    if (Properties.Settings.Default.gameVersionString == "22dec2016")
-                    {
-                        // Extract Asset_256.pack to fix blackberries
+                        // Extract Asset_256.pack for various fixes
                         File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
 
                         // Extract modified BattlEye to provide custom anti-cheat and asset validation
@@ -138,14 +82,40 @@ namespace H1EmuLauncher.SettingsPages
                         Bitmap fairPlayLogo = new Bitmap(Properties.Resources.logo);
                         fairPlayLogo.Save($"{Properties.Settings.Default.activeDirectory}\\logo.bmp", ImageFormat.Bmp);
                     }
+                    else if (Properties.Settings.Default.gameVersionString == "kotk")
+                    {
+                        // Extract main game patch
+                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", Properties.Resources.Game_Patch_KotK);
+                        ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", $"{Properties.Settings.Default.activeDirectory}", true);
+                    }
+
+                    // Delete BattlEye folder to prevent Steam from trying to launch the game
+                    if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
+                        Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\BattlEye", true);
+
+                    // Replace users ClientConfig.ini with modified version
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\ClientConfig.ini", Properties.Resources.CustomClientConfig);
+
+                    // Delete the .zip file, not needed anymore
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        settingsProgressText.Text = FindResource("item100").ToString();
+                    }));
+
+                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
+                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1Emu_Voice_Patch.zip");
+                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip");
                 }
-
-                // Replace users ClientConfig.ini with modified version
-                File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\ClientConfig.ini", Properties.Resources.CustomClientConfig);
-
-                // Finish
-                watch.Stop();
-                TimeSpan elapsedMs = watch.Elapsed;
+                catch (Exception e)
+                {
+                    Application.Current.Dispatcher.Invoke(new Action(delegate
+                    {
+                        if (Properties.Settings.Default.gameVersionString == "22dec2016")
+                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item96")}\n\n{e.Message}", LauncherWindow.launcherInstance);
+                        else if (Properties.Settings.Default.gameVersionString == "kotk")
+                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item97")}\n\n{e.Message}", LauncherWindow.launcherInstance);
+                    }));
+                }
 
                 if (Properties.Settings.Default.gameVersionString == "22dec2016")
                     Properties.Settings.Default.currentPatchVersion2016 = ApplyPatchClass.latestPatchVersion;
@@ -154,6 +124,9 @@ namespace H1EmuLauncher.SettingsPages
 
                 Properties.Settings.Default.Save();
 
+                // Finish
+                watch.Stop();
+                TimeSpan elapsedMs = watch.Elapsed;
                 ToggleButtons(true);
 
                 Dispatcher.Invoke(new Action(delegate
@@ -243,7 +216,6 @@ namespace H1EmuLauncher.SettingsPages
                 catch (Exception er)
                 {
                     ToggleButtons(true);
-
                     Dispatcher.Invoke(new Action(delegate
                     {
                         LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
@@ -259,7 +231,6 @@ namespace H1EmuLauncher.SettingsPages
 
                 watch.Stop();
                 TimeSpan elapsedMs = watch.Elapsed;
-
                 ToggleButtons(true);
 
                 Dispatcher.Invoke(new Action(delegate

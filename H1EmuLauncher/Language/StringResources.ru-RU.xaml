@@ -46,7 +46,7 @@
     <system:String x:Key="item49">Некоторая информация может отсутствовать.</system:String>
     <system:String x:Key="item50">Проверьте вашу электронную почту для кода 2-факторной аутентификации после входа в свою учетную запись Steam.</system:String>
     <system:String x:Key="item51">Пожалуйста, выберите папку, в которую вы хотите загрузить игру.</system:String>
-    <system:String x:Key="item52">Похоже, у вас не установлены файлы сервера.\n\nУстановите их в меню настроек.</system:String>
+    <system:String x:Key="item52">Похоже, у вас не установлены файлы сервера.\n\nХотите установить их сейчас и продолжить? Если да, выберите последнюю или стабильную сборку.</system:String>
     <system:String x:Key="item53">Ошибка запуска сервера:</system:String>
     <system:String x:Key="item54">Загрузка...</system:String>
     <system:String x:Key="item55">Использование ветки приложения: {0}</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe в настоящее время используется.\n\nПожалуйста, закройте все открытые экземпляры H1Z1.\n\nВы можете использовать кнопку ниже, чтобы убить все процессы H1Z1.</system:String>
     <system:String x:Key="item122">Текущая версия игры:</system:String>
     <system:String x:Key="item124">Версия лаунчера</system:String>
-    <system:String x:Key="item125">Copyright © 2024 | H1Emu Project</system:String>
+    <system:String x:Key="item125">H1Emu © 2024</system:String>
     <system:String x:Key="item126">Ведущая разработка</system:String>
     <system:String x:Key="item127">Разработчики</system:String>
     <system:String x:Key="item128">Администраторы</system:String>

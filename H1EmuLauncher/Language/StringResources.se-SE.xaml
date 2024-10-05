@@ -46,7 +46,7 @@
     <system:String x:Key="item49">Viss information kan saknas.</system:String>
     <system:String x:Key="item50">Kolla i din e-post efter 2-Auth-koden när du loggat in på ditt Steam-konto.</system:String>
     <system:String x:Key="item51">Välj en mapp där du vill ladda ner spelet.</system:String>
-    <system:String x:Key="item52">Du verkar inte ha serverfiler installerade.\n\nInstallera dessa i menyn Inställningar.</system:String>
+    <system:String x:Key="item52">Du verkar inte ha serverfilerna installerade.\n\nVill du installera dem nu och fortsätta? Om så är fallet, välj antingen den senaste eller stabila versionen.</system:String>
     <system:String x:Key="item53">Fel vid start av server:</system:String>
     <system:String x:Key="item54">Laddar ner...</system:String>
     <system:String x:Key="item55">Använder programmets märke: {0}</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe används för närvarande.\n\nStäng alla öppna program utav H1Z1.\n\nDu kan använda knappen nedan för att döda alla processer i H1Z1.</system:String>
     <system:String x:Key="item122">Aktuell spelversion:</system:String>
     <system:String x:Key="item124">Launcher version</system:String>
-    <system:String x:Key="item125">Upphovsrätt © 2024 | H1Emu Projektet</system:String>
+    <system:String x:Key="item125">H1Emu © 2024</system:String>
     <system:String x:Key="item126">Ledande Utvecklare</system:String>
     <system:String x:Key="item127">Utvecklare</system:String>
     <system:String x:Key="item128">Administratörer</system:String>

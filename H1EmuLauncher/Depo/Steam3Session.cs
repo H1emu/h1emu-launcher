@@ -590,7 +590,6 @@ namespace H1EmuLauncher
                     }));
 
                     token.WaitHandle.WaitOne();
-
                     logonDetails.TwoFactorCode = twoauth;
                 }
                 else
@@ -602,22 +601,18 @@ namespace H1EmuLauncher
                     }));
 
                     token.WaitHandle.WaitOne();
-
                     logonDetails.AuthCode = twoauth;
                 }
 
                 Debug.WriteLine("Retrying Steam3 connection...");
                 Connect();
-
                 return;
             }
 
             if (loggedOn.Result == EResult.TryAnotherCM)
             {
                 Debug.Write("Retrying Steam3 connection (TryAnotherCM)...");
-
                 Reconnect();
-
                 return;
             }
 
@@ -630,7 +625,6 @@ namespace H1EmuLauncher
                 }));
 
                 Abort(false);
-
                 return;
             }
 
@@ -643,7 +637,6 @@ namespace H1EmuLauncher
                 }));
 
                 Abort();
-
                 return;
             }
 

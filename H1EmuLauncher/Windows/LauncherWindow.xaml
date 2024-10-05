@@ -526,7 +526,8 @@
                                 <RowDefinition Height="40"/>
                             </Grid.RowDefinitions>
                             
-                            <TextBlock Margin="10,0,30,0"
+                            <!-- You must own H1Z1 disclaimer message -->
+                            <TextBlock Margin="10,10,30,0"
                                        Cursor="Arrow"
                                        TextWrapping="Wrap">
 

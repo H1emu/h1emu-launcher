@@ -421,12 +421,14 @@ namespace H1EmuLauncher
             {
                 if (!Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles\\h1z1-server-QuickStart-master\\node_modules"))
                 {
+                    MessageBoxResult mbr = MessageBoxResult.None;
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show(FindResource("item52").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
+                        mbr = CustomMessageBox.ShowServerInstallOptions(FindResource("item52").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                     }));
 
-                    return false;
+                    if (mbr != MessageBoxResult.Yes)
+                        return false;
                 }
 
                 string serverVersion = string.Empty;
@@ -435,7 +437,7 @@ namespace H1EmuLauncher
                     serverVersion = "npm run start-2016";
                 else if (gameVersionString == "kotk")
                 {
-                    //serverVersion = "npm run start-2016";
+                    serverVersion = "npm run start-2016";
                 }
 
                 startSingleplayerServerProcess = new Process { StartInfo = cmdShell };
@@ -538,7 +540,7 @@ namespace H1EmuLauncher
                             {
                                 // Check the users account key validity to decide whether to let the user connect to the H1Emu login server
                                 //if (!CheckAccountKey.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey))
-                                //return;
+                                    //return;
 
                                 sessionId = $"{{\"sessionId\":\"{Properties.Settings.Default.sessionIdKey}\",\"gameVersion\":{gameVersionInt}}}";
                             }
@@ -558,20 +560,6 @@ namespace H1EmuLauncher
                         // If connecting to H1Emu servers, validate assets
                         //if (serverIp == Info.H1EMU_SERVER_IP)
                             //CheckAssetsBeforeLaunch.CheckAssets();
-
-                        // Launch voice chat client
-                        /*Process voiceChatClient = new();
-                        if (Properties.Settings.Default.gameVersionString == "22dec2016")
-                        {
-                            voiceChatClient.StartInfo = new ProcessStartInfo
-                            {
-                                FileName = $"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice\\H1EmuVoice.exe",
-                                WindowStyle = ProcessWindowStyle.Normal,
-                                WorkingDirectory = $"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice",
-                                UseShellExecute = true
-                            };
-                            voiceChatClient.Start();
-                        }*/
 
                         // Launch game
                         Process h1Process = new();
@@ -595,13 +583,6 @@ namespace H1EmuLauncher
                                     Activate();
                                     launcherNotifyIcon.Visible = false;
                                 }));
-                            }
-
-                            Process[] processes = Process.GetProcesses();
-                            foreach (Process process in processes)
-                            {
-                                if (process.ProcessName == "H1EmuVoice")
-                                    process.Kill();
                             }
 
                             if (startSingleplayerServerProcess != null)
@@ -749,14 +730,21 @@ namespace H1EmuLauncher
                 dc.ShowDialog();
             }
 
+            // Delete old setup file
             if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.downloadFileName}"))
                 File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.downloadFileName}");
 
+            // If arguments file doesn't exist then create one
             if (!File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt"))
                 File.Create($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt");
 
+            // Delete old carousel images folder, no longer needed on newer versions of the launcher
             if (Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages"))
                 Directory.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages", true);
+
+            // Delete old H1Emu voice chat files, no longer needed on newer versions of the launcher
+            if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice"))
+                Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice", true);
 
             argsWatcher.Path = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher";
             argsWatcher.Filter = "args.txt";

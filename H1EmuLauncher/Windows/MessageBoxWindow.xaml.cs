@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
@@ -27,7 +26,7 @@ namespace H1EmuLauncher
             killH1Z1Button.IsEnabled = false;
 
             foreach (Process h1z1Processes in Process.GetProcessesByName("h1z1"))
-                h1z1Processes.Kill();
+                h1z1Processes.Kill(true);
 
             await Task.Run(() => {
                 WaitForGameClosure:
@@ -77,6 +76,9 @@ namespace H1EmuLauncher
                     case "Settings":
                         SettingsWindow.settingsInstance.UnfocusPropertiesAnimationShow.Begin();
                         break;
+                    case "InstallServerFiles":
+                        ShowServerInstallOptions.serverInstallOptionsInstance.UnfocusPropertiesAnimationShow.Begin();
+                        break;
                 }
             }
         }
@@ -89,7 +91,6 @@ namespace H1EmuLauncher
 
         private void CloseMessageBoxWindow(object sender, RoutedEventArgs e)
         {
-            CustomMessageBox.buttonPressed = MessageBoxResult.OK;
             Topmost = true;
             Close();
         }
@@ -108,6 +109,9 @@ namespace H1EmuLauncher
                         break;
                     case "Settings":
                         SettingsWindow.settingsInstance.UnfocusPropertiesAnimationHide.Begin();
+                        break;
+                    case "InstallServerFiles":
+                        ShowServerInstallOptions.serverInstallOptionsInstance.UnfocusPropertiesAnimationHide.Begin();
                         break;
                 }
             }

@@ -189,7 +189,7 @@
                 </Grid>
             </Grid>
 
-            <!-- Grid for settings progress bar -->
+            <!-- Border for settings progress bar -->
             <Border x:Name="settingsProgressRow"
                     Grid.Row="2"
                     Visibility="Collapsed">

@@ -46,7 +46,7 @@
     <system:String x:Key="item49">Może brakować niektórych informacji.</system:String>
     <system:String x:Key="item50">Upewnij się, że masz otwarty email, aby potwierdzić logowanie do konta Steam.</system:String>
     <system:String x:Key="item51">Wybierz folder, do którego chcesz pobrać grę.</system:String>
-    <system:String x:Key="item52">Wygląda na to, że nie zainstalowałeś jeszcze plików serwerowych.\n\nInstall these in the Settings menu.</system:String>
+    <system:String x:Key="item52">Wygląda na to, że nie masz zainstalowanych plików serwera.\n\nCzy chcesz je teraz zainstalować i kontynuować? Jeśli tak, wybierz wersję najnowszą lub stabilną.</system:String>
     <system:String x:Key="item53">Błąd podczas startu serwera:</system:String>
     <system:String x:Key="item54">Pobieranie...</system:String>
     <system:String x:Key="item55">Using app branch: {0}</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe jest aktualnie uruchomiony.\n\nZamknij wszystkie otwarte instancje H1Z1.\n\nMożesz użyć poniższego przycisku, aby zabić wszystkie procesy H1Z1.</system:String>
     <system:String x:Key="item122">Aktualna wersja gry:</system:String>
     <system:String x:Key="item124">Wersja launchera</system:String>
-    <system:String x:Key="item125">Copyright © 2024 | H1Emu Project</system:String>
+    <system:String x:Key="item125">H1Emu © 2024</system:String>
     <system:String x:Key="item126">Lead Development</system:String>
     <system:String x:Key="item127">Deweloperzy</system:String>
     <system:String x:Key="item128">Administrators</system:String>

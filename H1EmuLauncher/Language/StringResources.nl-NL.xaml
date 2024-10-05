@@ -46,7 +46,7 @@
     <system:String x:Key="item49">Er kan wat informatie ontbreken.</system:String>
     <system:String x:Key="item50">Zorg ervoor dat je e-mails open zijn voor de 2-Auth-code nadat je bent ingelogd op je Steam-account.</system:String>
     <system:String x:Key="item51">Selecteer een map waarnaar je het spel wilt downloaden.</system:String>
-    <system:String x:Key="item52">Er zijn geen server bestanden geïnstalleerd installed.\n\nInstaleer deze via het instellingen menu.</system:String>
+    <system:String x:Key="item52">Het lijkt erop dat de serverbestanden niet zijn geïnstalleerd.\n\nWilt u ze nu installeren en doorgaan? Als dat het geval is, kiest u de nieuwste of stabiele versie.</system:String>
     <system:String x:Key="item53">Error tijdens het opstarten server:</system:String>
     <system:String x:Key="item54">Downloaden...</system:String>
     <system:String x:Key="item55">gebruikt app branch: {0}</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe is momenteel in gebruik.\n\nSluit alle geopende exemplaren van H1Z1.\n\nU kunt de onderstaande knop gebruiken om alle processen van H1Z1 te beëindigen.</system:String>
     <system:String x:Key="item122">Huidige spel versie:</system:String>
     <system:String x:Key="item124">Launcher versie</system:String>
-    <system:String x:Key="item125">Copyright © 2024 | H1Emu Project</system:String>
+    <system:String x:Key="item125">H1Emu © 2024</system:String>
     <system:String x:Key="item126">Hoofd-Ontwikelaar</system:String>
     <system:String x:Key="item127">Ontwikkelaars</system:String>
     <system:String x:Key="item128">Administrators</system:String>

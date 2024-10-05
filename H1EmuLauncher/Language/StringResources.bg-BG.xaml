@@ -46,7 +46,7 @@
     <system:String x:Key="item49">Моля изчакайте</system:String>
     <system:String x:Key="item50">Моля  уверете се ,че вашият имейл е отворен за 2 факторната защита след като влезете във вашият акаунт.</system:String>
     <system:String x:Key="item51">Моля, изберете папка, в която искате да изтеглите играта.</system:String>
-    <system:String x:Key="item52">Вие нямате сървърните файлове инсталиране.\n\nИнстарирайте ги в Настройки.</system:String>
+    <system:String x:Key="item52">Изглежда, че не сте инсталирали сървърните файлове.\n\nИскате ли да ги инсталирате сега и да продължите? Ако е така, изберете най-новата или стабилна компилация.</system:String>
     <system:String x:Key="item53">Имаше грешка при пускането на сървъра.:</system:String>
     <system:String x:Key="item54">Изтегляне...</system:String>
     <system:String x:Key="item55">Използване на клон на приложението: {0}</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe се използва.\n\nЗатворете всички отворени прозорци на H1Z1.\n\nМожете да използвате бутона по-долу, за да убиете всички процеси на H1Z1.</system:String>
     <system:String x:Key="item122">Сегашна версия на играта:</system:String>
     <system:String x:Key="item124">Версия на стартера</system:String>
-    <system:String x:Key="item125">Авторски права © 2021 | H1Emu Project</system:String>
+    <system:String x:Key="item125">H1Emu © 2024</system:String>
     <system:String x:Key="item126">Главен разработчик</system:String>
     <system:String x:Key="item127">Разработчици</system:String>
     <system:String x:Key="item128">Администратори</system:String>

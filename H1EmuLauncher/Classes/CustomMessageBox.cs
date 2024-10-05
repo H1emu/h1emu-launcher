@@ -10,6 +10,7 @@ namespace H1EmuLauncher.Classes
 
         public static MessageBoxResult Show(string text, Window owner = null, bool yesButtonVisibility = false, bool noButtonVisibility = false, bool terminateH1Z1ButtonVisibility = false, bool okButtonVisibility = true)
         {
+            buttonPressed = MessageBoxResult.OK;
             MessageBoxWindow messageBox = new();
             messageBox.text.Text = text;
 
@@ -39,8 +40,29 @@ namespace H1EmuLauncher.Classes
             return buttonPressed;
         }
 
+        public static MessageBoxResult ShowServerInstallOptions(string text, Window owner = null)
+        {
+            buttonPressed = MessageBoxResult.OK;
+            ShowServerInstallOptions installServerFilesMessageBox = new();
+            installServerFilesMessageBox.text.Text = text;
+
+            if (owner != null && owner.IsVisible)
+                installServerFilesMessageBox.Owner = owner;
+            else
+                installServerFilesMessageBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            SystemSounds.Beep.Play();
+            installServerFilesMessageBox.ShowDialog();
+
+            if (owner != null)
+                owner.Activate();
+
+            return buttonPressed;
+        }
+
         public static void AddServer(Window owner, string newServerName = null, string newServerIp = null)
         {
+            buttonPressed = MessageBoxResult.OK;
             AddServerWindow addServer = new();
 
             if (owner != null)
@@ -62,6 +84,7 @@ namespace H1EmuLauncher.Classes
 
         public static void EditServer(Window owner, int editIndex, string newServerName = null, string newServerIp = null)
         {
+            buttonPressed = MessageBoxResult.OK;
             AddServerWindow editServer = new();
 
             if (owner != null)

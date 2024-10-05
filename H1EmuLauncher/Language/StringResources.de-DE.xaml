@@ -46,7 +46,7 @@
     <system:String x:Key="item49">Einige Informationen können fehlen.</system:String>
     <system:String x:Key="item50">Bitte stellen Sie sicher, dass Ihre E-Mails für den 2 Auth. Code geöffnet sind, nachdem Sie sich bei Ihrem Steam Konto angemeldet haben.</system:String>
     <system:String x:Key="item51">Bitte wählen Sie einen Ordner aus, in den Sie das Spiel herunterladen möchten.</system:String>
-    <system:String x:Key="item52">Sie scheinen keine Serverdateien installiert zu haben. Installieren Sie diese im Menü unter Einstellungen.</system:String>
+    <system:String x:Key="item52">Anscheinend sind die Serverdateien nicht installiert.\n\nMöchten Sie sie jetzt installieren und fortfahren? Wenn ja, wählen Sie entweder den neuesten oder den stabilen Build.</system:String>
     <system:String x:Key="item53">Fehler beim Starten des Servers:</system:String>
     <system:String x:Key="item54">wird heruntergeladen...</system:String>
     <system:String x:Key="item55">App Zweig verwenden: {0}</system:String>
@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe wird gerade verwendet\n\nBitte schließen Sie alle offenen Instanzen von H1Z1.\n\nSie können die Schaltfläche unten verwenden, um alle Prozesse von H1Z1 zu beenden.</system:String>
     <system:String x:Key="item122">Aktuelle Spielversion:</system:String>
     <system:String x:Key="item124">Launcher version</system:String>
-    <system:String x:Key="item125">Copyright © 2024 | H1Emu Project</system:String>
+    <system:String x:Key="item125">H1Emu © 2024</system:String>
     <system:String x:Key="item126">Lead Entwickler</system:String>
     <system:String x:Key="item127">Entwickler</system:String>
     <system:String x:Key="item128">Administratoren</system:String>

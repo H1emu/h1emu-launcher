@@ -48,6 +48,9 @@
     <Compile Update="Windows\SettingsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\ShowServerInstallOptions.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\SplashWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
