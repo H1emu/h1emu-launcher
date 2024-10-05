@@ -11,7 +11,7 @@ The H1EmuLauncher is an application that aims to make playing the H1Emu project 
 6. If you want to play Singleplayer, navigate to the **Settings > Game Files** page and click either the **Latest** or **Stable** server build. Then, from the server selector drop down menu, select **Singleplayer** and hit Play.
 7. If you need further assistance, don't hesitate to join the H1Emu Discord server for help at [H1Emu Discord](https://discord.gg/h1emu).
 
-**Note: Account Keys are only needed for H1Emu verified servers.**
+**Note: Account Keys are only needed for official H1Emu servers.**
 
 ## Credits
 
