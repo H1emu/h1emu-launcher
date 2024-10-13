@@ -7,7 +7,7 @@
     <system:String x:Key="item3">Versiyonu</system:String>
     <system:String x:Key="item4">Lütfen bekle</system:String>
     <system:String x:Key="item8">OYNA</system:String>
-    <system:String x:Key="item9">Oyun dosyalarınızı içeren doğru dizini seçip seçmediğinizi kontrol edin, bu Ayarlar menüsünden yapılabilir.</system:String>
+    <system:String x:Key="item9">Lütfen oyun dosyalarınızı içeren doğru dizini seçtiğinizi kontrol edin.</system:String>
     <system:String x:Key="item10">UYARI:</system:String>
     <system:String x:Key="item11">İndirmek için Steam hesabınızda H1Z1: Just Survive oyununa sahip olmanız gereklidir. Bu proje korsan oyunları desteklemez.</system:String>
     <system:String x:Key="item12">Topluluğa bağlanın: </system:String>
@@ -52,7 +52,7 @@
     <system:String x:Key="item55">Uygulama dalı kullanılıyor: {0}</system:String>
     <system:String x:Key="item56">Depo işleniyor {0} - {1}</system:String>
     <system:String x:Key="item57">Disk alanı tanımlanıyor...</system:String>
-    <system:String x:Key="item58">Oyun sürümü H1Emu tarafından desteklenmiyor.\n\nLütfen 15 Ocak 2015, 22 Aralık 2016 (Just Survive) veya 23 Şubat 2017 (King of the Kill) oyun versiyonunu kullanmayı unutmayın.\n\nJust Survive sahipliğine sahip Steam hesabınızla bu başlatıcıyı kullanarak bu sürümlerden birini indirmeniz gerekiyor.</system:String>
+    <system:String x:Key="item58">Oyun sürümü H1Emu tarafından desteklenmiyor.\n\nLütfen 22 Aralık 2016 tarihli oyun sürümünü kullanmayı unutmayın.\n\nBu başlatıcıyı, Just Survive'ın sahibi olduğunuz Steam hesabınızla ana sayfadaki gerekli sürümü indirmek için kullanabilirsiniz veya alternatif olarak , oyun dosyalarını başka yerden kaynaklayın.</system:String>
     <system:String x:Key="item59">Kullanıcı adı...</system:String>
     <system:String x:Key="item60">Şifre...</system:String>
     <system:String x:Key="item61">Güncellemenin tüm detaylarını göster...</system:String>
@@ -136,8 +136,9 @@
     <system:String x:Key="item156">H1Emu sunucularında oynamak için bir Hesap Anahtarı ayarlamalısınız.Bu kodu Profilinizde şu kısımda bulabilirsiniz:</system:String>
     <system:String x:Key="item157">Sunucunun en son sürümü bir geliştirme yapısıdır, kararsız olabileceği ve çökmelere neden olabileceği konusunda uyarılırsınız.\n\nYine de devam etmek ister misiniz?</system:String>
     <system:String x:Key="item158">H1Emu'ya hoş geldiniz!</system:String>
-    <system:String x:Key="item159">BAŞLAMADAN ÖNCE, lütfen bu projenin sadece altta belirtilen oyun versiyonlarını desteklediğini dikkate alınız:</system:String>
-    <system:String x:Key="item161">ve</system:String>
+    <system:String x:Key="item159">BAŞLAMADAN ÖNCE, lütfen bu projenin yalnızca aşağıdaki oyun sürümünü desteklediğini unutmayın:</system:String>
+    <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item162">22 Aralık 2016</system:String>
     <system:String x:Key="item163">Lütfen</system:String>
     <system:String x:Key="item164">HİÇBİR ZAMAN</system:String>
     <system:String x:Key="item165">Steam'deki en son sürümünü veya oyunun yukarıda belirtilenlerden başka bir sürümünü inidirip kullanmayınız, aksi takdirde sistem çalışmayacaktır.</system:String>

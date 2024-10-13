@@ -7,7 +7,7 @@
     <system:String x:Key="item3">最新版本</system:String>
     <system:String x:Key="item4">请稍等</system:String>
     <system:String x:Key="item8">运行游戏</system:String>
-    <system:String x:Key="item9">检查您是否选择了包含游戏文件的正确目录，这可以在“设置”菜单中完成。</system:String>
+    <system:String x:Key="item9">请检查您是否选择了包含游戏文件的正确目录。</system:String>
     <system:String x:Key="item10">注意</system:String>
     <system:String x:Key="item11">你的Steam账户中必须要有H1Z1：Just Survive这个游戏才能下载游戏本体，本项目不支持盗版。</system:String>
     <system:String x:Key="item12">加入社区在</system:String>
@@ -52,7 +52,7 @@
     <system:String x:Key="item55">使用游戏分支：{0}</system:String>
     <system:String x:Key="item56">处理数据包 {0} - {1}</system:String>
     <system:String x:Key="item57">预分配空间...</system:String>
-    <system:String x:Key="item58">H1Emu 不支持游戏版本。\n\n请记住使用2015年1月15日、2016年12月22日（Just Survive）或2017年2月23日（King of the Kill）的游戏版本。\n\n您需要使用具有 Just Survive 所有权的 Steam 帐户使用此启动器下载这些版本之一。</system:String>
+    <system:String x:Key="item58">H1Emu 不支持游戏版本。\n\n请记住使用 2016 年 12 月 22 日的游戏版本。\n\n您可以使用此启动器通过拥有 Just Survive 所有权的 Steam 帐户在主页上下载所需的版本，或者也可以，从其他地方获取游戏文件。</system:String>
     <system:String x:Key="item59">用户名...</system:String>
     <system:String x:Key="item60">这里输入Steam密码...</system:String>
     <system:String x:Key="item61">查看最新版本的详细信息...</system:String>
@@ -136,8 +136,9 @@
     <system:String x:Key="item156">要在 H1Emu 服务器上玩游戏，您需要设置一个帐户密钥。您可以在 H1Emu 网站的个人账号信息中获取，网址：</system:String>
     <system:String x:Key="item157">请注意：最新版单机服务器为开发版本，可能存在不稳定甚至闪退等问题。\n\n是否继续安装最新版服务器？</system:String>
     <system:String x:Key="item158">欢迎使用 H1Emu！</system:String>
-    <system:String x:Key="item159">在您使用本项目前请注意本项目只支持如下两个日期的游戏版本：</system:String>
-    <system:String x:Key="item161">与</system:String>
+    <system:String x:Key="item159">在开始之前，请注意，该项目仅支持以下游戏版本：</system:String>
+    <system:String x:Key="item160">。</system:String>
+    <system:String x:Key="item162">2016 年 12 月 22 日</system:String>
     <system:String x:Key="item163">请</system:String>
     <system:String x:Key="item164">不要</system:String>
     <system:String x:Key="item165">使用steam下载最新或者不是上述版本的游戏，因为除以上两个版本外其他版本不能正常使用。</system:String>

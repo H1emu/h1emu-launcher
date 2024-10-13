@@ -7,7 +7,7 @@
     <system:String x:Key="item3">Version</system:String>
     <system:String x:Key="item4">Var god vänta</system:String>
     <system:String x:Key="item8">SPELA</system:String>
-    <system:String x:Key="item9">Kontrollera att du har valt rätt mapp som innehåller dina spelfiler, detta kan göras i menyn Inställningar.</system:String>
+    <system:String x:Key="item9">Kontrollera att du har valt rätt katalog som innehåller dina spelfiler.</system:String>
     <system:String x:Key="item10">VARNING:</system:String>
     <system:String x:Key="item11">Du måste äga H1Z1: Just Survive på ditt Steam-konto för att kunna ladda ner. Detta projekt stöder inte piratkopiering.</system:String>
     <system:String x:Key="item12">Gå med i gemenskapen på</system:String>
@@ -52,7 +52,7 @@
     <system:String x:Key="item55">Använder programmets märke: {0}</system:String>
     <system:String x:Key="item56">Laddar minne {0} - {1}</system:String>
     <system:String x:Key="item57">Förtilldelar utrymme...</system:String>
-    <system:String x:Key="item58">Spelversionen stöds inte av H1Emu.\n\nKom ihåg att använda spelversionen antingen 15 januari 2015, 22 december 2016 (Just Survive) eller 23 februari 2017 (King of the Kill).\n\nDu måste ladda ner en av dessa versioner med hjälp av den här Launchern med ditt Steam-konto som äger Just Survive.</system:String>
+    <system:String x:Key="item58">Spelversionen stöds inte av H1Emu.\n\nKom ihåg att använda spelversionen 22 december 2016.\n\nDu kan använda den här startprogrammet för att ladda ner den version som krävs på huvudsidan med ditt Steam-konto som har Just Survive-ägande, eller alternativt , hämta spelfilerna från någon annanstans.</system:String>
     <system:String x:Key="item59">Användarnamn...</system:String>
     <system:String x:Key="item60">Lösenord...</system:String>
     <system:String x:Key="item61">Visa fullständig information om uppdateringen...</system:String>
@@ -136,8 +136,9 @@
     <system:String x:Key="item156">För att spela på H1Emu-servrar måste du skriva in en kontonyckel. Du hittar detta i din profil på:</system:String>
     <system:String x:Key="item157">Den senaste versionen av servern är under utveckling, så var beredd på att den kan vara instabil och orsaka krascher.\n\nVill du fortsätta?</system:String>
     <system:String x:Key="item158">Välkommen till H1Emu!</system:String>
-    <system:String x:Key="item159">INNAN DU BÖRJAR, observera att detta projekt endast stöder följande spelversioner:</system:String>
-    <system:String x:Key="item161">och</system:String>
+    <system:String x:Key="item159">INNAN DU BÖRJAR, observera att detta projekt endast stöder följande spelversion:</system:String>
+    <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item162">22 december 2016</system:String>
     <system:String x:Key="item163">Snälla</system:String>
     <system:String x:Key="item164">LÅT BLI</system:String>
     <system:String x:Key="item165">Använder du den senaste steam versionen av spelet, eller någon annan version än de som nämns ovanför så funkar det inte.</system:String>

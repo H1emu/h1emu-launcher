@@ -7,7 +7,7 @@
     <system:String x:Key="item3">Wersja</system:String>
     <system:String x:Key="item4">Proszę czekać</system:String>
     <system:String x:Key="item8">GRAJ</system:String>
-    <system:String x:Key="item9">Sprawdź, czy wybrałeś właściwy katalog zawierający pliki gry, można to zrobić w menu Ustawienia.</system:String>
+    <system:String x:Key="item9">Sprawdź, czy wybrałeś właściwy katalog zawierający pliki gry.</system:String>
     <system:String x:Key="item10">UWAGA:</system:String>
     <system:String x:Key="item11">Musisz posiadać H1Z1: Just Survive na twoim koncie Steam, aby pobrać. Nie wspieramy piractwa.</system:String>
     <system:String x:Key="item12">Dołącz do społeczności: </system:String>
@@ -52,7 +52,7 @@
     <system:String x:Key="item55">Using app branch: {0}</system:String>
     <system:String x:Key="item56">Przetwarzam depot {0} - {1}</system:String>
     <system:String x:Key="item57">Wstępne przydzielanie miejsca na dysku...</system:String>
-    <system:String x:Key="item58">Wersja gry nie jest obsługiwana przez H1Emu.\n\nPamiętaj, aby użyć wersji gry z 15 stycznia 2015 r., 22 grudnia 2016 r. (Just Survive) lub 23 lutego 2017 r. (King of the Kill).\n\nMusisz pobrać jedną z tych wersji za pomocą tego programu uruchamiającego ze swoim kontem Steam, które jest właścicielem Just Survive.</system:String>
+    <system:String x:Key="item58">Wersja gry nie jest obsługiwana przez H1Emu.\n\nPamiętaj, aby użyć wersji gry z 22 grudnia 2016 r.\n\nMożesz użyć tego programu uruchamiającego, aby pobrać wymaganą wersję na stronie głównej swojego konta Steam, na którym posiadasz Just Survive, lub alternatywnie , pobierz pliki gry z innego źródła.</system:String>
     <system:String x:Key="item59">Nazwa użytkownika...</system:String>
     <system:String x:Key="item60">Hasło...</system:String>
     <system:String x:Key="item61">Sprawdź pełen opis aktuzacji...</system:String>
@@ -136,8 +136,9 @@
     <system:String x:Key="item156">Aby grać na serwerach H1Emu, musisz ustawić klucz konta. Znajdziesz go na swoim profilu:</system:String>
     <system:String x:Key="item157">Najnowsza wersja serwera jest wersją rozwojową, ostrzegamy, że może być niestabilna i powodować awarie.\n\nCzy mimo to chcesz kontynuować?</system:String>
     <system:String x:Key="item158">Witaj w H1Emu!</system:String>
-    <system:String x:Key="item159">ZANIM KLIKNIESZ DALEJ, wiedz że ten projekt wspiera następujące wersje gry:</system:String>
-    <system:String x:Key="item161">oraz</system:String>
+    <system:String x:Key="item159">ZANIM ZACZNIESZ, pamiętaj, że ten projekt obsługuje tylko następującą wersję gry:</system:String>
+    <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item162">22 grudnia 2016r</system:String>
     <system:String x:Key="item163">Nie</system:String>
     <system:String x:Key="item164">UŻYWAJ</system:String>
     <system:String x:Key="item165">najnowszej wersji pobranej ze Steam, ani żadnej innej nie wymienionej powyżej, nie będą one działać.</system:String>

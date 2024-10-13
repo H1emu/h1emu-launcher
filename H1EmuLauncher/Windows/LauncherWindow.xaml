@@ -599,7 +599,7 @@
                                    NavigationUIVisibility="Hidden"
                                    f:DisableFrameNavigation.Disable="True"/>
 
-                            <!-- Grid for divider, server selector and play button -->
+                            <!-- Grid for directory box, divider, server selector and play button -->
                             <Grid Grid.Row="2"
                                   Margin="10,0,30,0">
 
@@ -615,23 +615,12 @@
                                 </Grid.ColumnDefinitions>
 
                                 <!-- Divider -->
-                                <Border Height="1"
-                                        Background="#FFCA1420"
-                                        VerticalAlignment="Top"
-                                        Margin="10,0,10,0"
-                                        CornerRadius="20"
-                                        Grid.ColumnSpan="2"
-                                        RenderOptions.BitmapScalingMode="Fant">
-
-                                    <!-- Drop shadow effect -->
-                                    <Border.Effect>
-                                        <DropShadowEffect BlurRadius="8"
-                                                          Direction="-90"
-                                                          RenderingBias="Quality"
-                                                          ShadowDepth="1"/>
-
-                                    </Border.Effect>
-                                </Border>
+                                <Rectangle Height="1"
+                                           Fill="#FF2A2A32"
+                                           VerticalAlignment="Top"
+                                           Grid.ColumnSpan="2"
+                                           RenderOptions.BitmapScalingMode="Fant">
+                                </Rectangle>
 
                                 <!-- Grid containing game directory and icons/buttons -->
                                 <Grid Grid.ColumnSpan="2"
@@ -641,7 +630,7 @@
                                         <RowDefinition Height="20"/>
                                         <RowDefinition Height="auto"/>
                                         <RowDefinition Height="15"/>
-                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
 
                                     <!-- Game directory textbox -->

@@ -41,7 +41,7 @@ namespace H1EmuLauncher.SettingsPages
 
         public void InstallPatchButton(object sender, RoutedEventArgs e)
         {
-            if (!LauncherWindow.launcherInstance.CheckGameVersion(SettingsWindow.settingsInstance))
+            if (!LauncherWindow.launcherInstance.CheckGameVersionAndPath(SettingsWindow.settingsInstance))
                 return;
 
             var watch = Stopwatch.StartNew();
@@ -49,7 +49,7 @@ namespace H1EmuLauncher.SettingsPages
 
             new Thread(() =>
             {
-                // Unzip all of the files to directory
+                // Unzip all of the files to the root directory
                 Dispatcher.Invoke(new Action(delegate
                 {
                     LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
@@ -149,7 +149,7 @@ namespace H1EmuLauncher.SettingsPages
 
         public void InstallServerButton(object sender, RoutedEventArgs e)
         {
-            if (!LauncherWindow.launcherInstance.CheckGameVersion(SettingsWindow.settingsInstance))
+            if (!LauncherWindow.launcherInstance.CheckGameVersionAndPath(SettingsWindow.settingsInstance))
                 return;
 
             Button button = (Button)sender;
@@ -285,7 +285,7 @@ namespace H1EmuLauncher.SettingsPages
 
             try
             {
-                File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Node.zip", Properties.Resources.node_v22_7_0_win_x64);
+                File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Node.zip", Properties.Resources.Node_Files);
                 ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Node.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles\\h1z1-server-QuickStart-master", true);
             }
             catch { }

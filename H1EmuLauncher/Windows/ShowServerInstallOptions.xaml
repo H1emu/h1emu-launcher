@@ -7,7 +7,7 @@
         x:Name="InstallServerFiles"
         Title="{DynamicResource item209}"
         MinWidth="450"
-        MaxWidth="1200"
+        MaxWidth="800"
         MinHeight="210"
         MaxHeight="900"
         WindowStartupLocation="CenterScreen"

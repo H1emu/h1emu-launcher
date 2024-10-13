@@ -7,7 +7,7 @@
     <system:String x:Key="item3">Versie</system:String>
     <system:String x:Key="item4">Even geduld aub</system:String>
     <system:String x:Key="item8">SPELEN</system:String>
-    <system:String x:Key="item9">Controleer of je de juiste map met je spelbestanden hebt geselecteerd, dit kun je doen in het menu Instellingen.</system:String>
+    <system:String x:Key="item9">Controleer of je de juiste map met je gamebestanden hebt geselecteerd.</system:String>
     <system:String x:Key="item10">WAARSCHUWING:</system:String>
     <system:String x:Key="item11">Je moet H1Z1: Just Survive op steam hebben om het te kunnen downloaden. Dit project ondersteund geen piraterij.</system:String>
     <system:String x:Key="item12">word lid van de gemeenschap via:</system:String>
@@ -52,7 +52,7 @@
     <system:String x:Key="item55">gebruikt app branch: {0}</system:String>
     <system:String x:Key="item56">Verwerken depot {0} - {1}</system:String>
     <system:String x:Key="item57">Pre-alocatie opslag...</system:String>
-    <system:String x:Key="item58">Spelversie wordt niet ondersteund door H1Emu.\n\nVergeet niet om de spelversie te gebruiken op 15 januari 2015, 22 december 2016 (Just Survive) of 23 februari 2017 (King of the Kill).\n\nJe moet een van deze versies downloaden met behulp van deze launcher met je Steam-account dat eigendom is van Just Survive.</system:String>
+    <system:String x:Key="item58">Spelversie wordt niet ondersteund door H1Emu.\n\nVergeet niet om de spelversie van 22 december 2016 te gebruiken.\n\nJe kunt dit opstartprogramma gebruiken om de vereiste versie op de hoofdpagina te downloaden met je Steam-account dat het eigendom van Just Survive heeft, of als alternatief , bron de spelbestanden van elders.</system:String>
     <system:String x:Key="item59">Steam ID...</system:String>
     <system:String x:Key="item60">Wachtwoord...</system:String>
     <system:String x:Key="item61">Bekijk alle details van update...</system:String>
@@ -136,8 +136,9 @@
     <system:String x:Key="item156">Om te spelen op H1Emu servers, moet je een Accountsleutel instellen. Je kan dit vinden op profiel op:</system:String>
     <system:String x:Key="item157">De nieuwste versie van de server is een build in ontwikkeling, wees gewaarschuwd dat deze onstabiel kan zijn en crashes kan veroorzaken.\n\nWilt u doorgaan?</system:String>
     <system:String x:Key="item158">Welkom bij H1Emu!</system:String>
-    <system:String x:Key="item159">VOOR JE BEGINT, merk alstublieft op dat dit project enkel de volgende versies ondersteunt:</system:String>
-    <system:String x:Key="item161">en</system:String>
+    <system:String x:Key="item159">VOORDAT U BEGINT, houd er rekening mee dat dit project alleen de volgende spelversie ondersteunt:</system:String>
+    <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item162">22 december 2016</system:String>
     <system:String x:Key="item163">Alstublieft</system:String>
     <system:String x:Key="item164">NIET</system:String>
     <system:String x:Key="item165">de laatste Steam Versie of een andere, niet opgenoemde versie gebruiken omdat deze niet zullen werken.</system:String>

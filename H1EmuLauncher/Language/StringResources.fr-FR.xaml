@@ -7,7 +7,7 @@
     <system:String x:Key="item3">Màj Version</system:String>
     <system:String x:Key="item4">S'il vous plaît, attendez</system:String>
     <system:String x:Key="item8">JOUER</system:String>
-    <system:String x:Key="item9">Vérifiez que vous avez sélectionné le bon répertoire contenant vos fichiers de jeu, cela peut être fait dans le menu Paramètres.</system:String>
+    <system:String x:Key="item9">Veuillez vérifier que vous avez sélectionné le bon répertoire contenant vos fichiers de jeu.</system:String>
     <system:String x:Key="item10">AVERTISSEMENT:</system:String>
     <system:String x:Key="item11">Vous devez posséder H1Z1: Just Survive sur votre compte Steam pour pouvoir le télécharger. Ce projet ne soutient pas le piratage.</system:String>
     <system:String x:Key="item12">Rejoignez la communauté sur</system:String>
@@ -52,7 +52,7 @@
     <system:String x:Key="item55">Utilisation d'une branche d'application: {0}</system:String>
     <system:String x:Key="item56">Dépôt de traitement {0} - {1}</system:String>
     <system:String x:Key="item57">Pré-attribution de l'espace...</system:String>
-    <system:String x:Key="item58">Version du jeu non prise en charge par H1Emu.\n\nN'oubliez pas d'utiliser la version du jeu du 15 janvier 2015, du 22 décembre 2016 (Just Survive) ou du 23 février 2017 (King of the Kill).\n\nVous devez télécharger l'une de ces versions à l'aide de ce lanceur avec votre compte Steam qui appartient à Just Survive.</system:String>
+    <system:String x:Key="item58">Version du jeu non prise en charge par H1Emu.\n\nN'oubliez pas d'utiliser la version du jeu du 22 décembre 2016.\n\nVous pouvez utiliser ce lanceur pour télécharger la version requise sur la page principale avec votre compte Steam propriétaire de Just Survive, ou bien , recherchez les fichiers du jeu ailleurs.</system:String>
     <system:String x:Key="item59">Nom d'utilisateur...</system:String>
     <system:String x:Key="item60">Mot de passe...</system:String>
     <system:String x:Key="item61">Voir tous les détails de la mise à jour...</system:String>
@@ -136,8 +136,9 @@
     <system:String x:Key="item156">Pour jouer sur les serveurs H1Emu, vous devez définir une clé d'authentification. Vous pouvez le trouver sur votre profil à l'adresse:</system:String>
     <system:String x:Key="item157">La dernière version du serveur est une version de développement, sachez qu'elle peut être instable et provoquer des plantages.\n\nVoulez-vous continuer malgré tout?</system:String>
     <system:String x:Key="item158">Bienvenue sur H1Emu!</system:String>
-    <system:String x:Key="item159">AVANT DE COMMENCER, veuillez noter que ce projet ne supporte que les versions de jeux suivantes:</system:String>
-    <system:String x:Key="item161">et</system:String>
+    <system:String x:Key="item159">AVANT DE COMMENCER, veuillez noter que ce projet ne prend en charge que la version de jeu suivante:</system:String>
+    <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item162">22 décembre 2016</system:String>
     <system:String x:Key="item163">S'il vous plaît</system:String>
     <system:String x:Key="item164">NE PAS</system:String>
     <system:String x:Key="item165">utiliser la dernière version Steam du jeu ou toute autre version qui n'a pas été mentionnée ci-dessus car cela ne fonctionnera pas.</system:String>

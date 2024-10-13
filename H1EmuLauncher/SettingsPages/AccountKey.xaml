@@ -33,6 +33,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="15"/>
             </Grid.RowDefinitions>
 
@@ -53,7 +54,7 @@
 
             <!-- Hyperlink to user authentication key website -->
             <TextBlock Grid.Row="2"
-                       Margin="20,0,20,10"
+                       Margin="20,0,20,20"
                        HorizontalAlignment="Center">
 
                 <Hyperlink Click="UserProfileLinkClick"
@@ -80,7 +81,13 @@
                 </TextBlock.ContextMenu>
             </TextBlock>
 
-            <Grid Grid.Row="3">
+            <!-- Divider -->
+            <Rectangle Grid.Row="3"
+                       Margin="20,0,20,0"
+                       Height="1"
+                       Fill="#FF2A2A32"/>
+
+            <Grid Grid.Row="4">
                 
                 <!-- Plain text box that holds account key for visibility toggle -->
                 <TextBox x:Name="accountKeyBoxText"

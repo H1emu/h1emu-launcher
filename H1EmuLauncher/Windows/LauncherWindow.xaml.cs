@@ -475,7 +475,7 @@ namespace H1EmuLauncher
 
         private void LaunchClient(object sender, RoutedEventArgs e)
         {
-            if (!CheckGameVersion(this))
+            if (!CheckGameVersionAndPath(this))
                 return;
 
             int gameVersionInt = 0;
@@ -769,12 +769,7 @@ namespace H1EmuLauncher
             DisplayVersionInformation();
             LoadServers();
             Carousel.BeginImageCarousel();
-
-            new Thread(() =>
-            {
-                CheckGameVersion(this, false, true);
-
-            }).Start();
+            CheckGameVersionAndPath(this, false, true);
         }
 
         private void LauncherWindowContentRendered(object sender, EventArgs e)
@@ -918,7 +913,6 @@ namespace H1EmuLauncher
         public void SelectDirectory(object sender, RoutedEventArgs e)
         {
             System.Windows.Forms.FolderBrowserDialog selectDirectory = new();
-
             if (selectDirectory.ShowDialog() != System.Windows.Forms.DialogResult.OK)
                 return;
 
@@ -927,7 +921,7 @@ namespace H1EmuLauncher
 
             new Thread(() =>
             {
-                CheckGameVersion(this, true);
+                CheckGameVersionAndPath(this, true);
 
             }).Start();
         }
@@ -944,22 +938,41 @@ namespace H1EmuLauncher
             });
         }
 
-        public bool CheckGameVersion(Window callingWindow, bool alerts = false, bool silent = false)
+        public bool CheckGameVersionAndPath(Window callingWindow, bool alerts = false, bool silent = false)
         {
             Dispatcher.Invoke(new Action(delegate
             {
-                directoryBox.Text = Properties.Settings.Default.activeDirectory;
                 currentGame.Text = FindResource("item70").ToString();
+                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                directoryButton.IsEnabled = false;
             }));
 
             Properties.Settings.Default.gameVersionString = string.Empty;
             Properties.Settings.Default.Save();
 
-            if (!File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
+            if (!Directory.Exists(Properties.Settings.Default.activeDirectory))
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
+                    Properties.Settings.Default.activeDirectory = "Directory";
+                    Properties.Settings.Default.Save();
+
+                    directoryBox.Text = Properties.Settings.Default.activeDirectory;
                     currentGame.Text = FindResource("item69").ToString();
+                    taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                    directoryButton.IsEnabled = true;
+                }));
+                
+                return false;
+            }
+            else if (!File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
+            {
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    directoryBox.Text = Properties.Settings.Default.activeDirectory;
+                    currentGame.Text = FindResource("item69").ToString();
+                    taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                    directoryButton.IsEnabled = true;
 
                     if (!silent)
                     {
@@ -972,25 +985,6 @@ namespace H1EmuLauncher
 
                 return false;
             }
-            else if (!Directory.Exists(Properties.Settings.Default.activeDirectory))
-            {
-                Properties.Settings.Default.activeDirectory = "Directory";
-                Properties.Settings.Default.Save();
-
-                return false;
-            }
-
-            Dispatcher.Invoke(new Action(delegate
-            {
-                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
-                directoryButton.IsEnabled = false;
-            }));
-
-            Dispatcher.Invoke(new Action(delegate
-            {
-                currentGame.Text = FindResource("item70").ToString();
-                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
-            }));
 
             Crc32 crc32 = new();
             string hash = string.Empty;
@@ -1007,9 +1001,10 @@ namespace H1EmuLauncher
 
                 Dispatcher.Invoke(new Action(delegate
                 {
+                    directoryBox.Text = Properties.Settings.Default.activeDirectory;
                     currentGame.Text = FindResource("item120").ToString();
-                    directoryButton.IsEnabled = true;
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                    directoryButton.IsEnabled = true;
                     
                     if (!silent)
                         CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), callingWindow, false, false, true);
@@ -1024,9 +1019,10 @@ namespace H1EmuLauncher
 
                 Dispatcher.Invoke(new Action(delegate
                 {
+                    directoryBox.Text = Properties.Settings.Default.activeDirectory;
                     currentGame.Text = FindResource("item142").ToString().Replace(":", ".");
-                    directoryButton.IsEnabled = true;
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                    directoryButton.IsEnabled = true;
 
                     if (!silent)
                         CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\".", callingWindow);
@@ -1043,6 +1039,7 @@ namespace H1EmuLauncher
 
                     Dispatcher.Invoke(new Action(delegate
                     {
+                        directoryBox.Text = Properties.Settings.Default.activeDirectory;
                         currentGame.Text = $"{FindResource("item122")} 2016";
                         taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         directoryButton.IsEnabled = true;
@@ -1058,6 +1055,7 @@ namespace H1EmuLauncher
 
                     Dispatcher.Invoke(new Action(delegate
                     {
+                        directoryBox.Text = Properties.Settings.Default.activeDirectory;
                         currentGame.Text = $"{FindResource("item122")} KotK";
                         taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         directoryButton.IsEnabled = true;
@@ -1073,12 +1071,13 @@ namespace H1EmuLauncher
 
                     Dispatcher.Invoke(new Action(delegate
                     {
+                        directoryBox.Text = Properties.Settings.Default.activeDirectory;
                         currentGame.Text = FindResource("item72").ToString();
                         taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         directoryButton.IsEnabled = true;
 
                         if (!silent)
-                            CustomMessageBox.Show(FindResource("item72").ToString(), callingWindow);
+                            CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), callingWindow);
                     }));
 
                     return false;

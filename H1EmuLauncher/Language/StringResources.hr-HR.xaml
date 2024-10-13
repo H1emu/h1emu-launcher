@@ -7,7 +7,7 @@
     <system:String x:Key="item3">Verzija</system:String>
     <system:String x:Key="item4">Molimo pričekajte</system:String>
     <system:String x:Key="item8">Igraj</system:String>
-    <system:String x:Key="item9">Provjerite jeste li odabrali ispravan direktorij koji sadrži vaše datoteke igre, to možete učiniti u izborniku Postavke.</system:String>
+    <system:String x:Key="item9">Provjerite jeste li odabrali ispravan direktorij koji sadrži vaše datoteke igre.</system:String>
     <system:String x:Key="item10">UPOZORENJE:</system:String>
     <system:String x:Key="item11">Da bi ste igrali H1Z1: Just Survive morate imati kopiju igre na svojem Steam računu. Projekt ne podržava piratstvo.</system:String>
     <system:String x:Key="item12">Pridružite se zajednici klikom na</system:String>
@@ -52,7 +52,7 @@
     <system:String x:Key="item55">Korištenjem grane aplikacije: {0}</system:String>
     <system:String x:Key="item56">Procesiranje depoa {0} - {1}</system:String>
     <system:String x:Key="item57">Alociranje prostora...</system:String>
-    <system:String x:Key="item58">H1Emu ne podržava verziju igre.\n\nNe zaboravite koristiti verziju igre ili 15. siječnja 2015., 22. prosinca 2016. (Just Survive) ili 23. veljače 2017. (King of the Kill).\n\nMorate preuzeti jednu od ovih verzija pomoću ovog pokretača sa svojim Steam računom koji ima Just Survive vlasništvo.</system:String>
+    <system:String x:Key="item58">H1Emu ne podržava verziju igre.\n\nNe zaboravite koristiti verziju igre od 22. prosinca 2016.\n\nMožete upotrijebiti ovaj pokretač za preuzimanje tražene verzije na glavnoj stranici sa svojim Steam računom koji ima Just Survive vlasništvo ili alternativno , izvor datoteka igre s drugog mjesta.</system:String>
     <system:String x:Key="item59">Korisničko ime...</system:String>
     <system:String x:Key="item60">Šifra...</system:String>
     <system:String x:Key="item61">Prikaži detalje nove verzije...</system:String>
@@ -136,8 +136,9 @@
     <system:String x:Key="item156">Da bi ste mogli igrati na H1Emu serverima, morate imati zadani Ključ Računa.  Opciju možete pronaći na vašem profilu:</system:String>
     <system:String x:Key="item157">Najnovija verzija servera je development build pa je moguće da zbog nestabilnosti dođe do neočekivanog prekida rada.\n\nDa li ste sigurni da želite nastaviti?</system:String>
     <system:String x:Key="item158">Dobrodošli na H1Emu!</system:String>
-    <system:String x:Key="item159">PRIJE NEGO ŠTO NASTAVITE, molim vas imajte na umu da ovaj projekt podržava samo navedene verzije:</system:String>
-    <system:String x:Key="item161">i</system:String>
+    <system:String x:Key="item159">PRIJE NEGO POČNETE, imajte na umu da ovaj projekt podržava samo sljedeću verziju igre:</system:String>
+    <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item162">22. prosinca 2016</system:String>
     <system:String x:Key="item163">Molim vas</system:String>
     <system:String x:Key="item164">NE POKUŠAVAJTE</system:String>
     <system:String x:Key="item165">pokretati najnoviju Steam verziju igre ili bilo koju drugu verziju koja nije navedena iz razloga što ju neće te moći pokrenuti.</system:String>

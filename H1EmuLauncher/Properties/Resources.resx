@@ -325,10 +325,10 @@
   <data name="H1Emu_Voice_Patch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\H1Emu_Voice_Patch.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="node_v22_7_0_win_x64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\node_v22.7.0_win_x64.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Server_Quickstart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Server_Quickstart.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Node_Files" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Node_Files.zip;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

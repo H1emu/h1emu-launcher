@@ -7,7 +7,7 @@
     <system:String x:Key="item3">Versión</system:String>
     <system:String x:Key="item4">Espere por favor</system:String>
     <system:String x:Key="item8">JUGAR</system:String>
-    <system:String x:Key="item9">Verifica que hayas seleccionado el directorio correcto que contiene los archivos de tu juego, esto se puede hacer en el menú Configuración.</system:String>
+    <system:String x:Key="item9">Comprueba que has seleccionado el directorio correcto que contiene los archivos de tu juego.</system:String>
     <system:String x:Key="item10">ADVERTENCIA:</system:String>
     <system:String x:Key="item11">Debes poseer H1Z1: Just Survive en tu cuenta de Steam para poder descargar. Este proyecto no apoya la piratería.</system:String>
     <system:String x:Key="item12">Únete a la comunidad en:</system:String>
@@ -52,7 +52,7 @@
     <system:String x:Key="item55">Rama de aplicación:: {0}</system:String>
     <system:String x:Key="item56">Procesando depot {0} - {1}</system:String>
     <system:String x:Key="item57">Pre-asignando espacio en disco...</system:String>
-    <system:String x:Key="item58">La versión del juego no es compatible con H1Emu.\n\nRecuerde usar la versión del juego del 15 de enero de 2015, 22 de diciembre de 2016 (Just Survive) o 23 de febrero de 2017 (King of the Kill).\n\nDebe descargar una de estas versiones usando este iniciador con su cuenta de Steam que tiene la propiedad de Just Survive.</system:String>
+    <system:String x:Key="item58">La versión del juego no es compatible con H1Emu.\n\nRecuerda usar la versión del juego del 22 de diciembre de 2016.\n\nPuedes usar este iniciador para descargar la versión requerida en la página principal con tu cuenta de Steam que sea propiedad de Just Survive, o alternativamente , obtén los archivos del juego desde otro lugar.</system:String>
     <system:String x:Key="item59">Nombre de usuario...</system:String>
     <system:String x:Key="item60">Contraseña...</system:String>
     <system:String x:Key="item61">Ver detalles de la actualización...</system:String>
@@ -136,8 +136,9 @@
     <system:String x:Key="item156">Para jugar en los Servidores de H1Emu, debes configurar una Clave de Cuenta. Puedes encontrar esto en tu perfil en:</system:String>
     <system:String x:Key="item157">La última version del servidor es una compilación de desarrollo, ésta puede ser inestable y causar crashes.\n\n¿Continuar de todas formas?</system:String>
     <system:String x:Key="item158">¡Bienvenido a H1Emu!</system:String>
-    <system:String x:Key="item159">ANTES DE COMENZAR, por favor recuerda que este proyecto solo es compatible con las siguientes versiones del juego:</system:String>
-    <system:String x:Key="item161">y</system:String>
+    <system:String x:Key="item159">ANTES DE COMENZAR, tenga en cuenta que este proyecto solo admite la siguiente versión del juego:</system:String>
+    <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item162">22 de diciembre de 2016</system:String>
     <system:String x:Key="item163">Por favor</system:String>
     <system:String x:Key="item164">NO</system:String>
     <system:String x:Key="item165">uses la última versión del juego en Steam o cualquier otra versión que no haya sido mencionada arriba porque no funcionará.</system:String>

@@ -83,7 +83,7 @@
                                 <Trigger Property="IsSelected" Value="True">
                                     <Setter TargetName="text" Property="Foreground" Value="FloralWhite"/>
                                     <Setter TargetName="underline" Property="Visibility" Value="Visible"/>
-                                    <Setter TargetName="border" Property="Height" Value="35"/>
+                                    <Setter TargetName="border" Property="Height" Value="32"/>
                                     <Setter TargetName="border" Property="Background" Value="#1C1B22"/>
                                     <Setter TargetName="border" Property="CornerRadius" Value="5,5,0,0"/>
                                 </Trigger>
@@ -133,7 +133,7 @@
                                 <Trigger Property="IsSelected" Value="True">
                                     <Setter TargetName="text" Property="Foreground" Value="FloralWhite"/>
                                     <Setter TargetName="underline" Property="Visibility" Value="Visible"/>
-                                    <Setter TargetName="border" Property="Height" Value="35"/>
+                                    <Setter TargetName="border" Property="Height" Value="32"/>
                                     <Setter TargetName="border" Property="Background" Value="#1C1B22"/>
                                     <Setter TargetName="border" Property="CornerRadius" Value="5,5,0,0"/>
                                 </Trigger>
@@ -186,7 +186,7 @@
                                 <Trigger Property="IsSelected" Value="True">
                                     <Setter TargetName="text" Property="Foreground" Value="FloralWhite"/>
                                     <Setter TargetName="underline" Property="Visibility" Value="Visible"/>
-                                    <Setter TargetName="border" Property="Height" Value="35"/>
+                                    <Setter TargetName="border" Property="Height" Value="32"/>
                                     <Setter TargetName="border" Property="Background" Value="#1C1B22"/>
                                     <Setter TargetName="border" Property="CornerRadius" Value="5,5,0,0"/>
                                 </Trigger>

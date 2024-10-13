@@ -34,166 +34,236 @@
             </Grid.Background>
 
             <Grid>
-                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="15"/>
+                </Grid.RowDefinitions>
 
-                    <!-- List of everyone who helped on the project -->
-                    <TextBlock Margin="25,25,25,25"
-                               Width="600"
-                               Background="Transparent"
-                               Cursor="Arrow"
-                               TextAlignment="Center"
-                               FontWeight="Light"
-                               TextWrapping="Wrap">
+                <ScrollViewer VerticalScrollBarVisibility="Hidden"
+                              Grid.Row="1">
 
-                    <!-- Lead development-->
-                    <Run FontSize="18"
-                         Foreground="#FFED1C24"
-                         TextDecorations="Underline"
-                         Text="{DynamicResource item126}"/>
+                    <StackPanel>
+                        <!-- List of everyone who helped on the project -->
+                        
+                        <!-- Lead development-->
+                        <TextBlock Margin="20"
+                                   FontSize="18"
+                                   Foreground="#FFED1C24"
+                                   TextDecorations="Underline"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Text="{DynamicResource item126}"/>
 
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <Run Foreground="FloralWhite"
-                         Text="• Kentin • Meme • Avcio •"/>
-        
-                    <LineBreak/>
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <!-- Administrators -->
-                    <Run FontSize="18"
-                         Foreground="#FFED1C24"
-                         FontWeight="Light"
-                         TextDecorations="Underline"
-                         Text="{DynamicResource item128}"/>
-        
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <Run Foreground="FloralWhite"
-                         Text="• LcplReaper • Traqnar • Meme • Avcio •"/>
+                        <TextBlock Margin="60,0,60,0"
+                                   Foreground="FloralWhite"
+                                   FontWeight="Light"
+                                   Text="• Kentin • Meme • Avcio •"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
 
-                    <LineBreak/>
-                    <LineBreak/>
-                    <LineBreak/>
-            
-                    <!-- Developers -->
-                    <Run FontSize="18"
-                         Foreground="#FFED1C24"
-                         FontWeight="Light"
-                         TextDecorations="Underline"
-                         Text="{DynamicResource item127}"/>
-        
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <Run Foreground="FloralWhite"
-                         Text="• Eavilaswayce • Ghost • doggo • KOBUNIX •"/>
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="1"
+                                   Margin="20,20,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
 
-                    <LineBreak/>
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <!-- Contributors -->
-                    <Run FontSize="18"
-                         Foreground="#FFED1C24"
-                         FontWeight="Light"
-                         TextDecorations="Underline"
-                         Text="{DynamicResource item129}"/>
-        
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <Run Foreground="FloralWhite"
-                         Text="• Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo • Torenka • Moonlighter • Loopa • Cyberhound • Cur7 • AlvaZhang •"/>
+                        <!-- Administrators -->
+                        <TextBlock Margin="0,20,0,20"
+                                   FontSize="18"
+                                   Foreground="#FFED1C24"
+                                   TextDecorations="Underline"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Text="{DynamicResource item128}"/>
 
-                    <LineBreak/>
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <!-- Moderators -->
-                    <Run FontSize="18"
-                         Foreground="#FFED1C24"
-                         FontWeight="Light"
-                         TextDecorations="Underline"
-                         Text="{DynamicResource item130}"/>
-        
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <Run Foreground="FloralWhite"
-                         Text="• TCM • Tone • Chrisisbrown • Movezie • Andrew~ • RywaZ • Ultrax •"/>
-        
-                    <LineBreak/>
-                    <LineBreak/>
-                    <LineBreak/>
-            
-                    <!-- Support -->
-                    <Run FontSize="18"
-                         Foreground="#FFED1C24"
-                         FontWeight="Light"
-                         TextDecorations="Underline"
-                         Text="{DynamicResource item131}"/>
+                        <TextBlock Margin="60,0,60,0"
+                                   Foreground="FloralWhite"
+                                   FontWeight="Light"
+                                   Text="• LcplReaper • Traqnar • Meme • Avcio •"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
 
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <Run Foreground="FloralWhite"
-                         Text="• Arrcy • Dave • rob318us • SONNY •"/>
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="1"
+                                   Margin="20,20,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
 
-                    <LineBreak/>
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <!-- Financial contributors -->
-                    <Run FontSize="18"
-                         Foreground="#FFED1C24"
-                         FontWeight="Light"
-                         TextDecorations="Underline"
-                         Text="{DynamicResource item170}"/>
+                        <!-- Developers -->
+                        <TextBlock Margin="0,20,0,20"
+                                   FontSize="18"
+                                   Foreground="#FFED1C24"
+                                   TextDecorations="Underline"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Text="{DynamicResource item127}"/>
 
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <Run Foreground="FloralWhite"
-                         Text="• Booze • Mahoaga • TimmyFPS • LegalViewbot • remapz • Christer D • A Mad Midget • Twin • piapiacrack • AlvaZhang • RensareN • willow • Candles •"/>
+                        <TextBlock Margin="60,0,60,0"
+                                   Foreground="FloralWhite"
+                                   FontWeight="Light"
+                                   Text="• Eavilaswayce • Ghost • doggo • KOBUNIX • JSON •"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
 
-                    <LineBreak/>
-                    <LineBreak/>
-                    <LineBreak/>
-            
-                    <!-- Translators -->
-                    <Run FontSize="18"
-                         Foreground="#FFED1C24"
-                         FontWeight="Light"
-                         TextDecorations="Underline"
-                         Text="{DynamicResource item136}"/>
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="1"
+                                   Margin="20,20,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
 
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <Run Foreground="FloralWhite"
-                         Text="• AlvaZhang (Chinese) • Panda &amp; MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) • SpjonK (Swedish) •"/>
+                        <!-- Contributors -->
+                        <TextBlock Margin="0,20,0,20"
+                                   FontSize="18"
+                                   Foreground="#FFED1C24"
+                                   TextDecorations="Underline"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Text="{DynamicResource item129}"/>
 
-                    <LineBreak/>
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <!-- Thank to community message -->
-                    <Run Foreground="FloralWhite"
-                         Text="{DynamicResource item132}"/>
-        
-                    <LineBreak/>
-                    <LineBreak/>
-                    <LineBreak/>
-                    <LineBreak/>
-        
-                    <!-- Launcher made by Eavilaswayce message -->
-                    <Run Foreground="FloralWhite"
-                         Text="{DynamicResource item169}"/>
+                        <TextBlock Margin="60,0,60,0"
+                                   Foreground="FloralWhite"
+                                   FontWeight="Light"
+                                   Text="• Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo • Torenka • Moonlighter • Loopa • Cyberhound • Cur7 • AlvaZhang •"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
 
-                    </TextBlock>
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="1"
+                                   Margin="20,20,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
+
+                        <!-- Moderators -->
+                        <TextBlock Margin="0,20,0,20"
+                                   FontSize="18"
+                                   Foreground="#FFED1C24"
+                                   TextDecorations="Underline"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Text="{DynamicResource item130}"/>
+
+                        <TextBlock Margin="60,0,60,0"
+                                   Foreground="FloralWhite"
+                                   FontWeight="Light"
+                                   Text="• TCM • Tone • Chrisisbrown • Movezie • Andrew~ • RywaZ • Ultrax •"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="1"
+                                   Margin="20,20,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
+
+                        <!-- Support -->
+                        <TextBlock Margin="0,20,0,20"
+                                   FontSize="18"
+                                   Foreground="#FFED1C24"
+                                   TextDecorations="Underline"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Text="{DynamicResource item131}"/>
+
+                        <TextBlock Margin="60,0,60,0"
+                                   Foreground="FloralWhite"
+                                   FontWeight="Light"
+                                   Text="• Arrcy • Dave • rob318us • SONNY •"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="1"
+                                   Margin="20,20,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
+
+                        <!-- Financial contributors -->
+                        <TextBlock Margin="0,20,0,20"
+                                   FontSize="18"
+                                   Foreground="#FFED1C24"
+                                   TextDecorations="Underline"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Text="{DynamicResource item170}"/>
+
+                        <TextBlock Margin="60,0,60,0"
+                                   Foreground="FloralWhite"
+                                   FontWeight="Light"
+                                   Text="• Booze • Mahoaga • TimmyFPS • LegalViewbot • remapz • Christer D • A Mad Midget • Twin • piapiacrack • AlvaZhang • RensareN • willow • Candles •"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="1"
+                                   Margin="20,20,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
+
+                        <!-- Translators -->
+                        <TextBlock Margin="0,20,0,20"
+                                   FontSize="18"
+                                   Foreground="#FFED1C24"
+                                   TextDecorations="Underline"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Text="{DynamicResource item136}"/>
+
+                        <TextBlock Margin="60,0,60,0"
+                                   Foreground="FloralWhite"
+                                   FontWeight="Light"
+                                   Text="• AlvaZhang (Chinese) • Panda &amp; MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) • SpjonK (Swedish) •"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
+
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="1"
+                                   Margin="20,20,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
+
+                        <!-- Thank to community message -->
+                        <TextBlock Margin="60,20,60,20"
+                                   Foreground="FloralWhite"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   FontWeight="Light"
+                                   Text="{DynamicResource item132}"/>
+
+                        <!-- Divider -->
+                        <Rectangle Grid.Row="1"
+                                   Margin="20,0,20,0"
+                                   Height="1"
+                                   Fill="#FF2A2A32"/>
+
+                        <!-- Launcher made by Eavilaswayce message -->
+                        <TextBlock Margin="60,20,60,20"
+                                   Foreground="FloralWhite"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   FontWeight="Light"
+                                   Text="{DynamicResource item169}"/>
+                    </StackPanel>
+
+
                 </ScrollViewer>
             </Grid>
         </Grid>

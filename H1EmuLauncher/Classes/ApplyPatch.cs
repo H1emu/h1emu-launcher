@@ -14,46 +14,28 @@ namespace H1EmuLauncher.Classes
 
         public static void CheckPatch()
         {
-            switch (Properties.Settings.Default.gameVersionString)
-            {
-                case "22dec2016":
-                case "kotk":
-                    if (Properties.Settings.Default.gameVersionString == "kotk" && Properties.Settings.Default.currentPatchVersionKotK != latestPatchVersion ||
+            if (Properties.Settings.Default.gameVersionString == "kotk" && Properties.Settings.Default.currentPatchVersionKotK != latestPatchVersion ||
                         Properties.Settings.Default.gameVersionString == "22dec2016" && Properties.Settings.Default.currentPatchVersion2016 != latestPatchVersion ||
                         Properties.Settings.Default.gameVersionString == "22dec2016" && Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye") ||
-                        Properties.Settings.Default.gameVersionString == "22dec2016" && !File.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack") || 
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") || 
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") || 
+                        Properties.Settings.Default.gameVersionString == "22dec2016" && !File.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack") ||
+                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
+                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
                         !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") || 
+                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
                         !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
-                    {
-                        Application.Current.Dispatcher.Invoke(new Action(delegate
-                        {
-                            LauncherWindow.launcherInstance.playButton.IsEnabled = false;
+            {
+                Application.Current.Dispatcher.Invoke(new Action(delegate
+                {
+                    LauncherWindow.launcherInstance.playButton.IsEnabled = false;
 
-                            if (Properties.Settings.Default.gameVersionString == "22dec2016" && string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersion2016) ||
-                                Properties.Settings.Default.gameVersionString == "kotk" && string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersionKotK))
-                                LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item150").ToString();
-                            else
-                                LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item188").ToString();
-                        }));
+                    if (Properties.Settings.Default.gameVersionString == "22dec2016" && string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersion2016) ||
+                        Properties.Settings.Default.gameVersionString == "kotk" && string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersionKotK))
+                        LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item150").ToString();
+                    else
+                        LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item188").ToString();
+                }));
 
-                        ApplyPatch();
-                    }
-                    break;
-                case "processBeingUsed":
-                    Application.Current.Dispatcher.Invoke(new Action(delegate
-                    {
-                        CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item121").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance, false, false, true);
-                    }));
-                    break;
-                default:
-                    Application.Current.Dispatcher.Invoke(new Action(delegate
-                    {
-                        CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item58").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance);
-                    }));
-                    break;
+                ApplyPatch();
             }
 
             Application.Current.Dispatcher.Invoke(new Action(delegate
@@ -65,7 +47,7 @@ namespace H1EmuLauncher.Classes
 
         public static void ApplyPatch()
         {
-            // Unzip all of the files to directory
+            // Unzip all of the files to the root directory
             try
             {
                 if (Properties.Settings.Default.gameVersionString == "22dec2016")

@@ -166,7 +166,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -203,15 +203,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
-        "ProductCode" = "8:{BB4C3E70-E85C-44E3-AA47-A0EC36DEDAB0}"
-        "PackageCode" = "8:{232C2009-5459-4BC9-82FF-608D006089BD}"
+        "ProductCode" = "8:{1C6DE846-9520-40CB-8FC0-05D25106E79D}"
+        "PackageCode" = "8:{5B7A4C6E-CBF1-4CFC-8FF9-270100FF7137}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:3.0.3"
+        "ProductVersion" = "8:3.0.5"
         "Manufacturer" = "8:H1Emu © 2024"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
@@ -225,9 +225,9 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:echo Modifying the installer to launch the application when finished...\r\ncscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\necho Done.\r\n\r\necho Combining setups into a single .exe file...\r\ncd $(ProjectDir)\r\nC:\\Windows\\System32\\iexpress.exe /n /q IExpressPackageH1EmuLauncherSetup.sed\r\necho Done.\r\n\r\necho Digitally signing the .exe setup file...\r\n\"C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\signtool.exe\" sign /f \"$(ProjectDir)H1EmuLauncherCertificate.pfx\" /t http://timestamp.digicert.com /p 3126Ri34 /fd SHA256 \"$(ProjectDir)Debug\\H1EmuLauncherSetup.exe\"\r\necho Done.\r\n\r\necho Zipping installation contents to a portable .zip file...\r\ntar.exe -a -c -f \"$(ProjectDir)Debug\\H1EmuLauncherVPortable.zip\" -C \"$(ProjectDir)\\..\\H1EmuLauncher\\bin\\Debug\\net6.0-windows10.0.17763.0\" *\r\necho Done."
+        "PostBuildEvent" = "8:echo Modifying the installer to launch the application when finished...\r\ncscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\necho Done.\r\n\r\necho Combining setups into a single .exe file...\r\ncd $(ProjectDir)\r\nC:\\Windows\\System32\\iexpress.exe /n /q IExpressPackageH1EmuLauncherSetup.sed\r\necho Done.\r\n\r\necho Digitally signing the .exe setup file...\r\n\"C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\signtool.exe\" sign /f \"$(ProjectDir)H1EmuLauncherCertificate.pfx\" /t http://timestamp.digicert.com /p 3126Ri34 /fd SHA256 \"$(ProjectDir)Debug\\H1EmuLauncherSetup.exe\"\r\necho Done.\r\n\r\necho Zipping installation contents to a portable .zip file...\r\ntar.exe -a -c -f \"$(ProjectDir)Debug\\H1EmuLauncherVPortable.zip\" -C \"$(ProjectDir)\\..\\H1EmuLauncher\\bin\\Debug\\net7.0-windows10.0.17763.0\" *\r\necho Done."
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"
@@ -470,7 +470,7 @@
             "Attributes" = "3:3"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_728BC1DA43A0441AA540CD7C05155ADD"
+                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_AC9C1564A68E4E16AE8CE34FD787BC8E"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Finished"

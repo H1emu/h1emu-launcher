@@ -45,7 +45,7 @@ namespace H1EmuLauncher
 
         private void InstallServerButton(object sender, RoutedEventArgs e)
         {
-            if (!LauncherWindow.launcherInstance.CheckGameVersion(SettingsWindow.settingsInstance))
+            if (!LauncherWindow.launcherInstance.CheckGameVersionAndPath(SettingsWindow.settingsInstance))
                 return;
 
             Button button = (Button)sender;
@@ -172,7 +172,7 @@ namespace H1EmuLauncher
 
             try
             {
-                File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Node.zip", Properties.Resources.node_v22_7_0_win_x64);
+                File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Node.zip", Properties.Resources.Node_Files);
                 ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Node.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles\\h1z1-server-QuickStart-master", true);
             }
             catch { }

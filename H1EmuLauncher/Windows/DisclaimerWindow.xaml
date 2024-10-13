@@ -162,18 +162,7 @@
                         <Run TextDecorations="Underline"
                              FontWeight="Bold"
                              Foreground="#FFED1C24"
-                             Text="{DynamicResource item160}"/>
-                
-                        <Run FontWeight="Light"
-                             Text="{DynamicResource item161}"/>
-                
-                        <Run TextDecorations="Underline"
-                             FontWeight="Bold"
-                             Foreground="#FFED1C24"
-                             Text="{DynamicResource item162}"/>
-                    
-                        <Run FontWeight="Light"
-                             Text="."/>
+                             Text="{DynamicResource item162}"/><Run FontWeight="Light" Text="{DynamicResource item160}"/>
                 
                         <LineBreak/>
                         <LineBreak/>
