@@ -15,7 +15,8 @@ namespace H1EmuLauncher
                 File.WriteAllText($"{Classes.Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt", string.Join(" ", e.Args));
                 Environment.Exit(0);
             }
-            else if (LauncherWindow.launcherInstance == null && e.Args.Length > 0)
+
+            if (e.Args.Length > 0)
             {
                 LauncherWindow.rawArgs = e.Args;
                 LauncherWindow.executeArguments = true;
