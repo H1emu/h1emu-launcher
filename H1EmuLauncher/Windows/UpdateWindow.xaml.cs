@@ -79,7 +79,7 @@ namespace H1EmuLauncher
                         sp.Close();
                         Topmost = true;
                         Close();
-                        CustomMessageBox.Show($"{FindResource("item66")} {FindResource("item16")}{exceptionList}\n\n{FindResource("item49")}", this);
+                        CustomMessageBox.Show($"{FindResource("item66")} {FindResource("item16")}{exceptionList}\n\n{FindResource("item49")}", LauncherWindow.launcherInstance);
                     }));
                     return;
                 }
@@ -90,7 +90,7 @@ namespace H1EmuLauncher
                         sp.Close();
                         Topmost = true;
                         Close();
-                        CustomMessageBox.Show($"{FindResource("item66")} \"{ex.Message}\"\n\n{FindResource("item49")}", this);
+                        CustomMessageBox.Show($"{FindResource("item66")} \"{ex.Message}\"\n\n{FindResource("item49")}", LauncherWindow.launcherInstance);
                     }));
                     return;
                 }
@@ -265,8 +265,8 @@ namespace H1EmuLauncher
         {
             Hide();
 
-            LauncherWindow la = new();
-            la.Show();
+            LauncherWindow lw = new();
+            lw.Show();
 
             updateInstance = null;
         }

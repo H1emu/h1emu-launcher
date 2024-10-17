@@ -146,45 +146,35 @@
                 <TabItem Header="{DynamicResource item195}"
                          Style="{StaticResource TabItemStyleFirst}">
 
-                    <TabItem.Content>
-                        <Frame Source="..\SettingsPages\GameFiles.xaml"/>
-                    </TabItem.Content>
+                    <Frame Source="..\SettingsPages\GameFiles.xaml"/>
                 </TabItem>
 
                 <!-- Account key tab -->
                 <TabItem Header="{DynamicResource item196}"
                          Style="{StaticResource TabItemStyleMiddle}">
 
-                    <TabItem.Content>
-                        <Frame Source="..\SettingsPages\AccountKey.xaml"/>
-                    </TabItem.Content>
+                    <Frame Source="..\SettingsPages\AccountKey.xaml"/>
                 </TabItem>
 
                 <!-- Options tab -->
                 <TabItem Header="{DynamicResource item197}"
                          Style="{StaticResource TabItemStyleMiddle}">
 
-                    <TabItem.Content>
-                        <Frame Source="..\SettingsPages\Options.xaml"/>
-                    </TabItem.Content>
+                    <Frame Source="..\SettingsPages\Options.xaml"/>
                 </TabItem>
 
                 <!-- Bug reports tab -->
                 <TabItem Header="{DynamicResource item198}"
                          Style="{StaticResource TabItemStyleMiddle}">
 
-                    <TabItem.Content>
-                        <Frame Source="..\SettingsPages\ReportBug.xaml"/>
-                    </TabItem.Content>
+                    <Frame Source="..\SettingsPages\ReportBug.xaml"/>
                 </TabItem>
 
                 <!-- About tab -->
                 <TabItem Header="{DynamicResource item199}"
                          Style="{StaticResource TabItemStyleLast}">
 
-                    <TabItem.Content>
-                        <Frame Source="..\SettingsPages\About.xaml"/>
-                    </TabItem.Content>
+                    <Frame Source="..\SettingsPages\About.xaml"/>
                 </TabItem>
 
                 <TabControl.Effect>
