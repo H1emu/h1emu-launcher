@@ -29,9 +29,6 @@
     <Setting Name="currentPatchVersion2016" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="currentPatchVersionKotK" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="imageCarouselVisibility" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>

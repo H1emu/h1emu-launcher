@@ -24,25 +24,40 @@ namespace H1EmuLauncher.Classes
 
         public static ImageSource ConvertResourceToImageSource(string psResourceName)
         {
-            return BitmapFrame.Create(new Uri("pack://application:,,,/H1EmuLauncher;component/" + psResourceName, UriKind.Absolute));
+            try
+            {
+                return BitmapFrame.Create(new Uri("pack://application:,,,/H1EmuLauncher;component/" + psResourceName, UriKind.Absolute));
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static void BeginImageCarousel()
         {
             new Thread(() =>
             {
+                int i = 1;
                 ResourceSet resourceSet = Properties.Resources.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
-                foreach (DictionaryEntry entry in resourceSet)
+                foreach (DictionaryEntry resource in resourceSet)
                 {
-                    if (int.TryParse(entry.Key.ToString().Replace("_", ""), out _))
-                        images.Add($"{entry.Key.ToString().Replace("_", "")}.jpg");
+                    if (ConvertResourceToImageSource($"Resources\\{i}.jpg") != null)
+                    {
+                        images.Add($"{i}.jpg");
+                        i++;
+                    }
+                    else
+                        break;
                 }
 
                 Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    DoubleAnimation carouselImageRectangle = new DoubleAnimation(0, LauncherWindow.launcherInstance.carouselRectangleGrid.ActualWidth, new Duration(TimeSpan.FromSeconds(5)));
-                    carouselImageRectangle.AccelerationRatio = 0.2;
-                    carouselImageRectangle.DecelerationRatio = 0.2;
+                    DoubleAnimation carouselImageRectangle = new(0, LauncherWindow.launcherInstance.carouselRectangleGrid.ActualWidth, new Duration(TimeSpan.FromSeconds(6)))
+                    {
+                        AccelerationRatio = 0.2,
+                        DecelerationRatio = 0.2
+                    };
                     carouselImageRectangle.SetValue(Storyboard.TargetProperty, LauncherWindow.launcherInstance.carouselRectangle);
                     carouselImageRectangle.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(FrameworkElement.WidthProperty));
 

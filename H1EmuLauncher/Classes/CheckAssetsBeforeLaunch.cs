@@ -293,11 +293,11 @@ namespace H1EmuLauncher.Classes
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item215")} \"{ex.Message}\".", LauncherWindow.launcherInstance, false, false, false, true);
+                    CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item215")} \"{e.Message}\".", LauncherWindow.launcherInstance, false, false, false, true);
                 }));
                 return null;
             }

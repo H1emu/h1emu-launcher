@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Media;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,12 +11,9 @@ using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
 {
-    /// <summary>
-    /// Interaction logic for ShowServerInstallOptions.xaml
-    /// </summary>
-    public partial class ShowServerInstallOptions : Window
+    public partial class InstallServerInline : Window
     {
-        public static ShowServerInstallOptions serverInstallOptionsInstance;
+        public static InstallServerInline serverInstallOptionsInstance;
         public static bool isExecutingTasks;
         private ProcessStartInfo cmdShell = new()
         {
@@ -26,17 +22,12 @@ namespace H1EmuLauncher
             UseShellExecute = false,
             CreateNoWindow = true
         };
-        public Storyboard UnfocusPropertiesAnimationShow;
-        public Storyboard UnfocusPropertiesAnimationHide;
 
-        public ShowServerInstallOptions()
+        public InstallServerInline()
         {
             InitializeComponent();
             serverInstallOptionsInstance = this;
             Owner = LauncherWindow.launcherInstance;
-
-            UnfocusPropertiesAnimationShow = FindResource("UnfocusPropertiesShow") as Storyboard;
-            UnfocusPropertiesAnimationHide = FindResource("UnfocusPropertiesHide") as Storyboard;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Clear();
@@ -82,7 +73,10 @@ namespace H1EmuLauncher
 
                     }));
 
-                    Process installServerProcess = new Process { StartInfo = cmdShell };
+                    Process installServerProcess = new()
+                    {
+                        StartInfo = cmdShell
+                    };
                     installServerProcess.Start();
                     using (StreamWriter sw = installServerProcess.StandardInput)
                     {
@@ -108,7 +102,7 @@ namespace H1EmuLauncher
                     else
                         installServerProcess.WaitForExit();
                 }
-                catch (Exception er)
+                catch (Exception e)
                 {
                     ToggleButtons(true);
 
@@ -118,9 +112,9 @@ namespace H1EmuLauncher
                         installServerProgressBar.IsIndeterminate = false;
 
                         if (button.Name == "latestButton")
-                            CustomMessageBox.Show($"{FindResource("item107")} \"{er.Message}\".", SettingsWindow.settingsInstance);
+                            CustomMessageBox.Show($"{FindResource("item107")} \"{e.Message}\".", SettingsWindow.settingsInstance);
                         else
-                            CustomMessageBox.Show($"{FindResource("item111")} \"{er.Message}\".", SettingsWindow.settingsInstance);
+                            CustomMessageBox.Show($"{FindResource("item111")} \"{e.Message}\".", SettingsWindow.settingsInstance);
                     }));
                     return;
                 }
@@ -278,11 +272,6 @@ namespace H1EmuLauncher
             DragMove();
         }
 
-        private void ServerInstallOptionsLoaded(object sender, RoutedEventArgs e)
-        {
-            LauncherWindow.launcherInstance.UnfocusPropertiesAnimationShow.Begin();
-        }
-
         private void ServerInstallOptionsContentRendered(object sender, EventArgs e)
         {
             SizeToContent = SizeToContent.Manual;
@@ -295,6 +284,11 @@ namespace H1EmuLauncher
             Close();
         }
 
+        private void ServerInstallOptionsLoaded(object sender, RoutedEventArgs e)
+        {
+            FocusEffects.BeginUnfocusAnimation(Owner);
+        }
+
         private void ServerInstallOptionsClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (IsVisible && isExecutingTasks)
@@ -304,14 +298,8 @@ namespace H1EmuLauncher
                 return;
             }
 
-            LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
             serverInstallOptionsInstance = null;
-        }
-
-        private void InstallServerFilesFadeMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (installServerFilesFade.IsHitTestVisible)
-                SystemSounds.Beep.Play();
+            FocusEffects.BeginFocusAnimation(Owner);
         }
     }
 }

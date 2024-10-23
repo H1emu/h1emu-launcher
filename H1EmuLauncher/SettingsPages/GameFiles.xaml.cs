@@ -1,5 +1,4 @@
-﻿using H1EmuLauncher.Classes;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.IO.Compression;
 using System.IO;
@@ -9,7 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using System.Drawing;
 using System.Drawing.Imaging;
-using Windows.ApplicationModel.Activation;
+using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SettingsPages
 {
@@ -52,7 +51,6 @@ namespace H1EmuLauncher.SettingsPages
                 // Unzip all of the files to the root directory
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                     settingsProgressBar.IsIndeterminate = true;
                     settingsProgressText.Text = FindResource("item99").ToString();
                 }));
@@ -79,14 +77,8 @@ namespace H1EmuLauncher.SettingsPages
                         File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1Z1_FP.exe", Properties.Resources.H1Z1_FP);
 
                         // Extract FairPlay logo
-                        Bitmap fairPlayLogo = new Bitmap(Properties.Resources.logo);
+                        Bitmap fairPlayLogo = new(Properties.Resources.logo);
                         fairPlayLogo.Save($"{Properties.Settings.Default.activeDirectory}\\logo.bmp", ImageFormat.Bmp);
-                    }
-                    else if (Properties.Settings.Default.gameVersionString == "kotk")
-                    {
-                        // Extract main game patch
-                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", Properties.Resources.Game_Patch_KotK);
-                        ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", $"{Properties.Settings.Default.activeDirectory}", true);
                     }
 
                     // Delete BattlEye folder to prevent Steam from trying to launch the game
@@ -104,23 +96,21 @@ namespace H1EmuLauncher.SettingsPages
 
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1Emu_Voice_Patch.zip");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip");
                 }
                 catch (Exception e)
                 {
+                    watch.Stop();
+                    ToggleButtons(true);
                     Application.Current.Dispatcher.Invoke(new Action(delegate
                     {
                         if (Properties.Settings.Default.gameVersionString == "22dec2016")
-                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item96")}\n\n{e.Message}", LauncherWindow.launcherInstance);
-                        else if (Properties.Settings.Default.gameVersionString == "kotk")
-                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item97")}\n\n{e.Message}", LauncherWindow.launcherInstance);
+                            CustomMessageBox.Show($"{FindResource("item96")}\n\n{e.Message}", SettingsWindow.settingsInstance);
                     }));
+                    return;
                 }
 
                 if (Properties.Settings.Default.gameVersionString == "22dec2016")
                     Properties.Settings.Default.currentPatchVersion2016 = ApplyPatchClass.latestPatchVersion;
-                else if (Properties.Settings.Default.gameVersionString == "kotk")
-                    Properties.Settings.Default.currentPatchVersionKotK = ApplyPatchClass.latestPatchVersion;
 
                 Properties.Settings.Default.Save();
 
@@ -131,13 +121,8 @@ namespace H1EmuLauncher.SettingsPages
 
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                    settingsProgressBar.IsIndeterminate = false;
-
                     if (Properties.Settings.Default.gameVersionString == "22dec2016")
                         CustomMessageBox.Show($"{FindResource("item103")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", SettingsWindow.settingsInstance);
-                    else if (Properties.Settings.Default.gameVersionString == "kotk")
-                        CustomMessageBox.Show($"{FindResource("item104")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", SettingsWindow.settingsInstance);
                 }));
 
             }).Start();
@@ -172,22 +157,15 @@ namespace H1EmuLauncher.SettingsPages
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        if (button.Name == "latestButton")
-                        {
-                            settingsProgressText.Text = FindResource("item105").ToString();
-                            LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
-                            settingsProgressBar.IsIndeterminate = true;
-                        }
-                        else
-                        {
-                            settingsProgressText.Text = FindResource("item109").ToString();
-                            LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
-                            settingsProgressBar.IsIndeterminate = true;
-                        }
+                        settingsProgressBar.IsIndeterminate = true;
 
+                        if (button.Name == "latestButton")
+                            settingsProgressText.Text = FindResource("item105").ToString();
+                        else
+                            settingsProgressText.Text = FindResource("item109").ToString();
                     }));
 
-                    Process installServerProcess = new Process { StartInfo = cmdShell };
+                    Process installServerProcess = new() { StartInfo = cmdShell };
                     installServerProcess.Start();
                     using (StreamWriter sw = installServerProcess.StandardInput)
                     {
@@ -213,18 +191,16 @@ namespace H1EmuLauncher.SettingsPages
                     else
                         installServerProcess.WaitForExit();
                 }
-                catch (Exception er)
+                catch (Exception e)
                 {
+                    watch.Stop();
                     ToggleButtons(true);
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                        settingsProgressBar.IsIndeterminate = false;
-
                         if (button.Name == "latestButton")
-                            CustomMessageBox.Show($"{FindResource("item107")} \"{er.Message}\".", SettingsWindow.settingsInstance);
+                            CustomMessageBox.Show($"{FindResource("item107")} \"{e.Message}\".", SettingsWindow.settingsInstance);
                         else
-                            CustomMessageBox.Show($"{FindResource("item111")} \"{er.Message}\".", SettingsWindow.settingsInstance);
+                            CustomMessageBox.Show($"{FindResource("item111")} \"{e.Message}\".", SettingsWindow.settingsInstance);
                     }));
                     return;
                 }
@@ -235,10 +211,6 @@ namespace H1EmuLauncher.SettingsPages
 
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                    settingsProgressBar.IsIndeterminate = false;
-                    settingsProgressBar.Value = 0;
-
                     if (button.Name == "latestButton")
                         CustomMessageBox.Show($"{FindResource("item108")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", SettingsWindow.settingsInstance);
                     else
@@ -261,16 +233,11 @@ namespace H1EmuLauncher.SettingsPages
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item116").ToString();
-                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 settingsProgressBar.IsIndeterminate = true;
             }));
 
-            try
-            {
-                File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1Z1-Server-Quickstart-Master.zip", Properties.Resources.Server_Quickstart);
-                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\H1Z1-Server-Quickstart-Master.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles", true);
-            }
-            catch { }
+            File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1Z1-Server-Quickstart-Master.zip", Properties.Resources.Server_Quickstart);
+            ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\H1Z1-Server-Quickstart-Master.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles", true);
 
             // Delete old .zip file, not needed anymore
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1Z1-Server-Quickstart-Master.zip");
@@ -279,16 +246,10 @@ namespace H1EmuLauncher.SettingsPages
             Dispatcher.Invoke(new Action(delegate
             {
                 settingsProgressText.Text = FindResource("item118").ToString();
-                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
-                settingsProgressBar.IsIndeterminate = true;
             }));
 
-            try
-            {
-                File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Node.zip", Properties.Resources.Node_Files);
-                ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Node.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles\\h1z1-server-QuickStart-master", true);
-            }
-            catch { }
+            File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Node.zip", Properties.Resources.Node_Files);
+            ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Node.zip", $"{Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles\\h1z1-server-QuickStart-master", true);
 
             // Delete the old .zip file, not needed anymore
             File.Delete($"{Properties.Settings.Default.activeDirectory}\\Node.zip");
@@ -301,7 +262,6 @@ namespace H1EmuLauncher.SettingsPages
         {
             Dispatcher.Invoke(new Action(delegate
             {
-                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 settingsProgressText.Text = FindResource("item113").ToString();
             }));
 
@@ -317,7 +277,6 @@ namespace H1EmuLauncher.SettingsPages
 
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     settingsProgressBar.Maximum = 100;
                 }));
             }
@@ -357,12 +316,11 @@ namespace H1EmuLauncher.SettingsPages
                     isExecutingTasks = false;
 
                     settingsProgressBar.Value = 0;
+                    settingsProgressBar.IsIndeterminate = false;
                     settingsProgressRowContent.Measure(new System.Windows.Size(settingsProgressRow.MaxWidth, settingsProgressRow.MaxHeight));
-                    DoubleAnimation hide = new(settingsProgressRowContent.DesiredSize.Height, 0, new Duration(TimeSpan.FromMilliseconds(150)))
-                    {
-                        AccelerationRatio = 0.4,
-                        DecelerationRatio = 0.4
-                    };
+                    DoubleAnimation hide = new(settingsProgressRowContent.DesiredSize.Height, 0, new Duration(TimeSpan.FromMilliseconds(150)));
+                    hide.AccelerationRatio = 0.4;
+                    hide.DecelerationRatio = 0.4;
                     hide.Completed += (s, o) => settingsProgressRow.Visibility = Visibility.Collapsed;
                     settingsProgressRow.BeginAnimation(HeightProperty, hide);
                 }));
@@ -372,19 +330,19 @@ namespace H1EmuLauncher.SettingsPages
                 Dispatcher.Invoke(new Action(delegate
                 {
                     LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                    LauncherWindow.launcherInstance.directoryButton.IsEnabled = false;
                     patchButton.IsEnabled = false;
                     latestButton.IsEnabled = false;
                     stableButton.IsEnabled = false;
                     deleteSinglePlayerDataHyperLink.IsEnabled = false;
                     isExecutingTasks = true;
 
+                    settingsProgressBar.Value = 0;
                     settingsProgressRow.Visibility = Visibility.Visible;
                     settingsProgressRowContent.Measure(new System.Windows.Size(settingsProgressRow.MaxWidth, settingsProgressRow.MaxHeight));
-                    DoubleAnimation show = new(0, settingsProgressRowContent.DesiredSize.Height, new Duration(TimeSpan.FromMilliseconds(150)))
-                    {
-                        AccelerationRatio = 0.4,
-                        DecelerationRatio = 0.4
-                    };
+                    DoubleAnimation show = new(0, settingsProgressRowContent.DesiredSize.Height, new Duration(TimeSpan.FromMilliseconds(150)));
+                    show.AccelerationRatio = 0.4;
+                    show.DecelerationRatio = 0.4;
                     settingsProgressRow.BeginAnimation(HeightProperty, show);
                 }));
             }

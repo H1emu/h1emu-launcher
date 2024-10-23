@@ -9,7 +9,7 @@
         MaxWidth="800"
         MinHeight="210"
         MaxHeight="900"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterOwner"
         WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
@@ -17,9 +17,9 @@
         FontFamily="Bahnschrift Light"
         FontSize="16"
         Foreground="FloralWhite"
-        Loaded="MessageBoxLoaded"
         ContentRendered="MessageBoxContentRendered"
-        Closing="MessageBoxClosing">
+        Loaded="MessageBoxWindowLoaded"
+        Closing="MessageBoxWindowClosing">
 
     <!-- Keep window animations -->
     <WindowChrome.WindowChrome>

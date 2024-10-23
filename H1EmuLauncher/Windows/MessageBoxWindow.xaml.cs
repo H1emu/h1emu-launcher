@@ -61,28 +61,6 @@ namespace H1EmuLauncher
             DragMove();
         }
 
-        private void MessageBoxLoaded(object sender, RoutedEventArgs e)
-        {
-            if (Owner != null)
-            {
-                switch (Owner.Name)
-                {
-                    case "AddServer":
-                        AddServerWindow.addServerInstance.UnfocusPropertiesAnimationShow.Begin();
-                        break;
-                    case "Launcher":
-                        LauncherWindow.launcherInstance.UnfocusPropertiesAnimationShow.Begin();
-                        break;
-                    case "Settings":
-                        SettingsWindow.settingsInstance.UnfocusPropertiesAnimationShow.Begin();
-                        break;
-                    case "InstallServerFiles":
-                        ShowServerInstallOptions.serverInstallOptionsInstance.UnfocusPropertiesAnimationShow.Begin();
-                        break;
-                }
-            }
-        }
-
         private void MessageBoxContentRendered(object sender, EventArgs e)
         {
             SizeToContent = SizeToContent.Manual;
@@ -95,27 +73,14 @@ namespace H1EmuLauncher
             Close();
         }
 
-        private void MessageBoxClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void MessageBoxWindowLoaded(object sender, RoutedEventArgs e)
         {
-            if (Owner != null)
-            {
-                switch (Owner.Name)
-                {
-                    case "AddServer":
-                        AddServerWindow.addServerInstance.UnfocusPropertiesAnimationHide.Begin();
-                        break;
-                    case "Launcher":
-                        LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
-                        break;
-                    case "Settings":
-                        SettingsWindow.settingsInstance.UnfocusPropertiesAnimationHide.Begin();
-                        break;
-                    case "InstallServerFiles":
-                        ShowServerInstallOptions.serverInstallOptionsInstance.UnfocusPropertiesAnimationHide.Begin();
-                        break;
-                }
-            }
-            messageBoxInstance = null;
+            FocusEffects.BeginUnfocusAnimation(Owner);
+        }
+
+        private void MessageBoxWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            FocusEffects.BeginFocusAnimation(Owner);
         }
     }
 }

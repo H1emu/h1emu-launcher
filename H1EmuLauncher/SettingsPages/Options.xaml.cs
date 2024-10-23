@@ -1,21 +1,8 @@
-﻿
-
-using H1EmuLauncher.Classes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Reflection;
+using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SettingsPages
 {
@@ -55,11 +42,6 @@ namespace H1EmuLauncher.SettingsPages
         {
             if (!languageBox.IsLoaded)
                 return;
-
-            if (languageBox.SelectedIndex == 1)
-                LauncherWindow.launcherInstance.chineseLink.Visibility = Visibility.Visible;
-            else
-                LauncherWindow.launcherInstance.chineseLink.Visibility = Visibility.Collapsed;
 
             try
             {
@@ -112,6 +94,11 @@ namespace H1EmuLauncher.SettingsPages
                 CustomMessageBox.Show($"{FindResource("item142")} \"{ex.Message}\"", SettingsWindow.settingsInstance);
                 return;
             }
+
+            if (languageBox.SelectedIndex == 1)
+                LauncherWindow.launcherInstance.chineseLink.Visibility = Visibility.Visible;
+            else
+                LauncherWindow.launcherInstance.chineseLink.Visibility = Visibility.Collapsed;
 
             // Reload pages
             LauncherWindow.launcherInstance.steamFramePanel.Refresh();

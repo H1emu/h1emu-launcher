@@ -17,8 +17,8 @@
         FontFamily="Bahnschrift Light"
         FontSize="16"
         Foreground="FloralWhite"
-        Loaded="UpdateWindowLoaded"
         ContentRendered="UpdateWindowContentRendered"
+        Loaded="UpdateWindowLoaded"
         Closing="UpdateWindowClosing">
 
     <!-- Keep window animations -->

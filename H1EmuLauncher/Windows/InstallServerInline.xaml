@@ -1,4 +1,4 @@
-﻿<Window x:Class="H1EmuLauncher.ShowServerInstallOptions"
+﻿<Window x:Class="H1EmuLauncher.InstallServerInline"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -18,8 +18,8 @@
         FontFamily="Bahnschrift Light"
         FontSize="16"
         Foreground="FloralWhite"
-        Loaded="ServerInstallOptionsLoaded"
         ContentRendered="ServerInstallOptionsContentRendered"
+        Loaded="ServerInstallOptionsLoaded"
         Closing="ServerInstallOptionsClosing">
 
     <!-- Keep window animations -->
@@ -34,33 +34,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
-            <Storyboard x:Key="UnfocusPropertiesShow">
-                <DoubleAnimation Storyboard.TargetName="installServerFilesFade"
-                     Storyboard.TargetProperty="Opacity"
-                     From="0" To="1"
-                     Duration="0:0:0.1"
-                     AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="installServerFilesBlur"
-                     Storyboard.TargetProperty="Radius"
-                     From="0" To="15"
-                     Duration="0:0:0.1"
-                     AccelerationRatio="1"/>
-            </Storyboard>
-            <Storyboard x:Key="UnfocusPropertiesHide">
-                <DoubleAnimation Storyboard.TargetName="installServerFilesFade"
-                     Storyboard.TargetProperty="Opacity"
-                     From="1" To="0"
-                     Duration="0:0:0.1"
-                     AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="installServerFilesBlur"
-                     Storyboard.TargetProperty="Radius"
-                     From="15" To="0"
-                     Duration="0:0:0.1"
-                     AccelerationRatio="1"/>
-            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
 
@@ -78,14 +51,6 @@
             <Grid.Background>
                 <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
             </Grid.Background>
-
-            <!-- Settings blur on unfocus -->
-            <Grid.Effect>
-                <BlurEffect x:Name="installServerFilesBlur"
-                            Radius="0"
-                            KernelType="Gaussian"/>
-
-            </Grid.Effect>
 
             <!-- Grid for logo and exit button -->
             <Grid MouseLeftButtonDown="MoveServerInstallOptionsWindow"
@@ -286,12 +251,5 @@
                 </Border>
             </Border>
         </Grid>
-
-        <!-- Background fade on unfocus -->
-        <Rectangle x:Name="installServerFilesFade"
-                   MouseDown="InstallServerFilesFadeMouseDown"
-                   Fill="#40000000"
-                   IsHitTestVisible="False"
-                   Opacity="0"/>
     </Grid>
 </Window>

@@ -1,14 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Input;
-using System.IO.Compression;
 using System.Diagnostics;
-using System.Threading;
-using System.Reflection;
 using System.Windows.Controls;
 using H1EmuLauncher.Classes;
-using System.Windows.Media.Animation;
 
 namespace H1EmuLauncher
 {
@@ -24,17 +19,12 @@ namespace H1EmuLauncher
         public static string accountKeyArgument;
         public static bool openAccountKeyPage;
         public static SettingsWindow settingsInstance;
-        public Storyboard UnfocusPropertiesAnimationShow;
-        public Storyboard UnfocusPropertiesAnimationHide;
 
         public SettingsWindow()
         {
             InitializeComponent();
             settingsInstance = this;
             Owner = LauncherWindow.launcherInstance;
-
-            UnfocusPropertiesAnimationShow = FindResource("UnfocusPropertiesShow") as Storyboard;
-            UnfocusPropertiesAnimationHide = FindResource("UnfocusPropertiesHide") as Storyboard;
 
             // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Clear();
@@ -90,11 +80,6 @@ namespace H1EmuLauncher
             }
         }
 
-        public void SettingsWindowLoaded(object sender, RoutedEventArgs e)
-        {
-            LauncherWindow.launcherInstance.UnfocusPropertiesAnimationShow.Begin();
-        }
-
         private void SettingsWindowContentRendered(object sender, EventArgs e)
         {
             Top = (LauncherWindow.launcherInstance.Top + LauncherWindow.launcherInstance.Height / 2) - (Height / 2);
@@ -115,6 +100,11 @@ namespace H1EmuLauncher
             Close();
         }
 
+        private void SettingsLoaded(object sender, RoutedEventArgs e)
+        {
+            FocusEffects.BeginUnfocusAnimation(Owner);
+        }
+
         private void SettingsWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (IsVisible && SettingsPages.GameFiles.isExecutingTasks)
@@ -124,8 +114,8 @@ namespace H1EmuLauncher
                 return;
             }
 
-            LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
             settingsInstance = null;
+            FocusEffects.BeginFocusAnimation(Owner);
         }
     }
 }

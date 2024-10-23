@@ -62,9 +62,9 @@ namespace H1EmuLauncher
                     return cdnServers;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                Console.WriteLine("Failed to retrieve content server list: {0}", ex.Message);
+                Console.WriteLine("Failed to retrieve content server list: {0}", e.Message);
             }
 
             return null;

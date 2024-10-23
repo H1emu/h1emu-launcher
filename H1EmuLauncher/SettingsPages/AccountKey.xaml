@@ -58,11 +58,10 @@
                        HorizontalAlignment="Center">
 
                 <Hyperlink Click="UserProfileLinkClick"
-                           Foreground="FloralWhite"
-                           FontWeight="Bold">
+                           FontWeight="Bold"
+                           Style="{DynamicResource HyperLinkStyle}">
     
-                    <TextBlock x:Name="accountKeyHyperlink"
-                               Style="{DynamicResource HyperLinkStyle}"/>
+                    <TextBlock x:Name="accountKeyHyperlink"/>
     
                 </Hyperlink>
 

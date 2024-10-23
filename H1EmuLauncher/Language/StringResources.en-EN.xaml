@@ -63,10 +63,10 @@
     <system:String x:Key="item66">Unable to retrieve GitHub information:</system:String>
     <system:String x:Key="item67">Not Now</system:String>
     <system:String x:Key="item68">View files...</system:String>
-    <system:String x:Key="item69">• Game Version Not Detected •</system:String>
+    <system:String x:Key="item69">Game Version Not Detected</system:String>
     <system:String x:Key="item70">Detecting game version...</system:String>
     <system:String x:Key="item71">Game version detected: 15th January 2015.</system:String>
-    <system:String x:Key="item72">• Game Version Not Supported •</system:String>
+    <system:String x:Key="item72">Game Version Not Supported</system:String>
     <system:String x:Key="item73">Please wait for the current tasks to complete.</system:String>
     <system:String x:Key="item74">Game version detected: 22nd December 2016.</system:String>
     <system:String x:Key="item75">Directory</system:String>
@@ -82,13 +82,11 @@
     <system:String x:Key="item92">OK</system:String>
     <system:String x:Key="item95">There was an error installing the 2015 patch:</system:String>
     <system:String x:Key="item96">There was an error installing the 2016 patch:</system:String>
-    <system:String x:Key="item97">There was an error installing the KotK patch:</system:String>
     <system:String x:Key="item99">Unzipping patch files...</system:String>
     <system:String x:Key="item100">Deleting .zip file...</system:String>
     <system:String x:Key="item101">Done. (Elapsed time:</system:String>
     <system:String x:Key="item102">Patch files for game version 2015 have been installed.</system:String>
     <system:String x:Key="item103">Patch files for game version 2016 have been installed.</system:String>
-    <system:String x:Key="item104">Patch files for the KotK have been installed.</system:String>
     <system:String x:Key="item105">Installing latest server...</system:String>
     <system:String x:Key="item107">There was an error installing the latest server:</system:String>
     <system:String x:Key="item108">The latest server has been installed.</system:String>
@@ -101,9 +99,9 @@
     <system:String x:Key="item118">Unzipping node files...</system:String>
     <system:String x:Key="item120">Please close H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe is currently being used.\n\nPlease close any open instances of H1Z1.\n\nYou can use the button below to kill all processes of H1Z1.</system:String>
-    <system:String x:Key="item122">Current Game Version:</system:String>
+    <system:String x:Key="item122">Current Game Version: 2016</system:String>
     <system:String x:Key="item124">Launcher version</system:String>
-    <system:String x:Key="item125">H1Emu © 2024</system:String>
+    <system:String x:Key="item125">Copyright © 2024 | H1Emu Project</system:String>
     <system:String x:Key="item126">Lead Development</system:String>
     <system:String x:Key="item127">Developers</system:String>
     <system:String x:Key="item128">Administrators</system:String>
@@ -126,6 +124,7 @@
     <system:String x:Key="item145">Server IP...</system:String>
     <system:String x:Key="item146">Cannot delete this entry.</system:String>
     <system:String x:Key="item147">Are you sure you want to delete this server?</system:String>
+    <system:String x:Key="item148">Exception thrown.</system:String>
     <system:String x:Key="item149">Unzipping asset files...</system:String>
     <system:String x:Key="item150">PATCHING...</system:String>
     <system:String x:Key="item151">Server name or IP not valid.</system:String>

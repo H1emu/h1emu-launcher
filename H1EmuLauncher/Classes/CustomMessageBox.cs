@@ -1,6 +1,13 @@
-﻿using System.Media;
+﻿using System;
+using System.Media;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Forms;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Media.Effects;
+using static SteamKit2.Internal.CContentBuilder_CommitAppBuild_Request;
 
 namespace H1EmuLauncher.Classes
 {
@@ -40,14 +47,16 @@ namespace H1EmuLauncher.Classes
             return buttonPressed;
         }
 
-        public static MessageBoxResult ShowServerInstallOptions(string text, Window owner = null)
+        public static MessageBoxResult InstallServerInline(string text, Window owner = null)
         {
             buttonPressed = MessageBoxResult.OK;
-            ShowServerInstallOptions installServerFilesMessageBox = new();
+            InstallServerInline installServerFilesMessageBox = new();
             installServerFilesMessageBox.text.Text = text;
 
             if (owner != null && owner.IsVisible)
+            {
                 installServerFilesMessageBox.Owner = owner;
+            }
             else
                 installServerFilesMessageBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
@@ -58,53 +67,6 @@ namespace H1EmuLauncher.Classes
                 owner.Activate();
 
             return buttonPressed;
-        }
-
-        public static void AddServer(Window owner, string newServerName = null, string newServerIp = null)
-        {
-            buttonPressed = MessageBoxResult.OK;
-            AddServerWindow addServer = new();
-
-            if (owner != null)
-                addServer.Owner = owner;
-            else
-                addServer.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-            if (!string.IsNullOrEmpty(newServerName) || !string.IsNullOrEmpty(newServerIp))
-            {
-                addServer.serverNameBox.Text = newServerName;
-                addServer.serverIpBox.Text = newServerIp;
-                addServer.serverNameHint.Visibility = Visibility.Hidden;
-                addServer.serverIpHint.Visibility = Visibility.Hidden;
-            }
-
-            addServer.Show();
-            LauncherWindow.launcherInstance.launcherFade.IsHitTestVisible = true;
-        }
-
-        public static void EditServer(Window owner, int editIndex, string newServerName = null, string newServerIp = null)
-        {
-            buttonPressed = MessageBoxResult.OK;
-            AddServerWindow editServer = new();
-
-            if (owner != null)
-                editServer.Owner = owner;
-            else
-                editServer.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-
-            if (!string.IsNullOrEmpty(newServerName) || !string.IsNullOrEmpty(newServerIp))
-            {
-                editServer.serverNameBox.Text = newServerName;
-                editServer.serverIpBox.Text = newServerIp;
-                editServer.serverNameHint.Visibility = Visibility.Hidden;
-                editServer.serverIpHint.Visibility = Visibility.Hidden;
-            }
-
-            editServer.saveServerButton.Content = LauncherWindow.launcherInstance.FindResource("item213").ToString();
-            editServer.editIndex = editIndex;
-
-            editServer.Show();
-            LauncherWindow.launcherInstance.launcherFade.IsHitTestVisible = true;
         }
     }
 }

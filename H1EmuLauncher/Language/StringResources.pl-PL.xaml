@@ -63,10 +63,10 @@
     <system:String x:Key="item66">Nie można pobrać informacji z GitHub:</system:String>
     <system:String x:Key="item67">Nie teraz</system:String>
     <system:String x:Key="item68">Obejrzyj pliki...</system:String>
-    <system:String x:Key="item69">• Nie wykryto wersji gry •</system:String>
+    <system:String x:Key="item69">Nie wykryto wersji gry</system:String>
     <system:String x:Key="item70">Wykrywanie wersji gry...</system:String>
     <system:String x:Key="item71">Wersja gry wykryta: 15 Styczeń 2015.</system:String>
-    <system:String x:Key="item72">• Nie wspierana wersja gry •</system:String>
+    <system:String x:Key="item72">Nie wspierana wersja gry</system:String>
     <system:String x:Key="item73">Poczekaj na zakończenie bieżącego zadania.</system:String>
     <system:String x:Key="item74">Wersja gry wykryta: 22 Grudzień 2016.</system:String>
     <system:String x:Key="item75">Ścieżka</system:String>
@@ -82,13 +82,11 @@
     <system:String x:Key="item92">OK</system:String>
     <system:String x:Key="item95">Wystąpił błąd podczas instalacji patcha dla wersji 2015:</system:String>
     <system:String x:Key="item96">Wystąpił błąd podczas instalacji patcha dla wersji 2016:</system:String>
-    <system:String x:Key="item97">Wystąpił błąd podczas instalacji patcha dla wersji KotK:</system:String>
     <system:String x:Key="item99">Rozpakowywanie plików...</system:String>
     <system:String x:Key="item100">Usuwanie pliku .zip...</system:String>
     <system:String x:Key="item101">Zakończono. (Czas:</system:String>
     <system:String x:Key="item102">Zainstalowano patch dla wersji 2015.</system:String>
     <system:String x:Key="item103">Zainstalowano patch dla wersji 2016.</system:String>
-    <system:String x:Key="item104">Pliki poprawek dla KotK zostały zainstalowane.</system:String>
     <system:String x:Key="item105">Instalowanie najnowszej wersji serwera...</system:String>
     <system:String x:Key="item107">Wystąpił bład podczas instalacji plików serwera:</system:String>
     <system:String x:Key="item108">Zainstalowano najnowszą wersję serwera.</system:String>
@@ -101,9 +99,9 @@
     <system:String x:Key="item118">Rozpakowywanie plików node...</system:String>
     <system:String x:Key="item120">Prosze zamknij H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe jest aktualnie uruchomiony.\n\nZamknij wszystkie otwarte instancje H1Z1.\n\nMożesz użyć poniższego przycisku, aby zabić wszystkie procesy H1Z1.</system:String>
-    <system:String x:Key="item122">Aktualna wersja gry:</system:String>
+    <system:String x:Key="item122">Aktualna wersja gry: 2016</system:String>
     <system:String x:Key="item124">Wersja launchera</system:String>
-    <system:String x:Key="item125">H1Emu © 2024</system:String>
+    <system:String x:Key="item125">Prawa autorskie © 2024 | Projekt H1Emu</system:String>
     <system:String x:Key="item126">Lead Development</system:String>
     <system:String x:Key="item127">Deweloperzy</system:String>
     <system:String x:Key="item128">Administrators</system:String>
@@ -126,6 +124,7 @@
     <system:String x:Key="item145">IP serwera...</system:String>
     <system:String x:Key="item146">Nie można tego usunąć.</system:String>
     <system:String x:Key="item147">Czy jesteś pewien, że chcesz usunąć ten serwer?</system:String>
+    <system:String x:Key="item148">Wystąpił błąd.</system:String>
     <system:String x:Key="item149">Rozpakowywanie asseów...</system:String>
     <system:String x:Key="item150">PATCHOWANIE...</system:String>
     <system:String x:Key="item151">Nazwa serwera lub IP nieprawidłowe.</system:String>

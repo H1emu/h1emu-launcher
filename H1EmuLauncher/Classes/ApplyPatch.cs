@@ -14,22 +14,20 @@ namespace H1EmuLauncher.Classes
 
         public static void CheckPatch()
         {
-            if (Properties.Settings.Default.gameVersionString == "kotk" && Properties.Settings.Default.currentPatchVersionKotK != latestPatchVersion ||
-                        Properties.Settings.Default.gameVersionString == "22dec2016" && Properties.Settings.Default.currentPatchVersion2016 != latestPatchVersion ||
-                        Properties.Settings.Default.gameVersionString == "22dec2016" && Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye") ||
-                        Properties.Settings.Default.gameVersionString == "22dec2016" && !File.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack") ||
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
-                        !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
+            if (Properties.Settings.Default.gameVersionString == "22dec2016" && Properties.Settings.Default.currentPatchVersion2016 != latestPatchVersion ||
+                Properties.Settings.Default.gameVersionString == "22dec2016" && Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye") ||
+                Properties.Settings.Default.gameVersionString == "22dec2016" && !File.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack") ||
+                !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
+                !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
+                !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
+                !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
+                !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
             {
                 Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
                     LauncherWindow.launcherInstance.playButton.IsEnabled = false;
 
-                    if (Properties.Settings.Default.gameVersionString == "22dec2016" && string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersion2016) ||
-                        Properties.Settings.Default.gameVersionString == "kotk" && string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersionKotK))
+                    if (Properties.Settings.Default.gameVersionString == "22dec2016" && string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersion2016))
                         LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item150").ToString();
                     else
                         LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item188").ToString();
@@ -73,12 +71,6 @@ namespace H1EmuLauncher.Classes
                     Bitmap fairPlayLogo = new Bitmap(Properties.Resources.logo);
                     fairPlayLogo.Save($"{Properties.Settings.Default.activeDirectory}\\logo.bmp", ImageFormat.Bmp);
                 }
-                else if (Properties.Settings.Default.gameVersionString == "kotk")
-                {
-                    // Extract main game patch
-                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", Properties.Resources.Game_Patch_KotK);
-                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip", $"{Properties.Settings.Default.activeDirectory}", true);
-                }
 
                 // Delete BattlEye folder to prevent Steam from trying to launch the game
                 if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
@@ -90,7 +82,6 @@ namespace H1EmuLauncher.Classes
                 // Delete the .zip file, not needed anymore
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1Emu_Voice_Patch.zip");
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_KotK.zip");
             }
             catch (Exception e)
             {
@@ -98,16 +89,13 @@ namespace H1EmuLauncher.Classes
                 {
                     if (Properties.Settings.Default.gameVersionString == "22dec2016")
                         CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item96")}\n\n{e.Message}", LauncherWindow.launcherInstance);
-                    else if (Properties.Settings.Default.gameVersionString == "kotk")
-                        CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item97")}\n\n{e.Message}", LauncherWindow.launcherInstance);
                 }));
+                return;
             }
 
             // Finish
             if (Properties.Settings.Default.gameVersionString == "22dec2016")
                 Properties.Settings.Default.currentPatchVersion2016 = latestPatchVersion;
-            else if (Properties.Settings.Default.gameVersionString == "kotk")
-                Properties.Settings.Default.currentPatchVersionKotK = latestPatchVersion;
 
             Properties.Settings.Default.Save();
         }

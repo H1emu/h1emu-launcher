@@ -63,10 +63,10 @@
     <system:String x:Key="item66">未能获取GitHub信息：</system:String>
     <system:String x:Key="item67">暂不更新</system:String>
     <system:String x:Key="item68">打开游戏目录</system:String>
-    <system:String x:Key="item69">• 未检测到游戏版本 •</system:String>
+    <system:String x:Key="item69">未检测到游戏版本</system:String>
     <system:String x:Key="item70">正在检测游戏版本...</system:String>
     <system:String x:Key="item71">检测到游戏版本：2015年1月15日。</system:String>
-    <system:String x:Key="item72">• 不支持的游戏版本 •</system:String>
+    <system:String x:Key="item72">不支持的游戏版本</system:String>
     <system:String x:Key="item73">请耐心等待当前任务完成。</system:String>
     <system:String x:Key="item74">检测到游戏版本：2016年12月22日。</system:String>
     <system:String x:Key="item75">请正确选择H1Z1.exe文件所在的目录</system:String>
@@ -82,13 +82,11 @@
     <system:String x:Key="item92">确定</system:String>
     <system:String x:Key="item95">安装2015版本的补丁文件出错：</system:String>
     <system:String x:Key="item96">安装2016版本的补丁文件出错：</system:String>
-    <system:String x:Key="item97">安装KotK版本的补丁文件出错：</system:String>
     <system:String x:Key="item99">正在解压文件...</system:String>
     <system:String x:Key="item100">正在删除压缩文件...</system:String>
     <system:String x:Key="item101">完成。 (运行时间：</system:String>
     <system:String x:Key="item102">游戏2015版本的补丁文件已经安装完成。</system:String>
     <system:String x:Key="item103">游戏2016版本的补丁文件已经安装完成。</system:String>
-    <system:String x:Key="item104">KotK的补丁文件已安装。</system:String>
     <system:String x:Key="item105">正在安装最新版单机服务器...</system:String>
     <system:String x:Key="item107">安装最新版的单机服务器出错：</system:String>
     <system:String x:Key="item108">已经完成最新版单机服务器的安装。</system:String>
@@ -101,9 +99,9 @@
     <system:String x:Key="item118">正在解压服务器运行环境...</system:String>
     <system:String x:Key="item120">请关闭已经启动的H1Z1游戏。</system:String>
     <system:String x:Key="item121">H1Z1游戏已经启动。\n\n请关闭所有打开的 H1Z1 实例。\n\n您可以使用下面的按钮来杀死 H1Z1 的所有进程。</system:String>
-    <system:String x:Key="item122">当前游戏版本：</system:String>
+    <system:String x:Key="item122">当前游戏版本： 2016</system:String>
     <system:String x:Key="item124">启动器版本</system:String>
-    <system:String x:Key="item125">H1Emu © 2024</system:String>
+    <system:String x:Key="item125">版权所有 © 2024 | H1Emu项目</system:String>
     <system:String x:Key="item126">领导开发</system:String>
     <system:String x:Key="item127">开发商</system:String>
     <system:String x:Key="item128">管理员</system:String>
@@ -126,6 +124,7 @@
     <system:String x:Key="item145">服务器IP地址...</system:String>
     <system:String x:Key="item146">无法删除此服务器。</system:String>
     <system:String x:Key="item147">确认要删除这个服务器吗？</system:String>
+    <system:String x:Key="item148">运行异常。</system:String>
     <system:String x:Key="item149">正在解压资源文件...</system:String>
     <system:String x:Key="item150">正在安装补丁...</system:String>
     <system:String x:Key="item151">无效的服务器名字或者IP地址。</system:String>

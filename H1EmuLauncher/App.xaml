@@ -26,24 +26,63 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style x:Key="HyperLinkStyle" TargetType="TextBlock">
+            <Style x:Key="HyperLinkStyle" TargetType="Hyperlink">
+                <Setter Property="Foreground" Value="FloralWhite"/>
                 <Style.Triggers>
-                    <Trigger Property="IsEnabled" Value="False">
-                        <Setter Property="Foreground" Value="DarkGray"/>
-                    </Trigger>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Foreground" Value="LightGray"/>
-                    </Trigger>
-                </Style.Triggers>
-            </Style>
-            <Style x:Key="HyperLinkStyleRun" TargetType="Run">
-                <Style.Triggers>
-                    <Trigger Property="IsEnabled" Value="False">
-                        <Setter Property="Foreground" Value="DarkGray"/>
-                    </Trigger>
-                    <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Foreground" Value="LightGray"/>
-                    </Trigger>
+                    <EventTrigger RoutedEvent="MouseEnter">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Hyperlink.Foreground).(SolidColorBrush.Color)"
+                                                To="LightGray"
+                                                Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="MouseLeave">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Hyperlink.Foreground).(SolidColorBrush.Color)"
+                                                To="FloralWhite"
+                                                Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Hyperlink.Foreground).(SolidColorBrush.Color)"
+                                                To="DarkGray"
+                                                Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Hyperlink.Foreground).(SolidColorBrush.Color)"
+                                                To="LightGray"
+                                                Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="PreviewMouseRightButtonDown">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Hyperlink.Foreground).(SolidColorBrush.Color)"
+                                                To="DarkGray"
+                                                Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="PreviewMouseRightButtonUp">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="(Hyperlink.Foreground).(SolidColorBrush.Color)"
+                                                To="LightGray"
+                                                Duration="0:0:0.1"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
                 </Style.Triggers>
             </Style>
             <Style TargetType="{x:Type TabItem}" x:Key="TabItemStyleFirst">
@@ -1341,6 +1380,91 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <ImageBrush x:Key="SettingsButtonStyle.Static.Background" ImageSource="Resources\ToolbarButton.png"/>
+            <Style x:Key="SettingsButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+                <Setter Property="Background" Value="{StaticResource SettingsButtonStyle.Static.Background}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    SnapsToDevicePixels="True">
+
+                                <Border>
+                                    <Grid>
+                                        <Border x:Name="buttonFade" Background="Black" Opacity="0"/>
+
+                                        <ContentPresenter x:Name="contentPresenter"
+                                                          Margin="{TemplateBinding Padding}"
+                                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                          Focusable="False"
+                                                          RecognizesAccessKey="True"
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    </Grid>
+
+                                    <Border.Background>
+                                        <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                                    </Border.Background>
+                                </Border>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="buttonFade" Property="Opacity" Value="0.2"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard FillBehavior="Stop">
+                                                <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 From="0" To="0.2"
+                                                                 Duration="0:0:0.1"
+                                                                 AccelerationRatio="1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard FillBehavior="Stop">
+                                                <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 From="0.2" To="0"
+                                                                 Duration="0:0:0.1"
+                                                                 AccelerationRatio="1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="buttonFade" Property="Opacity" Value="0.4"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard FillBehavior="Stop">
+                                                <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 From="0.2" To="0.4"
+                                                                 Duration="0:0:0.1"
+                                                                 AccelerationRatio="1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="buttonFade" Property="Opacity" Value="0.5"/>
+                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="Gray"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <ImageBrush x:Key="MinimiseToSystemTray.Static.Background" ImageSource="Resources\MinimiseToSystemTray.png"/>
             <Style x:Key="MinimiseToSystemTrayButtonStyle" TargetType="{x:Type Button}">
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
@@ -1648,8 +1772,6 @@
             <SolidColorBrush x:Key="UserBox.Static.Border" Color="#DB111C"/>
             <SolidColorBrush x:Key="UserBox.Static.Background" Color="#FF2A2A32"/>
             <SolidColorBrush x:Key="UserBox.Static.Foreground" Color="FloralWhite"/>
-            <SolidColorBrush x:Key="UserBox.MouseOver.Border" Color="#DB111C"/>
-            <SolidColorBrush x:Key="UserBox.Focus.Border" Color="Red"/>
             <VisualBrush
             x:Key="CueBannerBrush"
             AlignmentX="Left"
@@ -1695,12 +1817,6 @@
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter TargetName="border" Property="Opacity" Value="0.56"/>
                                 </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource UserBox.MouseOver.Border}"/>
-                                </Trigger>
-                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource UserBox.Focus.Border}"/>
-                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
@@ -1718,8 +1834,6 @@
             <SolidColorBrush x:Key="PassBox.Static.Border" Color="#DB111C"/>
             <SolidColorBrush x:Key="PassBox.Static.Background" Color="#FF2A2A32"/>
             <SolidColorBrush x:Key="PassBox.Static.Foreground" Color="FloralWhite"/>
-            <SolidColorBrush x:Key="PassBox.MouseOver.Border" Color="#DB111C"/>
-            <SolidColorBrush x:Key="PassBox.Focus.Border" Color="Red"/>
             <Style x:Key="PasswordBoxStyle" TargetType="{x:Type PasswordBox}">
                 <Setter Property="PasswordChar" Value="*"/>
                 <Setter Property="Background" Value="{StaticResource PassBox.Static.Background}"/>
@@ -1756,12 +1870,6 @@
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter TargetName="border" Property="Opacity" Value="0.56"/>
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PassBox.MouseOver.Border}"/>
-                                </Trigger>
-                                <Trigger Property="IsKeyboardFocused" Value="True">
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PassBox.Focus.Border}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

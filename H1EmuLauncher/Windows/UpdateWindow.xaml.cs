@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -138,7 +137,7 @@ namespace H1EmuLauncher
                         throw new Exception($"{char.ToUpper(result.ReasonPhrase.First())}{result.ReasonPhrase.Substring(1)}");
 
                     Stream contentStream = result.Content.ReadAsStream();
-                    FileStream fs = new FileStream($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, false);
+                    FileStream fs = new($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{downloadFileName}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, false);
 
                     Dispatcher.Invoke(new Action(delegate
                     {
@@ -187,15 +186,15 @@ namespace H1EmuLauncher
                     contentStream.Close();
                     fs.Close();
                 }
-                catch (AggregateException ex)
+                catch (AggregateException e)
                 {
                     string exceptionList = string.Empty;
-                    foreach (Exception exception in ex.InnerExceptions)
+                    foreach (Exception exception in e.InnerExceptions)
                         exceptionList += $"\n\n{exception.GetType().Name}: {exception.Message}";
 
-                    if (ex.InnerException is HttpRequestException er)
+                    if (e.InnerException is HttpRequestException ex)
                     {
-                        if (er.StatusCode == null)
+                        if (ex.StatusCode == null)
                             exceptionList += $"\n\n{FindResource("item137")}";
                     }
 
@@ -206,11 +205,11 @@ namespace H1EmuLauncher
 
                     return;
                 }
-                catch (Exception es)
+                catch (Exception exc)
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"{FindResource("item80")} \"{es.Message}\".\n\n{FindResource("item64")} \"{es.StackTrace.Trim()}\".", this);
+                        CustomMessageBox.Show($"{FindResource("item80")} \"{exc.Message}\".\n\n{FindResource("item64")} \"{exc.StackTrace.Trim()}\".", this);
                     }));
 
                     return;
@@ -233,9 +232,6 @@ namespace H1EmuLauncher
 
                     return;
                 }
-
-                Environment.Exit(0);
-
             }).Start();
         }
 

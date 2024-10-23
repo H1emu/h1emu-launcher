@@ -2,7 +2,6 @@
 using System.Media;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using H1EmuLauncher.Classes;
 

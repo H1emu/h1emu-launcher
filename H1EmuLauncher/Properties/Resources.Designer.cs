@@ -123,6 +123,16 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _7 {
+            get {
+                object obj = ResourceManager.GetObject("_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AccountKey {
             get {
                 object obj = ResourceManager.GetObject("AccountKey", resourceCulture);
@@ -167,6 +177,16 @@ namespace H1EmuLauncher.Properties {
             get {
                 object obj = ResourceManager.GetObject("Assets_256", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BackgroundArt {
+            get {
+                object obj = ResourceManager.GetObject("BackgroundArt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -286,16 +306,6 @@ namespace H1EmuLauncher.Properties {
         internal static byte[] Game_Patch_2016 {
             get {
                 object obj = ResourceManager.GetObject("Game_Patch_2016", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Game_Patch_KotK {
-            get {
-                object obj = ResourceManager.GetObject("Game_Patch_KotK", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -846,6 +856,16 @@ namespace H1EmuLauncher.Properties {
         internal static string StringResources_zh_CN {
             get {
                 return ResourceManager.GetString("StringResources_zh_CN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ToolbarButton {
+            get {
+                object obj = ResourceManager.GetObject("ToolbarButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

@@ -63,10 +63,10 @@
     <system:String x:Key="item66">GitHub Bilgisi alınamadı:</system:String>
     <system:String x:Key="item67">Şimdi değil</system:String>
     <system:String x:Key="item68">Dosyaları göster...</system:String>
-    <system:String x:Key="item69">• Oyun versiyonu tanımlanamadı •</system:String>
+    <system:String x:Key="item69">Oyun versiyonu tanımlanamadı</system:String>
     <system:String x:Key="item70">Oyun versiyonu tanımlanıyor...</system:String>
     <system:String x:Key="item71">Oyun versiyonu: 15 Ocak 2015.</system:String>
-    <system:String x:Key="item72">• Oyun versiyonu desteklenmiyor •</system:String>
+    <system:String x:Key="item72">Oyun versiyonu desteklenmiyor</system:String>
     <system:String x:Key="item73">Mevcut işlemler tamamlanırken lütfen bekleyin.</system:String>
     <system:String x:Key="item74">Oyun versiyonu: 22 Aralık 2016.</system:String>
     <system:String x:Key="item75">Klasör</system:String>
@@ -82,13 +82,11 @@
     <system:String x:Key="item92">Tamam</system:String>
     <system:String x:Key="item95">2015 yaması yüklenirken hata oluştu:</system:String>
     <system:String x:Key="item96">2016 yaması yüklenirken hata oluştu:</system:String>
-    <system:String x:Key="item97">KotK yaması yüklenirken hata oluştu:</system:String>
     <system:String x:Key="item99">Yama dosyası açılıyor...</system:String>
     <system:String x:Key="item100">.zip dosyası siliniyor...</system:String>
     <system:String x:Key="item101">Tamamlandı. (Süre:</system:String>
     <system:String x:Key="item102">Oyun versiyonu 2015 için yama dosyası yüklendi.</system:String>
     <system:String x:Key="item103">Oyun versiyonu 2016 için yama dosyası yüklendi.</system:String>
-    <system:String x:Key="item104">KotK için yama dosyaları yüklenmiştir.</system:String>
     <system:String x:Key="item105">Son sunucular yükleniyor...</system:String>
     <system:String x:Key="item107">Son sunucular yüklenirken hata oluştu:</system:String>
     <system:String x:Key="item108">Son sunucular yüklendi.</system:String>
@@ -101,9 +99,9 @@
     <system:String x:Key="item118">Node dosyaları açılıyor...</system:String>
     <system:String x:Key="item120">Lütfen H1Z1'i kapatın.</system:String>
     <system:String x:Key="item121">H1Z1.exe şu anda kullanımda.\n\nLütfen açık H1Z1 örneklerini kapatın.\n\nH1Z1'in tüm işlemlerini sonlandırmak için aşağıdaki butonu kullanabilirsiniz.</system:String>
-    <system:String x:Key="item122">Mevcut oyun versiyonu:</system:String>
+    <system:String x:Key="item122">Mevcut oyun versiyonu: 2016</system:String>
     <system:String x:Key="item124">Başlatıcı versiyonu</system:String>
-    <system:String x:Key="item125">H1Emu © 2024</system:String>
+    <system:String x:Key="item125">Telif Hakkı © 2024 | H1Emu Projesi</system:String>
     <system:String x:Key="item126">Ana Geliştirici</system:String>
     <system:String x:Key="item127">Geliştiriciler</system:String>
     <system:String x:Key="item128">Yöneticiler</system:String>
@@ -126,6 +124,7 @@
     <system:String x:Key="item145">Sunucu IP...</system:String>
     <system:String x:Key="item146">Bu girdi silinemiyor.</system:String>
     <system:String x:Key="item147">Bu sunucuyu silmek istediğinize emin misiniz?</system:String>
+    <system:String x:Key="item148">Olağandışı Durum.</system:String>
     <system:String x:Key="item149">Paket dosyası açılıyor...</system:String>
     <system:String x:Key="item150">YAMA UYGULANIYOR...</system:String>
     <system:String x:Key="item151">Sunucu adı veya IP geçerli değil.</system:String>

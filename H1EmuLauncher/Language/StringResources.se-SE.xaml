@@ -63,10 +63,10 @@
     <system:String x:Key="item66">Det går inte att hämta GitHub-informationen:</system:String>
     <system:String x:Key="item67">Inte nu</system:String>
     <system:String x:Key="item68">Visa filer...</system:String>
-    <system:String x:Key="item69">• Spelversionen hittades inte •</system:String>
+    <system:String x:Key="item69">Spelversionen hittades inte</system:String>
     <system:String x:Key="item70">Söker efter spelversionen...</system:String>
     <system:String x:Key="item71">Spelversion hittad: 15 Januari 2015.</system:String>
-    <system:String x:Key="item72">• Spelversionen stöds inte •</system:String>
+    <system:String x:Key="item72">Spelversionen stöds inte</system:String>
     <system:String x:Key="item73">Var god vänta medans nuvarande uppdrag blir klara.</system:String>
     <system:String x:Key="item74">Spelversion hittad: 22 December 2016.</system:String>
     <system:String x:Key="item75">Katalog</system:String>
@@ -82,13 +82,11 @@
     <system:String x:Key="item92">OK</system:String>
     <system:String x:Key="item95">Det uppstod ett fel när du skulle installera 2015 patchen:</system:String>
     <system:String x:Key="item96">Det uppstod ett fel när du skulle installera 2016 patchen:</system:String>
-    <system:String x:Key="item97">Det uppstod ett fel när du skulle installera KotK patchen:</system:String>
     <system:String x:Key="item99">Packar upp patchfiler...</system:String>
     <system:String x:Key="item100">Raderar .zip filen...</system:String>
     <system:String x:Key="item101">Klar. (Det tog:</system:String>
     <system:String x:Key="item102">Patch-filerna för spelversionen 2015 har blivit installerat.</system:String>
     <system:String x:Key="item103">Patch-filerna för spelversionen 2016 har blivit installerat.</system:String>
-    <system:String x:Key="item104">Patchfiler för KotK har installerats.</system:String>
     <system:String x:Key="item105">Installerar den senaste servern...</system:String>
     <system:String x:Key="item107">Det uppstod ett fel när den senaste servern skulle installeras:</system:String>
     <system:String x:Key="item108">Den senaste servern har installerats.</system:String>
@@ -101,9 +99,9 @@
     <system:String x:Key="item118">Packar upp anslutningsfiler...</system:String>
     <system:String x:Key="item120">Var god stäng H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe används för närvarande.\n\nStäng alla öppna program utav H1Z1.\n\nDu kan använda knappen nedan för att döda alla processer i H1Z1.</system:String>
-    <system:String x:Key="item122">Aktuell spelversion:</system:String>
+    <system:String x:Key="item122">Aktuell spelversion: 2016</system:String>
     <system:String x:Key="item124">Launcher version</system:String>
-    <system:String x:Key="item125">H1Emu © 2024</system:String>
+    <system:String x:Key="item125">Copyright © 2024 | H1Emu-projektet</system:String>
     <system:String x:Key="item126">Ledande Utvecklare</system:String>
     <system:String x:Key="item127">Utvecklare</system:String>
     <system:String x:Key="item128">Administratörer</system:String>
@@ -126,6 +124,7 @@
     <system:String x:Key="item145">Server IP...</system:String>
     <system:String x:Key="item146">Det går inte att ta bort denna post.</system:String>
     <system:String x:Key="item147">Är du säker på att du vill ta bort den här servern?</system:String>
+    <system:String x:Key="item148">Undantag raderad.</system:String>
     <system:String x:Key="item149">Packar upp filerna...</system:String>
     <system:String x:Key="item150">PATCHAR...</system:String>
     <system:String x:Key="item151">Servernamn eller IP är inte giltigt.</system:String>

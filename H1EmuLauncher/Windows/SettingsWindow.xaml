@@ -17,7 +17,7 @@
         FontFamily="Bahnschrift Light"
         FontSize="16"
         Foreground="FloralWhite"
-        Loaded="SettingsWindowLoaded"
+        Loaded="SettingsLoaded"
         ContentRendered="SettingsWindowContentRendered"
         Closing="SettingsWindowClosing">
 
@@ -33,39 +33,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
-            <Storyboard x:Key="UnfocusPropertiesShow">
-                <DoubleAnimation Storyboard.TargetName="settingsFade"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="0" To="1"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="settingsBlur"
-                                 Storyboard.TargetProperty="Radius"
-                                 From="0" To="15"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-            </Storyboard>
-            <Storyboard x:Key="UnfocusPropertiesHide">
-                <DoubleAnimation Storyboard.TargetName="settingsFade"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="settingsBlur"
-                                 Storyboard.TargetProperty="Radius"
-                                 From="15" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
 
     <!-- Window grid -->
     <Grid Background="#FF2A2A32">
-        
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -77,14 +50,6 @@
             <Grid.Background>
                 <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
             </Grid.Background>
-
-            <!-- Settings blur on unfocus -->
-            <Grid.Effect>
-                <BlurEffect x:Name="settingsBlur"
-                            Radius="0"
-                            KernelType="Gaussian"/>
-                
-            </Grid.Effect>
 
             <!-- Grid for logo and exit button -->
             <Grid MouseLeftButtonDown="MoveSettingsWindow"
@@ -188,12 +153,5 @@
                 </TabControl.Effect>
             </TabControl>
         </Grid>
-
-        <!-- Background fade on unfocus -->
-        <Rectangle x:Name="settingsFade"
-                   Fill="#40000000"
-                   IsHitTestVisible="False"
-                   Opacity="0"
-                   Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

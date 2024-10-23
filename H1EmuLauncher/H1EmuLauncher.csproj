@@ -7,10 +7,10 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>3.0.7</FileVersion>
+	  <FileVersion>3.0.8</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>3.0.7</Version>
+	  <Version>3.0.8</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>3.0.7</AssemblyVersion>
+	  <AssemblyVersion>3.0.8</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,10 +36,12 @@
     <None Remove="Resources\4.jpg" />
     <None Remove="Resources\5.jpg" />
     <None Remove="Resources\6.jpg" />
+    <None Remove="Resources\7.jpg" />
     <None Remove="Resources\AccountKey.png" />
     <None Remove="Resources\Arrow_Hover.png" />
     <None Remove="Resources\Arrow_Pressed.png" />
     <None Remove="Resources\Assets_256.pack" />
+    <None Remove="Resources\BackgroundArt.png" />
     <None Remove="Resources\Copy.png" />
     <None Remove="Resources\CustomClientConfig.ini" />
     <None Remove="Resources\Delete.png" />
@@ -55,7 +57,6 @@
     <None Remove="Resources\Game-Patch-2016.zip" />
     <None Remove="Resources\Game-Patch-KotK.zip" />
     <None Remove="Resources\Game_Patch_2016.zip" />
-    <None Remove="Resources\Game_Patch_KotK.zip" />
     <None Remove="Resources\Grain.png" />
     <None Remove="Resources\H1EmuIcon.png" />
     <None Remove="Resources\H1EmuLogo.png" />
@@ -95,6 +96,7 @@
     <None Remove="Resources\StandardButton.png" />
     <None Remove="Resources\StandardButton_Hover.png" />
     <None Remove="Resources\StandardButton_Pressed.png" />
+    <None Remove="Resources\ToolbarButton.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -167,6 +169,9 @@
     <Resource Include="Resources\6.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\7.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -180,6 +185,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Assets_256.pack">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\BackgroundArt.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Copy.png">
@@ -216,9 +224,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Game_Patch_2016.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Game_Patch_KotK.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Grain.png">
@@ -318,6 +323,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\StandardButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\ToolbarButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

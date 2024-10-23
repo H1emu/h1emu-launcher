@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using H1EmuLauncher.Classes;
-using Windows.ApplicationModel.Activation;
 
 namespace H1EmuLauncher
 {
     public partial class AddServerWindow : Window
     {
         public static AddServerWindow addServerInstance;
-        public Storyboard UnfocusPropertiesAnimationShow;
-        public Storyboard UnfocusPropertiesAnimationHide;
         public int editIndex;
 
         public AddServerWindow()
@@ -26,9 +21,6 @@ namespace H1EmuLauncher
             InitializeComponent();
             addServerInstance = this;
             Owner = LauncherWindow.launcherInstance;
-
-            UnfocusPropertiesAnimationShow = FindResource("UnfocusPropertiesShow") as Storyboard;
-            UnfocusPropertiesAnimationHide = FindResource("UnfocusPropertiesHide") as Storyboard;
 
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Clear();
@@ -93,6 +85,7 @@ namespace H1EmuLauncher
 
             try
             {
+                // Save the new custom server to the custom servers file list
                 currentJson.Add(new LauncherWindow.ServerList()
                 {
                     CustomServerName = serverNameBox.Text.Trim(),
@@ -107,41 +100,51 @@ namespace H1EmuLauncher
                 newItem.Style = (Style)FindResource("ComboBoxItemStyle");
                 newItem.PreviewMouseRightButtonUp += LauncherWindow.launcherInstance.ItemRightMouseButtonUp;
 
-                ContextMenu deleteMenu = new ContextMenu();
-                deleteMenu.Style = (Style)FindResource("ContextMenuStyle");
-                newItem.ContextMenu = deleteMenu;
+                ContextMenu newItemContextMenu = new()
+                {
+                    Style = (Style)FindResource("ContextMenuStyle")
+                };
+                newItem.ContextMenu = newItemContextMenu;
 
-                MenuItem editOption = new MenuItem();
-                editOption.Style = (Style)FindResource("CustomMenuItem");
-                editOption.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Edit.png", UriKind.Absolute)) };
+                MenuItem editOption = new()
+                {
+                    Style = (Style)FindResource("CustomMenuItem"),
+                    Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Edit.png", UriKind.Absolute)) }
+                };
                 editOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item212");
                 editOption.Click += LauncherWindow.launcherInstance.EditServerInfo;
 
-                MenuItem deleteOption = new MenuItem();
-                deleteOption.Style = (Style)FindResource("CustomMenuItem");
-                deleteOption.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) };
+                MenuItem deleteOption = new()
+                {
+                    Style = (Style)FindResource("CustomMenuItem"),
+                    Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) }
+                };
                 deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
                 deleteOption.Click += LauncherWindow.launcherInstance.DeleteServerFromList;
-                deleteMenu.Items.Add(deleteOption);
+                newItemContextMenu.Items.Add(editOption);
+                newItemContextMenu.Items.Add(deleteOption);
 
                 int insertIndex = LauncherWindow.launcherInstance.serverSelector.Items.Count - 1;
                 if (LauncherWindow.launcherInstance.serverSelector.Items.Count > 5)
                     insertIndex--;
 
                 LauncherWindow.launcherInstance.serverSelector.Items.Insert(insertIndex, newItem);
-                LauncherWindow.launcherInstance.serverSelector.SelectedIndex = insertIndex;
 
                 if (LauncherWindow.launcherInstance.serverSelector.Items.Count == 5)
                 {
-                    Separator separator = new();
-                    separator.Style = (Style)FindResource("SeparatorMenuItem");
-                    separator.Background = new SolidColorBrush(Color.FromRgb(66, 66, 66));
+                    Separator separator = new()
+                    {
+                        Style = (Style)FindResource("SeparatorMenuItem"),
+                        Background = new SolidColorBrush(Color.FromRgb(66, 66, 66))
+                    };
                     LauncherWindow.launcherInstance.serverSelector.Items.Insert(LauncherWindow.launcherInstance.serverSelector.Items.Count - 1, separator);
                 }
+
+                LauncherWindow.launcherInstance.serverSelector.SelectedIndex = insertIndex;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
+                CustomMessageBox.Show($"{FindResource("item142")} {e.Message}", this);
             }
 
             Topmost = true;
@@ -190,9 +193,9 @@ namespace H1EmuLauncher
                 ComboBoxItem comboBoxItem = (ComboBoxItem)LauncherWindow.launcherInstance.serverSelector.Items[editIndex + 3];
                 comboBoxItem.Content = serverNameBox.Text.Trim();
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
+                CustomMessageBox.Show($"{FindResource("item142")} {e.Message}", this);
             }
 
             Topmost = true;
@@ -227,11 +230,6 @@ namespace H1EmuLauncher
                 serverIpHint.Visibility = Visibility.Visible;
         }
 
-        private void AddServerLoaded(object sender, RoutedEventArgs e)
-        {
-            LauncherWindow.launcherInstance.UnfocusPropertiesAnimationShow.Begin();
-        }
-
         private void AddServerContentRendered(object sender, EventArgs e)
         {
             SizeToContent = SizeToContent.Manual;
@@ -245,11 +243,18 @@ namespace H1EmuLauncher
             Close();
         }
 
+        private void AddServerLoaded(object sender, RoutedEventArgs e)
+        {
+            FocusEffects.BeginUnfocusAnimation(Owner);
+        }
+
         private void AddServerClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            LauncherWindow.launcherInstance.UnfocusPropertiesAnimationHide.Begin();
-            LauncherWindow.launcherInstance.launcherFade.IsHitTestVisible = false;
+            editIndex = 0;
             addServerInstance = null;
+            FocusEffects.BeginFocusAnimation(Owner);
+            Owner.Show();
+            Owner.Activate();
         }
     }
 }

@@ -16,8 +16,8 @@
         FontFamily="Bahnschrift Light"
         FontSize="16"
         Foreground="FloralWhite"
-        Loaded="AddServerLoaded"
         ContentRendered="AddServerContentRendered"
+        Loaded="AddServerLoaded"
         Closing="AddServerClosing">
 
     <!-- Keep window animations -->
@@ -32,39 +32,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
-            <Storyboard x:Key="UnfocusPropertiesShow">
-                <DoubleAnimation Storyboard.TargetName="addServerFade"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="0" To="1"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="addServerBlur"
-                                 Storyboard.TargetProperty="Radius"
-                                 From="0" To="15"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-            </Storyboard>
-            <Storyboard x:Key="UnfocusPropertiesHide">
-                <DoubleAnimation Storyboard.TargetName="addServerFade"
-                                 Storyboard.TargetProperty="Opacity"
-                                 From="1" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-
-                <DoubleAnimation Storyboard.TargetName="addServerBlur"
-                                 Storyboard.TargetProperty="Radius"
-                                 From="15" To="0"
-                                 Duration="0:0:0.1"
-                                 AccelerationRatio="1"/>
-            </Storyboard>
         </ResourceDictionary>
     </Window.Resources>
 
     <!-- Window grid -->
     <Grid Background="#FF2A2A32">
-        
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -75,14 +48,6 @@
             <Grid.Background>
                 <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
             </Grid.Background>
-            
-            <!-- Add server blur on unfocus -->
-            <Grid.Effect>
-                <BlurEffect x:Name="addServerBlur"
-                            Radius="0"
-                            KernelType="Gaussian"/>
-
-            </Grid.Effect>
 
             <!-- Grid for logo and exit button -->
             <Grid MouseLeftButtonDown="AddServerTopBar" 
@@ -108,6 +73,7 @@
                               RenderingBias="Quality"
                               ShadowDepth="0"
                               Opacity="0.3"/>
+
                     </Image.Effect>
                 </Image>
 
@@ -145,7 +111,7 @@
                                       Direction="-90"
                                       RenderingBias="Quality"
                                       ShadowDepth="1"/>
-                    
+
                 </Border.Effect>
 
                 <!-- Border for grainy texture -->
@@ -155,7 +121,7 @@
                     <Border.Background>
                         <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
                     </Border.Background>
-                    
+
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="10"/>
@@ -237,7 +203,7 @@
 
                         <Grid Grid.Row="4"
                               HorizontalAlignment="Center">
-                            
+
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
@@ -293,12 +259,5 @@
                 </Border>
             </Border>
         </Grid>
-
-        <!-- Background fade on unfocus -->
-        <Rectangle x:Name="addServerFade"
-                   Fill="#40000000"
-                   IsHitTestVisible="False"
-                   Opacity="0"/>
-
     </Grid>
 </Window>

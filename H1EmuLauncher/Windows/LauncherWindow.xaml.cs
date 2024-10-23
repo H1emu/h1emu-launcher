@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Windows.Media.Animation;
 using System.Linq;
-using System.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System.Windows.Controls.Primitives;
@@ -46,8 +45,6 @@ namespace H1EmuLauncher
         public Storyboard CarouselNextAnimationFollow;
         public Storyboard CarouselPreviousAnimation;
         public Storyboard CarouselPreviousAnimationFollow;
-        public Storyboard UnfocusPropertiesAnimationShow;
-        public Storyboard UnfocusPropertiesAnimationHide;
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern IntPtr SetForegroundWindow(IntPtr hwnd);
@@ -64,8 +61,6 @@ namespace H1EmuLauncher
             CarouselNextAnimationFollow = FindResource("CarouselNextImageAnimationFollow") as Storyboard;
             CarouselPreviousAnimation = FindResource("CarouselPrevImageAnimation") as Storyboard;
             CarouselPreviousAnimationFollow = FindResource("CarouselPrevImageAnimationFollow") as Storyboard;
-            UnfocusPropertiesAnimationShow = FindResource("UnfocusPropertiesShow") as Storyboard;
-            UnfocusPropertiesAnimationHide = FindResource("UnfocusPropertiesHide") as Storyboard;
 
             launcherNotifyIcon.Icon = Properties.Resources.Icon;
             launcherNotifyIcon.Text = "H1EmuLauncher";
@@ -120,7 +115,7 @@ namespace H1EmuLauncher
             systemWatcherFire = true;
         }
 
-        public void ExecuteArguments()
+        public async void ExecuteArguments()
         {
             // If there are no args return
             if (!(rawArgs.Length > 0))
@@ -136,7 +131,7 @@ namespace H1EmuLauncher
             // If the new server and ip arguments exist, open the Add Server window and tell it to fill in the name and ip fields with the specified argument values
             if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-servername", "")) || !string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-serverip", "")))
             {
-                // Close every other window apart from the Launcher and Add Server windows
+                // Close every other window apart from the Launcher and Add Server window
                 foreach (Window window in Application.Current.Windows)
                 {
                     if (window.Name != Name && window.Name != "AddServer")
@@ -147,7 +142,20 @@ namespace H1EmuLauncher
                 string newServerIp = SteamFramePages.Login.GetParameter(rawArgs, "-serverip", "");
 
                 if (AddServerWindow.addServerInstance == null)
-                    CustomMessageBox.AddServer(this, newServerName, newServerIp);
+                {
+                    AddServerWindow addServer = new();
+                    addServer.serverNameBox.Text = newServerName;
+                    addServer.serverIpBox.Text = newServerIp;
+                    addServer.serverNameHint.Visibility = Visibility.Hidden;
+                    addServer.serverIpHint.Visibility = Visibility.Hidden;
+                    await Task.Run(() =>
+                    {
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            addServer.ShowDialog();
+                        }));
+                    });
+                }
                 else
                     AddServerWindow.addServerInstance.FillInFields(newServerName, newServerIp);
             }
@@ -166,15 +174,17 @@ namespace H1EmuLauncher
                 if (SettingsWindow.settingsInstance == null)
                 {
                     SettingsWindow.openAccountKeyPage = true;
-                    SettingsWindow se = new();
-                    se.Show();
-                    launcherFade.IsHitTestVisible = true;
+                    SettingsWindow sw = new();
+                    await Task.Run(() => 
+                    {
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            sw.ShowDialog();
+                        }));
+                    });
                 }
                 else
-                {
-                    SettingsWindow.openAccountKeyPage = true;
                     SettingsWindow.SwitchToAccountKeyTab();
-                }
             }
 
             File.WriteAllText($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt", "");
@@ -187,8 +197,8 @@ namespace H1EmuLauncher
                 return;
 
             if (serverSelector.SelectedIndex == serverSelector.Items.Count - 1 ||
-                serverSelector.SelectedIndex == serverSelector.Items.Count - 2 && serverSelector.Items[serverSelector.Items.Count - 2] is Separator ||
-                serverSelector.SelectedIndex == 2 && serverSelector.Items[2] is Separator) 
+                serverSelector.SelectedIndex == serverSelector.Items.Count - 2 ||
+                serverSelector.SelectedIndex == 2 || serverSelector.SelectedIndex == -1)
             {
                 serverSelector.SelectedIndex = 0;
             }
@@ -243,7 +253,7 @@ namespace H1EmuLauncher
                 notifyIconMenuItemExit.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) };
                 notifyIconMenuItemExit.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item194");
                 notifyIconMenuItemExit.Margin = new Thickness(0, 5, 0, 5);
-                notifyIconMenuItemExit.PreviewMouseLeftButtonDown += (o, s) => { Environment.Exit(0); };
+                notifyIconMenuItemExit.PreviewMouseLeftButtonDown += (o, s) => { Close(); };
 
                 notifyIconContextMenu.Items.Add(notifyIconMenuItemH1EmuServers);
                 notifyIconContextMenu.Items.Add(notifyIconMenuItemSingleplayer);
@@ -297,9 +307,9 @@ namespace H1EmuLauncher
                         if (i > 1 && i < serverSelector.Items.Count - 2)
                         {
                             serverItem.PreviewMouseRightButtonUp += ItemRightMouseButtonUp;
-                            ContextMenu deleteMenu = new();
-                            deleteMenu.Style = (Style)FindResource("ContextMenuStyle");
-                            serverItem.ContextMenu = deleteMenu;
+                            ContextMenu newItemContextMenu = new();
+                            newItemContextMenu.Style = (Style)FindResource("ContextMenuStyle");
+                            serverItem.ContextMenu = newItemContextMenu;
 
                             MenuItem editOption = new();
                             editOption.Style = (Style)FindResource("CustomMenuItem");
@@ -314,8 +324,8 @@ namespace H1EmuLauncher
                             deleteOption.Margin = new Thickness(0, 5, 0, 0);
                             deleteOption.Click += DeleteServerFromList;
 
-                            deleteMenu.Items.Add(editOption);
-                            deleteMenu.Items.Add(deleteOption);
+                            newItemContextMenu.Items.Add(editOption);
+                            newItemContextMenu.Items.Add(deleteOption);
                         }
                     }
                 }
@@ -330,7 +340,8 @@ namespace H1EmuLauncher
 
         private void AddNewServer(object sender, MouseButtonEventArgs e)
         {
-            CustomMessageBox.AddServer(this);
+            AddServerWindow addServer = new();
+            addServer.ShowDialog();
         }
 
         private void ServerSelectorPreviewMouseDown(object sender, MouseButtonEventArgs e)
@@ -350,14 +361,28 @@ namespace H1EmuLauncher
             System.Windows.Forms.Application.DoEvents();
         }
 
-        public void EditServerInfo(object sender, RoutedEventArgs e)
+        public async void EditServerInfo(object sender, RoutedEventArgs e)
         {
             List<ServerList> currentJson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(customServersJsonFile));
             for (int i = currentJson.Count - 1; i >= 0; i--)
             {
                 if (currentJson[i].CustomServerName == (string)itemRightClicked.Content)
                 {
-                    CustomMessageBox.EditServer(this, i, currentJson[i].CustomServerName, currentJson[i].CustomServerIp);
+                    AddServerWindow editServer = new();
+                    editServer.serverNameBox.Text = currentJson[i].CustomServerName;
+                    editServer.serverIpBox.Text = currentJson[i].CustomServerIp;
+                    editServer.serverNameHint.Visibility = Visibility.Hidden;
+                    editServer.serverIpHint.Visibility = Visibility.Hidden;
+                    editServer.saveServerButton.Content = FindResource("item213").ToString();
+                    editServer.editIndex = i;
+                    await Task.Run(() =>
+                    {
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            editServer.ShowDialog();
+                        }));
+                    });
+
                     serverSelector.IsDropDownOpen = false;
                     break;
                 }
@@ -370,17 +395,28 @@ namespace H1EmuLauncher
             if (dr != MessageBoxResult.Yes)
                 return;
 
+            // Delete the server from the custom servers file list
             List<ServerList> currentJson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(customServersJsonFile));
             for (int i = currentJson.Count - 1; i >= 0; i--)
             {
                 if (currentJson[i].CustomServerName == (string)itemRightClicked.Content) 
                 {
                     currentJson.Remove(currentJson[i]);
-                    serverSelector.SelectedIndex = i + 1;
+                    if (serverSelector.SelectedItem == itemRightClicked)
+                    {
+                        if (i + 4 < serverSelector.Items.Count - 2)
+                            serverSelector.SelectedIndex = i + 4;
+                        else
+                            serverSelector.SelectedIndex = i + 2;
+                    }
                     break;
                 }
             }
 
+            string finalJsonServers = JsonSerializer.Serialize(currentJson, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(customServersJsonFile, finalJsonServers);
+
+            // Delete the server from the recent servers file list, used for the system tray icon context menu
             List<ServerList> currentJsonRecent = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(recentServersJsonFile));
             for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
             {
@@ -398,9 +434,6 @@ namespace H1EmuLauncher
                     }
                 }
             }
-
-            string finalJsonServers = JsonSerializer.Serialize(currentJson, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(customServersJsonFile, finalJsonServers);
 
             string finalJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(recentServersJsonFile, finalJsonRecentServers);
@@ -424,20 +457,11 @@ namespace H1EmuLauncher
                     MessageBoxResult mbr = MessageBoxResult.None;
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        mbr = CustomMessageBox.ShowServerInstallOptions(FindResource("item52").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
+                        mbr = CustomMessageBox.InstallServerInline(FindResource("item52").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this);
                     }));
 
                     if (mbr != MessageBoxResult.Yes)
                         return false;
-                }
-
-                string serverVersion = string.Empty;
-
-                if (gameVersionString == "22dec2016")
-                    serverVersion = "npm run start-2016";
-                else if (gameVersionString == "kotk")
-                {
-                    serverVersion = "npm run start-2016";
                 }
 
                 startSingleplayerServerProcess = new Process { StartInfo = cmdShell };
@@ -448,7 +472,7 @@ namespace H1EmuLauncher
                     {
                         sw.WriteLine($"SET PATH={Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles\\h1z1-server-QuickStart-master\\node-v{Info.NODEJS_VERSION}-win-x64");
                         sw.WriteLine($"cd /d {Properties.Settings.Default.activeDirectory}\\H1EmuServerFiles\\h1z1-server-QuickStart-master");
-                        sw.WriteLine(serverVersion);
+                        sw.WriteLine("npm run start-2016");
                     }
                 }
                 startSingleplayerServerProcess.WaitForExit(5000);
@@ -461,11 +485,11 @@ namespace H1EmuLauncher
                     return false;
                 }
             }
-            catch (Exception er)
+            catch (Exception e)
             {
                 Dispatcher.Invoke(new Action(delegate
                 {
-                    CustomMessageBox.Show($"{FindResource("item53")} \"{er.Message}\"", this);
+                    CustomMessageBox.Show($"{FindResource("item53")} \"{e.Message}\"", this);
                 }));
                 return false;
             }
@@ -478,7 +502,6 @@ namespace H1EmuLauncher
             if (!CheckGameVersionAndPath(this))
                 return;
 
-            int gameVersionInt = 0;
             string serverIp = string.Empty;
             string sessionId = string.Empty;
 
@@ -488,130 +511,118 @@ namespace H1EmuLauncher
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        if (serverSelector.SelectedIndex == 1)
-                            serverIp = "localhost:1115";
-                        else if (serverSelector.SelectedIndex != 0 && serverSelector.SelectedIndex != 1)
+                        switch (serverSelector.SelectedIndex)
                         {
-                            List<ServerList> currentJson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(customServersJsonFile));
-                            foreach (ServerList item in currentJson)
-                            {
-                                if (item.CustomServerName == serverSelector.Text)
-                                    serverIp = item.CustomServerIp;
-                            }
+                            case 0:
+                                // sessionIdKey is the same as accountKey, not possible change the name without resetting users settings
+                                if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
+                                {
+                                    CustomMessageBox.Show(FindResource("item153").ToString(), this);
+                                    throw new Exception("emptyAccountKey");
+                                }
+
+                                sessionId = $"{{\"sessionId\":\"{Properties.Settings.Default.sessionIdKey}\",\"gameVersion\":2}}";
+                                serverIp = Info.H1EMU_SERVER_IP;
+                                break;
+
+                            case 1:
+                                if (!LaunchLocalServer(Properties.Settings.Default.gameVersionString))
+                                    throw new Exception("launchLocalServerFailed");
+
+                                sessionId = $"{{\"sessionId\":\"0\",\"gameVersion\":2}}";
+                                serverIp = "localhost:1115";
+                                break;
+
+                            default:
+                                List<ServerList> currentJson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(customServersJsonFile));
+                                foreach (ServerList item in currentJson)
+                                {
+                                    if (item.CustomServerName == serverSelector.Text)
+                                    {
+                                        sessionId = $"{{\"sessionId\":\"0\",\"gameVersion\":2}}";
+                                        serverIp = item.CustomServerIp;
+                                    }
+                                }
+                                break;
                         }
                     }));
                 }
-                catch (Exception ex)
+                catch (Exception e)
                 {
-                    Dispatcher.Invoke(new Action(delegate
+                    switch (e.Message)
                     {
-                        CustomMessageBox.Show($"{FindResource("item142")} \"{ex.Message}\"", this);
-                    }));
+                        case "emptyAccountKey":
+                            return;
+                        case "launchLocalServerFailed":
+                            return;
+                        default:
+                            Dispatcher.Invoke(new Action(delegate
+                            {
+                                CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\"", this);
+                            }));
+                            return;
+                    }
                 }
 
                 try
                 {
-                    switch (Properties.Settings.Default.gameVersionString)
+                    // Check that the patch is the latest version
+                    ApplyPatchClass.CheckPatch();
+
+                    // If connecting to H1Emu servers, validate assets
+                    //if (serverIp == Info.H1EMU_SERVER_IP)
+                    //CheckAssetsBeforeLaunch.CheckAssets();
+
+                    // Launch game
+                    Process h1Process = new();
+                    h1Process.StartInfo = new ProcessStartInfo
                     {
-                        case "22dec2016":
-                            gameVersionInt = 2;
-                            break;
-                        case "kotk":
-                            gameVersionInt = 3;
-                            break;
-                    }
-
-                    if (Properties.Settings.Default.gameVersionString == "22dec2016" || Properties.Settings.Default.gameVersionString == "kotk")
+                        FileName = $"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe",
+                        Arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}",
+                        WindowStyle = ProcessWindowStyle.Normal,
+                        WorkingDirectory = Properties.Settings.Default.activeDirectory,
+                        UseShellExecute = true,
+                        Verb = "runas"
+                    };
+                    h1Process.EnableRaisingEvents = true;
+                    h1Process.Exited += (o, s) =>
                     {
-                        if (string.IsNullOrEmpty(serverIp))
-                        {
-                            serverIp = Info.H1EMU_SERVER_IP;
-
-                            // sessionIdKey is the same as accountKey, not possible change the name without resetting users settings
-                            if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
-                            {
-                                Dispatcher.Invoke(new Action(delegate
-                                {
-                                    CustomMessageBox.Show(FindResource("item153").ToString(), this);
-                                }));
-                                return;
-                            }
-                            else
-                            {
-                                // Check the users account key validity to decide whether to let the user connect to the H1Emu login server
-                                //if (!CheckAccountKey.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey))
-                                    //return;
-
-                                sessionId = $"{{\"sessionId\":\"{Properties.Settings.Default.sessionIdKey}\",\"gameVersion\":{gameVersionInt}}}";
-                            }
-                        }
-                        else
-                            sessionId = $"{{\"sessionId\":\"0\",\"gameVersion\":{gameVersionInt}}}";
-
-                        if (serverIp == "localhost:1115")
-                        {
-                            if (!LaunchLocalServer(Properties.Settings.Default.gameVersionString))
-                                return;
-                        }
-
-                        // Check that the patch is the latest version
-                        ApplyPatchClass.CheckPatch();
-
-                        // If connecting to H1Emu servers, validate assets
-                        //if (serverIp == Info.H1EMU_SERVER_IP)
-                            //CheckAssetsBeforeLaunch.CheckAssets();
-
-                        // Launch game
-                        Process h1Process = new();
-                        h1Process.StartInfo = new ProcessStartInfo
-                        {
-                            FileName = $"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe",
-                            Arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}",
-                            WindowStyle = ProcessWindowStyle.Normal,
-                            WorkingDirectory = Properties.Settings.Default.activeDirectory,
-                            UseShellExecute = true,
-                            Verb = "runas"
-                        };
-                        h1Process.EnableRaisingEvents = true;
-                        h1Process.Exited += (o, s) =>
-                        {
-                            if (Visibility == Visibility.Hidden)
-                            {
-                                Dispatcher.Invoke(new Action(delegate
-                                {
-                                    Show();
-                                    Activate();
-                                    launcherNotifyIcon.Visible = false;
-                                }));
-                            }
-
-                            if (startSingleplayerServerProcess != null)
-                                startSingleplayerServerProcess.Kill(true);
-                        };
-                        h1Process.Start();
-
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            if (serverSelector.SelectedIndex != 0 && serverSelector.SelectedIndex != 1 && serverSelector.SelectedIndex != serverSelector.Items.Count - 1 && serverSelector.SelectedItem is ComboBoxItem)
-                                AddServerToRecentList(serverSelector.Text, serverIp);
-                        }));
-
-                        if (Properties.Settings.Default.autoMinimise && Visibility == Visibility.Visible)
+                        if (Visibility == Visibility.Hidden)
                         {
                             Dispatcher.Invoke(new Action(delegate
                             {
-                                Hide();
-                                launcherNotifyIcon.Visible = true;
+                                Show();
+                                Activate();
+                                launcherNotifyIcon.Visible = false;
                             }));
-                            new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
                         }
+
+                        if (startSingleplayerServerProcess != null)
+                            startSingleplayerServerProcess.Kill(true);
+                    };
+                    h1Process.Start();
+
+                    Dispatcher.Invoke(new Action(delegate
+                    {
+                        if (serverSelector.SelectedIndex != 0 && serverSelector.SelectedIndex != 1 && serverSelector.SelectedIndex != serverSelector.Items.Count - 1 && serverSelector.SelectedItem is ComboBoxItem)
+                            AddServerToRecentList(serverSelector.Text, serverIp);
+                    }));
+
+                    if (Properties.Settings.Default.autoMinimise && Visibility == Visibility.Visible)
+                    {
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            Hide();
+                            launcherNotifyIcon.Visible = true;
+                        }));
+                        new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
                     }
                 }
-                catch (Exception er)
+                catch (Exception e)
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"{FindResource("item13")}\n\n{er.GetType().Name}: \"{er.Message}\".", this);
+                        CustomMessageBox.Show($"{FindResource("item13")}\n\n{e.GetType().Name}: \"{e.Message}\".", this);
                     }));
                 }
                 finally
@@ -658,20 +669,24 @@ namespace H1EmuLauncher
                     string newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
                     File.WriteAllText(recentServersJsonFile, newJsonRecentServers);
 
-                    MenuItem newItem = new MenuItem();
-                    newItem.Style = (Style)FindResource("CustomMenuItem");
-                    newItem.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) };
-                    newItem.Header = name;
-                    newItem.Margin = new Thickness(0, 5, 0, 0);
+                    MenuItem newItem = new()
+                    {
+                        Style = (Style)FindResource("CustomMenuItem"),
+                        Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) },
+                        Header = name,
+                        Margin = new Thickness(0, 5, 0, 0)
+                    };
                     newItem.PreviewMouseLeftButtonDown += LaunchToCustomServerFromNotifyIcon;
                     notifyIconContextMenu.Items.Insert(3, newItem);
 
                     if (notifyIconContextMenu.Items.Count == 5)
                     {
-                        Separator separator = new Separator();
-                        separator.Style = (Style)FindResource("SeparatorMenuItem");
-                        separator.Background = new SolidColorBrush(Color.FromRgb(44, 44, 44));
-                        separator.Margin = new Thickness(0, 7, 10, 2);
+                        Separator separator = new()
+                        {
+                            Style = (Style)FindResource("SeparatorMenuItem"),
+                            Background = new SolidColorBrush(Color.FromRgb(44, 44, 44)),
+                            Margin = new Thickness(0, 7, 10, 2)
+                        };
                         notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, separator);
                     }
 
@@ -689,9 +704,9 @@ namespace H1EmuLauncher
                         File.WriteAllText(recentServersJsonFile, newJsonRecentServers);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception e)
                 {
-                    CustomMessageBox.Show($"{FindResource("item142")} {ex.Message}", this);
+                    CustomMessageBox.Show($"{FindResource("item142")} {e.Message}", this);
                 }
             }));
         }
@@ -765,6 +780,9 @@ namespace H1EmuLauncher
                 Properties.Settings.Default.imageCarouselVisibility = false;
                 Properties.Settings.Default.Save();
             }
+
+            if (Properties.Settings.Default.language == 1)
+                chineseLink.Visibility = Visibility.Visible;
 
             DisplayVersionInformation();
             LoadServers();
@@ -852,30 +870,14 @@ namespace H1EmuLauncher
 
             Carousel.playCarousel.Pause();
 
-            nextImage.Visibility = Visibility.Visible;
-            prevImage.Visibility = Visibility.Visible;
-
             // Animation for fade in visibility next image button
-            DoubleAnimation showImageControlsNext = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)));
-            showImageControlsNext.AccelerationRatio = 0.2;
-            showImageControlsNext.DecelerationRatio = 0.2;
-            showImageControlsNext.SetValue(Storyboard.TargetProperty, nextImage);
-            showImageControlsNext.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(OpacityProperty));
-
-            Storyboard playShowImageControlsNext = new Storyboard();
-            playShowImageControlsNext.Children.Add(showImageControlsNext);
-            playShowImageControlsNext.Begin();
-
-            // Animation for fade in visibility previous image button
-            DoubleAnimation showImageControlsPrev = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)));
-            showImageControlsPrev.AccelerationRatio = 0.2;
-            showImageControlsPrev.DecelerationRatio = 0.2;
-            showImageControlsPrev.SetValue(Storyboard.TargetProperty, prevImage);
-            showImageControlsPrev.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(OpacityProperty));
-
-            Storyboard playShowImageControlsPrev = new Storyboard();
-            playShowImageControlsPrev.Children.Add(showImageControlsPrev);
-            playShowImageControlsPrev.Begin();
+            DoubleAnimation showImageControls = new(0, 1, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)))
+            {
+                AccelerationRatio = 0.2,
+                DecelerationRatio = 0.2
+            };
+            nextImage.BeginAnimation(Window.OpacityProperty, showImageControls);
+            prevImage.BeginAnimation(Window.OpacityProperty, showImageControls);
         }
 
         private void CarouselMouseLeave(object sender, MouseEventArgs e)
@@ -886,28 +888,13 @@ namespace H1EmuLauncher
             Carousel.playCarousel.Resume();
 
             // Animation for fade out visibility next image button
-            DoubleAnimation showImageControlsNext = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)));
-            showImageControlsNext.AccelerationRatio = 0.2;
-            showImageControlsNext.DecelerationRatio = 0.2;
-            showImageControlsNext.SetValue(Storyboard.TargetProperty, nextImage);
-            showImageControlsNext.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(OpacityProperty));
-
-            Storyboard playShowImageControlsNext = new Storyboard();
-            playShowImageControlsNext.Children.Add(showImageControlsNext);
-            playShowImageControlsNext.Completed += (s, o) => nextImage.Visibility = Visibility.Hidden;
-            playShowImageControlsNext.Begin();
-
-            // Animation for fade out visibility previous image button
-            DoubleAnimation showImageControlsPrev = new DoubleAnimation(1, 0, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)));
-            showImageControlsPrev.AccelerationRatio = 0.2;
-            showImageControlsPrev.DecelerationRatio = 0.2;
-            showImageControlsPrev.SetValue(Storyboard.TargetProperty, prevImage);
-            showImageControlsPrev.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(OpacityProperty));
-
-            Storyboard playShowImageControlsPrev = new Storyboard();
-            playShowImageControlsPrev.Children.Add(showImageControlsPrev);
-            playShowImageControlsPrev.Completed += (s, o) => prevImage.Visibility = Visibility.Hidden;
-            playShowImageControlsPrev.Begin();
+            DoubleAnimation hideImageControls = new(1, 0, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)))
+            {
+                AccelerationRatio = 0.2,
+                DecelerationRatio = 0.2
+            };
+            nextImage.BeginAnimation(Window.OpacityProperty, hideImageControls);
+            prevImage.BeginAnimation(Window.OpacityProperty, hideImageControls);
         }
 
         public void SelectDirectory(object sender, RoutedEventArgs e)
@@ -942,7 +929,7 @@ namespace H1EmuLauncher
         {
             Dispatcher.Invoke(new Action(delegate
             {
-                currentGame.Text = FindResource("item70").ToString();
+                currentGame.SetResourceReference(TextBlock.TextProperty, "item70");
                 taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                 directoryButton.IsEnabled = false;
             }));
@@ -958,7 +945,7 @@ namespace H1EmuLauncher
                     Properties.Settings.Default.Save();
 
                     directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                    currentGame.Text = FindResource("item69").ToString();
+                    currentGame.SetResourceReference(TextBlock.TextProperty, "item69");
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     directoryButton.IsEnabled = true;
                 }));
@@ -970,7 +957,7 @@ namespace H1EmuLauncher
                 Dispatcher.Invoke(new Action(delegate
                 {
                     directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                    currentGame.Text = FindResource("item69").ToString();
+                    currentGame.SetResourceReference(TextBlock.TextProperty, "item69");
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     directoryButton.IsEnabled = true;
 
@@ -1002,7 +989,7 @@ namespace H1EmuLauncher
                 Dispatcher.Invoke(new Action(delegate
                 {
                     directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                    currentGame.Text = FindResource("item120").ToString();
+                    currentGame.SetResourceReference(TextBlock.TextProperty, "item120");
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     directoryButton.IsEnabled = true;
                     
@@ -1020,7 +1007,7 @@ namespace H1EmuLauncher
                 Dispatcher.Invoke(new Action(delegate
                 {
                     directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                    currentGame.Text = FindResource("item142").ToString().Replace(":", ".");
+                    currentGame.SetResourceReference(TextBlock.TextProperty, "item148");
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     directoryButton.IsEnabled = true;
 
@@ -1040,28 +1027,12 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                        currentGame.Text = $"{FindResource("item122")} 2016";
+                        currentGame.SetResourceReference(TextBlock.TextProperty, "item122");
                         taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         directoryButton.IsEnabled = true;
 
                         if (alerts)
                             CustomMessageBox.Show(FindResource("item74").ToString(), callingWindow);
-                    }));
-
-                    return true;
-                case "ec7ffa43": // King of the Kill: 23rd February 2017
-                    Properties.Settings.Default.gameVersionString = "kotk";
-                    Properties.Settings.Default.Save();
-
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                        currentGame.Text = $"{FindResource("item122")} KotK";
-                        taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-                        directoryButton.IsEnabled = true;
-
-                        if (alerts)
-                            CustomMessageBox.Show(FindResource("item190").ToString(), callingWindow);
                     }));
 
                     return true;
@@ -1072,7 +1043,7 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                        currentGame.Text = FindResource("item72").ToString();
+                        currentGame.SetResourceReference(TextBlock.TextProperty, "item72");
                         taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         directoryButton.IsEnabled = true;
 
@@ -1084,10 +1055,10 @@ namespace H1EmuLauncher
             }
         }
 
-        private void HyperlinkClick(object sender, RoutedEventArgs e)
+        private void SettingsButtonClick(object sender, RoutedEventArgs e)
         {
-            SettingsWindow se = new();
-            se.ShowDialog();
+            SettingsWindow sw = new();
+            sw.ShowDialog();
         }
 
         private void H1Hyperlink(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
@@ -1131,11 +1102,6 @@ namespace H1EmuLauncher
             Clipboard.SetText(Info.CHANGELOG);
         }
 
-        private void websiteLinkCopy(object sender, RoutedEventArgs e)
-        {
-            Clipboard.SetText(Info.WEBSITE);
-        }
-
         private void discordLinkCopy(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(Info.DISCORD_LINK);
@@ -1144,12 +1110,6 @@ namespace H1EmuLauncher
         private void chineseLinkCopy(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(Info.CHANGELOG);
-        }
-
-        private void LauncherFadeMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (launcherFade.IsHitTestVisible)
-                SystemSounds.Beep.Play();
         }
 
         private void MinimiseToSystemTrayButtonClick(object sender, RoutedEventArgs e)
@@ -1176,7 +1136,7 @@ namespace H1EmuLauncher
 
         private void CloseLauncher(object sender, RoutedEventArgs e)
         {
-            Environment.Exit(0);
+            Close();
         }
     }
 }

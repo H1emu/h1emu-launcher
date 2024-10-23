@@ -63,10 +63,10 @@
     <system:String x:Key="item66">Невозможно получить информацию GitHub:</system:String>
     <system:String x:Key="item67">Не сейчас</system:String>
     <system:String x:Key="item68">Просмотр файлов...</system:String>
-    <system:String x:Key="item69">• Версия игры не обнаружена •</system:String>
+    <system:String x:Key="item69">Версия игры не обнаружена</system:String>
     <system:String x:Key="item70">Определение версии игры...</system:String>
     <system:String x:Key="item71">Версия игры обнаружена: 15 января 2015.</system:String>
-    <system:String x:Key="item72">• Версия игры не поддерживается •</system:String>
+    <system:String x:Key="item72">Версия игры не поддерживается</system:String>
     <system:String x:Key="item73">Подождите завершения текущих задач.</system:String>
     <system:String x:Key="item74">Версия игры обнаружена: 22 декабря 2016.</system:String>
     <system:String x:Key="item75">Директория</system:String>
@@ -82,13 +82,11 @@
     <system:String x:Key="item92">OK</system:String>
     <system:String x:Key="item95">Ошибка установки патча 2015:</system:String>
     <system:String x:Key="item96">Ошибка установки патча 2016:</system:String>
-    <system:String x:Key="item97">Ошибка установки патча KotK:</system:String>
     <system:String x:Key="item99">Распаковка файлов патча...</system:String>
     <system:String x:Key="item100">Удаление .zip файла...</system:String>
     <system:String x:Key="item101">Готово. (Потраченное время:</system:String>
     <system:String x:Key="item102">Файлы патча для версии 2015 установлены.</system:String>
     <system:String x:Key="item103">Файлы патча для версии 2016 установлены.</system:String>
-    <system:String x:Key="item104">Файлы патчей для KotK установлены.</system:String>
     <system:String x:Key="item105">Установка последней версии сервера...</system:String>
     <system:String x:Key="item107">При установке последней версии сервера произошла ошибка:</system:String>
     <system:String x:Key="item108">Установлена последняя версия сервера.</system:String>
@@ -101,9 +99,9 @@
     <system:String x:Key="item118">Распаковка файлов NodeJS...</system:String>
     <system:String x:Key="item120">Пожалуйста закройте H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe в настоящее время используется.\n\nПожалуйста, закройте все открытые экземпляры H1Z1.\n\nВы можете использовать кнопку ниже, чтобы убить все процессы H1Z1.</system:String>
-    <system:String x:Key="item122">Текущая версия игры:</system:String>
+    <system:String x:Key="item122">Текущая версия игры: 2016</system:String>
     <system:String x:Key="item124">Версия лаунчера</system:String>
-    <system:String x:Key="item125">H1Emu © 2024</system:String>
+    <system:String x:Key="item125">© 2024 | Проект H1Emu</system:String>
     <system:String x:Key="item126">Ведущая разработка</system:String>
     <system:String x:Key="item127">Разработчики</system:String>
     <system:String x:Key="item128">Администраторы</system:String>
@@ -126,6 +124,7 @@
     <system:String x:Key="item145">IP сервера...</system:String>
     <system:String x:Key="item146">Невозможно удалить эту запись.</system:String>
     <system:String x:Key="item147">Вы уверены, что хотите удалить этот сервер?</system:String>
+    <system:String x:Key="item148">Выброшено исключение.</system:String>
     <system:String x:Key="item149">Распаковка файлов актива...</system:String>
     <system:String x:Key="item150">УСТАНОВКА ПАТЧА...</system:String>
     <system:String x:Key="item151">Имя сервера или IP недействителен.</system:String>

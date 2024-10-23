@@ -1050,9 +1050,9 @@ namespace H1EmuLauncher
                 {
                     fs.SetLength((long)file.TotalSize);
                 }
-                catch (IOException ex)
+                catch (IOException e)
                 {
-                    throw new ContentDownloaderException(String.Format("Failed to allocate file {0}: {1}", fileFinalPath, ex.Message));
+                    throw new ContentDownloaderException(String.Format("Failed to allocate file {0}: {1}", fileFinalPath, e.Message));
                 }
 
                 neededChunks = new List<ProtoManifest.ChunkData>(file.Chunks);
@@ -1124,9 +1124,9 @@ namespace H1EmuLauncher
                                 {
                                     fs.SetLength((long)file.TotalSize);
                                 }
-                                catch (IOException ex)
+                                catch (IOException e)
                                 {
-                                    throw new ContentDownloaderException(String.Format("Failed to resize file to expected size {0}: {1}", fileFinalPath, ex.Message));
+                                    throw new ContentDownloaderException(String.Format("Failed to resize file to expected size {0}: {1}", fileFinalPath, e.Message));
                                 }
 
                                 foreach (var match in copyChunks)

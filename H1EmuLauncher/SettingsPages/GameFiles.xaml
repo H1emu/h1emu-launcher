@@ -66,10 +66,9 @@
     
                         <Hyperlink x:Name="deleteSinglePlayerDataHyperLink"
                                    Click="DeleteSingleplayerDataClick"
-                                   Foreground="FloralWhite">
+                                   Style="{DynamicResource HyperLinkStyle}">
     
                             <Run Text="{DynamicResource item176}"
-                                 Style="{DynamicResource HyperLinkStyleRun}"
                                  Cursor="Hand"/>
 
                         </Hyperlink>

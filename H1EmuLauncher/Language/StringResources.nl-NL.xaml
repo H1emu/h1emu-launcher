@@ -63,10 +63,10 @@
     <system:String x:Key="item66">Ophalen Github informatie mislukt:</system:String>
     <system:String x:Key="item67">Niet nu</system:String>
     <system:String x:Key="item68">geef bestanden weer...</system:String>
-    <system:String x:Key="item69">• Game Versie niet gedetecteerd •</system:String>
+    <system:String x:Key="item69">Game Versie niet gedetecteerd</system:String>
     <system:String x:Key="item70">Game versie aan het detecteren...</system:String>
     <system:String x:Key="item71">Game versie gedetecteerd: 15th January 2015.</system:String>
-    <system:String x:Key="item72">• Game Versie Niet ondersteund •</system:String>
+    <system:String x:Key="item72">Game Versie Niet ondersteund</system:String>
     <system:String x:Key="item73">Geieve te wachten tot de huidige taken zijn voltooid.</system:String>
     <system:String x:Key="item74">Game versie gedetecteerd: 22nd December 2016.</system:String>
     <system:String x:Key="item75">Locatie</system:String>
@@ -82,13 +82,11 @@
     <system:String x:Key="item92">OK</system:String>
     <system:String x:Key="item95">Er trad een fout op tijdens het installeren van de 2015 patch:</system:String>
     <system:String x:Key="item96">Er trad een fout op tijdens het installeren van de 2016 patch:</system:String>
-    <system:String x:Key="item97">Er trad een fout op tijdens het installeren van de KotK patch:</system:String>
     <system:String x:Key="item99">Unzippen patch bestand...</system:String>
     <system:String x:Key="item100">Verwijderen .zip bestand...</system:String>
     <system:String x:Key="item101">Klaar. (Elapsed time:</system:String>
     <system:String x:Key="item102">Patch bestanden voor spel versie 2015 zijn geïnstalleerd.</system:String>
     <system:String x:Key="item103">Patch bestanden voor spel versie 2016 zijn geïnstalleerd.</system:String>
-    <system:String x:Key="item104">Patchbestanden voor de KotK zijn geïnstalleerd.</system:String>
     <system:String x:Key="item105">Meest recente server instaleren...</system:String>
     <system:String x:Key="item107">Er was een fout tijdens instaleren van de laatste server:</system:String>
     <system:String x:Key="item108">De laatste server is geïnstalleerd.</system:String>
@@ -101,9 +99,9 @@
     <system:String x:Key="item118">Unzippen node bestanden...</system:String>
     <system:String x:Key="item120">Sluit alstublieft H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe is momenteel in gebruik.\n\nSluit alle geopende exemplaren van H1Z1.\n\nU kunt de onderstaande knop gebruiken om alle processen van H1Z1 te beëindigen.</system:String>
-    <system:String x:Key="item122">Huidige spel versie:</system:String>
+    <system:String x:Key="item122">Huidige spel versie: 2016</system:String>
     <system:String x:Key="item124">Launcher versie</system:String>
-    <system:String x:Key="item125">H1Emu © 2024</system:String>
+    <system:String x:Key="item125">Auteursrecht © 2024 | H1Emu-project</system:String>
     <system:String x:Key="item126">Hoofd-Ontwikelaar</system:String>
     <system:String x:Key="item127">Ontwikkelaars</system:String>
     <system:String x:Key="item128">Administrators</system:String>
@@ -126,6 +124,7 @@
     <system:String x:Key="item145">Server IP...</system:String>
     <system:String x:Key="item146">Kan ingang niet verwijderen.</system:String>
     <system:String x:Key="item147">Wil je de server echt verwijderen?</system:String>
+    <system:String x:Key="item148">Gegeven uitzondering.</system:String>
     <system:String x:Key="item149">Unzippen asset bestanden...</system:String>
     <system:String x:Key="item150">PATCHING...</system:String>
     <system:String x:Key="item151">Server naam of IP niet geldig.</system:String>

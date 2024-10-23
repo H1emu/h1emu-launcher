@@ -94,9 +94,9 @@ namespace H1EmuLauncher.SteamFramePages
             {
                 AccountSettingsStore.LoadFromFile("account.config");
             }
-            catch (Exception er)
+            catch (Exception e)
             {
-                Debug.WriteLine(er.Message);
+                Debug.WriteLine(e.Message);
             }
 
             var depotManifestIds = new List<(uint, ulong)>();
@@ -213,7 +213,7 @@ namespace H1EmuLauncher.SteamFramePages
                         LauncherWindow.launcherInstance.CheckGameVersionAndPath(LauncherWindow.launcherInstance, true);
                     }));
                 }
-                catch (Exception ph) when (ph is TaskCanceledException)
+                catch (Exception e) when (e is TaskCanceledException)
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
@@ -232,12 +232,12 @@ namespace H1EmuLauncher.SteamFramePages
                             CustomMessageBox.Show($"{FindResource("item39")} \"{ex.Message}\".", LauncherWindow.launcherInstance);
                     }));
                 }
-                catch (Exception er)
+                catch (Exception exc)
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
                         BackToLogin();
-                        CustomMessageBox.Show($"{FindResource("item40")} \"{er.Message}\".\n\n{FindResource("item64")} \"{er.StackTrace.Trim()}\"", LauncherWindow.launcherInstance);
+                        CustomMessageBox.Show($"{FindResource("item40")} \"{exc.Message}\".\n\n{FindResource("item64")} \"{exc.StackTrace.Trim()}\"", LauncherWindow.launcherInstance);
                     }));
                 }
                 finally

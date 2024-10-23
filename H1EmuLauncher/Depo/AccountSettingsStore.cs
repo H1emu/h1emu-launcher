@@ -53,9 +53,9 @@ namespace H1EmuLauncher
                         Instance = Serializer.Deserialize<AccountSettingsStore>(ds);
                     }
                 }
-                catch (IOException ex)
+                catch (IOException e)
                 {
-                    Debug.WriteLine("Failed to load account settings: {0}", ex.Message);
+                    Debug.WriteLine("Failed to load account settings: {0}", e.Message);
                     Instance = new AccountSettingsStore();
                 }
             }
@@ -80,9 +80,9 @@ namespace H1EmuLauncher
                     Serializer.Serialize(ds, Instance);
                 }
             }
-            catch (IOException ex)
+            catch (IOException e)
             {
-                Debug.WriteLine("Failed to save account settings: {0}", ex.Message);
+                Debug.WriteLine("Failed to save account settings: {0}", e.Message);
             }
         }
     }

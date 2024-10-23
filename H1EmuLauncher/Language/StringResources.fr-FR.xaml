@@ -63,10 +63,10 @@
     <system:String x:Key="item66">Impossible de récupérer les informations GitHub:</system:String>
     <system:String x:Key="item67">Pas maintenant</system:String>
     <system:String x:Key="item68">Voir les fichiers...</system:String>
-    <system:String x:Key="item69">• Version Du Jeu Non Détectée •</system:String>
+    <system:String x:Key="item69">Version Du Jeu Non Détectée</system:String>
     <system:String x:Key="item70">Détection de la version du jeu en cours...</system:String>
     <system:String x:Key="item71">Version du jeu détectée: 15 janvier 2015.</system:String>
-    <system:String x:Key="item72">• Version Du Jeu Non Supportée •</system:String>
+    <system:String x:Key="item72">Version Du Jeu Non Supportée</system:String>
     <system:String x:Key="item73">Veuillez attendre la fin des tâches en cours.</system:String>
     <system:String x:Key="item74">Version du jeu détectée: 22 décembre 2016.</system:String>
     <system:String x:Key="item75">Directory</system:String>
@@ -82,13 +82,11 @@
     <system:String x:Key="item92">OK</system:String>
     <system:String x:Key="item95">Une erreur s'est produite lors de l'installation du patch 2015:</system:String>
     <system:String x:Key="item96">Une erreur s'est produite lors de l'installation du patch 2016:</system:String>
-    <system:String x:Key="item97">Une erreur s'est produite lors de l'installation du patch KotK:</system:String>
     <system:String x:Key="item99">Décompression des fichiers de correction...</system:String>
     <system:String x:Key="item100">Suppression d'un fichier .zip...</system:String>
     <system:String x:Key="item101">Terminé. (Temps écoulé:</system:String>
     <system:String x:Key="item102">Les fichiers de correction pour la version 2015 du jeu ont été installés.</system:String>
     <system:String x:Key="item103">Les fichiers de correction pour la version 2016 du jeu ont été installés.</system:String>
-    <system:String x:Key="item104">Les fichiers correctifs pour le KotK ont été installés.</system:String>
     <system:String x:Key="item105">Installation du dernier serveur...</system:String>
     <system:String x:Key="item107">Une erreur s'est produite lors de l'installation du dernier serveur:</system:String>
     <system:String x:Key="item108">Le dernier serveur a été installé.</system:String>
@@ -101,9 +99,9 @@
     <system:String x:Key="item118">Décompression des fichiers de nœuds...</system:String>
     <system:String x:Key="item120">Veuillez fermer H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe est actuellement en cours d'utilisation.\n\nVeuillez fermer toutes les instances ouvertes de H1Z1.\n\nVous pouvez utiliser le bouton ci-dessous pour tuer tous les processus de H1Z1.</system:String>
-    <system:String x:Key="item122">Version actuelle du jeu:</system:String>
+    <system:String x:Key="item122">Version actuelle du jeu: 2016</system:String>
     <system:String x:Key="item124">Version du launcher</system:String>
-    <system:String x:Key="item125">H1Emu © 2024</system:String>
+    <system:String x:Key="item125">Droits d'auteur © 2024 | Projet H1Emu</system:String>
     <system:String x:Key="item126">Développement de Prospects</system:String>
     <system:String x:Key="item127">Développeurs</system:String>
     <system:String x:Key="item128">Administrateurs</system:String>
@@ -126,6 +124,7 @@
     <system:String x:Key="item145">IP du serveur...</system:String>
     <system:String x:Key="item146">Vous ne pouvez pas supprimer cette entrée.</system:String>
     <system:String x:Key="item147">Êtes-vous sur de vouloir supprimer ce serveur?</system:String>
+    <system:String x:Key="item148">Exception thrown.</system:String>
     <system:String x:Key="item149">Décompression des fichiers d'assets</system:String>
     <system:String x:Key="item150">PATCHING...</system:String>
     <system:String x:Key="item151">Nom du serveur ou IP non valide.</system:String>

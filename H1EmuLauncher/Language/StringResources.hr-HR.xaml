@@ -63,10 +63,10 @@
     <system:String x:Key="item66">Nemoguće dohvatiti informacije s GitHuba:</system:String>
     <system:String x:Key="item67">Ne sada</system:String>
     <system:String x:Key="item68">Pregled datoteka...</system:String>
-    <system:String x:Key="item69">• Verzija Igre Nije Otkrivena •</system:String>
+    <system:String x:Key="item69">Verzija Igre Nije Otkrivena</system:String>
     <system:String x:Key="item70">Otkrivanje verzije igre...</system:String>
     <system:String x:Key="item71">Otkrivena verzija igre: 15. siječanj 2015.</system:String>
-    <system:String x:Key="item72">• Verzija Igre Nije Podržana •</system:String>
+    <system:String x:Key="item72">Verzija Igre Nije Podržana</system:String>
     <system:String x:Key="item73">Molim vas pričekajte da se izvrši trenutni zadatak.</system:String>
     <system:String x:Key="item74">Otkrivena verzija igre: 22. prosinac 2016.</system:String>
     <system:String x:Key="item75">Direktorij</system:String>
@@ -82,13 +82,11 @@
     <system:String x:Key="item92">OK</system:String>
     <system:String x:Key="item95">Došlo je do pogreške pri instalaciji 2015 patcha:</system:String>
     <system:String x:Key="item96">Došlo je do pogreške pri instalaciji 2016 patcha:</system:String>
-    <system:String x:Key="item97">Došlo je do pogreške pri instalaciji KotK patcha:</system:String>
     <system:String x:Key="item99">Raspakiravanje patch datoteka...</system:String>
     <system:String x:Key="item100">Brisanje .zip datoteke...</system:String>
     <system:String x:Key="item101">Zadatak izvršen. (Proteklo vrijeme:</system:String>
     <system:String x:Key="item102">Patch datoke za verziju 2015 su završili sa instalacijom.</system:String>
     <system:String x:Key="item103">Patch datoke za verziju 2016 su završili sa instalacijom.</system:String>
-    <system:String x:Key="item104">Datoteke zakrpe za KotK su instalirane.</system:String>
     <system:String x:Key="item105">Instalacija najnovije verzije servera u tijeku...</system:String>
     <system:String x:Key="item107">Došlo je do pogreške pri instalaciji najnovije verzije servera:</system:String>
     <system:String x:Key="item108">Uspješno instalirana najnovija verzija servera.</system:String>
@@ -101,9 +99,9 @@
     <system:String x:Key="item118">Raspakiravanje node datotka...</system:String>
     <system:String x:Key="item120">Molim vas zatvorite H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe je trenutno u korištenju.\n\nZatvorite sve otvorene instance H1Z1.\n\nMožete upotrijebiti gumb ispod da prekinete sve procese H1Z1.</system:String>
-    <system:String x:Key="item122">Trenutna verzija igre:</system:String>
+    <system:String x:Key="item122">Trenutna verzija igre: 2016</system:String>
     <system:String x:Key="item124">Verzija launchera</system:String>
-    <system:String x:Key="item125">H1Emu © 2024</system:String>
+    <system:String x:Key="item125">Autorska prava © 2024 | Projekt H1Emu</system:String>
     <system:String x:Key="item126">Vodeći developer</system:String>
     <system:String x:Key="item127">Programeri</system:String>
     <system:String x:Key="item128">Administratori</system:String>
@@ -126,6 +124,7 @@
     <system:String x:Key="item145">IP servera...</system:String>
     <system:String x:Key="item146">Nije moguće izbrisati unos.</system:String>
     <system:String x:Key="item147">Da li ste sigurni da želite izbrisati odabrani server?</system:String>
+    <system:String x:Key="item148">Bačena iznimka.</system:String>
     <system:String x:Key="item149">Raspakiravanje asset datoteka...</system:String>
     <system:String x:Key="item150">PATCHANJE...</system:String>
     <system:String x:Key="item151">Naziv ili IP adresa poslužitelja nisu valjani.</system:String>
