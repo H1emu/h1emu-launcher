@@ -31,5 +31,7 @@ namespace H1EmuLauncher.Classes
         public static string GAME_CRASH_URL = "https://www.h1emu.com/us/game-error?code=G";
 
         public static string H1EMU_CHINESE_LINK = "https://azaz.ge/";
+
+        public static int AGREED_TO_TOS_ITERATION = 1;
     }
 }

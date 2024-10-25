@@ -738,13 +738,6 @@ namespace H1EmuLauncher
 
         private void LauncherWindowLoaded(object sender, RoutedEventArgs e)
         {
-            if (Properties.Settings.Default.firstTimeUse != 1) 
-            {
-                Hide();
-                DisclaimerWindow dc = new();
-                dc.ShowDialog();
-            }
-
             // Delete old setup file
             if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.downloadFileName}"))
                 File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.downloadFileName}");

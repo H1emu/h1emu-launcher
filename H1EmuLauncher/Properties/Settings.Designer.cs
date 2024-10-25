@@ -106,9 +106,10 @@ namespace H1EmuLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public int firstTimeUse {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool firstTimeUse {
             get {
-                return ((int)(this["firstTimeUse"]));
+                return ((bool)(this["firstTimeUse"]));
             }
             set {
                 this["firstTimeUse"] = value;
@@ -160,6 +161,18 @@ namespace H1EmuLauncher.Properties {
             }
             set {
                 this["gameVersionString"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int agreedToTOSIteration {
+            get {
+                return ((int)(this["agreedToTOSIteration"]));
+            }
+            set {
+                this["agreedToTOSIteration"] = value;
             }
         }
     }

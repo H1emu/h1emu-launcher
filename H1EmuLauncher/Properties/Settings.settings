@@ -23,8 +23,8 @@
     <Setting Name="sessionIdKey" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="firstTimeUse" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="firstTimeUse" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="currentPatchVersion2016" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -37,6 +37,9 @@
     </Setting>
     <Setting Name="gameVersionString" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="agreedToTOSIteration" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

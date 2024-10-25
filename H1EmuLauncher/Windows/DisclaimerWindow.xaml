@@ -345,7 +345,7 @@
                             <!-- Continue button -->
                             <Button x:Name="continueButton"
                                     Click="ContinueButton"
-                                    Margin="20"
+                                    Margin="20,20,0,20"
                                     Padding="25,7,25,7"
                                     FontFamily="Arial Black"
                                     BorderThickness="0"

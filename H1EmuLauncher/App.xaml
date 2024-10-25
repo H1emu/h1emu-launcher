@@ -59,7 +59,7 @@
                                 <!-- Text next to the checkbox -->
                                 <ContentPresenter Content="{TemplateBinding Content}" 
                                                   VerticalAlignment="Bottom"
-                                                  Margin="5,0,0,0"/>
+                                                  Margin="8,0,0,0"/>
                             </StackPanel>
 
                             <!-- Triggers -->
@@ -81,6 +81,46 @@
                                                              Storyboard.TargetProperty="Opacity"
                                                              To="0"
                                                              Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseEnter">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="CheckBoxBorder"
+                                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                            To="#707070"
+                                                            Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="MouseLeave">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="CheckBoxBorder"
+                                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                            To="Gray"
+                                                            Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="CheckBoxBorder"
+                                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                            To="#606060"
+                                                            Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="CheckBoxBorder"
+                                                            Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
+                                                            To="#707070"
+                                                            Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>

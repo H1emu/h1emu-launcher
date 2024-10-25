@@ -262,7 +262,11 @@ namespace H1EmuLauncher
 
         private void UpdateWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Hide();
+            if (Properties.Settings.Default.firstTimeUse || Properties.Settings.Default.agreedToTOSIteration < Info.AGREED_TO_TOS_ITERATION)
+            {
+                DisclaimerWindow dc = new();
+                dc.ShowDialog();
+            }
 
             LauncherWindow lw = new();
             lw.Show();

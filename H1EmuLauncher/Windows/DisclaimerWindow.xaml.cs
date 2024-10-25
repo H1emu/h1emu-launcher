@@ -24,7 +24,8 @@ namespace H1EmuLauncher
 
         private void ContinueButton(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.firstTimeUse = 1;
+            Properties.Settings.Default.firstTimeUse = false;
+            Properties.Settings.Default.agreedToTOSIteration = Info.AGREED_TO_TOS_ITERATION;
             Properties.Settings.Default.Save();
 
             Topmost = true;
@@ -55,10 +56,9 @@ namespace H1EmuLauncher
 
         private void DisclaimerWindowClosed(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.firstTimeUse == 0)
+            if (Properties.Settings.Default.firstTimeUse || Properties.Settings.Default.agreedToTOSIteration < Info.AGREED_TO_TOS_ITERATION)
                 Environment.Exit(0);
 
-            LauncherWindow.launcherInstance.Show();
             disclaimerInstance = null;
         }
 
