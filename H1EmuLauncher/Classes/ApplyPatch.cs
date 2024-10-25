@@ -55,8 +55,7 @@ namespace H1EmuLauncher.Classes
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", $"{Properties.Settings.Default.activeDirectory}", true);
 
                     // Extract voice chat patch
-                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1Emu_Voice_Patch.zip", Properties.Resources.H1Emu_Voice_Patch);
-                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\H1Emu_Voice_Patch.zip", $"{Properties.Settings.Default.activeDirectory}", true);
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.exe", Properties.Resources.H1EmuVoiceClient);
 
                     // Extract Asset_256.pack for various fixes
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
@@ -79,9 +78,17 @@ namespace H1EmuLauncher.Classes
                 // Replace users ClientConfig.ini with modified version
                 File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\ClientConfig.ini", Properties.Resources.CustomClientConfig);
 
-                // Delete the .zip file, not needed anymore
+                // Delete any no longer needed files
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
-                File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1Emu_Voice_Patch.zip");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.dll");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.runtimeconfig.json");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Asio.dll");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Core.dll");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.dll");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Midi.dll");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Wasapi.dll");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.WinMM.dll");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\websocket-sharp.dll");
             }
             catch (Exception e)
             {

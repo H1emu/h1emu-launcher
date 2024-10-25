@@ -83,7 +83,7 @@
     <system:String x:Key="item95">Ошибка установки патча 2015:</system:String>
     <system:String x:Key="item96">Ошибка установки патча 2016:</system:String>
     <system:String x:Key="item99">Распаковка файлов патча...</system:String>
-    <system:String x:Key="item100">Удаление .zip файла...</system:String>
+    <system:String x:Key="item100">Удаление старых файлов...</system:String>
     <system:String x:Key="item101">Готово. (Потраченное время:</system:String>
     <system:String x:Key="item102">Файлы патча для версии 2015 установлены.</system:String>
     <system:String x:Key="item103">Файлы патча для версии 2016 установлены.</system:String>

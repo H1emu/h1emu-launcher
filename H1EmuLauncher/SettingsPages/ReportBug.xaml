@@ -50,7 +50,16 @@
                            HorizontalAlignment="Left"
                            Foreground="FloralWhite"
                            TextWrapping="Wrap"
-                           Text="{DynamicResource item174}"/>
+                           Text="{DynamicResource item174}">
+
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="8"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="1"
+                                          Opacity="0.3"/>
+                    </TextBlock.Effect>
+                </TextBlock>
 
                 <!-- Report server files button -->
                 <Button Grid.Column="2"
@@ -81,7 +90,16 @@
             <Rectangle Grid.Row="2"
                        Margin="20,0,20,0"
                        Height="1"
-                       Fill="#FF2A2A32"/>
+                       Fill="#FF2A2A32">
+
+                <Rectangle.Effect>
+                    <DropShadowEffect BlurRadius="8"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"
+                                      Opacity="0.3"/>
+                </Rectangle.Effect>
+            </Rectangle>
 
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions>
@@ -95,7 +113,16 @@
                            HorizontalAlignment="Left"
                            Foreground="FloralWhite"
                            TextWrapping="Wrap"
-                           Text="{DynamicResource item175}"/>
+                           Text="{DynamicResource item175}">
+
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="8"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="1"
+                                          Opacity="0.3"/>
+                    </TextBlock.Effect>
+                </TextBlock>
 
                 <!-- Report launcher button -->
                 <Button Grid.Column="2"

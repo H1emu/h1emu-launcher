@@ -83,7 +83,7 @@
     <system:String x:Key="item95">Wystąpił błąd podczas instalacji patcha dla wersji 2015:</system:String>
     <system:String x:Key="item96">Wystąpił błąd podczas instalacji patcha dla wersji 2016:</system:String>
     <system:String x:Key="item99">Rozpakowywanie plików...</system:String>
-    <system:String x:Key="item100">Usuwanie pliku .zip...</system:String>
+    <system:String x:Key="item100">Usuwanie starych plików...</system:String>
     <system:String x:Key="item101">Zakończono. (Czas:</system:String>
     <system:String x:Key="item102">Zainstalowano patch dla wersji 2015.</system:String>
     <system:String x:Key="item103">Zainstalowano patch dla wersji 2016.</system:String>

@@ -83,7 +83,7 @@
     <system:String x:Key="item95">2015 yaması yüklenirken hata oluştu:</system:String>
     <system:String x:Key="item96">2016 yaması yüklenirken hata oluştu:</system:String>
     <system:String x:Key="item99">Yama dosyası açılıyor...</system:String>
-    <system:String x:Key="item100">.zip dosyası siliniyor...</system:String>
+    <system:String x:Key="item100">Eski dosyalar siliniyor...</system:String>
     <system:String x:Key="item101">Tamamlandı. (Süre:</system:String>
     <system:String x:Key="item102">Oyun versiyonu 2015 için yama dosyası yüklendi.</system:String>
     <system:String x:Key="item103">Oyun versiyonu 2016 için yama dosyası yüklendi.</system:String>

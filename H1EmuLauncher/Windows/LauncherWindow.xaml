@@ -147,7 +147,7 @@
                                 Margin="35,25,35,10"
                                 Orientation="Horizontal">
 
-                        <!-- Minimise to system tray button-->
+                        <!-- Open Settings window button-->
                         <Button x:Name="SettingsButton"
                                 Click="SettingsButtonClick"
                                 RenderOptions.BitmapScalingMode="Fant"
@@ -177,7 +177,7 @@
                                 </Image.Effect>
 
                                 <Image.RenderTransform>
-                                    <RotateTransform x:Name="rotateSettingsIcon" Angle="0"/>
+                                    <RotateTransform x:Name="rotateSettingsIcon"/>
                                 </Image.RenderTransform>
                             </Image>
 
@@ -195,10 +195,8 @@
                                         <Storyboard>
                                             <DoubleAnimation Storyboard.TargetName="rotateSettingsIcon"
                                                              Storyboard.TargetProperty="Angle"
-                                                             By="0"
                                                              To="90"
                                                              Duration="0:0:0.5"
-                                                             FillBehavior="Stop"
                                                              RepeatBehavior="Forever"/>
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -234,7 +232,7 @@
                                                              FillBehavior="HoldEnd"/>
                                         </Storyboard>
                                     </BeginStoryboard>
-                                </EventTrigger>
+                                </EventTrigger>  
                             </Button.Triggers>
                         </Button>
 
@@ -301,46 +299,44 @@
                     </StackPanel>
 
                     <!-- Discord components -->
-                    <StackPanel Grid.Row="1"
-                                Orientation="Horizontal"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Right"
-                                Margin="35,10,35,20">
+                    <Button Grid.Row="1"
+                            x:Name="discordLink"
+                            Margin="35,10,35,20"
+                            Click="OpenDiscord"
+                            RenderOptions.BitmapScalingMode="Fant"
+                            Width="160"
+                            Height="44"
+                            VerticalAlignment="Bottom"
+                            HorizontalAlignment="Right"
+                            BorderThickness="0"
+                            Style="{DynamicResource DiscordButton}">
 
-                        <Button x:Name="discordLink"
-                                Grid.Column="1"
-                                Click="OpenDiscord"
-                                RenderOptions.BitmapScalingMode="Fant"
-                                Width="160"
-                                Height="44"
-                                VerticalAlignment="Bottom"
-                                HorizontalAlignment="Right"
-                                BorderThickness="0"
-                                Style="{DynamicResource DiscordButton}">
+                        <Button.Background>
+                            <ImageBrush ImageSource="..\Resources\Discord.png"/>
+                        </Button.Background>
 
-                            <Button.Effect>
-                                <DropShadowEffect BlurRadius="15"
-                                                  Direction="-90"
-                                                  RenderingBias="Quality"
-                                                  ShadowDepth="0"
-                                                  Opacity="0.3"/>
-                            </Button.Effect>
+                        <Button.Effect>
+                            <DropShadowEffect BlurRadius="15"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="0"
+                                              Opacity="0.3"/>
+                        </Button.Effect>
 
-                            <!-- Context menu to copy link -->
-                            <Button.ContextMenu>
-                                <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                    <MenuItem Click="discordLinkCopy"
-                                              Header="{DynamicResource item193}"
-                                              Style="{DynamicResource CustomMenuItem}">
+                        <!-- Context menu to copy link -->
+                        <Button.ContextMenu>
+                            <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                                <MenuItem Click="discordLinkCopy"
+                      Header="{DynamicResource item193}"
+                      Style="{DynamicResource CustomMenuItem}">
 
-                                        <MenuItem.Icon>
-                                            <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
-                                        </MenuItem.Icon>
-                                    </MenuItem>
-                                </ContextMenu>
-                            </Button.ContextMenu>
-                        </Button>
-                    </StackPanel>
+                                    <MenuItem.Icon>
+                                        <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
                 </Grid>
             </Grid>
 
@@ -411,6 +407,14 @@
                                 <!-- Date version was published -->
                                 <Run x:Name="datePublished"
                                      FontFamily="Bahnschrift Light"/>
+
+                                <TextBlock.Effect>
+                                    <DropShadowEffect BlurRadius="8"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="1"
+                                                      Opacity="0.3"/>
+                                </TextBlock.Effect>
                             </TextBlock>
 
                             <!-- Patch notes textbox -->
@@ -424,7 +428,16 @@
                                            Foreground="FloralWhite"
                                            FontWeight="Light"
                                            Cursor="Arrow"
-                                           TextWrapping="Wrap"/>
+                                           TextWrapping="Wrap">
+
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect BlurRadius="8"
+                                                          Direction="-90"
+                                                          RenderingBias="Quality"
+                                                          ShadowDepth="1"
+                                                          Opacity="0.3"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
 
                             </ScrollViewer>
 
@@ -452,6 +465,13 @@
                                         </MenuItem>
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
+                                <TextBlock.Effect>
+                                    <DropShadowEffect BlurRadius="8"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="1"
+                                                      Opacity="0.3"/>
+                                </TextBlock.Effect>
                             </TextBlock>
                         </Grid>
 
@@ -560,6 +580,13 @@
         
                                 <Run Text="{DynamicResource item50}"/>
 
+                                <TextBlock.Effect>
+                                    <DropShadowEffect BlurRadius="8"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="1"
+                                                      Opacity="0.3"/>
+                                </TextBlock.Effect>
                             </TextBlock>
 
                             <!-- H1Emu Chinese Community link -->
@@ -594,7 +621,14 @@
                                             </MenuItem.Icon>
                                         </MenuItem>
                                     </ContextMenu>
-                                </TextBlock.ContextMenu>  
+                                </TextBlock.ContextMenu>
+                                <TextBlock.Effect>
+                                    <DropShadowEffect BlurRadius="8"
+                                                      Direction="-90"
+                                                      RenderingBias="Quality"
+                                                      ShadowDepth="1"
+                                                      Opacity="0.3"/>
+                                </TextBlock.Effect>
                             </TextBlock>
                         </Grid>
 
@@ -642,6 +676,14 @@
                                     <Rectangle Height="1"
                                                Fill="#FF2A2A32"
                                                RenderOptions.BitmapScalingMode="Fant">
+
+                                        <Rectangle.Effect>
+                                            <DropShadowEffect BlurRadius="8"
+                                                              Direction="-90"
+                                                              RenderingBias="Quality"
+                                                              ShadowDepth="1"
+                                                              Opacity="0.3"/>
+                                        </Rectangle.Effect>
                                     </Rectangle>
 
                                     <!-- Current detected game version -->
@@ -653,13 +695,30 @@
                                                FontWeight="Bold"
                                                FontSize="15"
                                                HorizontalAlignment="Center"
-                                               Text="{DynamicResource item69}"/>
+                                               Text="{DynamicResource item69}">
+                                        
+                                        <TextBlock.Effect>
+                                            <DropShadowEffect BlurRadius="8"
+                                                              Direction="-90"
+                                                              RenderingBias="Quality"
+                                                              ShadowDepth="1"
+                                                              Opacity="0.3"/>
+                                        </TextBlock.Effect>
+                                    </TextBlock>
 
                                     <!-- Divider -->
                                     <Rectangle Grid.Column="2"
                                                Height="1"
                                                Fill="#FF2A2A32"
                                                RenderOptions.BitmapScalingMode="Fant">
+
+                                        <Rectangle.Effect>
+                                            <DropShadowEffect BlurRadius="8"
+                                                              Direction="-90"
+                                                              RenderingBias="Quality"
+                                                              ShadowDepth="1"
+                                                              Opacity="0.3"/>
+                                        </Rectangle.Effect>
                                     </Rectangle>
                                 </Grid>
 
@@ -812,8 +871,7 @@
             </Border>
 
             <!-- Footer -->
-            <Grid Grid.Row="2"
-                  Background="Transparent">
+            <Grid Grid.Row="2">
 
                 <Grid.Triggers>
                     <EventTrigger RoutedEvent="MouseEnter">

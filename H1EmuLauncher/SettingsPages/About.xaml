@@ -40,12 +40,12 @@
                     <RowDefinition Height="15"/>
                 </Grid.RowDefinitions>
 
-                <ScrollViewer VerticalScrollBarVisibility="Hidden"
-                              Grid.Row="1">
+                <ScrollViewer Grid.Row="1"
+                              VerticalScrollBarVisibility="Hidden">
 
                     <StackPanel>
                         <!-- List of everyone who helped on the project -->
-                        
+
                         <!-- Lead development-->
                         <TextBlock Margin="20"
                                    FontSize="18"
@@ -68,7 +68,16 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32"/>
+                                   Fill="#FF2A2A32">
+
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
 
                         <!-- Administrators -->
                         <TextBlock Margin="0,20,0,20"
@@ -92,7 +101,16 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32"/>
+                                   Fill="#FF2A2A32">
+                            
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
 
                         <!-- Developers -->
                         <TextBlock Margin="0,20,0,20"
@@ -116,7 +134,16 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32"/>
+                                   Fill="#FF2A2A32">
+
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
 
                         <!-- Contributors -->
                         <TextBlock Margin="0,20,0,20"
@@ -140,7 +167,16 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32"/>
+                                   Fill="#FF2A2A32">
+
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
 
                         <!-- Moderators -->
                         <TextBlock Margin="0,20,0,20"
@@ -164,7 +200,16 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32"/>
+                                   Fill="#FF2A2A32">
+
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
 
                         <!-- Support -->
                         <TextBlock Margin="0,20,0,20"
@@ -188,7 +233,16 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32"/>
+                                   Fill="#FF2A2A32">
+
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
 
                         <!-- Financial contributors -->
                         <TextBlock Margin="0,20,0,20"
@@ -212,7 +266,16 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32"/>
+                                   Fill="#FF2A2A32">
+
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
 
                         <!-- Translators -->
                         <TextBlock Margin="0,20,0,20"
@@ -236,7 +299,16 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32"/>
+                                   Fill="#FF2A2A32">
+
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
 
                         <!-- Thank to community message -->
                         <TextBlock Margin="60,20,60,20"
@@ -251,7 +323,16 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,0,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32"/>
+                                   Fill="#FF2A2A32">
+
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
 
                         <!-- Launcher made by Eavilaswayce message -->
                         <TextBlock Margin="60,20,60,20"
@@ -261,9 +342,15 @@
                                    TextAlignment="Center"
                                    FontWeight="Light"
                                    Text="{DynamicResource item169}"/>
+
+                        <StackPanel.Effect>
+                            <DropShadowEffect BlurRadius="8"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="1"
+                                              Opacity="0.3"/>
+                        </StackPanel.Effect>
                     </StackPanel>
-
-
                 </ScrollViewer>
             </Grid>
         </Grid>

@@ -72,6 +72,14 @@
                                  Cursor="Hand"/>
 
                         </Hyperlink>
+
+                        <TextBlock.Effect>
+                            <DropShadowEffect BlurRadius="8"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="1"
+                                              Opacity="0.3"/>
+                        </TextBlock.Effect>
                     </TextBlock>
 
                     <!-- Install patch button -->
@@ -103,7 +111,16 @@
                 <Rectangle Grid.Row="1"
                            Margin="20,0,20,0"
                            Height="1"
-                           Fill="#FF2A2A32"/>
+                           Fill="#FF2A2A32">
+
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="8"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="1"
+                                          Opacity="0.3"/>
+                    </Rectangle.Effect>
+                </Rectangle>
 
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
@@ -116,7 +133,16 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                TextWrapping="Wrap"
-                               Text="{DynamicResource item46}"/>
+                               Text="{DynamicResource item46}">
+
+                        <TextBlock.Effect>
+                            <DropShadowEffect BlurRadius="8"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="1"
+                                              Opacity="0.3"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
 
                     <!-- Install latest server button -->
                     <Button x:Name="latestButton"
@@ -147,7 +173,16 @@
                 <Rectangle Grid.Row="3"
                            Margin="20,0,20,0"
                            Height="1"
-                           Fill="#FF2A2A32"/>
+                           Fill="#FF2A2A32">
+
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="8"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="1"
+                                          Opacity="0.3"/>
+                    </Rectangle.Effect>
+                </Rectangle>
 
                 <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
@@ -160,7 +195,16 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                TextWrapping="Wrap"
-                               Text="{DynamicResource item47}"/>
+                               Text="{DynamicResource item47}">
+
+                        <TextBlock.Effect>
+                            <DropShadowEffect BlurRadius="8"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="1"
+                                              Opacity="0.3"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
 
                     <!-- Install stable server button -->
                     <Button x:Name="stableButton"
@@ -224,7 +268,16 @@
                     <TextBlock x:Name="settingsProgressText"
                                Margin="0,0,20,10"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center"/>
+                               HorizontalAlignment="Center">
+
+                        <TextBlock.Effect>
+                            <DropShadowEffect BlurRadius="8"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="1"
+                                              Opacity="0.3"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
                 </Grid>
             </Border>
         </Grid>

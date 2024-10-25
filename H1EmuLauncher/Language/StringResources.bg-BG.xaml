@@ -83,7 +83,7 @@
     <system:String x:Key="item95">Имаше грешка с инсталиране на версия 2015год:</system:String>
     <system:String x:Key="item96">Имаше грешка с инсталиране на версия 2016год:</system:String>
     <system:String x:Key="item99">Разархивиране на файлове за пача...</system:String>
-    <system:String x:Key="item100">Изтриване на  .zip файл...</system:String>
+    <system:String x:Key="item100">Изтриване на стари файлове...</system:String>
     <system:String x:Key="item101">Готово. (Elapsed time:</system:String>
     <system:String x:Key="item102">Файловете за версия 2015 са изтеглени.</system:String>
     <system:String x:Key="item103">Файлове за версия 2016год. са инсталирани.</system:String>

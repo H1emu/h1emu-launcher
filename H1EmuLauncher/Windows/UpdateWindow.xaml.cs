@@ -232,6 +232,9 @@ namespace H1EmuLauncher
 
                     return;
                 }
+
+                Environment.Exit(0);
+
             }).Start();
         }
 

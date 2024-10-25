@@ -83,7 +83,7 @@
     <system:String x:Key="item95">Beim Installieren des patches 2015 ist ein Fehler aufgetreten:</system:String>
     <system:String x:Key="item96">Beim Installieren des patches 2016 ist ein Fehler aufgetreten:</system:String>
     <system:String x:Key="item99">entpacke Pach Dateien...</system:String>
-    <system:String x:Key="item100">Lösche .zip Datei...</system:String>
+    <system:String x:Key="item100">Alte Dateien werden gelöscht...</system:String>
     <system:String x:Key="item101">Fertig. (Verstrichene Zeit:</system:String>
     <system:String x:Key="item102">Patch Dateien für die Spielversion 2015 wurden installiert.</system:String>
     <system:String x:Key="item103">Patch Dateien für die Spielversion 2016 wurden installiert.</system:String>

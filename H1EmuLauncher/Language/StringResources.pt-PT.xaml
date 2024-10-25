@@ -83,7 +83,7 @@
     <system:String x:Key="item95">Ocorreu um erro durante a instalação da correção 2015:</system:String>
     <system:String x:Key="item96">Ocorreu um erro durante a instalação da correção 2016:</system:String>
     <system:String x:Key="item99">A descompactar os ficheiros de correção...</system:String>
-    <system:String x:Key="item100">A eliminar ficheiros .zip...</system:String>
+    <system:String x:Key="item100">Excluindo arquivos antigos...</system:String>
     <system:String x:Key="item101">Completado. (Duração:</system:String>
     <system:String x:Key="item102">Foram instalados ficheiros de correção para a versão 2015 do jogo...</system:String>
     <system:String x:Key="item103">Foram instalados ficheiros de correção para a versão 2016 do jogo</system:String>

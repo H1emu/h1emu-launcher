@@ -91,7 +91,16 @@
                    Margin="10,0,0,0"
                    TextWrapping="Wrap"
                    VerticalAlignment="Top"
-                   Text="{DynamicResource item34}"/>
+                   Text="{DynamicResource item34}">
+
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="8"
+                                  Direction="-90"
+                                  RenderingBias="Quality"
+                                  ShadowDepth="1"
+                                  Opacity="0.3"/>
+            </TextBlock.Effect>
+        </TextBlock>
 
         <!-- Password box -->
         <PasswordBox x:Name="passwordBox"
@@ -178,6 +187,15 @@
                    Margin="10,0,0,0"
                    VerticalAlignment="Top"
                    TextWrapping="Wrap"
-                   Text="{DynamicResource item35}"/>
+                   Text="{DynamicResource item35}">
+
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="8"
+                                  Direction="-90"
+                                  RenderingBias="Quality"
+                                  ShadowDepth="1"
+                                  Opacity="0.3"/>
+            </TextBlock.Effect>
+        </TextBlock>
     </Grid>
 </UserControl>

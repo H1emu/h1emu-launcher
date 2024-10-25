@@ -83,7 +83,7 @@
     <system:String x:Key="item95">Une erreur s'est produite lors de l'installation du patch 2015:</system:String>
     <system:String x:Key="item96">Une erreur s'est produite lors de l'installation du patch 2016:</system:String>
     <system:String x:Key="item99">Décompression des fichiers de correction...</system:String>
-    <system:String x:Key="item100">Suppression d'un fichier .zip...</system:String>
+    <system:String x:Key="item100">Suppression des anciens fichiers...</system:String>
     <system:String x:Key="item101">Terminé. (Temps écoulé:</system:String>
     <system:String x:Key="item102">Les fichiers de correction pour la version 2015 du jeu ont été installés.</system:String>
     <system:String x:Key="item103">Les fichiers de correction pour la version 2016 du jeu ont été installés.</system:String>

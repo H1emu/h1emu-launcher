@@ -321,16 +321,6 @@ namespace H1EmuLauncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] H1Emu_Voice_Patch {
-            get {
-                object obj = ResourceManager.GetObject("H1Emu_Voice_Patch", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap H1EmuIcon {
@@ -347,6 +337,16 @@ namespace H1EmuLauncher.Properties {
             get {
                 object obj = ResourceManager.GetObject("H1EmuLogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] H1EmuVoiceClient {
+            get {
+                object obj = ResourceManager.GetObject("H1EmuVoiceClient", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

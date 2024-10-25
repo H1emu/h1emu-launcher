@@ -83,7 +83,7 @@
     <system:String x:Key="item95">There was an error installing the 2015 patch:</system:String>
     <system:String x:Key="item96">There was an error installing the 2016 patch:</system:String>
     <system:String x:Key="item99">Unzipping patch files...</system:String>
-    <system:String x:Key="item100">Deleting .zip file...</system:String>
+    <system:String x:Key="item100">Deleting old files...</system:String>
     <system:String x:Key="item101">Done. (Elapsed time:</system:String>
     <system:String x:Key="item102">Patch files for game version 2015 have been installed.</system:String>
     <system:String x:Key="item103">Patch files for game version 2016 have been installed.</system:String>

@@ -83,7 +83,7 @@
     <system:String x:Key="item95">Ocurrió un error al instalar el parche 2015:</system:String>
     <system:String x:Key="item96">Ocurrió un error al instalar el parche 2016:</system:String>
     <system:String x:Key="item99">Descomprimiendo archivos del parche...</system:String>
-    <system:String x:Key="item100">Eliminando archivo .zip...</system:String>
+    <system:String x:Key="item100">Eliminando archivos antiguos...</system:String>
     <system:String x:Key="item101">Hecho. (Tiempo transcurrido:</system:String>
     <system:String x:Key="item102">El parche para la versión 2015 del juego ha sido instalado.</system:String>
     <system:String x:Key="item103">El parche para la versión 2016 del juego ha sido instalado.</system:String>

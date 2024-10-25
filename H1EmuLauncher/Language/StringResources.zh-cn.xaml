@@ -83,7 +83,7 @@
     <system:String x:Key="item95">安装2015版本的补丁文件出错：</system:String>
     <system:String x:Key="item96">安装2016版本的补丁文件出错：</system:String>
     <system:String x:Key="item99">正在解压文件...</system:String>
-    <system:String x:Key="item100">正在删除压缩文件...</system:String>
+    <system:String x:Key="item100">正在删除旧文件...</system:String>
     <system:String x:Key="item101">完成。 (运行时间：</system:String>
     <system:String x:Key="item102">游戏2015版本的补丁文件已经安装完成。</system:String>
     <system:String x:Key="item103">游戏2016版本的补丁文件已经安装完成。</system:String>

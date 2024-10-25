@@ -7,10 +7,10 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>3.0.8</FileVersion>
+	  <FileVersion>3.0.9</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>3.0.8</Version>
+	  <Version>3.0.9</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>3.0.8</AssemblyVersion>
+	  <AssemblyVersion>3.0.9</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -60,8 +60,8 @@
     <None Remove="Resources\Grain.png" />
     <None Remove="Resources\H1EmuIcon.png" />
     <None Remove="Resources\H1EmuLogo.png" />
+    <None Remove="Resources\H1EmuVoiceClient.exe" />
     <None Remove="Resources\H1EmuVoicePatch.zip" />
-    <None Remove="Resources\H1Emu_Voice_Patch.zip" />
     <None Remove="Resources\H1Z1_BE.exe" />
     <None Remove="Resources\H1Z1_FP.exe" />
     <None Remove="Resources\HideKey.png" />
@@ -235,7 +235,7 @@
     <Resource Include="Resources\H1EmuLogo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\H1Emu_Voice_Patch.zip">
+    <Resource Include="Resources\H1EmuVoiceClient.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\H1Z1_BE.exe">

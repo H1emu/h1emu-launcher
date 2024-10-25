@@ -571,7 +571,7 @@ namespace H1EmuLauncher
 
                     // If connecting to H1Emu servers, validate assets
                     //if (serverIp == Info.H1EMU_SERVER_IP)
-                    //CheckAssetsBeforeLaunch.CheckAssets();
+                        //CheckAssetsBeforeLaunch.CheckAssets();
 
                     // Launch game
                     Process h1Process = new();

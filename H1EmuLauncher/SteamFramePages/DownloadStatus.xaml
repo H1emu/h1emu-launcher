@@ -39,6 +39,14 @@
             <Run Text="{DynamicResource item27}"/>
             <Run x:Name="gameDownloadText"
                          Foreground="#FFCA1420" Text="----:"/>
+
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="8"
+                                  Direction="-90"
+                                  RenderingBias="Quality"
+                                  ShadowDepth="1"
+                                  Opacity="0.3"/>
+            </TextBlock.Effect>
         </TextBlock>
 
         <Grid Grid.Row="1">
@@ -74,7 +82,16 @@
                        Margin="0,0,10,0"
                        Padding="12,0,12,0"
                        VerticalAlignment="Center"
-                       TextAlignment="Center"/>
+                       TextAlignment="Center">
+
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="8"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"
+                                      Opacity="0.3"/>
+                </TextBlock.Effect>
+            </TextBlock>
 
             <!-- Cancel download button -->
             <Button x:Name="cancelDownloadButton"

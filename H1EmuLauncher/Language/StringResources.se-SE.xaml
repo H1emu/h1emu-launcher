@@ -83,7 +83,7 @@
     <system:String x:Key="item95">Det uppstod ett fel när du skulle installera 2015 patchen:</system:String>
     <system:String x:Key="item96">Det uppstod ett fel när du skulle installera 2016 patchen:</system:String>
     <system:String x:Key="item99">Packar upp patchfiler...</system:String>
-    <system:String x:Key="item100">Raderar .zip filen...</system:String>
+    <system:String x:Key="item100">Tar bort gamla filer...</system:String>
     <system:String x:Key="item101">Klar. (Det tog:</system:String>
     <system:String x:Key="item102">Patch-filerna för spelversionen 2015 har blivit installerat.</system:String>
     <system:String x:Key="item103">Patch-filerna för spelversionen 2016 har blivit installerat.</system:String>

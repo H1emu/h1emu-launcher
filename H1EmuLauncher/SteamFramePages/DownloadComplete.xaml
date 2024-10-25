@@ -39,6 +39,14 @@
                  Text="{DynamicResource item23}"/>
             <LineBreak/>
             <Run Text="{DynamicResource item24}"/>
+
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="8"
+                                  Direction="-90"
+                                  RenderingBias="Quality"
+                                  ShadowDepth="1"
+                                  Opacity="0.3"/>
+            </TextBlock.Effect>
         </TextBlock>
 
         <!-- Back to login page button -->

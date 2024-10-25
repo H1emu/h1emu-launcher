@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Media;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using H1EmuLauncher.Classes;
@@ -10,8 +11,6 @@ namespace H1EmuLauncher
     public partial class DisclaimerWindow : Window
     {
         public static DisclaimerWindow disclaimerInstance;
-        private DispatcherTimer timer;
-        private int seconds = 10;
 
         public DisclaimerWindow()
         {
@@ -37,31 +36,9 @@ namespace H1EmuLauncher
             DragMove();
         }
 
-        private void timerTick(object sender, EventArgs e)
-        {
-            seconds--;
-
-            if (seconds == 0) 
-            { 
-                timer.Stop(); 
-                continueButton.Content = FindResource("item167").ToString();
-                continueButton.IsEnabled = true;
-                ExitButton.IsEnabled = true;
-            }
-            else
-                continueButton.Content = seconds.ToString();
-        }
-
         private void DisclaimerWindowLoaded(object sender, RoutedEventArgs e)
         {
             SystemSounds.Beep.Play();
-
-            timer = new DispatcherTimer();
-            timer.Tick += new EventHandler(timerTick);
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Start();
-
-            continueButton.Content = seconds.ToString();
         }
 
         private void DisclaimerWindowContentRendered(object sender, EventArgs e)
@@ -72,20 +49,26 @@ namespace H1EmuLauncher
 
         private void CloseDisclaimerWindow(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.firstTimeUse = 1;
-            Properties.Settings.Default.Save();
-
             Topmost = true;
             Close();
         }
 
-        private void DisclaimerWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void DisclaimerWindowClosed(object sender, EventArgs e)
         {
-            if (timer.IsEnabled)
+            if (Properties.Settings.Default.firstTimeUse == 0)
                 Environment.Exit(0);
 
             LauncherWindow.launcherInstance.Show();
             disclaimerInstance = null;
+        }
+
+        private void AgreedToRulesCheckBoxChecked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender;
+            if ((bool)checkBox.IsChecked)
+                continueButton.IsEnabled = true;
+            else
+                continueButton.IsEnabled = false;
         }
     }
 }

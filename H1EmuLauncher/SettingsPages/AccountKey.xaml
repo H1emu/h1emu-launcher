@@ -50,7 +50,16 @@
                        TextAlignment="Center"
                        Foreground="FloralWhite"
                        TextWrapping="Wrap"
-                       Text="{DynamicResource item156}"/>
+                       Text="{DynamicResource item156}">
+
+                <TextBlock.Effect>
+                    <DropShadowEffect BlurRadius="8"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"
+                                      Opacity="0.3"/>
+                </TextBlock.Effect>
+            </TextBlock>
 
             <!-- Hyperlink to user authentication key website -->
             <TextBlock Grid.Row="2"
@@ -84,7 +93,16 @@
             <Rectangle Grid.Row="3"
                        Margin="20,0,20,0"
                        Height="1"
-                       Fill="#FF2A2A32"/>
+                       Fill="#FF2A2A32">
+
+                <Rectangle.Effect>
+                    <DropShadowEffect BlurRadius="8"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"
+                                      Opacity="0.3"/>
+                </Rectangle.Effect>
+            </Rectangle>
 
             <Grid Grid.Row="4">
                 

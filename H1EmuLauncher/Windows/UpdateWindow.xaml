@@ -143,13 +143,31 @@
                                    TextAlignment="Center"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
-                                   Text="{DynamicResource item1}"/>
+                                   Text="{DynamicResource item1}">
+
+                            <TextBlock.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="2"
                                    Margin="20,0,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32"/>
+                                   Fill="#FF2A2A32">
+
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
 
                         <!-- Main progress bar -->
                         <ProgressBar x:Name="downloadSetupProgress"

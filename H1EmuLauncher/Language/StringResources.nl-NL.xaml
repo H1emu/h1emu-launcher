@@ -83,7 +83,7 @@
     <system:String x:Key="item95">Er trad een fout op tijdens het installeren van de 2015 patch:</system:String>
     <system:String x:Key="item96">Er trad een fout op tijdens het installeren van de 2016 patch:</system:String>
     <system:String x:Key="item99">Unzippen patch bestand...</system:String>
-    <system:String x:Key="item100">Verwijderen .zip bestand...</system:String>
+    <system:String x:Key="item100">Oude bestanden verwijderen...</system:String>
     <system:String x:Key="item101">Klaar. (Elapsed time:</system:String>
     <system:String x:Key="item102">Patch bestanden voor spel versie 2015 zijn geïnstalleerd.</system:String>
     <system:String x:Key="item103">Patch bestanden voor spel versie 2016 zijn geïnstalleerd.</system:String>
