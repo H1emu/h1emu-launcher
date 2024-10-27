@@ -443,7 +443,7 @@
 
                             <!-- Read full details of update hyperlink -->
                             <TextBlock Grid.Row="2"
-                                       Margin="30,10,10,15">
+                                       Margin="30,15,10,15">
     
                                 <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/"
                                            RequestNavigate="FullUpdatesHyperlink"
@@ -802,7 +802,6 @@
                                           BorderThickness="2"
                                           SelectedIndex="0"
                                           SelectionChanged="ServerSelectorChanged"
-                                          PreviewMouseDown="ServerSelectorPreviewMouseDown"
                                           Style="{DynamicResource ComboBox}">
 
 

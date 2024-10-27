@@ -73,6 +73,7 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    IsHitTestVisible="False"
+                   Foreground="Gray"
                    Text="{DynamicResource item59}"/>
 
         <!-- Icon for username textbox -->
@@ -133,6 +134,7 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Left"
                    IsHitTestVisible="False"
+                   Foreground="Gray"
                    Text="{DynamicResource item60}"/>
 
         <!-- Icon for password textbox -->

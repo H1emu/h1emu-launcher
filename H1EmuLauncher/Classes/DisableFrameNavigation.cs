@@ -15,9 +15,7 @@ namespace H1EmuLauncher.Classes
             o.SetValue(DisableProperty, value);
         }
 
-        public static readonly DependencyProperty DisableProperty = DependencyProperty.RegisterAttached("Disable", typeof(bool),
-                                                                    typeof(DisableFrameNavigation),
-                                                                    new PropertyMetadata(false, DisableChanged));
+        public static readonly DependencyProperty DisableProperty = DependencyProperty.RegisterAttached("Disable", typeof(bool), typeof(DisableFrameNavigation), new PropertyMetadata(false, DisableChanged));
 
 
 

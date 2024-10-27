@@ -23,6 +23,9 @@ namespace H1EmuLauncher.SettingsPages
 
         private void AccountKeyBoxTextTextChanged(object sender, TextChangedEventArgs e)
         {
+            if (accountKeyBoxPassword.Password != accountKeyBoxText.Text)
+                accountKeyBoxPassword.Password = accountKeyBoxText.Text;
+
             if (accountKeyBoxText.Visibility == Visibility.Visible)
             {
                 Properties.Settings.Default.sessionIdKey = accountKeyBoxText.Text.Trim();
@@ -32,6 +35,9 @@ namespace H1EmuLauncher.SettingsPages
 
         private void AccountKeyBoxPasswordPasswordChanged(object sender, RoutedEventArgs e)
         {
+            if (accountKeyBoxText.Text != accountKeyBoxPassword.Password)
+                accountKeyBoxText.Text = accountKeyBoxPassword.Password;
+
             if (accountKeyBoxPassword.Visibility == Visibility.Visible)
             {
                 Properties.Settings.Default.sessionIdKey = accountKeyBoxPassword.Password.Trim();
@@ -77,8 +83,6 @@ namespace H1EmuLauncher.SettingsPages
         {
             showKeyButton.Visibility = Visibility.Hidden;
             hideKeyButton.Visibility = Visibility.Visible;
-            accountKeyBoxText.Text = accountKeyBoxPassword.Password;
-
             accountKeyBoxPassword.Visibility = Visibility.Hidden;
             accountKeyBoxText.Visibility = Visibility.Visible;
         }
@@ -87,8 +91,6 @@ namespace H1EmuLauncher.SettingsPages
         {
             showKeyButton.Visibility = Visibility.Visible;
             hideKeyButton.Visibility = Visibility.Hidden;
-            accountKeyBoxPassword.Password = accountKeyBoxText.Text;
-
             accountKeyBoxPassword.Visibility = Visibility.Visible;
             accountKeyBoxText.Visibility = Visibility.Hidden;
         }

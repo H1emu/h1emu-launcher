@@ -24,7 +24,7 @@ namespace H1EmuLauncher.Classes
             Grid childGrid = GetChildOfType<Grid>(mainGrid);
             childGrid.Effect = be;
 
-            DoubleAnimation a = new(0.8, new Duration(TimeSpan.FromMilliseconds(200)))
+            DoubleAnimation a = new(0.7, new Duration(TimeSpan.FromMilliseconds(200)))
             {
                 AccelerationRatio = 0.2,
                 DecelerationRatio = 0.2

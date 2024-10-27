@@ -171,7 +171,7 @@
                            Padding="40,4,40,0"
                            VerticalAlignment="Center"
                            IsHitTestVisible="False"
-                           Foreground="FloralWhite"
+                           Foreground="Gray"
                            Text="{DynamicResource item154}"/>
 
                 <!-- Password visibility show button -->

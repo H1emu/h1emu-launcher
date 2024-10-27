@@ -137,7 +137,8 @@
                         </Grid.RowDefinitions>
 
                         <!-- Welcome message -->
-                        <TextBlock Grid.Row="1"
+                        <TextBlock x:Name="welcomeMessage"
+                                   Grid.Row="1"
                                    Margin="0,10,0,0"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"

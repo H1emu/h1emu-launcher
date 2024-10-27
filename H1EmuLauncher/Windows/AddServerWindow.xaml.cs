@@ -95,10 +95,12 @@ namespace H1EmuLauncher
                 string newJson = JsonSerializer.Serialize(currentJson, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(LauncherWindow.customServersJsonFile, newJson);
 
-                ComboBoxItem newItem = new();
-                newItem.Content = serverNameBox.Text.Trim();
-                newItem.Style = (Style)FindResource("ComboBoxItemStyle");
-                newItem.PreviewMouseRightButtonUp += LauncherWindow.launcherInstance.ItemRightMouseButtonUp;
+                ComboBoxItem newItem = new()
+                {
+                    Content = serverNameBox.Text.Trim(),
+                    Style = (Style)FindResource("ComboBoxItemStyle")
+                };
+                newItem.PreviewMouseRightButtonUp += (s, e) => { LauncherWindow.itemRightClicked = (ComboBoxItem)s; };
 
                 ContextMenu newItemContextMenu = new()
                 {
@@ -114,14 +116,22 @@ namespace H1EmuLauncher
                 editOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item212");
                 editOption.Click += LauncherWindow.launcherInstance.EditServerInfo;
 
+                Separator contextMenuSeparatorSeparator = new()
+                {
+                    Style = (Style)FindResource("SeparatorMenuItem"),
+                    Background = new SolidColorBrush(Color.FromRgb(66, 66, 66)),
+                    Margin = new Thickness(10, 7, 10, 7)
+                };
+
                 MenuItem deleteOption = new()
                 {
                     Style = (Style)FindResource("CustomMenuItem"),
                     Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) }
                 };
                 deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
-                deleteOption.Click += LauncherWindow.launcherInstance.DeleteServerFromList;
+                deleteOption.Click += LauncherWindow.launcherInstance.DeleteServer;
                 newItemContextMenu.Items.Add(editOption);
+                newItemContextMenu.Items.Add(contextMenuSeparatorSeparator);
                 newItemContextMenu.Items.Add(deleteOption);
 
                 int insertIndex = LauncherWindow.launcherInstance.serverSelector.Items.Count - 1;
@@ -132,12 +142,12 @@ namespace H1EmuLauncher
 
                 if (LauncherWindow.launcherInstance.serverSelector.Items.Count == 5)
                 {
-                    Separator separator = new()
+                    Separator serverSelectorSeparator = new()
                     {
                         Style = (Style)FindResource("SeparatorMenuItem"),
                         Background = new SolidColorBrush(Color.FromRgb(66, 66, 66))
                     };
-                    LauncherWindow.launcherInstance.serverSelector.Items.Insert(LauncherWindow.launcherInstance.serverSelector.Items.Count - 1, separator);
+                    LauncherWindow.launcherInstance.serverSelector.Items.Insert(LauncherWindow.launcherInstance.serverSelector.Items.Count - 1, serverSelectorSeparator);
                 }
 
                 LauncherWindow.launcherInstance.serverSelector.SelectedIndex = insertIndex;

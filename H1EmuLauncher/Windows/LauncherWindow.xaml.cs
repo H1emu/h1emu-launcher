@@ -34,6 +34,7 @@ namespace H1EmuLauncher
             UseShellExecute = false
         };
         public static LauncherWindow launcherInstance;
+        public static ComboBoxItem itemRightClicked;
         public static ContextMenu notifyIconContextMenu = new();
         public static string customServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
         public static string recentServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\recentServers.json";
@@ -221,38 +222,46 @@ namespace H1EmuLauncher
                 notifyIconContextMenu.Style = (Style)FindResource("ContextMenuStyle");
                 notifyIconContextMenu.PlacementTarget = this;
 
-                MenuItem notifyIconMenuItemH1EmuServers = new();
-                notifyIconMenuItemH1EmuServers.Style = (Style)FindResource("CustomMenuItem");
-                notifyIconMenuItemH1EmuServers.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) };
+                MenuItem notifyIconMenuItemH1EmuServers = new()
+                {
+                    Style = (Style)FindResource("CustomMenuItem"),
+                    Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) },
+                    Margin = new Thickness(0, 5, 0, 0)
+                };
                 notifyIconMenuItemH1EmuServers.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item139");
-                notifyIconMenuItemH1EmuServers.Margin = new Thickness(0, 5, 0, 0);
                 notifyIconMenuItemH1EmuServers.PreviewMouseLeftButtonDown += (o, s) =>
                 {
                     serverSelector.SelectedIndex = 0;
                     playButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                 };
 
-                MenuItem notifyIconMenuItemSingleplayer = new();
-                notifyIconMenuItemSingleplayer.Style = (Style)FindResource("CustomMenuItem");
-                notifyIconMenuItemSingleplayer.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) };
+                MenuItem notifyIconMenuItemSingleplayer = new()
+                {
+                    Style = (Style)FindResource("CustomMenuItem"),
+                    Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) },
+                    Margin = new Thickness(0, 5, 0, 0)
+                };
                 notifyIconMenuItemSingleplayer.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item140");
-                notifyIconMenuItemSingleplayer.Margin = new Thickness(0, 5, 0, 0);
                 notifyIconMenuItemSingleplayer.PreviewMouseLeftButtonDown += (o, s) =>
                 {
                     serverSelector.SelectedIndex = 1;
                     playButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                 };
 
-                Separator notifyIconItemSeparator = new();
-                notifyIconItemSeparator.Style = (Style)FindResource("SeparatorMenuItem");
-                notifyIconItemSeparator.Background = new SolidColorBrush(Color.FromRgb(44, 44, 44));
-                notifyIconItemSeparator.Margin = new Thickness(10, 7, 10, 2);
+                Separator notifyIconItemSeparator = new()
+                {
+                    Style = (Style)FindResource("SeparatorMenuItem"),
+                    Background = new SolidColorBrush(Color.FromRgb(44, 44, 44)),
+                    Margin = new Thickness(10, 7, 10, 2)
+                };
 
-                MenuItem notifyIconMenuItemExit = new();
-                notifyIconMenuItemExit.Style = (Style)FindResource("CustomMenuItem");
-                notifyIconMenuItemExit.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) };
+                MenuItem notifyIconMenuItemExit = new()
+                {
+                    Style = (Style)FindResource("CustomMenuItem"),
+                    Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) },
+                    Margin = new Thickness(0, 5, 0, 5)
+                };
                 notifyIconMenuItemExit.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item194");
-                notifyIconMenuItemExit.Margin = new Thickness(0, 5, 0, 5);
                 notifyIconMenuItemExit.PreviewMouseLeftButtonDown += (o, s) => { Close(); };
 
                 notifyIconContextMenu.Items.Add(notifyIconMenuItemH1EmuServers);
@@ -263,21 +272,25 @@ namespace H1EmuLauncher
                 List<ServerList> currentJsonRecent = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(recentServersJsonFile));
                 foreach (ServerList server in currentJsonRecent)
                 {
-                    MenuItem newItem = new();
-                    newItem.Style = (Style)FindResource("CustomMenuItem");
-                    newItem.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) };
-                    newItem.Header = server.CustomServerName;
-                    newItem.Margin = new Thickness(0, 5, 0, 0);
+                    MenuItem newItem = new()
+                    {
+                        Style = (Style)FindResource("CustomMenuItem"),
+                        Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) },
+                        Header = server.CustomServerName,
+                        Margin = new Thickness(0, 5, 0, 0)
+                    };
                     newItem.PreviewMouseLeftButtonDown += LaunchToCustomServerFromNotifyIcon;
                     notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, newItem);
                 }
 
                 if (notifyIconContextMenu.Items.Count > 4)
                 {
-                    Separator separator = new();
-                    separator.Style = (Style)FindResource("SeparatorMenuItem");
-                    separator.Background = new SolidColorBrush(Color.FromRgb(44, 44, 44));
-                    separator.Margin = new Thickness(10, 7, 10, 2);
+                    Separator separator = new()
+                    {
+                        Style = (Style)FindResource("SeparatorMenuItem"),
+                        Background = new SolidColorBrush(Color.FromRgb(44, 44, 44)),
+                        Margin = new Thickness(10, 7, 10, 2)
+                    };
                     notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, separator);
                 }
 
@@ -285,17 +298,21 @@ namespace H1EmuLauncher
                 List<ServerList> currentJson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(customServersJsonFile));
                 foreach (ServerList server in currentJson)
                 {
-                    ComboBoxItem newItem = new();
-                    newItem.Content = server.CustomServerName;
-                    newItem.Style = (Style)FindResource("ComboBoxItemStyle");
+                    ComboBoxItem newItem = new()
+                    {
+                        Content = server.CustomServerName,
+                        Style = (Style)FindResource("ComboBoxItemStyle")
+                    };
                     serverSelector.Items.Insert(serverSelector.Items.Count - 1, newItem);
                 }
 
                 if (serverSelector.Items.Count > 4)
                 {
-                    Separator separator = new();
-                    separator.Style = (Style)FindResource("SeparatorMenuItem");
-                    separator.Background = new SolidColorBrush(Color.FromRgb(66, 66, 66));
+                    Separator separator = new()
+                    {
+                        Style = (Style)FindResource("SeparatorMenuItem"),
+                        Background = new SolidColorBrush(Color.FromRgb(66, 66, 66))
+                    };
                     serverSelector.Items.Insert(serverSelector.Items.Count - 1, separator);
                 }
 
@@ -306,26 +323,39 @@ namespace H1EmuLauncher
                     {
                         if (i > 1 && i < serverSelector.Items.Count - 2)
                         {
-                            serverItem.PreviewMouseRightButtonUp += ItemRightMouseButtonUp;
-                            ContextMenu newItemContextMenu = new();
-                            newItemContextMenu.Style = (Style)FindResource("ContextMenuStyle");
-                            serverItem.ContextMenu = newItemContextMenu;
+                            serverItem.PreviewMouseRightButtonUp += (s, e) => { itemRightClicked = (ComboBoxItem)s; };
+                            ContextMenu itemContextMenu = new()
+                            {
+                                Style = (Style)FindResource("ContextMenuStyle")
+                            };
+                            serverItem.ContextMenu = itemContextMenu;
 
-                            MenuItem editOption = new();
-                            editOption.Style = (Style)FindResource("CustomMenuItem");
-                            editOption.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Edit.png", UriKind.Absolute)) };
+                            MenuItem editOption = new()
+                            {
+                                Style = (Style)FindResource("CustomMenuItem"),
+                                Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Edit.png", UriKind.Absolute)) }
+                            };
                             editOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item212");
                             editOption.Click += EditServerInfo;
 
-                            MenuItem deleteOption = new();
-                            deleteOption.Style = (Style)FindResource("CustomMenuItem");
-                            deleteOption.Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) };
-                            deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
-                            deleteOption.Margin = new Thickness(0, 5, 0, 0);
-                            deleteOption.Click += DeleteServerFromList;
+                            Separator separator = new()
+                            {
+                                Style= (Style)FindResource("SeparatorMenuItem"),
+                                Background = new SolidColorBrush(Color.FromRgb(66, 66, 66)),
+                                Margin = new Thickness(10, 7, 10, 7)
+                            };
 
-                            newItemContextMenu.Items.Add(editOption);
-                            newItemContextMenu.Items.Add(deleteOption);
+                            MenuItem deleteOption = new()
+                            {
+                                Style = (Style)FindResource("CustomMenuItem"),
+                                Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) },
+                            };
+                            deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
+                            deleteOption.Click += DeleteServer;
+
+                            itemContextMenu.Items.Add(editOption);
+                            itemContextMenu.Items.Add(separator);
+                            itemContextMenu.Items.Add(deleteOption);
                         }
                     }
                 }
@@ -342,23 +372,6 @@ namespace H1EmuLauncher
         {
             AddServerWindow addServer = new();
             addServer.ShowDialog();
-        }
-
-        private void ServerSelectorPreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            foreach (var item in serverSelector.Items)
-            {
-                if (item is ComboBoxItem serverItem)
-                    serverItem.Style = (Style)FindResource("ComboBoxItemStyle");
-            }
-        }
-
-        public ComboBoxItem itemRightClicked;
-        public void ItemRightMouseButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            itemRightClicked = (ComboBoxItem)sender;
-            itemRightClicked.Style = (Style)FindResource("ComboBoxItemStyleSelected");
-            System.Windows.Forms.Application.DoEvents();
         }
 
         public async void EditServerInfo(object sender, RoutedEventArgs e)
@@ -389,7 +402,7 @@ namespace H1EmuLauncher
             }
         }
 
-        public void DeleteServerFromList(object sender, RoutedEventArgs e)
+        public void DeleteServer(object sender, RoutedEventArgs e)
         {
             MessageBoxResult dr = CustomMessageBox.Show(FindResource("item147").ToString(), this, true, true, false, false);
             if (dr != MessageBoxResult.Yes)
@@ -574,17 +587,19 @@ namespace H1EmuLauncher
                         //CheckAssetsBeforeLaunch.CheckAssets();
 
                     // Launch game
-                    Process h1Process = new();
-                    h1Process.StartInfo = new ProcessStartInfo
+                    Process h1Process = new()
                     {
-                        FileName = $"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe",
-                        Arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}",
-                        WindowStyle = ProcessWindowStyle.Normal,
-                        WorkingDirectory = Properties.Settings.Default.activeDirectory,
-                        UseShellExecute = true,
-                        Verb = "runas"
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = $"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe",
+                            Arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}",
+                            WindowStyle = ProcessWindowStyle.Normal,
+                            WorkingDirectory = Properties.Settings.Default.activeDirectory,
+                            UseShellExecute = true,
+                            Verb = "runas"
+                        },
+                        EnableRaisingEvents = true
                     };
-                    h1Process.EnableRaisingEvents = true;
                     h1Process.Exited += (o, s) =>
                     {
                         if (Visibility == Visibility.Hidden)
@@ -1052,15 +1067,6 @@ namespace H1EmuLauncher
         {
             SettingsWindow sw = new();
             sw.ShowDialog();
-        }
-
-        private void H1Hyperlink(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
-        {
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = e.Uri.AbsoluteUri.ToString(),
-                UseShellExecute = true
-            });
         }
 
         private void FullUpdatesHyperlink(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)

@@ -3,7 +3,6 @@ using System.Media;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Threading;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher

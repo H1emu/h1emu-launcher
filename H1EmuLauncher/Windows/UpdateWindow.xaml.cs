@@ -262,9 +262,15 @@ namespace H1EmuLauncher
 
         private void UpdateWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (Properties.Settings.Default.firstTimeUse || Properties.Settings.Default.agreedToTOSIteration < Info.AGREED_TO_TOS_ITERATION)
+            if (Properties.Settings.Default.firstTimeUse)
             {
                 DisclaimerWindow dc = new();
+                dc.ShowDialog();
+            }
+            else if (Properties.Settings.Default.agreedToTOSIteration < Info.AGREED_TO_TOS_ITERATION)
+            {
+                DisclaimerWindow dc = new();
+                dc.welcomeMessage.Visibility = Visibility.Collapsed;
                 dc.ShowDialog();
             }
 
