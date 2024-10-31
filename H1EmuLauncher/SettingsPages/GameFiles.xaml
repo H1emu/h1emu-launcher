@@ -6,7 +6,6 @@
       xmlns:local="clr-namespace:H1EmuLauncher.SettingsPages"
       mc:Ignorable="d" 
       d:DesignWidth="735"
-      d:DesignHeight="320"
       Title="GameFiles"
       FontFamily="Bahnschrift Light"
       FontSize="16"
@@ -28,10 +27,10 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="15"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="15"/>
+                <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
 
             <!-- Grainy texture -->
@@ -60,7 +59,8 @@
                     <TextBlock Margin="20"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
-                               TextWrapping="Wrap">
+                               TextWrapping="Wrap"
+                               Style="{DynamicResource TextBlockStyle}">
 
                         <Run Text="{DynamicResource item45}"/>
     
@@ -72,14 +72,6 @@
                                  Cursor="Hand"/>
 
                         </Hyperlink>
-
-                        <TextBlock.Effect>
-                            <DropShadowEffect BlurRadius="8"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="1"
-                                              Opacity="0.3"/>
-                        </TextBlock.Effect>
                     </TextBlock>
 
                     <!-- Install patch button -->
@@ -88,8 +80,6 @@
                             Click="InstallPatchButton"
                             Margin="20"
                             Padding="25,7,25,7"
-                            BorderThickness="0"
-                            FontFamily="Arial Black"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             Content="{DynamicResource item42}"
@@ -133,16 +123,8 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                TextWrapping="Wrap"
-                               Text="{DynamicResource item46}">
-
-                        <TextBlock.Effect>
-                            <DropShadowEffect BlurRadius="8"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="1"
-                                              Opacity="0.3"/>
-                        </TextBlock.Effect>
-                    </TextBlock>
+                               Text="{DynamicResource item46}"
+                               Style="{DynamicResource TextBlockStyle}"/>
 
                     <!-- Install latest server button -->
                     <Button x:Name="latestButton"
@@ -150,8 +132,6 @@
                             Click="InstallServerButton"
                             Margin="20"
                             Padding="25,7,25,7"
-                            BorderThickness="0"
-                            FontFamily="Arial Black"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             Content="{DynamicResource item43}"
@@ -195,16 +175,8 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                TextWrapping="Wrap"
-                               Text="{DynamicResource item47}">
-
-                        <TextBlock.Effect>
-                            <DropShadowEffect BlurRadius="8"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="1"
-                                              Opacity="0.3"/>
-                        </TextBlock.Effect>
-                    </TextBlock>
+                               Text="{DynamicResource item47}"
+                               Style="{DynamicResource TextBlockStyle}"/>
 
                     <!-- Install stable server button -->
                     <Button x:Name="stableButton"
@@ -212,8 +184,6 @@
                             Click="InstallServerButton"
                             Margin="20"
                             Padding="25,7,25,7"
-                            BorderThickness="0"
-                            FontFamily="Arial Black"
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             Content="{DynamicResource item44}"
@@ -268,16 +238,8 @@
                     <TextBlock x:Name="settingsProgressText"
                                Margin="0,0,20,10"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center">
-
-                        <TextBlock.Effect>
-                            <DropShadowEffect BlurRadius="8"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="1"
-                                              Opacity="0.3"/>
-                        </TextBlock.Effect>
-                    </TextBlock>
+                               HorizontalAlignment="Center"
+                               Style="{DynamicResource TextBlockStyle}"/>
                 </Grid>
             </Border>
         </Grid>

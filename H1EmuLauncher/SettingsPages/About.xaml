@@ -4,10 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:H1EmuLauncher.SettingsPages"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignWidth="735"
-      d:DesignHeight="450"
-      Height="364"
+      Height="470"
       Title="About"
       FontFamily="Bahnschrift"
       FontSize="16">
@@ -35,17 +34,16 @@
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="10"/>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="10"/>
                 </Grid.RowDefinitions>
 
                 <ScrollViewer Grid.Row="1"
-                              VerticalScrollBarVisibility="Hidden">
+                              Style="{DynamicResource CustomScrollViewer}">
 
                     <StackPanel>
                         <!-- List of everyone who helped on the project -->
-
                         <!-- Lead development-->
                         <TextBlock Margin="20"
                                    FontSize="18"
@@ -54,7 +52,8 @@
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
-                                   Text="{DynamicResource item126}"/>
+                                   Text="{DynamicResource item126}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
@@ -62,7 +61,8 @@
                                    Text="• Kentin • Meme • Avcio •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
-                                   TextAlignment="Center"/>
+                                   TextAlignment="Center"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="1"
@@ -87,7 +87,8 @@
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
-                                   Text="{DynamicResource item128}"/>
+                                   Text="{DynamicResource item128}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
@@ -95,7 +96,8 @@
                                    Text="• LcplReaper • Traqnar • Meme • Avcio •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
-                                   TextAlignment="Center"/>
+                                   TextAlignment="Center"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="1"
@@ -120,7 +122,8 @@
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
-                                   Text="{DynamicResource item127}"/>
+                                   Text="{DynamicResource item127}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
@@ -128,7 +131,8 @@
                                    Text="• Eavilaswayce • Ghost • doggo • KOBUNIX • JSON •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
-                                   TextAlignment="Center"/>
+                                   TextAlignment="Center"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="1"
@@ -153,7 +157,8 @@
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
-                                   Text="{DynamicResource item129}"/>
+                                   Text="{DynamicResource item129}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
@@ -161,7 +166,8 @@
                                    Text="• Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo • Torenka • Moonlighter • Loopa • Cyberhound • Cur7 • AlvaZhang •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
-                                   TextAlignment="Center"/>
+                                   TextAlignment="Center"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="1"
@@ -186,7 +192,8 @@
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
-                                   Text="{DynamicResource item130}"/>
+                                   Text="{DynamicResource item130}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
@@ -194,7 +201,8 @@
                                    Text="• TCM • Tone • Chrisisbrown • Movezie • Andrew~ • RywaZ • Ultrax •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
-                                   TextAlignment="Center"/>
+                                   TextAlignment="Center"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="1"
@@ -219,7 +227,8 @@
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
-                                   Text="{DynamicResource item131}"/>
+                                   Text="{DynamicResource item131}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
@@ -227,7 +236,8 @@
                                    Text="• Arrcy • Dave • rob318us • SONNY •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
-                                   TextAlignment="Center"/>
+                                   TextAlignment="Center"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="1"
@@ -252,7 +262,8 @@
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
-                                   Text="{DynamicResource item170}"/>
+                                   Text="{DynamicResource item170}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
@@ -260,7 +271,8 @@
                                    Text="• Booze • Mahoaga • TimmyFPS • LegalViewbot • remapz • Christer D • A Mad Midget • Twin • piapiacrack • AlvaZhang • RensareN • willow • Candles •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
-                                   TextAlignment="Center"/>
+                                   TextAlignment="Center"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="1"
@@ -285,7 +297,8 @@
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
-                                   Text="{DynamicResource item136}"/>
+                                   Text="{DynamicResource item136}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
@@ -293,7 +306,8 @@
                                    Text="• AlvaZhang (Chinese) • Panda &amp; MostMajestic (Croatian) • Skoz (French) • Xrextorn (Turkish) • Mihail (Bulgarian) • Triggl (German) • Ironwolves (Dutch) • Avcio (Polish) • Tox1c (Russian) • Negorath (Portuguese) • insus100 (Spanish) • SpjonK (Swedish) •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
-                                   TextAlignment="Center"/>
+                                   TextAlignment="Center"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="1"
@@ -317,7 +331,8 @@
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
                                    FontWeight="Light"
-                                   Text="{DynamicResource item132}"/>
+                                   Text="{DynamicResource item132}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="1"
@@ -341,15 +356,8 @@
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
                                    FontWeight="Light"
-                                   Text="{DynamicResource item169}"/>
-
-                        <StackPanel.Effect>
-                            <DropShadowEffect BlurRadius="8"
-                                              Direction="-90"
-                                              RenderingBias="Quality"
-                                              ShadowDepth="1"
-                                              Opacity="0.3"/>
-                        </StackPanel.Effect>
+                                   Text="{DynamicResource item169}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

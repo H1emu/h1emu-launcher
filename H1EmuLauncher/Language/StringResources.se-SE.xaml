@@ -191,4 +191,5 @@
     <system:String x:Key="item214">KONTROLL...</system:String>
     <system:String x:Key="item215">Fel vid beräkning av tillgångshash:</system:String>
     <system:String x:Key="item216">Vänligen avinstallera alla anpassade tillgångsfiler (.pack) när du spelar på huvudservrar, annars kan det resultera i ett förbud.</system:String>
+    <system:String x:Key="item217">RUNNING</system:String>
 </ResourceDictionary>

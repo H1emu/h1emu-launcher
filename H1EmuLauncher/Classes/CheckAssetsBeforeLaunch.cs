@@ -5,6 +5,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Markup;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
@@ -311,8 +313,7 @@ namespace H1EmuLauncher.Classes
 
             Application.Current.Dispatcher.Invoke(new Action(delegate
             {
-                LauncherWindow.launcherInstance.playButton.IsEnabled = false;
-                LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item214").ToString();
+                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item214");
             }));
 
             foreach (var file in d.GetFiles("*.pack"))
@@ -333,8 +334,7 @@ namespace H1EmuLauncher.Classes
 
             Application.Current.Dispatcher.Invoke(new Action(delegate
             {
-                LauncherWindow.launcherInstance.playButton.IsEnabled = true;
-                LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item8").ToString();
+                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item8");
             }));
         }
     }

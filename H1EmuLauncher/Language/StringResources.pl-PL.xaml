@@ -191,4 +191,5 @@
     <system:String x:Key="item214">KONTROLA...</system:String>
     <system:String x:Key="item215">Błąd podczas obliczania skrótu zasobu:</system:String>
     <system:String x:Key="item216">Odinstaluj wszelkie niestandardowe pliki zasobów (.pack) podczas gry na dowolnym serwerze głównym, w przeciwnym razie może to skutkować banem.</system:String>
+    <system:String x:Key="item217">RUNNING</system:String>
 </ResourceDictionary>

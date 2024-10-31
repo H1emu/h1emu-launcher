@@ -64,7 +64,7 @@ namespace H1EmuLauncher.Classes
 
         public static T GetChildOfType<T>(DependencyObject depObj) where T : DependencyObject
         {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            for (int i = 0; i <= VisualTreeHelper.GetChildrenCount(depObj); i++)
             {
                 var child = VisualTreeHelper.GetChild(depObj, i);
                 if (child is T typedChild)

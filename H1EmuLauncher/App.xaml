@@ -26,6 +26,17 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style TargetType="TextBlock" x:Key="TextBlockStyle">
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="8"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="1"
+                                          Opacity="0.3"/>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <Style TargetType="CheckBox" x:Key="AnimatedCheckBox">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -145,7 +156,6 @@
                         <BeginStoryboard>
                             <Storyboard>
                                 <ColorAnimation Storyboard.TargetProperty="(Hyperlink.Foreground).(SolidColorBrush.Color)"
-                                                To="FloralWhite"
                                                 Duration="0:0:0.1"/>
                             </Storyboard>
                         </BeginStoryboard>
@@ -163,7 +173,6 @@
                         <BeginStoryboard>
                             <Storyboard>
                                 <ColorAnimation Storyboard.TargetProperty="(Hyperlink.Foreground).(SolidColorBrush.Color)"
-                                                To="LightGray"
                                                 Duration="0:0:0.1"/>
                             </Storyboard>
                         </BeginStoryboard>
@@ -181,7 +190,6 @@
                         <BeginStoryboard>
                             <Storyboard>
                                 <ColorAnimation Storyboard.TargetProperty="(Hyperlink.Foreground).(SolidColorBrush.Color)"
-                                                To="LightGray"
                                                 Duration="0:0:0.1"/>
                             </Storyboard>
                         </BeginStoryboard>
@@ -215,33 +223,106 @@
 
                                         <Rectangle x:Name="underline"
                                                    Fill="#DB111C"
-                                                   Height="2"
-                                                   VerticalAlignment="Bottom"
-                                                   Visibility="Collapsed"/>
+                                                   Height="0"
+                                                   VerticalAlignment="Bottom"/>
                                     </Grid>
                                 </Border>
                             </Border>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter TargetName="text" Property="Foreground" Value="FloralWhite"/>
-                                    <Setter TargetName="underline" Property="Visibility" Value="Visible"/>
-                                    <Setter TargetName="border" Property="Height" Value="32"/>
-                                    <Setter TargetName="border" Property="Background" Value="#1C1B22"/>
-                                    <Setter TargetName="border" Property="CornerRadius" Value="5,5,0,0"/>
-                                </Trigger>
                                 <MultiTrigger>
                                     <MultiTrigger.Conditions>
-                                        <Condition Property="IsMouseOver" SourceName="text" Value="True" />
-                                        <Condition Property="IsSelected" Value="False" />
+                                        <Condition Property="IsMouseOver" Value="True"/>
                                     </MultiTrigger.Conditions>
-                                    <Setter TargetName="text" Property="Foreground" Value="#B3B3B3" />
+                                    <MultiTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                To="#B3B3B3"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </MultiTrigger.EnterActions>
+                                    <MultiTrigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </MultiTrigger.ExitActions>
                                 </MultiTrigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="border" Property="Height" Value="32"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                To="FloralWhite"
+                                                                Duration="0:0:0.1"/>
+
+                                                <ColorAnimation Storyboard.TargetName="border"
+                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                To="#1C1B22"
+                                                                Duration="0:0:0.1"/>
+
+                                                <DoubleAnimation Storyboard.TargetName="underline"
+                                                                 Storyboard.TargetProperty="Height"
+                                                                 To="2"
+                                                                 Duration="0:0:0.1"/>
+
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                                               Storyboard.TargetProperty="CornerRadius">
+
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="0" BottomRight="0" TopLeft="5" TopRight="5"/>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+
+                                                <ColorAnimation Storyboard.TargetName="border"
+                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+
+                                                <DoubleAnimation Storyboard.TargetName="border"
+                                                                 Storyboard.TargetProperty="Height"
+                                                                 Duration="0:0:0.1"/>
+
+                                                <DoubleAnimation Storyboard.TargetName="underline"
+                                                                 Storyboard.TargetProperty="Height"
+                                                                 Duration="0:0:0.1"/>
+
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                                               Storyboard.TargetProperty="CornerRadius">
+
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="0" BottomRight="0" TopLeft="5" TopRight="0"/>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
-            <Style TargetType="{x:Type TabItem}" x:Key="TabItemStyleMiddle">
+            <Style TargetType="TabItem" x:Key="TabItemStyleMiddle">
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TabItem}">
@@ -266,26 +347,99 @@
 
                                     <Rectangle x:Name="underline"
                                                Fill="#DB111C"
-                                               Height="2"
-                                               VerticalAlignment="Bottom"
-                                               Visibility="Collapsed"/>
+                                               Height="0"
+                                               VerticalAlignment="Bottom"/>
                                 </Grid>
                             </Border>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter TargetName="text" Property="Foreground" Value="FloralWhite"/>
-                                    <Setter TargetName="underline" Property="Visibility" Value="Visible"/>
-                                    <Setter TargetName="border" Property="Height" Value="32"/>
-                                    <Setter TargetName="border" Property="Background" Value="#1C1B22"/>
-                                    <Setter TargetName="border" Property="CornerRadius" Value="5,5,0,0"/>
-                                </Trigger>
                                 <MultiTrigger>
                                     <MultiTrigger.Conditions>
-                                        <Condition Property="IsMouseOver" SourceName="text" Value="True" />
-                                        <Condition Property="IsSelected" Value="False" />
+                                        <Condition Property="IsMouseOver" Value="True"/>
                                     </MultiTrigger.Conditions>
-                                    <Setter TargetName="text" Property="Foreground" Value="#B3B3B3" />
+                                    <MultiTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                To="#B3B3B3"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </MultiTrigger.EnterActions>
+                                    <MultiTrigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </MultiTrigger.ExitActions>
                                 </MultiTrigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="border" Property="Height" Value="32"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                To="FloralWhite"
+                                                                Duration="0:0:0.1"/>
+
+                                                <ColorAnimation Storyboard.TargetName="border"
+                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                To="#1C1B22"
+                                                                Duration="0:0:0.1"/>
+
+                                                <DoubleAnimation Storyboard.TargetName="underline"
+                                                                 Storyboard.TargetProperty="Height"
+                                                                 To="2"
+                                                                 Duration="0:0:0.1"/>
+
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                                               Storyboard.TargetProperty="CornerRadius">
+
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="0" BottomRight="0" TopLeft="5" TopRight="5"/>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+
+                                                <ColorAnimation Storyboard.TargetName="border"
+                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+
+                                                <DoubleAnimation Storyboard.TargetName="border"
+                                                                 Storyboard.TargetProperty="Height"
+                                                                 Duration="0:0:0.1"/>
+
+                                                <DoubleAnimation Storyboard.TargetName="underline"
+                                                                 Storyboard.TargetProperty="Height"
+                                                                 Duration="0:0:0.1"/>
+
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                                               Storyboard.TargetProperty="CornerRadius">
+
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="0" BottomRight="0" TopLeft="0" TopRight="0"/>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
@@ -318,27 +472,100 @@
 
                                         <Rectangle x:Name="underline"
                                                    Fill="#DB111C"
-                                                   Height="2"
-                                                   VerticalAlignment="Bottom"
-                                                   Visibility="Collapsed"/>
+                                                   Height="0"
+                                                   VerticalAlignment="Bottom"/>
                                     </Grid>
                                 </Border>
                             </Border>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter TargetName="text" Property="Foreground" Value="FloralWhite"/>
-                                    <Setter TargetName="underline" Property="Visibility" Value="Visible"/>
-                                    <Setter TargetName="border" Property="Height" Value="32"/>
-                                    <Setter TargetName="border" Property="Background" Value="#1C1B22"/>
-                                    <Setter TargetName="border" Property="CornerRadius" Value="5,5,0,0"/>
-                                </Trigger>
                                 <MultiTrigger>
                                     <MultiTrigger.Conditions>
-                                        <Condition Property="IsMouseOver" SourceName="text" Value="True" />
-                                        <Condition Property="IsSelected" Value="False" />
+                                        <Condition Property="IsMouseOver" Value="True"/>
                                     </MultiTrigger.Conditions>
-                                    <Setter TargetName="text" Property="Foreground" Value="#B3B3B3" />
+                                    <MultiTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                To="#B3B3B3"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </MultiTrigger.EnterActions>
+                                    <MultiTrigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </MultiTrigger.ExitActions>
                                 </MultiTrigger>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter TargetName="border" Property="Height" Value="32"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                To="FloralWhite"
+                                                                Duration="0:0:0.1"/>
+
+                                                <ColorAnimation Storyboard.TargetName="border"
+                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                To="#1C1B22"
+                                                                Duration="0:0:0.1"/>
+
+                                                <DoubleAnimation Storyboard.TargetName="underline"
+                                                                 Storyboard.TargetProperty="Height"
+                                                                 To="2"
+                                                                 Duration="0:0:0.1"/>
+
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                                               Storyboard.TargetProperty="CornerRadius">
+
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="0" BottomRight="0" TopLeft="5" TopRight="5"/>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetName="text"
+                                                                Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+
+                                                <ColorAnimation Storyboard.TargetName="border"
+                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+
+                                                <DoubleAnimation Storyboard.TargetName="border"
+                                                                 Storyboard.TargetProperty="Height"
+                                                                 Duration="0:0:0.1"/>
+
+                                                <DoubleAnimation Storyboard.TargetName="underline"
+                                                                 Storyboard.TargetProperty="Height"
+                                                                 Duration="0:0:0.1"/>
+
+                                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="border"
+                                                                               Storyboard.TargetProperty="CornerRadius">
+
+                                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.1">
+                                                        <DiscreteObjectKeyFrame.Value>
+                                                            <CornerRadius BottomLeft="0" BottomRight="0" TopLeft="0" TopRight="5"/>
+                                                        </DiscreteObjectKeyFrame.Value>
+                                                    </DiscreteObjectKeyFrame>
+                                                </ObjectAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
@@ -465,10 +692,42 @@
 
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Foreground" Value="LightGray"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                To="LightGray"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Foreground" Value="DarkGray"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                To="DarkGray"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -1357,15 +1616,21 @@
                                 <Trigger Property="IsHighlighted" Value="True">
                                     <Setter TargetName="border" Property="Background" Value="#40000000"/>
                                 </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="#40000000"/>
-                                </Trigger>
                                 <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
                                     <BeginStoryboard>
                                         <Storyboard>
                                             <ColorAnimation Storyboard.TargetName="border"
                                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                             To="#60000000"
+                                                            Duration="0:0:0.1"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="border"
+                                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                             Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -1385,7 +1650,6 @@
                                         <Storyboard>
                                             <ColorAnimation Storyboard.TargetName="border"
                                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                            To="#40000000"
                                                             Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -1409,8 +1673,9 @@
             <Style x:Key="StandardButton" TargetType="{x:Type Button}">
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
                 <Setter Property="Background" Value="{StaticResource StandardButton.Static.Background}"/>
+                <Setter Property="FontFamily" Value="Arial Black"/>
                 <Setter Property="Foreground" Value="FloralWhite"/>
-                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="Padding" Value="1"/>
@@ -1437,6 +1702,34 @@
                                 </Grid>
                             </Border>
                             <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="0.55"
+                                                                 Duration="0:0:0.1"/>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                                                To="Gray"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 Duration="0:0:0.1"/>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
                                 <EventTrigger RoutedEvent="MouseEnter">
                                     <BeginStoryboard>
                                         <Storyboard>
@@ -1452,7 +1745,6 @@
                                         <Storyboard>
                                             <DoubleAnimation Storyboard.TargetName="buttonFade"
                                                              Storyboard.TargetProperty="Opacity"
-                                                             To="0.35"
                                                              Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -1476,25 +1768,19 @@
                                         <Storyboard>
                                             <DoubleAnimation Storyboard.TargetName="buttonFade"
                                                              Storyboard.TargetProperty="Opacity"
-                                                             To="0.15"
                                                              Duration="0:0:0.1"/>
 
                                             <ColorAnimation Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
-                                                            To="FloralWhite"
                                                             Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="buttonFade" Property="Opacity" Value="0.5"/>
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="Gray"/>
-                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
             </Style>
-            <SolidColorBrush x:Key="ProgressBar.Progress" Color="#720000"/>
+            <SolidColorBrush x:Key="ProgressBar.Progress" Color="#1C1B22"/>
             <SolidColorBrush x:Key="ProgressBar.Background" Color="#FF2A2A32"/>
             <SolidColorBrush x:Key="ProgressBar.Border" Color="#DB111C"/>
             <Style x:Key="ProgressBar" TargetType="{x:Type ProgressBar}">
@@ -1506,37 +1792,43 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ProgressBar}">
                             <Grid x:Name="TemplateRoot">
-                                <Border
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                CornerRadius="5"/>
-                                <Rectangle x:Name="PART_Track"/>
-                                <Grid
-                                x:Name="PART_Indicator"
-                                HorizontalAlignment="Left"
-                                ClipToBounds="True">
-                                    <Rectangle
-                                    x:Name="Indicator"
-                                    Fill="{TemplateBinding Foreground}"
-                                    RadiusX="5"
-                                    RadiusY="5"/>
-                                    <Rectangle
-                                    x:Name="Animation"
-                                    Fill="{TemplateBinding Foreground}"
-                                    RadiusX="5"
-                                    RadiusY="5"
-                                    RenderTransformOrigin="0.5,0.5">
-                                        <Rectangle.RenderTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform/>
-                                                <SkewTransform/>
-                                                <RotateTransform/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
-                                        </Rectangle.RenderTransform>
-                                    </Rectangle>
-                                </Grid>
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="5">
+
+                                    <Border>
+                                        <Grid>
+                                            <Rectangle x:Name="PART_Track"/>
+                                            <Grid x:Name="PART_Indicator"
+                                                  HorizontalAlignment="Left"
+                                                  ClipToBounds="True">
+
+                                                <Rectangle x:Name="Indicator"
+                                                           Fill="{TemplateBinding Foreground}"/>
+
+                                                <Rectangle x:Name="Animation"
+                                                           Fill="{TemplateBinding Foreground}"
+                                                           RenderTransformOrigin="0.5,0.5">
+
+                                                    <Rectangle.RenderTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform/>
+                                                            <SkewTransform/>
+                                                            <RotateTransform/>
+                                                            <TranslateTransform/>
+                                                        </TransformGroup>
+                                                    </Rectangle.RenderTransform>
+                                                </Rectangle>
+                                            </Grid>
+                                        </Grid>
+                                        
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                                        </Border.Background>
+                                    </Border>
+                                </Border>
+                                
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="CommonStates">
                                         <VisualState x:Name="Determinate"/>

@@ -207,10 +207,9 @@ namespace H1EmuLauncher.SteamFramePages
                         loadingAnimation.Stop();
                         loadingIcon.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
-                        CustomMessageBox.Show($"{FindResource("item37")} {version}.", LauncherWindow.launcherInstance);
-
                         LauncherWindow.launcherInstance.directoryBox.Text = Properties.Settings.Default.activeDirectory;
                         LauncherWindow.launcherInstance.CheckGameVersionAndPath(LauncherWindow.launcherInstance, true);
+                        CustomMessageBox.Show($"{FindResource("item37")} {version}.", LauncherWindow.launcherInstance);
                     }));
                 }
                 catch (Exception e) when (e is TaskCanceledException)

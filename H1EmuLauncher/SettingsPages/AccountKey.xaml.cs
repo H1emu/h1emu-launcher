@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using H1EmuLauncher.Classes;
@@ -17,12 +18,29 @@ namespace H1EmuLauncher.SettingsPages
             // Adds the correct language file to the resource dictionary and then loads it.
             Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+        }
 
-            accountKeyHyperlink.Text = Info.ACCOUNT_KEY_LINK;
+        private void GenerateAccountKeyButtonClick(object sender, RoutedEventArgs e)
+        {
+            string generatedKey = string.Empty;
+            Random random = new();
+
+            for (int i = 0; i < 64; i++)
+                generatedKey += Info.ALLOWED_ACCOUNT_KEY_CHARS[random.Next(Info.ALLOWED_ACCOUNT_KEY_CHARS.Length)];
+
+            if (accountKeyBoxText.Visibility == Visibility.Visible)
+                accountKeyBoxText.Text = generatedKey;
+            else
+                accountKeyBoxPassword.Password = generatedKey;
+
+            generateAccountKeyButton.Visibility = Visibility.Collapsed;
         }
 
         private void AccountKeyBoxTextTextChanged(object sender, TextChangedEventArgs e)
         {
+            if (!string.IsNullOrEmpty(accountKeyBoxText.Text))
+                accountKeyBoxHint.Visibility = Visibility.Hidden;
+
             if (accountKeyBoxPassword.Password != accountKeyBoxText.Text)
                 accountKeyBoxPassword.Password = accountKeyBoxText.Text;
 
@@ -35,6 +53,9 @@ namespace H1EmuLauncher.SettingsPages
 
         private void AccountKeyBoxPasswordPasswordChanged(object sender, RoutedEventArgs e)
         {
+            if (!string.IsNullOrEmpty(accountKeyBoxPassword.Password))
+                accountKeyBoxHint.Visibility = Visibility.Hidden;
+
             if (accountKeyBoxText.Text != accountKeyBoxPassword.Password)
                 accountKeyBoxText.Text = accountKeyBoxPassword.Password;
 
@@ -56,27 +77,26 @@ namespace H1EmuLauncher.SettingsPages
                 accountKeyBoxHint.Visibility = Visibility.Visible;
         }
 
-        private void AccountKeyLinkCopy(object sender, RoutedEventArgs e)
+        private void DiscordInviteLinkCopy(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText(Info.ACCOUNT_KEY_LINK);
+            Clipboard.SetText(Info.DISCORD_LINK);
         }
 
-        private void UserProfileLinkClick(object sender, RoutedEventArgs e)
+        private void DiscordInviteLinkClick(object sender, RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = Info.ACCOUNT_KEY_LINK,
+                FileName = Info.DISCORD_LINK,
                 UseShellExecute = true
             });
         }
 
         private void AccountKeyLoaded(object sender, RoutedEventArgs e)
         {
-            if (!SettingsWindow.openAccountKeyPage)
-                accountKeyBoxPassword.Password = Properties.Settings.Default.sessionIdKey;
+            accountKeyBoxPassword.Password = Properties.Settings.Default.sessionIdKey;
 
-            if (!string.IsNullOrEmpty(accountKeyBoxPassword.Password))
-                accountKeyBoxHint.Visibility = Visibility.Hidden;
+            if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
+                generateAccountKeyButton.Visibility = Visibility.Visible;
         }
 
         private void ShowKey(object sender, RoutedEventArgs e)

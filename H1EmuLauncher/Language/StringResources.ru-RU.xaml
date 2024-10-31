@@ -191,4 +191,5 @@
     <system:String x:Key="item214">ПРОВЕРКА...</system:String>
     <system:String x:Key="item215">Ошибка вычисления хеша актива:</system:String>
     <system:String x:Key="item216">Пожалуйста, удалите все файлы пользовательских ресурсов (.pack) при игре на любом главном сервере, иначе это может привести к бану.</system:String>
+    <system:String x:Key="item217">RUNNING</system:String>
 </ResourceDictionary>

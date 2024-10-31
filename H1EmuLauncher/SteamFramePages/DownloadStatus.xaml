@@ -31,22 +31,15 @@
         <!-- Downloading game text -->
         <TextBlock Margin="0,0,0,15"
                    Background="Transparent"
-                   HorizontalAlignment="Center">
+                   HorizontalAlignment="Center"
+                   Style="{DynamicResource TextBlockStyle}">
 
             <Run Text="{DynamicResource item26}"/>
             <Run
                         Foreground="#FFCA1420" Text="{DynamicResource item135}"/>
             <Run Text="{DynamicResource item27}"/>
             <Run x:Name="gameDownloadText"
-                         Foreground="#FFCA1420" Text="----:"/>
-
-            <TextBlock.Effect>
-                <DropShadowEffect BlurRadius="8"
-                                  Direction="-90"
-                                  RenderingBias="Quality"
-                                  ShadowDepth="1"
-                                  Opacity="0.3"/>
-            </TextBlock.Effect>
+                         Foreground="#FFCA1420" Text="2016:"/>
         </TextBlock>
 
         <Grid Grid.Row="1">
@@ -82,24 +75,14 @@
                        Margin="0,0,10,0"
                        Padding="12,0,12,0"
                        VerticalAlignment="Center"
-                       TextAlignment="Center">
-
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="8"
-                                      Direction="-90"
-                                      RenderingBias="Quality"
-                                      ShadowDepth="1"
-                                      Opacity="0.3"/>
-                </TextBlock.Effect>
-            </TextBlock>
+                       TextAlignment="Center"
+                       Style="{DynamicResource TextBlockStyle}"/>
 
             <!-- Cancel download button -->
             <Button x:Name="cancelDownloadButton"
                     Grid.Column="1"
                     Margin="10,0,0,0"
                     Padding="20,8,20,8"
-                    FontFamily="Arial Black"
-                    BorderThickness="0"
                     Click="CancelDownloadButtonClick"
                     Content="{DynamicResource item28}"
                     Style="{DynamicResource StandardButton}">

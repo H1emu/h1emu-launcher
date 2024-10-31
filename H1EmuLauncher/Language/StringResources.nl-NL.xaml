@@ -191,4 +191,5 @@
     <system:String x:Key="item214">CONTROLEREN...</system:String>
     <system:String x:Key="item215">Fout bij het berekenen van asset-hash:</system:String>
     <system:String x:Key="item216">Verwijder eventuele aangepaste asset-bestanden (.pack) als je op een hoofdserver speelt, anders kan dit resulteren in een verbanning.</system:String>
+    <system:String x:Key="item217">RUNNING</system:String>
 </ResourceDictionary>

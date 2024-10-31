@@ -56,6 +56,20 @@ namespace H1EmuLauncher
             Close();
         }
 
+        private void DiscordInviteLinkCopy(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(Info.DISCORD_LINK);
+        }
+
+        private void DiscordInviteLinkClick(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = Info.DISCORD_LINK,
+                UseShellExecute = true
+            });
+        }
+
         private void MoveMessageBoxWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();

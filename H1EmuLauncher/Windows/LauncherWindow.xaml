@@ -388,7 +388,8 @@
 
                             <TextBlock Margin="30,10,10,0"
                                        Background="Transparent"
-                                       Cursor="Arrow">
+                                       Cursor="Arrow"
+                                       Style="{DynamicResource TextBlockStyle}">
 
                                 <!-- Version text -->
                                 <Run Foreground="#FFED1C24"
@@ -407,14 +408,6 @@
                                 <!-- Date version was published -->
                                 <Run x:Name="datePublished"
                                      FontFamily="Bahnschrift Light"/>
-
-                                <TextBlock.Effect>
-                                    <DropShadowEffect BlurRadius="8"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="1"
-                                                      Opacity="0.3"/>
-                                </TextBlock.Effect>
                             </TextBlock>
 
                             <!-- Patch notes textbox -->
@@ -428,22 +421,14 @@
                                            Foreground="FloralWhite"
                                            FontWeight="Light"
                                            Cursor="Arrow"
-                                           TextWrapping="Wrap">
-
-                                    <TextBlock.Effect>
-                                        <DropShadowEffect BlurRadius="8"
-                                                          Direction="-90"
-                                                          RenderingBias="Quality"
-                                                          ShadowDepth="1"
-                                                          Opacity="0.3"/>
-                                    </TextBlock.Effect>
-                                </TextBlock>
-
+                                           TextWrapping="Wrap"
+                                           Style="{DynamicResource TextBlockStyle}"/>
                             </ScrollViewer>
 
                             <!-- Read full details of update hyperlink -->
                             <TextBlock Grid.Row="2"
-                                       Margin="30,15,10,15">
+                                       Margin="30,15,10,15"
+                                       Style="{DynamicResource TextBlockStyle}">
     
                                 <Hyperlink NavigateUri="https://www.h1emu.com/us/changelog/"
                                            RequestNavigate="FullUpdatesHyperlink"
@@ -465,13 +450,6 @@
                                         </MenuItem>
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
-                                <TextBlock.Effect>
-                                    <DropShadowEffect BlurRadius="8"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="1"
-                                                      Opacity="0.3"/>
-                                </TextBlock.Effect>
                             </TextBlock>
                         </Grid>
 
@@ -568,7 +546,8 @@
                             <!-- You must own H1Z1 disclaimer message -->
                             <TextBlock Margin="10,20,30,0"
                                        Cursor="Arrow"
-                                       TextWrapping="Wrap">
+                                       TextWrapping="Wrap"
+                                       Style="{DynamicResource TextBlockStyle}">
 
                                 <Run Foreground="#FFCA1420"
                                      Text="{DynamicResource item10}"/>
@@ -579,14 +558,6 @@
                                 <LineBreak/>
         
                                 <Run Text="{DynamicResource item50}"/>
-
-                                <TextBlock.Effect>
-                                    <DropShadowEffect BlurRadius="8"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="1"
-                                                      Opacity="0.3"/>
-                                </TextBlock.Effect>
                             </TextBlock>
 
                             <!-- H1Emu Chinese Community link -->
@@ -596,7 +567,8 @@
                                        Visibility="Collapsed"
                                        FontFamily="Bahnschrift"
                                        Text="点击进入 "
-                                       FontWeight="Bold">
+                                       FontWeight="Bold"
+                                       Style="{DynamicResource TextBlockStyle}">
 
                                 <Hyperlink NavigateUri="https://azaz.ge/"
                                            RequestNavigate="H1EmuChineseLink"
@@ -607,7 +579,7 @@
                                 </Hyperlink>
 
                                 <TextBlock Text="，了解更多中文信息。"
-                                            FontWeight="Bold"/>
+                                           FontWeight="Bold"/>
 
                                 <!-- Context menu to copy link -->
                                 <TextBlock.ContextMenu>
@@ -622,13 +594,6 @@
                                         </MenuItem>
                                     </ContextMenu>
                                 </TextBlock.ContextMenu>
-                                <TextBlock.Effect>
-                                    <DropShadowEffect BlurRadius="8"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="1"
-                                                      Opacity="0.3"/>
-                                </TextBlock.Effect>
                             </TextBlock>
                         </Grid>
 
@@ -695,16 +660,8 @@
                                                FontWeight="Bold"
                                                FontSize="15"
                                                HorizontalAlignment="Center"
-                                               Text="{DynamicResource item69}">
-                                        
-                                        <TextBlock.Effect>
-                                            <DropShadowEffect BlurRadius="8"
-                                                              Direction="-90"
-                                                              RenderingBias="Quality"
-                                                              ShadowDepth="1"
-                                                              Opacity="0.3"/>
-                                        </TextBlock.Effect>
-                                    </TextBlock>
+                                               Text="{DynamicResource item69}"
+                                               Style="{DynamicResource TextBlockStyle}"/>
 
                                     <!-- Divider -->
                                     <Rectangle Grid.Column="2"
@@ -848,10 +805,7 @@
                                         Height="45"
                                         Margin="10,20,0,20"
                                         VerticalAlignment="Bottom"
-                                        Foreground="FloralWhite"
-                                        FontFamily="Arial Black"
                                         FontSize="28"
-                                        BorderThickness="0"
                                         Content="{DynamicResource item8}"
                                         Style="{DynamicResource StandardButton}">
 
@@ -903,16 +857,8 @@
                            Foreground="Gray"
                            FontSize="14"
                            Opacity="0"
-                           Text="{DynamicResource item125}">
-
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="15"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="0"
-                                          Opacity="0.3"/>
-                    </TextBlock.Effect>
-                </TextBlock>
+                           Text="{DynamicResource item125}"
+                           Style="{DynamicResource TextBlockStyle}"/>
             </Grid>
         </Grid>
     </Grid>

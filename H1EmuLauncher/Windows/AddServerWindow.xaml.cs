@@ -100,7 +100,6 @@ namespace H1EmuLauncher
                     Content = serverNameBox.Text.Trim(),
                     Style = (Style)FindResource("ComboBoxItemStyle")
                 };
-                newItem.PreviewMouseRightButtonUp += (s, e) => { LauncherWindow.itemRightClicked = (ComboBoxItem)s; };
 
                 ContextMenu newItemContextMenu = new()
                 {
@@ -114,7 +113,7 @@ namespace H1EmuLauncher
                     Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Edit.png", UriKind.Absolute)) }
                 };
                 editOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item212");
-                editOption.Click += LauncherWindow.launcherInstance.EditServerInfo;
+                editOption.Click += (s, e) => { LauncherWindow.launcherInstance.EditServerInfo(newItem); };
 
                 Separator contextMenuSeparatorSeparator = new()
                 {
@@ -129,7 +128,7 @@ namespace H1EmuLauncher
                     Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) }
                 };
                 deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
-                deleteOption.Click += LauncherWindow.launcherInstance.DeleteServer;
+                deleteOption.Click += (s, e) => { LauncherWindow.launcherInstance.DeleteServer(newItem); };
                 newItemContextMenu.Items.Add(editOption);
                 newItemContextMenu.Items.Add(contextMenuSeparatorSeparator);
                 newItemContextMenu.Items.Add(deleteOption);

@@ -143,16 +143,8 @@
                                    TextAlignment="Center"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
-                                   Text="{DynamicResource item1}">
-
-                            <TextBlock.Effect>
-                                <DropShadowEffect BlurRadius="8"
-                                                  Direction="-90"
-                                                  RenderingBias="Quality"
-                                                  ShadowDepth="1"
-                                                  Opacity="0.3"/>
-                            </TextBlock.Effect>
-                        </TextBlock>
+                                   Text="{DynamicResource item1}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="2"
@@ -199,7 +191,8 @@
                                    Margin="20"
                                    FontSize="12"
                                    VerticalAlignment="Center"
-                                   HorizontalAlignment="Center"/>
+                                   HorizontalAlignment="Center"
+                                   Style="{DynamicResource TextBlockStyle}"/>
                     </Grid>
                 </Border>
             </Border>

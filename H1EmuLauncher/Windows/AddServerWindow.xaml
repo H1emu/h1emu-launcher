@@ -161,7 +161,9 @@
                                    Padding="14,2,14,0"
                                    IsHitTestVisible="False"
                                    VerticalAlignment="Center"
-                                   Text="{DynamicResource item144}"/>
+                                   Foreground="Gray"
+                                   Text="{DynamicResource item144}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Server IP textbox -->
                         <TextBox x:Name="serverIpBox"
@@ -193,7 +195,9 @@
                                    Padding="14,2,14,0"
                                    IsHitTestVisible="False"
                                    VerticalAlignment="Center"
-                                   Text="{DynamicResource item145}"/>
+                                   Foreground="Gray"
+                                   Text="{DynamicResource item145}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
                         <Rectangle Grid.Row="3"
@@ -223,8 +227,6 @@
                                     Click="AddButton"
                                     Margin="20"
                                     Padding="25,7,25,7"
-                                    FontFamily="Arial Black"
-                                    BorderThickness="0"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
                                     Content="{DynamicResource item18}"
@@ -246,8 +248,6 @@
                                     Click="CancelButton"
                                     Margin="20"
                                     Padding="25,7,25,7"
-                                    FontFamily="Arial Black"
-                                    BorderThickness="0"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
                                     Content="{DynamicResource item28}"

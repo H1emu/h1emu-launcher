@@ -18,11 +18,9 @@ namespace H1EmuLauncher.Classes
 
         public static string LAUNCHER_BUG_LINK = "https://github.com/H1emu/h1emu-launcher/issues/new";
 
-        public static string ACCOUNT_KEY_LINK = "https://www.h1emu.com/us/cockpit/my/account-key/";
+        public static string ACCOUNT_KEY_CHECK_API = "http://loginserver.h1emu.com/isverified?authKey=";
 
-        public static string ACCOUNT_KEY_CHECK_API = "https://www.h1emu.com/us/thermos/keyvalidator/?key=";
-
-        public static string DISCORD_LINK = "https://discord.com/invite/RM6jNkj";
+        public static string DISCORD_LINK = "https://discord.com/invite/h1emu";
 
         public static string CHANGELOG = "https://www.h1emu.com/us/changelog/";
 
@@ -32,6 +30,8 @@ namespace H1EmuLauncher.Classes
 
         public static string H1EMU_CHINESE_LINK = "https://azaz.ge/";
 
+        public static string ALLOWED_ACCOUNT_KEY_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        
         public static int AGREED_TO_TOS_ITERATION = 1;
     }
 }

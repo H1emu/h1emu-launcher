@@ -47,7 +47,7 @@ namespace H1EmuLauncher
                 try
                 {
                     // Download launcher information from GitHub endpoint
-                    HttpResponseMessage result = httpClient.GetAsync(new Uri(Info.LAUNCHER_JSON_API)).Result;
+                    HttpResponseMessage result = httpClient.GetAsync(Info.LAUNCHER_JSON_API).Result;
 
                     // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
                     if (result.StatusCode != HttpStatusCode.OK)
@@ -200,18 +200,16 @@ namespace H1EmuLauncher
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"{FindResource("item80")} {FindResource("item16")}{exceptionList}", this);
+                        CustomMessageBox.Show($"{FindResource("item80").ToString().Replace(":", ".").Replace("：", ".")} {FindResource("item16")}{exceptionList}", this);
                     }));
-
                     return;
                 }
-                catch (Exception exc)
+                catch (Exception ex)
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        CustomMessageBox.Show($"{FindResource("item80")} \"{exc.Message}\".\n\n{FindResource("item64")} \"{exc.StackTrace.Trim()}\".", this);
+                        CustomMessageBox.Show($"{FindResource("item80")} \"{ex.Message}\".\n\n{FindResource("item64")} \"{ex.StackTrace.Trim()}\".", this);
                     }));
-
                     return;
                 }
 
@@ -229,7 +227,6 @@ namespace H1EmuLauncher
                     {
                         CustomMessageBox.Show($"{FindResource("item186")} \"{ph.Message}\"\n\n{FindResource("item187")}", this);
                     }));
-
                     return;
                 }
 

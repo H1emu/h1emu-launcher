@@ -4,8 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:H1EmuLauncher.SettingsPages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
+      d:DesignWidth="735"
       Title="Options"
       FontFamily="Bahnschrift Light"
       FontSize="16"
@@ -27,7 +27,7 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="15"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -35,7 +35,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="15"/>
+                <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
 
             <!-- Grainy texture -->
@@ -54,16 +54,8 @@
                            Margin="20"
                            Foreground="FloralWhite"
                            TextWrapping="Wrap"
-                           Text="{DynamicResource item200}">
-
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="8"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="1"
-                                          Opacity="0.3"/>
-                    </TextBlock.Effect>
-                </TextBlock>
+                           Text="{DynamicResource item200}"
+                           Style="{DynamicResource TextBlockStyle}"/>
 
                 <Grid Grid.Column="2">
 
@@ -141,16 +133,8 @@
                            Margin="20"
                            Foreground="FloralWhite"
                            TextWrapping="Wrap"
-                           Text="{DynamicResource item201}">
-
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="8"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="1"
-                                          Opacity="0.3"/>
-                    </TextBlock.Effect>
-                </TextBlock>
+                           Text="{DynamicResource item201}"
+                           Style="{DynamicResource TextBlockStyle}"/>
 
                 <ToggleButton x:Name="imageCarouselToggleButton"
                               Grid.Column="2"
@@ -198,16 +182,8 @@
                            Margin="20"
                            Foreground="FloralWhite"
                            TextWrapping="Wrap"
-                           Text="{DynamicResource item202}">
-
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="8"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="1"
-                                          Opacity="0.3"/>
-                    </TextBlock.Effect>
-                </TextBlock>
+                           Text="{DynamicResource item202}"
+                           Style="{DynamicResource TextBlockStyle}"/>
 
                 <ToggleButton x:Name="autoMinimiseToggleButton"
                               Grid.Column="2"
@@ -255,32 +231,16 @@
                            Margin="20"
                            Foreground="FloralWhite"
                            TextWrapping="Wrap"
-                           Text="{DynamicResource item124}">
-
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="8"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="1"
-                                          Opacity="0.3"/>
-                    </TextBlock.Effect>
-                </TextBlock>
+                           Text="{DynamicResource item124}"
+                           Style="{DynamicResource TextBlockStyle}"/>
 
                 <TextBlock x:Name="currentVersionNumber"
                            Grid.Column="2"
                            Margin="20"
                            Foreground="FloralWhite"
                            VerticalAlignment="Center"
-                           HorizontalAlignment="Right">
-
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="8"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="1"
-                                          Opacity="0.3"/>
-                    </TextBlock.Effect>
-                </TextBlock>
+                           HorizontalAlignment="Right"
+                           Style="{DynamicResource TextBlockStyle}"/>
             </Grid>
         </Grid>
     </Border>

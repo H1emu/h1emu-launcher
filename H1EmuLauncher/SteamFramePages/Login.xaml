@@ -74,7 +74,8 @@
                    HorizontalAlignment="Left"
                    IsHitTestVisible="False"
                    Foreground="Gray"
-                   Text="{DynamicResource item59}"/>
+                   Text="{DynamicResource item59}"
+                   Style="{DynamicResource TextBlockStyle}"/>
 
         <!-- Icon for username textbox -->
         <Image Source="..\Resources\Shield.png"
@@ -92,23 +93,15 @@
                    Margin="10,0,0,0"
                    TextWrapping="Wrap"
                    VerticalAlignment="Top"
-                   Text="{DynamicResource item34}">
-
-            <TextBlock.Effect>
-                <DropShadowEffect BlurRadius="8"
-                                  Direction="-90"
-                                  RenderingBias="Quality"
-                                  ShadowDepth="1"
-                                  Opacity="0.3"/>
-            </TextBlock.Effect>
-        </TextBlock>
+                   Text="{DynamicResource item34}"
+                   Style="{DynamicResource TextBlockStyle}"/>
 
         <!-- Password box -->
         <PasswordBox x:Name="passwordBox"
                      Grid.Row="2"
                      Height="35"
                      Margin="0,0,10,0"
-                     Padding="30,0,35,0"
+                     Padding="30,0,30,0"
                      PasswordChar="●"
                      VerticalAlignment="Center"
                      VerticalContentAlignment="Center"
@@ -135,7 +128,8 @@
                    HorizontalAlignment="Left"
                    IsHitTestVisible="False"
                    Foreground="Gray"
-                   Text="{DynamicResource item60}"/>
+                   Text="{DynamicResource item60}"
+                   Style="{DynamicResource TextBlockStyle}"/>
 
         <!-- Icon for password textbox -->
         <Image Source="..\Resources\Padlock.png"
@@ -189,15 +183,7 @@
                    Margin="10,0,0,0"
                    VerticalAlignment="Top"
                    TextWrapping="Wrap"
-                   Text="{DynamicResource item35}">
-
-            <TextBlock.Effect>
-                <DropShadowEffect BlurRadius="8"
-                                  Direction="-90"
-                                  RenderingBias="Quality"
-                                  ShadowDepth="1"
-                                  Opacity="0.3"/>
-            </TextBlock.Effect>
-        </TextBlock>
+                   Text="{DynamicResource item35}"
+                   Style="{DynamicResource TextBlockStyle}"/>
     </Grid>
 </UserControl>

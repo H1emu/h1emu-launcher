@@ -55,16 +55,8 @@
                        VerticalAlignment="Center"
                        TextAlignment="Center"
                        FontSize="30"
-                       Text="{DynamicResource item48}">
-
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="8"
-                                      Direction="-90"
-                                      RenderingBias="Quality"
-                                      ShadowDepth="1"
-                                      Opacity="0.3"/>
-                </TextBlock.Effect>
-            </TextBlock>
+                       Text="{DynamicResource item48}"
+                       Style="{DynamicResource TextBlockStyle}"/>
 
             <!-- Divider -->
             <ProgressBar Grid.Row="1"
@@ -89,16 +81,8 @@
                        Margin="30,10,30,10"
                        TextAlignment="Center"
                        VerticalAlignment="Center"
-                       Text="{DynamicResource item4}">
-
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="8"
-                                      Direction="-90"
-                                      RenderingBias="Quality"
-                                      ShadowDepth="1"
-                                      Opacity="0.3"/>
-                </TextBlock.Effect>
-            </TextBlock>
+                       Text="{DynamicResource item4}"
+                       Style="{DynamicResource TextBlockStyle}"/>
         </Grid>
     </Grid>
 </Window>

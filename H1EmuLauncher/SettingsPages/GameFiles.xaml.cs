@@ -87,12 +87,14 @@ namespace H1EmuLauncher.SettingsPages
                     // Replace users ClientConfig.ini with modified version
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\ClientConfig.ini", Properties.Resources.CustomClientConfig);
 
-                    // Delete any no longer needed files
+                    // Delete any no longer needed files/old patches
                     Dispatcher.Invoke(new Action(delegate
                     {
                         settingsProgressText.Text = FindResource("item100").ToString();
                     }));
 
+                    if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice"))
+                        Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice", true);
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.dll");
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.runtimeconfig.json");
@@ -129,7 +131,7 @@ namespace H1EmuLauncher.SettingsPages
                 Dispatcher.Invoke(new Action(delegate
                 {
                     if (Properties.Settings.Default.gameVersionString == "22dec2016")
-                        CustomMessageBox.Show($"{FindResource("item103")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", SettingsWindow.settingsInstance);
+                        CustomMessageBox.Show($"{FindResource("item103")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101").ToString().Replace("{0}", $"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' '))}", SettingsWindow.settingsInstance);
                 }));
 
             }).Start();
@@ -219,9 +221,9 @@ namespace H1EmuLauncher.SettingsPages
                 Dispatcher.Invoke(new Action(delegate
                 {
                     if (button.Name == "latestButton")
-                        CustomMessageBox.Show($"{FindResource("item108")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", SettingsWindow.settingsInstance);
+                        CustomMessageBox.Show($"{FindResource("item108")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101").ToString().Replace("{0}", $"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' '))}", SettingsWindow.settingsInstance);
                     else
-                        CustomMessageBox.Show($"{FindResource("item112")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101")} {$"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' ')})", SettingsWindow.settingsInstance);
+                        CustomMessageBox.Show($"{FindResource("item112")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101").ToString().Replace("{0}", $"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' '))}", SettingsWindow.settingsInstance);
                 }));
 
             }).Start();

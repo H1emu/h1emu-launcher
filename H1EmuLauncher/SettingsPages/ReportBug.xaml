@@ -4,8 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:H1EmuLauncher.SettingsPages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      mc:Ignorable="d"
+      d:DesignWidth="735"
       Title="ReportBug"
       FontFamily="Bahnschrift Light"
       FontSize="16">
@@ -26,11 +26,11 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="15"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="15"/>
+                <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
 
             <!-- Grainy texture -->
@@ -50,25 +50,14 @@
                            HorizontalAlignment="Left"
                            Foreground="FloralWhite"
                            TextWrapping="Wrap"
-                           Text="{DynamicResource item174}">
-
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="8"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="1"
-                                          Opacity="0.3"/>
-                    </TextBlock.Effect>
-                </TextBlock>
+                           Text="{DynamicResource item174}"
+                           Style="{DynamicResource TextBlockStyle}"/>
 
                 <!-- Report server files button -->
                 <Button Grid.Column="2"
                         Click="ReportBugGithubServer"
                         Margin="20"
                         Padding="25,7,25,7"
-                        BorderThickness="0"
-                        Foreground="FloralWhite"
-                        FontFamily="Arial Black"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
                         Content="{DynamicResource item205}"
@@ -109,29 +98,17 @@
 
                 <!-- Report launcher text -->
                 <TextBlock Margin="20"
-                           VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            Foreground="FloralWhite"
                            TextWrapping="Wrap"
-                           Text="{DynamicResource item175}">
-
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="8"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="1"
-                                          Opacity="0.3"/>
-                    </TextBlock.Effect>
-                </TextBlock>
+                           Text="{DynamicResource item175}"
+                           Style="{DynamicResource TextBlockStyle}"/>
 
                 <!-- Report launcher button -->
                 <Button Grid.Column="2"
                         Click="ReportBugGithubLauncher"
                         Margin="20"
                         Padding="25,7,25,7"
-                        BorderThickness="0"
-                        Foreground="FloralWhite"
-                        FontFamily="Arial Black"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
                         Content="{DynamicResource item205}"

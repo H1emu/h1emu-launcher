@@ -17,7 +17,6 @@ namespace H1EmuLauncher
             CreateNoWindow = true
         };
         public static string accountKeyArgument;
-        public static bool openAccountKeyPage;
         public static SettingsWindow settingsInstance;
 
         public SettingsWindow()
@@ -54,7 +53,6 @@ namespace H1EmuLauncher
             }
 
             LauncherWindow.rawArgs = null;
-            openAccountKeyPage = false;
             accountKeyArgument = null;
         }
 
@@ -85,12 +83,11 @@ namespace H1EmuLauncher
             Top = (LauncherWindow.launcherInstance.Top + LauncherWindow.launcherInstance.Height / 2) - (Height / 2);
 
             // If accountkey argument was specified launch the accountkey window with the argument value
-            if (openAccountKeyPage)
+            if (!string.IsNullOrEmpty(accountKeyArgument))
             {
                 settingsTabControl.SelectedIndex = 1;
                 SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = accountKeyArgument;
                 LauncherWindow.rawArgs = null;
-                openAccountKeyPage = false;
                 accountKeyArgument = null;
             }
         }
@@ -109,8 +106,8 @@ namespace H1EmuLauncher
         {
             if (IsVisible && SettingsPages.GameFiles.isExecutingTasks)
             {
-                CustomMessageBox.Show(FindResource("item73").ToString(), this);
                 e.Cancel = true;
+                CustomMessageBox.Show(FindResource("item73").ToString(), this);
                 return;
             }
 

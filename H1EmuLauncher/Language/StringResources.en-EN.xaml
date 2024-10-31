@@ -20,7 +20,7 @@
     <system:String x:Key="item19">Please make sure to fill in the Auth Code box.</system:String>
     <system:String x:Key="item21">Got depot key for {0} result: {1}</system:String>
     <system:String x:Key="item23">Download complete!</system:String>
-    <system:String x:Key="item24">Need to download the game again? Press the button below to login again!</system:String>
+    <system:String x:Key="item24">Need to download the game again? Press the button below to login!</system:String>
     <system:String x:Key="item25">LOGIN</system:String>
     <system:String x:Key="item26">Currently downloading:</system:String>
     <system:String x:Key="item27">version</system:String>
@@ -84,9 +84,9 @@
     <system:String x:Key="item96">There was an error installing the 2016 patch:</system:String>
     <system:String x:Key="item99">Unzipping patch files...</system:String>
     <system:String x:Key="item100">Deleting old files...</system:String>
-    <system:String x:Key="item101">Done. (Elapsed time:</system:String>
-    <system:String x:Key="item102">Patch files for game version 2015 have been installed.</system:String>
-    <system:String x:Key="item103">Patch files for game version 2016 have been installed.</system:String>
+    <system:String x:Key="item101">Done. (Elapsed time: {0})</system:String>
+    <system:String x:Key="item102">The patch files for game version 2015 have been installed.</system:String>
+    <system:String x:Key="item103">The patch files for game version 2016 have been installed.</system:String>
     <system:String x:Key="item105">Installing latest server...</system:String>
     <system:String x:Key="item107">There was an error installing the latest server:</system:String>
     <system:String x:Key="item108">The latest server has been installed.</system:String>
@@ -129,10 +129,10 @@
     <system:String x:Key="item150">PATCHING...</system:String>
     <system:String x:Key="item151">Server name or IP not valid.</system:String>
     <system:String x:Key="item152">Deleting BattlEye folder...</system:String>
-    <system:String x:Key="item153">When connecting to H1Emu Servers you must set an Account Key. This can be done in the Settings menu.</system:String>
+    <system:String x:Key="item153">When connecting to H1Emu Servers you must set an Account Key. Would you like to do this now?</system:String>
     <system:String x:Key="item154">Account Key...</system:String>
     <system:String x:Key="item155">Account Key</system:String>
-    <system:String x:Key="item156">To play on H1Emu Servers, you need to set an Account Key. You can find this on your profile at:</system:String>
+    <system:String x:Key="item156">When connecting to H1Emu Servers you must set an Account Key. You can generate a key here, then you need to link it to your Discord account at:</system:String>
     <system:String x:Key="item157">The latest version of the server is an in development build, be warned that it may be unstable and cause crashes.\n\nWould you like to continue?</system:String>
     <system:String x:Key="item158">Welcome to H1Emu!</system:String>
     <system:String x:Key="item159">BEFORE YOU BEGIN, please note that this project only supports the following game version:</system:String>
@@ -154,7 +154,7 @@
     <system:String x:Key="item177">No singleplayer data found.</system:String>
     <system:String x:Key="item178">Deleting your singleplayer data may fix any issues you are facing, be warned that you will lose all progress.\n\nWould you like to continue?</system:String>
     <system:String x:Key="item179">Successfully deleted singleplayer data.</system:String>
-    <system:String x:Key="item180">The Account Key you are using is not valid on the H1Emu database.\n\nPlease verify you have typed the key correctly.</system:String>
+    <system:String x:Key="item180">The Account Key you are using is not verified on the H1Emu database.\n\nPlease verify your key by linking it to your Discord account at:</system:String>
     <system:String x:Key="item181">The Account Key you are using is banned.</system:String>
     <system:String x:Key="item182">Unknown response code while checking your Account Key validity:</system:String>
     <system:String x:Key="item183">There was an error validating your Account Key:</system:String>
@@ -191,4 +191,5 @@
     <system:String x:Key="item214">CHECKING...</system:String>
     <system:String x:Key="item215">Error computing asset hash:</system:String>
     <system:String x:Key="item216">Please uninstall any custom asset (.pack) files when playing on any H1Emu Main servers or it may result in a ban.</system:String>
+    <system:String x:Key="item217">RUNNING</system:String>
 </ResourceDictionary>

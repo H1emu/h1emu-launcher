@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Title="{DynamicResource item208}"
         MaxWidth="800"
-        MaxHeight="700"
+        MaxHeight="710"
         WindowStartupLocation="CenterScreen"
         WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
@@ -146,16 +146,8 @@
                                    FontSize="32"
                                    FontWeight="Bold"
                                    FontFamily="{StaticResource Signika}"
-                                   Text="{DynamicResource item158}">
-
-                            <TextBlock.Effect>
-                                <DropShadowEffect BlurRadius="8"
-                                                  Direction="-90"
-                                                  RenderingBias="Quality"
-                                                  ShadowDepth="1"
-                                                  Opacity="0.3"/>
-                            </TextBlock.Effect>
-                        </TextBlock>
+                                   Text="{DynamicResource item158}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Terms of service message -->
                         <TextBlock Grid.Row="2"
@@ -167,16 +159,8 @@
                                    FontSize="18"
                                    FontWeight="Bold"
                                    TextDecorations="Underline"
-                                   Text="Terms of Service">
-
-                            <TextBlock.Effect>
-                                <DropShadowEffect BlurRadius="8"
-                                                  Direction="-90"
-                                                  RenderingBias="Quality"
-                                                  ShadowDepth="1"
-                                                  Opacity="0.3"/>
-                            </TextBlock.Effect>
-                        </TextBlock>
+                                   Text="Terms of Service"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
                         <ScrollViewer Grid.Row="3"
                                       Margin="20,0,20,20"
@@ -190,118 +174,132 @@
                                            Foreground="#FFED1C24"
                                            TextDecorations="Underline"
                                            TextWrapping="Wrap"
-                                           Text="1. Acceptance of Terms"/>
+                                           Text="1. Acceptance of Terms"
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="By accessing and using H1Emu Servers, you agree to follow these Terms of Service. If you do not agree to these terms, you must discontinue your use of the game, services or code."/>
+                                           Text="By accessing and using H1Emu Servers, you agree to follow these Terms of Service. If you do not agree to these terms, you must discontinue your use of the game, services or code."
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock Margin="0,30,0,5"
                                            FontWeight="Bold"
                                            Foreground="#FFED1C24"
                                            TextDecorations="Underline"
                                            TextWrapping="Wrap"
-                                           Text="2. Game Version"/>
+                                           Text="2. Game Version"
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="The only version of H1Z1: Just Survive that this project supports is 22nd December 2016. You must use this version to ensure that everything works correctly and as intended."/>
+                                           Text="The only version of H1Z1: Just Survive that this project supports is 22nd December 2016. You must use this version to ensure that everything works correctly and as intended."
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock Margin="0,30,0,5"
                                            FontWeight="Bold"
                                            Foreground="#FFED1C24"
                                            TextDecorations="Underline"
                                            TextWrapping="Wrap"
-                                           Text="3. FairPlay Anti-Cheat Software"/>
+                                           Text="3. FairPlay Anti-Cheat Software"
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="To maintain a fair and enjoyable environment for all players, H1Emu Servers use the Fairplay anti-cheat software. Fairplay runs concurrently with the game to prevent and detect the use of unauthorized third-party programs that provide unfair advantages. By playing the game, you acknowledge and agree that Fairplay may collect, process, and store the following information:"/>
+                                           Text="To maintain a fair and enjoyable environment for all players, H1Emu Servers use the Fairplay anti-cheat software. Fairplay runs concurrently with the game to prevent and detect the use of unauthorized third-party programs that provide unfair advantages. By playing the game, you acknowledge and agree that Fairplay may collect, process, and store the following information:"
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock Margin="0,20,0,0"
                                            FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="- Your IP address."/>
+                                           Text="- Your IP address."
+                                           Style="{DynamicResource TextBlockStyle}"/>
                                 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="- Game identifiers, including in-game name and account ID."/>
+                                           Text="- Game identifiers, including in-game name and account ID."
+                                           Style="{DynamicResource TextBlockStyle}"/>
                                 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="- Hardware device information and identifiers, such as serial numbers."/>
+                                           Text="- Hardware device information and identifiers, such as serial numbers."
+                                           Style="{DynamicResource TextBlockStyle}"/>
                                 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="- Information related to the running operating system and game-related files."/>
+                                           Text="- Information related to the running operating system and game-related files."
+                                           Style="{DynamicResource TextBlockStyle}"/>
                                 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="- Information about processes, drivers, and executable code running on your system."/>
+                                           Text="- Information about processes, drivers, and executable code running on your system."
+                                           Style="{DynamicResource TextBlockStyle}"/>
                                 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="- File names that may include your operating system username."/>
+                                           Text="- File names that may include your operating system username."
+                                           Style="{DynamicResource TextBlockStyle}"/>
                                 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="- Image-based telemetry from your gameplay session."/>
+                                           Text="- Image-based telemetry from your gameplay session."
+                                           Style="{DynamicResource TextBlockStyle}"/>
                                 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="- Fairplay may retain this information for the duration of its services for the game to detect and prevent unfair gameplay."/>
+                                           Text="- Fairplay may retain this information for the duration of its services for the game to detect and prevent unfair gameplay."
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock Margin="0,30,0,5"
                                            FontWeight="Bold"
                                            Foreground="#FFED1C24"
                                            TextDecorations="Underline"
                                            TextWrapping="Wrap"
-                                           Text="4. Use of Data"/>
+                                           Text="4. Use of Data"
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="The data collected by Fairplay is used solely for the purpose of maintaining a fair gaming environment by identifying and acting upon cheating behavior. We are committed to taking swift actions, including issuing bans where necessary, to ensure fairness in the game."/>
+                                           Text="The data collected by Fairplay is used solely for the purpose of maintaining a fair gaming environment by identifying and acting upon cheating behavior. We are committed to taking swift actions, including issuing bans where necessary, to ensure fairness in the game."
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock Margin="0,30,0,5"
                                            FontWeight="Bold"
                                            Foreground="#FFED1C24"
                                            TextDecorations="Underline"
                                            TextWrapping="Wrap"
-                                           Text="5. Your Control Over Data Collection"/>
+                                           Text="5. Your Control Over Data Collection"
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="You have the right to stop the collection of this data at any time by closing the game. Fairplay will cease to collect any information about your system, TextBlockning programs, or any other data once the game is closed."/>
+                                           Text="You have the right to stop the collection of this data at any time by closing the game. Fairplay will cease to collect any information about your system, TextBlockning programs, or any other data once the game is closed."
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock Margin="0,30,0,5"
                                            FontWeight="Bold"
                                            Foreground="#FFED1C24"
                                            TextDecorations="Underline"
                                            TextWrapping="Wrap"
-                                           Text="6. Transparency and Fair Use"/>
+                                           Text="6. Transparency and Fair Use"
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="We are not a company, but we commit to being transparent and fair in our use of your data. Our sole aim is to protect the integrity of the game and ensure a level playing field for all players."/>
+                                           Text="We are not a company, but we commit to being transparent and fair in our use of your data. Our sole aim is to protect the integrity of the game and ensure a level playing field for all players."
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock Margin="0,30,0,5"
                                            FontWeight="Bold"
                                            Foreground="#FFED1C24"
                                            TextDecorations="Underline"
                                            TextWrapping="Wrap"
-                                           Text="7. Updates to Terms"/>
+                                           Text="7. Updates to Terms"
+                                           Style="{DynamicResource TextBlockStyle}"/>
 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="We may modify these Terms of Service at any time. You agree to review these terms periodically to stay informed of any changes."/>
-
-                                <StackPanel.Effect>
-                                    <DropShadowEffect BlurRadius="8"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="1"
-                                                      Opacity="0.3"/>
-                                </StackPanel.Effect>
+                                           Text="We may modify these Terms of Service at any time. You agree to review these terms periodically to stay informed of any changes."
+                                           Style="{DynamicResource TextBlockStyle}"/>
                             </StackPanel>
                         </ScrollViewer>
 
@@ -348,8 +346,6 @@
                                     Click="ContinueButton"
                                     Margin="20,20,0,20"
                                     Padding="25,7,25,7"
-                                    FontFamily="Arial Black"
-                                    BorderThickness="0"
                                     IsEnabled="False"
                                     Content="{DynamicResource item167}"
                                     Style="{DynamicResource StandardButton}">

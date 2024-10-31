@@ -191,4 +191,5 @@
     <system:String x:Key="item214">检查...</system:String>
     <system:String x:Key="item215">计算资产哈希值时出错：</system:String>
     <system:String x:Key="item216">在任何主服务器上玩时请卸载任何自定义资源 (.pack) 文件，否则可能会导致被禁止。</system:String>
+    <system:String x:Key="item217">RUNNING</system:String>
 </ResourceDictionary>

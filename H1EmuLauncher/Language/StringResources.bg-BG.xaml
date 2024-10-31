@@ -191,4 +191,5 @@
     <system:String x:Key="item214">ПРОВЕРКА...</system:String>
     <system:String x:Key="item215">Грешка при изчисляване на хеша на актива:</system:String>
     <system:String x:Key="item216">Моля, деинсталирайте всички файлове с персонализирани активи (.pack), когато играете на главните сървъри на H1Emu или това може да доведе до бан.</system:String>
+    <system:String x:Key="item217">RUNNING</system:String>
 </ResourceDictionary>

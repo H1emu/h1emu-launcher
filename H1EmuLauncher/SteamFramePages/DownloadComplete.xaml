@@ -33,20 +33,13 @@
                    Margin="0,0,0,0"
                    Background="Transparent"
                    Cursor="Arrow"
-                   TextAlignment="Center">
+                   TextAlignment="Center"
+                   Style="{DynamicResource TextBlockStyle}">
             
             <Run Foreground="#FFCA1420"
                  Text="{DynamicResource item23}"/>
             <LineBreak/>
             <Run Text="{DynamicResource item24}"/>
-
-            <TextBlock.Effect>
-                <DropShadowEffect BlurRadius="8"
-                                  Direction="-90"
-                                  RenderingBias="Quality"
-                                  ShadowDepth="1"
-                                  Opacity="0.3"/>
-            </TextBlock.Effect>
         </TextBlock>
 
         <!-- Back to login page button -->
@@ -54,8 +47,6 @@
                 Click="BackToLoginPage"
                 Margin="20"
                 Padding="20,7,20,7"
-                FontFamily="Arial Black"
-                BorderThickness="0"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Center"
                 Content="{DynamicResource item25}"

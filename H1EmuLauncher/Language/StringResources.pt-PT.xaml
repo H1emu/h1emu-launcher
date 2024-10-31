@@ -191,4 +191,5 @@
     <system:String x:Key="item214">VERIFICANDO...</system:String>
     <system:String x:Key="item215">Erro ao calcular o hash do ativo:</system:String>
     <system:String x:Key="item216">Desinstale todos os arquivos de recursos personalizados (.pack) ao jogar em qualquer servidor principal ou isso poderá resultar em banimento.</system:String>
+    <system:String x:Key="item217">RUNNING</system:String>
 </ResourceDictionary>

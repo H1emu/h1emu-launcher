@@ -4,9 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:H1EmuLauncher.SettingsPages"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
       d:DesignWidth="735"
-      d:DesignHeight="200"
       Title="AccountKey"
       FontFamily="Bahnschrift Light"
       FontSize="16"
@@ -28,13 +27,13 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="15"/>
+                <RowDefinition Height="10"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="15"/>
+                <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
 
             <!-- Grainy texture -->
@@ -50,34 +49,27 @@
                        TextAlignment="Center"
                        Foreground="FloralWhite"
                        TextWrapping="Wrap"
-                       Text="{DynamicResource item156}">
-
-                <TextBlock.Effect>
-                    <DropShadowEffect BlurRadius="8"
-                                      Direction="-90"
-                                      RenderingBias="Quality"
-                                      ShadowDepth="1"
-                                      Opacity="0.3"/>
-                </TextBlock.Effect>
-            </TextBlock>
+                       Text="{DynamicResource item156}"
+                       Style="{DynamicResource TextBlockStyle}"/>
 
             <!-- Hyperlink to user authentication key website -->
             <TextBlock Grid.Row="2"
                        Margin="20,0,20,20"
-                       HorizontalAlignment="Center">
+                       HorizontalAlignment="Center"
+                       Style="{DynamicResource TextBlockStyle}">
 
-                <Hyperlink Click="UserProfileLinkClick"
+                <Hyperlink Click="DiscordInviteLinkClick"
                            FontWeight="Bold"
                            Style="{DynamicResource HyperLinkStyle}">
     
-                    <TextBlock x:Name="accountKeyHyperlink"/>
+                    <TextBlock Text="https://discord.com/invite/h1emu"/>
     
                 </Hyperlink>
 
                 <!-- Context menu to copy link -->
                 <TextBlock.ContextMenu>
                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                        <MenuItem Click="AccountKeyLinkCopy"
+                        <MenuItem Click="DiscordInviteLinkCopy"
                                   Header="{DynamicResource item193}"
                                   Style="{DynamicResource CustomMenuItem}">
                             
@@ -105,13 +97,13 @@
             </Rectangle>
 
             <Grid Grid.Row="4">
-                
+
                 <!-- Plain text box that holds account key for visibility toggle -->
                 <TextBox x:Name="accountKeyBoxText"
                          TextChanged="AccountKeyBoxTextTextChanged"
                          Height="35"
                          Margin="20"
-                         Padding="35,0,40,1"
+                         Padding="35,0,40,0"
                          VerticalAlignment="Center"
                          VerticalContentAlignment="Center"
                          Visibility="Hidden"
@@ -120,7 +112,7 @@
                          Style="{DynamicResource TextBoxPrimaryStyle}">
 
                     <TextBox.Effect>
-                        
+
                         <!-- Drop shadow effect -->
                         <DropShadowEffect BlurRadius="15"
                                           Direction="-90"
@@ -135,7 +127,7 @@
                              PasswordChanged="AccountKeyBoxPasswordPasswordChanged"
                              Height="35"
                              Margin="20"
-                             Padding="35,0,40,1"
+                             Padding="35,0,40,0"
                              PasswordChar="●"
                              VerticalAlignment="Center"
                              VerticalContentAlignment="Center"
@@ -172,7 +164,8 @@
                            VerticalAlignment="Center"
                            IsHitTestVisible="False"
                            Foreground="Gray"
-                           Text="{DynamicResource item154}"/>
+                           Text="{DynamicResource item154}"
+                           Style="{DynamicResource TextBlockStyle}"/>
 
                 <!-- Password visibility show button -->
                 <Button x:Name="showKeyButton"
@@ -209,6 +202,29 @@
                     </Button.Background>
                 </Button>
             </Grid>
+
+            <!-- Generate Account Key button -->
+            <Button x:Name="generateAccountKeyButton"
+                    Grid.Row="5"
+                    Click="GenerateAccountKeyButtonClick"
+                    Margin="20,15,20,20"
+                    Padding="25,7,25,7"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Content="GENERATE"
+                    Visibility="Collapsed"
+                    Style="{DynamicResource StandardButton}">
+
+                <Button.Effect>
+
+                    <!-- Drop shadow effect -->
+                    <DropShadowEffect BlurRadius="15"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"
+                                      Opacity="0.3"/>
+                </Button.Effect>
+            </Button>
         </Grid>
     </Border>
 </Page>

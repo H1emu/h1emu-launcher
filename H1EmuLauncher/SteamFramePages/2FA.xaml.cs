@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SteamFramePages
 {
@@ -42,7 +43,7 @@ namespace H1EmuLauncher.SteamFramePages
         {
             if (string.IsNullOrEmpty(authBox.Text.Trim()))
             {
-                Classes.CustomMessageBox.Show(FindResource("item19").ToString(), LauncherWindow.launcherInstance);
+                CustomMessageBox.Show(FindResource("item19").ToString(), LauncherWindow.launcherInstance);
                 return;
             }
 

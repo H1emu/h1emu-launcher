@@ -15,7 +15,7 @@ namespace H1EmuLauncher.Classes
     {
         public static MessageBoxResult buttonPressed = MessageBoxResult.OK;
 
-        public static MessageBoxResult Show(string text, Window owner = null, bool yesButtonVisibility = false, bool noButtonVisibility = false, bool terminateH1Z1ButtonVisibility = false, bool okButtonVisibility = true)
+        public static MessageBoxResult Show(string text, Window owner = null, bool yesButtonVisibility = false, bool noButtonVisibility = false, bool terminateH1Z1ButtonVisibility = false, bool okButtonVisibility = true, bool discordLinkVisibility = false)
         {
             buttonPressed = MessageBoxResult.OK;
             MessageBoxWindow messageBox = new();
@@ -32,6 +32,9 @@ namespace H1EmuLauncher.Classes
 
             if (!okButtonVisibility)
                 messageBox.okButton.Visibility = Visibility.Collapsed;
+
+            if (discordLinkVisibility)
+                messageBox.discordInviteLink.Visibility = Visibility.Visible;
 
             if (owner != null && owner.IsVisible)
                 messageBox.Owner = owner;

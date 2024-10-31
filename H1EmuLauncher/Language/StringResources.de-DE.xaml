@@ -191,4 +191,5 @@
     <system:String x:Key="item214">ÜBERPRÜFUNG...</system:String>
     <system:String x:Key="item215">Fehler beim Berechnen des Asset-Hashs:</system:String>
     <system:String x:Key="item216">Bitte deinstallieren Sie alle benutzerdefinierten Asset-Dateien (.pack), wenn Sie auf einem der H1Emu-Hauptserver spielen, da dies sonst zu einem Verbot führen kann.</system:String>
+    <system:String x:Key="item217">RUNNING</system:String>
 </ResourceDictionary>

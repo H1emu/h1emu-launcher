@@ -191,4 +191,5 @@
     <system:String x:Key="item214">KONTROL EDİLİYOR...</system:String>
     <system:String x:Key="item215">Varlık karması hesaplanırken hata oluştu:</system:String>
     <system:String x:Key="item216">Lütfen herhangi bir Ana Sunucuda oynarken tüm özel varlık (.pack) dosyalarını kaldırın, aksi takdirde bu durum yasaklanmayla sonuçlanabilir.</system:String>
+    <system:String x:Key="item217">RUNNING</system:String>
 </ResourceDictionary>

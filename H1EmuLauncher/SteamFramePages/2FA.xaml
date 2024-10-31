@@ -69,7 +69,9 @@
                    Padding="35,0,0,0"
                    VerticalAlignment="Center"
                    IsHitTestVisible="False"
-                   Text="{DynamicResource item77}"/>
+                   Foreground="Gray"
+                   Text="{DynamicResource item77}"
+                   Style="{DynamicResource TextBlockStyle}"/>
 
         <!-- Padlock image -->
         <Image Source="..\Resources\Padlock.png"
@@ -120,15 +122,7 @@
                    Margin="10,0,0,0"
                    VerticalAlignment="Top"
                    TextWrapping="Wrap"
-                   Text="{DynamicResource item78}">
-
-            <TextBlock.Effect>
-                <DropShadowEffect BlurRadius="8"
-                                  Direction="-90"
-                                  RenderingBias="Quality"
-                                  ShadowDepth="1"
-                                  Opacity="0.3"/>
-            </TextBlock.Effect>
-        </TextBlock>
+                   Text="{DynamicResource item78}"
+                   Style="{DynamicResource TextBlockStyle}"/>
     </Grid>
 </UserControl>

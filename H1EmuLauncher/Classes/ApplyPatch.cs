@@ -5,6 +5,7 @@ using System.Windows;
 using System.Reflection;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Windows.Controls;
 
 namespace H1EmuLauncher.Classes
 {
@@ -25,12 +26,10 @@ namespace H1EmuLauncher.Classes
             {
                 Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    LauncherWindow.launcherInstance.playButton.IsEnabled = false;
-
                     if (Properties.Settings.Default.gameVersionString == "22dec2016" && string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersion2016))
-                        LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item150").ToString();
+                        LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item150");
                     else
-                        LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item188").ToString();
+                        LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
                 }));
 
                 ApplyPatch();
@@ -38,8 +37,7 @@ namespace H1EmuLauncher.Classes
 
             Application.Current.Dispatcher.Invoke(new Action(delegate
             {
-                LauncherWindow.launcherInstance.playButton.IsEnabled = true;
-                LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item8").ToString();
+                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item8");
             }));
         }
 
@@ -78,7 +76,9 @@ namespace H1EmuLauncher.Classes
                 // Replace users ClientConfig.ini with modified version
                 File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\ClientConfig.ini", Properties.Resources.CustomClientConfig);
 
-                // Delete any no longer needed files
+                // Delete any no longer needed files/old patches
+                if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice"))
+                    Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice", true);
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.dll");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.runtimeconfig.json");

@@ -129,6 +129,7 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
 
@@ -140,19 +141,42 @@
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
                                    VerticalAlignment="Center"
-                                   HorizontalAlignment="Center">
+                                   HorizontalAlignment="Center"
+                                   Style="{DynamicResource TextBlockStyle}"/>
 
-                            <TextBlock.Effect>
-                                <DropShadowEffect BlurRadius="8"
-                                                  Direction="-90"
-                                                  RenderingBias="Quality"
-                                                  ShadowDepth="1"
-                                                  Opacity="0.3"/>
-                            </TextBlock.Effect>
+                        <!-- Hyperlink to user authentication key website -->
+                        <TextBlock x:Name="discordInviteLink"
+                                   Grid.Row="2"
+                                   Margin="20,0,20,20"
+                                   HorizontalAlignment="Center"
+                                   Visibility="Collapsed"
+                                   Style="{DynamicResource TextBlockStyle}">
+
+                            <Hyperlink Click="DiscordInviteLinkClick"
+                                       FontWeight="Bold"
+                                       Style="{DynamicResource HyperLinkStyle}">
+    
+                                <TextBlock Text="https://discord.com/invite/h1emu"/>
+    
+                            </Hyperlink>
+
+                            <!-- Context menu to copy link -->
+                            <TextBlock.ContextMenu>
+                                <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                                    <MenuItem Click="DiscordInviteLinkCopy"
+                                              Header="{DynamicResource item193}"
+                                              Style="{DynamicResource CustomMenuItem}">
+                
+                                        <MenuItem.Icon>
+                                            <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </TextBlock.ContextMenu>
                         </TextBlock>
 
                         <!-- Divider -->
-                        <Rectangle Grid.Row="2"
+                        <Rectangle Grid.Row="3"
                                    Margin="20,0,20,0"
                                    Height="1"
                                    Fill="#FF2A2A32">
@@ -167,7 +191,7 @@
                         </Rectangle>
 
                         <!-- Using a UniformGrid here to keep both buttons centered when the collapsed element is set to visible -->
-                        <Grid Grid.Row="3"
+                        <Grid Grid.Row="4"
                               HorizontalAlignment="Center">
 
                             <Grid.ColumnDefinitions>
@@ -182,8 +206,6 @@
                                     Click="CloseH1Z1Click"
                                     Margin="20"
                                     Padding="25,7,25,7"
-                                    BorderThickness="0"
-                                    FontFamily="Arial Black"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
                                     Visibility="Collapsed"
@@ -207,8 +229,6 @@
                                     Click="ConfirmYesButtonClick"
                                     Margin="20"
                                     Padding="25,7,25,7"
-                                    BorderThickness="0"
-                                    FontFamily="Arial Black"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
                                     Visibility="Collapsed"
@@ -232,8 +252,6 @@
                                     Click="ConfirmNoButtonClick"
                                     Margin="20"
                                     Padding="25,7,25,7"
-                                    BorderThickness="0"
-                                    FontFamily="Arial Black"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
                                     Visibility="Collapsed"
@@ -257,8 +275,6 @@
                                     Click="CloseMessageBoxWindow"
                                     Margin="20"
                                     Padding="25,7,25,7"
-                                    BorderThickness="0"
-                                    FontFamily="Arial Black"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
                                     Content="{DynamicResource item92}"

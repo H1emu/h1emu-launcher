@@ -191,4 +191,5 @@
     <system:String x:Key="item214">DE CHEQUES...</system:String>
     <system:String x:Key="item215">Error al calcular el hash del activo:</system:String>
     <system:String x:Key="item216">Desinstale cualquier archivo de recurso personalizado (.pack) cuando juegue en cualquier servidor principal o podría resultar en una prohibición.</system:String>
+    <system:String x:Key="item217">RUNNING</system:String>
 </ResourceDictionary>
