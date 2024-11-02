@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows;
 
 namespace H1EmuLauncher.Classes
@@ -11,7 +12,7 @@ namespace H1EmuLauncher.Classes
         {
             try
             {
-                HttpResponseMessage result = await UpdateWindow.httpClient.GetAsync($"{Info.ACCOUNT_KEY_CHECK_API}{key}");
+                HttpResponseMessage result = await UpdateWindow.httpClient.GetAsync($"{Info.ACCOUNT_KEY_CHECK_API}{HttpUtility.UrlEncode(key)}");
                 switch ((int)result.StatusCode)
                 {
                     case 200: // Valid key
