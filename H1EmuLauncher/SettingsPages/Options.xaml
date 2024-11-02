@@ -71,7 +71,7 @@
                               FontWeight="Light"
                               SelectedIndex="0"
                               SelectionChanged="LanguageSelectionChanged"
-                              Style="{DynamicResource ComboBox}">
+                              Style="{DynamicResource ComboBoxStyle}">
 
                         <ComboBox.Effect>
                             <DropShadowEffect BlurRadius="15"
