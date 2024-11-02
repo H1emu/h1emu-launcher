@@ -53,7 +53,6 @@ namespace H1EmuLauncher.SteamFramePages
                 new Thread(() =>
                 {
                     TryLoginDownload();
-
                 }).Start();
             }
         }
@@ -69,7 +68,6 @@ namespace H1EmuLauncher.SteamFramePages
             new Thread(() =>
             {
                 TryLoginDownload();
-
             }).Start();
         }
 

@@ -39,7 +39,12 @@ namespace H1EmuLauncher.SettingsPages
         private void AccountKeyBoxTextTextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(accountKeyBoxText.Text))
+            {
                 accountKeyBoxHint.Visibility = Visibility.Hidden;
+                generateAccountKeyButton.Visibility = Visibility.Collapsed;
+            }
+            else
+                generateAccountKeyButton.Visibility = Visibility.Visible;
 
             if (accountKeyBoxPassword.Password != accountKeyBoxText.Text)
                 accountKeyBoxPassword.Password = accountKeyBoxText.Text;
@@ -54,7 +59,12 @@ namespace H1EmuLauncher.SettingsPages
         private void AccountKeyBoxPasswordPasswordChanged(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(accountKeyBoxPassword.Password))
+            {
                 accountKeyBoxHint.Visibility = Visibility.Hidden;
+                generateAccountKeyButton.Visibility = Visibility.Collapsed;
+            }
+            else
+                generateAccountKeyButton.Visibility = Visibility.Visible;
 
             if (accountKeyBoxText.Text != accountKeyBoxPassword.Password)
                 accountKeyBoxText.Text = accountKeyBoxPassword.Password;

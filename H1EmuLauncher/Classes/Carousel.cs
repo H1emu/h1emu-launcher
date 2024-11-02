@@ -73,7 +73,6 @@ namespace H1EmuLauncher.Classes
                         playCarousel.Stop();
 
                 }));
-
             }).Start();
         }
 

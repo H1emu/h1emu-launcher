@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,9 +12,7 @@ namespace H1EmuLauncher.Classes
             try
             {
                 HttpResponseMessage result = await UpdateWindow.httpClient.GetAsync($"{Info.ACCOUNT_KEY_CHECK_API}{key}");
-                int statusCode = (int)result.StatusCode;
-
-                switch (statusCode)
+                switch ((int)result.StatusCode)
                 {
                     case 200: // Valid key
                         return true;
@@ -31,7 +27,7 @@ namespace H1EmuLauncher.Classes
                     default: // Other status code
                         Application.Current.Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item182")} '{statusCode}'.", LauncherWindow.launcherInstance);
+                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item182")} '{(int)result.StatusCode}'.", LauncherWindow.launcherInstance);
                         }));
                         return false;
                 }

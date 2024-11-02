@@ -334,7 +334,7 @@ namespace H1EmuLauncher.Classes
 
             Application.Current.Dispatcher.Invoke(new Action(delegate
             {
-                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item8");
+                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item217");
             }));
         }
     }

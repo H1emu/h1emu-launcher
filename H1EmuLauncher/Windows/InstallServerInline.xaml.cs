@@ -129,7 +129,6 @@ namespace H1EmuLauncher
                     Topmost = true;
                     Close();
                 }));
-
             }).Start();
         }
 

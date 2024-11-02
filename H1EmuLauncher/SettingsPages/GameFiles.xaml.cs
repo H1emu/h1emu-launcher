@@ -133,7 +133,6 @@ namespace H1EmuLauncher.SettingsPages
                     if (Properties.Settings.Default.gameVersionString == "22dec2016")
                         CustomMessageBox.Show($"{FindResource("item103")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101").ToString().Replace("{0}", $"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' '))}", SettingsWindow.settingsInstance);
                 }));
-
             }).Start();
         }
 
@@ -225,7 +224,6 @@ namespace H1EmuLauncher.SettingsPages
                     else
                         CustomMessageBox.Show($"{FindResource("item112")}{Environment.NewLine}{Environment.NewLine}{FindResource("item101").ToString().Replace("{0}", $"{elapsedMs.Minutes}m {elapsedMs.Seconds}.{elapsedMs.Milliseconds.ToString().Remove(1)}s".TrimStart('0', 'm').TrimStart(' '))}", SettingsWindow.settingsInstance);
                 }));
-
             }).Start();
         }
 

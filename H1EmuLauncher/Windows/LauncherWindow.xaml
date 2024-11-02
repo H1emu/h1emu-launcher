@@ -413,7 +413,8 @@
                             <!-- Patch notes textbox -->
                             <ScrollViewer Grid.Row="1"
                                           Margin="30,0,10,0"
-                                          VerticalScrollBarVisibility="Hidden">
+                                          VerticalScrollBarVisibility="Hidden"
+                                          Style="{DynamicResource CustomScrollViewer}">
 
                                 <TextBlock x:Name="patchNotesBox"
                                            Margin="0,10,0,0"
@@ -759,7 +760,7 @@
                                           BorderThickness="2"
                                           SelectedIndex="0"
                                           SelectionChanged="ServerSelectorChanged"
-                                          Style="{DynamicResource ComboBox}">
+                                          Style="{DynamicResource ComboBoxStyle}">
 
 
                                     <ComboBoxItem Content="{DynamicResource item139}"

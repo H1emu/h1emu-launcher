@@ -112,7 +112,6 @@ namespace H1EmuLauncher
                         Close();
                     }));
                 }
-
             }).Start();
         }
 
@@ -231,7 +230,6 @@ namespace H1EmuLauncher
                 }
 
                 Environment.Exit(0);
-
             }).Start();
         }
 

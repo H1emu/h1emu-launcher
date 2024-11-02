@@ -30,7 +30,7 @@ namespace H1EmuLauncher.Classes
 
         public static string H1EMU_CHINESE_LINK = "https://azaz.ge/";
 
-        public static string ALLOWED_ACCOUNT_KEY_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        public static string ALLOWED_ACCOUNT_KEY_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         
         public static int AGREED_TO_TOS_ITERATION = 1;
     }

@@ -48,6 +48,7 @@ namespace H1EmuLauncher
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern IntPtr SetForegroundWindow(IntPtr hwnd);
+
         public LauncherWindow()
         {
             InitializeComponent();
@@ -228,7 +229,7 @@ namespace H1EmuLauncher
                     Margin = new Thickness(0, 5, 0, 0)
                 };
                 notifyIconMenuItemH1EmuServers.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item139");
-                notifyIconMenuItemH1EmuServers.PreviewMouseLeftButtonDown += (o, s) =>
+                notifyIconMenuItemH1EmuServers.Click += (o, s) =>
                 {
                     serverSelector.SelectedIndex = 0;
                     playButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
@@ -241,7 +242,7 @@ namespace H1EmuLauncher
                     Margin = new Thickness(0, 5, 0, 0)
                 };
                 notifyIconMenuItemSingleplayer.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item140");
-                notifyIconMenuItemSingleplayer.PreviewMouseLeftButtonDown += (o, s) =>
+                notifyIconMenuItemSingleplayer.Click += (o, s) =>
                 {
                     serverSelector.SelectedIndex = 1;
                     playButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
@@ -261,7 +262,7 @@ namespace H1EmuLauncher
                     Margin = new Thickness(0, 5, 0, 5)
                 };
                 notifyIconMenuItemExit.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item194");
-                notifyIconMenuItemExit.PreviewMouseLeftButtonDown += (o, s) => { Close(); };
+                notifyIconMenuItemExit.Click += (o, s) => { Close(); };
 
                 notifyIconContextMenu.Items.Add(notifyIconMenuItemH1EmuServers);
                 notifyIconContextMenu.Items.Add(notifyIconMenuItemSingleplayer);
@@ -278,7 +279,7 @@ namespace H1EmuLauncher
                         Header = server.CustomServerName,
                         Margin = new Thickness(0, 5, 0, 0)
                     };
-                    newItem.PreviewMouseLeftButtonDown += LaunchToCustomServerFromNotifyIcon;
+                    newItem.Click += LaunchToCustomServerFromNotifyIcon;
                     notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, newItem);
                 }
 
@@ -509,9 +510,11 @@ namespace H1EmuLauncher
         private void LaunchClient(object sender, RoutedEventArgs e)
         {
             playButton.IsEnabled = false;
+            playButton.SetResourceReference(ContentProperty, "item217");
             if (!CheckGameVersionAndPath(this))
             {
                 playButton.IsEnabled = true;
+                playButton.SetResourceReference(ContentProperty, "item8");
                 return;
             }
 
@@ -600,6 +603,7 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         playButton.IsEnabled = true;
+                        playButton.SetResourceReference(ContentProperty, "item8");
                     }));
                     return;
                 }
@@ -652,7 +656,6 @@ namespace H1EmuLauncher
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        playButton.SetResourceReference(ContentProperty, "item217");
                         if (serverSelector.SelectedIndex != 0 && serverSelector.SelectedIndex != 1 && serverSelector.SelectedIndex != serverSelector.Items.Count - 1 && serverSelector.SelectedItem is ComboBoxItem)
                             AddServerToRecentList(serverSelector.Text, serverIp);
                     }));
@@ -676,7 +679,6 @@ namespace H1EmuLauncher
                         CustomMessageBox.Show($"{FindResource("item13")}\n\n{e.GetType().Name}: \"{e.Message}\".", this);
                     }));
                 }
-
             }).Start();
         }
 
@@ -719,7 +721,7 @@ namespace H1EmuLauncher
                         Header = name,
                         Margin = new Thickness(0, 5, 0, 0)
                     };
-                    newItem.PreviewMouseLeftButtonDown += LaunchToCustomServerFromNotifyIcon;
+                    newItem.Click += LaunchToCustomServerFromNotifyIcon;
                     notifyIconContextMenu.Items.Insert(3, newItem);
 
                     if (notifyIconContextMenu.Items.Count == 5)
@@ -754,7 +756,7 @@ namespace H1EmuLauncher
             }));
         }
 
-        private void LaunchToCustomServerFromNotifyIcon(object sender, MouseButtonEventArgs e)
+        private void LaunchToCustomServerFromNotifyIcon(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -944,7 +946,6 @@ namespace H1EmuLauncher
             new Thread(() =>
             {
                 CheckGameVersionAndPath(this, true);
-
             }).Start();
         }
 
