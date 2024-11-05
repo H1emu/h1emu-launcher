@@ -19,7 +19,8 @@
         Foreground="FloralWhite"
         ContentRendered="MessageBoxContentRendered"
         Loaded="MessageBoxWindowLoaded"
-        Closing="MessageBoxWindowClosing">
+        Closing="MessageBoxWindowClosing"
+        KeyDown="MessageBoxWindowKeyDown">
 
     <!-- Keep window animations -->
     <WindowChrome.WindowChrome>

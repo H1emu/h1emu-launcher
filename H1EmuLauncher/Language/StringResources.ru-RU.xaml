@@ -50,7 +50,7 @@
     <system:String x:Key="item53">Ошибка запуска сервера:</system:String>
     <system:String x:Key="item54">Загрузка...</system:String>
     <system:String x:Key="item55">Использование ветки приложения: {0}</system:String>
-    <system:String x:Key="item56">Обработка depot {0} - {1}</system:String>
+    <system:String x:Key="item56">Обработка depot: {0}</system:String>
     <system:String x:Key="item57">Выделение места...</system:String>
     <system:String x:Key="item58">Версия игры не поддерживается H1Emu.\n\nНе забудьте использовать версию игры от 22 декабря 2016 года.\n\nВы можете использовать этот лаунчер для загрузки необходимой версии на главной странице с вашей учетной записью Steam, владельцем которой является Just Survive, или альтернативно. , возьмите файлы игры из другого источника.</system:String>
     <system:String x:Key="item59">Имя пользователя...</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">Добро пожаловать в H1Emu!</system:String>
     <system:String x:Key="item159">ПРЕЖДЕ ЧЕМ НАЧАТЬ, обратите внимание, что этот проект поддерживает только следующую версию игры:</system:String>
     <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">22 декабря 2016 г</system:String>
     <system:String x:Key="item163">Пожалуйста</system:String>
     <system:String x:Key="item164">НЕ НАДО</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">Ошибка вычисления хеша актива:</system:String>
     <system:String x:Key="item216">Пожалуйста, удалите все файлы пользовательских ресурсов (.pack) при игре на любом главном сервере, иначе это может привести к бану.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

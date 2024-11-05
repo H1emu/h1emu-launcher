@@ -50,7 +50,7 @@
     <system:String x:Key="item53">Sunucu başlatma hatası:</system:String>
     <system:String x:Key="item54">İndiriliyor...</system:String>
     <system:String x:Key="item55">Uygulama dalı kullanılıyor: {0}</system:String>
-    <system:String x:Key="item56">Depo işleniyor {0} - {1}</system:String>
+    <system:String x:Key="item56">Depo işleniyor: {0}</system:String>
     <system:String x:Key="item57">Disk alanı tanımlanıyor...</system:String>
     <system:String x:Key="item58">Oyun sürümü H1Emu tarafından desteklenmiyor.\n\nLütfen 22 Aralık 2016 tarihli oyun sürümünü kullanmayı unutmayın.\n\nBu başlatıcıyı, Just Survive'ın sahibi olduğunuz Steam hesabınızla ana sayfadaki gerekli sürümü indirmek için kullanabilirsiniz veya alternatif olarak , oyun dosyalarını başka yerden kaynaklayın.</system:String>
     <system:String x:Key="item59">Kullanıcı adı...</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">H1Emu'ya hoş geldiniz!</system:String>
     <system:String x:Key="item159">BAŞLAMADAN ÖNCE, lütfen bu projenin yalnızca aşağıdaki oyun sürümünü desteklediğini unutmayın:</system:String>
     <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">22 Aralık 2016</system:String>
     <system:String x:Key="item163">Lütfen</system:String>
     <system:String x:Key="item164">HİÇBİR ZAMAN</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">Varlık karması hesaplanırken hata oluştu:</system:String>
     <system:String x:Key="item216">Lütfen herhangi bir Ana Sunucuda oynarken tüm özel varlık (.pack) dosyalarını kaldırın, aksi takdirde bu durum yasaklanmayla sonuçlanabilir.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

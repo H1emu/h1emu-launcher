@@ -12,8 +12,8 @@ namespace H1EmuLauncher.Classes
         {
             try
             {
-                HttpResponseMessage result = await UpdateWindow.httpClient.GetAsync($"{Info.ACCOUNT_KEY_CHECK_API}{HttpUtility.UrlEncode(key)}");
-                switch ((int)result.StatusCode)
+                HttpResponseMessage response = await SplashWindow.httpClient.GetAsync($"{Info.ACCOUNT_KEY_CHECK_API}{HttpUtility.UrlEncode(key)}");
+                switch ((int)response.StatusCode)
                 {
                     case 200: // Valid key
                         return true;
@@ -28,7 +28,7 @@ namespace H1EmuLauncher.Classes
                     default: // Other status code
                         Application.Current.Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item182")} '{(int)result.StatusCode}'.", LauncherWindow.launcherInstance);
+                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item182")} '{(int)response.StatusCode}'.", LauncherWindow.launcherInstance);
                         }));
                         return false;
                 }

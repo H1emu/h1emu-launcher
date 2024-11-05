@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using H1EmuLauncher.Classes;
 
@@ -95,6 +97,14 @@ namespace H1EmuLauncher
         private void MessageBoxWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             FocusEffects.BeginFocusAnimation(Owner);
+        }
+
+        private void MessageBoxWindowKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter || e.Key == Key.Escape)
+            {
+                Close();
+            }
         }
     }
 }

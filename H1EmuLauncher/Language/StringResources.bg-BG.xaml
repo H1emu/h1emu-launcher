@@ -50,7 +50,7 @@
     <system:String x:Key="item53">Имаше грешка при пускането на сървъра.:</system:String>
     <system:String x:Key="item54">Изтегляне...</system:String>
     <system:String x:Key="item55">Използване на клон на приложението: {0}</system:String>
-    <system:String x:Key="item56">Депо за обработка {0} - {1}</system:String>
+    <system:String x:Key="item56">Депо за обработка: {0}</system:String>
     <system:String x:Key="item57">Предварително разпределяне на място...</system:String>
     <system:String x:Key="item58">Версията на играта не се поддържа от H1Emu.\n\nМоля, не забравяйте да използвате версията на играта от 22 декември 2016 г.\n\nМожете да използвате този стартер, за да изтеглите необходимата версия на главната страница с вашия Steam акаунт, който притежава Just Survive, или като алтернатива , източник на файловете на играта от другаде.</system:String>
     <system:String x:Key="item59">Steam име</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">Добре дошли в H1Emu!</system:String>
     <system:String x:Key="item159">ПРЕДИ ДА ЗАПОЧНЕТЕ, моля, имайте предвид, че този проект поддържа само следната версия на играта:</system:String>
     <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">22 декември 2016 г</system:String>
     <system:String x:Key="item163">Моля</system:String>
     <system:String x:Key="item164">Недейте</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">Грешка при изчисляване на хеша на актива:</system:String>
     <system:String x:Key="item216">Моля, деинсталирайте всички файлове с персонализирани активи (.pack), когато играете на главните сървъри на H1Emu или това може да доведе до бан.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

@@ -2,7 +2,10 @@
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Animation;
+using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
 {
@@ -28,7 +31,23 @@ namespace H1EmuLauncher
             Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(Classes.SetLanguageFile.LoadFile());
 
-            new UpdateWindow();
+            SplashWindow sp = new();
+            sp.Show();
+        }
+
+        private void TextBoxContextMenuPasteClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MenuItem menuItem = (MenuItem)sender;
+                ContextMenu contextMenu = (ContextMenu)menuItem.Parent;
+                UIElement box = contextMenu.PlacementTarget;
+                ApplicationCommands.Paste.Execute(null, box);
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.Show($"{FindResource("item184")} \"{ex.Message}\".", null);
+            }
         }
     }
 }

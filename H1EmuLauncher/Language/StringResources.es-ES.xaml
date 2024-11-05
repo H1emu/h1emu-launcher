@@ -50,7 +50,7 @@
     <system:String x:Key="item53">Error al iniciar el servidor:</system:String>
     <system:String x:Key="item54">Descargando...</system:String>
     <system:String x:Key="item55">Rama de aplicación:: {0}</system:String>
-    <system:String x:Key="item56">Procesando depot {0} - {1}</system:String>
+    <system:String x:Key="item56">Procesando depot: {0}</system:String>
     <system:String x:Key="item57">Pre-asignando espacio en disco...</system:String>
     <system:String x:Key="item58">La versión del juego no es compatible con H1Emu.\n\nRecuerda usar la versión del juego del 22 de diciembre de 2016.\n\nPuedes usar este iniciador para descargar la versión requerida en la página principal con tu cuenta de Steam que sea propiedad de Just Survive, o alternativamente , obtén los archivos del juego desde otro lugar.</system:String>
     <system:String x:Key="item59">Nombre de usuario...</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">¡Bienvenido a H1Emu!</system:String>
     <system:String x:Key="item159">ANTES DE COMENZAR, tenga en cuenta que este proyecto solo admite la siguiente versión del juego:</system:String>
     <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">22 de diciembre de 2016</system:String>
     <system:String x:Key="item163">Por favor</system:String>
     <system:String x:Key="item164">NO</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">Error al calcular el hash del activo:</system:String>
     <system:String x:Key="item216">Desinstale cualquier archivo de recurso personalizado (.pack) cuando juegue en cualquier servidor principal o podría resultar en una prohibición.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

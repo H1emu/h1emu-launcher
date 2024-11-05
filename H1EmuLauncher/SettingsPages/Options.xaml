@@ -35,6 +35,8 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
 
@@ -136,12 +138,12 @@
                            Text="{DynamicResource item201}"
                            Style="{DynamicResource TextBlockStyle}"/>
 
-                <ToggleButton x:Name="imageCarouselToggleButton"
+                <ToggleButton x:Name="imageCarouselVisibilityToggleButton"
                               Grid.Column="2"
                               Height="20"
                               Margin="20"
                               HorizontalAlignment="Right"
-                              Click="ImageCarouselToggleButtonClick"
+                              Click="ImageCarouselVisibilityToggleButtonClick"
                               Style="{StaticResource ToggleButtonStyle}">
 
                     <ToggleButton.Effect>
@@ -220,8 +222,125 @@
                 </Rectangle.Effect>
             </Rectangle>
 
-            <!-- Current launcher version -->
+            <!-- Automatically minimise launcher to system tray option -->
             <Grid Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center"
+                               Margin="20,0,10,0"
+                               Foreground="FloralWhite"
+                               TextWrapping="Wrap"
+                               Text="{DynamicResource item218}"
+                               Style="{DynamicResource TextBlockStyle}"/>
+
+                    <Grid>
+                        <Ellipse Width="18"
+                                 Height="18"
+                                 Fill="#FF2A2A32"
+                                 ToolTipService.InitialShowDelay="0">
+
+                            <Ellipse.ToolTip>
+                                <ToolTip Content="{DynamicResource item219}"
+                                         Style="{DynamicResource ToolTipStyle}"/>
+                            </Ellipse.ToolTip>
+
+                            <Ellipse.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Ellipse.Effect>
+                        </Ellipse>
+
+                        <Ellipse Width="18"
+                                 Height="18"
+                                 IsHitTestVisible="False">
+
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <TextBlock Foreground="FloralWhite"
+                                   FontFamily="Bahnschrift Light"
+                                   Text="?"
+                                   FontSize="10"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   IsHitTestVisible="False"
+                                   Style="{DynamicResource TextBlockStyle}"/>
+
+                        <Grid.Style>
+                            <Style TargetType="Grid">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Trigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                     To="0.8"
+                                                                     Duration="0:0:0.1"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.EnterActions>
+                                        <Trigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                     Duration="0:0:0.1"/>
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </Trigger.ExitActions>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Style>
+                    </Grid>
+
+                </StackPanel>
+
+                <ToggleButton x:Name="developerModeToggleButton"
+                              Grid.Column="2"
+                              Height="20"
+                              Margin="20"
+                              HorizontalAlignment="Right"
+                              Click="DeveloperModeToggleButtonClick"
+                              Style="{StaticResource ToggleButtonStyle}">
+
+                    <ToggleButton.Effect>
+
+                        <!-- Drop shadow effect -->
+                        <DropShadowEffect BlurRadius="15"
+                              Direction="-90"
+                              RenderingBias="Quality"
+                              ShadowDepth="1"
+                              Opacity="0.3"/>
+                    </ToggleButton.Effect>
+                </ToggleButton>
+            </Grid>
+
+            <!-- Divider -->
+            <Rectangle Grid.Row="8"
+                       Margin="20,0,20,0"
+                       Height="1"
+                       Fill="#FF2A2A32">
+
+                <Rectangle.Effect>
+                    <DropShadowEffect BlurRadius="8"
+                          Direction="-90"
+                          RenderingBias="Quality"
+                          ShadowDepth="1"
+                          Opacity="0.3"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <!-- Current launcher version -->
+            <Grid Grid.Row="9">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>

@@ -49,8 +49,8 @@
     <system:String x:Key="item52">您似乎没有安装服务器文件。\n\n您想立即安装它们并继续吗？如果是这样，请选择最新版本或稳定版本。</system:String>
     <system:String x:Key="item53">单机服务器启动错误：</system:String>
     <system:String x:Key="item54">正在下载...</system:String>
-    <system:String x:Key="item55">使用游戏分支：{0}</system:String>
-    <system:String x:Key="item56">处理数据包 {0} - {1}</system:String>
+    <system:String x:Key="item55">使用游戏分支： {0}</system:String>
+    <system:String x:Key="item56">处理数据包： {0}</system:String>
     <system:String x:Key="item57">预分配空间...</system:String>
     <system:String x:Key="item58">H1Emu 不支持游戏版本。\n\n请记住使用 2016 年 12 月 22 日的游戏版本。\n\n您可以使用此启动器通过拥有 Just Survive 所有权的 Steam 帐户在主页上下载所需的版本，或者也可以，从其他地方获取游戏文件。</system:String>
     <system:String x:Key="item59">用户名...</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">欢迎使用 H1Emu！</system:String>
     <system:String x:Key="item159">在开始之前，请注意，该项目仅支持以下游戏版本：</system:String>
     <system:String x:Key="item160">。</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">2016 年 12 月 22 日</system:String>
     <system:String x:Key="item163">请</system:String>
     <system:String x:Key="item164">不要</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">计算资产哈希值时出错：</system:String>
     <system:String x:Key="item216">在任何主服务器上玩时请卸载任何自定义资源 (.pack) 文件，否则可能会导致被禁止。</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

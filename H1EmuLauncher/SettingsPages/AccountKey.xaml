@@ -109,7 +109,7 @@
                          Visibility="Hidden"
                          GotFocus="AccountKeyBoxGotFocus"
                          LostFocus="AccountKeyBoxLostFocus"
-                         Style="{DynamicResource TextBoxPrimaryStyle}">
+                         Style="{DynamicResource TextBoxStyle}">
 
                     <TextBox.Effect>
 

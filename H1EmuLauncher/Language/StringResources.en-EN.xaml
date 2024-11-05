@@ -50,7 +50,7 @@
     <system:String x:Key="item53">Error launching server:</system:String>
     <system:String x:Key="item54">Downloading...</system:String>
     <system:String x:Key="item55">Using app branch: {0}</system:String>
-    <system:String x:Key="item56">Processing depot {0} - {1}</system:String>
+    <system:String x:Key="item56">Processing depot: {0}</system:String>
     <system:String x:Key="item57">Pre-allocating space...</system:String>
     <system:String x:Key="item58">Game version not supported by H1Emu.\n\nPlease remember to use the game version 22nd December 2016.\n\nYou can use this launcher to download the required version on the main page with your Steam account that has Just Survive ownership, or alternatively, source the game files from elsewhere.</system:String>
     <system:String x:Key="item59">Username...</system:String>
@@ -127,7 +127,7 @@
     <system:String x:Key="item148">Exception thrown.</system:String>
     <system:String x:Key="item149">Unzipping asset files...</system:String>
     <system:String x:Key="item150">PATCHING...</system:String>
-    <system:String x:Key="item151">Server name or IP not valid.</system:String>
+    <system:String x:Key="item151">Server name not valid.</system:String>
     <system:String x:Key="item152">Deleting BattlEye folder...</system:String>
     <system:String x:Key="item153">When connecting to H1Emu Servers you must set an Account Key. Would you like to do this now?</system:String>
     <system:String x:Key="item154">Account Key...</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">Welcome to H1Emu!</system:String>
     <system:String x:Key="item159">BEFORE YOU BEGIN, please note that this project only supports the following game version:</system:String>
     <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">22nd December 2016</system:String>
     <system:String x:Key="item163">Please</system:String>
     <system:String x:Key="item164">DO NOT</system:String>
@@ -176,7 +177,7 @@
     <system:String x:Key="item199">About</system:String>
     <system:String x:Key="item200">Selected language</system:String>
     <system:String x:Key="item201">Display image carousel</system:String>
-    <system:String x:Key="item202">Minimise to system tray</system:String>
+    <system:String x:Key="item202">Automatically minimise to system tray</system:String>
     <system:String x:Key="item203">On</system:String>
     <system:String x:Key="item204">Off</system:String>
     <system:String x:Key="item205">REPORT</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">Error computing asset hash:</system:String>
     <system:String x:Key="item216">Please uninstall any custom asset (.pack) files when playing on any H1Emu Main servers or it may result in a ban.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

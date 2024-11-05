@@ -50,7 +50,7 @@
     <system:String x:Key="item53">Fel vid start av server:</system:String>
     <system:String x:Key="item54">Laddar ner...</system:String>
     <system:String x:Key="item55">Använder programmets märke: {0}</system:String>
-    <system:String x:Key="item56">Laddar minne {0} - {1}</system:String>
+    <system:String x:Key="item56">Laddar minne: {0}</system:String>
     <system:String x:Key="item57">Förtilldelar utrymme...</system:String>
     <system:String x:Key="item58">Spelversionen stöds inte av H1Emu.\n\nKom ihåg att använda spelversionen 22 december 2016.\n\nDu kan använda den här startprogrammet för att ladda ner den version som krävs på huvudsidan med ditt Steam-konto som har Just Survive-ägande, eller alternativt , hämta spelfilerna från någon annanstans.</system:String>
     <system:String x:Key="item59">Användarnamn...</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">Välkommen till H1Emu!</system:String>
     <system:String x:Key="item159">INNAN DU BÖRJAR, observera att detta projekt endast stöder följande spelversion:</system:String>
     <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">22 december 2016</system:String>
     <system:String x:Key="item163">Snälla</system:String>
     <system:String x:Key="item164">LÅT BLI</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">Fel vid beräkning av tillgångshash:</system:String>
     <system:String x:Key="item216">Vänligen avinstallera alla anpassade tillgångsfiler (.pack) när du spelar på huvudservrar, annars kan det resultera i ett förbud.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

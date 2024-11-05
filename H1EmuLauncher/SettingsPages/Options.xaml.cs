@@ -24,16 +24,14 @@ namespace H1EmuLauncher.SettingsPages
         {
             languageBox.SelectedIndex = Properties.Settings.Default.language;
 
-            if (languageBox.SelectedIndex == 1)
-                LauncherWindow.launcherInstance.chineseLink.Visibility = Visibility.Visible;
-            else
-                LauncherWindow.launcherInstance.chineseLink.Visibility = Visibility.Collapsed;
-
             if (Properties.Settings.Default.imageCarouselVisibility)
-                imageCarouselToggleButton.IsChecked = true;
+                imageCarouselVisibilityToggleButton.IsChecked = true;
 
             if (Properties.Settings.Default.autoMinimise)
                 autoMinimiseToggleButton.IsChecked = true;
+
+            if (Properties.Settings.Default.developerMode)
+                developerModeToggleButton.IsChecked = true;
 
             currentVersionNumber.Text = $"v{Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.')}";
         }
@@ -104,9 +102,9 @@ namespace H1EmuLauncher.SettingsPages
             LauncherWindow.launcherInstance.steamFramePanel.Refresh();
         }
 
-        private void ImageCarouselToggleButtonClick(object sender, RoutedEventArgs e)
+        private void ImageCarouselVisibilityToggleButtonClick(object sender, RoutedEventArgs e)
         {
-            if (imageCarouselToggleButton.IsChecked == true)
+            if (imageCarouselVisibilityToggleButton.IsChecked == true)
             {
                 // Show image carousel
                 Carousel.playCarousel.Begin();
@@ -136,6 +134,20 @@ namespace H1EmuLauncher.SettingsPages
             else
             {
                 Properties.Settings.Default.autoMinimise = false;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void DeveloperModeToggleButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (developerModeToggleButton.IsChecked == true)
+            {
+                Properties.Settings.Default.developerMode = true;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.developerMode = false;
                 Properties.Settings.Default.Save();
             }
         }

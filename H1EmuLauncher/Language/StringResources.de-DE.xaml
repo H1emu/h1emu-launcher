@@ -50,7 +50,7 @@
     <system:String x:Key="item53">Fehler beim Starten des Servers:</system:String>
     <system:String x:Key="item54">wird heruntergeladen...</system:String>
     <system:String x:Key="item55">App Zweig verwenden: {0}</system:String>
-    <system:String x:Key="item56">Verarbeitungsdepot {0} - {1}</system:String>
+    <system:String x:Key="item56">Verarbeitungsdepot: {0}</system:String>
     <system:String x:Key="item57">Vorabzuweisung von Speicherplatz...</system:String>
     <system:String x:Key="item58">Spielversion wird von H1Emu nicht unterstützt.\n\nBitte denken Sie daran, die Spielversion vom 22. Dezember 2016 zu verwenden.\n\nSie können diesen Launcher verwenden, um die erforderliche Version auf der Hauptseite mit Ihrem Steam-Konto herunterzuladen, das Just Survive-Besitz hat, oder alternativ , beziehen Sie die Spieledateien von woanders.</system:String>
     <system:String x:Key="item59">Benutzername...</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">Willkommen bei H1Emu!</system:String>
     <system:String x:Key="item159">Bevor Sie beginnen, beachten Sie bitte, dass dieses Projekt nur die folgende Spielversion unterstützt:</system:String>
     <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">22. Dezember 2016</system:String>
     <system:String x:Key="item163">Bitte</system:String>
     <system:String x:Key="item164">NICHT</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">Fehler beim Berechnen des Asset-Hashs:</system:String>
     <system:String x:Key="item216">Bitte deinstallieren Sie alle benutzerdefinierten Asset-Dateien (.pack), wenn Sie auf einem der H1Emu-Hauptserver spielen, da dies sonst zu einem Verbot führen kann.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

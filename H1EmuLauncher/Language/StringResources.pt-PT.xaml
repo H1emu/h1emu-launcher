@@ -50,7 +50,7 @@
     <system:String x:Key="item53">Erro ao iniciar o servidor:</system:String>
     <system:String x:Key="item54">A descarregar...</system:String>
     <system:String x:Key="item55">Utilizar o branch da app: {0}</system:String>
-    <system:String x:Key="item56">Depósito de processamento {0} - {1}</system:String>
+    <system:String x:Key="item56">Depósito de processamento: {0}</system:String>
     <system:String x:Key="item57">Pré-alocação de espaço...</system:String>
     <system:String x:Key="item58">Versão do jogo não suportada pelo H1Emu.\n\nLembre-se de usar a versão do jogo de 22 de dezembro de 2016.\n\nVocê pode usar este inicializador para baixar a versão necessária na página principal com sua conta Steam que possui Just Survive ou, alternativamente, , obtenha os arquivos do jogo de outro lugar.</system:String>
     <system:String x:Key="item59">Nome de utilizador...</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">Bem vindo ao H1Emu!</system:String>
     <system:String x:Key="item159">ANTES DE COMEÇAR, observe que este projeto suporta apenas a seguinte versão do jogo:</system:String>
     <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">22 de dezembro de 2016</system:String>
     <system:String x:Key="item163">Por favor</system:String>
     <system:String x:Key="item164">NÃO</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">Erro ao calcular o hash do ativo:</system:String>
     <system:String x:Key="item216">Desinstale todos os arquivos de recursos personalizados (.pack) ao jogar em qualquer servidor principal ou isso poderá resultar em banimento.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

@@ -50,7 +50,7 @@
     <system:String x:Key="item53">Pogreška pri pokretanju servera:</system:String>
     <system:String x:Key="item54">Preuzimanje...</system:String>
     <system:String x:Key="item55">Korištenjem grane aplikacije: {0}</system:String>
-    <system:String x:Key="item56">Procesiranje depoa {0} - {1}</system:String>
+    <system:String x:Key="item56">Procesiranje depoa: {0}</system:String>
     <system:String x:Key="item57">Alociranje prostora...</system:String>
     <system:String x:Key="item58">H1Emu ne podržava verziju igre.\n\nNe zaboravite koristiti verziju igre od 22. prosinca 2016.\n\nMožete upotrijebiti ovaj pokretač za preuzimanje tražene verzije na glavnoj stranici sa svojim Steam računom koji ima Just Survive vlasništvo ili alternativno , izvor datoteka igre s drugog mjesta.</system:String>
     <system:String x:Key="item59">Korisničko ime...</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">Dobrodošli na H1Emu!</system:String>
     <system:String x:Key="item159">PRIJE NEGO POČNETE, imajte na umu da ovaj projekt podržava samo sljedeću verziju igre:</system:String>
     <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">22. prosinca 2016</system:String>
     <system:String x:Key="item163">Molim vas</system:String>
     <system:String x:Key="item164">NE POKUŠAVAJTE</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">Pogreška pri izračunavanju raspršivanja sredstava:</system:String>
     <system:String x:Key="item216">Deinstalirajte sve prilagođene datoteke (.pack) kada igrate na bilo kojem glavnom poslužitelju ili bi to moglo rezultirati zabranom.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

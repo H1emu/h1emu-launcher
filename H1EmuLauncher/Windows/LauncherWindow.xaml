@@ -167,15 +167,7 @@
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Left"
                                    RenderTransformOrigin="0.5, 0.5">
-
-                                <Image.Effect>
-                                    <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.3"/>
-                                </Image.Effect>
-
+                                
                                 <Image.RenderTransform>
                                     <RotateTransform x:Name="rotateSettingsIcon"/>
                                 </Image.RenderTransform>
@@ -326,9 +318,9 @@
                         <!-- Context menu to copy link -->
                         <Button.ContextMenu>
                             <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                <MenuItem Click="discordLinkCopy"
-                      Header="{DynamicResource item193}"
-                      Style="{DynamicResource CustomMenuItem}">
+                                <MenuItem Click="DiscordLinkCopyClick"
+                                          Header="{DynamicResource item193}"
+                                          Style="{DynamicResource CustomMenuItem}">
 
                                     <MenuItem.Icon>
                                         <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
@@ -441,7 +433,7 @@
                                 <!-- Context menu to copy link -->
                                 <TextBlock.ContextMenu>
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                        <MenuItem Click="patchNotesCopy"
+                                        <MenuItem Click="PatchNotesCopyClick"
                                                   Header="{DynamicResource item193}"
                                                   Style="{DynamicResource CustomMenuItem}">
                                             
@@ -585,7 +577,7 @@
                                 <!-- Context menu to copy link -->
                                 <TextBlock.ContextMenu>
                                     <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                        <MenuItem Click="chineseLinkCopy"
+                                        <MenuItem Click="ChineseLinkCopyClick"
                                                   Header="{DynamicResource item193}"
                                                   Style="{DynamicResource CustomMenuItem}">
                                             
@@ -698,7 +690,7 @@
                                              IsReadOnly="True"
                                              Cursor="Arrow"
                                              Text="{DynamicResource item75}"
-                                             Style="{DynamicResource TextBoxPrimaryStyle}">
+                                             Style="{DynamicResource TextBoxStyle}">
 
                                         <TextBox.Effect>
 

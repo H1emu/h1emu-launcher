@@ -175,5 +175,17 @@ namespace H1EmuLauncher.Properties {
                 this["agreedToTOSIteration"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool developerMode {
+            get {
+                return ((bool)(this["developerMode"]));
+            }
+            set {
+                this["developerMode"] = value;
+            }
+        }
     }
 }

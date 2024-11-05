@@ -91,7 +91,7 @@ namespace H1EmuLauncher.Classes
                 {
                     value.SerializedValue = setting.DefaultValue;
                     // Value.PropertyValue = Convert.ChangeType(setting.DefaultValue, t);    // Leaving this blank works but I'm not sure it's the best thing to do,
-                                                                                            // everything is created as a string default value, but it works ¯\_(ツ)_/¯
+                                                                                             // everything is created as a string default value, but it works ¯\_(ツ)_/¯
                 }
 
                 values.Add(value);

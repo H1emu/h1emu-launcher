@@ -26,6 +26,26 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="ToolTipStyle" TargetType="{x:Type ToolTip}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ToolTip}">
+                            <Border Background="#1C1B22"
+                                    BorderBrush="#FF2A2A32"
+                                    BorderThickness="1"
+                                    CornerRadius="5"
+                                    Padding="10,5,10,5">
+
+                                <TextBlock Text="{TemplateBinding Content}"
+                                           Foreground="FloralWhite"
+                                           FontSize="16"
+                                           FontFamily="Bahnschrift Light"
+                                           Style="{DynamicResource TextBlockStyle}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <Style x:Key="TextBlockStyle" TargetType="{x:Type TextBlock}">
                 <Setter Property="Effect">
                     <Setter.Value>
@@ -90,7 +110,6 @@
                                         <Storyboard>
                                             <DoubleAnimation Storyboard.TargetName="CheckMarkPath"
                                                              Storyboard.TargetProperty="Opacity"
-                                                             To="0"
                                                              Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -110,7 +129,6 @@
                                         <Storyboard>
                                             <ColorAnimation Storyboard.TargetName="CheckBoxBorder"
                                                             Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
-                                                            To="Gray"
                                                             Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -130,7 +148,6 @@
                                         <Storyboard>
                                             <ColorAnimation Storyboard.TargetName="CheckBoxBorder"
                                                             Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)"
-                                                            To="#707070"
                                                             Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -1066,8 +1083,8 @@
                 </Setter>
             </Style>
             <LinearGradientBrush x:Key="ComboBox.Static.Background" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Offset="0.0" Color="#2B2A33"/>
-                <GradientStop Offset="1.0" Color="#2B2A33"/>
+                <GradientStop Offset="0.0" Color="#FF2A2A32"/>
+                <GradientStop Offset="1.0" Color="#FF2A2A32"/>
             </LinearGradientBrush>
             <SolidColorBrush x:Key="ComboBox.Static.Border" Color="#DB111C"/>
             <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="FloralWhite"/>
@@ -1076,29 +1093,29 @@
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent"/>
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent"/>
             <LinearGradientBrush x:Key="ComboBox.MouseOver.Background" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Offset="0.0" Color="#2B2A33"/>
-                <GradientStop Offset="1.0" Color="#2B2A33"/>
+                <GradientStop Offset="0.0" Color="#FF2A2A32"/>
+                <GradientStop Offset="1.0" Color="#FF2A2A32"/>
             </LinearGradientBrush>
             <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="#DB111C"/>
             <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="FloralWhite"/>
             <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="#FFFFFFFF"/>
             <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="Transparent"/>
             <LinearGradientBrush x:Key="ComboBox.MouseOver.Editable.Button.Background" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Offset="0.0" Color="#2B2A33"/>
-                <GradientStop Offset="1.0" Color="#2B2A33"/>
+                <GradientStop Offset="0.0" Color="#FF2A2A32"/>
+                <GradientStop Offset="1.0" Color="#FF2A2A32"/>
             </LinearGradientBrush>
             <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Button.Border" Color="Transparent"/>
             <LinearGradientBrush x:Key="ComboBox.Pressed.Background" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Offset="0.0" Color="#2B2A33"/>
-                <GradientStop Offset="1.0" Color="#2B2A33"/>
+                <GradientStop Offset="0.0" Color="#FF2A2A32"/>
+                <GradientStop Offset="1.0" Color="#FF2A2A32"/>
             </LinearGradientBrush>
             <SolidColorBrush x:Key="ComboBox.Pressed.Border" Color="#DB111C"/>
             <SolidColorBrush x:Key="ComboBox.Pressed.Glyph" Color="FloralWhite"/>
             <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Background" Color="#FFFFFFFF"/>
             <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Border" Color="Transparent"/>
             <LinearGradientBrush x:Key="ComboBox.Pressed.Editable.Button.Background" StartPoint="0,0" EndPoint="0,1">
-                <GradientStop Offset="0.0" Color="#2B2A33"/>
-                <GradientStop Offset="1.0" Color="#2B2A33"/>
+                <GradientStop Offset="0.0" Color="#FF2A2A32"/>
+                <GradientStop Offset="1.0" Color="#FF2A2A32"/>
             </LinearGradientBrush>
             <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Button.Border" Color="#DB111C"/>
             <SolidColorBrush x:Key="ComboBox.Disabled.Background" Color="#FFF0F0F0"/>
@@ -1516,14 +1533,14 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsHighlighted" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="#40000000"/>
+                                    <Setter TargetName="border" Property="Background" Value="#1C1B22"/>
                                 </Trigger>
                                 <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
                                     <BeginStoryboard>
                                         <Storyboard>
                                             <ColorAnimation Storyboard.TargetName="border"
                                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                            To="#60000000"
+                                                            To="#70000000"
                                                             Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -1542,7 +1559,7 @@
                                         <Storyboard>
                                             <ColorAnimation Storyboard.TargetName="border"
                                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                            To="#60000000"
+                                                            To="#70000000"
                                                             Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -1711,7 +1728,7 @@
 
                                                 <Rectangle x:Name="Animation"
                                                            Fill="{TemplateBinding Foreground}"
-                                                           RenderTransformOrigin="0.5,0.5">
+                                                           RenderTransformOrigin="0.5, 0.5">
 
                                                     <Rectangle.RenderTransform>
                                                         <TransformGroup>
@@ -1730,7 +1747,7 @@
                                         </Border.Background>
                                     </Border>
                                 </Border>
-                                
+
                                 <VisualStateManager.VisualStateGroups>
                                     <VisualStateGroup x:Name="CommonStates">
                                         <VisualState x:Name="Determinate"/>
@@ -1738,13 +1755,107 @@
                                             <Storyboard RepeatBehavior="Forever">
                                                 <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
                                                     <EasingDoubleKeyFrame KeyTime="0" Value="0.25"/>
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25"/>
                                                     <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25"/>
                                                 </DoubleAnimationUsingKeyFrames>
                                                 <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
-                                                    <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5"/>
-                                                    <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5"/>
-                                                    <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5"/>
+                                                    <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5">
+                                                        <EasingPointKeyFrame.EasingFunction>
+                                                            <CubicEase EasingMode="EaseInOut"/>
+                                                        </EasingPointKeyFrame.EasingFunction>
+                                                    </EasingPointKeyFrame>
+                                                    <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5">
+                                                        <EasingPointKeyFrame.EasingFunction>
+                                                            <CubicEase EasingMode="EaseInOut"/>
+                                                        </EasingPointKeyFrame.EasingFunction>
+                                                    </EasingPointKeyFrame>
+                                                </PointAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                            </Grid>
+                            
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Orientation" Value="Vertical">
+                                    <Setter TargetName="TemplateRoot" Property="LayoutTransform">
+                                        <Setter.Value>
+                                            <RotateTransform Angle="-90"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsIndeterminate" Value="True">
+                                    <Setter TargetName="Indicator" Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="ProgressBarSmall" TargetType="{x:Type ProgressBar}">
+                <Setter Property="Foreground" Value="{StaticResource ProgressBar.Border}"/>
+                <Setter Property="Background" Value="{StaticResource ProgressBar.Background}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ProgressBar}">
+                            <Grid x:Name="TemplateRoot">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="1">
+
+                                    <Border>
+                                        <Grid>
+                                            <Rectangle x:Name="PART_Track"/>
+                                            <Grid x:Name="PART_Indicator"
+                                                  HorizontalAlignment="Left"
+                                                  ClipToBounds="True">
+
+                                                <Rectangle x:Name="Indicator"
+                                                           Fill="{TemplateBinding Foreground}"/>
+
+                                                <Rectangle x:Name="Animation"
+                                                           Fill="{TemplateBinding Foreground}"
+                                                           RenderTransformOrigin="0.5,0.5">
+
+                                                    <Rectangle.RenderTransform>
+                                                        <TransformGroup>
+                                                            <ScaleTransform/>
+                                                            <SkewTransform/>
+                                                            <RotateTransform/>
+                                                            <TranslateTransform/>
+                                                        </TransformGroup>
+                                                    </Rectangle.RenderTransform>
+                                                </Rectangle>
+                                            </Grid>
+                                        </Grid>
+
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                                        </Border.Background>
+                                    </Border>
+                                </Border>
+
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Determinate"/>
+                                        <VisualState x:Name="Indeterminate">
+                                            <Storyboard RepeatBehavior="Forever">
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.25"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                                    <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5">
+                                                        <EasingPointKeyFrame.EasingFunction>
+                                                            <CubicEase EasingMode="EaseInOut"/>
+                                                        </EasingPointKeyFrame.EasingFunction>
+                                                    </EasingPointKeyFrame>
+                                                    <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5">
+                                                        <EasingPointKeyFrame.EasingFunction>
+                                                            <CubicEase EasingMode="EaseInOut"/>
+                                                        </EasingPointKeyFrame.EasingFunction>
+                                                    </EasingPointKeyFrame>
                                                 </PointAnimationUsingKeyFrames>
                                             </Storyboard>
                                         </VisualState>
@@ -2222,13 +2333,13 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <SolidColorBrush x:Key="TextBoxPrimaryStyle.Static.Border" Color="#DB111C"/>
-            <SolidColorBrush x:Key="TextBoxPrimaryStyle.Static.Background" Color="#FF2A2A32"/>
-            <SolidColorBrush x:Key="TextBoxPrimaryStyle.Static.Foreground" Color="FloralWhite"/>
-            <Style x:Key="TextBoxPrimaryStyle" TargetType="{x:Type TextBox}">
-                <Setter Property="Background" Value="{StaticResource TextBoxPrimaryStyle.Static.Background}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource TextBoxPrimaryStyle.Static.Border}"/>
-                <Setter Property="Foreground" Value="{StaticResource TextBoxPrimaryStyle.Static.Foreground}"/>
+            <SolidColorBrush x:Key="TextBoxStyle.Static.Border" Color="#DB111C"/>
+            <SolidColorBrush x:Key="TextBoxStyle.Static.Background" Color="#FF2A2A32"/>
+            <SolidColorBrush x:Key="TextBoxStyle.Static.Foreground" Color="FloralWhite"/>
+            <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+                <Setter Property="Background" Value="{StaticResource TextBoxStyle.Static.Background}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource TextBoxStyle.Static.Border}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextBoxStyle.Static.Foreground}"/>
                 <Setter Property="BorderThickness" Value="2.5"/>
                 <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
                 <Setter Property="HorizontalContentAlignment" Value="Left"/>
@@ -2236,6 +2347,26 @@
                 <Setter Property="AllowDrop" Value="True"/>
                 <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
                 <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="ContextMenu">
+                    <Setter.Value>
+                        <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                            <MenuItem Header="Paste">
+                                <MenuItem.Icon>
+                                    <Image Source="Resources\Copy.png"
+                                           RenderOptions.BitmapScalingMode="Fant"/>
+                                </MenuItem.Icon>
+                                <MenuItem.Style>
+                                    <Style TargetType="{x:Type MenuItem}"
+                                           BasedOn="{StaticResource CustomMenuItem}">
+                                        
+                                        <EventSetter Event="Click"
+                                                     Handler="TextBoxContextMenuPasteClick"/>
+                                    </Style>
+                                </MenuItem.Style>
+                            </MenuItem>
+                        </ContextMenu>
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TextBox}">
@@ -2257,11 +2388,6 @@
                                     </Border.Background>
                                 </Border>
                             </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="border" Property="Opacity" Value="0.56"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -2290,6 +2416,26 @@
                 <Setter Property="AllowDrop" Value="True"/>
                 <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
                 <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="ContextMenu">
+                    <Setter.Value>
+                        <ContextMenu Style="{DynamicResource ContextMenuStyle}">
+                            <MenuItem Header="Paste">
+                                <MenuItem.Icon>
+                                    <Image Source="Resources\Copy.png"
+                                           RenderOptions.BitmapScalingMode="Fant"/>
+                                </MenuItem.Icon>
+                                <MenuItem.Style>
+                                    <Style TargetType="{x:Type MenuItem}"
+                                           BasedOn="{StaticResource CustomMenuItem}">
+                                        
+                                        <EventSetter Event="Click"
+                                                     Handler="TextBoxContextMenuPasteClick"/>
+                                    </Style>
+                                </MenuItem.Style>
+                            </MenuItem>
+                        </ContextMenu>
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type PasswordBox}">
@@ -2311,11 +2457,6 @@
                                     </Border.Background>
                                 </Border>
                             </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="border" Property="Opacity" Value="0.56"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

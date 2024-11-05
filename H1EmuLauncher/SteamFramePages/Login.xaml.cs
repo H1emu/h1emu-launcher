@@ -57,6 +57,23 @@ namespace H1EmuLauncher.SteamFramePages
             }
         }
 
+        private void UsernameBoxKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (string.IsNullOrEmpty(usernameBox.Text) || string.IsNullOrEmpty(passwordBox.Password))
+                {
+                    CustomMessageBox.Show(FindResource("item36").ToString(), LauncherWindow.launcherInstance);
+                    return;
+                }
+
+                new Thread(() =>
+                {
+                    TryLoginDownload();
+                }).Start();
+            }
+        }
+
         private void LoginButton(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(usernameBox.Text) || string.IsNullOrEmpty(passwordBox.Password))
@@ -206,7 +223,7 @@ namespace H1EmuLauncher.SteamFramePages
                         loadingIcon.Visibility = Visibility.Hidden;
                         loginEnterButton.Visibility = Visibility.Visible;
                         LauncherWindow.launcherInstance.directoryBox.Text = Properties.Settings.Default.activeDirectory;
-                        LauncherWindow.launcherInstance.CheckGameVersionAndPath(LauncherWindow.launcherInstance, true);
+                        LauncherWindow.launcherInstance.CheckGameVersionAndPath(LauncherWindow.launcherInstance, false, true);
                         CustomMessageBox.Show($"{FindResource("item37")} {version}.", LauncherWindow.launcherInstance);
                     }));
                 }

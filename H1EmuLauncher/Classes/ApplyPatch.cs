@@ -13,39 +13,19 @@ namespace H1EmuLauncher.Classes
     {
         public static string latestPatchVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
 
-        public static void CheckPatch()
-        {
-            if (Properties.Settings.Default.gameVersionString == "22dec2016" && Properties.Settings.Default.currentPatchVersion2016 != latestPatchVersion ||
-                Properties.Settings.Default.gameVersionString == "22dec2016" && Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye") ||
-                Properties.Settings.Default.gameVersionString == "22dec2016" && !File.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack") ||
-                !File.Exists($"{Properties.Settings.Default.activeDirectory}\\dinput8.dll") ||
-                !File.Exists($"{Properties.Settings.Default.activeDirectory}\\msvcp140d.dll") ||
-                !File.Exists($"{Properties.Settings.Default.activeDirectory}\\ucrtbased.dll") ||
-                !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140d.dll") ||
-                !File.Exists($"{Properties.Settings.Default.activeDirectory}\\vcruntime140_1d.dll"))
-            {
-                Application.Current.Dispatcher.Invoke(new Action(delegate
-                {
-                    if (Properties.Settings.Default.gameVersionString == "22dec2016" && string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersion2016))
-                        LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item150");
-                    else
-                        LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
-                }));
-
-                ApplyPatch();
-            }
-
-            Application.Current.Dispatcher.Invoke(new Action(delegate
-            {
-                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item217");
-            }));
-        }
-
         public static void ApplyPatch()
         {
             // Unzip all of the files to the root directory
             try
             {
+                Application.Current.Dispatcher.Invoke(new Action(delegate
+                {
+                    if (string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersion2016))
+                        LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item150");
+                    else
+                        LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
+                }));
+
                 if (Properties.Settings.Default.gameVersionString == "22dec2016")
                 {
                     // Extract main game patch
@@ -94,6 +74,7 @@ namespace H1EmuLauncher.Classes
             {
                 Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
+                    LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item217");
                     if (Properties.Settings.Default.gameVersionString == "22dec2016")
                         CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item96")}\n\n{e.Message}", LauncherWindow.launcherInstance);
                 }));
@@ -105,6 +86,11 @@ namespace H1EmuLauncher.Classes
                 Properties.Settings.Default.currentPatchVersion2016 = latestPatchVersion;
 
             Properties.Settings.Default.Save();
+
+            Application.Current.Dispatcher.Invoke(new Action(delegate
+            {
+                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item217");
+            }));
         }
     }
 }

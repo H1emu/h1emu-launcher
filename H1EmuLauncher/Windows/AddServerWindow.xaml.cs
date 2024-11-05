@@ -61,9 +61,15 @@ namespace H1EmuLauncher
 
         private void AddNewServer()
         {
-            if (string.IsNullOrEmpty(serverNameBox.Text) || string.IsNullOrEmpty(serverIpBox.Text))
+            if (string.IsNullOrEmpty(serverNameBox.Text))
             {
                 CustomMessageBox.Show(FindResource("item151").ToString(), this);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(serverIpBox.Text))
+            {
+                CustomMessageBox.Show(FindResource("item161").ToString(), this);
                 return;
             }
 

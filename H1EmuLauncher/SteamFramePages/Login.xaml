@@ -54,7 +54,8 @@
                  VerticalContentAlignment="Center"
                  GotFocus="UsernameBoxGotFocus"
                  LostFocus="UsernameBoxLostFocus"
-                 Style="{DynamicResource TextBoxPrimaryStyle}">
+                 KeyDown="UsernameBoxKeyDown"
+                 Style="{DynamicResource TextBoxStyle}">
 
             <TextBox.Effect>
                 <DropShadowEffect BlurRadius="15"

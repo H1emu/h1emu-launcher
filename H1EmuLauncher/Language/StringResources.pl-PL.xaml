@@ -50,7 +50,7 @@
     <system:String x:Key="item53">Błąd podczas startu serwera:</system:String>
     <system:String x:Key="item54">Pobieranie...</system:String>
     <system:String x:Key="item55">Using app branch: {0}</system:String>
-    <system:String x:Key="item56">Przetwarzam depot {0} - {1}</system:String>
+    <system:String x:Key="item56">Przetwarzam depot: {0}</system:String>
     <system:String x:Key="item57">Wstępne przydzielanie miejsca na dysku...</system:String>
     <system:String x:Key="item58">Wersja gry nie jest obsługiwana przez H1Emu.\n\nPamiętaj, aby użyć wersji gry z 22 grudnia 2016 r.\n\nMożesz użyć tego programu uruchamiającego, aby pobrać wymaganą wersję na stronie głównej swojego konta Steam, na którym posiadasz Just Survive, lub alternatywnie , pobierz pliki gry z innego źródła.</system:String>
     <system:String x:Key="item59">Nazwa użytkownika...</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">Witaj w H1Emu!</system:String>
     <system:String x:Key="item159">ZANIM ZACZNIESZ, pamiętaj, że ten projekt obsługuje tylko następującą wersję gry:</system:String>
     <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">22 grudnia 2016r</system:String>
     <system:String x:Key="item163">Nie</system:String>
     <system:String x:Key="item164">UŻYWAJ</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">Błąd podczas obliczania skrótu zasobu:</system:String>
     <system:String x:Key="item216">Odinstaluj wszelkie niestandardowe pliki zasobów (.pack) podczas gry na dowolnym serwerze głównym, w przeciwnym razie może to skutkować banem.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

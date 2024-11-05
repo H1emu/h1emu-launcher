@@ -611,7 +611,8 @@ namespace H1EmuLauncher
                 try
                 {
                     // Check that the patch is the latest version
-                    ApplyPatchClass.CheckPatch();
+                    if (!Properties.Settings.Default.developerMode)
+                        ApplyPatchClass.ApplyPatch();
 
                     // If connecting to H1Emu servers, validate assets
                     //if (serverIp == Info.H1EMU_SERVER_IP)
@@ -781,11 +782,11 @@ namespace H1EmuLauncher
             }
         }
 
-        private void LauncherWindowLoaded(object sender, RoutedEventArgs e)
+        private async void LauncherWindowLoaded(object sender, RoutedEventArgs e)
         {
             // Delete old setup file
-            if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.downloadFileName}"))
-                File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.downloadFileName}");
+            if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.installerFileName}"))
+                File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.installerFileName}");
 
             // If arguments file doesn't exist then create one
             if (!File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt"))
@@ -818,7 +819,7 @@ namespace H1EmuLauncher
             if (Properties.Settings.Default.language == 1)
                 chineseLink.Visibility = Visibility.Visible;
 
-            DisplayVersionInformation();
+            await DisplayVersionInformation();
             LoadServers();
             Carousel.BeginImageCarousel();
             CheckGameVersionAndPath(this, false, true);
@@ -833,19 +834,19 @@ namespace H1EmuLauncher
                 await CheckAccountKey.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);
         }
 
-        public void DisplayVersionInformation()
+        public async Task DisplayVersionInformation()
         {
             try
             {
                 // Update version, date published and patch notes code
-                HttpResponseMessage result = UpdateWindow.httpClient.GetAsync(Info.SERVER_JSON_API).Result;
+                HttpResponseMessage response = await SplashWindow.httpClient.GetAsync(Info.SERVER_JSON_API);
 
                 // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
-                if (result.StatusCode != HttpStatusCode.OK)
-                    throw new Exception($"{char.ToUpper(result.ReasonPhrase.First())}{result.ReasonPhrase.Substring(1)}");
+                if (response.StatusCode != HttpStatusCode.OK)
+                    throw new Exception($"{char.ToUpper(response.ReasonPhrase.First())}{response.ReasonPhrase.Substring(1)}");
 
                 // Get latest release number, date published, and patch notes for server
-                string jsonServer = result.Content.ReadAsStringAsync().Result;
+                string jsonServer = await response.Content.ReadAsStringAsync();
                 JsonEndPoints.Server.Root jsonDesServer = JsonSerializer.Deserialize<JsonEndPoints.Server.Root>(jsonServer);
                 string latestVersion = jsonDesServer.tag_name;
                 DateTime publishDate = jsonDesServer.published_at;
@@ -1124,17 +1125,17 @@ namespace H1EmuLauncher
             });
         }
 
-        private void patchNotesCopy(object sender, RoutedEventArgs e)
+        private void PatchNotesCopyClick(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(Info.CHANGELOG);
         }
 
-        private void discordLinkCopy(object sender, RoutedEventArgs e)
+        private void DiscordLinkCopyClick(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(Info.DISCORD_LINK);
         }
 
-        private void chineseLinkCopy(object sender, RoutedEventArgs e)
+        private void ChineseLinkCopyClick(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(Info.CHANGELOG);
         }

@@ -52,7 +52,7 @@
                  GotFocus="AuthBoxGotFocus"
                  LostFocus="AuthBoxLostFocus"
                  KeyDown="_2FAKeyDown"
-                 Style="{DynamicResource TextBoxPrimaryStyle}">
+                 Style="{DynamicResource TextBoxStyle}">
 
             <TextBox.Effect>
                 <DropShadowEffect BlurRadius="15"

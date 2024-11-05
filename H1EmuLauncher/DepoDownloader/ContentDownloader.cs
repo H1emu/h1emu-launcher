@@ -887,7 +887,7 @@ namespace H1EmuLauncher
 
             System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
             {
-                DownloadStatus.downloadStatusInstance.downloadProgressText.Text = LauncherWindow.launcherInstance.FindResource("item56").ToString().Replace("{0}", depot.manifestId.ToString()).Replace("{1}", newProtoManifest.CreationTime.ToString());
+                DownloadStatus.downloadStatusInstance.downloadProgressText.Text = LauncherWindow.launcherInstance.FindResource("item56").ToString().Replace("{0}", depot.manifestId.ToString());
             }));
 
             Debug.WriteLine($"Manifest {depot.manifestId} ({newProtoManifest.CreationTime})");

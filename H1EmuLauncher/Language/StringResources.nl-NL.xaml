@@ -50,7 +50,7 @@
     <system:String x:Key="item53">Error tijdens het opstarten server:</system:String>
     <system:String x:Key="item54">Downloaden...</system:String>
     <system:String x:Key="item55">gebruikt app branch: {0}</system:String>
-    <system:String x:Key="item56">Verwerken depot {0} - {1}</system:String>
+    <system:String x:Key="item56">Verwerken depot: {0}</system:String>
     <system:String x:Key="item57">Pre-alocatie opslag...</system:String>
     <system:String x:Key="item58">Spelversie wordt niet ondersteund door H1Emu.\n\nVergeet niet om de spelversie van 22 december 2016 te gebruiken.\n\nJe kunt dit opstartprogramma gebruiken om de vereiste versie op de hoofdpagina te downloaden met je Steam-account dat het eigendom van Just Survive heeft, of als alternatief , bron de spelbestanden van elders.</system:String>
     <system:String x:Key="item59">Steam ID...</system:String>
@@ -137,6 +137,7 @@
     <system:String x:Key="item158">Welkom bij H1Emu!</system:String>
     <system:String x:Key="item159">VOORDAT U BEGINT, houd er rekening mee dat dit project alleen de volgende spelversie ondersteunt:</system:String>
     <system:String x:Key="item160">.</system:String>
+    <system:String x:Key="item161">Server IP not valid.</system:String>
     <system:String x:Key="item162">22 december 2016</system:String>
     <system:String x:Key="item163">Alstublieft</system:String>
     <system:String x:Key="item164">NIET</system:String>
@@ -192,4 +193,7 @@
     <system:String x:Key="item215">Fout bij het berekenen van asset-hash:</system:String>
     <system:String x:Key="item216">Verwijder eventuele aangepaste asset-bestanden (.pack) als je op een hoofdserver speelt, anders kan dit resulteren in een verbanning.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
+    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>
