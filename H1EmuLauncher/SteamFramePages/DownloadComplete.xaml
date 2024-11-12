@@ -50,7 +50,7 @@
                 VerticalAlignment="Top"
                 HorizontalAlignment="Center"
                 Content="{DynamicResource item25}"
-                Style="{DynamicResource StandardButton}">
+                Style="{DynamicResource PrimaryButton}">
 
             <Button.Effect>
                 <DropShadowEffect BlurRadius="15"

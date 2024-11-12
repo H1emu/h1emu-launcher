@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using H1EmuLauncher.Classes;
@@ -22,18 +21,7 @@ namespace H1EmuLauncher.SettingsPages
 
         private void GenerateAccountKeyButtonClick(object sender, RoutedEventArgs e)
         {
-            string generatedKey = string.Empty;
-            Random random = new();
-
-            for (int i = 0; i < 64; i++)
-                generatedKey += Info.ALLOWED_ACCOUNT_KEY_CHARS[random.Next(Info.ALLOWED_ACCOUNT_KEY_CHARS.Length)];
-
-            if (accountKeyBoxText.Visibility == Visibility.Visible)
-                accountKeyBoxText.Text = generatedKey;
-            else
-                accountKeyBoxPassword.Password = generatedKey;
-
-            generateAccountKeyButton.Visibility = Visibility.Collapsed;
+            accountKeyBoxPassword.Password = AccountKeyUtil.GenerateNewAccountKey();
         }
 
         private void AccountKeyBoxTextTextChanged(object sender, TextChangedEventArgs e)

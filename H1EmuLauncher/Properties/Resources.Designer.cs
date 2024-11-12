@@ -563,6 +563,16 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PrimaryButton {
+            get {
+                object obj = ResourceManager.GetObject("PrimaryButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Server {
             get {
                 object obj = ResourceManager.GetObject("Server", resourceCulture);
@@ -637,16 +647,6 @@ namespace H1EmuLauncher.Properties {
             get {
                 object obj = ResourceManager.GetObject("Signika", resourceCulture);
                 return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap StandardButton {
-            get {
-                object obj = ResourceManager.GetObject("StandardButton", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

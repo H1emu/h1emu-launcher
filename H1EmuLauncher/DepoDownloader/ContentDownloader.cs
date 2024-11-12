@@ -41,7 +41,6 @@ namespace H1EmuLauncher
             public uint appId { get; private set; }
             public ulong manifestId { get; private set; }
             public string branch { get; private set; }
-
             public string installDir { get; private set; }
             public string contentName { get; private set; }
 
@@ -1206,6 +1205,9 @@ namespace H1EmuLauncher
             }
         }
 
+        public static System.Timers.Timer downloadSpeedTimer = new System.Timers.Timer(1000);
+        public static ulong sizeDownloadedPublic;
+        public static float downloadSpeed;
         private static async Task DownloadSteam3AsyncDepotFileChunk(
             CancellationTokenSource cts, uint appId,
             GlobalDownloadCounter downloadCounter,
@@ -1317,6 +1319,7 @@ namespace H1EmuLauncher
             lock (depotDownloadCounter)
             {
                 sizeDownloaded = depotDownloadCounter.SizeDownloaded + (ulong)chunkData.Data.Length;
+                sizeDownloadedPublic = sizeDownloaded;
                 depotDownloadCounter.SizeDownloaded = sizeDownloaded;
                 depotDownloadCounter.DepotBytesCompressed += chunk.CompressedLength;
                 depotDownloadCounter.DepotBytesUncompressed += chunk.UncompressedLength;
@@ -1327,17 +1330,17 @@ namespace H1EmuLauncher
                 downloadCounter.TotalBytesCompressed += chunk.CompressedLength;
                 downloadCounter.TotalBytesUncompressed += chunk.UncompressedLength;
             }
-            
+
             if (remainingChunks == 0)
             {
                 var fileFinalPath = Path.Combine(depot.installDir, file.FileName);
-                Debug.WriteLine("{0,6:#00.00}% {1}", (sizeDownloaded / depotDownloadCounter.CompleteDownloadSize) * 100.0f, fileFinalPath);
+                Debug.WriteLine("{0,6:#00.00}% {1}", sizeDownloaded / depotDownloadCounter.CompleteDownloadSize * 100.0f, fileFinalPath);
 
                 System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    DownloadStatus.downloadStatusInstance.downloadProgress.Value = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f;
-                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{LauncherWindow.launcherInstance.FindResource("item54")} {sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}%";
-                    LauncherWindow.launcherInstance.taskbarIcon.ProgressValue = depotDownloadCounter.SizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize;
+                    DownloadStatus.downloadStatusInstance.downloadProgress.Value = sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f;
+                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{LauncherWindow.launcherInstance.FindResource("item54")} {sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize * 100.0f:0.00}% - {downloadSpeed:0.00} MB/s";
+                    LauncherWindow.launcherInstance.taskbarIcon.ProgressValue = sizeDownloaded / (float)depotDownloadCounter.CompleteDownloadSize;
                 }));
             }
         }

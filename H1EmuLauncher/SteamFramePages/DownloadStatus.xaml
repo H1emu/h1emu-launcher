@@ -85,7 +85,7 @@
                     Padding="20,8,20,8"
                     Click="CancelDownloadButtonClick"
                     Content="{DynamicResource item28}"
-                    Style="{DynamicResource StandardButton}">
+                    Style="{DynamicResource PrimaryButton}">
 
                 <Button.Effect>
                     <DropShadowEffect BlurRadius="15"

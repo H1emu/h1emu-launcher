@@ -194,6 +194,6 @@
     <system:String x:Key="item216">Vänligen avinstallera alla anpassade tillgångsfiler (.pack) när du spelar på huvudservrar, annars kan det resultera i ett förbud.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
     <system:String x:Key="item218">Developer mode</system:String>
-    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched and multiple instances of the game can be launched.</system:String>
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

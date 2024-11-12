@@ -37,7 +37,7 @@
     </Window.Resources>
 
     <!-- Window grid -->
-    <Grid Background="#FF2A2A32">
+    <Grid Background="{DynamicResource LighterColour}">
 
         <Grid>
             <Grid.RowDefinitions>

@@ -37,7 +37,7 @@
     </Window.Resources>
     
     <!-- Window grid -->
-    <Grid Background="#FF2A2A32">
+    <Grid Background="{DynamicResource LighterColour}">
         
         <Grid>
             <Grid.RowDefinitions>
@@ -105,7 +105,7 @@
 
             <!-- Main content in darkened area -->
             <Border Grid.Row="1"
-                    Background="#1C1B22"
+                    Background="{DynamicResource DarkerColour}"
                     Margin="15,0,15,15"
                     UseLayoutRounding="True"
                     CornerRadius="5">
@@ -150,7 +150,7 @@
                         <Rectangle Grid.Row="2"
                                    Margin="20,0,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32">
+                                   Fill="{DynamicResource LighterColour}">
 
                             <Rectangle.Effect>
                                 <DropShadowEffect BlurRadius="8"

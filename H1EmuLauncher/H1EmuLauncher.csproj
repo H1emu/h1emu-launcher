@@ -7,10 +7,10 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>3.1.6</FileVersion>
+	  <FileVersion>3.1.7</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>3.1.6</Version>
+	  <Version>3.1.7</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>3.1.6</AssemblyVersion>
+	  <AssemblyVersion>3.1.7</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -85,6 +85,7 @@
     <None Remove="Resources\PrevButton.png" />
     <None Remove="Resources\PrevButton_Hover.png" />
     <None Remove="Resources\PrevButton_Pressed.png" />
+    <None Remove="Resources\PrimaryButton.png" />
     <None Remove="Resources\Server-Quickstart.zip" />
     <None Remove="Resources\Server.png" />
     <None Remove="Resources\Server_Quickstart.zip" />
@@ -93,9 +94,6 @@
     <None Remove="Resources\ShowKey.png" />
     <None Remove="Resources\ShowKey_Hover.png" />
     <None Remove="Resources\ShowKey_Pressed.png" />
-    <None Remove="Resources\StandardButton.png" />
-    <None Remove="Resources\StandardButton_Hover.png" />
-    <None Remove="Resources\StandardButton_Pressed.png" />
     <None Remove="Resources\ToolbarButton.png" />
   </ItemGroup>
 
@@ -301,6 +299,9 @@
     <Resource Include="Resources\PrevButton_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\PrimaryButton.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Server.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -320,9 +321,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\ShowKey_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\StandardButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\ToolbarButton.png">

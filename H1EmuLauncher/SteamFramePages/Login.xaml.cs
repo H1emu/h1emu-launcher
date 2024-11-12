@@ -206,6 +206,7 @@ namespace H1EmuLauncher.SteamFramePages
                         LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
                     }));
 
+                    ContentDownloader.downloadSpeedTimer.Start();
                     await ContentDownloader.DownloadAppAsync(appId, depotManifestIds, "Public", null, null, null, false, false).ConfigureAwait(false);
 
                     Properties.Settings.Default.activeDirectory = ContentDownloader.DEFAULT_DOWNLOAD_DIR;
@@ -256,6 +257,9 @@ namespace H1EmuLauncher.SteamFramePages
                 }
                 finally
                 {
+                    ContentDownloader.downloadSpeedTimer.Stop();
+                    ContentDownloader.downloadSpeed = 0;
+                    ContentDownloader.sizeDownloadedPublic = 0;
                     ContentDownloader.ShutdownSteam3();
                     username = null;
                     password = null;
@@ -268,7 +272,6 @@ namespace H1EmuLauncher.SteamFramePages
                 Dispatcher.Invoke(new Action(delegate
                 {
                     BackToLogin();
-
                     if (_2FA.loadingAnimation != null)
                         _2FA.loadingAnimation.Stop();
                 }));

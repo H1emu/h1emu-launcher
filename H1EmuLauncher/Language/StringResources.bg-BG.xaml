@@ -194,6 +194,6 @@
     <system:String x:Key="item216">Моля, деинсталирайте всички файлове с персонализирани активи (.pack), когато играете на главните сървъри на H1Emu или това може да доведе до бан.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
     <system:String x:Key="item218">Developer mode</system:String>
-    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched and multiple instances of the game can be launched.</system:String>
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

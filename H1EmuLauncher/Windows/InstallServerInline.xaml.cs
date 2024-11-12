@@ -36,7 +36,7 @@ namespace H1EmuLauncher
 
         private void InstallServerButton(object sender, RoutedEventArgs e)
         {
-            if (!LauncherWindow.launcherInstance.CheckGameVersionAndPath(SettingsWindow.settingsInstance))
+            if (!LauncherWindow.launcherInstance.CheckGameVersionAndPath(SettingsWindow.settingsInstance, false, true))
                 return;
 
             Button button = (Button)sender;

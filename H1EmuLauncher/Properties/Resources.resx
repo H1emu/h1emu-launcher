@@ -187,9 +187,6 @@
   <data name="Signika" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Fonts\Signika.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="StandardButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\StandardButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="StringResources_bg_BG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Language\StringResources.bg-BG.xaml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -336,5 +333,8 @@
   </data>
   <data name="H1EmuVoiceClient" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\H1EmuVoiceClient.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PrimaryButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PrimaryButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

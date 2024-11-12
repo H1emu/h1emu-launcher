@@ -194,6 +194,6 @@
     <system:String x:Key="item216">在任何主服务器上玩时请卸载任何自定义资源 (.pack) 文件，否则可能会导致被禁止。</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
     <system:String x:Key="item218">Developer mode</system:String>
-    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched.</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched and multiple instances of the game can be launched.</system:String>
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
 </ResourceDictionary>

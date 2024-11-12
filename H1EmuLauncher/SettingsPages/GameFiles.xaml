@@ -21,7 +21,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Border Background="#1C1B22"
+    <Border Background="{DynamicResource DarkerColour}"
             UseLayoutRounding="True"
             CornerRadius="0,5,5,5">
 
@@ -83,7 +83,7 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             Content="{DynamicResource item42}"
-                            Style="{DynamicResource StandardButton}">
+                            Style="{DynamicResource PrimaryButton}">
 
                         <Button.Effect>
 
@@ -101,7 +101,7 @@
                 <Rectangle Grid.Row="1"
                            Margin="20,0,20,0"
                            Height="1"
-                           Fill="#FF2A2A32">
+                           Fill="{DynamicResource LighterColour}">
 
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="8"
@@ -135,7 +135,7 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             Content="{DynamicResource item43}"
-                            Style="{DynamicResource StandardButton}">
+                            Style="{DynamicResource PrimaryButton}">
 
                         <Button.Effect>
 
@@ -153,7 +153,7 @@
                 <Rectangle Grid.Row="3"
                            Margin="20,0,20,0"
                            Height="1"
-                           Fill="#FF2A2A32">
+                           Fill="{DynamicResource LighterColour}">
 
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="8"
@@ -187,7 +187,7 @@
                             VerticalAlignment="Center"
                             HorizontalAlignment="Right"
                             Content="{DynamicResource item44}"
-                            Style="{DynamicResource StandardButton}">
+                            Style="{DynamicResource PrimaryButton}">
 
                         <Button.Effect>
 

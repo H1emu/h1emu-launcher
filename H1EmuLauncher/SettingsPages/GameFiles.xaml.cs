@@ -34,13 +34,9 @@ namespace H1EmuLauncher.SettingsPages
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
-        //////////////////////
-        /// Install Patch ///
-        //////////////////////
-
         public void InstallPatchButton(object sender, RoutedEventArgs e)
         {
-            if (!LauncherWindow.launcherInstance.CheckGameVersionAndPath(SettingsWindow.settingsInstance))
+            if (!LauncherWindow.launcherInstance.CheckGameVersionAndPath(SettingsWindow.settingsInstance, false, true))
                 return;
 
             var watch = Stopwatch.StartNew();
@@ -136,13 +132,9 @@ namespace H1EmuLauncher.SettingsPages
             }).Start();
         }
 
-        //////////////////////
-        /// Install Server ///
-        //////////////////////
-
         public void InstallServerButton(object sender, RoutedEventArgs e)
         {
-            if (!LauncherWindow.launcherInstance.CheckGameVersionAndPath(SettingsWindow.settingsInstance))
+            if (!LauncherWindow.launcherInstance.CheckGameVersionAndPath(SettingsWindow.settingsInstance, false, true))
                 return;
 
             Button button = (Button)sender;

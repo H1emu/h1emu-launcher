@@ -89,7 +89,7 @@
     </Window.TaskbarItemInfo>
 
     <!-- Window grid -->
-    <Grid Background="#FF2A2A32">
+    <Grid Background="{DynamicResource LighterColour}">
 
         <Grid>
             <Grid.RowDefinitions>
@@ -336,7 +336,7 @@
             <Border Grid.Row="1"
                     Margin="35,0,35,0"
                     UseLayoutRounding="True"
-                    Background="#1C1B22"
+                    Background="{DynamicResource DarkerColour}"
                     CornerRadius="5">
 
                 <!-- Drop shadow effect -->
@@ -632,7 +632,7 @@
 
                                     <!-- Divider -->
                                     <Rectangle Height="1"
-                                               Fill="#FF2A2A32"
+                                               Fill="{DynamicResource LighterColour}"
                                                RenderOptions.BitmapScalingMode="Fant">
 
                                         <Rectangle.Effect>
@@ -659,7 +659,7 @@
                                     <!-- Divider -->
                                     <Rectangle Grid.Column="2"
                                                Height="1"
-                                               Fill="#FF2A2A32"
+                                               Fill="{DynamicResource LighterColour}"
                                                RenderOptions.BitmapScalingMode="Fant">
 
                                         <Rectangle.Effect>
@@ -800,7 +800,7 @@
                                         VerticalAlignment="Bottom"
                                         FontSize="28"
                                         Content="{DynamicResource item8}"
-                                        Style="{DynamicResource StandardButton}">
+                                        Style="{DynamicResource PrimaryButton}">
 
                                     <Button.Effect>
                                         <DropShadowEffect BlurRadius="15"

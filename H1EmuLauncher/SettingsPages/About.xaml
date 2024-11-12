@@ -21,7 +21,7 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Border Background="#1C1B22"
+    <Border Background="{DynamicResource DarkerColour}"
             UseLayoutRounding="True"
             CornerRadius="0,5,5,5">
 
@@ -68,7 +68,7 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32">
+                                   Fill="{DynamicResource LighterColour}">
 
                             <Rectangle.Effect>
                                 <DropShadowEffect BlurRadius="8"
@@ -93,7 +93,7 @@
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
                                    FontWeight="Light"
-                                   Text="• LcplReaper • Traqnar • Meme • Avcio •"
+                                   Text="• LcplReaper • Traqnar • Meme • Avcio • Nick •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
@@ -103,7 +103,7 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32">
+                                   Fill="{DynamicResource LighterColour}">
                             
                             <Rectangle.Effect>
                                 <DropShadowEffect BlurRadius="8"
@@ -138,7 +138,7 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32">
+                                   Fill="{DynamicResource LighterColour}">
 
                             <Rectangle.Effect>
                                 <DropShadowEffect BlurRadius="8"
@@ -173,7 +173,7 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32">
+                                   Fill="{DynamicResource LighterColour}">
 
                             <Rectangle.Effect>
                                 <DropShadowEffect BlurRadius="8"
@@ -198,7 +198,7 @@
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
                                    FontWeight="Light"
-                                   Text="• TCM • Tone • Chrisisbrown • Movezie • Andrew~ • RywaZ • Ultrax •"
+                                   Text="• TCM • Tone • Chrisisbrown • movezie • RywaZ • Ultrax • Jayy • Eric •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
@@ -208,7 +208,7 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32">
+                                   Fill="{DynamicResource LighterColour}">
 
                             <Rectangle.Effect>
                                 <DropShadowEffect BlurRadius="8"
@@ -243,7 +243,7 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32">
+                                   Fill="{DynamicResource LighterColour}">
 
                             <Rectangle.Effect>
                                 <DropShadowEffect BlurRadius="8"
@@ -278,7 +278,7 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32">
+                                   Fill="{DynamicResource LighterColour}">
 
                             <Rectangle.Effect>
                                 <DropShadowEffect BlurRadius="8"
@@ -313,7 +313,7 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,20,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32">
+                                   Fill="{DynamicResource LighterColour}">
 
                             <Rectangle.Effect>
                                 <DropShadowEffect BlurRadius="8"
@@ -338,7 +338,7 @@
                         <Rectangle Grid.Row="1"
                                    Margin="20,0,20,0"
                                    Height="1"
-                                   Fill="#FF2A2A32">
+                                   Fill="{DynamicResource LighterColour}">
 
                             <Rectangle.Effect>
                                 <DropShadowEffect BlurRadius="8"

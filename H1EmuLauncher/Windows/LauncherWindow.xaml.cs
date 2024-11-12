@@ -81,14 +81,29 @@ namespace H1EmuLauncher
                         SetForegroundWindow(hwndSource.Handle);
                 }
             };
+
+            ulong bytesReadLastUpdated = 0;
+            ContentDownloader.downloadSpeedTimer.Elapsed += (s, e) =>
+            {
+                ulong difference = ContentDownloader.sizeDownloadedPublic - bytesReadLastUpdated;
+                bytesReadLastUpdated = ContentDownloader.sizeDownloadedPublic;
+                ContentDownloader.downloadSpeed = (float)difference / (1024 * 1024);
+            };
         }
 
         public class ServerList
         {
             [JsonPropertyName("Server Name")]
             public string CustomServerName { get; set; }
+
             [JsonPropertyName("Server Address")]
             public string CustomServerIp { get; set; }
+        }
+
+        public class ServerListRecent
+        {
+            [JsonPropertyName("Recent Server Name")]
+            public string CustomServerNameRecent { get; set; }
         }
 
         public async void ArgsWatcherChanged(object sender, FileSystemEventArgs e)
@@ -269,14 +284,14 @@ namespace H1EmuLauncher
                 notifyIconContextMenu.Items.Add(notifyIconItemSeparator);
                 notifyIconContextMenu.Items.Add(notifyIconMenuItemExit);
 
-                List<ServerList> currentJsonRecent = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(recentServersJsonFile));
-                foreach (ServerList server in currentJsonRecent)
+                List<ServerListRecent> currentJsonRecent = JsonSerializer.Deserialize<List<ServerListRecent>>(File.ReadAllText(recentServersJsonFile));
+                foreach (ServerListRecent server in currentJsonRecent)
                 {
                     MenuItem newItem = new()
                     {
                         Style = (Style)FindResource("CustomMenuItem"),
                         Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) },
-                        Header = server.CustomServerName,
+                        Header = server.CustomServerNameRecent,
                         Margin = new Thickness(0, 5, 0, 0)
                     };
                     newItem.Click += LaunchToCustomServerFromNotifyIcon;
@@ -422,14 +437,14 @@ namespace H1EmuLauncher
                 }
             }
 
-            string finalJsonServers = JsonSerializer.Serialize(currentJson, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(customServersJsonFile, finalJsonServers);
+            string newJson = JsonSerializer.Serialize(currentJson, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(customServersJsonFile, newJson);
 
             // Delete the server from the recent servers file list, used for the system tray icon context menu
-            List<ServerList> currentJsonRecent = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(recentServersJsonFile));
+            List<ServerListRecent> currentJsonRecent = JsonSerializer.Deserialize<List<ServerListRecent>>(File.ReadAllText(recentServersJsonFile));
             for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
             {
-                if (currentJsonRecent[i].CustomServerName == (string)serverItem.Content)
+                if (currentJsonRecent[i].CustomServerNameRecent == (string)serverItem.Content)
                 {
                     currentJsonRecent.Remove(currentJsonRecent[i]);
                     for (int j = notifyIconContextMenu.Items.Count - 1; j >= 0; j--)
@@ -444,8 +459,8 @@ namespace H1EmuLauncher
                 }
             }
 
-            string finalJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(recentServersJsonFile, finalJsonRecentServers);
+            string newJsonRecent = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(recentServersJsonFile, newJsonRecent);
 
             serverSelector.Items.Remove(serverItem);
 
@@ -454,6 +469,79 @@ namespace H1EmuLauncher
 
             if (serverSelector.Items.Count == 5)
                 serverSelector.Items.RemoveAt(serverSelector.Items.Count - 2);
+        }
+
+        private void AddServerToRecentList(string name, string ip)
+        {
+            Dispatcher.Invoke(new Action(delegate
+            {
+                try
+                {
+                    List<ServerListRecent> currentJsonRecent = JsonSerializer.Deserialize<List<ServerListRecent>>(File.ReadAllText(recentServersJsonFile));
+                    for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
+                    {
+                        if (currentJsonRecent[i].CustomServerNameRecent == serverSelector.Text)
+                        {
+                            currentJsonRecent.Remove(currentJsonRecent[i]);
+                            for (int j = notifyIconContextMenu.Items.Count - 1; j >= 0; j--)
+                            {
+                                if (notifyIconContextMenu.Items[j] is MenuItem item)
+                                {
+                                    if ((string)item.Header == name)
+                                        notifyIconContextMenu.Items.Remove(item);
+                                }
+                            }
+                        }
+                    }
+
+                    currentJsonRecent.Add(new ServerListRecent()
+                    {
+                        CustomServerNameRecent = name.Trim()
+                    });
+
+                    string newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
+                    File.WriteAllText(recentServersJsonFile, newJsonRecentServers);
+
+                    MenuItem newItem = new()
+                    {
+                        Style = (Style)FindResource("CustomMenuItem"),
+                        Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) },
+                        Header = name,
+                        Margin = new Thickness(0, 5, 0, 0)
+                    };
+                    newItem.Click += LaunchToCustomServerFromNotifyIcon;
+                    notifyIconContextMenu.Items.Insert(3, newItem);
+
+                    if (notifyIconContextMenu.Items.Count == 5)
+                    {
+                        Separator separator = new()
+                        {
+                            Style = (Style)FindResource("SeparatorMenuItem"),
+                            Background = new SolidColorBrush(Color.FromRgb(44, 44, 44)),
+                            Margin = new Thickness(0, 7, 10, 2)
+                        };
+                        notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, separator);
+                    }
+
+                    if (notifyIconContextMenu.Items.Count > 10)
+                    {
+                        MenuItem item = (MenuItem)notifyIconContextMenu.Items[notifyIconContextMenu.Items.Count - 3];
+                        for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
+                        {
+                            if (currentJsonRecent[i].CustomServerNameRecent == (string)item.Header)
+                                currentJsonRecent.Remove(currentJsonRecent[i]);
+                        }
+
+                        notifyIconContextMenu.Items.RemoveAt(notifyIconContextMenu.Items.Count - 3);
+                        newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
+                        File.WriteAllText(recentServersJsonFile, newJsonRecentServers);
+                    }
+                }
+                catch (Exception e)
+                {
+                    CustomMessageBox.Show($"{FindResource("item142")} {e.Message}", this);
+                }
+            }));
         }
 
         Process startSingleplayerServerProcess;
@@ -509,9 +597,13 @@ namespace H1EmuLauncher
 
         private void LaunchClient(object sender, RoutedEventArgs e)
         {
-            playButton.IsEnabled = false;
-            playButton.SetResourceReference(ContentProperty, "item217");
-            if (!CheckGameVersionAndPath(this))
+            if (!Properties.Settings.Default.developerMode)
+            {
+                playButton.IsEnabled = false;
+                playButton.SetResourceReference(ContentProperty, "item217");
+            }
+
+            if (!CheckGameVersionAndPath(this, false, true))
             {
                 playButton.IsEnabled = true;
                 playButton.SetResourceReference(ContentProperty, "item8");
@@ -545,7 +637,7 @@ namespace H1EmuLauncher
                             }
 
                             // If connecting to H1Emu servers, check Account Key validity
-                            await CheckAccountKey.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);
+                            await AccountKeyUtil.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);
 
                             sessionId = $"{{\"sessionId\":\"{Properties.Settings.Default.sessionIdKey}\",\"gameVersion\":2}}";
                             serverIp = Info.H1EMU_SERVER_IP;
@@ -567,7 +659,7 @@ namespace H1EmuLauncher
                                 {
                                     if (item.CustomServerName == serverSelector.Text)
                                     {
-                                        sessionId = $"{{\"sessionId\":\"0\",\"gameVersion\":2}}";
+                                        sessionId = $"{{\"sessionId\":\"{AccountKeyUtil.EncryptStringSHA256(Properties.Settings.Default.sessionIdKey)}\",\"gameVersion\":2}}";
                                         serverIp = item.CustomServerIp;
                                     }
                                 }));
@@ -613,10 +705,6 @@ namespace H1EmuLauncher
                     // Check that the patch is the latest version
                     if (!Properties.Settings.Default.developerMode)
                         ApplyPatchClass.ApplyPatch();
-
-                    // If connecting to H1Emu servers, validate assets
-                    //if (serverIp == Info.H1EMU_SERVER_IP)
-                        //CheckAssetsBeforeLaunch.CheckAssets();
 
                     // Launch game
                     Process h1Process = new()
@@ -681,80 +769,6 @@ namespace H1EmuLauncher
                     }));
                 }
             }).Start();
-        }
-
-        private void AddServerToRecentList(string name, string ip)
-        {
-            Dispatcher.Invoke(new Action(delegate
-            {
-                try
-                {
-                    List<ServerList> currentJsonRecent = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(recentServersJsonFile));
-                    for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
-                    {
-                        if (currentJsonRecent[i].CustomServerName == serverSelector.Text)
-                        {
-                            currentJsonRecent.Remove(currentJsonRecent[i]);
-                            for (int j = notifyIconContextMenu.Items.Count - 1; j >= 0; j--)
-                            {
-                                if (notifyIconContextMenu.Items[j] is MenuItem item)
-                                {
-                                    if ((string)item.Header == name)
-                                        notifyIconContextMenu.Items.Remove(item);
-                                }
-                            }
-                        }
-                    }
-
-                    currentJsonRecent.Add(new ServerList()
-                    {
-                        CustomServerName = name.Trim(),
-                        CustomServerIp = ip.Trim().Replace(" ", "")
-                    });
-
-                    string newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
-                    File.WriteAllText(recentServersJsonFile, newJsonRecentServers);
-
-                    MenuItem newItem = new()
-                    {
-                        Style = (Style)FindResource("CustomMenuItem"),
-                        Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) },
-                        Header = name,
-                        Margin = new Thickness(0, 5, 0, 0)
-                    };
-                    newItem.Click += LaunchToCustomServerFromNotifyIcon;
-                    notifyIconContextMenu.Items.Insert(3, newItem);
-
-                    if (notifyIconContextMenu.Items.Count == 5)
-                    {
-                        Separator separator = new()
-                        {
-                            Style = (Style)FindResource("SeparatorMenuItem"),
-                            Background = new SolidColorBrush(Color.FromRgb(44, 44, 44)),
-                            Margin = new Thickness(0, 7, 10, 2)
-                        };
-                        notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, separator);
-                    }
-
-                    if (notifyIconContextMenu.Items.Count > 10)
-                    {
-                        MenuItem item = (MenuItem)notifyIconContextMenu.Items[notifyIconContextMenu.Items.Count - 3];
-                        for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
-                        {
-                            if (currentJsonRecent[i].CustomServerName == (string)item.Header)
-                                currentJsonRecent.Remove(currentJsonRecent[i]);
-                        }
-
-                        notifyIconContextMenu.Items.RemoveAt(notifyIconContextMenu.Items.Count - 3);
-                        newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
-                        File.WriteAllText(recentServersJsonFile, newJsonRecentServers);
-                    }
-                }
-                catch (Exception e)
-                {
-                    CustomMessageBox.Show($"{FindResource("item142")} {e.Message}", this);
-                }
-            }));
         }
 
         private void LaunchToCustomServerFromNotifyIcon(object sender, RoutedEventArgs e)
@@ -822,7 +836,7 @@ namespace H1EmuLauncher
             await DisplayVersionInformation();
             LoadServers();
             Carousel.BeginImageCarousel();
-            CheckGameVersionAndPath(this, false, true);
+            CheckGameVersionAndPath(this, false, false);
         }
 
         private async void LauncherWindowContentRendered(object sender, EventArgs e)
@@ -831,7 +845,7 @@ namespace H1EmuLauncher
                 ExecuteArguments();
 
             if (!string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
-                await CheckAccountKey.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);
+                await AccountKeyUtil.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);
         }
 
         public async Task DisplayVersionInformation()
@@ -946,7 +960,7 @@ namespace H1EmuLauncher
 
             new Thread(() =>
             {
-                CheckGameVersionAndPath(this, true);
+                CheckGameVersionAndPath(this, true, true);
             }).Start();
         }
 
@@ -962,7 +976,7 @@ namespace H1EmuLauncher
             });
         }
 
-        public bool CheckGameVersionAndPath(Window callingWindow, bool alerts = false, bool silent = false)
+        public bool CheckGameVersionAndPath(Window callingWindow, bool showSuccess = true, bool showErrors = true)
         {
             Dispatcher.Invoke(new Action(delegate
             {
@@ -985,8 +999,15 @@ namespace H1EmuLauncher
                     currentGame.SetResourceReference(TextBlock.TextProperty, "item69");
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     directoryButton.IsEnabled = true;
+
+                    if (showErrors)
+                    {
+                        if (SettingsWindow.settingsInstance != null && SettingsWindow.settingsInstance.Visibility == Visibility.Visible)
+                            CustomMessageBox.Show(FindResource("item14").ToString(), callingWindow);
+                        else
+                            CustomMessageBox.Show($"{FindResource("item14")}\n\n{FindResource("item9")}", callingWindow);
+                    }
                 }));
-                
                 return false;
             }
             else if (!File.Exists($"{Properties.Settings.Default.activeDirectory}\\h1z1.exe"))
@@ -998,7 +1019,7 @@ namespace H1EmuLauncher
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     directoryButton.IsEnabled = true;
 
-                    if (!silent)
+                    if (showErrors)
                     {
                         if (SettingsWindow.settingsInstance != null && SettingsWindow.settingsInstance.Visibility == Visibility.Visible)
                             CustomMessageBox.Show(FindResource("item14").ToString(), callingWindow);
@@ -1006,7 +1027,6 @@ namespace H1EmuLauncher
                             CustomMessageBox.Show($"{FindResource("item14")}\n\n{FindResource("item9")}", callingWindow);
                     }
                 }));
-
                 return false;
             }
 
@@ -1030,10 +1050,9 @@ namespace H1EmuLauncher
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     directoryButton.IsEnabled = true;
                     
-                    if (!silent)
+                    if (showErrors)
                         CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), callingWindow, false, false, true);
                 }));
-
                 return false;
             }
             catch (Exception e)
@@ -1048,10 +1067,9 @@ namespace H1EmuLauncher
                     taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     directoryButton.IsEnabled = true;
 
-                    if (!silent)
+                    if (showErrors)
                         CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\".", callingWindow);
                 }));
-
                 return false;
             }
 
@@ -1068,11 +1086,11 @@ namespace H1EmuLauncher
                         taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         directoryButton.IsEnabled = true;
 
-                        if (alerts)
+                        if (showSuccess)
                             CustomMessageBox.Show(FindResource("item74").ToString(), callingWindow);
                     }));
-
                     return true;
+
                 default:
                     Properties.Settings.Default.gameVersionString = hash;
                     Properties.Settings.Default.Save();
@@ -1084,10 +1102,9 @@ namespace H1EmuLauncher
                         taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                         directoryButton.IsEnabled = true;
 
-                        if (!silent)
+                        if (showErrors)
                             CustomMessageBox.Show(FindResource("item58").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), callingWindow);
                     }));
-
                     return false;
             }
         }

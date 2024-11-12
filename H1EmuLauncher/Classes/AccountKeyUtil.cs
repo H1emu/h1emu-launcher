@@ -1,13 +1,26 @@
 ﻿using System;
 using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Text;
+using System.Security.Cryptography;
 
 namespace H1EmuLauncher.Classes
 {
-    public static class CheckAccountKey
+    internal class AccountKeyUtil
     {
+        public static string GenerateNewAccountKey()
+        {
+            string generatedKey = string.Empty;
+            Random random = new();
+
+            for (int i = 0; i < 64; i++)
+                generatedKey += Info.ALLOWED_ACCOUNT_KEY_CHARS[random.Next(Info.ALLOWED_ACCOUNT_KEY_CHARS.Length)];
+
+            return generatedKey;
+        }
+
         public static async Task<bool> CheckAccountKeyValidity(string key)
         {
             try
@@ -41,6 +54,18 @@ namespace H1EmuLauncher.Classes
                 }));
                 return false;
             }
+        }
+
+        public static string EncryptStringSHA256(string s)
+        {
+            string sb = string.Empty;
+            Encoding enc = Encoding.UTF8;
+            byte[] result = SHA256.HashData(enc.GetBytes(s));
+
+            foreach (byte b in result)
+                sb += b.ToString("x2");
+
+            return sb;
         }
     }
 }

@@ -183,13 +183,12 @@ namespace H1EmuLauncher
             try
             {
                 List<LauncherWindow.ServerList> currentJson = JsonSerializer.Deserialize<List<LauncherWindow.ServerList>>(File.ReadAllText(LauncherWindow.customServersJsonFile));
-                List<LauncherWindow.ServerList> currentJsonRecent = JsonSerializer.Deserialize<List<LauncherWindow.ServerList>>(File.ReadAllText(LauncherWindow.recentServersJsonFile));
+                List<LauncherWindow.ServerListRecent> currentJsonRecent = JsonSerializer.Deserialize<List<LauncherWindow.ServerListRecent>>(File.ReadAllText(LauncherWindow.recentServersJsonFile));
                 for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
                 {
-                    if (currentJsonRecent[i].CustomServerName == currentJson[editIndex].CustomServerName)
+                    if (currentJsonRecent[i].CustomServerNameRecent == currentJson[editIndex].CustomServerName)
                     {
-                        currentJsonRecent[i].CustomServerName = serverNameBox.Text.Trim();
-                        currentJsonRecent[i].CustomServerIp = serverIpBox.Text.Trim().Replace(" ", "");
+                        currentJsonRecent[i].CustomServerNameRecent = serverNameBox.Text.Trim();
 
                         MenuItem notifyIconContextMenuItemToEdit = (MenuItem)LauncherWindow.notifyIconContextMenu.Items[i + 3];
                         notifyIconContextMenuItemToEdit.Header = serverNameBox.Text.Trim();

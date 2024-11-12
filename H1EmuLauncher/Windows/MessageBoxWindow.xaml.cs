@@ -37,7 +37,7 @@ namespace H1EmuLauncher
             });
 
             // Check the game version again once the binary is free
-            LauncherWindow.launcherInstance.CheckGameVersionAndPath(LauncherWindow.launcherInstance);
+            LauncherWindow.launcherInstance.CheckGameVersionAndPath(LauncherWindow.launcherInstance, false, true);
 
             killH1Z1Button.IsEnabled = true;
             Topmost = true;

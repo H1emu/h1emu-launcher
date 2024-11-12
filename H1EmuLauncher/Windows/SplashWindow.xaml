@@ -37,7 +37,7 @@
     </Window.Resources>
 
     <!-- Window grid -->
-    <Grid Background="#1C1B22">
+    <Grid Background="{DynamicResource DarkerColour}">
         
         <Grid MouseLeftButtonDown="MoveSplashScreenWindow">
             <Grid.RowDefinitions>
