@@ -25,9 +25,9 @@ namespace H1EmuLauncher
 {
     public partial class LauncherWindow : Window
     {
-        private System.Windows.Forms.NotifyIcon launcherNotifyIcon = new();
-        private FileSystemWatcher argsWatcher = new();
-        private ProcessStartInfo cmdShell = new()
+        readonly private System.Windows.Forms.NotifyIcon launcherNotifyIcon = new();
+        readonly private FileSystemWatcher argsWatcher = new();
+        readonly private ProcessStartInfo cmdShell = new()
         {
             FileName = "cmd.exe",
             RedirectStandardInput = true,
@@ -471,7 +471,7 @@ namespace H1EmuLauncher
                 serverSelector.Items.RemoveAt(serverSelector.Items.Count - 2);
         }
 
-        private void AddServerToRecentList(string name, string ip)
+        private void AddServerToRecentList(string name)
         {
             Dispatcher.Invoke(new Action(delegate
             {
@@ -746,7 +746,7 @@ namespace H1EmuLauncher
                     Dispatcher.Invoke(new Action(delegate
                     {
                         if (serverSelector.SelectedIndex != 0 && serverSelector.SelectedIndex != 1 && serverSelector.SelectedIndex != serverSelector.Items.Count - 1 && serverSelector.SelectedItem is ComboBoxItem)
-                            AddServerToRecentList(serverSelector.Text, serverIp);
+                            AddServerToRecentList(serverSelector.Text);
                     }));
 
                     if (Properties.Settings.Default.autoMinimise && Visibility == Visibility.Visible)
@@ -913,7 +913,7 @@ namespace H1EmuLauncher
             doContinue = false;
         }
 
-        double carouselButtonsAnimationDurationMilliseconds = 80;
+        readonly double carouselButtonsAnimationDurationMilliseconds = 80;
 
         private void CarouselMouseEnter(object sender, MouseEventArgs e)
         {

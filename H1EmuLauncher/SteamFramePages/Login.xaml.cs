@@ -18,7 +18,6 @@ namespace H1EmuLauncher.SteamFramePages
     public partial class Login : UserControl
     {
         private static Storyboard loadingAnimation;
-        private static CancellationToken token;
         public static CancellationTokenSource tokenSource = new();
         public static string gameInfo = "-app 295110 -depot 295111 -manifest 8395659676467739522";
 
@@ -128,10 +127,6 @@ namespace H1EmuLauncher.SteamFramePages
 
                 SelectLocation:
                     bool result = true;
-
-                    tokenSource.Dispose();
-                    tokenSource = new CancellationTokenSource();
-                    token = tokenSource.Token;
 
                     System.Windows.Forms.FolderBrowserDialog selectDirectory = new();
                     selectDirectory.Description = FindResource("item51").ToString();

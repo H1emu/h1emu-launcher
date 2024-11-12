@@ -15,7 +15,7 @@ namespace H1EmuLauncher.SettingsPages
     public partial class GameFiles : Page
     {
         public static GameFiles gameFilesInstance;
-        private ProcessStartInfo cmdShell = new()
+        public static readonly ProcessStartInfo cmdShell = new()
         {
             FileName = "cmd.exe",
             RedirectStandardInput = true,

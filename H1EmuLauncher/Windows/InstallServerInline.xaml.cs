@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
+using H1EmuLauncher.SettingsPages;
 
 namespace H1EmuLauncher
 {
@@ -15,13 +16,6 @@ namespace H1EmuLauncher
     {
         public static InstallServerInline serverInstallOptionsInstance;
         public static bool isExecutingTasks;
-        private ProcessStartInfo cmdShell = new()
-        {
-            FileName = "cmd.exe",
-            RedirectStandardInput = true,
-            UseShellExecute = false,
-            CreateNoWindow = true
-        };
 
         public InstallServerInline()
         {
@@ -34,7 +28,7 @@ namespace H1EmuLauncher
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
 
-        private void InstallServerButton(object sender, RoutedEventArgs e)
+        private void InstallServerInlineButton(object sender, RoutedEventArgs e)
         {
             if (!LauncherWindow.launcherInstance.CheckGameVersionAndPath(SettingsWindow.settingsInstance, false, true))
                 return;
@@ -75,7 +69,7 @@ namespace H1EmuLauncher
 
                     Process installServerProcess = new()
                     {
-                        StartInfo = cmdShell
+                        StartInfo = GameFiles.cmdShell
                     };
                     installServerProcess.Start();
                     using (StreamWriter sw = installServerProcess.StandardInput)

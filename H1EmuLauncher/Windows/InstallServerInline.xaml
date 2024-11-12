@@ -172,7 +172,7 @@
 
                             <!-- Install latest server button -->
                             <Button x:Name="latestButton"
-                                    Click="InstallServerButton"
+                                    Click="InstallServerInlineButton"
                                     Margin="20"
                                     Padding="25,7,25,7"
                                     VerticalAlignment="Center"
@@ -194,7 +194,7 @@
                             <!-- Install stable server button -->
                             <Button x:Name="stableButton"
                                     Grid.Column="1"
-                                    Click="InstallServerButton"
+                                    Click="InstallServerInlineButton"
                                     Margin="20"
                                     Padding="25,7,25,7"
                                     VerticalAlignment="Center"

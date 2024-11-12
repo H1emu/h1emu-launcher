@@ -636,7 +636,6 @@ namespace H1EmuLauncher
         }
 
         public static CancellationTokenSource tokenSource = new();
-
         private static async Task DownloadSteam3Async(uint appId, List<DepotDownloadInfo> depots)
         {
             tokenSource.Dispose();
