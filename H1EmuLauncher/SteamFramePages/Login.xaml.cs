@@ -280,16 +280,6 @@ namespace H1EmuLauncher.SteamFramePages
             catch { }
         }
 
-        public void BackToLogin()
-        {
-            UpdateLang();
-            LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
-            LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\Login.xaml", UriKind.Relative));
-            loadingAnimation.Stop();
-            loadingIcon.Visibility = Visibility.Hidden;
-            loginEnterButton.Visibility = Visibility.Visible;
-        }
-
         static bool InitializeSteam(string username, string password)
         {
             if (!ContentDownloader.Config.UseQrCode)
@@ -323,11 +313,12 @@ namespace H1EmuLauncher.SteamFramePages
 
         static int IndexOfParam(string[] args, string param)
         {
-            for (int x = 0; x < args.Length; ++x)
+            for (var x = 0; x < args.Length; ++x)
             {
                 if (args[x].Equals(param, StringComparison.OrdinalIgnoreCase))
                     return x;
             }
+
             return -1;
         }
 
@@ -338,12 +329,12 @@ namespace H1EmuLauncher.SteamFramePages
 
         public static T GetParameter<T>(string[] args, string param, T defaultValue = default)
         {
-            int index = IndexOfParam(args, param);
+            var index = IndexOfParam(args, param);
 
             if (index == -1 || index == (args.Length - 1))
                 return defaultValue;
 
-            string strParam = args[index + 1];
+            var strParam = args[index + 1];
 
             var converter = TypeDescriptor.GetConverter(typeof(T));
             if (converter != null)
@@ -356,8 +347,8 @@ namespace H1EmuLauncher.SteamFramePages
 
         static List<T> GetParameterList<T>(string[] args, string param)
         {
-            List<T> list = new();
-            int index = IndexOfParam(args, param);
+            var list = new List<T>();
+            var index = IndexOfParam(args, param);
 
             if (index == -1 || index == (args.Length - 1))
                 return list;
@@ -366,7 +357,7 @@ namespace H1EmuLauncher.SteamFramePages
 
             while (index < args.Length)
             {
-                string strParam = args[index];
+                var strParam = args[index];
 
                 if (strParam[0] == '-') break;
 
@@ -380,6 +371,16 @@ namespace H1EmuLauncher.SteamFramePages
             }
 
             return list;
+        }
+
+        public void BackToLogin()
+        {
+            UpdateLang();
+            LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+            LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\Login.xaml", UriKind.Relative));
+            loadingAnimation.Stop();
+            loadingIcon.Visibility = Visibility.Hidden;
+            loginEnterButton.Visibility = Visibility.Visible;
         }
 
         private void UsernameBoxGotFocus(object sender, RoutedEventArgs e)
