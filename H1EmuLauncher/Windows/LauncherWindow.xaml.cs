@@ -19,6 +19,7 @@ using System.Windows.Controls.Primitives;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using Microsoft.Toolkit.Uwp.Notifications;
+using H1emuLauncher;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
@@ -1169,7 +1170,7 @@ namespace H1EmuLauncher
             WindowState = WindowState.Minimized;
         }
 
-        private void LauncherClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void LauncherClosed(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }

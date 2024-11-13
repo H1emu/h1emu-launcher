@@ -1,4 +1,7 @@
-﻿using System;
+﻿// This file is subject to the terms and conditions defined
+// in file 'LICENSE', which is part of this source code package.
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -10,13 +13,13 @@ namespace H1EmuLauncher
     class DepotConfigStore
     {
         [ProtoMember(1)]
-        public Dictionary<uint, ulong> InstalledManifestIDs { get; set; }
+        public Dictionary<uint, ulong> InstalledManifestIDs { get; private set; }
 
         string FileName;
 
-        public DepotConfigStore()
+        DepotConfigStore()
         {
-            InstalledManifestIDs = new Dictionary<uint, ulong>();
+            InstalledManifestIDs = [];
         }
 
         static bool Loaded

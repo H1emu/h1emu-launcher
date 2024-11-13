@@ -1,12 +1,14 @@
-﻿using System;
+﻿// This file is subject to the terms and conditions defined
+// in file 'LICENSE', which is part of this source code package.
+
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using SteamKit2;
+using H1EmuLauncher;
 using SteamKit2.CDN;
 
 namespace H1EmuLauncher
@@ -23,12 +25,12 @@ namespace H1EmuLauncher
         public Client CDNClient { get; }
         public Server ProxyServer { get; private set; }
 
-        private readonly ConcurrentStack<Server> activeConnectionPool;
-        private readonly BlockingCollection<Server> availableServerEndpoints;
+        private readonly ConcurrentStack<Server> activeConnectionPool = [];
+        private readonly BlockingCollection<Server> availableServerEndpoints = [];
 
-        private readonly AutoResetEvent populatePoolEvent;
+        private readonly AutoResetEvent populatePoolEvent = new(true);
         private readonly Task monitorTask;
-        private readonly CancellationTokenSource shutdownToken;
+        private readonly CancellationTokenSource shutdownToken = new();
         public CancellationTokenSource ExhaustedToken { get; set; }
 
         public CDNClientPool(Steam3Session steamSession, uint appId)
@@ -36,12 +38,6 @@ namespace H1EmuLauncher
             this.steamSession = steamSession;
             this.appId = appId;
             CDNClient = new Client(steamSession.steamClient);
-
-            activeConnectionPool = new ConcurrentStack<Server>();
-            availableServerEndpoints = new BlockingCollection<Server>();
-
-            populatePoolEvent = new AutoResetEvent(true);
-            shutdownToken = new CancellationTokenSource();
 
             monitorTask = Task.Factory.StartNew(ConnectionPoolMonitorAsync).Unwrap();
         }
@@ -62,9 +58,9 @@ namespace H1EmuLauncher
                     return cdnServers;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine("Failed to retrieve content server list: {0}", e.Message);
+                Debug.WriteLine("Failed to retrieve content server list: {0}", ex.Message);
             }
 
             return null;

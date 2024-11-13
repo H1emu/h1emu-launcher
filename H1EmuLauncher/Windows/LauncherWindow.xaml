@@ -18,6 +18,7 @@
         Foreground="FloralWhite"
         Background="Transparent"
         Loaded="LauncherWindowLoaded"
+        Closed="LauncherClosed"
         ContentRendered="LauncherWindowContentRendered">
 
     <!-- Keep window animations -->

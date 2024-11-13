@@ -1,4 +1,7 @@
-﻿using System;
+﻿// This file is subject to the terms and conditions defined
+// in file 'LICENSE', which is part of this source code package.
+
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,22 +15,26 @@ namespace H1EmuLauncher
     [ProtoContract]
     class AccountSettingsStore
     {
-        [ProtoMember(1, IsRequired = false)]
-        public Dictionary<string, byte[]> SentryData { get; set; }
+        // Member 1 was a Dictionary<string, byte[]> for SentryData.
 
         [ProtoMember(2, IsRequired = false)]
-        public ConcurrentDictionary<string, int> ContentServerPenalty { get; set; }
+        public ConcurrentDictionary<string, int> ContentServerPenalty { get; private set; }
 
-        [ProtoMember(3, IsRequired = false)]
-        public Dictionary<string, string> LoginKeys { get; set; }
+        // Member 3 was a Dictionary<string, string> for LoginKeys.
+
+        [ProtoMember(4, IsRequired = false)]
+        public Dictionary<string, string> LoginTokens { get; private set; }
+
+        [ProtoMember(5, IsRequired = false)]
+        public Dictionary<string, string> GuardData { get; private set; }
 
         string FileName;
 
-        public AccountSettingsStore()
+        AccountSettingsStore()
         {
-            SentryData = new Dictionary<string, byte[]>();
             ContentServerPenalty = new ConcurrentDictionary<string, int>();
-            LoginKeys = new Dictionary<string, string>();
+            LoginTokens = [];
+            GuardData = [];
         }
 
         static bool Loaded
@@ -47,15 +54,13 @@ namespace H1EmuLauncher
             {
                 try
                 {
-                    using (var fs = IsolatedStorage.OpenFile(filename, FileMode.Open, FileAccess.Read))
-                    using (var ds = new DeflateStream(fs, CompressionMode.Decompress))
-                    {
-                        Instance = Serializer.Deserialize<AccountSettingsStore>(ds);
-                    }
+                    using var fs = IsolatedStorage.OpenFile(filename, FileMode.Open, FileAccess.Read);
+                    using var ds = new DeflateStream(fs, CompressionMode.Decompress);
+                    Instance = Serializer.Deserialize<AccountSettingsStore>(ds);
                 }
-                catch (IOException e)
+                catch (IOException ex)
                 {
-                    Debug.WriteLine("Failed to load account settings: {0}", e.Message);
+                    Debug.WriteLine("Failed to load account settings: {0}", ex.Message);
                     Instance = new AccountSettingsStore();
                 }
             }
@@ -74,15 +79,13 @@ namespace H1EmuLauncher
 
             try
             {
-                using (var fs = IsolatedStorage.OpenFile(Instance.FileName, FileMode.Create, FileAccess.Write))
-                using (var ds = new DeflateStream(fs, CompressionMode.Compress))
-                {
-                    Serializer.Serialize(ds, Instance);
-                }
+                using var fs = IsolatedStorage.OpenFile(Instance.FileName, FileMode.Create, FileAccess.Write);
+                using var ds = new DeflateStream(fs, CompressionMode.Compress);
+                Serializer.Serialize(ds, Instance);
             }
-            catch (IOException e)
+            catch (IOException ex)
             {
-                Debug.WriteLine("Failed to save account settings: {0}", e.Message);
+                Debug.WriteLine("Failed to save account settings: {0}", ex.Message);
             }
         }
     }

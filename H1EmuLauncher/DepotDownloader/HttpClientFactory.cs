@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿// This file is subject to the terms and conditions defined
+// in file 'LICENSE', which is part of this source code package.
+
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Sockets;
@@ -29,8 +32,10 @@ namespace H1EmuLauncher
             // By default, we create dual-mode sockets:
             // Socket socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
 
-            var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            socket.NoDelay = true;
+            var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)
+            {
+                NoDelay = true
+            };
 
             try
             {

@@ -1,7 +1,11 @@
-﻿using System;
+﻿// This file is subject to the terms and conditions defined
+// in file 'LICENSE', which is part of this source code package.
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
+using System.Security.Cryptography;
 using ProtoBuf;
 using SteamKit2;
 
@@ -13,7 +17,7 @@ namespace H1EmuLauncher
         // Proto ctor
         private ProtoManifest()
         {
-            Files = new List<FileData>();
+            Files = [];
         }
 
         public ProtoManifest(DepotManifest sourceManifest, ulong id) : this()
@@ -29,7 +33,7 @@ namespace H1EmuLauncher
             // Proto ctor
             private FileData()
             {
-                Chunks = new List<ChunkData>();
+                Chunks = [];
             }
 
             public FileData(DepotManifest.FileData sourceData) : this()
@@ -75,7 +79,7 @@ namespace H1EmuLauncher
             public ChunkData(DepotManifest.ChunkData sourceChunk)
             {
                 ChunkID = sourceChunk.ChunkID;
-                Checksum = sourceChunk.Checksum;
+                Checksum = BitConverter.GetBytes(sourceChunk.Checksum);
                 Offset = sourceChunk.Offset;
                 CompressedLength = sourceChunk.CompressedLength;
                 UncompressedLength = sourceChunk.UncompressedLength;
@@ -134,7 +138,7 @@ namespace H1EmuLauncher
             using (var ds = new DeflateStream(fs, CompressionMode.Decompress))
                 ds.CopyTo(ms);
 
-            checksum = Util.SHAHash(ms.ToArray());
+            checksum = SHA1.HashData(ms.ToArray());
 
             ms.Seek(0, SeekOrigin.Begin);
             return Serializer.Deserialize<ProtoManifest>(ms);
@@ -145,7 +149,7 @@ namespace H1EmuLauncher
             using var ms = new MemoryStream();
             Serializer.Serialize(ms, this);
 
-            checksum = Util.SHAHash(ms.ToArray());
+            checksum = SHA1.HashData(ms.ToArray());
 
             ms.Seek(0, SeekOrigin.Begin);
 

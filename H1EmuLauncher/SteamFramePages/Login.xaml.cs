@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using H1emuLauncher;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SteamFramePages
@@ -66,10 +67,7 @@ namespace H1EmuLauncher.SteamFramePages
                     return;
                 }
 
-                new Thread(() =>
-                {
-                    TryLoginDownload();
-                }).Start();
+                TryLoginDownload();
             }
         }
 
@@ -81,10 +79,7 @@ namespace H1EmuLauncher.SteamFramePages
                 return;
             }
 
-            new Thread(() =>
-            {
-                TryLoginDownload();
-            }).Start();
+            TryLoginDownload();
         }
 
         public static string version = string.Empty;
@@ -117,6 +112,8 @@ namespace H1EmuLauncher.SteamFramePages
 
             if (InitializeSteam(username, password))
             {
+                Debug.WriteLine("TESTESTESTEST");
+
                 try
                 {
                     Dispatcher.Invoke(new Action(delegate
@@ -274,9 +271,7 @@ namespace H1EmuLauncher.SteamFramePages
 
             try
             {
-                AccountSettingsStore.Instance.SentryData.Clear();
                 AccountSettingsStore.Instance.ContentServerPenalty.Clear();
-                AccountSettingsStore.Instance.LoginKeys.Clear();
                 AccountSettingsStore.Instance = null;
 
                 DepotConfigStore.Instance.InstalledManifestIDs.Clear();
@@ -297,25 +292,31 @@ namespace H1EmuLauncher.SteamFramePages
 
         static bool InitializeSteam(string username, string password)
         {
-            if (username != null && password == null && (!ContentDownloader.Config.RememberPassword || !AccountSettingsStore.Instance.LoginKeys.ContainsKey(username)))
+            if (!ContentDownloader.Config.UseQrCode)
             {
-                do
+                if (username != null && password == null && (!ContentDownloader.Config.RememberPassword || !AccountSettingsStore.Instance.LoginTokens.ContainsKey(username)))
                 {
-                    Console.Write($"Enter account password for \"{username}\": ");
-                    if (Console.IsInputRedirected)
-                        password = Console.ReadLine();
-                    else
-                        password = Util.ReadPassword();
-                    Console.WriteLine();
-                } while (string.Empty == password);
-            }
-            else if (username == null)
-            {
-                Console.WriteLine("No username given. Using anonymous account with dedicated server subscription.");
-            }
+                    do
+                    {
+                        Console.Write("Enter account password for \"{0}\": ", username);
+                        if (Console.IsInputRedirected)
+                        {
+                            password = Console.ReadLine();
+                        }
+                        else
+                        {
+                            // Avoid console echoing of password
+                            password = Util.ReadPassword();
+                        }
 
-            // capture the supplied password in case we need to re-use it after checking the login key
-            ContentDownloader.Config.SuppliedPassword = password;
+                        Debug.WriteLine("");
+                    } while (string.Empty == password);
+                }
+                else if (username == null)
+                {
+                    Debug.WriteLine("No username given. Using anonymous account with dedicated server subscription.");
+                }
+            }
 
             return ContentDownloader.InitializeSteam3(username, password);
         }

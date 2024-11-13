@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using H1emuLauncher;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SteamFramePages
