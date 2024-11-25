@@ -22,11 +22,11 @@ namespace H1EmuLauncher.Classes
 
         public static string DISCORD_LINK = "https://discord.com/invite/h1emu";
 
-        public static string CHANGELOG = "https://www.h1emu.com/us/changelog/";
+        public static string CHANGELOG = "https://github.com/QuentinGruber/h1z1-server/releases";
 
         public static string WEBSITE = "https://h1emu.com/";
 
-        public static string GAME_CRASH_URL = "https://www.h1emu.com/us/game-error?code=G";
+        public static string GAME_CRASH_URL = "https://www.h1emu.com/game-error?code=G";
 
         public static string H1EMU_CHINESE_LINK = "https://azaz.ge/";
 
