@@ -72,8 +72,7 @@
 
             <!-- Status text to overlay progress bar -->
             <TextBlock x:Name="downloadProgressText"
-                       Margin="0,0,10,0"
-                       Padding="12,0,12,0"
+                       Margin="12,0,22,0"
                        VerticalAlignment="Center"
                        TextAlignment="Center"
                        Style="{DynamicResource TextBlockStyle}"/>

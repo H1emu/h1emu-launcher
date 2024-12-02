@@ -65,8 +65,7 @@
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
-                        <Rectangle Grid.Row="1"
-                                   Margin="20,20,20,0"
+                        <Rectangle Margin="20,20,20,0"
                                    Height="1"
                                    Fill="{DynamicResource LighterColour}">
 
@@ -100,8 +99,7 @@
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
-                        <Rectangle Grid.Row="1"
-                                   Margin="20,20,20,0"
+                        <Rectangle Margin="20,20,20,0"
                                    Height="1"
                                    Fill="{DynamicResource LighterColour}">
                             
@@ -135,8 +133,7 @@
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
-                        <Rectangle Grid.Row="1"
-                                   Margin="20,20,20,0"
+                        <Rectangle Margin="20,20,20,0"
                                    Height="1"
                                    Fill="{DynamicResource LighterColour}">
 
@@ -163,15 +160,14 @@
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
                                    FontWeight="Light"
-                                   Text="• Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • LordWaycrest  • 69_HaxMax • GinnessForever • Chriis • Flo • Torenka • Moonlighter • Loopa • Cyberhound • Cur7 • AlvaZhang •"
+                                   Text="• Relish • LegendsNeveerrDie • Delusional • KOBUNIX • Rhett • ZamZam • UTIL_TRACELINE • 69_HaxMax • GinnessForever • Chriis • Flo • Torenka • Moonlighter • Loopa • Cyberhound • Cur7 • AlvaZhang •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
-                        <Rectangle Grid.Row="1"
-                                   Margin="20,20,20,0"
+                        <Rectangle Margin="20,20,20,0"
                                    Height="1"
                                    Fill="{DynamicResource LighterColour}">
 
@@ -205,8 +201,41 @@
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
-                        <Rectangle Grid.Row="1"
-                                   Margin="20,20,20,0"
+                        <Rectangle Margin="20,20,20,0"
+                                   Height="1"
+                                   Fill="{DynamicResource LighterColour}">
+
+                            <Rectangle.Effect>
+                                <DropShadowEffect BlurRadius="8"
+                                                  Direction="-90"
+                                                  RenderingBias="Quality"
+                                                  ShadowDepth="1"
+                                                  Opacity="0.3"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+
+                        <!-- Community Managers -->
+                        <TextBlock Margin="0,20,0,20"
+                                   FontSize="18"
+                                   Foreground="#FFED1C24"
+                                   TextDecorations="Underline"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Text="{DynamicResource item131}"
+                                   Style="{DynamicResource TextBlockStyle}"/>
+
+                        <TextBlock Margin="60,0,60,0"
+                                   Foreground="FloralWhite"
+                                   FontWeight="Light"
+                                   Text="• Skoz • Gilroes •"
+                                   HorizontalAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Style="{DynamicResource TextBlockStyle}"/>
+
+                        <!-- Divider -->
+                        <Rectangle Margin="20,20,20,0"
                                    Height="1"
                                    Fill="{DynamicResource LighterColour}">
 
@@ -240,8 +269,7 @@
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
-                        <Rectangle Grid.Row="1"
-                                   Margin="20,20,20,0"
+                        <Rectangle Margin="20,20,20,0"
                                    Height="1"
                                    Fill="{DynamicResource LighterColour}">
 
@@ -275,8 +303,7 @@
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
-                        <Rectangle Grid.Row="1"
-                                   Margin="20,20,20,0"
+                        <Rectangle Margin="20,20,20,0"
                                    Height="1"
                                    Fill="{DynamicResource LighterColour}">
 
@@ -310,8 +337,7 @@
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
-                        <Rectangle Grid.Row="1"
-                                   Margin="20,20,20,0"
+                        <Rectangle Margin="20,20,20,0"
                                    Height="1"
                                    Fill="{DynamicResource LighterColour}">
 
@@ -335,8 +361,7 @@
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Divider -->
-                        <Rectangle Grid.Row="1"
-                                   Margin="20,0,20,0"
+                        <Rectangle Margin="20,0,20,0"
                                    Height="1"
                                    Fill="{DynamicResource LighterColour}">
 

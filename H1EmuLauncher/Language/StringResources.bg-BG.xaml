@@ -75,6 +75,7 @@
     <system:String x:Key="item78">Моля, въведете двуфакторния код за удостоверяване, изпратен на вашето приложение Steam.</system:String>
     <system:String x:Key="item79">Моля, въведете двуфакторния код за удостоверяване, изпратен на вашия имейл.</system:String>
     <system:String x:Key="item80">Запазена конфигурация преди зареждане</system:String>
+    <system:String x:Key="item81">Please approve the Steam login from your Steam mobile app.</system:String>
     <system:String x:Key="item84">Не можах да намеря никакви депа за изтегляне за приложение {0}</system:String>
     <system:String x:Key="item85">Депо {0} не е посочено за приложение {1}</system:String>
     <system:String x:Key="item89">Избраната директория  не е празна.\n\nИзкате ли да продължите въпреки това?</system:String>
@@ -97,6 +98,7 @@
     <system:String x:Key="item114">Изтриване на стари файлове...</system:String>
     <system:String x:Key="item116">Разархивиране на сърварната информация...</system:String>
     <system:String x:Key="item118">Разархивиране node files...</system:String>
+    <system:String x:Key="item119">Community Managers</system:String>
     <system:String x:Key="item120">Моля затворете H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe се използва.\n\nЗатворете всички отворени прозорци на H1Z1.\n\nМожете да използвате бутона по-долу, за да убиете всички процеси на H1Z1.</system:String>
     <system:String x:Key="item122">Сегашна версия на играта: 2016</system:String>

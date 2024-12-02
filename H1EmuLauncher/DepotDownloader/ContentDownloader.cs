@@ -5,19 +5,17 @@ using System;
 using System.Buffers;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 using SteamKit2;
 using SteamKit2.CDN;
-using H1EmuLauncher;
 using H1EmuLauncher.SteamFramePages;
-using System.Diagnostics;
 
-namespace H1emuLauncher
+namespace H1EmuLauncher
 {
     class ContentDownloaderException(string value) : Exception(value)
     {
@@ -36,7 +34,7 @@ namespace H1emuLauncher
         private static CDNClientPool cdnPool;
 
         public static string DEFAULT_DOWNLOAD_DIR = "depots";
-        private const string CONFIG_DIR = ".DepotDownloader";
+        private const string CONFIG_DIR = "DepotDownloader";
         private static readonly string STAGING_DIR = Path.Combine(CONFIG_DIR, "staging");
 
         private sealed class DepotDownloadInfo(
@@ -60,11 +58,7 @@ namespace H1emuLauncher
                 {
                     Directory.CreateDirectory(DEFAULT_DOWNLOAD_DIR);
 
-                    var depotPath = Path.Combine(DEFAULT_DOWNLOAD_DIR, depotId.ToString());
-                    Directory.CreateDirectory(depotPath);
-
-                    installDir = Path.Combine(depotPath, depotVersion.ToString());
-                    Directory.CreateDirectory(installDir);
+                    installDir = DEFAULT_DOWNLOAD_DIR;
 
                     Directory.CreateDirectory(Path.Combine(installDir, CONFIG_DIR));
                     Directory.CreateDirectory(Path.Combine(installDir, STAGING_DIR));
@@ -110,7 +104,7 @@ namespace H1emuLauncher
             return false;
         }
 
-        static async Task<bool> AccountHasAccess(uint depotId)
+        static async Task<bool> AccountHasAccess(uint appId, uint depotId)
         {
             if (steam3 == null || steam3.steamUser.SteamID == null || (steam3.Licenses == null && steam3.steamUser.SteamID.AccountType != EAccountType.AnonUser))
                 return false;
@@ -138,6 +132,11 @@ namespace H1emuLauncher
                         return true;
                 }
             }
+
+            // Check if this app is free to download without a license
+            var info = GetSteam3AppSection(appId, EAppInfoSection.Common);
+            if (info != null && info["FreeToDownload"].AsBoolean())
+                return true;
 
             return false;
         }
@@ -367,7 +366,7 @@ namespace H1emuLauncher
             }
             else
             {
-                await DownloadAppAsync(appId, new List<(uint, ulong)> { (appId, ugcId) }, DEFAULT_BRANCH, null, null, null, false, true);
+                await DownloadAppAsync(appId, [(appId, ugcId)], DEFAULT_BRANCH, null, null, null, false, true);
             }
         }
 
@@ -387,7 +386,7 @@ namespace H1emuLauncher
             Directory.CreateDirectory(Path.GetDirectoryName(fileStagingPath));
 
             using (var file = File.OpenWrite(fileStagingPath))
-            using (var client = H1EmuLauncher.HttpClientFactory.CreateHttpClient())
+            using (var client = HttpClientFactory.CreateHttpClient())
             {
                 Debug.WriteLine("Downloading {0}", fileName);
                 var responseStream = await client.GetStreamAsync(url);
@@ -418,7 +417,7 @@ namespace H1emuLauncher
 
             await steam3?.RequestAppInfo(appId);
 
-            if (!await AccountHasAccess(appId))
+            if (!await AccountHasAccess(appId, appId))
             {
                 if (await steam3.RequestFreeAppLicense(appId))
                 {
@@ -560,7 +559,7 @@ namespace H1emuLauncher
                 await steam3.RequestAppInfo(appId);
             }
 
-            if (!await AccountHasAccess(depotId))
+            if (!await AccountHasAccess(appId, depotId))
             {
                 Debug.WriteLine("Depot {0} is not available from this account.", depotId);
 
@@ -1048,7 +1047,7 @@ namespace H1emuLauncher
             {
                 System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
-                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{LauncherWindow.launcherInstance.FindResource("item57")} {file.FileName}";
+                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{LauncherWindow.launcherInstance.FindResource("item57")} {file.FileName.Substring(file.FileName.LastIndexOf("\\") + 1)}";
                 }));
 
                 Debug.WriteLine("Pre-allocating {0}", fileFinalPath);
@@ -1140,7 +1139,7 @@ namespace H1emuLauncher
                                     fsOld.Seek((long)match.OldChunk.Offset, SeekOrigin.Begin);
 
                                     var tmp = new byte[match.OldChunk.UncompressedLength];
-                                    fsOld.Read(tmp, 0, tmp.Length);
+                                    fsOld.ReadExactly(tmp);
 
                                     fs.Seek((long)match.NewChunk.Offset, SeekOrigin.Begin);
                                     fs.Write(tmp, 0, tmp.Length);
@@ -1388,7 +1387,7 @@ namespace H1emuLauncher
                 System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
                     DownloadStatus.downloadStatusInstance.downloadProgress.Value = sizeDownloaded / (float)depotDownloadCounter.completeDownloadSize * 100.0f;
-                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{LauncherWindow.launcherInstance.FindResource("item54")} {sizeDownloaded / (float)depotDownloadCounter.completeDownloadSize * 100.0f:0.00}% - {downloadSpeed:0.00} MB/s";
+                    DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{LauncherWindow.launcherInstance.FindResource("item54")} {sizeDownloaded / (float)depotDownloadCounter.completeDownloadSize * 100.0f:0.00}% - {downloadSpeed:0.00}MB/s";
                     LauncherWindow.launcherInstance.taskbarIcon.ProgressValue = sizeDownloaded / (float)depotDownloadCounter.completeDownloadSize;
                 }));
             }
@@ -1430,7 +1429,7 @@ namespace H1emuLauncher
 
             foreach (var file in manifest.Files)
             {
-                var sha1Hash = BitConverter.ToString(file.FileHash).Replace("-", "");
+                var sha1Hash = Convert.ToHexString(file.FileHash);
                 sw.WriteLine($"{file.TotalSize,14} {file.Chunks.Count,6} {sha1Hash} {file.Flags,5:D} {file.FileName}");
             }
         }

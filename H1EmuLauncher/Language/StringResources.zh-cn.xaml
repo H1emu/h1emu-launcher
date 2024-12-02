@@ -75,6 +75,7 @@
     <system:String x:Key="item78">请输入发送到您的 Steam 应用的两因素验证码。</system:String>
     <system:String x:Key="item79">请输入发送到您的电子邮件的两因素验证码。</system:String>
     <system:String x:Key="item80">无法下载安装文件：</system:String>
+    <system:String x:Key="item81">Please approve the Steam login from your Steam mobile app.</system:String>
     <system:String x:Key="item84">未找到任何可以下载此游戏的 {0} 的数据包</system:String>
     <system:String x:Key="item85">数据包 {0} 不在游戏 {1} 列表中</system:String>
     <system:String x:Key="item89">你选择的不是空目录。\n\n确认要请继续下载吗？</system:String>
@@ -97,6 +98,7 @@
     <system:String x:Key="item114">正在删除旧文件...</system:String>
     <system:String x:Key="item116">正在解压服务器文件...</system:String>
     <system:String x:Key="item118">正在解压服务器运行环境...</system:String>
+    <system:String x:Key="item119">Community Managers</system:String>
     <system:String x:Key="item120">请关闭已经启动的H1Z1游戏。</system:String>
     <system:String x:Key="item121">H1Z1游戏已经启动。\n\n请关闭所有打开的 H1Z1 实例。\n\n您可以使用下面的按钮来杀死 H1Z1 的所有进程。</system:String>
     <system:String x:Key="item122">当前游戏版本： 2016</system:String>

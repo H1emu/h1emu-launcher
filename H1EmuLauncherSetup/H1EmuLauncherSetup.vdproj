@@ -57,10 +57,10 @@
                     "Name" = "8:Microsoft .NET Framework 4.8.1 (x86 and x64)"
                     "ProductCode" = "8:.NETFramework,Version=v4.8.1"
                     }
-                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.7.0.x64"
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.9.0.x64"
                     {
-                    "Name" = "8:.NET Desktop Runtime 7.0.20 (x64)"
-                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.7.0.x64"
+                    "Name" = "8:.NET Desktop Runtime 9.0.0 (x64)"
+                    "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.9.0.x64"
                     }
                 }
             }
@@ -203,15 +203,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
-        "ProductCode" = "8:{19C8A6EA-5CE3-4E29-8169-EF999664A65B}"
-        "PackageCode" = "8:{17E6D264-2F4E-4C0D-ABD8-EF6CA6B11334}"
+        "ProductCode" = "8:{9C6A569B-C318-45AD-9AE5-B4358887FA3D}"
+        "PackageCode" = "8:{6B3A124F-34F1-4D31-BDF3-8A48EDA80750}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:3.1.7"
+        "ProductVersion" = "8:3.1.8"
         "Manufacturer" = "8:H1Emu © 2024"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
@@ -588,7 +588,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1E5157BB4D924619AB78964D3BBB406B"
             {
-            "SourcePath" = "8:..\\H1EmuLauncher\\obj\\Debug\\net7.0-windows10.0.17763.0\\apphost.exe"
+            "SourcePath" = "8:..\\H1EmuLauncher\\obj\\Debug\\net9.0-windows10.0.17763.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"

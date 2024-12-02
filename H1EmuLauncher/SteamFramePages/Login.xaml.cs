@@ -11,7 +11,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
-using H1emuLauncher;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SteamFramePages
@@ -19,6 +18,7 @@ namespace H1EmuLauncher.SteamFramePages
     public partial class Login : UserControl
     {
         private static Storyboard loadingAnimation;
+        private static CancellationToken token;
         public static CancellationTokenSource tokenSource = new();
         public static string gameInfo = "-app 295110 -depot 295111 -manifest 8395659676467739522";
 
@@ -67,7 +67,10 @@ namespace H1EmuLauncher.SteamFramePages
                     return;
                 }
 
-                TryLoginDownload();
+                new Thread(() =>
+                {
+                    TryLoginDownload();
+                }).Start();
             }
         }
 
@@ -79,17 +82,32 @@ namespace H1EmuLauncher.SteamFramePages
                 return;
             }
 
-            TryLoginDownload();
+            new Thread(() =>
+            {
+                TryLoginDownload();
+            }).Start();
         }
 
         public static string version = string.Empty;
-
         public async void TryLoginDownload()
         {
             string username = null;
             string password = null;
 
-            Dispatcher.Invoke(new Action(delegate 
+            string[] args = gameInfo.Split(' ');
+
+            uint appId = GetParameter(args, "-app", ContentDownloader.INVALID_APP_ID);
+            List<uint> depotIdList = GetParameterList<uint>(args, "-depot");
+            List<ulong> manifestIdList = GetParameterList<ulong>(args, "-manifest");
+
+            List<(uint, ulong)> depotManifestIds = new List<(uint, ulong)>();
+            var zippedDepotManifest = depotIdList.Zip(manifestIdList, (depotId, manifestId) => (depotId, manifestId));
+            depotManifestIds.AddRange(zippedDepotManifest);
+
+            ContentDownloader.Config.MaxDownloads = 8;
+            AccountSettingsStore.LoadFromFile("account.config");
+
+            Dispatcher.Invoke(new Action(delegate
             {
                 username = usernameBox.Text.Trim();
                 password = passwordBox.Password.Trim();
@@ -99,21 +117,8 @@ namespace H1EmuLauncher.SteamFramePages
                 loadingAnimation.Begin();
             }));
 
-            try
-            {
-                AccountSettingsStore.LoadFromFile("account.config");
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-            }
-
-            var depotManifestIds = new List<(uint, ulong)>();
-
             if (InitializeSteam(username, password))
             {
-                Debug.WriteLine("TESTESTESTEST");
-
                 try
                 {
                     Dispatcher.Invoke(new Action(delegate
@@ -121,9 +126,13 @@ namespace H1EmuLauncher.SteamFramePages
                         if (_2FA.loadingAnimation != null)
                             _2FA.loadingAnimation.Stop();
                     }));
-
-                SelectLocation:
+                    
+                    SelectLocation:
                     bool result = true;
+
+                    tokenSource.Dispose();
+                    tokenSource = new CancellationTokenSource();
+                    token = tokenSource.Token;
 
                     System.Windows.Forms.FolderBrowserDialog selectDirectory = new();
                     selectDirectory.Description = FindResource("item51").ToString();
@@ -147,7 +156,6 @@ namespace H1EmuLauncher.SteamFramePages
                             if (dr != MessageBoxResult.Yes)
                                 result = false;
                         }
-
                     }));
 
                     if (!result)
@@ -155,41 +163,18 @@ namespace H1EmuLauncher.SteamFramePages
 
                     ContentDownloader.DEFAULT_DOWNLOAD_DIR = selectDirectory.SelectedPath;
 
+                    foreach (ulong manifestId in manifestIdList)
+                    {
+                        if (manifestId == 8395659676467739522)
+                            version = "2016";
+                    }
+
                     Dispatcher.Invoke(new Action(delegate
                     {
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\DownloadStatus.xaml", UriKind.Relative));
                     }));
 
-                    string[] args = gameInfo.Split(' ');
-
-                    ContentDownloader.Config.MaxDownloads = 8;
-                    var appId = GetParameter(args, "-app", ContentDownloader.INVALID_APP_ID);
-                    var depotIdList = GetParameterList<uint>(args, "-depot");
-                    var manifestIdList = GetParameterList<ulong>(args, "-manifest");
-
-                    if (manifestIdList.Count > 0)
-                    {
-                        if (depotIdList.Count != manifestIdList.Count)
-                        {
-                            Debug.WriteLine("Error: -manifest requires one id for every -depot specified");
-                            username = null;
-                            password = null;
-                            return;
-                        }
-
-                        var zippedDepotManifest = depotIdList.Zip(manifestIdList, (depotId, manifestId) => (depotId, manifestId));
-                        depotManifestIds.AddRange(zippedDepotManifest);
-                    }
-                    else
-                        depotManifestIds.AddRange(depotIdList.Select(depotId => (depotId, ContentDownloader.INVALID_MANIFEST_ID)));
-
-                    foreach (ulong manifestVersion in manifestIdList)
-                    {
-                        if (manifestVersion == 1930886153446950288)
-                            version = "2015";
-                        else if (manifestVersion == 8395659676467739522)
-                            version = "2016";
-                    }
+                    await Task.Delay(5000);
 
                     Dispatcher.Invoke(new Action(delegate
                     {
@@ -259,7 +244,7 @@ namespace H1EmuLauncher.SteamFramePages
             }
             else
             {
-                Debug.WriteLine("Error: InitializeSteam failed.");
+                Debug.WriteLine("Error: InitializeSteam failed");
 
                 Dispatcher.Invoke(new Action(delegate
                 {
@@ -320,11 +305,6 @@ namespace H1EmuLauncher.SteamFramePages
             }
 
             return -1;
-        }
-
-        static bool HasParameter(string[] args, string param)
-        {
-            return IndexOfParam(args, param) > -1;
         }
 
         public static T GetParameter<T>(string[] args, string param, T defaultValue = default)

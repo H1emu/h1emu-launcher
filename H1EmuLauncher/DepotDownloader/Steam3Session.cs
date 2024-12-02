@@ -5,16 +5,15 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using QRCoder;
 using SteamKit2;
 using SteamKit2.Authentication;
 using SteamKit2.CDN;
 using SteamKit2.Internal;
-using H1emuLauncher;
-using H1EmuLauncher.Classes;
-using System.Diagnostics;
 
 namespace H1EmuLauncher
 {
@@ -58,11 +57,9 @@ namespace H1EmuLauncher
 
         // input
         readonly SteamUser.LogOnDetails logonDetails;
-
+        public static string twoauth;
         public static CancellationTokenSource tokenSource = new();
         CancellationToken token;
-
-        public static string twoauth;
 
         public Steam3Session(SteamUser.LogOnDetails details)
         {
@@ -96,7 +93,7 @@ namespace H1EmuLauncher
 
         public delegate bool WaitCondition();
 
-        private readonly object steamLock = new();
+        private readonly Lock steamLock = new();
 
         public bool WaitUntilCallback(Action submitter, WaitCondition waiter)
         {
@@ -231,9 +228,17 @@ namespace H1EmuLauncher
 
         public async Task<bool> RequestFreeAppLicense(uint appId)
         {
-            var resultInfo = await steamApps.RequestFreeLicense(appId);
+            try
+            {
+                var resultInfo = await steamApps.RequestFreeLicense(appId);
 
-            return resultInfo.GrantedApps.Contains(appId);
+                return resultInfo.GrantedApps.Contains(appId);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Failed to request FreeOnDemand license for app {appId}: {ex.Message}");
+                return false;
+            }
         }
 
         public async Task RequestDepotKey(uint depotId, uint appid = 0)
@@ -242,11 +247,6 @@ namespace H1EmuLauncher
                 return;
 
             var depotKey = await steamApps.GetDepotDecryptionKey(depotId, appid);
-
-            System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
-            {
-                SteamFramePages.DownloadStatus.downloadStatusInstance.downloadProgressText.Text = $"{LauncherWindow.launcherInstance.FindResource("item21").ToString().Replace("{0}", $"{depotKey.DepotID}").Replace("{1}", $"{depotKey.Result}")}";
-            }));
 
             Debug.WriteLine("Got depot key for {0} result: {1}", depotKey.DepotID, depotKey.Result);
 
@@ -458,7 +458,12 @@ namespace H1EmuLauncher
                             {
                                 Debug.WriteLine("");
                                 Debug.WriteLine("The QR code has changed:");
+
+                                DisplayQrCode(session.ChallengeURL);
                             };
+
+                            // Draw initial QR code immediately
+                            DisplayQrCode(session.ChallengeURL);
                         }
                         catch (TaskCanceledException)
                         {
@@ -477,6 +482,12 @@ namespace H1EmuLauncher
                 {
                     try
                     {
+                        System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
+                        {
+                            LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\2FA.xaml", UriKind.Relative));
+                            SteamFramePages._2FA.twoFacInstruction = 3;
+                        }));
+
                         var result = await authSession.PollingWaitForResultAsync();
 
                         logonDetails.Username = result.AccountName;
@@ -507,7 +518,7 @@ namespace H1EmuLauncher
 
                     authSession = null;
                 }
-                
+
                 steamUser.LogOn(logonDetails);
             }
         }
@@ -554,10 +565,6 @@ namespace H1EmuLauncher
 
         private void LogOnCallback(SteamUser.LoggedOnCallback loggedOn)
         {
-            tokenSource.Dispose();
-            tokenSource = new CancellationTokenSource();
-            token = tokenSource.Token;
-
             var isSteamGuard = loggedOn.Result == EResult.AccountLogonDenied;
             var is2FA = loggedOn.Result == EResult.AccountLoginDeniedNeedTwoFactor;
             var isAccessToken = ContentDownloader.Config.RememberPassword && logonDetails.AccessToken != null &&
@@ -627,11 +634,7 @@ namespace H1EmuLauncher
 
             if (loggedOn.Result == EResult.ServiceUnavailable)
             {
-                System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
-                {
-                    LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\Login.xaml", UriKind.Relative));
-                    CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", LauncherWindow.launcherInstance);
-                }));
+                Debug.WriteLine("Unable to login to Steam3: {0}", loggedOn.Result);
                 Abort(false);
 
                 return;
@@ -639,11 +642,7 @@ namespace H1EmuLauncher
 
             if (loggedOn.Result != EResult.OK)
             {
-                System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
-                {
-                    LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\Login.xaml", UriKind.Relative));
-                    CustomMessageBox.Show(LauncherWindow.launcherInstance.FindResource("item17").ToString() + $" \"{loggedOn.Result}\".", LauncherWindow.launcherInstance);
-                }));
+                Debug.WriteLine("Unable to login to Steam3: {0}", loggedOn.Result);
                 Abort();
 
                 return;
@@ -681,6 +680,18 @@ namespace H1EmuLauncher
                     PackageTokens.TryAdd(license.PackageID, license.AccessToken);
                 }
             }
+        }
+
+        private static void DisplayQrCode(string challengeUrl)
+        {
+            // Encode the link as a QR code
+            using var qrGenerator = new QRCodeGenerator();
+            var qrCodeData = qrGenerator.CreateQrCode(challengeUrl, QRCodeGenerator.ECCLevel.L);
+            using var qrCode = new AsciiQRCode(qrCodeData);
+            var qrCodeAsAsciiArt = qrCode.GetGraphic(1, drawQuietZones: false);
+
+            Debug.WriteLine("Use the Steam Mobile App to sign in with this QR code:");
+            Debug.WriteLine(qrCodeAsAsciiArt);
         }
     }
 }

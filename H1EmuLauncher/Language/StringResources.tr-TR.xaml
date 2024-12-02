@@ -75,6 +75,7 @@
     <system:String x:Key="item78">Lütfen Steam uygulamanıza gönderilen iki faktörlü kimlik doğrulama kodunu girin.</system:String>
     <system:String x:Key="item79">Lütfen e-postanıza gönderilen iki faktörlü doğrulama kodunu giriniz.</system:String>
     <system:String x:Key="item80">Kurulum dosyası indirilemiyor:</system:String>
+    <system:String x:Key="item81">Please approve the Steam login from your Steam mobile app.</system:String>
     <system:String x:Key="item84">{0} uygulaması için depo dosyası bulunamadı.</system:String>
     <system:String x:Key="item85">{0} deposu {1} uygulaması için listelenmedi.</system:String>
     <system:String x:Key="item89">Seçilen klasör boş değil.\n\nYine de devam etmek istiyor musunuz?</system:String>
@@ -97,6 +98,7 @@
     <system:String x:Key="item114">Eski dosyalar siliniyor...</system:String>
     <system:String x:Key="item116">Sunucu dosyaları açılıyor...</system:String>
     <system:String x:Key="item118">Node dosyaları açılıyor...</system:String>
+    <system:String x:Key="item119">Community Managers</system:String>
     <system:String x:Key="item120">Lütfen H1Z1'i kapatın.</system:String>
     <system:String x:Key="item121">H1Z1.exe şu anda kullanımda.\n\nLütfen açık H1Z1 örneklerini kapatın.\n\nH1Z1'in tüm işlemlerini sonlandırmak için aşağıdaki butonu kullanabilirsiniz.</system:String>
     <system:String x:Key="item122">Mevcut oyun versiyonu: 2016</system:String>

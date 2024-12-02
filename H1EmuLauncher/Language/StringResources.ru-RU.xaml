@@ -75,6 +75,7 @@
     <system:String x:Key="item78">Пожалуйста, введите код двухфакторной аутентификации, отправленный в ваше приложение Steam.</system:String>
     <system:String x:Key="item79">Пожалуйста, введите код двухфакторной аутентификации, отправленный на вашу электронную почту.</system:String>
     <system:String x:Key="item80">Не удалось загрузить установочный файл:</system:String>
+    <system:String x:Key="item81">Please approve the Steam login from your Steam mobile app.</system:String>
     <system:String x:Key="item84">Не удалось найти depot для загрузки приложения {0}</system:String>
     <system:String x:Key="item85">Depot {0} нет в списке для приложения {1}</system:String>
     <system:String x:Key="item89">Выбранная директория не пустая.\n\nВы хотите продолжить?</system:String>
@@ -97,6 +98,7 @@
     <system:String x:Key="item114">Удаление старых файлов...</system:String>
     <system:String x:Key="item116">Распаковка файлов сервера...</system:String>
     <system:String x:Key="item118">Распаковка файлов NodeJS...</system:String>
+    <system:String x:Key="item119">Community Managers</system:String>
     <system:String x:Key="item120">Пожалуйста закройте H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe в настоящее время используется.\n\nПожалуйста, закройте все открытые экземпляры H1Z1.\n\nВы можете использовать кнопку ниже, чтобы убить все процессы H1Z1.</system:String>
     <system:String x:Key="item122">Текущая версия игры: 2016</system:String>

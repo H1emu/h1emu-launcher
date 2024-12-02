@@ -7,10 +7,10 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>3.1.7</FileVersion>
+	  <FileVersion>3.1.8</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>3.1.7</Version>
+	  <Version>3.1.8</Version>
 	  <AssemblyName>H1EmuLauncher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>3.1.7</AssemblyVersion>
+	  <AssemblyVersion>3.1.8</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -115,6 +115,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
+    <PackageReference Include="QRCoder" Version="1.6.0" />
     <PackageReference Include="SteamKit2" Version="3.0.0" />
   </ItemGroup>
 

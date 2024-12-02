@@ -75,6 +75,7 @@
     <system:String x:Key="item78">Veuillez saisir le code d'authentification à deux facteurs envoyé à votre application Steam.</system:String>
     <system:String x:Key="item79">Veuillez saisir le code d'authentification à deux facteurs envoyé à votre adresse e-mail.</system:String>
     <system:String x:Key="item80">Impossible de télécharger le fichier d'installation:</system:String>
+    <system:String x:Key="item81">Please approve the Steam login from your Steam mobile app.</system:String>
     <system:String x:Key="item84">Impossible de trouver des dépôts à télécharger pour l'application. {0}</system:String>
     <system:String x:Key="item85">Dépôt {0} non listé pour l'application {1}</system:String>
     <system:String x:Key="item89">Le répertoire sélectionné n'est pas vide.\n\nVoulez-vous continuer quand même?</system:String>
@@ -97,6 +98,7 @@
     <system:String x:Key="item114">Suppression d'anciens fichiers...</system:String>
     <system:String x:Key="item116">Décompression des fichiers du serveur...</system:String>
     <system:String x:Key="item118">Décompression des fichiers de nœuds...</system:String>
+    <system:String x:Key="item119">Community Managers</system:String>
     <system:String x:Key="item120">Veuillez fermer H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe est actuellement en cours d'utilisation.\n\nVeuillez fermer toutes les instances ouvertes de H1Z1.\n\nVous pouvez utiliser le bouton ci-dessous pour tuer tous les processus de H1Z1.</system:String>
     <system:String x:Key="item122">Version actuelle du jeu: 2016</system:String>

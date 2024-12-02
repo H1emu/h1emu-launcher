@@ -75,6 +75,7 @@
     <system:String x:Key="item78">Digite o código de autenticação de dois fatores enviado ao seu aplicativo Steam.</system:String>
     <system:String x:Key="item79">Insira o código de autenticação de dois fatores enviado para o seu e-mail.</system:String>
     <system:String x:Key="item80">Não foi possível baixar o arquivo de instalação:</system:String>
+    <system:String x:Key="item81">Please approve the Steam login from your Steam mobile app.</system:String>
     <system:String x:Key="item84">Não foi possível encontrar depósitos para descarregar para a App {0}</system:String>
     <system:String x:Key="item85">Depósito {0} não listado para a App {1}</system:String>
     <system:String x:Key="item89">A pasta seleccionada não está vazia.\n\n Deseja continuar de qualquer forma?</system:String>
@@ -97,6 +98,7 @@
     <system:String x:Key="item114">A eliminar ficheiros antigos...</system:String>
     <system:String x:Key="item116">A descompactar ficheiros do servidor...</system:String>
     <system:String x:Key="item118">A descompactar ficheiros node...</system:String>
+    <system:String x:Key="item119">Community Managers</system:String>
     <system:String x:Key="item120">Por favor desligue o H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe está a ser usado.\n\nFeche todas as instâncias abertas de H1Z1.\n\nVocê pode usar o botão abaixo para matar todos os processos de H1Z1.</system:String>
     <system:String x:Key="item122">Versão atual do jogo: 2016</system:String>

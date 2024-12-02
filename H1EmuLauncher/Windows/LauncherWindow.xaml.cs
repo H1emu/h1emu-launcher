@@ -19,7 +19,6 @@ using System.Windows.Controls.Primitives;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using Microsoft.Toolkit.Uwp.Notifications;
-using H1emuLauncher;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher

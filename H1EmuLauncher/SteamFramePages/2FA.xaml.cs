@@ -20,10 +20,24 @@ namespace H1EmuLauncher.SteamFramePages
 
             loadingAnimation = FindResource("LoadingIconAnimation") as Storyboard;
 
-            if (twoFacInstruction == 1)
-                twoFacInstructionText.Text = FindResource("item78").ToString();
-            else
-                twoFacInstructionText.Text = FindResource("item79").ToString();
+            switch (twoFacInstruction)
+            {
+                case 1:
+                    _2FACodeScreen.Visibility = Visibility.Visible;
+                    _2FAAppScreen.Visibility = Visibility.Collapsed;
+                    twoFacInstructionText.Text = FindResource("item78").ToString();
+                    break;
+                case 2:
+                    _2FACodeScreen.Visibility = Visibility.Visible;
+                    _2FAAppScreen.Visibility = Visibility.Collapsed;
+                    twoFacInstructionText.Text = FindResource("item79").ToString();
+                    break;
+                case 3:
+                    _2FACodeScreen.Visibility = Visibility.Collapsed;
+                    _2FAAppScreen.Visibility = Visibility.Visible;
+                    twoFacInstructionText.Text = FindResource("item81").ToString();
+                    break;
+            }
         }
 
         private void _2FAKeyDown(object sender, KeyEventArgs e)

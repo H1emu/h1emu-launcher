@@ -72,9 +72,10 @@
     <system:String x:Key="item75">Directory</system:String>
     <system:String x:Key="item76">Deleting old patch...</system:String>
     <system:String x:Key="item77">Auth Code</system:String>
-    <system:String x:Key="item78">Please enter the two factor authentication code sent to your Steam app.</system:String>
+    <system:String x:Key="item78">Please enter the two factor authentication code sent to your Steam mobile app.</system:String>
     <system:String x:Key="item79">Please enter the two factor authentication code sent to your email.</system:String>
     <system:String x:Key="item80">Unable to download installation file:</system:String>
+    <system:String x:Key="item81">Please approve the Steam login from your Steam mobile app.</system:String>
     <system:String x:Key="item84">Couldn't find any depots to download for app {0}</system:String>
     <system:String x:Key="item85">Depot {0} not listed for app {1}</system:String>
     <system:String x:Key="item89">The selected directory is not empty.\n\nWould you like to continue anyway?</system:String>
@@ -97,6 +98,7 @@
     <system:String x:Key="item114">Deleting old files...</system:String>
     <system:String x:Key="item116">Unzipping server files...</system:String>
     <system:String x:Key="item118">Unzipping node files...</system:String>
+    <system:String x:Key="item119">Community Managers</system:String>
     <system:String x:Key="item120">Please close H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe is currently being used.\n\nPlease close any open instances of H1Z1.\n\nYou can use the button below to kill all processes of H1Z1.</system:String>
     <system:String x:Key="item122">Current Game Version: 2016</system:String>
