@@ -91,7 +91,7 @@ namespace H1EmuLauncher
             }
             catch (Exception ex)
             {
-                CustomMessageBox.Show($"{FindResource("item80")} \"{ex.Message}\".\n\n{FindResource("item64")} \"{ex.StackTrace.Trim()}\".", this);
+                CustomMessageBox.Show($"{FindResource("item80")} \"{ex.Message}\".", this);
                 return;
             }
 

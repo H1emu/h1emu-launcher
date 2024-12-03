@@ -87,7 +87,7 @@ namespace H1EmuLauncher
             this.callbacks.Subscribe<SteamUser.LoggedOnCallback>(LogOnCallback);
             this.callbacks.Subscribe<SteamApps.LicenseListCallback>(LicenseListCallback);
 
-            Console.Write("Connecting to Steam3...");
+            Debug.WriteLine("Connecting to Steam3...");
             Connect();
         }
 
@@ -402,14 +402,14 @@ namespace H1EmuLauncher
 
             if (!authenticatedUser)
             {
-                Console.Write("Logging anonymously into Steam3...");
+                Debug.WriteLine("Logging anonymously into Steam3...");
                 steamUser.LogOnAnonymous();
             }
             else
             {
                 if (logonDetails.Username != null)
                 {
-                    Debug.WriteLine("Logging '{0}' into Steam3...", logonDetails.Username);
+                    Debug.WriteLine($"Logging '{logonDetails.Username}' into Steam3...");
                 }
 
                 if (authSession is null)
@@ -617,7 +617,7 @@ namespace H1EmuLauncher
                     logonDetails.AuthCode = twoauth;
                 }
 
-                Console.Write("Retrying Steam3 connection...");
+                Debug.WriteLine("Retrying Steam3 connection...");
                 Connect();
 
                 return;
@@ -625,7 +625,7 @@ namespace H1EmuLauncher
 
             if (loggedOn.Result == EResult.TryAnotherCM)
             {
-                Console.Write("Retrying Steam3 connection (TryAnotherCM)...");
+                Debug.WriteLine("Retrying Steam3 connection (TryAnotherCM)...");
 
                 Reconnect();
 

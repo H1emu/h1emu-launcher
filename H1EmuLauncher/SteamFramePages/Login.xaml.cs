@@ -117,17 +117,17 @@ namespace H1EmuLauncher.SteamFramePages
                 loadingAnimation.Begin();
             }));
 
-            if (InitializeSteam(username, password))
+            try
             {
-                try
+                if (InitializeSteam(username, password))
                 {
                     Dispatcher.Invoke(new Action(delegate
                     {
                         if (_2FA.loadingAnimation != null)
                             _2FA.loadingAnimation.Stop();
                     }));
-                    
-                    SelectLocation:
+
+                SelectLocation:
                     bool result = true;
 
                     tokenSource.Dispose();
@@ -205,53 +205,53 @@ namespace H1EmuLauncher.SteamFramePages
                         CustomMessageBox.Show($"{FindResource("item37")} {version}.", LauncherWindow.launcherInstance);
                     }));
                 }
-                catch (Exception e) when (e is TaskCanceledException)
+                else
                 {
+                    Debug.WriteLine("Error: InitializeSteam failed");
+
                     Dispatcher.Invoke(new Action(delegate
                     {
                         BackToLogin();
-                        CustomMessageBox.Show($"{FindResource("item38")} {version}.", LauncherWindow.launcherInstance);
+                        if (_2FA.loadingAnimation != null)
+                            _2FA.loadingAnimation.Stop();
                     }));
-                }
-                catch (Exception ex) when (ex is ContentDownloaderException || ex is OperationCanceledException)
-                {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        BackToLogin();
-                        if (ex.Message.Contains("is not available from this account."))
-                            CustomMessageBox.Show($"{FindResource("item39")} \"{ex.Message}\".\n\n{FindResource("item15")}", LauncherWindow.launcherInstance);
-                        else
-                            CustomMessageBox.Show($"{FindResource("item39")} \"{ex.Message}\".", LauncherWindow.launcherInstance);
-                    }));
-                }
-                catch (Exception exc)
-                {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        BackToLogin();
-                        CustomMessageBox.Show($"{FindResource("item40")} \"{exc.Message}\".\n\n{FindResource("item64")} \"{exc.StackTrace.Trim()}\"", LauncherWindow.launcherInstance);
-                    }));
-                }
-                finally
-                {
-                    ContentDownloader.downloadSpeedTimer.Stop();
-                    ContentDownloader.downloadSpeed = 0;
-                    ContentDownloader.sizeDownloadedPublic = 0;
-                    ContentDownloader.ShutdownSteam3();
-                    username = null;
-                    password = null;
                 }
             }
-            else
+            catch (Exception e) when (e is TaskCanceledException)
             {
-                Debug.WriteLine("Error: InitializeSteam failed");
-
                 Dispatcher.Invoke(new Action(delegate
                 {
                     BackToLogin();
-                    if (_2FA.loadingAnimation != null)
-                        _2FA.loadingAnimation.Stop();
+                    CustomMessageBox.Show($"{FindResource("item38")} {version}.", LauncherWindow.launcherInstance);
                 }));
+            }
+            catch (Exception ex) when (ex is ContentDownloaderException || ex is OperationCanceledException)
+            {
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    BackToLogin();
+                    if (ex.Message.Contains("is not available from this account."))
+                        CustomMessageBox.Show($"{FindResource("item39")} \"{ex.Message}\".\n\n{FindResource("item15")}", LauncherWindow.launcherInstance);
+                    else
+                        CustomMessageBox.Show($"{FindResource("item39")} \"{ex.Message}\".", LauncherWindow.launcherInstance);
+                }));
+            }
+            catch (Exception exc)
+            {
+                Dispatcher.Invoke(new Action(delegate
+                {
+                    BackToLogin();
+                    CustomMessageBox.Show($"{FindResource("item40")} \"{exc.Message}\".", LauncherWindow.launcherInstance);
+                }));
+            }
+            finally
+            {
+                ContentDownloader.downloadSpeedTimer.Stop();
+                ContentDownloader.downloadSpeed = 0;
+                ContentDownloader.sizeDownloadedPublic = 0;
+                ContentDownloader.ShutdownSteam3();
+                username = null;
+                password = null;
             }
 
             try
@@ -273,7 +273,7 @@ namespace H1EmuLauncher.SteamFramePages
                 {
                     do
                     {
-                        Console.Write("Enter account password for \"{0}\": ", username);
+                        Debug.WriteLine("Enter account password for \"{0}\": ", username);
                         if (Console.IsInputRedirected)
                         {
                             password = Console.ReadLine();

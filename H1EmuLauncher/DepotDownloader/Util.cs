@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -59,7 +60,7 @@ namespace H1EmuLauncher
                     if (password.Length > 0)
                     {
                         password.Remove(password.Length - 1, 1);
-                        Console.Write("\b \b");
+                        Debug.WriteLine("\b \b");
                     }
 
                     continue;
@@ -70,7 +71,7 @@ namespace H1EmuLauncher
                 if (c >= ' ' && c <= '~')
                 {
                     password.Append(c);
-                    Console.Write('*');
+                    Debug.WriteLine('*');
                 }
             } while (keyInfo.Key != ConsoleKey.Enter);
 

@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using SteamKit2;
 using SteamKit2.CDN;
 using H1EmuLauncher.SteamFramePages;
+using SteamKit2.Internal;
 
 namespace H1EmuLauncher
 {
@@ -230,7 +231,7 @@ namespace H1EmuLauncher
                     var password = Config.BetaPassword;
                     while (string.IsNullOrEmpty(password))
                     {
-                        Console.Write("Please enter the password for branch {0}: ", branch);
+                        Debug.WriteLine("Please enter the password for branch {0}: ", branch);
                         Config.BetaPassword = password = Console.ReadLine();
                     }
 
@@ -307,7 +308,7 @@ namespace H1EmuLauncher
             if (!steam3.WaitForCredentials())
             {
                 Debug.WriteLine("Unable to get steam3 credentials.");
-                return false;
+                throw new Exception("Unable to get steam3 credentials.");
             }
 
             Task.Run(steam3.TickCallbacks);
@@ -643,8 +644,10 @@ namespace H1EmuLauncher
         public static CancellationTokenSource tokenSource = new();
         private static async Task DownloadSteam3Async(List<DepotDownloadInfo> depots)
         {
-            var cts = new CancellationTokenSource();
-            cdnPool.ExhaustedToken = cts;
+            tokenSource.Dispose();
+            tokenSource = new CancellationTokenSource();
+
+            cdnPool.ExhaustedToken = tokenSource;
 
             var downloadCounter = new GlobalDownloadCounter();
             var depotsToDownload = new List<DepotFilesData>(depots.Count);
@@ -653,7 +656,7 @@ namespace H1EmuLauncher
             // First, fetch all the manifests for each depot (including previous manifests) and perform the initial setup
             foreach (var depot in depots)
             {
-                var depotFileData = await ProcessDepotManifestAndFiles(cts, depot, downloadCounter);
+                var depotFileData = await ProcessDepotManifestAndFiles(tokenSource, depot, downloadCounter);
 
                 if (depotFileData != null)
                 {
@@ -661,7 +664,7 @@ namespace H1EmuLauncher
                     allFileNamesAllDepots.UnionWith(depotFileData.allFileNames);
                 }
 
-                cts.Token.ThrowIfCancellationRequested();
+                tokenSource.Token.ThrowIfCancellationRequested();
             }
 
             // If we're about to write all the files to the same directory, we will need to first de-duplicate any files by path
@@ -681,7 +684,7 @@ namespace H1EmuLauncher
 
             foreach (var depotFileData in depotsToDownload)
             {
-                await DownloadSteam3AsyncDepotFiles(cts, downloadCounter, depotFileData, allFileNamesAllDepots);
+                await DownloadSteam3AsyncDepotFiles(tokenSource, downloadCounter, depotFileData, allFileNamesAllDepots);
             }
 
             Debug.WriteLine("Total downloaded: {0} bytes ({1} bytes uncompressed) from {2} depots",
@@ -775,7 +778,7 @@ namespace H1EmuLauncher
                 }
                 else
                 {
-                    Console.Write("Downloading depot manifest... ");
+                    Debug.WriteLine("Downloading depot manifest... ");
 
                     DepotManifest depotManifest = null;
                     ulong manifestRequestCode = 0;
