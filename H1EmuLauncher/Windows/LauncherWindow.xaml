@@ -18,8 +18,8 @@
         Foreground="FloralWhite"
         Background="Transparent"
         Loaded="LauncherWindowLoaded"
-        Closed="LauncherClosed"
-        ContentRendered="LauncherWindowContentRendered">
+        ContentRendered="LauncherWindowContentRendered"
+        Closed="LauncherClosed">
 
     <!-- Keep window animations -->
     <WindowChrome.WindowChrome>
