@@ -412,7 +412,7 @@ namespace H1EmuLauncher
                     Debug.WriteLine($"Logging '{logonDetails.Username}' into Steam3...");
                 }
 
-                if (authSession is null)
+                /*if (authSession is null)
                 {
                     if (logonDetails.Username != null && logonDetails.Password != null && logonDetails.AccessToken is null)
                     {
@@ -476,9 +476,10 @@ namespace H1EmuLauncher
                             return;
                         }
                     }
-                }
+                }*/
 
-                if (authSession != null)
+                // THIS DOESN'T WORK WITH A GUI APPLICATION, IT'S MEANT FOR A CONSOLE APP, IDK A WORKAROUND UNFORTUNATELY
+                /*if (authSession != null)
                 {
                     try
                     {
@@ -517,7 +518,7 @@ namespace H1EmuLauncher
                     }
 
                     authSession = null;
-                }
+                }*/
 
                 steamUser.LogOn(logonDetails);
             }
@@ -565,6 +566,10 @@ namespace H1EmuLauncher
 
         private void LogOnCallback(SteamUser.LoggedOnCallback loggedOn)
         {
+            tokenSource.Dispose();
+            tokenSource = new CancellationTokenSource();
+            token = tokenSource.Token;
+
             var isSteamGuard = loggedOn.Result == EResult.AccountLogonDenied;
             var is2FA = loggedOn.Result == EResult.AccountLoginDeniedNeedTwoFactor;
             var isAccessToken = ContentDownloader.Config.RememberPassword && logonDetails.AccessToken != null &&
