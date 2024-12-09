@@ -204,28 +204,33 @@
                 </Button>
             </Grid>
 
-            <!-- Generate Account Key button -->
-            <Button x:Name="generateAccountKeyButton"
+            <Border x:Name="generateAccountKeyButtonRow"
                     Grid.Row="5"
-                    Click="GenerateAccountKeyButtonClick"
-                    Margin="20,15,20,20"
-                    Padding="25,7,25,7"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Content="GENERATE"
-                    Visibility="Collapsed"
-                    Style="{DynamicResource PrimaryButton}">
+                    BorderThickness="0">
 
-                <Button.Effect>
+                <Grid x:Name="generateAccountKeyButtonRowContent">
+                    <!-- Generate Account Key button -->
+                    <Button Click="GenerateAccountKeyButtonClick"
+                            Margin="20,15,20,20"
+                            Padding="25,7,25,7"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Content="GENERATE"
+                            Visibility="Visible"
+                            Style="{DynamicResource PrimaryButton}">
 
-                    <!-- Drop shadow effect -->
-                    <DropShadowEffect BlurRadius="15"
-                                      Direction="-90"
-                                      RenderingBias="Quality"
-                                      ShadowDepth="1"
-                                      Opacity="0.3"/>
-                </Button.Effect>
-            </Button>
+                        <Button.Effect>
+
+                            <!-- Drop shadow effect -->
+                            <DropShadowEffect BlurRadius="15"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="1"
+                                              Opacity="0.3"/>
+                        </Button.Effect>
+                    </Button>
+                </Grid>
+            </Border>
         </Grid>
     </Border>
 </Page>

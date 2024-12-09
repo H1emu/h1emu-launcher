@@ -1,6 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SettingsPages
@@ -29,10 +31,10 @@ namespace H1EmuLauncher.SettingsPages
             if (!string.IsNullOrEmpty(accountKeyBoxText.Text))
             {
                 accountKeyBoxHint.Visibility = Visibility.Hidden;
-                generateAccountKeyButton.Visibility = Visibility.Collapsed;
+                ToggleGenerateButtonVisibility(Visibility.Collapsed);
             }
             else
-                generateAccountKeyButton.Visibility = Visibility.Visible;
+                ToggleGenerateButtonVisibility(Visibility.Visible);
 
             if (accountKeyBoxPassword.Password != accountKeyBoxText.Text)
                 accountKeyBoxPassword.Password = accountKeyBoxText.Text;
@@ -49,10 +51,10 @@ namespace H1EmuLauncher.SettingsPages
             if (!string.IsNullOrEmpty(accountKeyBoxPassword.Password))
             {
                 accountKeyBoxHint.Visibility = Visibility.Hidden;
-                generateAccountKeyButton.Visibility = Visibility.Collapsed;
+                ToggleGenerateButtonVisibility(Visibility.Collapsed);
             }
             else
-                generateAccountKeyButton.Visibility = Visibility.Visible;
+                ToggleGenerateButtonVisibility(Visibility.Visible);
 
             if (accountKeyBoxText.Text != accountKeyBoxPassword.Password)
                 accountKeyBoxText.Text = accountKeyBoxPassword.Password;
@@ -94,7 +96,9 @@ namespace H1EmuLauncher.SettingsPages
             accountKeyBoxPassword.Password = Properties.Settings.Default.sessionIdKey;
 
             if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
-                generateAccountKeyButton.Visibility = Visibility.Visible;
+                generateAccountKeyButtonRow.Visibility = Visibility.Visible;
+            else
+                generateAccountKeyButtonRow.Visibility = Visibility.Collapsed;
         }
 
         private void ShowKey(object sender, RoutedEventArgs e)
@@ -111,6 +115,30 @@ namespace H1EmuLauncher.SettingsPages
             hideKeyButton.Visibility = Visibility.Hidden;
             accountKeyBoxPassword.Visibility = Visibility.Visible;
             accountKeyBoxText.Visibility = Visibility.Hidden;
+        }
+
+        public void ToggleGenerateButtonVisibility(Visibility visibility)
+        {
+            if (visibility == Visibility.Visible)
+            {
+                generateAccountKeyButtonRow.Visibility = Visibility.Visible;
+                generateAccountKeyButtonRowContent.Measure(new Size(generateAccountKeyButtonRow.MaxWidth, generateAccountKeyButtonRow.MaxHeight));
+                DoubleAnimation show = new(0, generateAccountKeyButtonRowContent.DesiredSize.Height, new Duration(TimeSpan.FromMilliseconds(150)))
+                {
+                    EasingFunction = new CubicEase()
+                };
+                generateAccountKeyButtonRow.BeginAnimation(HeightProperty, show);
+            }
+            else
+            {
+                generateAccountKeyButtonRowContent.Measure(new Size(generateAccountKeyButtonRow.MaxWidth, generateAccountKeyButtonRow.MaxHeight));
+                DoubleAnimation hide = new(generateAccountKeyButtonRowContent.DesiredSize.Height, 0, new Duration(TimeSpan.FromMilliseconds(150)))
+                {
+                    EasingFunction = new CubicEase()
+                };
+                hide.Completed += (s, o) => generateAccountKeyButtonRow.Visibility = Visibility.Collapsed;
+                generateAccountKeyButtonRow.BeginAnimation(HeightProperty, hide);
+            }
         }
     }
 }
