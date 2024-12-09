@@ -34,7 +34,7 @@ namespace H1EmuLauncher.Classes
                     case 401: // Unverified key
                         Application.Current.Dispatcher.Invoke(new Action(delegate
                         {
-                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item180")}".Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), LauncherWindow.launcherInstance, false, false, false, true, true);
+                            CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item180")}".Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), LauncherWindow.launcherInstance, true, false, false, false, true);
                         }));
                         return false;
 

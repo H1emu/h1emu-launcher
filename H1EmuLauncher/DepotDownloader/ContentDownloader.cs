@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 using SteamKit2;
 using SteamKit2.CDN;
 using H1EmuLauncher.SteamFramePages;
-using SteamKit2.Internal;
 
 namespace H1EmuLauncher
 {
@@ -430,7 +429,7 @@ namespace H1EmuLauncher
                 else
                 {
                     var contentName = GetAppName(appId);
-                    throw new ContentDownloaderException(string.Format("App {0} ({1}) is not available from this account.", appId, contentName));
+                    throw new ContentDownloaderException($"App {appId} ({contentName}) is not available from this account.");
                 }
             }
 
@@ -457,7 +456,7 @@ namespace H1EmuLauncher
                     DownloadStatus.downloadStatusInstance.downloadProgressText.Text = LauncherWindow.launcherInstance.FindResource("item55").ToString().Replace("{0}", $"'{branch}'");
                 }));
 
-                Debug.WriteLine("Using app branch: '{0}'.", branch);
+                Debug.WriteLine($"Using app branch: '{branch}'.");
 
                 if (depots != null)
                 {
@@ -562,9 +561,8 @@ namespace H1EmuLauncher
 
             if (!await AccountHasAccess(appId, depotId))
             {
-                Debug.WriteLine("Depot {0} is not available from this account.", depotId);
-
-                return null;
+                Debug.WriteLine($"Depot {depotId} is not available from this account.");
+                throw new ContentDownloaderException($"Depot {depotId} is not available from this account.");
             }
 
             if (manifestId == INVALID_MANIFEST_ID)
@@ -579,24 +577,24 @@ namespace H1EmuLauncher
 
                 if (manifestId == INVALID_MANIFEST_ID)
                 {
-                    Debug.WriteLine("Depot {0} missing public subsection or manifest section.", depotId);
-                    return null;
+                    Debug.WriteLine($"Depot {depotId} missing public subsection or manifest section.");
+                    throw new ContentDownloaderException($"Depot {depotId} missing public subsection or manifest section.");
                 }
             }
 
             await steam3.RequestDepotKey(depotId, appId);
             if (!steam3.DepotKeys.TryGetValue(depotId, out var depotKey))
             {
-                Debug.WriteLine("No valid depot key for {0}, unable to download.", depotId);
-                return null;
+                Debug.WriteLine($"No valid depot key for {depotId}, unable to download.");
+                throw new ContentDownloaderException($"No valid depot key for {depotId}, unable to download.");
             }
 
             var uVersion = GetSteam3AppBuildNumber(appId, branch);
 
             if (!CreateDirectories(depotId, uVersion, out var installDir))
             {
-                Debug.WriteLine("Error: Unable to create install directories!");
-                return null;
+                Debug.WriteLine($"Error: Unable to create install directories!");
+                throw new ContentDownloaderException($"Error: Unable to create install directories!");
             }
 
             return new DepotDownloadInfo(depotId, appId, manifestId, branch, installDir, depotKey);

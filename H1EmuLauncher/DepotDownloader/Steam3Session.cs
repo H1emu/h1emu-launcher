@@ -57,9 +57,6 @@ namespace H1EmuLauncher
 
         // input
         readonly SteamUser.LogOnDetails logonDetails;
-        public static string twoauth;
-        public static CancellationTokenSource tokenSource = new();
-        CancellationToken token;
 
         public Steam3Session(SteamUser.LogOnDetails details)
         {
@@ -237,7 +234,7 @@ namespace H1EmuLauncher
             catch (Exception ex)
             {
                 Debug.WriteLine($"Failed to request FreeOnDemand license for app {appId}: {ex.Message}");
-                return false;
+                throw new Exception($"Failed to request FreeOnDemand license for app {appId}: {ex.Message}");
             }
         }
 
@@ -412,7 +409,7 @@ namespace H1EmuLauncher
                     Debug.WriteLine($"Logging '{logonDetails.Username}' into Steam3...");
                 }
 
-                /*if (authSession is null)
+                if (authSession is null)
                 {
                     if (logonDetails.Username != null && logonDetails.Password != null && logonDetails.AccessToken is null)
                     {
@@ -425,7 +422,7 @@ namespace H1EmuLauncher
                                 Password = logonDetails.Password,
                                 IsPersistentSession = ContentDownloader.Config.RememberPassword,
                                 GuardData = guarddata,
-                                Authenticator = new UserConsoleAuthenticator(),
+                                Authenticator = new UserAuthenticator(),
                             });
                         }
                         catch (TaskCanceledException)
@@ -448,10 +445,10 @@ namespace H1EmuLauncher
                             var session = await steamClient.Authentication.BeginAuthSessionViaQRAsync(new AuthSessionDetails
                             {
                                 IsPersistentSession = ContentDownloader.Config.RememberPassword,
-                                Authenticator = new UserConsoleAuthenticator(),
+                                Authenticator = new UserAuthenticator(),
                             });
 
-                            authSession = session;
+                            //authSession = session;
 
                             // Steam will periodically refresh the challenge url, so we need a new QR code.
                             session.ChallengeURLChanged = () =>
@@ -476,19 +473,12 @@ namespace H1EmuLauncher
                             return;
                         }
                     }
-                }*/
+                }
 
-                // THIS DOESN'T WORK WITH A GUI APPLICATION, IT'S MEANT FOR A CONSOLE APP, IDK A WORKAROUND UNFORTUNATELY
-                /*if (authSession != null)
+                if (authSession != null)
                 {
                     try
                     {
-                        System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
-                        {
-                            LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\2FA.xaml", UriKind.Relative));
-                            SteamFramePages._2FA.twoFacInstruction = 3;
-                        }));
-
                         var result = await authSession.PollingWaitForResultAsync();
 
                         logonDetails.Username = result.AccountName;
@@ -518,7 +508,7 @@ namespace H1EmuLauncher
                     }
 
                     authSession = null;
-                }*/
+                }
 
                 steamUser.LogOn(logonDetails);
             }
@@ -566,10 +556,6 @@ namespace H1EmuLauncher
 
         private void LogOnCallback(SteamUser.LoggedOnCallback loggedOn)
         {
-            tokenSource.Dispose();
-            tokenSource = new CancellationTokenSource();
-            token = tokenSource.Token;
-
             var isSteamGuard = loggedOn.Result == EResult.AccountLogonDenied;
             var is2FA = loggedOn.Result == EResult.AccountLoginDeniedNeedTwoFactor;
             var isAccessToken = ContentDownloader.Config.RememberPassword && logonDetails.AccessToken != null &&
@@ -597,8 +583,15 @@ namespace H1EmuLauncher
                         SteamFramePages._2FA.twoFacInstruction = 1;
                     }));
 
-                    token.WaitHandle.WaitOne();
-                    logonDetails.TwoFactorCode = twoauth;
+                    while (string.IsNullOrEmpty(SteamFramePages._2FA.code))
+                    {
+                        if (SteamFramePages._2FA.code != null)
+                        {
+                            break;
+                        }
+                    }
+
+                    logonDetails.TwoFactorCode = SteamFramePages._2FA.code;
                 }
                 else if (isAccessToken)
                 {
@@ -618,8 +611,15 @@ namespace H1EmuLauncher
                         SteamFramePages._2FA.twoFacInstruction = 2;
                     }));
 
-                    token.WaitHandle.WaitOne();
-                    logonDetails.AuthCode = twoauth;
+                    while (string.IsNullOrEmpty(SteamFramePages._2FA.code))
+                    {
+                        if (SteamFramePages._2FA.code != null)
+                        {
+                            break;
+                        }
+                    }
+
+                    logonDetails.AuthCode = SteamFramePages._2FA.code;
                 }
 
                 Debug.WriteLine("Retrying Steam3 connection...");
@@ -686,7 +686,7 @@ namespace H1EmuLauncher
                 }
             }
         }
-
+        
         private static void DisplayQrCode(string challengeUrl)
         {
             // Encode the link as a QR code
@@ -694,7 +694,7 @@ namespace H1EmuLauncher
             var qrCodeData = qrGenerator.CreateQrCode(challengeUrl, QRCodeGenerator.ECCLevel.L);
             using var qrCode = new AsciiQRCode(qrCodeData);
             var qrCodeAsAsciiArt = qrCode.GetGraphic(1, drawQuietZones: false);
-
+            
             Debug.WriteLine("Use the Steam Mobile App to sign in with this QR code:");
             Debug.WriteLine(qrCodeAsAsciiArt);
         }

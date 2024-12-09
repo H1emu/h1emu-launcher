@@ -26,7 +26,7 @@ namespace H1EmuLauncher.SteamFramePages
         {
             InitializeComponent();
 
-            // Adds the correct language file to the resource dictionary and then loads it.
+            // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
@@ -35,7 +35,7 @@ namespace H1EmuLauncher.SteamFramePages
 
         public void UpdateLang()
         {
-            // Adds the correct language file to the resource dictionary and then loads it.
+            // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
@@ -152,8 +152,8 @@ namespace H1EmuLauncher.SteamFramePages
                         {
                             UpdateLang();
 
-                            MessageBoxResult dr = CustomMessageBox.Show(FindResource("item89").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance, true, true, false, false);
-                            if (dr != MessageBoxResult.Yes)
+                            MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item89").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance, false, true, true);
+                            if (mbr != MessageBoxResult.Yes)
                                 result = false;
                         }
                     }));
@@ -174,7 +174,7 @@ namespace H1EmuLauncher.SteamFramePages
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\DownloadStatus.xaml", UriKind.Relative));
                     }));
 
-                    await Task.Delay(5000);
+                    while (DownloadStatus.downloadStatusInstance == null)
 
                     Dispatcher.Invoke(new Action(delegate
                     {
@@ -250,6 +250,7 @@ namespace H1EmuLauncher.SteamFramePages
                 ContentDownloader.downloadSpeed = 0;
                 ContentDownloader.sizeDownloadedPublic = 0;
                 ContentDownloader.ShutdownSteam3();
+                _2FA.code = null;
                 username = null;
                 password = null;
             }

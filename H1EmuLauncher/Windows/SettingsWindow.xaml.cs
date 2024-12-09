@@ -52,7 +52,6 @@ namespace H1EmuLauncher
                 SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = accountKeyArgument;
             }
 
-            LauncherWindow.rawArgs = null;
             accountKeyArgument = null;
         }
 
@@ -87,7 +86,6 @@ namespace H1EmuLauncher
             {
                 settingsTabControl.SelectedIndex = 1;
                 SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = accountKeyArgument;
-                LauncherWindow.rawArgs = null;
                 accountKeyArgument = null;
             }
         }

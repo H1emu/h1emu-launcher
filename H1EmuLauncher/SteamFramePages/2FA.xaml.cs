@@ -10,12 +10,13 @@ namespace H1EmuLauncher.SteamFramePages
     {
         public static Storyboard loadingAnimation;
         public static int twoFacInstruction;
+        public static string code;
 
         public _2FA()
         {
             InitializeComponent();
 
-            // Adds the correct language file to the resource dictionary and then loads it.
+            // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Add(Classes.SetLanguageFile.LoadFile());
 
             loadingAnimation = FindResource("LoadingIconAnimation") as Storyboard;
@@ -65,8 +66,7 @@ namespace H1EmuLauncher.SteamFramePages
             loadingIcon.Visibility = Visibility.Visible;
             loadingAnimation.Begin();
 
-            Steam3Session.twoauth = authBox.Text.Trim();
-            Steam3Session.tokenSource.Cancel();
+            code = authBox.Text.Trim();
         }
 
         private void AuthBoxGotFocus(object sender, RoutedEventArgs e)

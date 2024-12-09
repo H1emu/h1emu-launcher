@@ -19,6 +19,7 @@
         Background="Transparent"
         Loaded="LauncherWindowLoaded"
         ContentRendered="LauncherWindowContentRendered"
+        IsVisibleChanged="LauncherWindowIsVisibleChanged"
         Closed="LauncherClosed">
 
     <!-- Keep window animations -->
@@ -633,6 +634,7 @@
 
                                     <!-- Divider -->
                                     <Rectangle Height="1"
+                                               Margin="0,0,10,0"
                                                Fill="{DynamicResource LighterColour}"
                                                RenderOptions.BitmapScalingMode="Fant">
 
@@ -648,7 +650,6 @@
                                     <!-- Current detected game version -->
                                     <TextBlock x:Name="currentGame" 
                                                Grid.Column="1"
-                                               Margin="10,0,10,0"
                                                Foreground="Gray"
                                                FontFamily="Bahnschrift"
                                                FontWeight="Bold"
@@ -660,6 +661,7 @@
                                     <!-- Divider -->
                                     <Rectangle Grid.Column="2"
                                                Height="1"
+                                               Margin="10,0,0,0"
                                                Fill="{DynamicResource LighterColour}"
                                                RenderOptions.BitmapScalingMode="Fant">
 

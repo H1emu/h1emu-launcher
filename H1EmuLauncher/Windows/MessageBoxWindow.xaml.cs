@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using H1EmuLauncher.Classes;
 
@@ -18,7 +16,7 @@ namespace H1EmuLauncher
             InitializeComponent();
             messageBoxInstance = this;
 
-            // Adds the correct language file to the resource dictionary and then loads it.
+            // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }

@@ -23,7 +23,7 @@ namespace H1EmuLauncher
             serverInstallOptionsInstance = this;
             Owner = LauncherWindow.launcherInstance;
 
-            // Adds the correct language file to the resource dictionary and then loads it.
+            // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }
@@ -36,8 +36,8 @@ namespace H1EmuLauncher
             Button button = (Button)sender;
             if (button.Name == "latestButton")
             {
-                MessageBoxResult dr = CustomMessageBox.Show(FindResource("item157").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, true, true, false, false);
-                if (dr != MessageBoxResult.Yes)
+                MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item157").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), this, false, true, true);
+                if (mbr != MessageBoxResult.Yes)
                     return;
             }
 

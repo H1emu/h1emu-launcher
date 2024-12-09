@@ -26,7 +26,6 @@ namespace H1EmuLauncher
     public partial class LauncherWindow : Window
     {
         readonly private System.Windows.Forms.NotifyIcon launcherNotifyIcon = new();
-        readonly private FileSystemWatcher argsWatcher = new();
         readonly private ProcessStartInfo cmdShell = new()
         {
             FileName = "cmd.exe",
@@ -37,9 +36,6 @@ namespace H1EmuLauncher
         public static ContextMenu notifyIconContextMenu = new();
         public static string customServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
         public static string recentServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\recentServers.json";
-        public static string[] rawArgs = null;
-        public static bool systemWatcherFire = true;
-        public static bool executeArguments;
 
         public Storyboard CarouselNextAnimation;
         public Storyboard CarouselNextAnimationFollow;
@@ -54,7 +50,7 @@ namespace H1EmuLauncher
             InitializeComponent();
             launcherInstance = this;
 
-            // Adds the correct language file to the resource dictionary and then loads it.
+            // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
 
@@ -71,7 +67,6 @@ namespace H1EmuLauncher
                 {
                     Show();
                     Activate();
-                    launcherNotifyIcon.Visible = false;
                 }
                 else if (s.Button == System.Windows.Forms.MouseButtons.Right)
                 {
@@ -106,43 +101,17 @@ namespace H1EmuLauncher
             public string CustomServerNameRecent { get; set; }
         }
 
-        public async void ArgsWatcherChanged(object sender, FileSystemEventArgs e)
+        public async void ExecuteArguments(string[] rawArgs)
         {
-            if (!systemWatcherFire)
+            if (WindowState != WindowState.Normal)
+                WindowState = WindowState.Normal;
+
+            Show();
+            Activate();
+
+            // If there are no args then return after the launcher was brought into focus
+            if (rawArgs.Length == 0)
                 return;
-
-            systemWatcherFire = false;
-
-            await Task.Delay(500);
-
-            rawArgs = File.ReadAllText($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt").Split(" ");
-
-            Dispatcher.Invoke(new Action(delegate
-            {
-                if (WindowState != WindowState.Normal)
-                    WindowState = WindowState.Normal;
-
-                Show();
-                Activate();
-                ExecuteArguments();
-                launcherNotifyIcon.Visible = false;
-            }));
-
-            systemWatcherFire = true;
-        }
-
-        public async void ExecuteArguments()
-        {
-            // If there are no args return
-            if (!(rawArgs.Length > 0))
-                return;
-
-            // If the arguments are launched from browser, remove some stuff
-            if (rawArgs[0].Contains("%20"))
-            {
-                rawArgs[0] = rawArgs[0].Replace("h1emulauncher://", "").Replace("/\"", "").Replace("%20", " ");
-                rawArgs = rawArgs[0].Split(" ");
-            }
 
             // If the new server and ip arguments exist, open the Add Server window and tell it to fill in the name and ip fields with the specified argument values
             if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-servername", "")) || !string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-serverip", "")))
@@ -202,9 +171,6 @@ namespace H1EmuLauncher
                 else
                     SettingsWindow.SwitchToAccountKeyTab();
             }
-
-            File.WriteAllText($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt", "");
-            rawArgs = null;
         }
 
         private void ServerSelectorChanged(object sender, SelectionChangedEventArgs e)
@@ -415,8 +381,8 @@ namespace H1EmuLauncher
 
         public void DeleteServer(ComboBoxItem serverItem)
         {
-            MessageBoxResult dr = CustomMessageBox.Show(FindResource("item147").ToString(), this, true, true, false, false);
-            if (dr != MessageBoxResult.Yes)
+            MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item147").ToString(), this, false, true, true);
+            if (mbr != MessageBoxResult.Yes)
                 return;
 
             // Delete the server from the custom servers file list
@@ -627,7 +593,7 @@ namespace H1EmuLauncher
                             {
                                 Dispatcher.Invoke(new Action(delegate
                                 {
-                                    MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item153").ToString(), this, true, true, false, false);
+                                    MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item153").ToString(), this, false, true, true);
 
                                     if (mbr != MessageBoxResult.Yes)
                                         throw new Exception("emptyAccountKey");
@@ -728,7 +694,6 @@ namespace H1EmuLauncher
                             {
                                 Show();
                                 Activate();
-                                launcherNotifyIcon.Visible = false;
                             }));
                         }
 
@@ -754,7 +719,6 @@ namespace H1EmuLauncher
                         Dispatcher.Invoke(new Action(delegate
                         {
                             Hide();
-                            launcherNotifyIcon.Visible = true;
                         }));
                         new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
                     }
@@ -803,17 +767,12 @@ namespace H1EmuLauncher
                 File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.installerFileName}");
 
             // If arguments file doesn't exist then create one
-            if (!File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt"))
-                File.Create($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt");
+            if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt"))
+                File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt");
 
             // Delete old carousel images folder, no longer needed on newer versions of the launcher
             if (Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages"))
                 Directory.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages", true);
-
-            argsWatcher.Path = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher";
-            argsWatcher.Filter = "args.txt";
-            argsWatcher.EnableRaisingEvents = true;
-            argsWatcher.Changed += new FileSystemEventHandler(ArgsWatcherChanged);
 
             if (Properties.Settings.Default.imageCarouselVisibility)
             {
@@ -839,10 +798,11 @@ namespace H1EmuLauncher
             CheckGameVersionAndPath(this, false, false);
         }
 
+        public static string[] rawArgs;
         private async void LauncherWindowContentRendered(object sender, EventArgs e)
         {
-            if (executeArguments)
-                ExecuteArguments();
+            if (rawArgs != null)
+                ExecuteArguments(rawArgs);
 
             if (!string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
                 await AccountKeyUtil.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);
@@ -1051,7 +1011,7 @@ namespace H1EmuLauncher
                     directoryButton.IsEnabled = true;
                     
                     if (showErrors)
-                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), callingWindow, false, false, true);
+                        CustomMessageBox.Show(FindResource("item121").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), callingWindow, true, false, false, true);
                 }));
                 return false;
             }
@@ -1115,6 +1075,14 @@ namespace H1EmuLauncher
             sw.ShowDialog();
         }
 
+        private void LauncherWindowIsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (!IsVisible)
+                launcherNotifyIcon.Visible = true;
+            else
+                launcherNotifyIcon.Visible = false;
+        }
+
         private void FullUpdatesHyperlink(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
             Process.Start(new ProcessStartInfo
@@ -1160,7 +1128,6 @@ namespace H1EmuLauncher
         private void MinimiseToSystemTrayButtonClick(object sender, RoutedEventArgs e)
         {
             Hide();
-            launcherNotifyIcon.Visible = true;
             new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
         }
 

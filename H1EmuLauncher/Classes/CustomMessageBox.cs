@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Media;
-using System.Threading;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Forms;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Effects;
-using static SteamKit2.Internal.CContentBuilder_CommitAppBuild_Request;
 
 namespace H1EmuLauncher.Classes
 {
@@ -15,7 +8,7 @@ namespace H1EmuLauncher.Classes
     {
         public static MessageBoxResult buttonPressed = MessageBoxResult.OK;
 
-        public static MessageBoxResult Show(string text, Window owner = null, bool yesButtonVisibility = false, bool noButtonVisibility = false, bool terminateH1Z1ButtonVisibility = false, bool okButtonVisibility = true, bool discordLinkVisibility = false)
+        public static MessageBoxResult Show(string text, Window owner = null, bool okButtonVisibility = true, bool yesButtonVisibility = false, bool noButtonVisibility = false, bool terminateH1Z1ButtonVisibility = false, bool discordLinkVisibility = false)
         {
             buttonPressed = MessageBoxResult.OK;
             MessageBoxWindow messageBox = new();

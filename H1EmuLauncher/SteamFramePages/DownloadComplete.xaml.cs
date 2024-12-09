@@ -11,7 +11,7 @@ namespace H1EmuLauncher.SteamFramePages
         {
             InitializeComponent();
 
-            // Adds the correct language file to the resource dictionary and then loads it.
+            // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
         }

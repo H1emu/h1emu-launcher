@@ -1,6 +1,6 @@
-﻿using H1EmuLauncher.SettingsPages;
-using System;
+﻿using System;
 using System.Windows;
+using H1EmuLauncher.SettingsPages;
 
 namespace H1EmuLauncher.Classes
 {

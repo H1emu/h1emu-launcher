@@ -140,8 +140,8 @@ namespace H1EmuLauncher.SettingsPages
             Button button = (Button)sender;
             if (button.Name == "latestButton")
             {
-                MessageBoxResult dr = CustomMessageBox.Show(FindResource("item157").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance, true, true, false, false);
-                if (dr != MessageBoxResult.Yes)
+                MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item157").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance, false, true, true);
+                if (mbr != MessageBoxResult.Yes)
                     return;
             }
 
@@ -355,8 +355,8 @@ namespace H1EmuLauncher.SettingsPages
                 return;
             }
 
-            MessageBoxResult dr = CustomMessageBox.Show(FindResource("item178").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance, true, true, false, false);
-            if (dr != MessageBoxResult.Yes)
+            MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item178").ToString().Replace("\\n\\n", $"{Environment.NewLine}{Environment.NewLine}"), SettingsWindow.settingsInstance, false, true, true);
+            if (mbr != MessageBoxResult.Yes)
                 return;
 
             deleteSinglePlayerDataHyperLink.IsEnabled = false;
