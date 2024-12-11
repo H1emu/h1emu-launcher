@@ -151,7 +151,7 @@
                 Click="LoginButton" 
                 Width="20"
                 Height="20"
-                Margin="0,0,20,0"
+                Margin="0,0,20,2"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Right"
                 Style="{DynamicResource PathButton}">

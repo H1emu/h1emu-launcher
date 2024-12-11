@@ -99,7 +99,7 @@ namespace H1EmuLauncher
                     CustomServerIp = serverIpBox.Text.Trim().Replace(" ", "")
                 });
 
-                string newJson = JsonSerializer.Serialize(currentJson, new JsonSerializerOptions { WriteIndented = true });
+                string newJson = JsonSerializer.Serialize(currentJson, LauncherWindow.jsonSerializerOptions);
                 File.WriteAllText(LauncherWindow.customServersJsonFile, newJson);
 
                 ComboBoxItem newItem = new()
@@ -138,7 +138,7 @@ namespace H1EmuLauncher
                 {
                     Style = (Style)FindResource("SeparatorMenuItem"),
                     Background = new SolidColorBrush(Color.FromRgb(66, 66, 66)),
-                    Margin = new Thickness(10, 7, 10, 7)
+                    Margin = new Thickness(10, 2, 10, 10)
                 };
 
                 MenuItem deleteOption = new()
@@ -224,10 +224,10 @@ namespace H1EmuLauncher
                 currentJson[editIndex].CustomServerName = serverNameBox.Text.Trim();
                 currentJson[editIndex].CustomServerIp = serverIpBox.Text.Trim().Replace(" ", "");
 
-                string newJson = JsonSerializer.Serialize(currentJson, new JsonSerializerOptions { WriteIndented = true });
+                string newJson = JsonSerializer.Serialize(currentJson, LauncherWindow.jsonSerializerOptions);
                 File.WriteAllText(LauncherWindow.customServersJsonFile, newJson);
 
-                string newJsonRecent = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
+                string newJsonRecent = JsonSerializer.Serialize(currentJsonRecent, LauncherWindow.jsonSerializerOptions);
                 File.WriteAllText(LauncherWindow.recentServersJsonFile, newJsonRecent);
 
                 ComboBoxItem comboBoxItem = (ComboBoxItem)LauncherWindow.launcherInstance.serverSelector.Items[editIndex + 3];

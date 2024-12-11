@@ -41,9 +41,6 @@
     <None Remove="Resources\Assets_256.pack" />
     <None Remove="Resources\BackgroundArt.png" />
     <None Remove="Resources\CustomClientConfig.ini" />
-    <None Remove="Resources\Discord.png" />
-    <None Remove="Resources\Discord_Hover.png" />
-    <None Remove="Resources\Discord_Pressed.png" />
     <None Remove="Resources\DisplayImage.png" />
     <None Remove="Resources\Game-Patch-2016.zip" />
     <None Remove="Resources\Game-Patch-KotK.zip" />
@@ -153,15 +150,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\CustomClientConfig.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Discord.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Discord_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Discord_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Game_Patch_2016.zip">

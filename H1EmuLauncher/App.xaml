@@ -36,6 +36,7 @@
             <PathGeometry x:Key="MinimiseToSystemTrayIcon" Figures="M48.5,20.8C43.4,25.9,38.4,31,33.3,36.1c-0.3,0.3-0.5,0.5-0.8,0.8c-4.6-4.6-9.2-9.2-13.9-13.9c-0.7-0.7-1.5-1.5-2.2-2.2  c-1.8-1.8-4.7,1-2.8,2.8c5.1,5.1,10.2,10.2,15.3,15.3c0.7,0.7,1.5,1.5,2.2,2.2c0.8,0.8,2.1,0.8,2.8,0C39,36,44.1,31,49.2,25.9  c0.7-0.7,1.5-1.5,2.2-2.2C53.2,21.9,50.4,19,48.5,20.8z"/>
             <PathGeometry x:Key="RightArrowIcon" Figures="M0.062 128.25L383.812 512 0.062 895.75V128.25z"/>
             <PathGeometry x:Key="LeftArrowIcon" Figures="M0 511.875l383.75 383.75v-767.5L0 511.875z"/>
+            <PathGeometry x:Key="ExitIcon" Figures="M41.7,23.3l-8.5-8.5c-0.4-0.4-1-0.4-1.4,0c-0.4,0.4-0.4,1,0,1.4l6.8,6.8H19.1c-0.6,0-1,0.4-1,1s0.4,1,1,1h19.4l-6.8,6.8   c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l8.5-8.5c0.2-0.2,0.3-0.4,0.3-0.7S41.9,23.5,41.7,23.3z M26.1,34.3c-0.5,0-0.9,0.4-0.9,0.9V39c0,0.6-0.5,1.1-1.1,1.1H9c-0.6,0-1.1-0.5-1.1-1.1V9c0-0.6,0.5-1.1,1.1-1.1h15.2   c0.6,0,1.1,0.5,1.1,1.1v3.9c0,0.5,0.4,0.9,0.9,0.9s0.9-0.4,0.9-0.9V9c0-1.6-1.3-2.9-2.9-2.9H9C7.4,6.1,6.1,7.4,6.1,9v30   c0,1.6,1.3,2.9,2.9,2.9h15.2c1.6,0,2.9-1.3,2.9-2.9v-3.8C27,34.7,26.6,34.3,26.1,34.3z"/>
             <Style x:Key="FocusVisual">
                 <Setter Property="Control.Template">
                     <Setter.Value>
@@ -725,7 +726,7 @@
                             <Border Margin="10,0,10,0" Background="Transparent">
                                 <StackPanel Orientation="Horizontal">
                                     <ContentPresenter ContentSource="Icon" Width="16" Height="16" VerticalAlignment="Center" Margin="0,0,8,2"/>
-                                    <ContentPresenter ContentSource="Header" VerticalAlignment="Center" Margin="0,0,0,0"/>
+                                    <ContentPresenter ContentSource="Header" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </Border>
 
@@ -1727,11 +1728,7 @@
             <Style x:Key="ToolBarButtonStyle" TargetType="{x:Type Button}">
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
                 <Setter Property="Foreground" Value="FloralWhite"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Padding" Value="0"/>
                 <Setter Property="Effect">
                     <Setter.Value>
                         <DropShadowEffect BlurRadius="15"
@@ -1923,11 +1920,23 @@
             </Style>
             <Style x:Key="DiscordButton" TargetType="{x:Type Button}">
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.3"/>
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
@@ -1949,84 +1958,127 @@
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="Cursor" Value="Hand"/>
                                 </Trigger>
-                                <EventTrigger RoutedEvent="MouseEnter">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
-                                                    <DiscreteObjectKeyFrame.Value>
-                                                        <ImageBrush ImageSource="Resources\Discord_Hover.png" />
-                                                    </DiscreteObjectKeyFrame.Value>
-                                                </DiscreteObjectKeyFrame>
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="MouseLeave">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
-                                                    <DiscreteObjectKeyFrame.Value>
-                                                        <ImageBrush ImageSource="Resources\Discord.png" />
-                                                    </DiscreteObjectKeyFrame.Value>
-                                                </DiscreteObjectKeyFrame>
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
-                                                    <DiscreteObjectKeyFrame.Value>
-                                                        <ImageBrush ImageSource="Resources\Discord_Pressed.png" />
-                                                    </DiscreteObjectKeyFrame.Value>
-                                                </DiscreteObjectKeyFrame>
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
-                                                    <DiscreteObjectKeyFrame.Value>
-                                                        <ImageBrush ImageSource="Resources\Discord_Hover.png" />
-                                                    </DiscreteObjectKeyFrame.Value>
-                                                </DiscreteObjectKeyFrame>
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseRightButtonDown">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
-                                                    <DiscreteObjectKeyFrame.Value>
-                                                        <ImageBrush ImageSource="Resources\Discord_Pressed.png" />
-                                                    </DiscreteObjectKeyFrame.Value>
-                                                </DiscreteObjectKeyFrame>
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseRightButtonUp">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Background">
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
-                                                    <DiscreteObjectKeyFrame.Value>
-                                                        <ImageBrush ImageSource="Resources\Discord_Hover.png" />
-                                                    </DiscreteObjectKeyFrame.Value>
-                                                </DiscreteObjectKeyFrame>
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                 To="1.1"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                 To="1.1"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="#4e5bd9"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="#454fbf"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="#454fbf"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
@@ -2173,10 +2225,6 @@
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="Foreground" Value="FloralWhite"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="1"/>
                 <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
                 <Setter Property="RenderTransform">

@@ -33,6 +33,7 @@ namespace H1EmuLauncher
             RedirectStandardInput = true,
             UseShellExecute = false
         };
+        public static JsonSerializerOptions jsonSerializerOptions = new() { WriteIndented = true };
         public static LauncherWindow launcherInstance;
         public static ContextMenu notifyIconContextMenu = new();
         public static string customServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
@@ -207,18 +208,21 @@ namespace H1EmuLauncher
                 MenuItem notifyIconMenuItemH1EmuServersPlay = new()
                 {
                     Style = (Style)FindResource("CustomMenuItem"),
+                    Margin = new Thickness(0, 0, 0, 6)
                 };
                 System.Windows.Shapes.Path pathH1EmuServersPlay = new()
                 {
                     Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
-                    Stretch = Stretch.Uniform
+                    Stretch = Stretch.Uniform,
+                    Width = 14,
+                    Height = 14
                 };
                 Binding bindingH1EmuServersPlay = new("Foreground")
                 {
                     Source = notifyIconMenuItemH1EmuServersPlay,
                     Mode = BindingMode.OneWay
                 };
-                BindingOperations.SetBinding(pathH1EmuServersPlay, System.Windows.Shapes.Path.FillProperty, bindingH1EmuServersPlay);
+                BindingOperations.SetBinding(pathH1EmuServersPlay, System.Windows.Shapes.Path.StrokeProperty, bindingH1EmuServersPlay);
 
                 notifyIconMenuItemH1EmuServersPlay.Icon = pathH1EmuServersPlay;
                 notifyIconMenuItemH1EmuServersPlay.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item139");
@@ -231,18 +235,21 @@ namespace H1EmuLauncher
                 MenuItem notifyIconMenuItemSingleplayerPlay = new()
                 {
                     Style = (Style)FindResource("CustomMenuItem"),
+                    Margin = new Thickness(0, 0, 0, 6)
                 };
                 System.Windows.Shapes.Path pathSinglePlayerPlay = new()
                 {
                     Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
-                    Stretch = Stretch.Uniform
+                    Stretch = Stretch.Uniform,
+                    Width = 14,
+                    Height = 14
                 };
                 Binding bindingSinglePlayerPlay = new("Foreground")
                 {
                     Source = notifyIconMenuItemSingleplayerPlay,
                     Mode = BindingMode.OneWay
                 };
-                BindingOperations.SetBinding(pathSinglePlayerPlay, System.Windows.Shapes.Path.FillProperty, bindingSinglePlayerPlay);
+                BindingOperations.SetBinding(pathSinglePlayerPlay, System.Windows.Shapes.Path.StrokeProperty, bindingSinglePlayerPlay);
 
                 notifyIconMenuItemSingleplayerPlay.Icon = pathSinglePlayerPlay;
                 notifyIconMenuItemSingleplayerPlay.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item140");
@@ -256,17 +263,20 @@ namespace H1EmuLauncher
                 {
                     Style = (Style)FindResource("SeparatorMenuItem"),
                     Background = new SolidColorBrush(Color.FromRgb(66, 66, 66)),
-                    Margin = new Thickness(10, 7, 10, 2)
+                    Margin = new Thickness(10, 2, 10, 10)
                 };
 
                 MenuItem notifyIconMenuItemExit = new()
                 {
-                    Style = (Style)FindResource("CustomMenuItem"),
+                    Style = (Style)FindResource("CustomMenuItem")
                 };
                 System.Windows.Shapes.Path pathExitNotifyIcon = new()
                 {
-                    Data = Geometry.Parse(FindResource("XIcon").ToString()),
-                    Stretch = Stretch.Uniform
+                    Data = Geometry.Parse(FindResource("ExitIcon").ToString()),
+                    Stretch = Stretch.Uniform,
+                    Width = 14,
+                    Height = 14,
+                    Margin = new Thickness(1, 0, 0, 0)
                 };
                 Binding bindingExitNotifyIcon = new("Foreground")
                 {
@@ -290,19 +300,22 @@ namespace H1EmuLauncher
                     MenuItem playCustomServer = new()
                     {
                         Style = (Style)FindResource("CustomMenuItem"),
+                        Margin = new Thickness(0, 0, 0, 6),
                         Header = server.CustomServerNameRecent
                     };
                     System.Windows.Shapes.Path pathCustomServerDelete = new()
                     {
                         Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
-                        Stretch = Stretch.Uniform
+                        Stretch = Stretch.Uniform,
+                        Width = 14,
+                        Height = 14
                     };
                     Binding bindingCustomServerDelete = new("Foreground")
                     {
                         Source = playCustomServer,
                         Mode = BindingMode.OneWay
                     };
-                    BindingOperations.SetBinding(pathCustomServerDelete, System.Windows.Shapes.Path.FillProperty, bindingCustomServerDelete);
+                    BindingOperations.SetBinding(pathCustomServerDelete, System.Windows.Shapes.Path.StrokeProperty, bindingCustomServerDelete);
 
                     playCustomServer.Icon = pathCustomServerDelete;
                     playCustomServer.Click += LaunchToCustomServerFromNotifyIcon;
@@ -315,7 +328,7 @@ namespace H1EmuLauncher
                     {
                         Style = (Style)FindResource("SeparatorMenuItem"),
                         Background = new SolidColorBrush(Color.FromRgb(66, 66, 66)),
-                        Margin = new Thickness(10, 7, 10, 2)
+                        Margin = new Thickness(10, 2, 10, 10)
                     };
                     notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, separator);
                 }
@@ -356,6 +369,7 @@ namespace H1EmuLauncher
                         MenuItem editOptionCustom = new()
                         {
                             Style = (Style)FindResource("CustomMenuItem"),
+                            Margin = new Thickness(0, 0, 0, 6)
                         };
                         System.Windows.Shapes.Path pathCustom = new()
                         {
@@ -377,7 +391,7 @@ namespace H1EmuLauncher
                         {
                             Style = (Style)FindResource("SeparatorMenuItem"),
                             Background = new SolidColorBrush(Color.FromRgb(66, 66, 66)),
-                            Margin = new Thickness(10, 7, 10, 7)
+                            Margin = new Thickness(10, 2, 10, 10)
                         };
 
                         MenuItem deleteOptionCustom = new()
@@ -472,7 +486,7 @@ namespace H1EmuLauncher
                 }
             }
 
-            string newJson = JsonSerializer.Serialize(currentJson, new JsonSerializerOptions { WriteIndented = true });
+            string newJson = JsonSerializer.Serialize(currentJson, jsonSerializerOptions);
             File.WriteAllText(customServersJsonFile, newJson);
 
             // Delete the server from the recent servers file list, used for the system tray icon context menu
@@ -494,7 +508,7 @@ namespace H1EmuLauncher
                 }
             }
 
-            string newJsonRecent = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
+            string newJsonRecent = JsonSerializer.Serialize(currentJsonRecent, jsonSerializerOptions);
             File.WriteAllText(recentServersJsonFile, newJsonRecent);
 
             serverSelector.Items.Remove(serverItem);
@@ -535,25 +549,28 @@ namespace H1EmuLauncher
                         CustomServerNameRecent = name
                     });
 
-                    string newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
+                    string newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, jsonSerializerOptions);
                     File.WriteAllText(recentServersJsonFile, newJsonRecentServers);
 
                     MenuItem playCustomServer = new()
                     {
                         Style = (Style)FindResource("CustomMenuItem"),
+                        Margin = new Thickness(0, 0, 0, 6),
                         Header = name
                     };
                     System.Windows.Shapes.Path pathCustomServerPlay = new()
                     {
                         Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
-                        Stretch = Stretch.Uniform
+                        Stretch = Stretch.Uniform,
+                        Width = 14,
+                        Height = 14
                     };
                     Binding bindingCustomServerPlay = new("Foreground")
                     {
                         Source = playCustomServer,
                         Mode = BindingMode.OneWay
                     };
-                    BindingOperations.SetBinding(pathCustomServerPlay, System.Windows.Shapes.Path.FillProperty, bindingCustomServerPlay);
+                    BindingOperations.SetBinding(pathCustomServerPlay, System.Windows.Shapes.Path.StrokeProperty, bindingCustomServerPlay);
 
                     playCustomServer.Icon = pathCustomServerPlay;
                     playCustomServer.Click += LaunchToCustomServerFromNotifyIcon;
@@ -565,7 +582,7 @@ namespace H1EmuLauncher
                         {
                             Style = (Style)FindResource("SeparatorMenuItem"),
                             Background = new SolidColorBrush(Color.FromRgb(66, 66, 66)),
-                            Margin = new Thickness(0, 7, 10, 2)
+                            Margin = new Thickness(10, 2, 10, 10)
                         };
                         notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, separator);
                     }
@@ -580,7 +597,7 @@ namespace H1EmuLauncher
                         }
 
                         notifyIconContextMenu.Items.RemoveAt(notifyIconContextMenu.Items.Count - 3);
-                        newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
+                        newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, jsonSerializerOptions);
                         File.WriteAllText(recentServersJsonFile, newJsonRecentServers);
                     }
                 }
