@@ -15,16 +15,32 @@
             <SolidColorBrush x:Key="LighterColour" Color="#FF2A2A32"/>
             <SolidColorBrush x:Key="DarkerColour" Color="#1C1B22"/>
             <SolidColorBrush x:Key="RedAccent" Color="#DB111C"/>
+            <PathGeometry x:Key="ArrowIcon" Figures="M18.59 13H3a1 1 0 0 1 0-2h15.59l-5.3-5.3a1 1 0 1 1 1.42-1.4l7 7a1 1 0 0 1 0 1.4l-7 7a1 1 0 0 1-1.42-1.4l5.3-5.3z"/>
+            <PathGeometry x:Key="PlayIcon" Figures="M3.9,18.9V5.1c0-1.6,1.7-2.6,3-1.8l12,6.9c1.4,0.8,1.4,2.9,0,3.7l-12,6.9C5.6,21.5,3.9,20.5,3.9,18.9z"/>
+            <PathGeometry x:Key="FolderIcon" Figures="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+            <PathGeometry x:Key="ShieldIcon" Figures="M18 5.41503L11.5 3.12091L5 5.41503V10.8184C5 13.4178 6.26292 15.8552 8.38653 17.3542L11.5 19.5519L14.6135 17.3542C16.7371 15.8552 18 13.4178 18 10.8184V5.41503ZM11.5 22L15.7668 18.9881C18.4213 17.1143 20 14.0677 20 10.8184V4L11.5 1L3 4V10.8184C3 14.0677 4.57865 17.1143 7.23317 18.9881L11.5 22Z"/>
+            <PathGeometry x:Key="PadlockLockedIcon" Figures="M20,18v-4c0-1.9-1.3-3.4-3-3.9V7c0-2.8-2.2-5-5-5S7,4.2,7,7v3.1c-1.7,0.4-3,2-3,3.9v4c0,2.2,1.8,4,4,4h8   C18.2,22,20,20.2,20,18z M9,7c0-1.7,1.3-3,3-3s3,1.3,3,3v3H9V7z M6,18v-4c0-1.1,0.9-2,2-2h8c1.1,0,2,0.9,2,2v4c0,1.1-0.9,2-2,2H8   C6.9,20,6,19.1,6,18z"/>
+            <PathGeometry x:Key="PadlockUnlockedIcon" Figures="M12,4c1.7,0,3,1.3,3,3c0,0.6,0.4,1,1,1s1-0.4,1-1c0-2.8-2.2-5-5-5S7,4.2,7,7v3.1c-1.7,0.4-3,2-3,3.9v4c0,2.2,1.8,4,4,4h8   c2.2,0,4-1.8,4-4v-4c0-2.2-1.8-4-4-4H9V7C9,5.3,10.3,4,12,4z M18,14v4c0,1.1-0.9,2-2,2H8c-1.1,0-2-0.9-2-2v-4c0-1.1,0.9-2,2-2h8   C17.1,12,18,12.9,18,14z"/>
+            <PathGeometry x:Key="EditIcon" Figures="M402.3 344.9l32-32c5-5 13.7-1.5 13.7 5.7V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h273.5c7.1 0 10.7 8.6 5.7 13.7l-32 32c-1.5 1.5-3.5 2.3-5.7 2.3H48v352h352V350.5c0-2.1.8-4.1 2.3-5.6zm156.6-201.8L296.3 405.7l-90.4 10c-26.2 2.9-48.5-19.2-45.6-45.6l10-90.4L432.9 17.1c22.9-22.9 59.9-22.9 82.7 0l43.2 43.2c22.9 22.9 22.9 60 .1 82.8zM460.1 174L402 115.9 216.2 301.8l-7.3 65.3 65.3-7.3L460.1 174zm64.8-79.7l-43.2-43.2c-4.1-4.1-10.8-4.1-14.8 0L436 82l58.1 58.1 30.9-30.9c4-4.2 4-10.8-.1-14.9z"/>
+            <PathGeometry x:Key="EyeIcon" Figures="M12 3c5.392 0 9.878 3.88 10.819 9-.94 5.12-5.427 9-10.819 9-5.392 0-9.878-3.88-10.819-9C2.121 6.88 6.608 3 12 3zm0 16a9.005 9.005 0 0 0 8.777-7 9.005 9.005 0 0 0-17.554 0A9.005 9.005 0 0 0 12 19zm0-2.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9zm0-2a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+            <PathGeometry x:Key="EyeHideIcon" Figures="M17.882 19.297A10.949 10.949 0 0 1 12 21c-5.392 0-9.878-3.88-10.819-9a10.982 10.982 0 0 1 3.34-6.066L1.392 2.808l1.415-1.415 19.799 19.8-1.415 1.414-3.31-3.31zM5.935 7.35A8.965 8.965 0 0 0 3.223 12a9.005 9.005 0 0 0 13.201 5.838l-2.028-2.028A4.5 4.5 0 0 1 8.19 9.604L5.935 7.35zm6.979 6.978l-3.242-3.242a2.5 2.5 0 0 0 3.241 3.241zm7.893 2.264l-1.431-1.43A8.935 8.935 0 0 0 20.777 12 9.005 9.005 0 0 0 9.552 5.338L7.974 3.76C9.221 3.27 10.58 3 12 3c5.392 0 9.878 3.88 10.819 9a10.947 10.947 0 0 1-2.012 4.592zm-9.084-9.084a4.5 4.5 0 0 1 4.769 4.769l-4.77-4.769z"/>
+            <PathGeometry x:Key="KeyIcon" Figures="M56.629,379.2c-14.09,14.071-14.09,36.975,0,51.055  c14.08,14.087,36.981,14.087,50.965,0l10.177-10.08l42.438,42.428c7.257,7.268,18.888,7.268,26.155,0l63.244-63.244  c7.268-7.255,7.268-18.89,0-26.157l-42.429-42.427l75.586-75.682c16.174,8.357,34.61,13.075,54.059,13.075  c65.234,0,118.111-52.869,118.111-118.109c0-65.232-52.877-118.111-118.111-118.111c-65.238,0-118.11,52.879-118.11,118.111  c0,19.449,4.721,37.886,13.077,54.06L56.629,379.2z M291.396,150.059c0-25.075,20.354-45.429,45.427-45.429  c25.076,0,45.426,20.354,45.426,45.429s-20.35,45.426-45.426,45.426C311.751,195.485,291.396,175.133,291.396,150.059z"/>
+            <PathGeometry x:Key="LanguageIcon" Figures="M478.33,433.6l-90-218a22,22,0,0,0-40.67,0l-90,218a22,22,0,1,0,40.67,16.79L316.66,406H419.33l18.33,44.39A22,22,0,0,0,458,464a22,22,0,0,0,20.32-30.4ZM334.83,362,368,281.65,401.17,362Z M267.84,342.92a22,22,0,0,0-4.89-30.7c-.2-.15-15-11.13-36.49-34.73,39.65-53.68,62.11-114.75,71.27-143.49H330a22,22,0,0,0,0-44H214V70a22,22,0,0,0-44,0V90H54a22,22,0,0,0,0,44H251.25c-9.52,26.95-27.05,69.5-53.79,108.36-31.41-41.68-43.08-68.65-43.17-68.87a22,22,0,0,0-40.58,17c.58,1.38,14.55,34.23,52.86,83.93.92,1.19,1.83,2.35,2.74,3.51-39.24,44.35-77.74,71.86-93.85,80.74a22,22,0,1,0,21.07,38.63c2.16-1.18,48.6-26.89,101.63-85.59,22.52,24.08,38,35.44,38.93,36.1a22,22,0,0,0,30.75-4.9Z"/>
+            <PathGeometry x:Key="BinIcon" Figures="M432 80h-82.38l-34-56.75C306.1 8.827 291.4 0 274.6 0H173.4C156.6 0 141 8.827 132.4 23.25L98.38 80H16C7.125 80 0 87.13 0 96v16C0 120.9 7.125 128 16 128H32v320c0 35.35 28.65 64 64 64h256c35.35 0 64-28.65 64-64V128h16C440.9 128 448 120.9 448 112V96C448 87.13 440.9 80 432 80zM171.9 50.88C172.9 49.13 174.9 48 177 48h94c2.125 0 4.125 1.125 5.125 2.875L293.6 80H154.4L171.9 50.88zM352 464H96c-8.837 0-16-7.163-16-16V128h288v320C368 456.8 360.8 464 352 464zM224 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S208 183.2 208 192v208C208 408.8 215.2 416 224 416zM144 416C152.8 416 160 408.8 160 400V192c0-8.844-7.156-16-16-16S128 183.2 128 192v208C128 408.8 135.2 416 144 416zM304 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S288 183.2 288 192v208C288 408.8 295.2 416 304 416z"/>
+            <PathGeometry x:Key="XIcon" Figures="M10.17,10l3.89-3.89a.37.37,0,1,0-.53-.53L9.64,9.43,5.75,5.54a.37.37,0,1,0-.53.53L9.11,10,5.22,13.85a.37.37,0,0,0,0,.53.34.34,0,0,0,.26.11.36.36,0,0,0,.27-.11l3.89-3.89,3.89,3.89a.34.34,0,0,0,.26.11.35.35,0,0,0,.27-.11.37.37,0,0,0,0-.53Z"/>
+            <PathGeometry x:Key="CopyIcon" Figures="M10 4C9.44772 4 9 4.44772 9 5V15C9 15.5523 9.44772 16 10 16H18C18.5523 16 19 15.5523 19 15V11C19 10.4477 18.5523 10 18 10H14C13.4477 10 13 9.55228 13 9V5C13 4.44772 12.5523 4 12 4H10ZM14.0632 2C14.9536 2 15.7979 2.39547 16.3679 3.07945L20.3047 7.80355C20.754 8.34269 21 9.02229 21 9.7241V15C21 16.6569 19.6569 18 18 18V19C18 20.6569 16.6569 22 15 22H6C4.34315 22 3 20.6569 3 19V9C3 7.34315 4.34315 6 6 6H7V5C7 3.34315 8.34315 2 10 2H14.0632ZM7 8H6C5.44772 8 5 8.44772 5 9V19C5 19.5523 5.44772 20 6 20H15C15.5523 20 16 19.5523 16 19V18H10C8.34315 18 7 16.6569 7 15V8ZM17.865 8L14.961 4.51531C14.9867 4.67308 15 4.83499 15 5V8H17.865Z"/>
+            <PathGeometry x:Key="TickIcon" Figures="M 0 5 L 5 10 L 14 0"/>
+            <PathGeometry x:Key="SettingsIcon" Figures="M262.29,192.31a64,64,0,1,0,57.4,57.4A64.13,64.13,0,0,0,262.29,192.31ZM416.39,256a154.34,154.34,0,0,1-1.53,20.79l45.21,35.46A10.81,10.81,0,0,1,462.52,326l-42.77,74a10.81,10.81,0,0,1-13.14,4.59l-44.9-18.08a16.11,16.11,0,0,0-15.17,1.75A164.48,164.48,0,0,1,325,400.8a15.94,15.94,0,0,0-8.82,12.14l-6.73,47.89A11.08,11.08,0,0,1,298.77,470H213.23a11.11,11.11,0,0,1-10.69-8.87l-6.72-47.82a16.07,16.07,0,0,0-9-12.22,155.3,155.3,0,0,1-21.46-12.57,16,16,0,0,0-15.11-1.71l-44.89,18.07a10.81,10.81,0,0,1-13.14-4.58l-42.77-74a10.8,10.8,0,0,1,2.45-13.75l38.21-30a16.05,16.05,0,0,0,6-14.08c-.36-4.17-.58-8.33-.58-12.5s.21-8.27.58-12.35a16,16,0,0,0-6.07-13.94l-38.19-30A10.81,10.81,0,0,1,49.48,186l42.77-74a10.81,10.81,0,0,1,13.14-4.59l44.9,18.08a16.11,16.11,0,0,0,15.17-1.75A164.48,164.48,0,0,1,187,111.2a15.94,15.94,0,0,0,8.82-12.14l6.73-47.89A11.08,11.08,0,0,1,213.23,42h85.54a11.11,11.11,0,0,1,10.69,8.87l6.72,47.82a16.07,16.07,0,0,0,9,12.22,155.3,155.3,0,0,1,21.46,12.57,16,16,0,0,0,15.11,1.71l44.89-18.07a10.81,10.81,0,0,1,13.14,4.58l42.77,74a10.8,10.8,0,0,1-2.45,13.75l-38.21,30a16.05,16.05,0,0,0-6.05,14.08C416.17,247.67,416.39,251.83,416.39,256Z"/>
+            <PathGeometry x:Key="LoadingIcon" Figures="M4 24C4 35.0457 12.9543 44 24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4"/>
+            <PathGeometry x:Key="MinimiseIcon" Figures="M5 12H12H19"/>
+            <PathGeometry x:Key="MinimiseToSystemTrayIcon" Figures="M48.5,20.8C43.4,25.9,38.4,31,33.3,36.1c-0.3,0.3-0.5,0.5-0.8,0.8c-4.6-4.6-9.2-9.2-13.9-13.9c-0.7-0.7-1.5-1.5-2.2-2.2  c-1.8-1.8-4.7,1-2.8,2.8c5.1,5.1,10.2,10.2,15.3,15.3c0.7,0.7,1.5,1.5,2.2,2.2c0.8,0.8,2.1,0.8,2.8,0C39,36,44.1,31,49.2,25.9  c0.7-0.7,1.5-1.5,2.2-2.2C53.2,21.9,50.4,19,48.5,20.8z"/>
+            <PathGeometry x:Key="RightArrowIcon" Figures="M0.062 128.25L383.812 512 0.062 895.75V128.25z"/>
+            <PathGeometry x:Key="LeftArrowIcon" Figures="M0 511.875l383.75 383.75v-767.5L0 511.875z"/>
             <Style x:Key="FocusVisual">
                 <Setter Property="Control.Template">
                     <Setter.Value>
                         <ControlTemplate>
-                            <Rectangle Margin="2"
-                                       SnapsToDevicePixels="True"
-                                       Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
-                                       StrokeDashArray="1 2"
-                                       StrokeThickness="1"/>
-                            
+                            <Rectangle/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -81,7 +97,7 @@
                                         CornerRadius="2">
 
                                     <Path Name="CheckMarkPath"
-                                          Data="M 0 5 L 5 10 L 14 0"
+                                          Data="{DynamicResource TickIcon}"
                                           Stroke="FloralWhite"
                                           StrokeThickness="2"
                                           StrokeEndLineCap="Round"
@@ -661,12 +677,12 @@
                                         <Storyboard>
                                             <ColorAnimation Storyboard.TargetName="background"
                                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                            To="#DB111C" Duration="0:0:0.2"/>
+                                                            To="#DB111C" Duration="0:0:0.1"/>
 
                                             <ThicknessAnimation Storyboard.TargetName="ellipse"
                                                                 Storyboard.TargetProperty="Margin"
                                                                 To="20,2,2,2"
-                                                                Duration="0:0:0.2">
+                                                                Duration="0:0:0.1">
 
                                                 <ThicknessAnimation.EasingFunction>
                                                     <CubicEase EasingMode="EaseInOut"/>
@@ -681,11 +697,11 @@
                                             <ColorAnimation Storyboard.TargetName="background"
                                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
                                                             To="#FF2A2A32"
-                                                            Duration="0:0:0.2"/>
+                                                            Duration="0:0:0.1"/>
 
                                             <ThicknessAnimation Storyboard.TargetName="ellipse"
                                                                 Storyboard.TargetProperty="Margin"
-                                                                Duration="0:0:0.2">
+                                                                Duration="0:0:0.1">
 
                                                 <ThicknessAnimation.EasingFunction>
                                                     <CubicEase EasingMode="EaseInOut"/>
@@ -708,8 +724,8 @@
                         <ControlTemplate TargetType="{x:Type MenuItem}">
                             <Border Margin="10,0,10,0" Background="Transparent">
                                 <StackPanel Orientation="Horizontal">
-                                    <ContentPresenter ContentSource="Icon" Width="12" Height="12" RenderOptions.BitmapScalingMode="Fant" Margin="0,0,8,0" VerticalAlignment="Center"/>
-                                    <ContentPresenter ContentSource="Header" VerticalAlignment="Center" Margin="0,2,0,0"/>
+                                    <ContentPresenter ContentSource="Icon" Width="16" Height="16" VerticalAlignment="Center" Margin="0,0,8,2"/>
+                                    <ContentPresenter ContentSource="Header" VerticalAlignment="Center" Margin="0,0,0,0"/>
                                 </StackPanel>
                             </Border>
 
@@ -720,7 +736,12 @@
                                             <Storyboard>
                                                 <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
                                                                 To="LightGray"
-                                                                Duration="0:0:0.1"/>
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
@@ -728,7 +749,12 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
-                                                                Duration="0:0:0.1"/>
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.ExitActions>
@@ -739,7 +765,12 @@
                                             <Storyboard>
                                                 <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
                                                                 To="DarkGray"
-                                                                Duration="0:0:0.1"/>
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
@@ -747,7 +778,12 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
-                                                                Duration="0:0:0.1"/>
+                                                                Duration="0:0:0.1">
+                                                    
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.ExitActions>
@@ -779,7 +815,7 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ContextMenu}">
                             <Border x:Name="Border" Background="{DynamicResource DarkerColour}" BorderBrush="#444444" BorderThickness="1">
-                                <Border>
+                                <Border Margin="0,4,0,2">
                                     <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
 
                                     <Border.Background>
@@ -797,143 +833,12 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <ImageBrush x:Key="NextButton.Static.Background" ImageSource="Resources\NextButton.png"/>
-            <SolidColorBrush x:Key="NextButton.Static.Border" Color="Transparent"/>
-            <ImageBrush x:Key="NextButton.MouseOver.Background" ImageSource="Resources\NextButton_Hover.png"/>
-            <SolidColorBrush x:Key="NextButton.MouseOver.Border" Color="Transparent"/>
-            <ImageBrush x:Key="NextButton.Pressed.Background" ImageSource="Resources\NextButton_Pressed.png"/>
-            <SolidColorBrush x:Key="NextButton.Pressed.Border" Color="Transparent"/>
-            <ImageBrush x:Key="NextButton.Disabled.Background" ImageSource="Resources\NextButton_Pressed.png"/>
-            <SolidColorBrush x:Key="NextButton.Disabled.Border" Color="Transparent"/>
-            <SolidColorBrush x:Key="NextButton.Disabled.Foreground" Color="Transparent"/>
-            <Style x:Key="CarouselButtonNext" TargetType="{x:Type Button}">
+            <Style x:Key="CarouselButton" TargetType="{x:Type Button}">
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="{StaticResource NextButton.Static.Background}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource NextButton.Static.Border}"/>
+                <Setter Property="Background" Value="Black"/>
                 <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="1"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="True">
-
-                                <Border x:Name="nextImageButtonContent">
-                                    <ContentPresenter
-                                x:Name="contentPresenter"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Focusable="False"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                </Border>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsDefaulted" Value="True">
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource NextButton.MouseOver.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource NextButton.MouseOver.Border}"/>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource NextButton.Pressed.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource NextButton.Pressed.Border}"/>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource NextButton.Disabled.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource NextButton.Disabled.Border}"/>
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource NextButton.Disabled.Foreground}"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <ImageBrush x:Key="PreviousButton.Static.Background" ImageSource="Resources\PrevButton.png"/>
-            <SolidColorBrush x:Key="PreviousButton.Static.Border" Color="Transparent"/>
-            <ImageBrush x:Key="PreviousButton.MouseOver.Background" ImageSource="Resources\PrevButton_Hover.png"/>
-            <SolidColorBrush x:Key="PreviousButton.MouseOver.Border" Color="Transparent"/>
-            <ImageBrush x:Key="PreviousButton.Pressed.Background" ImageSource="Resources\PrevButton_Pressed.png"/>
-            <SolidColorBrush x:Key="PreviousButton.Pressed.Border" Color="Transparent"/>
-            <ImageBrush x:Key="PreviousButton.Disabled.Background" ImageSource="Resources\PrevButton_Pressed.png"/>
-            <SolidColorBrush x:Key="PreviousButton.Disabled.Border" Color="Transparent"/>
-            <SolidColorBrush x:Key="PreviousButton.Disabled.Foreground" Color="Transparent"/>
-            <Style x:Key="CarouselButtonPrevious" TargetType="{x:Type Button}">
-                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="{StaticResource PreviousButton.Static.Background}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource PreviousButton.Static.Border}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="1"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="True">
-                                <ContentPresenter
-                                x:Name="contentPresenter"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Focusable="False"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsDefaulted" Value="True">
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource PreviousButton.MouseOver.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PreviousButton.MouseOver.Border}"/>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource PreviousButton.Pressed.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PreviousButton.Pressed.Border}"/>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource PreviousButton.Disabled.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PreviousButton.Disabled.Border}"/>
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource PreviousButton.Disabled.Foreground}"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <ImageBrush x:Key="ShowKeyButton.Static.Background" ImageSource="Resources\ShowKey.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="ShowKeyButton.Static.Border" Color="Transparent"/>
-            <ImageBrush x:Key="ShowKeyButton.MouseOver.Background" ImageSource="Resources\ShowKey_Hover.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="ShowKeyButton.MouseOver.Border" Color="Transparent"/>
-            <ImageBrush x:Key="ShowKeyButton.Pressed.Background" ImageSource="Resources\ShowKey_Pressed.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="ShowKeyButton.Pressed.Border" Color="Transparent"/>
-            <ImageBrush x:Key="ShowKeyButton.Disabled.Background" ImageSource="Resources\ShowKey_Pressed.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="ShowKeyButton.Disabled.Border" Color="Transparent"/>
-            <SolidColorBrush x:Key="ShowKeyButton.Disabled.Foreground" Color="Transparent"/>
-            <Style x:Key="ShowKeyButton" TargetType="{x:Type Button}">
-                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="{StaticResource ShowKeyButton.Static.Background}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource ShowKeyButton.Static.Border}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="1"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Opacity" Value="0"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
@@ -942,146 +847,155 @@
                                     BorderBrush="{TemplateBinding BorderBrush}"
                                     BorderThickness="{TemplateBinding BorderThickness}"
                                     SnapsToDevicePixels="True">
-                                <ContentPresenter x:Name="contentPresenter"
-                                                  Margin="{TemplateBinding Padding}"
-                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                  Focusable="False"
-                                                  RecognizesAccessKey="True"
-                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+
+                                <Border x:Name="nextImageButtonContent">
+                                    <ContentPresenter x:Name="contentPresenter"
+                                                      Margin="{TemplateBinding Padding}"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                      Focusable="False"
+                                                      RecognizesAccessKey="True"
+                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                </Border>
                             </Border>
                             <ControlTemplate.Triggers>
-                                <Trigger Property="IsDefaulted" Value="True">
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                                </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource ShowKeyButton.MouseOver.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ShowKeyButton.MouseOver.Border}"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 To="0.3"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="#404040"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource ShowKeyButton.Pressed.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ShowKeyButton.Pressed.Border}"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 To="0.4"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="#303030"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource ShowKeyButton.Disabled.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource ShowKeyButton.Disabled.Border}"/>
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource ShowKeyButton.Disabled.Foreground}"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <ImageBrush x:Key="HideKeyButton.Static.Background" ImageSource="Resources\HideKey.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="HideKeyButton.Static.Border" Color="Transparent"/>
-            <ImageBrush x:Key="HideKeyButton.MouseOver.Background" ImageSource="Resources\HideKey_Hover.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="HideKeyButton.MouseOver.Border" Color="Transparent"/>
-            <ImageBrush x:Key="HideKeyButton.Pressed.Background" ImageSource="Resources\HideKey_Pressed.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="HideKeyButton.Pressed.Border" Color="Transparent"/>
-            <ImageBrush x:Key="HideKeyButton.Disabled.Background" ImageSource="Resources\HideKey_Pressed.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="HideKeyButton.Disabled.Border" Color="Transparent"/>
-            <SolidColorBrush x:Key="HideKeyButton.Disabled.Foreground" Color="Transparent"/>
-            <Style x:Key="HideKeyButton" TargetType="{x:Type Button}">
-                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="{StaticResource HideKeyButton.Static.Background}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource HideKeyButton.Static.Border}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="1"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="True">
-                                <ContentPresenter
-                                x:Name="contentPresenter"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Focusable="False"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsDefaulted" Value="True">
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource HideKeyButton.MouseOver.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource HideKeyButton.MouseOver.Border}"/>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource HideKeyButton.Pressed.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource HideKeyButton.Pressed.Border}"/>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource HideKeyButton.Disabled.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource HideKeyButton.Disabled.Border}"/>
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource HideKeyButton.Disabled.Foreground}"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <ImageBrush x:Key="FolderButton.Static.Background" ImageSource="Resources\Folder.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="FolderButton.Static.Border" Color="Transparent"/>
-            <ImageBrush x:Key="FolderButton.MouseOver.Background" ImageSource="Resources\Folder_Hover.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="FolderButton.MouseOver.Border" Color="Transparent"/>
-            <ImageBrush x:Key="FolderButton.Pressed.Background" ImageSource="Resources\Folder_Pressed.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="FolderButton.Pressed.Border" Color="Transparent"/>
-            <ImageBrush x:Key="FolderButton.Disabled.Background" ImageSource="Resources\Folder_Pressed.png" Stretch="Uniform"/>
-            <SolidColorBrush x:Key="FolderButton.Disabled.Border" Color="Transparent"/>
-            <SolidColorBrush x:Key="FolderButton.Disabled.Foreground" Color="Transparent"/>
-            <Style x:Key="FolderButton" TargetType="{x:Type Button}">
-                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="{StaticResource FolderButton.Static.Background}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource FolderButton.Static.Border}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="1"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border
-                            x:Name="border"
-                            Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}"
-                            SnapsToDevicePixels="True">
-                                <ContentPresenter
-                                x:Name="contentPresenter"
-                                Margin="{TemplateBinding Padding}"
-                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                Focusable="False"
-                                RecognizesAccessKey="True"
-                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsDefaulted" Value="True">
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                                </Trigger>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource FolderButton.MouseOver.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource FolderButton.MouseOver.Border}"/>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource FolderButton.Pressed.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource FolderButton.Pressed.Border}"/>
-                                </Trigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource FolderButton.Disabled.Background}"/>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource FolderButton.Disabled.Border}"/>
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource FolderButton.Disabled.Foreground}"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 To="0.4"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="#303030"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -1810,273 +1724,23 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <ImageBrush x:Key="SettingsButtonStyle.Static.Background" ImageSource="Resources\ToolbarButton.png"/>
-            <Style x:Key="SettingsButtonStyle" TargetType="{x:Type Button}">
+            <Style x:Key="ToolBarButtonStyle" TargetType="{x:Type Button}">
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="{StaticResource SettingsButtonStyle.Static.Background}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="Foreground" Value="FloralWhite"/>
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="0"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="border"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    SnapsToDevicePixels="True">
-
-                                <Border>
-                                    <Grid>
-                                        <Border x:Name="buttonFade" Background="Black" Opacity="0"/>
-
-                                        <ContentPresenter x:Name="contentPresenter"
-                                                          Margin="{TemplateBinding Padding}"
-                                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                          Focusable="False"
-                                                          RecognizesAccessKey="True"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                    </Grid>
-
-                                    <Border.Background>
-                                        <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-                                    </Border.Background>
-                                </Border>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <EventTrigger RoutedEvent="MouseEnter">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.2"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="MouseLeave">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.4"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="buttonFade" Property="Opacity" Value="0.5"/>
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="Gray"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <ImageBrush x:Key="MinimiseToSystemTray.Static.Background" ImageSource="Resources\MinimiseToSystemTray.png"/>
-            <Style x:Key="MinimiseToSystemTrayButtonStyle" TargetType="{x:Type Button}">
-                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="{StaticResource MinimiseToSystemTray.Static.Background}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="0"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="border"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    SnapsToDevicePixels="True">
-
-                                <Border>
-                                    <Grid>
-                                        <Border x:Name="buttonFade" Background="Black" Opacity="0"/>
-
-                                        <ContentPresenter x:Name="contentPresenter"
-                                                          Margin="{TemplateBinding Padding}"
-                                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                          Focusable="False"
-                                                          RecognizesAccessKey="True"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                    </Grid>
-
-                                    <Border.Background>
-                                        <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-                                    </Border.Background>
-                                </Border>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <EventTrigger RoutedEvent="MouseEnter">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.2"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="MouseLeave">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.4"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="buttonFade" Property="Opacity" Value="0.5"/>
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="Gray"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <ImageBrush x:Key="Minimise.Static.Background" ImageSource="Resources\Minimise.png"/>
-            <Style x:Key="MinimiseButtonStyle" TargetType="{x:Type Button}">
-                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="{StaticResource Minimise.Static.Background}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
-                <Setter Property="BorderThickness" Value="1"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="0"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="border"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    SnapsToDevicePixels="True">
-
-                                <Border>
-                                    <Grid>
-                                        <Border x:Name="buttonFade" Background="Black" Opacity="0"/>
-
-                                        <ContentPresenter x:Name="contentPresenter"
-                                                          Margin="{TemplateBinding Padding}"
-                                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                                          Focusable="False"
-                                                          RecognizesAccessKey="True"
-                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                    </Grid>
-
-                                    <Border.Background>
-                                        <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-                                    </Border.Background>
-                                </Border>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <EventTrigger RoutedEvent="MouseEnter">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.2"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="MouseLeave">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.4"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="buttonFade" Property="Opacity" Value="0.5"/>
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="Gray"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <ImageBrush x:Key="Exit.Static.Background" ImageSource="Resources\Exit.png"/>
-            <Style x:Key="CloseButtonStyle" TargetType="{x:Type Button}">
-                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="{StaticResource Exit.Static.Background}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
                 <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                <Setter Property="VerticalContentAlignment" Value="Center"/>
-                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Effect">
+                    <Setter.Value>
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="0"
+                                          Opacity="0.3"/>
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
@@ -2105,49 +1769,152 @@
                                 </Border>
                             </Border>
                             <ControlTemplate.Triggers>
-                                <EventTrigger RoutedEvent="MouseEnter">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.2"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="MouseLeave">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.4"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                                <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="buttonFade"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0"
-                                                             Duration="0:0:0.1"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="0.2"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="LightGray"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="0"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="0.4"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="DarkGray"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="0"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
                                 <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="buttonFade" Property="Opacity" Value="0.5"/>
-                                    <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="Gray"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="0.4"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="DarkGray"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="buttonFade"
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="0"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -2281,10 +2048,11 @@
                 <Setter Property="ContextMenu">
                     <Setter.Value>
                         <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                            <MenuItem Header="Paste">
+                            <MenuItem Header="{DynamicResource item221}">
                                 <MenuItem.Icon>
-                                    <Image Source="Resources\Copy.png"
-                                           RenderOptions.BitmapScalingMode="Fant"/>
+                                    <Path Data="{DynamicResource CopyIcon}"
+                                          Fill="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(TextElement.Foreground)}"
+                                          Stretch="Uniform"/>
                                 </MenuItem.Icon>
                                 <MenuItem.Style>
                                     <Style TargetType="{x:Type MenuItem}"
@@ -2349,15 +2117,16 @@
                 <Setter Property="ContextMenu">
                     <Setter.Value>
                         <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                            <MenuItem Header="Paste">
+                            <MenuItem Header="{DynamicResource item221}">
                                 <MenuItem.Icon>
-                                    <Image Source="Resources\Copy.png"
-                                           RenderOptions.BitmapScalingMode="Fant"/>
+                                    <Path Data="{DynamicResource CopyIcon}"
+                                          Fill="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(TextElement.Foreground)}"
+                                          Stretch="Uniform"/>
                                 </MenuItem.Icon>
                                 <MenuItem.Style>
                                     <Style TargetType="{x:Type MenuItem}"
                                            BasedOn="{StaticResource CustomMenuItem}">
-                                        
+
                                         <EventSetter Event="Click"
                                                      Handler="TextBoxContextMenuPasteClick"/>
                                     </Style>
@@ -2400,44 +2169,158 @@
                     </MultiTrigger>
                 </Style.Triggers>
             </Style>
-            <ImageBrush x:Key="EnterButton.Static.Background" ImageSource="Resources\Arrow.png" Stretch="Uniform"/>
-            <ImageBrush x:Key="EnterButton.MouseOver.Background" ImageSource="Resources\Arrow_Hover.png" Stretch="Uniform"/>
-            <ImageBrush x:Key="EnterButton.Pressed.Background" ImageSource="Resources\Arrow_Pressed.png" Stretch="Uniform"/>
-            <ImageBrush x:Key="EnterButton.Disabled" ImageSource="Resources\Arrow_Pressed.png" Stretch="Uniform"/>
-            <Style x:Key="EnterButton" TargetType="{x:Type Button}">
+            <Style x:Key="PathButton" TargetType="{x:Type Button}">
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
-                <Setter Property="Background" Value="{StaticResource EnterButton.Static.Background}"/>
-                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="FloralWhite"/>
                 <Setter Property="BorderThickness" Value="1"/>
                 <Setter Property="HorizontalContentAlignment" Value="Center"/>
                 <Setter Property="VerticalContentAlignment" Value="Center"/>
                 <Setter Property="Padding" Value="1"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Setter.Value>
+                </Setter>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
                             <Border x:Name="border"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                SnapsToDevicePixels="True">
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    SnapsToDevicePixels="True">
 
                                 <ContentPresenter x:Name="contentPresenter"
-                                              Margin="{TemplateBinding Padding}"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              Focusable="False"
-                                              RecognizesAccessKey="True"
-                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                                  ContentSource="Content"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                  SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource EnterButton.MouseOver.Background}"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                 To="1.2"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                 To="1.2"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="LightGray"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="True">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource EnterButton.Pressed.Background}"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="DarkGray"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="False">
-                                    <Setter TargetName="border" Property="Background" Value="{StaticResource EnterButton.Disabled}"/>
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                To="DarkGray"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                                Duration="0:0:0.1">
+
+                                                    <ColorAnimation.EasingFunction>
+                                                        <CubicEase EasingMode="EaseInOut"/>
+                                                    </ColorAnimation.EasingFunction>
+                                                </ColorAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

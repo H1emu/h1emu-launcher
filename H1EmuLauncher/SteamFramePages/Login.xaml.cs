@@ -100,7 +100,7 @@ namespace H1EmuLauncher.SteamFramePages
             List<uint> depotIdList = GetParameterList<uint>(args, "-depot");
             List<ulong> manifestIdList = GetParameterList<ulong>(args, "-manifest");
 
-            List<(uint, ulong)> depotManifestIds = new List<(uint, ulong)>();
+            List<(uint, ulong)> depotManifestIds = new();
             var zippedDepotManifest = depotIdList.Zip(manifestIdList, (depotId, manifestId) => (depotId, manifestId));
             depotManifestIds.AddRange(zippedDepotManifest);
 

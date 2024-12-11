@@ -99,13 +99,17 @@
                         <ComboBoxItem Content="Svenska" Style="{DynamicResource ComboBoxItemStyle}"/>
                     </ComboBox>
 
-                    <Image Source="..\Resources\Language.png"
-                           RenderOptions.BitmapScalingMode="Fant"
-                           Width="16"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="30,0,0,2"
-                           IsHitTestVisible="False"/>
+                    <Viewbox Width="18"
+                             Height="18"
+                             Stretch="Uniform"
+                             VerticalAlignment="Center"
+                             HorizontalAlignment="Left"
+                             Margin="28,0,0,3">
+
+                        <Path Data="{DynamicResource LanguageIcon}"
+                                   Fill="FloralWhite"
+                                   IsHitTestVisible="False"/>
+                    </Viewbox>
 
                 </Grid>
             </Grid>

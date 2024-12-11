@@ -317,9 +317,10 @@ namespace H1EmuLauncher.SettingsPages
                     settingsProgressBar.Value = 0;
                     settingsProgressBar.IsIndeterminate = false;
                     settingsProgressRowContent.Measure(new System.Windows.Size(settingsProgressRow.MaxWidth, settingsProgressRow.MaxHeight));
-                    DoubleAnimation hide = new(settingsProgressRowContent.DesiredSize.Height, 0, new Duration(TimeSpan.FromMilliseconds(150)));
-                    hide.AccelerationRatio = 0.4;
-                    hide.DecelerationRatio = 0.4;
+                    DoubleAnimation hide = new(settingsProgressRowContent.DesiredSize.Height, 0, new Duration(TimeSpan.FromMilliseconds(150)))
+                    {
+                        EasingFunction = new BackEase { EasingMode = EasingMode.EaseIn }
+                    };
                     hide.Completed += (s, o) => settingsProgressRow.Visibility = Visibility.Collapsed;
                     settingsProgressRow.BeginAnimation(HeightProperty, hide);
                 }));
@@ -339,9 +340,10 @@ namespace H1EmuLauncher.SettingsPages
                     settingsProgressBar.Value = 0;
                     settingsProgressRow.Visibility = Visibility.Visible;
                     settingsProgressRowContent.Measure(new System.Windows.Size(settingsProgressRow.MaxWidth, settingsProgressRow.MaxHeight));
-                    DoubleAnimation show = new(0, settingsProgressRowContent.DesiredSize.Height, new Duration(TimeSpan.FromMilliseconds(150)));
-                    show.AccelerationRatio = 0.4;
-                    show.DecelerationRatio = 0.4;
+                    DoubleAnimation show = new(0, settingsProgressRowContent.DesiredSize.Height, new Duration(TimeSpan.FromMilliseconds(150)))
+                    {
+                        EasingFunction = new BackEase { EasingMode = EasingMode.EaseOut }
+                    };
                     settingsProgressRow.BeginAnimation(HeightProperty, show);
                 }));
             }

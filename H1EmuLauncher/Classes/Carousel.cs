@@ -51,8 +51,7 @@ namespace H1EmuLauncher.Classes
                 {
                     DoubleAnimation carouselImageRectangle = new(0, LauncherWindow.launcherInstance.carouselRectangleGrid.ActualWidth, new Duration(TimeSpan.FromSeconds(6)))
                     {
-                        AccelerationRatio = 0.2,
-                        DecelerationRatio = 0.2
+                        EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
                     };
                     carouselImageRectangle.SetValue(Storyboard.TargetProperty, LauncherWindow.launcherInstance.carouselRectangle);
                     carouselImageRectangle.SetValue(Storyboard.TargetPropertyProperty, new PropertyPath(FrameworkElement.WidthProperty));

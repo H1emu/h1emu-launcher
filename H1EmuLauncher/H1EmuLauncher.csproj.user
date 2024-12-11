@@ -30,7 +30,7 @@
     <Compile Update="SteamFramePages\2FA.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\AddServerWindow.xaml.cs">
+    <Compile Update="Windows\AddOrEditServerWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SteamFramePages\DownloadComplete.xaml.cs">
@@ -121,7 +121,7 @@
     <Page Update="SteamFramePages\2FA.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\AddServerWindow.xaml">
+    <Page Update="Windows\AddOrEditServerWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SteamFramePages\DownloadComplete.xaml">

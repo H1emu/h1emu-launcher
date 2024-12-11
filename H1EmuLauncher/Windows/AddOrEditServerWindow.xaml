@@ -1,4 +1,4 @@
-﻿<Window x:Class="H1EmuLauncher.AddServerWindow"
+﻿<Window x:Class="H1EmuLauncher.AddOrEditServerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -81,20 +81,21 @@
                 <Button x:Name="CloseButton"
                         Grid.Column="2"
                         Click="CloseAddServer"
+                        Background="{DynamicResource RedAccent}"
                         Width="40"
                         Height="25"
                         Margin="15,15,15,20"
                         VerticalAlignment="Top"
-                        HorizontalAlignment="Right"
-                        Style="{StaticResource CloseButtonStyle}">
+                        Style="{StaticResource ToolBarButtonStyle}">
 
-                    <Button.Effect>
-                        <DropShadowEffect BlurRadius="15"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="0"
-                                          Opacity="0.3"/>
-                    </Button.Effect>
+                    <Button.Content>
+                        <Path Data="{DynamicResource XIcon}"
+                              Stretch="Uniform"
+                              Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
+                              Width="10"
+                              Height="10"/>
+
+                    </Button.Content>
                 </Button>
             </Grid>
 

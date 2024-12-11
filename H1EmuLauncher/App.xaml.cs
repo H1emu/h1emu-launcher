@@ -17,7 +17,7 @@ namespace H1EmuLauncher
         {
             AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
 
-            if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1) 
+            if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
             {
                 // Remove some characters
                 SendArgumentsToRunningInstance(string.Join(' ', e.Args).Replace("h1emulauncher://", "").Replace("/\"", "").Replace("%20", " ").Split(' '));
@@ -31,7 +31,8 @@ namespace H1EmuLauncher
 
             StartPipeServer();
 
-            Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 60 });
+            // Lower the framerate of animations otherwise GPU usage is high
+            //Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 60 });
 
             // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Clear();
@@ -97,17 +98,23 @@ namespace H1EmuLauncher
 
         private void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            MessageBoxResult mbr = CustomMessageBox.Show($"An error occurred that prevented the application from starting: \"{(e.ExceptionObject as Exception).Message}\".\n\nDeleting the application data can sometimes fix this, would you like to try that and attempt to restart now?", null, false, true, true);
-            if (mbr == MessageBoxResult.Yes)
             {
-                DirectoryInfo di = new($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher");
-                foreach (var file in di.GetFiles())
-                    file.Delete();
+                if (LauncherWindow.launcherInstance == null)
+                {
+                    MessageBoxResult mbr = CustomMessageBox.Show($"An exception occurred that prevented the application from starting: \"{(e.ExceptionObject as Exception).Message}\".\n\nDeleting the application data can sometimes fix this, would you like to try that and attempt to restart now?", null, false, true, true);
+                    if (mbr == MessageBoxResult.Yes)
+                    {
+                        DirectoryInfo di = new($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher");
+                        foreach (var file in di.GetFiles())
+                            file.Delete();
 
-                System.Windows.Forms.Application.Restart();
+                        System.Windows.Forms.Application.Restart();
+                    }
+                }
+
+                CustomMessageBox.Show($"An unhandled exception occurred: \"{(e.ExceptionObject as Exception).Message}\".\n\nThe launcher will now exit.");
+                Environment.Exit(1);
             }
-
-            Environment.Exit(1);
         }
     }
 }

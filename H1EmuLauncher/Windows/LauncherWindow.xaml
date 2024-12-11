@@ -35,10 +35,11 @@
                 <DoubleAnimation Storyboard.TargetName="carouselImageTranslate"
                                  Storyboard.TargetProperty="(TranslateTransform.X)"
                                  From="0" To="-573"
-                                 Duration="0:0:1.5"
-                                 AccelerationRatio="0.2"
-                                 DecelerationRatio="0.8">
-                    
+                                 Duration="0:0:1.5">
+
+                    <DoubleAnimation.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </DoubleAnimation.EasingFunction>
                 </DoubleAnimation>
             </Storyboard>
             <Storyboard x:Key="CarouselNextImageAnimationFollow"
@@ -47,10 +48,11 @@
                 <DoubleAnimation Storyboard.TargetName="carouselImageFollowTranslate"
                                  Storyboard.TargetProperty="(TranslateTransform.X)"
                                  From="573" To="0"
-                                 Duration="0:0:1.5"
-                                 AccelerationRatio="0.2"
-                                 DecelerationRatio="0.8">
-                    
+                                 Duration="0:0:1.5">
+
+                    <DoubleAnimation.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </DoubleAnimation.EasingFunction>
                 </DoubleAnimation>
             </Storyboard>
             <Storyboard x:Key="CarouselPrevImageAnimation"
@@ -59,10 +61,11 @@
                 <DoubleAnimation Storyboard.TargetName="carouselImageTranslate"
                                  Storyboard.TargetProperty="(TranslateTransform.X)"
                                  From="0" To="573"
-                                 Duration="0:0:1.5"
-                                 AccelerationRatio="0.2"
-                                 DecelerationRatio="0.8">
-                    
+                                 Duration="0:0:1.5">
+
+                    <DoubleAnimation.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </DoubleAnimation.EasingFunction>
                 </DoubleAnimation>
             </Storyboard>
             <Storyboard x:Key="CarouselPrevImageAnimationFollow"
@@ -71,10 +74,11 @@
                 <DoubleAnimation Storyboard.TargetName="carouselImageFollowTranslate"
                                  Storyboard.TargetProperty="(TranslateTransform.X)"
                                  From="-573" To="0"
-                                 Duration="0:0:1.5"
-                                 AccelerationRatio="0.2"
-                                 DecelerationRatio="0.8">
+                                 Duration="0:0:1.5">
 
+                    <DoubleAnimation.EasingFunction>
+                        <CubicEase EasingMode="EaseInOut"/>
+                    </DoubleAnimation.EasingFunction>
                 </DoubleAnimation>
             </Storyboard>
 
@@ -152,36 +156,27 @@
                         <!-- Open Settings window button-->
                         <Button x:Name="SettingsButton"
                                 Click="SettingsButtonClick"
-                                RenderOptions.BitmapScalingMode="Fant"
+                                Background="{DynamicResource DarkerColour}"
                                 Width="45"
                                 Height="30"
                                 Margin="0,0,4,0"
-                                VerticalAlignment="Top"
-                                HorizontalAlignment="Right"
-                                BorderThickness="0"
-                                Style="{DynamicResource SettingsButtonStyle}">
+                                Style="{DynamicResource ToolBarButtonStyle}">
 
-                            <!-- Settings icon -->
-                            <Image x:Name="settingsButtonIcon"
-                                   Source="..\Resources\Settings.png"
-                                   RenderOptions.BitmapScalingMode="Fant"
-                                   Width="14"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Left"
-                                   RenderTransformOrigin="0.5, 0.5">
-                                
-                                <Image.RenderTransform>
-                                    <RotateTransform x:Name="rotateSettingsIcon"/>
-                                </Image.RenderTransform>
-                            </Image>
+                            <Button.Content>
+                                <!-- Settings icon -->
+                                <Path x:Name="settingsButtonIcon"
+                                      Data="{DynamicResource SettingsIcon}"
+                                      Stretch="Uniform"
+                                      Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
+                                      Width="14"
+                                      Height="14"
+                                      RenderTransformOrigin="0.5, 0.5">
 
-                            <Button.Effect>
-                                <DropShadowEffect BlurRadius="15"
-                                                  Direction="-90"
-                                                  RenderingBias="Quality"
-                                                  ShadowDepth="0"
-                                                  Opacity="0.3"/>
-                            </Button.Effect>
+                                    <Path.RenderTransform>
+                                        <RotateTransform x:Name="rotateSettingsIcon"/>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Button.Content>
 
                             <Button.Triggers>
                                 <EventTrigger RoutedEvent="MouseEnter">
@@ -189,18 +184,14 @@
                                         <Storyboard>
                                             <DoubleAnimation Storyboard.TargetName="rotateSettingsIcon"
                                                              Storyboard.TargetProperty="Angle"
-                                                             To="90"
-                                                             Duration="0:0:0.5"
-                                                             RepeatBehavior="Forever"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="settingsButtonIcon"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.8"
-                                                             Duration="0:0:0.3"
-                                                             FillBehavior="HoldEnd"/>
+                                                             To="360"
+                                                             Duration="0:0:2"
+                                                             RepeatBehavior="Forever">
+
+                                                <DoubleAnimation.EasingFunction>
+                                                    <BackEase EasingMode="EaseInOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
@@ -210,22 +201,12 @@
                                         <Storyboard>
                                             <DoubleAnimation Storyboard.TargetName="settingsButtonIcon"
                                                              Storyboard.TargetProperty="Opacity"
-                                                             To="1"
                                                              Duration="0:0:0.3"
                                                              FillBehavior="Stop"/>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </EventTrigger>
                                 <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="settingsButtonIcon"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.6"
-                                                             Duration="0:0:0.3"
-                                                             FillBehavior="HoldEnd"/>
-                                        </Storyboard>
-                                    </BeginStoryboard>
                                 </EventTrigger>  
                             </Button.Triggers>
                         </Button>
@@ -233,62 +214,61 @@
                         <!-- Minimise to system tray button-->
                         <Button x:Name="MinimiseToSystemTrayButton"
                                 Click="MinimiseToSystemTrayButtonClick"
-                                RenderOptions.BitmapScalingMode="Fant"
+                                Background="{DynamicResource DarkerColour}"
                                 Width="45"
                                 Height="30"
                                 Margin="0,0,4,0"
-                                VerticalAlignment="Top"
-                                HorizontalAlignment="Right"
-                                BorderThickness="0"
-                                Style="{DynamicResource MinimiseToSystemTrayButtonStyle}">
+                                Style="{DynamicResource ToolBarButtonStyle}">
 
-                            <Button.Effect>
-                                <DropShadowEffect BlurRadius="15"
-                                                  Direction="-90"
-                                                  RenderingBias="Quality"
-                                                  ShadowDepth="0"
-                                                  Opacity="0.3"/>
-                            </Button.Effect>
+                            <Button.Content>
+                                <Path Data="{DynamicResource MinimiseToSystemTrayIcon}"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
+                                      Width="10"
+                                      Height="10"
+                                      Margin="0,0,0,4"/>
+                                
+                            </Button.Content>
                         </Button>
 
                         <!-- Minimise button-->
                         <Button x:Name="MinimiseButton"
                                 Click="MinimiseButtonClick"
+                                Background="{DynamicResource DarkerColour}"
                                 Width="45"
                                 Height="30"
                                 Margin="0,0,4,0"
-                                VerticalAlignment="Top"
-                                HorizontalAlignment="Right"
-                                BorderThickness="0"
-                                Style="{DynamicResource MinimiseButtonStyle}">
+                                Style="{DynamicResource ToolBarButtonStyle}">
 
-                            <Button.Effect>
-                                <DropShadowEffect BlurRadius="15"
-                                                      Direction="-90"
-                                                      RenderingBias="Quality"
-                                                      ShadowDepth="0"
-                                                      Opacity="0.3"/>
-                            </Button.Effect>
+                            <Button.Content>
+                                <Path Data="{DynamicResource MinimiseIcon}"
+                                      Stretch="Uniform"
+                                      Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
+                                      StrokeEndLineCap="Round"
+                                      StrokeStartLineCap="Round"
+                                      Width="10"
+                                      Height="10"
+                                      Margin="0,0,0,4"/>
+                                
+                            </Button.Content>
                         </Button>
 
                         <!-- Exit button -->
                         <Button x:Name="ExitButton"
                                 Click="CloseLauncher"
-                                RenderOptions.BitmapScalingMode="Fant"
+                                Background="{DynamicResource RedAccent}"
                                 Width="45"
                                 Height="30"
-                                VerticalAlignment="Top"
-                                HorizontalAlignment="Right"
-                                BorderThickness="0"
-                                Style="{DynamicResource CloseButtonStyle}">
+                                Style="{DynamicResource ToolBarButtonStyle}">
 
-                            <Button.Effect>
-                                <DropShadowEffect BlurRadius="15"
-                                                  Direction="-90"
-                                                  RenderingBias="Quality"
-                                                  ShadowDepth="0"
-                                                  Opacity="0.3"/>
-                            </Button.Effect>
+                            <Button.Content>
+                                <Path Data="{DynamicResource XIcon}"
+                                      Stretch="Uniform"
+                                      Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
+                                      Width="10"
+                                      Height="10"/>
+                                
+                            </Button.Content>
                         </Button>
                     </StackPanel>
 
@@ -320,12 +300,15 @@
                         <!-- Context menu to copy link -->
                         <Button.ContextMenu>
                             <ContextMenu Style="{DynamicResource ContextMenuStyle}">
-                                <MenuItem Click="DiscordLinkCopyClick"
+                                <MenuItem x:Name="discordLinkCopyMenuItem"
+                                          Click="DiscordLinkCopyClick"
                                           Header="{DynamicResource item193}"
                                           Style="{DynamicResource CustomMenuItem}">
 
                                     <MenuItem.Icon>
-                                        <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
+                                        <Path Data="{DynamicResource CopyIcon}"
+                                              Fill="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(TextElement.Foreground)}"
+                                              Stretch="Uniform"/>
                                     </MenuItem.Icon>
                                 </MenuItem>
                             </ContextMenu>
@@ -440,7 +423,9 @@
                                                   Style="{DynamicResource CustomMenuItem}">
                                             
                                             <MenuItem.Icon>
-                                                <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
+                                                <Path Data="{DynamicResource CopyIcon}"
+                                                      Fill="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(TextElement.Foreground)}"
+                                                      Stretch="Uniform"/>
                                             </MenuItem.Icon>
                                         </MenuItem>
                                     </ContextMenu>
@@ -497,19 +482,33 @@
                                     <Button x:Name="nextImage"
                                             Click="NextImageClick"
                                             Width="30"
-                                            BorderThickness="0"
+                                            Foreground="#505050"
                                             HorizontalAlignment="Right"
-                                            Opacity="0"
-                                            Style="{DynamicResource CarouselButtonNext}"/>
+                                            Style="{DynamicResource CarouselButton}">
+
+                                        <Button.Content>
+                                            <Path Data="{DynamicResource RightArrowIcon}"
+                                                  Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
+                                                  Stretch="Uniform"
+                                                  Margin="5,0,5,0"/>
+                                        </Button.Content>
+                                    </Button>
 
                                     <!-- Previous image button -->
                                     <Button x:Name="prevImage"
                                             Click="PrevImageClick"
                                             Width="30"
-                                            BorderThickness="0"
+                                            Foreground="#505050"
                                             HorizontalAlignment="Left"
-                                            Opacity="0"
-                                            Style="{DynamicResource CarouselButtonPrevious}"/>
+                                            Style="{DynamicResource CarouselButton}">
+
+                                        <Button.Content>
+                                            <Path Data="{DynamicResource LeftArrowIcon}"
+                                                  Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
+                                                  Stretch="Uniform"
+                                                  Margin="5,0,5,0"/>
+                                        </Button.Content>
+                                    </Button>
 
                                     <!-- Grid for image carousel progress bar -->
                                     <Grid x:Name="carouselRectangleGrid"
@@ -584,7 +583,9 @@
                                                   Style="{DynamicResource CustomMenuItem}">
                                             
                                             <MenuItem.Icon>
-                                                <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
+                                                <Path Data="{DynamicResource CopyIcon}"
+                                                      Fill="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(TextElement.Foreground)}"
+                                                      Stretch="Uniform"/>
                                             </MenuItem.Icon>
                                         </MenuItem>
                                     </ContextMenu>
@@ -689,9 +690,10 @@
                                              Grid.Column="1"
                                              Grid.Row="1"
                                              Height="35"
-                                             Padding="32,7,32,0"
+                                             Padding="32,1,32,0"
                                              IsReadOnly="True"
                                              Cursor="Arrow"
+                                             VerticalContentAlignment="Center"
                                              Text="{DynamicResource item75}"
                                              Style="{DynamicResource TextBoxStyle}">
 
@@ -710,17 +712,19 @@
                                     <Button Grid.Column="1"
                                             Grid.Row="1"
                                             Click="OpenDirectory"
-                                            RenderOptions.BitmapScalingMode="Fant"
-                                            Width="18"
-                                            Height="18"
-                                            Margin="10,0,0,1"
+                                            Width="20"
+                                            Height="20"
+                                            Margin="10,0,0,0"
                                             HorizontalAlignment="Left"
-                                            BorderThickness="0"
-                                            Style="{DynamicResource FolderButton}">
+                                            RenderOptions.BitmapScalingMode="Fant"
+                                            Style="{DynamicResource PathButton}">
 
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="..\Resources\Folder.png" Stretch="Uniform"/>
-                                        </Button.Background>
+                                        <Button.Content>
+                                            <Path Data="{DynamicResource FolderIcon}"
+                                                  Stretch="Uniform"
+                                                  Stroke="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
+                                                  StrokeThickness="2"/>
+                                        </Button.Content>
                                     </Button>
 
                                     <!-- Button to select a new game directory -->
@@ -728,17 +732,18 @@
                                             Grid.Column="1"
                                             Grid.Row="1"
                                             Click="SelectDirectory"
-                                            RenderOptions.BitmapScalingMode="Fant"
-                                            Width="18"
-                                            Height="18"
-                                            Margin="0,0,10,1"
+                                            Width="20"
+                                            Height="20"
+                                            Margin="0,0,10,0"
                                             HorizontalAlignment="Right"
-                                            BorderThickness="0"
-                                            Style="{DynamicResource EnterButton}">
+                                            RenderOptions.BitmapScalingMode="Fant"
+                                            Style="{DynamicResource PathButton}">
 
-                                        <Button.Background>
-                                            <ImageBrush ImageSource="..\Resources\Arrow.png" Stretch="Uniform"/>
-                                        </Button.Background>
+                                        <Button.Content>
+                                            <Path Data="{DynamicResource ArrowIcon}"
+                                                  Stretch="Uniform"
+                                                  Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+                                        </Button.Content>
                                     </Button>
                                 </Grid>
 
@@ -747,7 +752,7 @@
                                           Grid.Row="3"
                                           Height="35"
                                           Margin="0,20,10,20"
-                                          Padding="38,2,5,0"
+                                          Padding="36,2,4,0"
                                           VerticalAlignment="Center"
                                           VerticalContentAlignment="Center"
                                           Foreground="FloralWhite"
@@ -781,16 +786,17 @@
                                 </ComboBox>
 
                                 <!-- Server selector icon -->
-                                <Image Grid.Row="3"
-                                       Source="..\Resources\Server.png"
-                                       Stretch="Uniform"
-                                       RenderOptions.BitmapScalingMode="Fant"
-                                       Width="20"
-                                       Height="20"
-                                       Margin="10,0,0,0"
-                                       VerticalAlignment="Center"
-                                       HorizontalAlignment="Left"
-                                       IsHitTestVisible="False"/>
+                                <Path Grid.Row="3"
+                                      Data="{DynamicResource PlayIcon}"
+                                      Stroke="FloralWhite"
+                                      StrokeThickness="2"
+                                      Stretch="Uniform"
+                                      Width="18"
+                                      Height="18"
+                                      Margin="11,0,0,1"
+                                      VerticalAlignment="Center"
+                                      HorizontalAlignment="Left"
+                                      IsHitTestVisible="False"/>
 
                                 <!-- Play button -->
                                 <Button x:Name="playButton"

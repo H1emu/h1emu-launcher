@@ -38,23 +38,13 @@
     <None Remove="Resources\5.jpg" />
     <None Remove="Resources\6.jpg" />
     <None Remove="Resources\7.jpg" />
-    <None Remove="Resources\AccountKey.png" />
-    <None Remove="Resources\Arrow_Hover.png" />
-    <None Remove="Resources\Arrow_Pressed.png" />
     <None Remove="Resources\Assets_256.pack" />
     <None Remove="Resources\BackgroundArt.png" />
-    <None Remove="Resources\Copy.png" />
     <None Remove="Resources\CustomClientConfig.ini" />
-    <None Remove="Resources\Delete.png" />
     <None Remove="Resources\Discord.png" />
     <None Remove="Resources\Discord_Hover.png" />
     <None Remove="Resources\Discord_Pressed.png" />
     <None Remove="Resources\DisplayImage.png" />
-    <None Remove="Resources\Edit.png" />
-    <None Remove="Resources\Exit.png" />
-    <None Remove="Resources\Folder.png" />
-    <None Remove="Resources\Folder_Hover.png" />
-    <None Remove="Resources\Folder_Pressed.png" />
     <None Remove="Resources\Game-Patch-2016.zip" />
     <None Remove="Resources\Game-Patch-KotK.zip" />
     <None Remove="Resources\Game_Patch_2016.zip" />
@@ -65,37 +55,15 @@
     <None Remove="Resources\H1EmuVoicePatch.zip" />
     <None Remove="Resources\H1Z1_BE.exe" />
     <None Remove="Resources\H1Z1_FP.exe" />
-    <None Remove="Resources\HideKey.png" />
-    <None Remove="Resources\HideKey_Hover.png" />
-    <None Remove="Resources\HideKey_Pressed.png" />
     <None Remove="Resources\Icon.ico" />
-    <None Remove="Resources\Language.png" />
-    <None Remove="Resources\Loading.png" />
     <None Remove="Resources\logo.bmp" />
-    <None Remove="Resources\Minimise.png" />
-    <None Remove="Resources\MinimiseToSystemTray.png" />
-    <None Remove="Resources\NextButton.png" />
-    <None Remove="Resources\NextButton_Hover.png" />
-    <None Remove="Resources\NextButton_Pressed.png" />
     <None Remove="Resources\node-v22.7.0-win-x64.zip" />
     <None Remove="Resources\Node_Files.zip" />
     <None Remove="Resources\node_v22.7.0_win_x64.zip" />
-    <None Remove="Resources\Padlock.png" />
     <None Remove="Resources\Placeholder.jpg" />
-    <None Remove="Resources\Play.png" />
-    <None Remove="Resources\PrevButton.png" />
-    <None Remove="Resources\PrevButton_Hover.png" />
-    <None Remove="Resources\PrevButton_Pressed.png" />
     <None Remove="Resources\PrimaryButton.png" />
     <None Remove="Resources\Server-Quickstart.zip" />
-    <None Remove="Resources\Server.png" />
     <None Remove="Resources\Server_Quickstart.zip" />
-    <None Remove="Resources\Settings.png" />
-    <None Remove="Resources\Shield.png" />
-    <None Remove="Resources\ShowKey.png" />
-    <None Remove="Resources\ShowKey_Hover.png" />
-    <None Remove="Resources\ShowKey_Pressed.png" />
-    <None Remove="Resources\ToolbarButton.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -178,31 +146,13 @@
     <Resource Include="Resources\7.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Arrow.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Arrow_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Arrow_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\AccountKey.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Assets_256.pack">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\BackgroundArt.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Copy.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\CustomClientConfig.ini">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Delete.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Discord.png">
@@ -212,21 +162,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Discord_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Edit.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Exit.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Folder.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Folder_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Folder_Pressed.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Game_Patch_2016.zip">
@@ -250,88 +185,22 @@
     <Resource Include="Resources\H1Z1_FP.exe">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\HideKey.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\HideKey_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\HideKey_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Icon.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Language.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Loading.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\logo.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Minimise.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\MinimiseToSystemTray.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\NextButton.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\NextButton_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\NextButton_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Node_Files.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Padlock.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Placeholder.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Play.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\PrevButton.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\PrevButton_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\PrevButton_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\PrimaryButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Server.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\Server_Quickstart.zip">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Settings.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Shield.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\ShowKey.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\ShowKey_Hover.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\ShowKey_Pressed.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\ToolbarButton.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

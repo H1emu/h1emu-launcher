@@ -75,7 +75,9 @@
                                   Style="{DynamicResource CustomMenuItem}">
                             
                             <MenuItem.Icon>
-                                <Image Source="..\Resources\Copy.png" RenderOptions.BitmapScalingMode="Fant"/>
+                                <Path Data="{DynamicResource CopyIcon}"
+                                      Fill="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(TextElement.Foreground)}"
+                                      Stretch="Uniform"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </ContextMenu>
@@ -147,16 +149,6 @@
                     </PasswordBox.Effect>
                 </PasswordBox>
 
-                <!-- Key image inside of account key textbox -->
-                <Image Source="..\Resources\AccountKey.png"
-                       RenderOptions.BitmapScalingMode="Fant"
-                       Stretch="Uniform"
-                       Width="18"
-                       Height="18"
-                       Margin="30,0,0,1"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Left"/>
-
                 <!-- Hint for account key textbox -->
                 <TextBlock x:Name="accountKeyBoxHint"
                            Height="27"
@@ -171,37 +163,49 @@
                 <!-- Password visibility show button -->
                 <Button x:Name="showKeyButton"
                         Click="ShowKey"
-                        RenderOptions.BitmapScalingMode="Fant"
                         Width="20"
                         Height="20"
-                        Margin="0,0,32,1"
+                        Margin="0,0,32,0"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
-                        BorderThickness="0" 
-                        Style="{StaticResource ShowKeyButton}">
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Style="{StaticResource PathButton}">
 
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\ShowKey.png" Stretch="Uniform"/>
-                    </Button.Background>
+                    <Button.Content>
+                        <Path Data="{DynamicResource EyeIcon}"
+                              Stretch="Uniform"
+                              Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+                    </Button.Content>
                 </Button>
 
                 <!-- Password visibility hide button -->
                 <Button x:Name="hideKeyButton"
                         Click="HideKey"
-                        RenderOptions.BitmapScalingMode="Fant"
                         Width="20"
                         Height="20"
-                        Margin="0,0,32,1"
+                        Margin="0,0,32,0"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
-                        BorderThickness="0"
                         Visibility="Hidden"
-                        Style="{StaticResource HideKeyButton}">
+                        RenderOptions.BitmapScalingMode="Fant"
+                        Style="{StaticResource PathButton}">
 
-                    <Button.Background>
-                        <ImageBrush ImageSource="..\Resources\HideKey.png" Stretch="Uniform"/>
-                    </Button.Background>
+                    <Button.Content>
+                        <Path Data="{DynamicResource EyeHideIcon}"
+                              Stretch="Uniform"
+                              Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+                    </Button.Content>
                 </Button>
+
+                <!-- Key image inside of account key textbox -->
+                <Path Data="{DynamicResource KeyIcon}"
+                      Stretch="Uniform"
+                      Fill="FloralWhite"
+                      Width="18"
+                      Height="18"
+                      Margin="30,0,0,1"
+                      VerticalAlignment="Center"
+                      HorizontalAlignment="Left"/>
             </Grid>
 
             <Border x:Name="generateAccountKeyButtonRow"

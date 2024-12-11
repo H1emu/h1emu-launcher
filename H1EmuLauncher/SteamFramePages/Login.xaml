@@ -79,15 +79,16 @@
                    Style="{DynamicResource TextBlockStyle}"/>
 
         <!-- Icon for username textbox -->
-        <Image Source="..\Resources\Shield.png"
-               Stretch="Uniform"
-               Grid.Row="0"
-               RenderOptions.BitmapScalingMode="Fant"
-               Width="18"
-               Height="18"
-               Margin="10,0,0,0"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Left"/>
+        <Path Data="{DynamicResource ShieldIcon}"
+              Stretch="Uniform"
+              Fill="FloralWhite"
+              Grid.Row="0"
+              RenderOptions.BitmapScalingMode="Fant"
+              Width="18"
+              Height="18"
+              Margin="10,0,0,0"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Left"/>
         
         <!-- Text beside username textbox -->
         <TextBlock Grid.Column="1"
@@ -133,50 +134,54 @@
                    Style="{DynamicResource TextBlockStyle}"/>
 
         <!-- Icon for password textbox -->
-        <Image Source="..\Resources\Padlock.png"
-               Stretch="Uniform"
-               Grid.Row="2"
-               RenderOptions.BitmapScalingMode="Fant"
-               Width="18"
-               Height="18"
-               Margin="10,0,0,1"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Left"/>
+        <Path Data="{DynamicResource PadlockLockedIcon}"
+              Stretch="Uniform"
+              Fill="FloralWhite"
+              Grid.Row="2"
+              RenderOptions.BitmapScalingMode="Fant"
+              Width="18"
+              Height="18"
+              Margin="10,0,0,1"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Left"/>
 
         <!-- Button to submit username and password -->
         <Button x:Name="loginEnterButton"
                 Grid.Row="2"
-                Click="LoginButton"
-                RenderOptions.BitmapScalingMode="Fant"
-                Width="18"
-                Height="18"
-                Margin="0,0,20,1"
+                Click="LoginButton" 
+                Width="20"
+                Height="20"
+                Margin="0,0,20,0"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Right"
-                BorderThickness="0"
-                Style="{DynamicResource EnterButton}">
-            
-            <Button.Background>
-                <ImageBrush ImageSource="..\Resources\Arrow.png" Stretch="Uniform"/>
-            </Button.Background>
+                Style="{DynamicResource PathButton}">
+
+            <Button.Content>
+                <Path Data="{DynamicResource ArrowIcon}"
+                      Stretch="Uniform"
+                      Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+            </Button.Content>
         </Button>
 
         <!-- Loading wheel GIF -->
-        <Image x:Name="loadingIcon"
-               Grid.Row="2"
-               Source="..\Resources\Loading.png"
-               RenderOptions.BitmapScalingMode="Fant"
-               RenderTransformOrigin="0.5, 0.5"
-               VerticalAlignment="Center"
-               HorizontalAlignment="Right"
-               Margin="0,0,20,1"
-               Height="18"
-               Visibility="Hidden">
+        <Path x:Name="loadingIcon"
+              Grid.Row="2"
+              Data="{DynamicResource LoadingIcon}"
+              Stretch="Uniform"
+              Stroke="FloralWhite"
+              StrokeThickness="2"
+              StrokeEndLineCap="Round"
+              HorizontalAlignment="Right"
+              Margin="0,0,20,1"
+              Width="18"
+              Height="18"
+              Visibility="Hidden"
+              RenderTransformOrigin="0.5, 0.5">
 
-            <Image.RenderTransform>
+            <Path.RenderTransform>
                 <RotateTransform x:Name="loadingIconRotateTransform" Angle="0"/>
-            </Image.RenderTransform>
-        </Image>
+            </Path.RenderTransform>
+        </Path>
 
         <!-- Login message -->
         <TextBlock Grid.Row="2"

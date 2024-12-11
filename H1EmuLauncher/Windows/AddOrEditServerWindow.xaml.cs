@@ -4,6 +4,7 @@ using System.IO;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -11,12 +12,12 @@ using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher
 {
-    public partial class AddServerWindow : Window
+    public partial class AddOrEditServerWindow : Window
     {
-        public static AddServerWindow addServerInstance;
+        public static AddOrEditServerWindow addServerInstance;
         public int editIndex;
 
-        public AddServerWindow()
+        public AddOrEditServerWindow()
         {
             InitializeComponent();
             addServerInstance = this;
@@ -116,8 +117,20 @@ namespace H1EmuLauncher
                 MenuItem editOption = new()
                 {
                     Style = (Style)FindResource("CustomMenuItem"),
-                    Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Edit.png", UriKind.Absolute)) }
                 };
+                System.Windows.Shapes.Path pathEdit = new()
+                {
+                    Data = Geometry.Parse(FindResource("EditIcon").ToString()),
+                    Stretch = Stretch.Uniform
+                };
+                Binding bindingEdit = new("Foreground")
+                {
+                    Source = editOption,
+                    Mode = BindingMode.OneWay
+                };
+                BindingOperations.SetBinding(pathEdit, System.Windows.Shapes.Path.FillProperty, bindingEdit);
+
+                editOption.Icon = pathEdit;
                 editOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item212");
                 editOption.Click += (s, e) => { LauncherWindow.launcherInstance.EditServerInfo(newItem); };
 
@@ -131,10 +144,23 @@ namespace H1EmuLauncher
                 MenuItem deleteOption = new()
                 {
                     Style = (Style)FindResource("CustomMenuItem"),
-                    Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) }
                 };
+                System.Windows.Shapes.Path pathDelete = new()
+                {
+                    Data = Geometry.Parse(FindResource("BinIcon").ToString()),
+                    Stretch = Stretch.Uniform
+                };
+                Binding bindingDelete = new("Foreground")
+                {
+                    Source = deleteOption,
+                    Mode = BindingMode.OneWay
+                };
+                BindingOperations.SetBinding(pathDelete, System.Windows.Shapes.Path.FillProperty, bindingDelete);
+
+                deleteOption.Icon = pathDelete;
                 deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
                 deleteOption.Click += (s, e) => { LauncherWindow.launcherInstance.DeleteServer(newItem); };
+
                 newItemContextMenu.Items.Add(editOption);
                 newItemContextMenu.Items.Add(contextMenuSeparatorSeparator);
                 newItemContextMenu.Items.Add(deleteOption);

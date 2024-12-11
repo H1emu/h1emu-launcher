@@ -125,7 +125,7 @@ namespace H1EmuLauncher.SettingsPages
                 generateAccountKeyButtonRowContent.Measure(new Size(generateAccountKeyButtonRow.MaxWidth, generateAccountKeyButtonRow.MaxHeight));
                 DoubleAnimation show = new(0, generateAccountKeyButtonRowContent.DesiredSize.Height, new Duration(TimeSpan.FromMilliseconds(150)))
                 {
-                    EasingFunction = new CubicEase()
+                    EasingFunction = new BackEase { EasingMode = EasingMode.EaseOut }
                 };
                 generateAccountKeyButtonRow.BeginAnimation(HeightProperty, show);
             }
@@ -134,7 +134,7 @@ namespace H1EmuLauncher.SettingsPages
                 generateAccountKeyButtonRowContent.Measure(new Size(generateAccountKeyButtonRow.MaxWidth, generateAccountKeyButtonRow.MaxHeight));
                 DoubleAnimation hide = new(generateAccountKeyButtonRowContent.DesiredSize.Height, 0, new Duration(TimeSpan.FromMilliseconds(150)))
                 {
-                    EasingFunction = new CubicEase()
+                    EasingFunction = new BackEase { EasingMode = EasingMode.EaseIn }
                 };
                 hide.Completed += (s, o) => generateAccountKeyButtonRow.Visibility = Visibility.Collapsed;
                 generateAccountKeyButtonRow.BeginAnimation(HeightProperty, hide);

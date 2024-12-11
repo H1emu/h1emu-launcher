@@ -229,11 +229,10 @@ namespace H1EmuLauncher
                     isExecutingTasks = false;
 
                     installServerProgressBar.Value = 0;
-                    installServerProgressRowContent.Measure(new System.Windows.Size(installServerProgressRow.MaxWidth, installServerProgressRow.MaxHeight));
+                    installServerProgressRowContent.Measure(new Size(installServerProgressRow.MaxWidth, installServerProgressRow.MaxHeight));
                     DoubleAnimation hide = new(installServerProgressRowContent.DesiredSize.Height, 0, new Duration(TimeSpan.FromMilliseconds(150)))
                     {
-                        AccelerationRatio = 0.4,
-                        DecelerationRatio = 0.4
+                        EasingFunction = new BackEase { EasingMode = EasingMode.EaseIn }
                     };
                     hide.Completed += (s, o) => installServerProgressRow.Visibility = Visibility.Collapsed;
                     installServerProgressRow.BeginAnimation(HeightProperty, hide);
@@ -249,11 +248,10 @@ namespace H1EmuLauncher
                     isExecutingTasks = true;
 
                     installServerProgressRow.Visibility = Visibility.Visible;
-                    installServerProgressRowContent.Measure(new System.Windows.Size(installServerProgressRow.MaxWidth, installServerProgressRow.MaxHeight));
+                    installServerProgressRowContent.Measure(new Size(installServerProgressRow.MaxWidth, installServerProgressRow.MaxHeight));
                     DoubleAnimation show = new(0, installServerProgressRowContent.DesiredSize.Height, new Duration(TimeSpan.FromMilliseconds(150)))
                     {
-                        AccelerationRatio = 0.4,
-                        DecelerationRatio = 0.4
+                        EasingFunction = new BackEase { EasingMode = EasingMode.EaseOut }
                     };
                     installServerProgressRow.BeginAnimation(HeightProperty, show);
                 }));

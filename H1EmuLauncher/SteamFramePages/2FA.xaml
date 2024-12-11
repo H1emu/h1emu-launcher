@@ -18,18 +18,13 @@
                                  Storyboard.TargetProperty="Angle"
                                  By="0"
                                  To="360"
-                                 Duration="0:0:0.8"
-                                 FillBehavior="Stop"
-                                 RepeatBehavior="Forever"/>
-            </Storyboard>
-            <Storyboard x:Key="LoadingIconAnimationSecondary">
-                <DoubleAnimation Storyboard.TargetName="loadingIconRotateTransformSecondary"
-                                 Storyboard.TargetProperty="Angle"
-                                 By="0"
-                                 To="360"
-                                 Duration="0:0:0.8"
-                                 FillBehavior="Stop"
-                                 RepeatBehavior="Forever"/>
+                                 Duration="0:0:2"
+                                 RepeatBehavior="Forever">
+
+                    <DoubleAnimation.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
             </Storyboard>
 
             <!-- Load dictionary into xaml resources just so we can see on the designer -->
@@ -76,7 +71,7 @@
 
             <!-- Hint for auth code textbox -->
             <TextBlock x:Name="authHint"
-                       Margin="0,0,10,0"
+                       Margin="0,3,10,0"
                        Padding="35,0,0,0"
                        VerticalAlignment="Center"
                        IsHitTestVisible="False"
@@ -85,47 +80,52 @@
                        Style="{DynamicResource TextBlockStyle}"/>
 
             <!-- Padlock image -->
-            <Image Source="..\Resources\Padlock.png"
-                   RenderOptions.BitmapScalingMode="Fant"
-                   Width="18"
-                   Height="18"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Left"
-                   Margin="10,0,0,1"/>
+            <Path Data="{DynamicResource PadlockUnlockedIcon}"
+                  Stretch="Uniform"
+                  Fill="FloralWhite"
+                  RenderOptions.BitmapScalingMode="Fant"
+                  Width="18"
+                  Height="18"
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Left"
+                  Margin="10,0,0,0"/>
 
             <!-- Button to submit 2fa code -->
             <Button x:Name="twoFAButton"
-                    RenderOptions.BitmapScalingMode="Fant"
-                    Height="18"
-                    Width="18"
+                    Click="ContinueButton"
+                    Height="20"
+                    Width="20"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Right"
-                    Margin="0,0,20,1"
-                    Click="ContinueButton"
-                    BorderThickness="0"
-                    Style="{DynamicResource EnterButton}">
+                    Margin="0,0,20,0"
+                    RenderOptions.BitmapScalingMode="Fant"
+                    Style="{DynamicResource PathButton}">
 
-                <Button.Background>
-                    <ImageBrush ImageSource="..\Resources\Arrow.png" Stretch="Uniform"/>
-                </Button.Background>
+                <Button.Content>
+                    <Path Data="{DynamicResource ArrowIcon}"
+                          Stretch="Uniform"
+                          Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"/>
+                </Button.Content>
             </Button>
 
             <!-- Loading wheel GIF -->
-            <Image x:Name="loadingIcon"
-                   Source="..\Resources\Loading.png"
-                   RenderOptions.BitmapScalingMode="Fant"
-                   RenderTransformOrigin="0.5, 0.5"
-                   Margin="0,0,20,1"
-                   Height="18"
-                   Width="18"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Right"
-                   Visibility="Hidden">
+            <Path x:Name="loadingIcon"
+                  Data="{DynamicResource LoadingIcon}"
+                  Stretch="Uniform"
+                  Stroke="FloralWhite"
+                  StrokeThickness="2"
+                  StrokeEndLineCap="Round"
+                  Margin="0,0,20,0"
+                  Height="18"
+                  Width="18"
+                  HorizontalAlignment="Right"
+                  Visibility="Hidden"
+                  RenderTransformOrigin="0.5, 0.5">
 
-                <Image.RenderTransform>
+                <Path.RenderTransform>
                     <RotateTransform x:Name="loadingIconRotateTransform" Angle="0"/>
-                </Image.RenderTransform>
-            </Image>
+                </Path.RenderTransform>
+            </Path>
 
             <!-- Please enter 2 factor code text -->
             <TextBlock x:Name="twoFacInstructionText"
@@ -137,6 +137,7 @@
                        Style="{DynamicResource TextBlockStyle}"/>
         </Grid>
 
+        <!-- Separate screen for accepting the login prompt on a mobile device -->
         <Grid x:Name="_2FAAppScreen"
               HorizontalAlignment="Center"
               Visibility="Collapsed">
@@ -154,21 +155,23 @@
                        Style="{DynamicResource TextBlockStyle}"/>
 
             <!-- Loading wheel GIF -->
-            <Image Grid.Column="1"
-                   Source="..\Resources\Loading.png"
-                   RenderOptions.BitmapScalingMode="Fant"
-                   RenderTransformOrigin="0.5, 0.5"
-                   Margin="10,0,0,1"
-                   Height="18"
-                   Width="18"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Left">
+            <Path Grid.Column="1"
+                  Data="{DynamicResource LoadingIcon}"
+                  Stretch="Uniform"
+                  Stroke="FloralWhite"
+                  StrokeThickness="2"
+                  StrokeEndLineCap="Round"
+                  Margin="10,0,0,0"
+                  Height="18"
+                  Width="18"
+                  HorizontalAlignment="Right"
+                  RenderTransformOrigin="0.5, 0.5">
 
-                <Image.RenderTransform>
+                <Path.RenderTransform>
                     <RotateTransform x:Name="loadingIconRotateTransformSecondary" Angle="0"/>
-                </Image.RenderTransform>
+                </Path.RenderTransform>
 
-                <Image.Triggers>
+                <Path.Triggers>
                     <EventTrigger RoutedEvent="FrameworkElement.Loaded">
                         <BeginStoryboard>
                             <Storyboard>
@@ -176,14 +179,18 @@
                                                  Storyboard.TargetProperty="Angle"
                                                  By="0"
                                                  To="360"
-                                                 Duration="0:0:0.8"
-                                                 FillBehavior="Stop"
-                                                 RepeatBehavior="Forever"/>
+                                                 Duration="0:0:2"
+                                                 RepeatBehavior="Forever">
+
+                                    <DoubleAnimation.EasingFunction>
+                                        <BackEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger>
-                </Image.Triggers>
-            </Image>
+                </Path.Triggers>
+            </Path>
         </Grid>
     </Grid>
 </UserControl>

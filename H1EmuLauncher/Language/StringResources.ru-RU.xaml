@@ -198,4 +198,5 @@
     <system:String x:Key="item218">Режим разработчика</system:String>
     <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched and multiple instances of the game can be launched.</system:String>
     <system:String x:Key="item220">При вставке текста произошла ошибка:</system:String>
+    <system:String x:Key="item221">Paste</system:String>
 </ResourceDictionary>

@@ -26,15 +26,13 @@ namespace H1EmuLauncher.Classes
 
             DoubleAnimation a = new(0.7, new Duration(TimeSpan.FromMilliseconds(200)))
             {
-                AccelerationRatio = 0.2,
-                DecelerationRatio = 0.2
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
             };
             owner.BeginAnimation(Window.OpacityProperty, a);
 
             DoubleAnimation b = new(15, new Duration(TimeSpan.FromMilliseconds(200)))
             {
-                AccelerationRatio = 0.2,
-                DecelerationRatio = 0.2
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
             };
             childGrid.Effect.BeginAnimation(BlurEffect.RadiusProperty, b);
         }
@@ -49,15 +47,13 @@ namespace H1EmuLauncher.Classes
 
             DoubleAnimation a = new(1, new Duration(TimeSpan.FromMilliseconds(200)))
             {
-                AccelerationRatio = 0.2,
-                DecelerationRatio = 0.2
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
             };
             owner.BeginAnimation(Window.OpacityProperty, a);
 
             DoubleAnimation b = new(0, new Duration(TimeSpan.FromMilliseconds(200)))
             {
-                AccelerationRatio = 0.2,
-                DecelerationRatio = 0.2
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
             };
             childGrid.Effect.BeginAnimation(BlurEffect.RadiusProperty, b);
         }

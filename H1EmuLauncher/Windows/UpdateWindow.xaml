@@ -87,20 +87,21 @@
                 <Button x:Name="closeButton"
                         Grid.Column="2"
                         Click="CloseUpdateWindow"
+                        Background="{DynamicResource RedAccent}"
                         Width="40"
                         Height="25"
                         Margin="15"
                         VerticalAlignment="Top"
-                        HorizontalAlignment="Right"
-                        Style="{StaticResource CloseButtonStyle}">
+                        Style="{StaticResource ToolBarButtonStyle}">
 
-                    <Button.Effect>
-                        <DropShadowEffect BlurRadius="15"
-                                          Direction="-90"
-                                          RenderingBias="Quality"
-                                          ShadowDepth="0"
-                                          Opacity="0.3"/>
-                    </Button.Effect>
+                    <Button.Content>
+                        <Path Data="{DynamicResource XIcon}"
+                              Stretch="Uniform"
+                              Fill="{Binding Foreground, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Button}}"
+                              Width="10"
+                              Height="10"/>
+
+                    </Button.Content>
                 </Button>
             </Grid>
 

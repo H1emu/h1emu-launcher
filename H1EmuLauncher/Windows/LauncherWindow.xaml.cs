@@ -20,6 +20,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using Microsoft.Toolkit.Uwp.Notifications;
 using H1EmuLauncher.Classes;
+using System.Windows.Data;
 
 namespace H1EmuLauncher
 {
@@ -126,9 +127,9 @@ namespace H1EmuLauncher
                 string newServerName = SteamFramePages.Login.GetParameter(rawArgs, "-servername", "");
                 string newServerIp = SteamFramePages.Login.GetParameter(rawArgs, "-serverip", "");
 
-                if (AddServerWindow.addServerInstance == null)
+                if (AddOrEditServerWindow.addServerInstance == null)
                 {
-                    AddServerWindow addServer = new();
+                    AddOrEditServerWindow addServer = new();
                     addServer.serverNameBox.Text = newServerName;
                     addServer.serverIpBox.Text = newServerIp;
                     addServer.serverNameHint.Visibility = Visibility.Hidden;
@@ -142,7 +143,7 @@ namespace H1EmuLauncher
                     });
                 }
                 else
-                    AddServerWindow.addServerInstance.FillInFields(newServerName, newServerIp);
+                    AddOrEditServerWindow.addServerInstance.FillInFields(newServerName, newServerIp);
             }
             // If the account key argument exists, open the Settings window and tell it to open the Account Key tab with accountkey argument value
             else if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-accountkey", "")))
@@ -203,27 +204,49 @@ namespace H1EmuLauncher
                 notifyIconContextMenu.Style = (Style)FindResource("ContextMenuStyle");
                 notifyIconContextMenu.PlacementTarget = this;
 
-                MenuItem notifyIconMenuItemH1EmuServers = new()
+                MenuItem notifyIconMenuItemH1EmuServersPlay = new()
                 {
                     Style = (Style)FindResource("CustomMenuItem"),
-                    Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) },
-                    Margin = new Thickness(0, 5, 0, 0)
                 };
-                notifyIconMenuItemH1EmuServers.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item139");
-                notifyIconMenuItemH1EmuServers.Click += (o, s) =>
+                System.Windows.Shapes.Path pathH1EmuServersPlay = new()
+                {
+                    Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
+                    Stretch = Stretch.Uniform
+                };
+                Binding bindingH1EmuServersPlay = new("Foreground")
+                {
+                    Source = notifyIconMenuItemH1EmuServersPlay,
+                    Mode = BindingMode.OneWay
+                };
+                BindingOperations.SetBinding(pathH1EmuServersPlay, System.Windows.Shapes.Path.FillProperty, bindingH1EmuServersPlay);
+
+                notifyIconMenuItemH1EmuServersPlay.Icon = pathH1EmuServersPlay;
+                notifyIconMenuItemH1EmuServersPlay.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item139");
+                notifyIconMenuItemH1EmuServersPlay.Click += (o, s) =>
                 {
                     serverSelector.SelectedIndex = 0;
                     playButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
                 };
 
-                MenuItem notifyIconMenuItemSingleplayer = new()
+                MenuItem notifyIconMenuItemSingleplayerPlay = new()
                 {
                     Style = (Style)FindResource("CustomMenuItem"),
-                    Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) },
-                    Margin = new Thickness(0, 5, 0, 0)
                 };
-                notifyIconMenuItemSingleplayer.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item140");
-                notifyIconMenuItemSingleplayer.Click += (o, s) =>
+                System.Windows.Shapes.Path pathSinglePlayerPlay = new()
+                {
+                    Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
+                    Stretch = Stretch.Uniform
+                };
+                Binding bindingSinglePlayerPlay = new("Foreground")
+                {
+                    Source = notifyIconMenuItemSingleplayerPlay,
+                    Mode = BindingMode.OneWay
+                };
+                BindingOperations.SetBinding(pathSinglePlayerPlay, System.Windows.Shapes.Path.FillProperty, bindingSinglePlayerPlay);
+
+                notifyIconMenuItemSingleplayerPlay.Icon = pathSinglePlayerPlay;
+                notifyIconMenuItemSingleplayerPlay.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item140");
+                notifyIconMenuItemSingleplayerPlay.Click += (o, s) =>
                 {
                     serverSelector.SelectedIndex = 1;
                     playButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
@@ -232,36 +255,58 @@ namespace H1EmuLauncher
                 Separator notifyIconItemSeparator = new()
                 {
                     Style = (Style)FindResource("SeparatorMenuItem"),
-                    Background = new SolidColorBrush(Color.FromRgb(44, 44, 44)),
+                    Background = new SolidColorBrush(Color.FromRgb(66, 66, 66)),
                     Margin = new Thickness(10, 7, 10, 2)
                 };
 
                 MenuItem notifyIconMenuItemExit = new()
                 {
                     Style = (Style)FindResource("CustomMenuItem"),
-                    Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) },
-                    Margin = new Thickness(0, 5, 0, 5)
                 };
+                System.Windows.Shapes.Path pathExitNotifyIcon = new()
+                {
+                    Data = Geometry.Parse(FindResource("XIcon").ToString()),
+                    Stretch = Stretch.Uniform
+                };
+                Binding bindingExitNotifyIcon = new("Foreground")
+                {
+                    Source = notifyIconMenuItemExit,
+                    Mode = BindingMode.OneWay
+                };
+                BindingOperations.SetBinding(pathExitNotifyIcon, System.Windows.Shapes.Path.FillProperty, bindingExitNotifyIcon);
+
+                notifyIconMenuItemExit.Icon = pathExitNotifyIcon;
                 notifyIconMenuItemExit.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item194");
                 notifyIconMenuItemExit.Click += (o, s) => { Close(); };
 
-                notifyIconContextMenu.Items.Add(notifyIconMenuItemH1EmuServers);
-                notifyIconContextMenu.Items.Add(notifyIconMenuItemSingleplayer);
+                notifyIconContextMenu.Items.Add(notifyIconMenuItemH1EmuServersPlay);
+                notifyIconContextMenu.Items.Add(notifyIconMenuItemSingleplayerPlay);
                 notifyIconContextMenu.Items.Add(notifyIconItemSeparator);
                 notifyIconContextMenu.Items.Add(notifyIconMenuItemExit);
 
                 List<ServerListRecent> currentJsonRecent = JsonSerializer.Deserialize<List<ServerListRecent>>(File.ReadAllText(recentServersJsonFile));
                 foreach (ServerListRecent server in currentJsonRecent)
                 {
-                    MenuItem newItem = new()
+                    MenuItem playCustomServer = new()
                     {
                         Style = (Style)FindResource("CustomMenuItem"),
-                        Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) },
-                        Header = server.CustomServerNameRecent,
-                        Margin = new Thickness(0, 5, 0, 0)
+                        Header = server.CustomServerNameRecent
                     };
-                    newItem.Click += LaunchToCustomServerFromNotifyIcon;
-                    notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, newItem);
+                    System.Windows.Shapes.Path pathCustomServerDelete = new()
+                    {
+                        Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
+                        Stretch = Stretch.Uniform
+                    };
+                    Binding bindingCustomServerDelete = new("Foreground")
+                    {
+                        Source = playCustomServer,
+                        Mode = BindingMode.OneWay
+                    };
+                    BindingOperations.SetBinding(pathCustomServerDelete, System.Windows.Shapes.Path.FillProperty, bindingCustomServerDelete);
+
+                    playCustomServer.Icon = pathCustomServerDelete;
+                    playCustomServer.Click += LaunchToCustomServerFromNotifyIcon;
+                    notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, playCustomServer);
                 }
 
                 if (notifyIconContextMenu.Items.Count > 4)
@@ -269,7 +314,7 @@ namespace H1EmuLauncher
                     Separator separator = new()
                     {
                         Style = (Style)FindResource("SeparatorMenuItem"),
-                        Background = new SolidColorBrush(Color.FromRgb(44, 44, 44)),
+                        Background = new SolidColorBrush(Color.FromRgb(66, 66, 66)),
                         Margin = new Thickness(10, 7, 10, 2)
                     };
                     notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, separator);
@@ -308,13 +353,25 @@ namespace H1EmuLauncher
                         };
                         serverItem.ContextMenu = itemContextMenu;
 
-                        MenuItem editOption = new()
+                        MenuItem editOptionCustom = new()
                         {
                             Style = (Style)FindResource("CustomMenuItem"),
-                            Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Edit.png", UriKind.Absolute)) }
                         };
-                        editOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item212");
-                        editOption.Click += (s, e) => { EditServerInfo(serverItem); };
+                        System.Windows.Shapes.Path pathCustom = new()
+                        {
+                            Data = Geometry.Parse(FindResource("EditIcon").ToString()),
+                            Stretch = Stretch.Uniform
+                        };
+                        Binding bindingCustom = new("Foreground")
+                        {
+                            Source = editOptionCustom,
+                            Mode = BindingMode.OneWay
+                        };
+                        BindingOperations.SetBinding(pathCustom, System.Windows.Shapes.Path.FillProperty, bindingCustom);
+
+                        editOptionCustom.Icon = pathCustom;
+                        editOptionCustom.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item212");
+                        editOptionCustom.Click += (s, e) => { EditServerInfo(serverItem); };
 
                         Separator separator = new()
                         {
@@ -323,17 +380,29 @@ namespace H1EmuLauncher
                             Margin = new Thickness(10, 7, 10, 7)
                         };
 
-                        MenuItem deleteOption = new()
+                        MenuItem deleteOptionCustom = new()
                         {
                             Style = (Style)FindResource("CustomMenuItem"),
-                            Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Delete.png", UriKind.Absolute)) },
                         };
-                        deleteOption.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
-                        deleteOption.Click += (s, e) => { DeleteServer(serverItem); };
+                        System.Windows.Shapes.Path pathDeleteCustom = new()
+                        {
+                            Data = Geometry.Parse(FindResource("BinIcon").ToString()),
+                            Stretch = Stretch.Uniform
+                        };
+                        Binding bindingDeleteCustom = new("Foreground")
+                        {
+                            Source = deleteOptionCustom,
+                            Mode = BindingMode.OneWay
+                        };
+                        BindingOperations.SetBinding(pathDeleteCustom, System.Windows.Shapes.Path.FillProperty, bindingDeleteCustom);
 
-                        itemContextMenu.Items.Add(editOption);
+                        deleteOptionCustom.Icon = pathDeleteCustom;
+                        deleteOptionCustom.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item192");
+                        deleteOptionCustom.Click += (s, e) => { DeleteServer(serverItem); };
+
+                        itemContextMenu.Items.Add(editOptionCustom);
                         itemContextMenu.Items.Add(separator);
-                        itemContextMenu.Items.Add(deleteOption);
+                        itemContextMenu.Items.Add(deleteOptionCustom);
                     }
                 }
             }
@@ -347,7 +416,7 @@ namespace H1EmuLauncher
 
         private void AddNewServer(object sender, MouseButtonEventArgs e)
         {
-            AddServerWindow addServer = new();
+            AddOrEditServerWindow addServer = new();
             addServer.ShowDialog();
         }
 
@@ -358,7 +427,7 @@ namespace H1EmuLauncher
             {
                 if (currentJson[i].CustomServerName == (string)serverItem.Content)
                 {
-                    AddServerWindow editServer = new();
+                    AddOrEditServerWindow editServer = new();
                     editServer.serverNameBox.Text = currentJson[i].CustomServerName;
                     editServer.serverIpBox.Text = currentJson[i].CustomServerIp;
                     editServer.serverNameHint.Visibility = Visibility.Hidden;
@@ -443,6 +512,7 @@ namespace H1EmuLauncher
             {
                 try
                 {
+                    // Remove the item and add it back again so that the most recently played server is at the top of the list
                     List<ServerListRecent> currentJsonRecent = JsonSerializer.Deserialize<List<ServerListRecent>>(File.ReadAllText(recentServersJsonFile));
                     for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
                     {
@@ -462,28 +532,39 @@ namespace H1EmuLauncher
 
                     currentJsonRecent.Add(new ServerListRecent()
                     {
-                        CustomServerNameRecent = name.Trim()
+                        CustomServerNameRecent = name
                     });
 
                     string newJsonRecentServers = JsonSerializer.Serialize(currentJsonRecent, new JsonSerializerOptions { WriteIndented = true });
                     File.WriteAllText(recentServersJsonFile, newJsonRecentServers);
 
-                    MenuItem newItem = new()
+                    MenuItem playCustomServer = new()
                     {
                         Style = (Style)FindResource("CustomMenuItem"),
-                        Icon = new Image { Source = new BitmapImage(new Uri("pack://application:,,,/H1EmuLauncher;component/Resources/Play.png", UriKind.Absolute)) },
-                        Header = name,
-                        Margin = new Thickness(0, 5, 0, 0)
+                        Header = name
                     };
-                    newItem.Click += LaunchToCustomServerFromNotifyIcon;
-                    notifyIconContextMenu.Items.Insert(3, newItem);
+                    System.Windows.Shapes.Path pathCustomServerPlay = new()
+                    {
+                        Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
+                        Stretch = Stretch.Uniform
+                    };
+                    Binding bindingCustomServerPlay = new("Foreground")
+                    {
+                        Source = playCustomServer,
+                        Mode = BindingMode.OneWay
+                    };
+                    BindingOperations.SetBinding(pathCustomServerPlay, System.Windows.Shapes.Path.FillProperty, bindingCustomServerPlay);
+
+                    playCustomServer.Icon = pathCustomServerPlay;
+                    playCustomServer.Click += LaunchToCustomServerFromNotifyIcon;
+                    notifyIconContextMenu.Items.Insert(3, playCustomServer);
 
                     if (notifyIconContextMenu.Items.Count == 5)
                     {
                         Separator separator = new()
                         {
                             Style = (Style)FindResource("SeparatorMenuItem"),
-                            Background = new SolidColorBrush(Color.FromRgb(44, 44, 44)),
+                            Background = new SolidColorBrush(Color.FromRgb(66, 66, 66)),
                             Margin = new Thickness(0, 7, 10, 2)
                         };
                         notifyIconContextMenu.Items.Insert(notifyIconContextMenu.Items.Count - 1, separator);
@@ -873,7 +954,7 @@ namespace H1EmuLauncher
             doContinue = false;
         }
 
-        readonly double carouselButtonsAnimationDurationMilliseconds = 80;
+        readonly double carouselButtonsAnimationDurationMilliseconds = 100;
 
         private void CarouselMouseEnter(object sender, MouseEventArgs e)
         {
@@ -883,11 +964,11 @@ namespace H1EmuLauncher
             Carousel.playCarousel.Pause();
 
             // Animation for fade in visibility next image button
-            DoubleAnimation showImageControls = new(0, 1, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)))
+            DoubleAnimation showImageControls = new(0.2, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)), FillBehavior.Stop)
             {
-                AccelerationRatio = 0.2,
-                DecelerationRatio = 0.2
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
             };
+            showImageControls.Completed += (o, s) => { nextImage.Opacity = 0.2; prevImage.Opacity = 0.2; };
             nextImage.BeginAnimation(Window.OpacityProperty, showImageControls);
             prevImage.BeginAnimation(Window.OpacityProperty, showImageControls);
         }
@@ -900,11 +981,11 @@ namespace H1EmuLauncher
             Carousel.playCarousel.Resume();
 
             // Animation for fade out visibility next image button
-            DoubleAnimation hideImageControls = new(1, 0, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)))
+            DoubleAnimation hideImageControls = new(0, new Duration(TimeSpan.FromMilliseconds(carouselButtonsAnimationDurationMilliseconds)), FillBehavior.Stop)
             {
-                AccelerationRatio = 0.2,
-                DecelerationRatio = 0.2
+                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
             };
+            hideImageControls.Completed += (o, s) => { nextImage.Opacity = 0; prevImage.Opacity = 0; };
             nextImage.BeginAnimation(Window.OpacityProperty, hideImageControls);
             prevImage.BeginAnimation(Window.OpacityProperty, hideImageControls);
         }
