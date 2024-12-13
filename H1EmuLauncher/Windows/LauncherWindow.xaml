@@ -32,6 +32,7 @@
         <ResourceDictionary>
             <Storyboard x:Key="CarouselNextImageAnimation"
                         Completed="StoryboardCompleted">
+                
                 <DoubleAnimation Storyboard.TargetName="carouselImageTranslate"
                                  Storyboard.TargetProperty="(TranslateTransform.X)"
                                  From="0" To="-573"

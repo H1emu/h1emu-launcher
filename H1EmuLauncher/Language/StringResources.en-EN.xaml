@@ -177,7 +177,7 @@
     <system:String x:Key="item197">Options</system:String>
     <system:String x:Key="item198">Bug Reports</system:String>
     <system:String x:Key="item199">About</system:String>
-    <system:String x:Key="item200">Selected language</system:String>
+    <system:String x:Key="item200">Language</system:String>
     <system:String x:Key="item201">Display image carousel</system:String>
     <system:String x:Key="item202">Automatically minimise to system tray</system:String>
     <system:String x:Key="item203">On</system:String>

@@ -139,7 +139,22 @@ namespace H1EmuLauncher.Classes
         {
             // New data folder name
             if (Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher"))
-                Directory.Move($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher", $"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher");
+            {
+                try
+                {
+                    Directory.Move($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher", $"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher");
+                }
+                catch (Exception e)
+                {
+                    if (e is IOException && e.Message.Contains("because a file or directory with the same name already exists."))
+                        Directory.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher", true);
+                    else
+                    {
+                        CustomMessageBox.Show($"There was an error transferring the application data: \"{e.Message}\".\n\nThe launcher will now close.", LauncherWindow.launcherInstance);
+                        Environment.Exit(1);
+                    }
+                }
+            }
 
             if (!File.Exists(UserConfigPath))
             {

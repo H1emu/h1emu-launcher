@@ -46,6 +46,9 @@ namespace H1EmuLauncher
             if (Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\CarouselImages"))
                 Directory.Delete($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\CarouselImages", true);
 
+            // Delete old args text file, no longer needed on newer versions of the launcher
+            File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\args.txt");
+
             SplashWindow sp = new();
             sp.Show();
         }
@@ -120,7 +123,7 @@ namespace H1EmuLauncher
                     }
                 }
 
-                CustomMessageBox.Show($"An unhandled exception occurred: \"{(e.ExceptionObject as Exception).Message}\".\n\nThe launcher will now exit.", LauncherWindow.launcherInstance);
+                CustomMessageBox.Show($"An unhandled exception occurred: \"{(e.ExceptionObject as Exception).Message}\".\n\nThe launcher will now close.", LauncherWindow.launcherInstance);
                 Environment.Exit(1);
             }
         }
