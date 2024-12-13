@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SteamFramePages
 {
-    public partial class DownloadComplete : UserControl
+    public partial class DownloadComplete
     {
         public DownloadComplete()
         {

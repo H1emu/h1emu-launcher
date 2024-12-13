@@ -145,7 +145,6 @@
 
                 <ToggleButton x:Name="imageCarouselVisibilityToggleButton"
                               Grid.Column="2"
-                              Height="20"
                               Margin="20"
                               HorizontalAlignment="Right"
                               Click="ImageCarouselVisibilityToggleButtonClick"
@@ -278,6 +277,7 @@
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    IsHitTestVisible="False"
+                                   RenderOptions.BitmapScalingMode="Fant"
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <Grid.Style>

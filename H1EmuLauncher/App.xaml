@@ -619,74 +619,131 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ToggleButton}">
-                            <Border Background="Transparent"
-                                    CornerRadius="10">
+                            <StackPanel Orientation="Horizontal"
+                                        Background="Transparent">
                                 
-                                <StackPanel Orientation="Horizontal">
-                                    <Border x:Name="background"
-                                            Background="{DynamicResource LighterColour}"
-                                            CornerRadius="10"
-                                            Width="38">
-                                        
-                                        <Border CornerRadius="10"
-                                                Width="38">
+                                <Border x:Name="background"
+                                        Background="{DynamicResource LighterColour}"
+                                        CornerRadius="8"
+                                        Width="34"
+                                        Height="16">
+
+                                    <Border CornerRadius="8">
+                                        <Border.Background>
+                                            <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                                        </Border.Background>
+
+                                        <Border x:Name="ellipse"
+                                                Width="16"
+                                                CornerRadius="8"
+                                                HorizontalAlignment="Left"
+                                                Background="{DynamicResource DarkerColour}"
+                                                RenderTransformOrigin="0.5, 0.5">
                                             
-                                            <Border.Background>
-                                                <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-                                            </Border.Background>
+                                            <Ellipse Stroke="{DynamicResource LighterColour}">
 
-                                            <Border x:Name="ellipse"
-                                                    HorizontalAlignment="Left"
-                                                    CornerRadius="8"
-                                                    Margin="2"
-                                                    Background="{DynamicResource DarkerColour}">
+                                                <Ellipse.Fill>
+                                                    <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+                                                </Ellipse.Fill>
 
-                                                <Ellipse Width="16">
-                                                    <Ellipse.Fill>
-                                                        <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-                                                    </Ellipse.Fill>
-                                                    
-                                                    <Ellipse.Effect>
-                                                        <DropShadowEffect BlurRadius="15"
-                                                                          Direction="-90"
-                                                                          RenderingBias="Quality"
-                                                                          ShadowDepth="0"
-                                                                          Opacity="0.6"/>
+                                                <Ellipse.Effect>
+                                                    <DropShadowEffect BlurRadius="15"
+                                                                      Direction="-90"
+                                                                      RenderingBias="Quality"
+                                                                      ShadowDepth="0"
+                                                                      Opacity="0.2"/>
 
-                                                    </Ellipse.Effect>
-                                                </Ellipse>
-                                            </Border>
+                                                </Ellipse.Effect>
+                                            </Ellipse>
+
+                                            <Border.RenderTransform>
+                                                <ScaleTransform x:Name="ellipseScaleTransform"
+                                                                ScaleX="1.3"
+                                                                ScaleY="1.3"/>
+                                                
+                                            </Border.RenderTransform>
                                         </Border>
                                     </Border>
-                                    
-                                    <TextBlock x:Name="text"
-                                               VerticalAlignment="Center"
-                                               HorizontalAlignment="Right"
-                                               Margin="10,2,0,0"
-                                               Foreground="FloralWhite"
-                                               Text="{DynamicResource item204}">
+                                </Border>
 
-                                    </TextBlock>
-                                </StackPanel>
-                            </Border>
+                                <TextBlock x:Name="text"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Right"
+                                           Margin="10,2,0,0"
+                                           Foreground="FloralWhite"
+                                           Text="{DynamicResource item204}">
+
+                                </TextBlock>
+                            </StackPanel>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsChecked" Value="True">
                                     <Setter TargetName="text" Property="Text" Value="{DynamicResource item203}"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="ellipse"
+                                                                 Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                 To="1.5"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <DoubleAnimation Storyboard.TargetName="ellipse"
+                                                                 Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                 To="1.5"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetName="ellipse"
+                                                                 Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+
+                                                <DoubleAnimation Storyboard.TargetName="ellipse"
+                                                                 Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
+                                                        <BackEase EasingMode="EaseInOut"/>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
                                 </Trigger>
                                 <EventTrigger RoutedEvent="Checked">
                                     <BeginStoryboard>
                                         <Storyboard>
                                             <ColorAnimation Storyboard.TargetName="background"
                                                             Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                            To="#DB111C" Duration="0:0:0.1"/>
+                                                            To="#DB111C"
+                                                            Duration="0:0:0.1"/>
 
                                             <ThicknessAnimation Storyboard.TargetName="ellipse"
                                                                 Storyboard.TargetProperty="Margin"
-                                                                To="20,2,2,2"
+                                                                To="18,0,0,0"
                                                                 Duration="0:0:0.1">
 
                                                 <ThicknessAnimation.EasingFunction>
-                                                    <CubicEase EasingMode="EaseInOut"/>
+                                                    <BackEase EasingMode="EaseInOut"/>
                                                 </ThicknessAnimation.EasingFunction>
                                             </ThicknessAnimation>
                                         </Storyboard>
@@ -705,7 +762,7 @@
                                                                 Duration="0:0:0.1">
 
                                                 <ThicknessAnimation.EasingFunction>
-                                                    <CubicEase EasingMode="EaseInOut"/>
+                                                    <BackEase EasingMode="EaseInOut"/>
                                                 </ThicknessAnimation.EasingFunction>
                                             </ThicknessAnimation>
                                         </Storyboard>
@@ -1925,7 +1982,8 @@
                 <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
                 <Setter Property="RenderTransform">
                     <Setter.Value>
-                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                        <ScaleTransform ScaleX="1"
+                                        ScaleY="1" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="Effect">

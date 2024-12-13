@@ -7,20 +7,22 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
+using Microsoft.Win32;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SteamFramePages
 {
-    public partial class Login : UserControl
+    public partial class Login
     {
         private static Storyboard loadingAnimation;
-        private static CancellationToken token;
-        public static CancellationTokenSource tokenSource = new();
         public static string gameInfo = "-app 295110 -depot 295111 -manifest 8395659676467739522";
+        OpenFolderDialog selectDirectory = new()
+        {
+            Title = Application.Current.FindResource("item51").ToString()
+        };
 
         public Login()
         {
@@ -129,39 +131,42 @@ namespace H1EmuLauncher.SteamFramePages
 
                 SelectLocation:
                     bool result = true;
-
-                    tokenSource.Dispose();
-                    tokenSource = new CancellationTokenSource();
-                    token = tokenSource.Token;
-
-                    System.Windows.Forms.FolderBrowserDialog selectDirectory = new();
-                    selectDirectory.Description = FindResource("item51").ToString();
+                    bool returnToLogin = false;
 
                     Dispatcher.Invoke(new Action(delegate
                     {
-                        if (selectDirectory.ShowDialog() != System.Windows.Forms.DialogResult.OK)
-                            result = false;
-                    }));
-
-                    if (!result)
-                        goto SelectLocation;
-
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        if (Directory.GetFileSystemEntries(selectDirectory.SelectedPath).Length != 0)
+                        if (selectDirectory.ShowDialog() == false)
                         {
                             UpdateLang();
 
-                            MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item89").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance, false, true, true);
-                            if (mbr != MessageBoxResult.Yes)
+                            MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item222").ToString(), LauncherWindow.launcherInstance, false, true, true);
+                            if (mbr == MessageBoxResult.Yes)
+                            {
+                                BackToLogin();
+                                returnToLogin = true;
+                            }
+                            else
                                 result = false;
+                        }
+                        else
+                        {
+                            if (Directory.GetFileSystemEntries(selectDirectory.FolderName).Length != 0)
+                            {
+                                UpdateLang();
+
+                                MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item89").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine), LauncherWindow.launcherInstance, false, true, true);
+                                    if (mbr != MessageBoxResult.Yes)
+                                        result = false;
+                            }
                         }
                     }));
 
                     if (!result)
                         goto SelectLocation;
+                    else if (returnToLogin)
+                        return;
 
-                    ContentDownloader.DEFAULT_DOWNLOAD_DIR = selectDirectory.SelectedPath;
+                    ContentDownloader.DEFAULT_DOWNLOAD_DIR = selectDirectory.FolderName;
 
                     foreach (ulong manifestId in manifestIdList)
                     {
@@ -174,7 +179,8 @@ namespace H1EmuLauncher.SteamFramePages
                         LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\DownloadStatus.xaml", UriKind.Relative));
                     }));
 
-                    while (DownloadStatus.downloadStatusInstance == null)
+                    do { }
+                    while (DownloadStatus.downloadStatusInstance == null);
 
                     Dispatcher.Invoke(new Action(delegate
                     {
@@ -253,17 +259,10 @@ namespace H1EmuLauncher.SteamFramePages
                 _2FA.code = null;
                 username = null;
                 password = null;
-            }
 
-            try
-            {
-                AccountSettingsStore.Instance.ContentServerPenalty.Clear();
-                AccountSettingsStore.Instance = null;
-
-                DepotConfigStore.Instance.InstalledManifestIDs.Clear();
-                DepotConfigStore.Instance = null;
+                if (AccountSettingsStore.Instance != null)
+                    AccountSettingsStore.Instance = null;
             }
-            catch { }
         }
 
         static bool InitializeSteam(string username, string password)
@@ -359,6 +358,9 @@ namespace H1EmuLauncher.SteamFramePages
             UpdateLang();
             LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
             LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\Login.xaml", UriKind.Relative));
+            usernameBox.Text = string.Empty;
+            passwordBox.Password = string.Empty;
+            LauncherWindow.launcherInstance.Focus();
             loadingAnimation.Stop();
             loadingIcon.Visibility = Visibility.Hidden;
             loginEnterButton.Visibility = Visibility.Visible;

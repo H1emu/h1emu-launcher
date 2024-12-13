@@ -18,9 +18,13 @@
                                  Storyboard.TargetProperty="Angle"
                                  By="0"
                                  To="360"
-                                 Duration="0:0:0.8"
-                                 FillBehavior="Stop"
-                                 RepeatBehavior="Forever"/>
+                                 Duration="0:0:2"
+                                 RepeatBehavior="Forever">
+
+                    <DoubleAnimation.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </DoubleAnimation.EasingFunction>
+                </DoubleAnimation>
             </Storyboard>
 
             <!-- Load dictionary into xaml resources just so we can see on the designer -->

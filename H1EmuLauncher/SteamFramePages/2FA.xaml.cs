@@ -25,16 +25,16 @@ namespace H1EmuLauncher.SteamFramePages
             {
                 case 1:
                     _2FACodeScreen.Visibility = Visibility.Visible;
-                    _2FAAppScreen.Visibility = Visibility.Collapsed;
+                    _2FAAppScreen.Visibility = Visibility.Hidden;
                     twoFacInstructionText.Text = FindResource("item78").ToString();
                     break;
                 case 2:
                     _2FACodeScreen.Visibility = Visibility.Visible;
-                    _2FAAppScreen.Visibility = Visibility.Collapsed;
+                    _2FAAppScreen.Visibility = Visibility.Hidden;
                     twoFacInstructionText.Text = FindResource("item79").ToString();
                     break;
                 case 3:
-                    _2FACodeScreen.Visibility = Visibility.Collapsed;
+                    _2FACodeScreen.Visibility = Visibility.Hidden;
                     _2FAAppScreen.Visibility = Visibility.Visible;
                     twoFacInstructionText.Text = FindResource("item81").ToString();
                     break;

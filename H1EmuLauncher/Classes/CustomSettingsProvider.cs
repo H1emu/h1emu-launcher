@@ -137,6 +137,10 @@ namespace H1EmuLauncher.Classes
 
         private void LoadValuesFromFile()
         {
+            // New data folder name
+            if (Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher"))
+                Directory.Move($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher", $"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher");
+
             if (!File.Exists(UserConfigPath))
             {
                 // If the config file is not where it's supposed to be create a new one.
@@ -173,7 +177,7 @@ namespace H1EmuLauncher.Classes
 
         private static void CreateEmptyConfig()
         {
-            Directory.CreateDirectory($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher");
+            Directory.CreateDirectory($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher");
 
             var doc = new XDocument();
             var declaration = new XDeclaration("1.0", "utf-8", "true");
@@ -233,7 +237,7 @@ namespace H1EmuLauncher.Classes
         {
             get
             {
-                return $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\user.config";
+                return $"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\user.config";
             }
 
         }

@@ -168,7 +168,7 @@
     <system:String x:Key="item188">NEU-PATCHING...</system:String>
     <system:String x:Key="item189">TÖTEN</system:String>
     <system:String x:Key="item190">Erkannte Spielversion: 23. Februar 2017 (King of the Kill).</system:String>
-    <system:String x:Key="item191">Ihr H1EmuLauncher wurde auf die Taskleiste minimiert.</system:String>
+    <system:String x:Key="item191">Ihr H1Emu Launcher wurde auf die Taskleiste minimiert.</system:String>
     <system:String x:Key="item192">Löschen</system:String>
     <system:String x:Key="item193">Kopieren</system:String>
     <system:String x:Key="item194">Ausfahrt</system:String>
@@ -199,4 +199,5 @@
     <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched and multiple instances of the game can be launched.</system:String>
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
     <system:String x:Key="item221">Paste</system:String>
+    <system:String x:Key="item222">Would you like to return to the login page?</system:String>
 </ResourceDictionary>

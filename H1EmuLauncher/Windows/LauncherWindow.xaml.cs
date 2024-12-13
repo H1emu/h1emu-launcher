@@ -13,14 +13,14 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Windows.Media.Animation;
 using System.Linq;
-using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using System.Windows.Controls.Primitives;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using System.Windows.Data;
+using Microsoft.Win32;
 using Microsoft.Toolkit.Uwp.Notifications;
 using H1EmuLauncher.Classes;
-using System.Windows.Data;
 
 namespace H1EmuLauncher
 {
@@ -36,8 +36,8 @@ namespace H1EmuLauncher
         public static JsonSerializerOptions jsonSerializerOptions = new() { WriteIndented = true };
         public static LauncherWindow launcherInstance;
         public static ContextMenu notifyIconContextMenu = new();
-        public static string customServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\servers.json";
-        public static string recentServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\recentServers.json";
+        public static string customServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\servers.json";
+        public static string recentServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\recentServers.json";
 
         public Storyboard CarouselNextAnimation;
         public Storyboard CarouselNextAnimationFollow;
@@ -62,7 +62,7 @@ namespace H1EmuLauncher
             CarouselPreviousAnimationFollow = FindResource("CarouselPrevImageAnimationFollow") as Storyboard;
 
             launcherNotifyIcon.Icon = Properties.Resources.Icon;
-            launcherNotifyIcon.Text = "H1EmuLauncher";
+            launcherNotifyIcon.Text = "H1Emu Launcher";
             launcherNotifyIcon.MouseDown += (o, s) =>
             {
                 if (s.Button == System.Windows.Forms.MouseButtons.Left)
@@ -860,18 +860,6 @@ namespace H1EmuLauncher
 
         private async void LauncherWindowLoaded(object sender, RoutedEventArgs e)
         {
-            // Delete old setup file
-            if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.installerFileName}"))
-                File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{UpdateWindow.installerFileName}");
-
-            // If arguments file doesn't exist then create one
-            if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt"))
-                File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\args.txt");
-
-            // Delete old carousel images folder, no longer needed on newer versions of the launcher
-            if (Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages"))
-                Directory.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\CarouselImages", true);
-
             if (Properties.Settings.Default.imageCarouselVisibility)
             {
                 // Show image carousel
@@ -1009,11 +997,11 @@ namespace H1EmuLauncher
 
         public void SelectDirectory(object sender, RoutedEventArgs e)
         {
-            System.Windows.Forms.FolderBrowserDialog selectDirectory = new();
-            if (selectDirectory.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            OpenFolderDialog selectDirectory = new();
+            if (!(bool)selectDirectory.ShowDialog())
                 return;
 
-            Properties.Settings.Default.activeDirectory = selectDirectory.SelectedPath;
+            Properties.Settings.Default.activeDirectory = selectDirectory.FolderName;
             Properties.Settings.Default.Save();
 
             new Thread(() =>

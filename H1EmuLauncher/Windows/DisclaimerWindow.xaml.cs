@@ -64,7 +64,7 @@ namespace H1EmuLauncher
         private void AgreedToRulesCheckBoxChecked(object sender, RoutedEventArgs e)
         {
             CheckBox checkBox = (CheckBox)sender;
-            if ((bool)checkBox.IsChecked)
+            if (checkBox.IsChecked == true)
                 continueButton.IsEnabled = true;
             else
                 continueButton.IsEnabled = false;

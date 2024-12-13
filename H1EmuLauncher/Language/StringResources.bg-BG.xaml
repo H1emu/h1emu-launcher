@@ -168,7 +168,7 @@
     <system:String x:Key="item188">ПРЕКРЪПВАНЕ...</system:String>
     <system:String x:Key="item189">УБИЙ</system:String>
     <system:String x:Key="item190">Открита версия на играта: 23 февруари 2017 (King of the Kill).</system:String>
-    <system:String x:Key="item191">Вашият H1EmuLauncher е минимизиран в системната област.</system:String>
+    <system:String x:Key="item191">Вашият H1Emu Launcher е минимизиран в системната област.</system:String>
     <system:String x:Key="item192">Изтрий</system:String>
     <system:String x:Key="item193">Копие</system:String>
     <system:String x:Key="item194">Изход</system:String>
@@ -199,4 +199,5 @@
     <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched and multiple instances of the game can be launched.</system:String>
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
     <system:String x:Key="item221">Paste</system:String>
+    <system:String x:Key="item222">Would you like to return to the login page?</system:String>
 </ResourceDictionary>

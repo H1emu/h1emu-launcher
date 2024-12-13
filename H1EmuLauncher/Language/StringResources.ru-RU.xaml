@@ -168,7 +168,7 @@
     <system:String x:Key="item188">ПОВТОРНОЕ ИСПРАВЛЕНИЕ...</system:String>
     <system:String x:Key="item189">ОСТАНОВИТЬ</system:String>
     <system:String x:Key="item190">Обнаружена версия игры: 23 февраля 2017 (King of the Kill).</system:String>
-    <system:String x:Key="item191">Ваш H1EmuLauncher свернут в системный трей.</system:String>
+    <system:String x:Key="item191">Ваш H1Emu Launcher свернут в системный трей.</system:String>
     <system:String x:Key="item192">Удалить</system:String>
     <system:String x:Key="item193">Копировать</system:String>
     <system:String x:Key="item194">Выход</system:String>
@@ -199,4 +199,5 @@
     <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched and multiple instances of the game can be launched.</system:String>
     <system:String x:Key="item220">При вставке текста произошла ошибка:</system:String>
     <system:String x:Key="item221">Paste</system:String>
+    <system:String x:Key="item222">Would you like to return to the login page?</system:String>
 </ResourceDictionary>

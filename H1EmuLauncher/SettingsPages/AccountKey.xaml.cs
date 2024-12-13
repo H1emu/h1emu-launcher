@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
 
@@ -101,20 +103,34 @@ namespace H1EmuLauncher.SettingsPages
                 generateAccountKeyButtonRow.Visibility = Visibility.Collapsed;
         }
 
-        private void ShowKey(object sender, RoutedEventArgs e)
+        private void ToggleKeyVisibility(object sender, RoutedEventArgs e)
         {
-            showKeyButton.Visibility = Visibility.Hidden;
-            hideKeyButton.Visibility = Visibility.Visible;
-            accountKeyBoxPassword.Visibility = Visibility.Hidden;
-            accountKeyBoxText.Visibility = Visibility.Visible;
-        }
+            System.Windows.Shapes.Path toggleKeyVisibilityButtonPath = new()
+            {
+                Stretch = Stretch.Uniform
+            };
 
-        private void HideKey(object sender, RoutedEventArgs e)
-        {
-            showKeyButton.Visibility = Visibility.Visible;
-            hideKeyButton.Visibility = Visibility.Hidden;
-            accountKeyBoxPassword.Visibility = Visibility.Visible;
-            accountKeyBoxText.Visibility = Visibility.Hidden;
+            Binding bindingToggleKeyVisibilityButton = new("Foreground")
+            {
+                Source = toggleKeyVisibilityButton,
+                Mode = BindingMode.OneWay
+            };
+            BindingOperations.SetBinding(toggleKeyVisibilityButtonPath, System.Windows.Shapes.Path.FillProperty, bindingToggleKeyVisibilityButton);
+
+            if (accountKeyBoxPassword.Visibility == Visibility.Visible)
+            {
+                accountKeyBoxPassword.Visibility = Visibility.Hidden;
+                accountKeyBoxText.Visibility = Visibility.Visible;
+                toggleKeyVisibilityButtonPath.Data = Geometry.Parse(FindResource("EyeHideIcon").ToString());
+            }
+            else
+            {
+                accountKeyBoxPassword.Visibility = Visibility.Visible;
+                accountKeyBoxText.Visibility = Visibility.Hidden;
+                toggleKeyVisibilityButtonPath.Data = Geometry.Parse(FindResource("EyeIcon").ToString());
+            }
+
+            toggleKeyVisibilityButton.Content = toggleKeyVisibilityButtonPath;
         }
 
         public void ToggleGenerateButtonVisibility(Visibility visibility)

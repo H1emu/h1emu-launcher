@@ -41,8 +41,8 @@ namespace H1EmuLauncher
                 downloadSetupProgress.IsIndeterminate = true;
 
                 // Delete any old installation files if they exist in case of corruption
-                if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{installerFileName}"))
-                    File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{installerFileName}");
+                if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{installerFileName}"))
+                    File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{installerFileName}");
 
                 HttpResponseMessage response = await SplashWindow.httpClient.GetAsync(installerDownloadUrl);
                 // Throw an exception if we didn't get the correct response, with the first letter capitalised in the message
@@ -53,7 +53,7 @@ namespace H1EmuLauncher
 
                 long totalBytes = response.Content.Headers.ContentLength ?? -1L;
                 using Stream contentStream = await response.Content.ReadAsStreamAsync();
-                using FileStream fileStream = new($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{installerFileName}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
+                using FileStream fileStream = new($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{installerFileName}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
 
                 byte[] buffer = new byte[8192];
                 long totalBytesRead = 0;
@@ -99,7 +99,7 @@ namespace H1EmuLauncher
             {
                 Process.Start(new ProcessStartInfo
                 {
-                    FileName = $"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher\\{installerFileName}",
+                    FileName = $"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{installerFileName}",
                     UseShellExecute = true
                 });
             }

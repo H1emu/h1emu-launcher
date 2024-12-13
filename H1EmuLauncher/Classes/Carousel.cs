@@ -14,7 +14,7 @@ namespace H1EmuLauncher.Classes
     class Carousel
     {
         public static Storyboard playCarousel;
-        public static List<string> images = new();
+        public static List<string> images = [];
         public static int currentIndex = 0;
         public static int lastIndex = 0;
 
@@ -22,7 +22,7 @@ namespace H1EmuLauncher.Classes
         {
             try
             {
-                return BitmapFrame.Create(new Uri("pack://application:,,,/H1EmuLauncher;component/" + psResourceName, UriKind.Absolute));
+                return BitmapFrame.Create(new Uri("pack://application:,,,/H1Emu Launcher;component/" + psResourceName, UriKind.Absolute));
             }
             catch
             {

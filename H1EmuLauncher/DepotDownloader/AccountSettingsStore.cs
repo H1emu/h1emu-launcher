@@ -37,7 +37,7 @@ namespace H1EmuLauncher
             GuardData = [];
         }
 
-        static bool Loaded
+        public static bool Loaded
         {
             get { return Instance != null; }
         }

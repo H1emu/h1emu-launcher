@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using H1EmuLauncher.Classes;
 
 namespace H1EmuLauncher.SteamFramePages
 {
-    public partial class DownloadStatus : UserControl
+    public partial class DownloadStatus
     {
         public static DownloadStatus downloadStatusInstance;
 
@@ -24,11 +23,6 @@ namespace H1EmuLauncher.SteamFramePages
             MessageBoxResult mbr = CustomMessageBox.Show($"{FindResource("item33")} {Login.version}?{FindResource("item138").ToString().Replace("\\n\\n", Environment.NewLine + Environment.NewLine)}", LauncherWindow.launcherInstance, false, true, true);
             if (mbr == MessageBoxResult.Yes)
                 ContentDownloader.tokenSource.Cancel();
-        }
-
-        private void StatusLoaded(object sender, RoutedEventArgs e)
-        {
-            gameDownloadText.Text = $"{Login.version}:";
         }
     }
 }

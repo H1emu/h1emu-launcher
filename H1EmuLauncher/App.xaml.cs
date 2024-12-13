@@ -15,6 +15,10 @@ namespace H1EmuLauncher
     {
         private void ApplicationStartup(object sender, StartupEventArgs e)
         {
+            // Adds the correct language file to the resource dictionary and then loads it
+            Resources.MergedDictionaries.Clear();
+            Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+
             AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
 
             if (Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1)
@@ -32,11 +36,15 @@ namespace H1EmuLauncher
             StartPipeServer();
 
             // Lower the framerate of animations otherwise GPU usage is high
-            //Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 60 });
+            Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 60 });
 
-            // Adds the correct language file to the resource dictionary and then loads it
-            Resources.MergedDictionaries.Clear();
-            Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+            // Delete old setup file
+            if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}"))
+                File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}");
+
+            // Delete old carousel images folder, no longer needed on newer versions of the launcher
+            if (Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\CarouselImages"))
+                Directory.Delete($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\CarouselImages", true);
 
             SplashWindow sp = new();
             sp.Show();
@@ -104,7 +112,7 @@ namespace H1EmuLauncher
                     MessageBoxResult mbr = CustomMessageBox.Show($"An exception occurred that prevented the application from starting: \"{(e.ExceptionObject as Exception).Message}\".\n\nDeleting the application data can sometimes fix this, would you like to try that and attempt to restart now?", null, false, true, true);
                     if (mbr == MessageBoxResult.Yes)
                     {
-                        DirectoryInfo di = new($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher");
+                        DirectoryInfo di = new($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher");
                         foreach (var file in di.GetFiles())
                             file.Delete();
 
@@ -112,7 +120,7 @@ namespace H1EmuLauncher
                     }
                 }
 
-                CustomMessageBox.Show($"An unhandled exception occurred: \"{(e.ExceptionObject as Exception).Message}\".\n\nThe launcher will now exit.");
+                CustomMessageBox.Show($"An unhandled exception occurred: \"{(e.ExceptionObject as Exception).Message}\".\n\nThe launcher will now exit.", LauncherWindow.launcherInstance);
                 Environment.Exit(1);
             }
         }

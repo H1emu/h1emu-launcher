@@ -1,5 +1,4 @@
-﻿using System;
-using System.Media;
+﻿using System.Media;
 using System.Windows;
 
 namespace H1EmuLauncher.Classes

@@ -51,7 +51,7 @@
                      Height="35"
                      Padding="30,1,35,0"
                      Margin="0,0,10,0"
-                     VerticalAlignment="Center"
+                     VerticalAlignment="Top"
                      VerticalContentAlignment="Center"
                      CharacterCasing="Upper"
                      IsHitTestVisible="True"
@@ -71,9 +71,9 @@
 
             <!-- Hint for auth code textbox -->
             <TextBlock x:Name="authHint"
-                       Margin="0,3,10,0"
+                       Margin="0,8,10,0"
                        Padding="35,0,0,0"
-                       VerticalAlignment="Center"
+                       VerticalAlignment="Top"
                        IsHitTestVisible="False"
                        Foreground="Gray"
                        Text="{DynamicResource item77}"
@@ -86,18 +86,18 @@
                   RenderOptions.BitmapScalingMode="Fant"
                   Width="18"
                   Height="18"
-                  VerticalAlignment="Center"
+                  VerticalAlignment="Top"
                   HorizontalAlignment="Left"
-                  Margin="10,0,0,0"/>
+                  Margin="10,8,0,0"/>
 
             <!-- Button to submit 2fa code -->
             <Button x:Name="twoFAButton"
                     Click="ContinueButton"
                     Height="20"
                     Width="20"
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Top"
                     HorizontalAlignment="Right"
-                    Margin="0,0,20,0"
+                    Margin="0,7,20,0"
                     RenderOptions.BitmapScalingMode="Fant"
                     Style="{DynamicResource PathButton}">
 
@@ -115,9 +115,10 @@
                   Stroke="FloralWhite"
                   StrokeThickness="2"
                   StrokeEndLineCap="Round"
-                  Margin="0,0,20,0"
+                  Margin="0,8,20,0"
                   Height="18"
                   Width="18"
+                  VerticalAlignment="Top"
                   HorizontalAlignment="Right"
                   Visibility="Hidden"
                   RenderTransformOrigin="0.5, 0.5">
@@ -140,7 +141,7 @@
         <!-- Separate screen for accepting the login prompt on a mobile device -->
         <Grid x:Name="_2FAAppScreen"
               HorizontalAlignment="Center"
-              Visibility="Collapsed">
+              Visibility="Hidden">
             
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -164,6 +165,7 @@
                   Margin="10,0,0,0"
                   Height="18"
                   Width="18"
+                  VerticalAlignment="Top"
                   HorizontalAlignment="Right"
                   RenderTransformOrigin="0.5, 0.5">
 

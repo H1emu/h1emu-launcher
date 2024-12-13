@@ -168,7 +168,7 @@
     <system:String x:Key="item188">RE-PATCHING...</system:String>
     <system:String x:Key="item189">KILL</system:String>
     <system:String x:Key="item190">Game version detected: 23rd February 2017 (King of the Kill).</system:String>
-    <system:String x:Key="item191">Your H1EmuLauncher has been minimised to the system tray.</system:String>
+    <system:String x:Key="item191">Your H1Emu Launcher has been minimised to the system tray.</system:String>
     <system:String x:Key="item192">Delete</system:String>
     <system:String x:Key="item193">Copy</system:String>
     <system:String x:Key="item194">Exit</system:String>
@@ -199,4 +199,5 @@
     <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched and multiple instances of the game can be launched.</system:String>
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
     <system:String x:Key="item221">Paste</system:String>
+    <system:String x:Key="item222">Would you like to return to the login page?</system:String>
 </ResourceDictionary>

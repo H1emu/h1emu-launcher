@@ -8,7 +8,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using H1EmuLauncher.Classes;
-using H1EmuLauncher.SettingsPages;
 
 namespace H1EmuLauncher
 {
@@ -69,7 +68,7 @@ namespace H1EmuLauncher
 
                     Process installServerProcess = new()
                     {
-                        StartInfo = GameFiles.cmdShell
+                        StartInfo = SettingsPages.GameFiles.cmdShell
                     };
                     installServerProcess.Start();
                     using (StreamWriter sw = installServerProcess.StandardInput)
