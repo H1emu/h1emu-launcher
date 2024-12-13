@@ -173,6 +173,10 @@ namespace H1EmuLauncher
                 else
                     SettingsWindow.SwitchToAccountKeyTab();
             }
+            else if (string.Join(' ', rawArgs).Contains("-launchgame"))
+            {
+                playButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+            }
         }
 
         private void ServerSelectorChanged(object sender, SelectionChangedEventArgs e)
@@ -212,7 +216,7 @@ namespace H1EmuLauncher
                 };
                 System.Windows.Shapes.Path pathH1EmuServersPlay = new()
                 {
-                    Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
+                    Data = (PathGeometry)FindResource("PlayIcon"),
                     Stretch = Stretch.Uniform,
                     Width = 14,
                     Height = 14
@@ -239,7 +243,7 @@ namespace H1EmuLauncher
                 };
                 System.Windows.Shapes.Path pathSinglePlayerPlay = new()
                 {
-                    Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
+                    Data = (PathGeometry)FindResource("PlayIcon"),
                     Stretch = Stretch.Uniform,
                     Width = 14,
                     Height = 14
@@ -272,7 +276,7 @@ namespace H1EmuLauncher
                 };
                 System.Windows.Shapes.Path pathExitNotifyIcon = new()
                 {
-                    Data = Geometry.Parse(FindResource("ExitIcon").ToString()),
+                    Data = (PathGeometry)FindResource("ExitIcon"),
                     Stretch = Stretch.Uniform,
                     Width = 14,
                     Height = 14,
@@ -305,7 +309,7 @@ namespace H1EmuLauncher
                     };
                     System.Windows.Shapes.Path pathCustomServerDelete = new()
                     {
-                        Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
+                        Data = (PathGeometry)FindResource("PlayIcon"),
                         Stretch = Stretch.Uniform,
                         Width = 14,
                         Height = 14
@@ -373,7 +377,7 @@ namespace H1EmuLauncher
                         };
                         System.Windows.Shapes.Path pathCustom = new()
                         {
-                            Data = Geometry.Parse(FindResource("EditIcon").ToString()),
+                            Data = (PathGeometry)FindResource("EditIcon"),
                             Stretch = Stretch.Uniform
                         };
                         Binding bindingCustom = new("Foreground")
@@ -400,7 +404,7 @@ namespace H1EmuLauncher
                         };
                         System.Windows.Shapes.Path pathDeleteCustom = new()
                         {
-                            Data = Geometry.Parse(FindResource("BinIcon").ToString()),
+                            Data = (PathGeometry)FindResource("BinIcon"),
                             Stretch = Stretch.Uniform
                         };
                         Binding bindingDeleteCustom = new("Foreground")
@@ -560,7 +564,7 @@ namespace H1EmuLauncher
                     };
                     System.Windows.Shapes.Path pathCustomServerPlay = new()
                     {
-                        Data = Geometry.Parse(FindResource("PlayIcon").ToString()),
+                        Data = (PathGeometry)FindResource("PlayIcon"),
                         Stretch = Stretch.Uniform,
                         Width = 14,
                         Height = 14

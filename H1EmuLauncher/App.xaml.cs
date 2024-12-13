@@ -79,7 +79,7 @@ namespace H1EmuLauncher
         {
             try
             {
-                NamedPipeClientStream pipeClient = new(".", "H1EmuLauncherPipe", PipeDirection.Out);
+                NamedPipeClientStream pipeClient = new(null, "H1EmuLauncherPipe", PipeDirection.Out);
                 StreamWriter writer = new(pipeClient);
 
                 pipeClient.Connect(1000);
@@ -88,7 +88,7 @@ namespace H1EmuLauncher
             }
             catch (Exception e)
             {
-                CustomMessageBox.Show($"Error sending argumentsto active instance: \"{e.Message}\".");
+                CustomMessageBox.Show($"Error sending launch arguments to active instance: \"{e.Message}\".", LauncherWindow.launcherInstance);
             }
         }
 
@@ -103,7 +103,7 @@ namespace H1EmuLauncher
             }
             catch (Exception ex)
             {
-                CustomMessageBox.Show($"{FindResource("item184")} \"{ex.Message}\".");
+                CustomMessageBox.Show($"{FindResource("item220")} \"{ex.Message}\".");
             }
         }
 

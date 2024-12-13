@@ -137,7 +137,7 @@ namespace H1EmuLauncher.Classes
 
         private void LoadValuesFromFile()
         {
-            // New data folder name
+            // New data folder name so user settings need to be migrated
             if (Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1EmuLauncher"))
             {
                 try

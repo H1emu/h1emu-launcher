@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -121,13 +122,13 @@ namespace H1EmuLauncher.SettingsPages
             {
                 accountKeyBoxPassword.Visibility = Visibility.Hidden;
                 accountKeyBoxText.Visibility = Visibility.Visible;
-                toggleKeyVisibilityButtonPath.Data = Geometry.Parse(FindResource("EyeHideIcon").ToString());
+                toggleKeyVisibilityButtonPath.Data = (PathGeometry)FindResource("EyeHideIcon");
             }
             else
             {
                 accountKeyBoxPassword.Visibility = Visibility.Visible;
                 accountKeyBoxText.Visibility = Visibility.Hidden;
-                toggleKeyVisibilityButtonPath.Data = Geometry.Parse(FindResource("EyeIcon").ToString());
+                toggleKeyVisibilityButtonPath.Data = (PathGeometry)FindResource("EyeIcon");
             }
 
             toggleKeyVisibilityButton.Content = toggleKeyVisibilityButtonPath;

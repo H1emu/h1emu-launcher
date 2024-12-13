@@ -119,7 +119,7 @@ namespace H1EmuLauncher
                 };
                 System.Windows.Shapes.Path pathEdit = new()
                 {
-                    Data = Geometry.Parse(FindResource("EditIcon").ToString()),
+                    Data = (PathGeometry)FindResource("EditIcon"),
                     Stretch = Stretch.Uniform
                 };
                 Binding bindingEdit = new("Foreground")
@@ -146,7 +146,7 @@ namespace H1EmuLauncher
                 };
                 System.Windows.Shapes.Path pathDelete = new()
                 {
-                    Data = Geometry.Parse(FindResource("BinIcon").ToString()),
+                    Data = (PathGeometry)FindResource("BinIcon"),
                     Stretch = Stretch.Uniform
                 };
                 Binding bindingDelete = new("Foreground")
