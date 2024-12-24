@@ -168,6 +168,10 @@
                                      Grid.Row="3"
                                      Height="25"
                                      Margin="20"
+                                     Background="{DynamicResource LighterColour}"
+                                     Foreground="{DynamicResource DarkerColour}"
+                                     BorderBrush="{DynamicResource RedAccent}"
+                                     BorderThickness="2"
                                      Style="{DynamicResource ProgressBar}">
 
                             <ProgressBar.Effect>
@@ -184,13 +188,14 @@
                                      Height="25"
                                      Margin="20"
                                      Background="Transparent"
+                                     BorderThickness="2"
+                                     BorderBrush="Transparent"
                                      Style="{DynamicResource ProgressBar}"/>
 
                         <!-- Status text to overlay progress bar -->
                         <TextBlock x:Name="downloadSetupProgressText"
-                                   Text="Downloading..."
+                                   Text="{DynamicResource item54}"
                                    Grid.Row="3"
-                                   Margin="20"
                                    FontSize="12"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"

@@ -63,9 +63,12 @@
             <!-- Divider -->
             <ProgressBar Grid.Row="1"
                          Height="2"
+                         BorderThickness="0"
                          Margin="15,0,15,0"
                          IsIndeterminate="True"
-                         Style="{DynamicResource ProgressBarSmall}">
+                         Foreground="{DynamicResource RedAccent}"
+                         Background="{DynamicResource LighterColour}"
+                         Style="{DynamicResource ProgressBar}">
 
                 <!-- Drop shadow effect -->
                 <ProgressBar.Effect>

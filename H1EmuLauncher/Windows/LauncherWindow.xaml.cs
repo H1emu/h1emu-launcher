@@ -26,8 +26,8 @@ namespace H1EmuLauncher
 {
     public partial class LauncherWindow : Window
     {
-        readonly private System.Windows.Forms.NotifyIcon launcherNotifyIcon = new();
-        readonly private ProcessStartInfo cmdShell = new()
+        private readonly System.Windows.Forms.NotifyIcon launcherNotifyIcon = new();
+        private readonly ProcessStartInfo cmdShell = new()
         {
             FileName = "cmd.exe",
             RedirectStandardInput = true,
@@ -103,7 +103,7 @@ namespace H1EmuLauncher
             public string CustomServerNameRecent { get; set; }
         }
 
-        public async void ExecuteArguments(string[] rawArgs)
+        public async Task ExecuteArguments(string[] rawArgs)
         {
             if (WindowState != WindowState.Normal)
                 WindowState = WindowState.Normal;
@@ -145,9 +145,14 @@ namespace H1EmuLauncher
                 }
                 else
                     AddOrEditServerWindow.addServerInstance.FillInFields(newServerName, newServerIp);
+
+                newServerName = null;
+                newServerIp = null;
+                return;
             }
+
             // If the account key argument exists, open the Settings window and tell it to open the Account Key tab with accountkey argument value
-            else if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-accountkey", "")))
+            if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-accountkey", "")))
             {
                 // Close every other window apart from the Launcher and Settings windows
                 foreach (Window window in Application.Current.Windows)
@@ -156,13 +161,14 @@ namespace H1EmuLauncher
                         window.Close();
                 }
 
-                SettingsWindow.accountKeyArgument = SteamFramePages.Login.GetParameter(rawArgs, "-accountkey", "");
+                string newAccountKey = SteamFramePages.Login.GetParameter(rawArgs, "-accountkey", "");
 
                 if (SettingsWindow.settingsInstance == null)
                 {
+                    SettingsWindow.newAccountKey = newAccountKey;
                     SettingsWindow sw = new();
                     sw.settingsTabControl.SelectedIndex = 1;
-                    await Task.Run(() => 
+                    await Task.Run(() =>
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
@@ -171,11 +177,18 @@ namespace H1EmuLauncher
                     });
                 }
                 else
-                    SettingsWindow.SwitchToAccountKeyTab();
+                    SettingsWindow.SwitchToAccountKeyTab(newAccountKey);
+
+                newAccountKey = null;
+                SettingsWindow.newAccountKey = null;
+                return;
             }
-            else if (string.Join(' ', rawArgs).Contains("-launchgame"))
+
+            // If the launch game argument exists, then launch the game straight away
+            if (string.Join(' ', rawArgs).Contains("-launchgame"))
             {
                 playButton.RaiseEvent(new RoutedEventArgs(ButtonBase.ClickEvent));
+                return;
             }
         }
 
@@ -507,8 +520,12 @@ namespace H1EmuLauncher
 
                         MenuItem item = (MenuItem)notifyIconContextMenu.Items[j];
                         if ((string)item.Header == (string)serverItem.Content)
+                        {
                             notifyIconContextMenu.Items.Remove(item);
+                            break;
+                        }
                     }
+                    break;
                 }
             }
 
@@ -539,12 +556,17 @@ namespace H1EmuLauncher
                             currentJsonRecent.Remove(currentJsonRecent[i]);
                             for (int j = notifyIconContextMenu.Items.Count - 1; j >= 0; j--)
                             {
-                                if (notifyIconContextMenu.Items[j] is MenuItem item)
+                                if (notifyIconContextMenu.Items[j] is not MenuItem)
+                                    continue;
+
+                                MenuItem item = (MenuItem)notifyIconContextMenu.Items[j];
+                                if ((string)item.Header == name)
                                 {
-                                    if ((string)item.Header == name)
-                                        notifyIconContextMenu.Items.Remove(item);
+                                    notifyIconContextMenu.Items.Remove(item);
+                                    break;
                                 }
                             }
+                            break;
                         }
                     }
 
@@ -892,7 +914,7 @@ namespace H1EmuLauncher
         private async void LauncherWindowContentRendered(object sender, EventArgs e)
         {
             if (rawArgs != null)
-                ExecuteArguments(rawArgs);
+                await ExecuteArguments(rawArgs);
 
             if (!string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
                 await AccountKeyUtil.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);

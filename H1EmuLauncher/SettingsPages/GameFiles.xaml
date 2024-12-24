@@ -209,12 +209,35 @@
                     Visibility="Collapsed">
 
                 <Grid x:Name="settingsProgressRowContent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
                     
+                    <!-- Divider -->
+                    <Rectangle Margin="20,0,20,0"
+                               Height="1"
+                               Fill="{DynamicResource LighterColour}">
+
+                        <Rectangle.Effect>
+                            <DropShadowEffect BlurRadius="8"
+                                              Direction="-90"
+                                              RenderingBias="Quality"
+                                              ShadowDepth="1"
+                                              Opacity="0.3"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+
                     <!-- Status progress bar -->
                     <ProgressBar x:Name="settingsProgressBar"
+                                 Grid.Row="1"
                                  Height="35"
-                                 Margin="20,10,20,20"
+                                 Margin="20"
                                  VerticalAlignment="Center"
+                                 Background="{DynamicResource LighterColour}"
+                                 Foreground="{DynamicResource DarkerColour}"
+                                 BorderBrush="{DynamicResource RedAccent}"
+                                 BorderThickness="2"
                                  Style="{DynamicResource ProgressBar}">
 
                         <ProgressBar.Effect>
@@ -229,15 +252,17 @@
                     </ProgressBar>
 
                     <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
-                    <ProgressBar Height="35"
-                                 Margin="20,10,20,20"
+                    <ProgressBar Grid.Row="1"
+                                 Height="35"
+                                 Margin="20"
                                  Background="Transparent"
-                                 VerticalAlignment="Center"
+                                 BorderThickness="2"
+                                 BorderBrush="Transparent"
                                  Style="{DynamicResource ProgressBar}"/>
 
                     <!-- Status text to overlay progress bar -->
                     <TextBlock x:Name="settingsProgressText"
-                               Margin="0,0,20,10"
+                               Grid.Row="1"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center"
                                Style="{DynamicResource TextBlockStyle}"/>

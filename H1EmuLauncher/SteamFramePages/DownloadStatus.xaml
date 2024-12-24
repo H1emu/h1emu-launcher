@@ -53,6 +53,10 @@
             <ProgressBar x:Name="downloadProgress"
                          Height="35"
                          Margin="0,0,10,0"
+                         Background="{DynamicResource LighterColour}"
+                         Foreground="{DynamicResource DarkerColour}"
+                         BorderBrush="{DynamicResource RedAccent}"
+                         BorderThickness="2"
                          Style="{DynamicResource ProgressBar}">
 
                 <ProgressBar.Effect>
@@ -68,12 +72,15 @@
             <ProgressBar Height="35"
                          Margin="0,0,10,0"
                          Background="Transparent"
+                         BorderThickness="2"
+                         BorderBrush="Transparent"
                          Style="{DynamicResource ProgressBar}"/>
 
             <!-- Status text to overlay progress bar -->
             <TextBlock x:Name="downloadProgressText"
-                       Margin="12,0,22,0"
+                       Margin="10,0,20,0"
                        VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
                        TextAlignment="Center"
                        Style="{DynamicResource TextBlockStyle}"/>
 

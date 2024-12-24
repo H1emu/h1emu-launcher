@@ -685,7 +685,7 @@
                                             <Storyboard>
                                                 <DoubleAnimation Storyboard.TargetName="ellipse"
                                                                  Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                                 To="1.5"
+                                                                 To="1.4"
                                                                  Duration="0:0:0.1">
 
                                                     <DoubleAnimation.EasingFunction>
@@ -695,7 +695,7 @@
 
                                                 <DoubleAnimation Storyboard.TargetName="ellipse"
                                                                  Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                                 To="1.5"
+                                                                 To="1.4"
                                                                  Duration="0:0:0.1">
 
                                                     <DoubleAnimation.EasingFunction>
@@ -743,7 +743,7 @@
                                                                 Duration="0:0:0.1">
 
                                                 <ThicknessAnimation.EasingFunction>
-                                                    <BackEase EasingMode="EaseInOut"/>
+                                                    <CubicEase EasingMode="EaseInOut"/>
                                                 </ThicknessAnimation.EasingFunction>
                                             </ThicknessAnimation>
                                         </Storyboard>
@@ -762,7 +762,7 @@
                                                                 Duration="0:0:0.1">
 
                                                 <ThicknessAnimation.EasingFunction>
-                                                    <BackEase EasingMode="EaseInOut"/>
+                                                    <CubicEase EasingMode="EaseInOut"/>
                                                 </ThicknessAnimation.EasingFunction>
                                             </ThicknessAnimation>
                                         </Storyboard>
@@ -1607,10 +1607,7 @@
                 </Setter>
             </Style>
             <Style x:Key="ProgressBar" TargetType="{x:Type ProgressBar}">
-                <Setter Property="Foreground" Value="{StaticResource DarkerColour}"/>
-                <Setter Property="Background" Value="{StaticResource LighterColour}"/>
-                <Setter Property="BorderBrush" Value="{StaticResource RedAccent}"/>
-                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="BorderThickness" Value="0"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ProgressBar}">
@@ -1645,94 +1642,6 @@
                                                 </Rectangle>
                                             </Grid>
                                         </Grid>
-                                        
-                                        <Border.Background>
-                                            <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
-                                        </Border.Background>
-                                    </Border>
-                                </Border>
-
-                                <VisualStateManager.VisualStateGroups>
-                                    <VisualStateGroup x:Name="CommonStates">
-                                        <VisualState x:Name="Determinate"/>
-                                        <VisualState x:Name="Indeterminate">
-                                            <Storyboard RepeatBehavior="Forever">
-                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
-                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.25"/>
-                                                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25"/>
-                                                </DoubleAnimationUsingKeyFrames>
-                                                <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
-                                                    <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5">
-                                                        <EasingPointKeyFrame.EasingFunction>
-                                                            <CubicEase EasingMode="EaseInOut"/>
-                                                        </EasingPointKeyFrame.EasingFunction>
-                                                    </EasingPointKeyFrame>
-                                                    <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5">
-                                                        <EasingPointKeyFrame.EasingFunction>
-                                                            <CubicEase EasingMode="EaseInOut"/>
-                                                        </EasingPointKeyFrame.EasingFunction>
-                                                    </EasingPointKeyFrame>
-                                                </PointAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateManager.VisualStateGroups>
-                            </Grid>
-                            
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="Orientation" Value="Vertical">
-                                    <Setter TargetName="TemplateRoot" Property="LayoutTransform">
-                                        <Setter.Value>
-                                            <RotateTransform Angle="-90"/>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Trigger>
-                                <Trigger Property="IsIndeterminate" Value="True">
-                                    <Setter TargetName="Indicator" Property="Visibility" Value="Collapsed"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <Style x:Key="ProgressBarSmall" TargetType="{x:Type ProgressBar}">
-                <Setter Property="Foreground" Value="{StaticResource DarkerColour}"/>
-                <Setter Property="Background" Value="{StaticResource LighterColour}"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type ProgressBar}">
-                            <Grid x:Name="TemplateRoot">
-                                <Border Background="{TemplateBinding Background}"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}"
-                                        CornerRadius="1">
-
-                                    <Border>
-                                        <Grid>
-                                            <Rectangle x:Name="PART_Track"/>
-                                            <Grid x:Name="PART_Indicator"
-                                                  HorizontalAlignment="Left"
-                                                  ClipToBounds="True">
-
-                                                <Rectangle x:Name="Indicator"
-                                                           Fill="{TemplateBinding Foreground}"/>
-
-                                                <Rectangle x:Name="Animation"
-                                                           Fill="{TemplateBinding Foreground}"
-                                                           RenderTransformOrigin="0.5,0.5">
-
-                                                    <Rectangle.RenderTransform>
-                                                        <TransformGroup>
-                                                            <ScaleTransform/>
-                                                            <SkewTransform/>
-                                                            <RotateTransform/>
-                                                            <TranslateTransform/>
-                                                        </TransformGroup>
-                                                    </Rectangle.RenderTransform>
-                                                </Rectangle>
-                                            </Grid>
-                                        </Grid>
 
                                         <Border.Background>
                                             <ImageBrush ImageSource="Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
@@ -1766,6 +1675,7 @@
                                     </VisualStateGroup>
                                 </VisualStateManager.VisualStateGroups>
                             </Grid>
+
                             <ControlTemplate.Triggers>
                                 <Trigger Property="Orientation" Value="Vertical">
                                     <Setter TargetName="TemplateRoot" Property="LayoutTransform">
@@ -1979,7 +1889,7 @@
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
                 <Setter Property="Background" Value="Transparent"/>
                 <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                <Setter Property="RenderTransformOrigin" Value="1, 0.5"/>
                 <Setter Property="RenderTransform">
                     <Setter.Value>
                         <ScaleTransform ScaleX="1"
@@ -2021,7 +1931,7 @@
                                         <BeginStoryboard>
                                             <Storyboard>
                                                 <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
-                                                                 To="1.1"
+                                                                 To="1.05"
                                                                  Duration="0:0:0.1">
 
                                                     <DoubleAnimation.EasingFunction>
@@ -2030,7 +1940,7 @@
                                                 </DoubleAnimation>
 
                                                 <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
-                                                                 To="1.1"
+                                                                 To="1.05"
                                                                  Duration="0:0:0.1">
 
                                                     <DoubleAnimation.EasingFunction>

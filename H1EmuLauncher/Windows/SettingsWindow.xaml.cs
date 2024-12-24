@@ -9,14 +9,6 @@ namespace H1EmuLauncher
 {
     public partial class SettingsWindow : Window
     {
-        readonly ProcessStartInfo cmdShell = new()
-        {
-            FileName = "cmd.exe",
-            RedirectStandardInput = true,
-            UseShellExecute = false,
-            CreateNoWindow = true
-        };
-        public static string accountKeyArgument;
         public static SettingsWindow settingsInstance;
 
         public SettingsWindow()
@@ -35,7 +27,7 @@ namespace H1EmuLauncher
             DragMove();
         }
 
-        public static void SwitchToAccountKeyTab()
+        public static void SwitchToAccountKeyTab(string accountKeyArgument)
         {
             if (settingsInstance.settingsTabControl.SelectedIndex == 1)
             {
@@ -77,17 +69,13 @@ namespace H1EmuLauncher
             }
         }
 
+        public static string newAccountKey;
         private void SettingsWindowContentRendered(object sender, EventArgs e)
         {
             Top = (LauncherWindow.launcherInstance.Top + LauncherWindow.launcherInstance.Height / 2) - (Height / 2);
 
-            // If accountkey argument was specified launch the accountkey window with the argument value
-            if (!string.IsNullOrEmpty(accountKeyArgument))
-            {
-                settingsTabControl.SelectedIndex = 1;
-                SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = accountKeyArgument;
-                accountKeyArgument = null;
-            }
+            if (!string.IsNullOrEmpty(newAccountKey))
+                SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = newAccountKey;
         }
 
         public void CloseSettingsWindow(object sender, RoutedEventArgs e)

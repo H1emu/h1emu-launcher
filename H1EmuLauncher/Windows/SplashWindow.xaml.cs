@@ -17,6 +17,7 @@ namespace H1EmuLauncher
         public static HttpClient httpClient = new();
         private Version latestVersion;
         private Version localVersion;
+        public static bool checkForUpdates = true;
 
         public SplashWindow()
         {
@@ -33,7 +34,10 @@ namespace H1EmuLauncher
 
         private async void SplashScreenWindowLoaded(object sender, RoutedEventArgs e)
         {
-            await CheckVersion();
+            if (checkForUpdates)
+                await CheckVersion();
+            else
+                Close();
         }
 
         private async Task CheckVersion()

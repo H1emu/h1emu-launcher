@@ -28,10 +28,11 @@ namespace H1EmuLauncher
                 Environment.Exit(0);
             }
 
+            if (string.Join(' ', e.Args).Contains("-skipupdatecheck"))
+                SplashWindow.checkForUpdates = false;
+
             if (e.Args.Length > 0)
-            {
                 LauncherWindow.rawArgs = e.Args;
-            }
 
             StartPipeServer();
 
@@ -65,9 +66,9 @@ namespace H1EmuLauncher
                     StreamReader reader = new(pipeServer);
                     string args = reader.ReadToEnd();
 
-                    Dispatcher.Invoke(new Action(delegate
+                    Dispatcher.Invoke(new Action(async delegate
                     {
-                        LauncherWindow.launcherInstance.ExecuteArguments(args.Split(' '));
+                        await LauncherWindow.launcherInstance.ExecuteArguments(args.Split(' '));
                     }));
 
                     pipeServer.Dispose();
@@ -79,7 +80,7 @@ namespace H1EmuLauncher
         {
             try
             {
-                NamedPipeClientStream pipeClient = new(null, "H1EmuLauncherPipe", PipeDirection.Out);
+                NamedPipeClientStream pipeClient = new(".", "H1EmuLauncherPipe", PipeDirection.Out);
                 StreamWriter writer = new(pipeClient);
 
                 pipeClient.Connect(1000);

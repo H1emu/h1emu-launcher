@@ -217,20 +217,21 @@ namespace H1EmuLauncher
 
                         MenuItem notifyIconContextMenuItemToEdit = (MenuItem)LauncherWindow.notifyIconContextMenu.Items[i + 3];
                         notifyIconContextMenuItemToEdit.Header = serverNameBox.Text.Trim();
+                        break;
                     }
                 }
 
                 currentJson[editIndex].CustomServerName = serverNameBox.Text.Trim();
                 currentJson[editIndex].CustomServerIp = serverIpBox.Text.Trim().Replace(" ", "");
 
+                ComboBoxItem comboBoxItem = (ComboBoxItem)LauncherWindow.launcherInstance.serverSelector.Items[editIndex + 3];
+                comboBoxItem.Content = serverNameBox.Text.Trim();
+
                 string newJson = JsonSerializer.Serialize(currentJson, LauncherWindow.jsonSerializerOptions);
                 File.WriteAllText(LauncherWindow.customServersJsonFile, newJson);
 
                 string newJsonRecent = JsonSerializer.Serialize(currentJsonRecent, LauncherWindow.jsonSerializerOptions);
                 File.WriteAllText(LauncherWindow.recentServersJsonFile, newJsonRecent);
-
-                ComboBoxItem comboBoxItem = (ComboBoxItem)LauncherWindow.launcherInstance.serverSelector.Items[editIndex + 3];
-                comboBoxItem.Content = serverNameBox.Text.Trim();
             }
             catch (Exception e)
             {

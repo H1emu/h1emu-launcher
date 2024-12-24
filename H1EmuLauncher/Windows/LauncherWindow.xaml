@@ -783,8 +783,7 @@
 
                                     <Separator Background="#444444"/>
 
-                                    <ComboBoxItem x:Name="newServer"
-                                                  Content="{DynamicResource item141}"
+                                    <ComboBoxItem Content="{DynamicResource item141}"
                                                   PreviewMouseLeftButtonUp="AddNewServer"
                                                   Style="{DynamicResource ComboBoxItemStyle}"/>
 
