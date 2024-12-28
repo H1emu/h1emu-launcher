@@ -7,10 +7,10 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>3.2.4</FileVersion>
+	  <FileVersion>3.2.5</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>3.2.4</Version>
+	  <Version>3.2.5</Version>
 	  <AssemblyName>H1Emu Launcher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>3.2.4</AssemblyVersion>
+	  <AssemblyVersion>3.2.5</AssemblyVersion>
 	  <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -38,6 +38,7 @@
     <None Remove="Resources\5.jpg" />
     <None Remove="Resources\6.jpg" />
     <None Remove="Resources\7.jpg" />
+    <None Remove="Resources\Assets_102.pack" />
     <None Remove="Resources\Assets_256.pack" />
     <None Remove="Resources\BackgroundArt.png" />
     <None Remove="Resources\CustomClientConfig.ini" />
@@ -61,6 +62,8 @@
     <None Remove="Resources\PrimaryButton.png" />
     <None Remove="Resources\Server-Quickstart.zip" />
     <None Remove="Resources\Server_Quickstart.zip" />
+    <None Remove="Resources\Sound_Banks.rar" />
+    <None Remove="Resources\Sound_Banks.zip" />
   </ItemGroup>
 
   <ItemGroup>
@@ -143,6 +146,9 @@
     <Resource Include="Resources\7.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resources\Assets_102.pack">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Assets_256.pack">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -189,6 +195,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Server_Quickstart.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Sound_Banks.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

@@ -32,11 +32,12 @@ namespace H1EmuLauncher.Classes
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", Properties.Resources.Game_Patch_2016);
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip", $"{Properties.Settings.Default.activeDirectory}", true);
 
+                    // Extract modified Sound Bank files
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Audio\\pc9\\SoundBanks\\Sound_Banks.zip", Properties.Resources.Sound_Banks);
+                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Resources\\Audio\\pc9\\SoundBanks\\Sound_Banks.zip", $"{Properties.Settings.Default.activeDirectory}\\Resources\\Audio\\pc9\\SoundBanks", true);
+
                     // Extract voice chat patch
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.exe", Properties.Resources.H1EmuVoiceClient);
-
-                    // Extract Asset_256.pack for various fixes
-                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
 
                     // Extract modified BattlEye to provide custom anti-cheat and asset validation
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\H1Z1_BE.exe", Properties.Resources.H1Z1_BE);
@@ -47,6 +48,12 @@ namespace H1EmuLauncher.Classes
                     // Extract FairPlay logo
                     Bitmap fairPlayLogo = new Bitmap(Properties.Resources.logo);
                     fairPlayLogo.Save($"{Properties.Settings.Default.activeDirectory}\\logo.bmp", ImageFormat.Bmp);
+
+                    // Extract Asset_256.pack for various fixes
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
+
+                    // Extract Asset_102.pack for modified military base
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_102.pack", Properties.Resources.Assets_102);
                 }
 
                 // Delete BattlEye folder to prevent Steam from trying to launch the game
@@ -60,6 +67,7 @@ namespace H1EmuLauncher.Classes
                 if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice"))
                     Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice", true);
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
+                File.Delete($"{Properties.Settings.Default.activeDirectory}\\Resources\\Audio\\pc9\\SoundBanks\\Sound_Banks.zip");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.dll");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.runtimeconfig.json");
                 File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Asio.dll");
