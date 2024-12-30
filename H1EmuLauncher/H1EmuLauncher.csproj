@@ -7,10 +7,10 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>3.2.6</FileVersion>
+	  <FileVersion>3.2.7</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>3.2.6</Version>
+	  <Version>3.2.7</Version>
 	  <AssemblyName>H1Emu Launcher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>3.2.6</AssemblyVersion>
+	  <AssemblyVersion>3.2.7</AssemblyVersion>
 	  <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -38,8 +38,8 @@
     <None Remove="Resources\5.jpg" />
     <None Remove="Resources\6.jpg" />
     <None Remove="Resources\7.jpg" />
-    <None Remove="Resources\Assets_102.pack" />
     <None Remove="Resources\Assets_256.pack" />
+    <None Remove="Resources\Assets_257.pack" />
     <None Remove="Resources\BackgroundArt.png" />
     <None Remove="Resources\CustomClientConfig.ini" />
     <None Remove="Resources\DisplayImage.png" />
@@ -146,10 +146,10 @@
     <Resource Include="Resources\7.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Assets_102.pack">
+    <Resource Include="Resources\Assets_256.pack">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Assets_256.pack">
+    <Resource Include="Resources\Assets_257.pack">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\BackgroundArt.png">

@@ -133,9 +133,9 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Assets_102 {
+        internal static byte[] Assets_256 {
             get {
-                object obj = ResourceManager.GetObject("Assets_102", resourceCulture);
+                object obj = ResourceManager.GetObject("Assets_256", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace H1EmuLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Assets_256 {
+        internal static byte[] Assets_257 {
             get {
-                object obj = ResourceManager.GetObject("Assets_256", resourceCulture);
+                object obj = ResourceManager.GetObject("Assets_257", resourceCulture);
                 return ((byte[])(obj));
             }
         }

@@ -52,8 +52,8 @@ namespace H1EmuLauncher.Classes
                     // Extract Asset_256.pack for various fixes
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
 
-                    // Extract Asset_102.pack for modified military base
-                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_102.pack", Properties.Resources.Assets_102);
+                    // Extract Asset_257.pack for modified military base
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_257.pack", Properties.Resources.Assets_257);
                 }
 
                 // Delete BattlEye folder to prevent Steam from trying to launch the game
