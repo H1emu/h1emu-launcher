@@ -15,8 +15,8 @@ namespace H1EmuLauncher
     {
         public static SplashWindow splashInstance;
         public static HttpClient httpClient = new();
-        private Version latestVersion;
-        private Version localVersion;
+        private static Version latestVersion;
+        private static Version localVersion;
         public static bool checkForUpdates = true;
 
         public SplashWindow()
@@ -35,15 +35,18 @@ namespace H1EmuLauncher
         private async void SplashScreenWindowLoaded(object sender, RoutedEventArgs e)
         {
             if (checkForUpdates)
-                await CheckVersion();
+                await CheckVersion(this);
             else
                 Close();
         }
 
-        private async Task CheckVersion()
+        public static async Task<bool> CheckVersion(Window owner)
         {
             try
             {
+                if (owner is LauncherWindow)
+                    LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item214");
+
                 // Download launcher information from GitHub endpoint
                 HttpResponseMessage response = await httpClient.GetAsync(Info.LAUNCHER_JSON_API);
 
@@ -60,10 +63,21 @@ namespace H1EmuLauncher
                 UpdateWindow.installerDownloadUrl = jsonLauncherDes.assets[0].browser_download_url;
                 UpdateWindow.installerFileName = jsonLauncherDes.assets[0].name;
 
-                Close();
+                if (localVersion < latestVersion)
+                {
+                    owner.Hide();
+                    UpdateWindow uw = new();
+                    uw.ShowDialog();
+                }
+
+                if (owner is SplashWindow)
+                    owner.Close();
+                else if (owner is LauncherWindow)
+                    LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item217");
             }
             catch (AggregateException e)
             {
+                // Add each of the exceptions to a list to display
                 string exceptionList = string.Empty;
                 foreach (Exception exception in e.InnerExceptions)
                     exceptionList += $"\n\n{exception.GetType().Name}: {exception.Message}";
@@ -71,19 +85,43 @@ namespace H1EmuLauncher
                 if (e.InnerException is HttpRequestException ex)
                 {
                     if (ex.StatusCode == null)
-                        exceptionList += $"\n\n{FindResource("item137")}";
+                        exceptionList += $"\n\n{owner.FindResource("item137")}";
                 }
 
-                Hide();
-                CustomMessageBox.Show($"{FindResource("item66")} {FindResource("item16")}{exceptionList}\n\n{FindResource("item49")}", this);
-                Close();
+                if (owner is SplashWindow)
+                    owner.Hide();
+                else if (owner is LauncherWindow)
+                {
+                    LauncherWindow.launcherInstance.playButton.IsEnabled = true;
+                    LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item8");
+                }
+
+                CustomMessageBox.Show($"{owner.FindResource("item66")} {owner.FindResource("item16")}{exceptionList}\n\n{owner.FindResource("item49")}", owner);
+
+                if (owner is SplashWindow)
+                    Environment.Exit(0);
+
+                return false;
             }
             catch (Exception ex)
             {
-                Hide();
-                CustomMessageBox.Show($"{FindResource("item66")} \"{ex.Message}\"\n\n{FindResource("item49")}", this);
-                Close();
+                if (owner is SplashWindow)
+                    owner.Hide();
+                else if (owner is LauncherWindow)
+                {
+                    LauncherWindow.launcherInstance.playButton.IsEnabled = true;
+                    LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item8");
+                }
+
+                CustomMessageBox.Show($"{owner.FindResource("item66")} \"{ex.Message}\"\n\n{owner.FindResource("item49")}", owner);
+
+                if (owner is SplashWindow)
+                    Environment.Exit(0);
+
+                return false;
             }
+
+            return true;
         }
 
         private void MoveSplashScreenWindow(object sender, MouseButtonEventArgs e)

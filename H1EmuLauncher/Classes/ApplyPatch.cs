@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.IO.Compression;
-using System.Windows;
 using System.Reflection;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Controls;
+using System.Threading.Tasks;
 
 namespace H1EmuLauncher.Classes
 {
@@ -13,18 +13,15 @@ namespace H1EmuLauncher.Classes
     {
         public static string latestPatchVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.');
 
-        public static void ApplyPatch()
+        public static bool ApplyPatch()
         {
             // Unzip all of the files to the root directory
             try
             {
-                Application.Current.Dispatcher.Invoke(new Action(delegate
-                {
-                    if (string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersion2016))
-                        LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item150");
-                    else
-                        LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
-                }));
+                if (string.IsNullOrEmpty(Properties.Settings.Default.currentPatchVersion2016))
+                    LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item150");
+                else
+                    LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
 
                 if (Properties.Settings.Default.gameVersionString == "22dec2016")
                 {
@@ -80,13 +77,12 @@ namespace H1EmuLauncher.Classes
             }
             catch (Exception e)
             {
-                Application.Current.Dispatcher.Invoke(new Action(delegate
-                {
-                    LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item217");
-                    if (Properties.Settings.Default.gameVersionString == "22dec2016")
-                        CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item96")}\n\n{e.Message}", LauncherWindow.launcherInstance);
-                }));
-                return;
+                LauncherWindow.launcherInstance.playButton.IsEnabled = true;
+                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item8");
+
+                if (Properties.Settings.Default.gameVersionString == "22dec2016")
+                    CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item96")}\n\n{e.Message}", LauncherWindow.launcherInstance);
+                return false;
             }
 
             // Finish
@@ -95,10 +91,8 @@ namespace H1EmuLauncher.Classes
 
             Properties.Settings.Default.Save();
 
-            Application.Current.Dispatcher.Invoke(new Action(delegate
-            {
-                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item217");
-            }));
+            LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item217");
+            return true;
         }
     }
 }

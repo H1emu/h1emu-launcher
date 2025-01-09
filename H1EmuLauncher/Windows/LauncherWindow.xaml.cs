@@ -121,7 +121,7 @@ namespace H1EmuLauncher
                 // Close every other window apart from the Launcher and Add Server window
                 foreach (Window window in Application.Current.Windows)
                 {
-                    if (window.Name != Name && window.Name != "AddServer")
+                    if (window is not LauncherWindow && window is not AddOrEditServerWindow)
                         window.Close();
                 }
 
@@ -157,7 +157,7 @@ namespace H1EmuLauncher
                 // Close every other window apart from the Launcher and Settings windows
                 foreach (Window window in Application.Current.Windows)
                 {
-                    if (window.Name != Name && window.Name != "Settings")
+                    if (window is not LauncherWindow && window is not SettingsWindow)
                         window.Close();
                 }
 
@@ -685,7 +685,7 @@ namespace H1EmuLauncher
             return true;
         }
 
-        private void LaunchClient(object sender, RoutedEventArgs e)
+        private async void LaunchClient(object sender, RoutedEventArgs e)
         {
             if (!Properties.Settings.Default.developerMode)
             {
@@ -704,159 +704,136 @@ namespace H1EmuLauncher
             string sessionId = string.Empty;
             int serverIndex = serverSelector.SelectedIndex;
 
-            new Thread(async () =>
+            try
             {
-                try
+                switch (serverIndex)
                 {
-                    switch (serverIndex)
-                    {
-                        case 0:
-                            // sessionIdKey is the same as accountKey, not possible change the name without resetting users settings
-                            // If connecting to H1Emu servers, check is an Account Key is set
-                            if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
-                            {
-                                Dispatcher.Invoke(new Action(delegate
-                                {
-                                    MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item153").ToString(), this, false, true, true);
-
-                                    if (mbr != MessageBoxResult.Yes)
-                                        throw new Exception("emptyAccountKey");
-                                    else
-                                        throw new Exception("createAccountKey");
-                                }));
-                            }
-
-                            // If connecting to H1Emu servers, check Account Key validity
-                            await AccountKeyUtil.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);
-
-                            sessionId = $"{{\"sessionId\":\"{Properties.Settings.Default.sessionIdKey}\",\"gameVersion\":2}}";
-                            serverIp = Info.H1EMU_SERVER_IP;
-                            break;
-
-                        case 1:
-                            if (!LaunchLocalServer())
-                                throw new Exception("launchLocalServerFailed");
-
-                            sessionId = $"{{\"sessionId\":\"0\",\"gameVersion\":2}}";
-                            serverIp = "localhost:1115";
-                            break;
-
-                        default:
-                            List<ServerList> currentJson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(customServersJsonFile));
-                            foreach (ServerList item in currentJson)
-                            {
-                                Dispatcher.Invoke(new Action(delegate
-                                {
-                                    if (item.CustomServerName == serverSelector.Text)
-                                    {
-                                        sessionId = $"{{\"sessionId\":\"{AccountKeyUtil.EncryptStringSHA256(Properties.Settings.Default.sessionIdKey)}\",\"gameVersion\":2}}";
-                                        serverIp = item.CustomServerIp;
-                                    }
-                                }));
-                            }
-                            break;
-                    }
-                }
-                catch (Exception e)
-                {
-                    switch (e.Message)
-                    {
-                        case "emptyAccountKey":
-                        case "launchLocalServerFailed":
-                            break;
-
-                        case "createAccountKey":
-                            Dispatcher.Invoke(new Action(delegate
-                            {
-                                SettingsWindow sw = new();
-                                sw.settingsTabControl.SelectedIndex = 1;
-                                sw.ShowDialog();
-                            }));
-                            break;
-
-                        default:
-                            Dispatcher.Invoke(new Action(delegate
-                            {
-                                CustomMessageBox.Show($"{FindResource("item142")} \"{e.Message}\"", this);
-                            }));
-                            break;
-                    }
-
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        playButton.IsEnabled = true;
-                        playButton.SetResourceReference(ContentProperty, "item8");
-                    }));
-                    return;
-                }
-
-                try
-                {
-                    // Check that the patch is the latest version
-                    if (!Properties.Settings.Default.developerMode)
-                        ApplyPatchClass.ApplyPatch();
-
-                    // Launch game
-                    Process h1Process = new()
-                    {
-                        StartInfo = new ProcessStartInfo
+                    case 0:
+                        // sessionIdKey is the same as accountKey, not possible change the name without resetting users settings
+                        // If connecting to H1Emu servers, check is an Account Key is set
+                        if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
                         {
-                            FileName = $"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe",
-                            Arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}",
-                            WindowStyle = ProcessWindowStyle.Normal,
-                            WorkingDirectory = Properties.Settings.Default.activeDirectory,
-                            UseShellExecute = true,
-                            Verb = "runas"
-                        },
-                        EnableRaisingEvents = true
-                    };
-                    h1Process.Exited += (o, s) =>
-                    {
-                        if (Visibility == Visibility.Hidden)
-                        {
-                            Dispatcher.Invoke(new Action(delegate
-                            {
-                                Show();
-                                Activate();
-                            }));
+                            MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item153").ToString(), this, false, true, true);
+
+                            if (mbr != MessageBoxResult.Yes)
+                                throw new Exception("emptyAccountKey");
+                            else
+                                throw new Exception("createAccountKey");
                         }
 
-                        Dispatcher.Invoke(new Action(delegate
+                        // If connecting to H1Emu servers, check Account Key validity
+                        await AccountKeyUtil.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);
+
+                        sessionId = $"{{\"sessionId\":\"{Properties.Settings.Default.sessionIdKey}\",\"gameVersion\":2}}";
+                        serverIp = Info.H1EMU_SERVER_IP;
+                        break;
+
+                    case 1:
+                        if (!LaunchLocalServer())
+                            throw new Exception("launchLocalServerFailed");
+
+                        sessionId = $"{{\"sessionId\":\"0\",\"gameVersion\":2}}";
+                        serverIp = "localhost:1115";
+                        break;
+
+                    default:
+                        List<ServerList> currentJson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(customServersJsonFile));
+                        foreach (ServerList item in currentJson)
                         {
-                            playButton.IsEnabled = true;
-                            playButton.SetResourceReference(ContentProperty, "item8");
-                        }));
-
-                        if (startSingleplayerServerProcess != null)
-                            startSingleplayerServerProcess.Kill(true);
-                    };
-                    h1Process.Start();
-
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        if (serverSelector.SelectedIndex != 0 && serverSelector.SelectedIndex != 1 && serverSelector.SelectedIndex != serverSelector.Items.Count - 1 && serverSelector.SelectedItem is ComboBoxItem)
-                            AddServerToRecentList(serverSelector.Text);
-                    }));
-
-                    if (Properties.Settings.Default.autoMinimise && Visibility == Visibility.Visible)
-                    {
-                        Dispatcher.Invoke(new Action(delegate
-                        {
-                            Hide();
-                        }));
-                        new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
-                    }
+                            if (item.CustomServerName == serverSelector.Text)
+                            {
+                                sessionId = $"{{\"sessionId\":\"{AccountKeyUtil.EncryptStringSHA256(Properties.Settings.Default.sessionIdKey)}\",\"gameVersion\":2}}";
+                                serverIp = item.CustomServerIp;
+                            }
+                        }
+                        break;
                 }
-                catch (Exception e)
+            }
+            catch (Exception ex)
+            {
+                switch (ex.Message)
                 {
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        playButton.IsEnabled = true;
-                        playButton.SetResourceReference(ContentProperty, "item8");
-                        CustomMessageBox.Show($"{FindResource("item13")}\n\n{e.GetType().Name}: \"{e.Message}\".", this);
-                    }));
+                    case "emptyAccountKey":
+                    case "launchLocalServerFailed":
+                        break;
+
+                    case "createAccountKey":
+                        SettingsWindow sw = new();
+                        sw.settingsTabControl.SelectedIndex = 1;
+                        sw.ShowDialog();
+                        break;
+
+                    default:
+                        CustomMessageBox.Show($"{FindResource("item142")} \"{ex.Message}\"", this);
+                        break;
                 }
-            }).Start();
+
+                playButton.IsEnabled = true;
+                playButton.SetResourceReference(ContentProperty, "item8");
+                return;
+            }
+
+            try
+            {
+                // Check that the patch is the latest version
+                if (!Properties.Settings.Default.developerMode)
+                {
+                    if (!ApplyPatchClass.ApplyPatch())
+                        return;
+                }
+
+                // Check that the launcher is the latest version
+                if (SplashWindow.checkForUpdates)
+                {
+                    if (!await SplashWindow.CheckVersion(this))
+                        return;
+                }
+
+                // Launch game
+                Process h1Process = new()
+                {
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = $"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe",
+                        Arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}",
+                        WindowStyle = ProcessWindowStyle.Normal,
+                        WorkingDirectory = Properties.Settings.Default.activeDirectory,
+                        UseShellExecute = true,
+                        Verb = "runas"
+                    },
+                    EnableRaisingEvents = true
+                };
+                h1Process.Exited += (o, s) =>
+                {
+                    if (Visibility == Visibility.Hidden)
+                    {
+                        Show();
+                        Activate();
+                    }
+
+                    playButton.IsEnabled = true;
+                    playButton.SetResourceReference(ContentProperty, "item8");
+
+                    if (startSingleplayerServerProcess != null)
+                        startSingleplayerServerProcess.Kill(true);
+                };
+                h1Process.Start();
+
+                if (serverSelector.SelectedIndex != 0 && serverSelector.SelectedIndex != 1 && serverSelector.SelectedIndex != serverSelector.Items.Count - 1 && serverSelector.SelectedItem is ComboBoxItem)
+                    AddServerToRecentList(serverSelector.Text);
+
+                if (Properties.Settings.Default.autoMinimise && Visibility == Visibility.Visible)
+                {
+                    Hide();
+                    new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
+                }
+            }
+            catch (Exception ex)
+            {
+                playButton.IsEnabled = true;
+                playButton.SetResourceReference(ContentProperty, "item8");
+                CustomMessageBox.Show($"{FindResource("item13")}\n\n{e.GetType().Name}: \"{ex.Message}\".", this);
+            }
         }
 
         private void LaunchToCustomServerFromNotifyIcon(object sender, RoutedEventArgs e)
