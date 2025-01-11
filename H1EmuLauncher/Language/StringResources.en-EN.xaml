@@ -196,7 +196,7 @@
     <system:String x:Key="item216">Please uninstall any custom asset (.pack) files when playing on any H1Emu Main servers or it may result in a ban.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
     <system:String x:Key="item218">Developer mode</system:String>
-    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched and multiple instances of the game can be launched.</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched, multiple instances of the game can be launched and the Singleplayer server window will not close for debugging purposes.</system:String>
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
     <system:String x:Key="item221">Paste</system:String>
     <system:String x:Key="item222">Would you like to return to the login page?</system:String>

@@ -7,10 +7,10 @@
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>3.2.8</FileVersion>
+	  <FileVersion>3.2.9</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>3.2.8</Version>
+	  <Version>3.2.9</Version>
 	  <AssemblyName>H1Emu Launcher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>3.2.8</AssemblyVersion>
+	  <AssemblyVersion>3.2.9</AssemblyVersion>
 	  <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -55,6 +55,7 @@
     <None Remove="Resources\H1Z1_FP.exe" />
     <None Remove="Resources\Icon.ico" />
     <None Remove="Resources\logo.bmp" />
+    <None Remove="Resources\lz4.dll" />
     <None Remove="Resources\node-v22.7.0-win-x64.zip" />
     <None Remove="Resources\Node_Files.zip" />
     <None Remove="Resources\node_v22.7.0_win_x64.zip" />
@@ -183,6 +184,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\logo.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\lz4.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Node_Files.zip">

@@ -805,16 +805,19 @@ namespace H1EmuLauncher
                 };
                 h1Process.Exited += (o, s) =>
                 {
-                    if (Visibility == Visibility.Hidden)
+                    Dispatcher.Invoke(new Action(delegate
                     {
-                        Show();
-                        Activate();
-                    }
+                        if (Visibility == Visibility.Hidden)
+                        {
+                            Show();
+                            Activate();
 
-                    playButton.IsEnabled = true;
-                    playButton.SetResourceReference(ContentProperty, "item8");
+                            playButton.IsEnabled = true;
+                            playButton.SetResourceReference(ContentProperty, "item8");
+                        }
+                    }));
 
-                    if (startSingleplayerServerProcess != null)
+                    if (!Properties.Settings.Default.developerMode && startSingleplayerServerProcess != null)
                         startSingleplayerServerProcess.Kill(true);
                 };
                 h1Process.Start();
@@ -882,8 +885,8 @@ namespace H1EmuLauncher
                 chineseLink.Visibility = Visibility.Visible;
 
             await DisplayVersionInformation();
-            LoadServers();
             Carousel.BeginImageCarousel();
+            LoadServers();
             CheckGameVersionAndPath(this, false, false);
         }
 

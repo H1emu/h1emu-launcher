@@ -689,7 +689,7 @@
                                                                  Duration="0:0:0.1">
 
                                                     <DoubleAnimation.EasingFunction>
-                                                        <BackEase EasingMode="EaseInOut"/>
+                                                        <BackEase EasingMode="EaseOut"/>
                                                     </DoubleAnimation.EasingFunction>
                                                 </DoubleAnimation>
 
@@ -699,7 +699,7 @@
                                                                  Duration="0:0:0.1">
 
                                                     <DoubleAnimation.EasingFunction>
-                                                        <BackEase EasingMode="EaseInOut"/>
+                                                        <BackEase EasingMode="EaseOut"/>
                                                     </DoubleAnimation.EasingFunction>
                                                 </DoubleAnimation>
                                             </Storyboard>
@@ -713,7 +713,7 @@
                                                                  Duration="0:0:0.1">
 
                                                     <DoubleAnimation.EasingFunction>
-                                                        <BackEase EasingMode="EaseInOut"/>
+                                                        <BackEase EasingMode="EaseIn"/>
                                                     </DoubleAnimation.EasingFunction>
                                                 </DoubleAnimation>
 
@@ -722,7 +722,7 @@
                                                                  Duration="0:0:0.1">
 
                                                     <DoubleAnimation.EasingFunction>
-                                                        <BackEase EasingMode="EaseInOut"/>
+                                                        <BackEase EasingMode="EaseIn"/>
                                                     </DoubleAnimation.EasingFunction>
                                                 </DoubleAnimation>
                                             </Storyboard>
