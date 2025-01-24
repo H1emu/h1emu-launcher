@@ -84,6 +84,10 @@ namespace H1EmuLauncher.SettingsPages
 
                         // Extract lz4.dll file patch for smaller data sizes using compression
                         File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\lz4.dll", Properties.Resources.lz4);
+
+                        // Extract patched Locale files
+                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip", Properties.Resources.Locales);
+                        ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip", $"{Properties.Settings.Default.activeDirectory}\\Locale", true);
                     }
 
                     // Delete BattlEye folder to prevent Steam from trying to launch the game
@@ -103,6 +107,7 @@ namespace H1EmuLauncher.SettingsPages
                         Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice", true);
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\Resources\\Audio\\pc9\\SoundBanks\\Sound_Banks.zip");
+                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip");
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.dll");
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.runtimeconfig.json");
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Asio.dll");

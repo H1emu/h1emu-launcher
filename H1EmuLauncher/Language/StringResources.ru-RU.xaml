@@ -196,7 +196,7 @@
     <system:String x:Key="item216">Пожалуйста, удалите все файлы пользовательских ресурсов (.pack) при игре на любом главном сервере, иначе это может привести к бану.</system:String>
     <system:String x:Key="item217">ЗАПУЩЕНО</system:String>
     <system:String x:Key="item218">Режим разработчика</system:String>
-    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched, multiple instances of the game can be launched and the Singleplayer server window will not close for debugging purposes.</system:String>
+    <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched, multiple instances of the game can be launched and the Singleplayer server window will stay open for debugging purposes.</system:String>
     <system:String x:Key="item220">При вставке текста произошла ошибка:</system:String>
     <system:String x:Key="item221">Paste</system:String>
     <system:String x:Key="item222">Would you like to return to the login page?</system:String>
