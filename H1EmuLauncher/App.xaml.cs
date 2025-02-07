@@ -40,7 +40,8 @@ namespace H1EmuLauncher
             Timeline.DesiredFrameRateProperty.OverrideMetadata(typeof(Timeline), new FrameworkPropertyMetadata { DefaultValue = 60 });
 
             // Delete old setup file
-            File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}");
+            if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}"))
+                File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}");
 
             // Delete old carousel images folder, no longer needed on newer versions of the launcher
             if (Directory.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\CarouselImages"))
