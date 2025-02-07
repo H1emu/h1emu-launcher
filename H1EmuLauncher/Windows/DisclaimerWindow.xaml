@@ -152,7 +152,8 @@
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Terms of service message -->
-                        <TextBlock Grid.Row="2"
+                        <TextBlock x:Name="TOSHeader"
+                                   Grid.Row="2"
                                    Margin="0,20,0,20"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
@@ -243,7 +244,7 @@
                                 
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
-                                           Text="- Image-based telemetry from your gameplay session."
+                                           Text="- Image-based telemetry including game and desktop screenshots."
                                            Style="{DynamicResource TextBlockStyle}"/>
                                 
                                 <TextBlock FontWeight="Light"

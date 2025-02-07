@@ -32,6 +32,6 @@ namespace H1EmuLauncher.Classes
 
         public static string ALLOWED_ACCOUNT_KEY_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         
-        public static int AGREED_TO_TOS_ITERATION = 1;
+        public static int TOS_ITERATION = 2;
     }
 }

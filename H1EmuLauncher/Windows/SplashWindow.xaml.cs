@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using H1EmuLauncher.Classes;
+using SteamKit2.GC.Dota.Internal;
 
 namespace H1EmuLauncher
 {
@@ -145,12 +146,15 @@ namespace H1EmuLauncher
             }
             else
             {
-                if (Properties.Settings.Default.firstTimeUse || Properties.Settings.Default.agreedToTOSIteration < Info.AGREED_TO_TOS_ITERATION)
+                if (Properties.Settings.Default.firstTimeUse || Properties.Settings.Default.agreedToTOSIteration < Info.TOS_ITERATION)
                 {
                     DisclaimerWindow dc = new();
 
-                    if (!Properties.Settings.Default.firstTimeUse && Properties.Settings.Default.agreedToTOSIteration < Info.AGREED_TO_TOS_ITERATION)
+                    if (!Properties.Settings.Default.firstTimeUse && Properties.Settings.Default.agreedToTOSIteration < Info.TOS_ITERATION)
+                    {
                         dc.welcomeMessage.Visibility = Visibility.Collapsed;
+                        dc.TOSHeader.Text = "Updated Terms of Service";
+                    }
 
                     dc.ShowDialog();
                 }
