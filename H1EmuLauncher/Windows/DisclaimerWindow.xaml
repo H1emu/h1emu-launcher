@@ -236,17 +236,12 @@
                                            TextWrapping="Wrap"
                                            Text="- Information about processes, drivers, and executable code running on your system."
                                            Style="{DynamicResource TextBlockStyle}"/>
-                                
+
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
                                            Text="- File names that may include your operating system username."
                                            Style="{DynamicResource TextBlockStyle}"/>
-                                
-                                <TextBlock FontWeight="Light"
-                                           TextWrapping="Wrap"
-                                           Text="- Image-based telemetry including game and desktop screenshots."
-                                           Style="{DynamicResource TextBlockStyle}"/>
-                                
+
                                 <TextBlock FontWeight="Light"
                                            TextWrapping="Wrap"
                                            Text="- Fairplay may retain this information for the duration of its services for the game to detect and prevent unfair gameplay."
