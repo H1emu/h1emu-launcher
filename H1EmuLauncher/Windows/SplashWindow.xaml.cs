@@ -93,8 +93,8 @@ namespace H1EmuLauncher
                     owner.Hide();
                 else if (owner is LauncherWindow)
                 {
-                    LauncherWindow.launcherInstance.playButton.IsEnabled = true;
                     LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item8");
+                    LauncherWindow.launcherInstance.playButton.IsEnabled = true;
                 }
 
                 CustomMessageBox.Show($"{owner.FindResource("item66")} {owner.FindResource("item16")}{exceptionList}\n\n{owner.FindResource("item49")}", owner);
@@ -110,8 +110,8 @@ namespace H1EmuLauncher
                     owner.Hide();
                 else if (owner is LauncherWindow)
                 {
-                    LauncherWindow.launcherInstance.playButton.IsEnabled = true;
                     LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item8");
+                    LauncherWindow.launcherInstance.playButton.IsEnabled = true;
                 }
 
                 CustomMessageBox.Show($"{owner.FindResource("item66")} \"{ex.Message}\"\n\n{owner.FindResource("item49")}", owner);

@@ -695,8 +695,8 @@ namespace H1EmuLauncher
 
             if (!CheckGameVersionAndPath(this, false, true))
             {
-                playButton.IsEnabled = true;
                 playButton.SetResourceReference(ContentProperty, "item8");
+                playButton.IsEnabled = true;
                 return;
             }
 
@@ -768,8 +768,8 @@ namespace H1EmuLauncher
                         break;
                 }
 
-                playButton.IsEnabled = true;
                 playButton.SetResourceReference(ContentProperty, "item8");
+                playButton.IsEnabled = true;
                 return;
             }
 
@@ -811,10 +811,10 @@ namespace H1EmuLauncher
                         {
                             Show();
                             Activate();
-
-                            playButton.IsEnabled = true;
-                            playButton.SetResourceReference(ContentProperty, "item8");
                         }
+
+                        playButton.SetResourceReference(ContentProperty, "item8");
+                        playButton.IsEnabled = true;
                     }));
 
                     if (!Properties.Settings.Default.developerMode && startSingleplayerServerProcess != null)
@@ -833,8 +833,8 @@ namespace H1EmuLauncher
             }
             catch (Exception ex)
             {
-                playButton.IsEnabled = true;
                 playButton.SetResourceReference(ContentProperty, "item8");
+                playButton.IsEnabled = true;
                 CustomMessageBox.Show($"{FindResource("item13")}\n\n{e.GetType().Name}: \"{ex.Message}\".", this);
             }
         }
