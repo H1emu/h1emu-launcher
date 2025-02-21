@@ -866,6 +866,10 @@ namespace H1EmuLauncher
 
         private async void LauncherWindowLoaded(object sender, RoutedEventArgs e)
         {
+            // Delete old setup file
+            if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}"))
+                File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}");
+
             if (Properties.Settings.Default.imageCarouselVisibility)
             {
                 // Show image carousel
