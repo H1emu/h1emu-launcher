@@ -52,6 +52,9 @@ namespace H1EmuLauncher.Classes
                     // Extract Asset_257.pack for modified military base
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_257.pack", Properties.Resources.Assets_257);
 
+                    // Extract Asset_258.pack for new skins
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_258.pack", Properties.Resources.Assets_258);
+
                     // Extract lz4.dll file patch for smaller data sizes using compression
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\lz4.dll", Properties.Resources.lz4);
 

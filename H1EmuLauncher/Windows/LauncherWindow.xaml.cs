@@ -864,7 +864,7 @@ namespace H1EmuLauncher
             }
         }
 
-        private async void LauncherWindowLoaded(object sender, RoutedEventArgs e)
+        private void LauncherWindowLoaded(object sender, RoutedEventArgs e)
         {
             // Delete old setup file
             if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}"))
@@ -874,21 +874,17 @@ namespace H1EmuLauncher
             {
                 // Show image carousel
                 imageCarousel.Visibility = Visibility.Visible;
-                Properties.Settings.Default.imageCarouselVisibility = true;
-                Properties.Settings.Default.Save();
             }
             else
             {
                 // Hide image carousel
                 imageCarousel.Visibility = Visibility.Hidden;
-                Properties.Settings.Default.imageCarouselVisibility = false;
-                Properties.Settings.Default.Save();
             }
 
             if (Properties.Settings.Default.language == 1)
                 chineseLink.Visibility = Visibility.Visible;
 
-            await DisplayVersionInformation();
+            DisplayVersionInformation();
             Carousel.BeginImageCarousel();
             LoadServers();
             CheckGameVersionAndPath(this, false, false);
@@ -904,19 +900,19 @@ namespace H1EmuLauncher
                 await AccountKeyUtil.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);
         }
 
-        public async Task DisplayVersionInformation()
+        public void DisplayVersionInformation()
         {
             try
             {
                 // Update version, date published and patch notes code
-                HttpResponseMessage response = await SplashWindow.httpClient.GetAsync(Info.SERVER_JSON_API);
+                HttpResponseMessage response = SplashWindow.httpClient.GetAsync(Info.SERVER_JSON_API).Result;
 
                 // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
                 if (response.StatusCode != HttpStatusCode.OK)
                     throw new Exception($"{char.ToUpper(response.ReasonPhrase.First())}{response.ReasonPhrase.Substring(1)}");
 
                 // Get latest release number, date published, and patch notes for server
-                string jsonServer = await response.Content.ReadAsStringAsync();
+                string jsonServer = response.Content.ReadAsStringAsync().Result;
                 JsonEndPoints.Server.Root jsonDesServer = JsonSerializer.Deserialize<JsonEndPoints.Server.Root>(jsonServer);
                 string latestVersion = jsonDesServer.tag_name;
                 DateTime publishDate = jsonDesServer.published_at;
@@ -943,7 +939,6 @@ namespace H1EmuLauncher
         }
 
         public bool doContinue = true;
-
         private void StoryboardCompleted(object sender, EventArgs e)
         {
             Carousel.playCarousel.Stop();
