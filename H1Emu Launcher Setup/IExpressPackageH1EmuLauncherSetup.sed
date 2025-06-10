@@ -24,7 +24,7 @@ SourceFiles=SourceFiles
 InstallPrompt=
 DisplayLicense=
 FinishMessage=
-TargetName=D:\Programming\WPF\H1Emu Launcher\H1EmuLauncherSetup\Debug\H1EmuLauncherSetup.exe
+TargetName=D:\Programming\WPF\H1Emu Launcher\H1Emu Launcher Setup\Debug\H1EmuLauncherSetup.exe
 FriendlyName=H1EmuLauncherSetup
 AppLaunched=setup.exe
 PostInstallCmd=<None>
@@ -33,7 +33,7 @@ UserQuietInstCmd=
 FILE0="H1EmuLauncherSetup.msi"
 FILE1="setup.exe"
 [SourceFiles]
-SourceFiles0=D:\Programming\WPF\H1Emu Launcher\H1EmuLauncherSetup\Debug\
+SourceFiles0=D:\Programming\WPF\H1Emu Launcher\H1Emu Launcher Setup\Debug\
 [SourceFiles0]
 %FILE0%=
 %FILE1%=

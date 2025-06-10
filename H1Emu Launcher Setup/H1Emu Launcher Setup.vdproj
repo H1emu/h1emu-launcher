@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:H1EmuLauncherSetup"
+"ProjectName" = "8:H1Emu Launcher Setup"
 "LanguageId" = "3:1033"
 "CodePage" = "3:1252"
 "UILanguageId" = "3:1033"
@@ -21,7 +21,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_CB2D385B2F72446DBDEA40144BE2F74A"
+        "MsmKey" = "8:_FAA56C7172764390B1B4184788307B5E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -122,9 +122,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CB2D385B2F72446DBDEA40144BE2F74A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FAA56C7172764390B1B4184788307B5E"
             {
-            "SourcePath" = "8:..\\H1EmuLauncher\\Resources\\Icon.ico"
+            "SourcePath" = "8:..\\H1Emu Launcher\\Resources\\Icon.ico"
             "TargetName" = "8:Icon.ico"
             "Tag" = "8:"
             "Folder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
@@ -198,15 +198,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
-        "ProductCode" = "8:{33DD0CC0-4314-4AC3-9C98-99FF22915C55}"
-        "PackageCode" = "8:{5A45B369-A119-4C37-BE53-10B5B329FF10}"
+        "ProductCode" = "8:{AF5EED6C-0C8A-41FB-A448-F11660A99D41}"
+        "PackageCode" = "8:{56EA3430-4C25-4DE4-AC65-6EC80BEFDF70}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:3.3.9"
+        "ProductVersion" = "8:3.4.0"
         "Manufacturer" = "8:H1Emu"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
@@ -216,13 +216,13 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:A launcher application used to download, patch and launch H1Emu Just Survive as well as download and install server files."
         "ARPURLINFOABOUT" = "8:https://www.h1emu.com/us/"
-        "ARPPRODUCTICON" = "8:_CB2D385B2F72446DBDEA40144BE2F74A"
+        "ARPPRODUCTICON" = "8:_FAA56C7172764390B1B4184788307B5E"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:echo Modifying the installer to launch the application when finished...\r\ncscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\necho Done.\r\n\r\necho Combining setups into a single .exe file...\r\ncd $(ProjectDir)\r\nC:\\Windows\\System32\\iexpress.exe /n /q IExpressPackageH1EmuLauncherSetup.sed\r\necho Done.\r\n\r\necho Digitally signing the .exe setup file...\r\n\"C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\signtool.exe\" sign /f \"$(ProjectDir)H1EmuLauncherCertificate.pfx\" /t http://timestamp.digicert.com /p 3126Ri34 /fd SHA256 \"$(ProjectDir)Debug\\H1EmuLauncherSetup.exe\"\r\necho Done.\r\n\r\necho Zipping installation contents to a portable .zip file...\r\ntar.exe -a -c -f \"$(ProjectDir)Debug\\H1EmuLauncherVPortable.zip\" -C \"$(ProjectDir)\\..\\H1EmuLauncher\\bin\\Debug\\net9.0-windows10.0.17763.0\" *\r\necho Done."
+        "PostBuildEvent" = "8:echo Modifying the installer to launch the application when finished...\r\ncscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\necho Done.\r\n\r\necho Combining setups into a single .exe file...\r\ncd $(ProjectDir)\r\nC:\\Windows\\System32\\iexpress.exe /n /q IExpressPackageH1EmuLauncherSetup.sed\r\necho Done.\r\n\r\necho Digitally signing the .exe setup file...\r\n\"C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\signtool.exe\" sign /f \"$(ProjectDir)H1Emu Launcher Certificate.pfx\" /t http://timestamp.digicert.com /fd SHA256 \"$(ProjectDir)Debug\\H1EmuLauncherSetup.exe\"\r\necho Done.\r\n\r\necho Zipping installation contents to a portable .zip file...\r\ntar.exe -a -c -f \"$(ProjectDir)Debug\\H1EmuLauncherVPortable.zip\" -C \"$(ProjectDir)\\..\\H1Emu Launcher\\bin\\Debug\\net9.0-windows10.0.17763.0\" *\r\necho Done."
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"
@@ -421,7 +421,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_81F3F95AB78446BC9FE1D949B152D249"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_34AD798DEADA4E979FCD699FCB98603D"
             {
             "Name" = "8:H1Emu Launcher"
             "Arguments" = "8:"
@@ -432,10 +432,10 @@
             "Target" = "8:_1E5157BB4D924619AB78964D3BBB406B"
             "Folder" = "8:_DFC0AEE07CB443F2B26516AD4FDC7BAE"
             "WorkingFolder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
-            "Icon" = "8:_CB2D385B2F72446DBDEA40144BE2F74A"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_A7EC6F0933E7420E98E2D83CA7CFE3F3"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_90D44D1DD48C4B76808FAA647779838B"
             {
             "Name" = "8:H1Emu Launcher"
             "Arguments" = "8:"
@@ -446,7 +446,7 @@
             "Target" = "8:_1E5157BB4D924619AB78964D3BBB406B"
             "Folder" = "8:_FE33475BAF5F4793B032F3B6CA71BE92"
             "WorkingFolder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
-            "Icon" = "8:_CB2D385B2F72446DBDEA40144BE2F74A"
+            "Icon" = "8:"
             "Feature" = "8:"
             }
         }
@@ -583,7 +583,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1E5157BB4D924619AB78964D3BBB406B"
             {
-            "SourcePath" = "8:..\\H1EmuLauncher\\obj\\Debug\\net9.0-windows10.0.17763.0\\apphost.exe"
+            "SourcePath" = "8:..\\H1Emu Launcher\\obj\\Debug\\net9.0-windows10.0.17763.0\\apphost.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"

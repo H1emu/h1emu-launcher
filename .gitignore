@@ -1,8 +1,8 @@
 bin/
 obj/
 .vs/
-H1EmuLauncherSetup/Debug/
-H1EmuLauncherSetup/Release/
-H1EmuLauncherSetup/H1EmuLauncherCertificate.cer
-H1EmuLauncherSetup/H1EmuLauncherCertificate.pfx
-H1EmuLauncherSetup/PrivateKey.key
+H1Emu Launcher Setup/Debug/
+H1Emu Launcher Setup/Release/
+H1Emu Launcher Setup/H1Emu Launcher Certificate.cer
+H1Emu Launcher Setup/H1Emu Launcher Certificate.pfx
+H1Emu Launcher Setup/Private Key.key

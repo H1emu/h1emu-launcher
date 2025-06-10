@@ -6,11 +6,11 @@
 	  <RootNamespace>H1EmuLauncher</RootNamespace>
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
-	  <ApplicationIcon>Icon.ico</ApplicationIcon>
-	  <FileVersion>3.3.9</FileVersion>
+	  <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
+	  <FileVersion>3.4.0</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>3.3.9</Version>
+	  <Version>3.4.0</Version>
 	  <AssemblyName>H1Emu Launcher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>3.3.9</AssemblyVersion>
+	  <AssemblyVersion>3.4.0</AssemblyVersion>
 	  <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -67,6 +67,10 @@
     <None Remove="Resources\Server_Quickstart.zip" />
     <None Remove="Resources\Sound_Banks.rar" />
     <None Remove="Resources\Sound_Banks.zip" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Resources\Icon.ico" />
   </ItemGroup>
 
   <ItemGroup>
