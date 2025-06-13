@@ -198,15 +198,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
-        "ProductCode" = "8:{AF5EED6C-0C8A-41FB-A448-F11660A99D41}"
-        "PackageCode" = "8:{56EA3430-4C25-4DE4-AC65-6EC80BEFDF70}"
+        "ProductCode" = "8:{D746A499-B55E-43D5-A5F1-3059ACE6FCFD}"
+        "PackageCode" = "8:{0A657284-C795-4392-BA29-59CF19E10A5D}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:3.4.0"
+        "ProductVersion" = "8:3.4.2"
         "Manufacturer" = "8:H1Emu"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
@@ -432,7 +432,7 @@
             "Target" = "8:_1E5157BB4D924619AB78964D3BBB406B"
             "Folder" = "8:_DFC0AEE07CB443F2B26516AD4FDC7BAE"
             "WorkingFolder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
-            "Icon" = "8:"
+            "Icon" = "8:_FAA56C7172764390B1B4184788307B5E"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_90D44D1DD48C4B76808FAA647779838B"
@@ -446,7 +446,7 @@
             "Target" = "8:_1E5157BB4D924619AB78964D3BBB406B"
             "Folder" = "8:_FE33475BAF5F4793B032F3B6CA71BE92"
             "WorkingFolder" = "8:_EAA1EEEAF9C445BF9E9FEF0E8AD487C2"
-            "Icon" = "8:"
+            "Icon" = "8:_FAA56C7172764390B1B4184788307B5E"
             "Feature" = "8:"
             }
         }
