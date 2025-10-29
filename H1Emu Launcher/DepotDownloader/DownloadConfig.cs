@@ -4,7 +4,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     class DownloadConfig
     {

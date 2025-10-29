@@ -1,9 +1,9 @@
-﻿<Page x:Class="H1EmuLauncher.SettingsPages.Options"
+﻿<Page x:Class="H1Emu_Launcher.SettingsPages.Options"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:H1EmuLauncher.SettingsPages"
+      xmlns:local="clr-namespace:H1Emu_Launcher.SettingsPages"
       mc:Ignorable="d"
       UseLayoutRounding="True"
       d:DesignWidth="735"
@@ -29,6 +29,8 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="10"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -226,8 +228,57 @@
                 </Rectangle.Effect>
             </Rectangle>
 
-            <!-- Automatically minimise launcher to system tray option -->
+            <!-- Steam enabled option -->
             <Grid Grid.Row="7">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock VerticalAlignment="Center"
+                           Margin="20"
+                           Foreground="FloralWhite"
+                           TextWrapping="Wrap"
+                           Text="{DynamicResource item223}"
+                           Style="{DynamicResource TextBlockStyle}"/>
+
+                <ToggleButton x:Name="steamEnabledToggleButton"
+                              Grid.Column="2"
+                              Height="20"
+                              Margin="20"
+                              HorizontalAlignment="Right"
+                              Click="SteamEnabledToggleButtonClick"
+                              Style="{StaticResource ToggleButtonStyle}">
+
+                    <ToggleButton.Effect>
+
+                        <!-- Drop shadow effect -->
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="1"
+                                          Opacity="0.3"/>
+                    </ToggleButton.Effect>
+                </ToggleButton>
+            </Grid>
+
+            <!-- Divider -->
+            <Rectangle Grid.Row="8"
+                       Margin="20,0,20,0"
+                       Height="1"
+                       Fill="{DynamicResource LighterColour}">
+
+                <Rectangle.Effect>
+                    <DropShadowEffect BlurRadius="8"
+                          Direction="-90"
+                          RenderingBias="Quality"
+                          ShadowDepth="1"
+                          Opacity="0.3"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <!-- Developer  mode option -->
+            <Grid Grid.Row="9">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
@@ -330,7 +381,7 @@
             </Grid>
 
             <!-- Divider -->
-            <Rectangle Grid.Row="8"
+            <Rectangle Grid.Row="10"
                        Margin="20,0,20,0"
                        Height="1"
                        Fill="{DynamicResource LighterColour}">
@@ -345,7 +396,7 @@
             </Rectangle>
 
             <!-- Current launcher version -->
-            <Grid Grid.Row="9">
+            <Grid Grid.Row="11">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>

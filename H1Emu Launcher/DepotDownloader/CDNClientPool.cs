@@ -10,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using SteamKit2.CDN;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     /// <summary>
     /// CDNClientPool provides a pool of connections to CDN endpoints, requesting CDN tokens as needed

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 
-namespace H1EmuLauncher.Classes
+namespace H1Emu_Launcher.Classes
 {
     public sealed class Crc32 : HashAlgorithm
     {

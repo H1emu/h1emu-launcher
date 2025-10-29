@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe wird gerade verwendet\n\nBitte schließen Sie alle offenen Instanzen von H1Z1.\n\nSie können die Schaltfläche unten verwenden, um alle Prozesse von H1Z1 zu beenden.</system:String>
     <system:String x:Key="item122">Aktuelle Spielversion: 2016</system:String>
     <system:String x:Key="item124">Launcher version</system:String>
-    <system:String x:Key="item125">Urheberrecht © 2024 | H1Emu-Projekt</system:String>
+    <system:String x:Key="item125">Urheberrecht © 2025 | H1Emu-Projekt</system:String>
     <system:String x:Key="item126">Lead Entwickler</system:String>
     <system:String x:Key="item127">Entwickler</system:String>
     <system:String x:Key="item128">Administratoren</system:String>
@@ -200,4 +200,5 @@
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
     <system:String x:Key="item221">Paste</system:String>
     <system:String x:Key="item222">Would you like to return to the login page?</system:String>
+    <system:String x:Key="item223">Steam enabled</system:String>
 </ResourceDictionary>

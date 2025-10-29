@@ -3,14 +3,14 @@
   <PropertyGroup>
 	  <OutputType>WinExe</OutputType>
 	  <TargetFramework>net9.0-windows10.0.17763.0</TargetFramework>
-	  <RootNamespace>H1EmuLauncher</RootNamespace>
+	  <RootNamespace>H1Emu_Launcher</RootNamespace>
 	  <UseWPF>true</UseWPF>
 	  <UseWindowsForms>true</UseWindowsForms>
 	  <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
-	  <FileVersion>3.4.2</FileVersion>
+	  <FileVersion>3.4.3</FileVersion>
 	  <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	  <Authors>H1Emu</Authors>
-	  <Version>3.4.2</Version>
+	  <Version>3.4.3</Version>
 	  <AssemblyName>H1Emu Launcher</AssemblyName>
 	  <SignAssembly>false</SignAssembly>
 	  <Copyright>© H1Emu</Copyright>
@@ -18,7 +18,7 @@
 	  <Description>A launcher for the H1Emu project.</Description>
 	  <Title>H1Emu Launcher</Title>
 	  <PackageIcon>Icon.ico</PackageIcon>
-	  <AssemblyVersion>3.4.2</AssemblyVersion>
+	  <AssemblyVersion>3.4.3</AssemblyVersion>
 	  <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -41,6 +41,7 @@
     <None Remove="Resources\Assets_256.pack" />
     <None Remove="Resources\Assets_257.pack" />
     <None Remove="Resources\Assets_258.pack" />
+    <None Remove="Resources\Assets_259.pack" />
     <None Remove="Resources\BackgroundArt.png" />
     <None Remove="Resources\CustomClientConfig.ini" />
     <None Remove="Resources\DisplayImage.png" />
@@ -160,6 +161,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Assets_258.pack">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Assets_259.pack">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\BackgroundArt.png">

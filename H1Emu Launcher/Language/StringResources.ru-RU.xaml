@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe в настоящее время используется.\n\nПожалуйста, закройте все открытые экземпляры H1Z1.\n\nВы можете использовать кнопку ниже, чтобы убить все процессы H1Z1.</system:String>
     <system:String x:Key="item122">Текущая версия игры: 2016</system:String>
     <system:String x:Key="item124">Версия лаунчера</system:String>
-    <system:String x:Key="item125">© 2024 | Проект H1Emu</system:String>
+    <system:String x:Key="item125">© 2025 | Проект H1Emu</system:String>
     <system:String x:Key="item126">Ведущая разработка</system:String>
     <system:String x:Key="item127">Разработчики</system:String>
     <system:String x:Key="item128">Администраторы</system:String>
@@ -200,4 +200,5 @@
     <system:String x:Key="item220">При вставке текста произошла ошибка:</system:String>
     <system:String x:Key="item221">Paste</system:String>
     <system:String x:Key="item222">Would you like to return to the login page?</system:String>
+    <system:String x:Key="item223">Steam enabled</system:String>
 </ResourceDictionary>

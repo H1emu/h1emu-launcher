@@ -3,9 +3,9 @@ using System.Windows;
 using System.Windows.Input;
 using System.Diagnostics;
 using System.Windows.Controls;
-using H1EmuLauncher.Classes;
+using H1Emu_Launcher.Classes;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     public partial class SettingsWindow : Window
     {

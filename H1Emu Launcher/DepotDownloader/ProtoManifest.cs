@@ -9,7 +9,7 @@ using System.Security.Cryptography;
 using ProtoBuf;
 using SteamKit2;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     [ProtoContract]
     class ProtoManifest

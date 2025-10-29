@@ -5,9 +5,8 @@ using System.Reflection;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows.Controls;
-using System.Threading.Tasks;
 
-namespace H1EmuLauncher.Classes
+namespace H1Emu_Launcher.Classes
 {
     class ApplyPatchClass
     {
@@ -54,6 +53,9 @@ namespace H1EmuLauncher.Classes
 
                     // Extract Asset_258.pack for new skins
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_258.pack", Properties.Resources.Assets_258);
+
+                    // Extract Asset_259.pack for new textures
+                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_259.pack", Properties.Resources.Assets_259);
 
                     // Extract lz4.dll file patch for smaller data sizes using compression
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\lz4.dll", Properties.Resources.lz4);

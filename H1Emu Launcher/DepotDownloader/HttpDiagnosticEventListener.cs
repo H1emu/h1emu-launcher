@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Diagnostics.Tracing;
 using System.Text;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     internal sealed class HttpDiagnosticEventListener : EventListener
     {

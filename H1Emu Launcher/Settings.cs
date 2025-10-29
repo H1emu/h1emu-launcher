@@ -1,6 +1,6 @@
-﻿using H1EmuLauncher.Classes;
+﻿using H1Emu_Launcher.Classes;
 
-namespace H1EmuLauncher.Properties
+namespace H1Emu_Launcher.Properties
 {
     // This class allows you to handle specific events on the settings class:
     //  The SettingChanging event is raised before a setting's value is changed.

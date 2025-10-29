@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace H1EmuLauncher.Classes
+namespace H1Emu_Launcher.Classes
 {
     class Info
     {

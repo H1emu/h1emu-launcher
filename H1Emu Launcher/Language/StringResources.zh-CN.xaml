@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1游戏已经启动。\n\n请关闭所有打开的 H1Z1 实例。\n\n您可以使用下面的按钮来杀死 H1Z1 的所有进程。</system:String>
     <system:String x:Key="item122">当前游戏版本： 2016</system:String>
     <system:String x:Key="item124">启动器版本</system:String>
-    <system:String x:Key="item125">版权所有 © 2024 | H1Emu项目</system:String>
+    <system:String x:Key="item125">版权所有 © 2025 | H1Emu项目</system:String>
     <system:String x:Key="item126">领导开发</system:String>
     <system:String x:Key="item127">开发商</system:String>
     <system:String x:Key="item128">管理员</system:String>
@@ -200,4 +200,5 @@
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
     <system:String x:Key="item221">Paste</system:String>
     <system:String x:Key="item222">Would you like to return to the login page?</system:String>
+    <system:String x:Key="item223">Steam enabled</system:String>
 </ResourceDictionary>

@@ -11,9 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using Microsoft.Win32;
-using H1EmuLauncher.Classes;
+using H1Emu_Launcher.Classes;
 
-namespace H1EmuLauncher.SteamFramePages
+namespace H1Emu_Launcher.SteamFramePages
 {
     public partial class Login
     {

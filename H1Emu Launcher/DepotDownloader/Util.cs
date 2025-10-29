@@ -12,7 +12,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     static class Util
     {

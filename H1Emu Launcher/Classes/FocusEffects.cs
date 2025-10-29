@@ -5,7 +5,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media;
 using System.Windows;
 
-namespace H1EmuLauncher.Classes
+namespace H1Emu_Launcher.Classes
 {
     class FocusEffects
     {

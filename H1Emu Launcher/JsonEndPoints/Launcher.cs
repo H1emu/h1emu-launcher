@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace H1EmuLauncher.JsonEndPoints
+namespace H1Emu_Launcher.JsonEndPoints
 {
     public class Launcher
     {

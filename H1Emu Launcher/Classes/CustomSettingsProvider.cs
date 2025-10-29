@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Linq;
 
-namespace H1EmuLauncher.Classes
+namespace H1Emu_Launcher.Classes
 {
     class CustomSettingsProvider : SettingsProvider
     {

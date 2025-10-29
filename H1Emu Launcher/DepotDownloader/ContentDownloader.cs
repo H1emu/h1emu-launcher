@@ -13,9 +13,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using SteamKit2;
 using SteamKit2.CDN;
-using H1EmuLauncher.SteamFramePages;
+using H1Emu_Launcher.SteamFramePages;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     class ContentDownloaderException(string value) : Exception(value)
     {

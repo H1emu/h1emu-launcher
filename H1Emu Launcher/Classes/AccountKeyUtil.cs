@@ -6,7 +6,7 @@ using System.Windows;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace H1EmuLauncher.Classes
+namespace H1Emu_Launcher.Classes
 {
     internal class AccountKeyUtil
     {

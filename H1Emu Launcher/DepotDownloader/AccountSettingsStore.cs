@@ -10,7 +10,7 @@ using System.IO.Compression;
 using System.IO.IsolatedStorage;
 using ProtoBuf;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     [ProtoContract]
     class AccountSettingsStore

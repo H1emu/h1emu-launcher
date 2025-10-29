@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace H1EmuLauncher.Properties {
+namespace H1Emu_Launcher.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace H1EmuLauncher.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("H1EmuLauncher.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("H1Emu_Launcher.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -156,6 +156,16 @@ namespace H1EmuLauncher.Properties {
         internal static byte[] Assets_258 {
             get {
                 object obj = ResourceManager.GetObject("Assets_258", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Assets_259 {
+            get {
+                object obj = ResourceManager.GetObject("Assets_259", resourceCulture);
                 return ((byte[])(obj));
             }
         }

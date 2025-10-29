@@ -2,9 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Reflection;
-using H1EmuLauncher.Classes;
+using H1Emu_Launcher.Classes;
 
-namespace H1EmuLauncher.SettingsPages
+namespace H1Emu_Launcher.SettingsPages
 {
     public partial class Options : Page
     {
@@ -29,6 +29,9 @@ namespace H1EmuLauncher.SettingsPages
 
             if (Properties.Settings.Default.autoMinimise)
                 autoMinimiseToggleButton.IsChecked = true;
+
+            if (Properties.Settings.Default.steamEnabled)
+                steamEnabledToggleButton.IsChecked = true;
 
             if (Properties.Settings.Default.developerMode)
                 developerModeToggleButton.IsChecked = true;
@@ -111,7 +114,6 @@ namespace H1EmuLauncher.SettingsPages
                 LauncherWindow.launcherInstance.imageCarousel.Visibility = Visibility.Visible;
 
                 Properties.Settings.Default.imageCarouselVisibility = true;
-                Properties.Settings.Default.Save();
             }
             else
             {
@@ -120,36 +122,39 @@ namespace H1EmuLauncher.SettingsPages
                 LauncherWindow.launcherInstance.imageCarousel.Visibility = Visibility.Hidden;
 
                 Properties.Settings.Default.imageCarouselVisibility = false;
-                Properties.Settings.Default.Save();
             }
+
+            Properties.Settings.Default.Save();
         }
 
         private void AutoMinimiseToggleButtonClick(object sender, RoutedEventArgs e)
         {
             if (autoMinimiseToggleButton.IsChecked == true)
-            {
                 Properties.Settings.Default.autoMinimise = true;
-                Properties.Settings.Default.Save();
-            }
             else
-            {
                 Properties.Settings.Default.autoMinimise = false;
-                Properties.Settings.Default.Save();
-            }
+
+            Properties.Settings.Default.Save();
+        }
+
+        private void SteamEnabledToggleButtonClick(object sender, RoutedEventArgs e)
+        {
+            if (steamEnabledToggleButton.IsChecked == true)
+                Properties.Settings.Default.steamEnabled = true;
+            else
+                Properties.Settings.Default.steamEnabled = false;
+
+            Properties.Settings.Default.Save();
         }
 
         private void DeveloperModeToggleButtonClick(object sender, RoutedEventArgs e)
         {
             if (developerModeToggleButton.IsChecked == true)
-            {
                 Properties.Settings.Default.developerMode = true;
-                Properties.Settings.Default.Save();
-            }
             else
-            {
                 Properties.Settings.Default.developerMode = false;
-                Properties.Settings.Default.Save();
-            }
+
+            Properties.Settings.Default.Save();
         }
     }
 }

@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe je trenutno u korištenju.\n\nZatvorite sve otvorene instance H1Z1.\n\nMožete upotrijebiti gumb ispod da prekinete sve procese H1Z1.</system:String>
     <system:String x:Key="item122">Trenutna verzija igre: 2016</system:String>
     <system:String x:Key="item124">Verzija launchera</system:String>
-    <system:String x:Key="item125">Autorska prava © 2024 | Projekt H1Emu</system:String>
+    <system:String x:Key="item125">Autorska prava © 2025 | Projekt H1Emu</system:String>
     <system:String x:Key="item126">Vodeći developer</system:String>
     <system:String x:Key="item127">Programeri</system:String>
     <system:String x:Key="item128">Administratori</system:String>
@@ -200,4 +200,5 @@
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
     <system:String x:Key="item221">Paste</system:String>
     <system:String x:Key="item222">Would you like to return to the login page?</system:String>
+    <system:String x:Key="item223">Steam enabled</system:String>
 </ResourceDictionary>

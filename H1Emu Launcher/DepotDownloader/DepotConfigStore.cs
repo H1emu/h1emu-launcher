@@ -7,7 +7,7 @@ using System.IO;
 using System.IO.Compression;
 using ProtoBuf;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     [ProtoContract]
     class DepotConfigStore

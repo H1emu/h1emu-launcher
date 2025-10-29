@@ -1,5 +1,5 @@
-﻿using H1EmuLauncher.Classes;
-using H1EmuLauncher;
+﻿using H1Emu_Launcher.Classes;
+using H1Emu_Launcher;
 using System;
 using System.Threading.Tasks;
 
@@ -26,18 +26,18 @@ namespace SteamKit2.Authentication
             System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
             {
                 LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\2FA.xaml", UriKind.Relative));
-                H1EmuLauncher.SteamFramePages._2FA.twoFacInstruction = 1;
+                H1Emu_Launcher.SteamFramePages._2FA.twoFacInstruction = 1;
             }));
 
-            while (string.IsNullOrEmpty(H1EmuLauncher.SteamFramePages._2FA.code))
+            while (string.IsNullOrEmpty(H1Emu_Launcher.SteamFramePages._2FA.code))
             {
-                if (H1EmuLauncher.SteamFramePages._2FA.code != null)
+                if (H1Emu_Launcher.SteamFramePages._2FA.code != null)
                 {
                     break;
                 }
             }
 
-            return Task.FromResult(H1EmuLauncher.SteamFramePages._2FA.code!);
+            return Task.FromResult(H1Emu_Launcher.SteamFramePages._2FA.code!);
         }
 
         /// <inheritdoc />
@@ -53,18 +53,18 @@ namespace SteamKit2.Authentication
             System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
             {
                 LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\2FA.xaml", UriKind.Relative));
-                H1EmuLauncher.SteamFramePages._2FA.twoFacInstruction = 2;
+                H1Emu_Launcher.SteamFramePages._2FA.twoFacInstruction = 2;
             }));
 
-            while (string.IsNullOrEmpty(H1EmuLauncher.SteamFramePages._2FA.code))
+            while (string.IsNullOrEmpty(H1Emu_Launcher.SteamFramePages._2FA.code))
             {
-                if (H1EmuLauncher.SteamFramePages._2FA.code != null)
+                if (H1Emu_Launcher.SteamFramePages._2FA.code != null)
                 {
                     break;
                 }
             }
 
-            return Task.FromResult(H1EmuLauncher.SteamFramePages._2FA.code!);
+            return Task.FromResult(H1Emu_Launcher.SteamFramePages._2FA.code!);
         }
 
         /// <inheritdoc />
@@ -75,7 +75,7 @@ namespace SteamKit2.Authentication
             System.Windows.Application.Current.Dispatcher.Invoke(new Action(delegate
             {
                 LauncherWindow.launcherInstance.steamFramePanel.Navigate(new Uri("..\\SteamFramePages\\2FA.xaml", UriKind.Relative));
-                H1EmuLauncher.SteamFramePages._2FA.twoFacInstruction = 3;
+                H1Emu_Launcher.SteamFramePages._2FA.twoFacInstruction = 3;
             }));
 
             return Task.FromResult( true );

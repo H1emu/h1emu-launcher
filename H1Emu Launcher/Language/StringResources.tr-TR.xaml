@@ -103,7 +103,7 @@
     <system:String x:Key="item121">H1Z1.exe şu anda kullanımda.\n\nLütfen açık H1Z1 örneklerini kapatın.\n\nH1Z1'in tüm işlemlerini sonlandırmak için aşağıdaki butonu kullanabilirsiniz.</system:String>
     <system:String x:Key="item122">Mevcut oyun versiyonu: 2016</system:String>
     <system:String x:Key="item124">Başlatıcı versiyonu</system:String>
-    <system:String x:Key="item125">Telif Hakkı © 2024 | H1Emu Projesi</system:String>
+    <system:String x:Key="item125">Telif Hakkı © 2025 | H1Emu Projesi</system:String>
     <system:String x:Key="item126">Ana Geliştirici</system:String>
     <system:String x:Key="item127">Geliştiriciler</system:String>
     <system:String x:Key="item128">Yöneticiler</system:String>
@@ -200,4 +200,5 @@
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
     <system:String x:Key="item221">Paste</system:String>
     <system:String x:Key="item222">Would you like to return to the login page?</system:String>
+    <system:String x:Key="item223">Steam enabled</system:String>
 </ResourceDictionary>

@@ -20,9 +20,9 @@ using System.Windows.Interop;
 using System.Windows.Data;
 using Microsoft.Win32;
 using Microsoft.Toolkit.Uwp.Notifications;
-using H1EmuLauncher.Classes;
+using H1Emu_Launcher.Classes;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     public partial class LauncherWindow : Window
     {
@@ -280,7 +280,7 @@ namespace H1EmuLauncher
                 {
                     Style = (Style)FindResource("SeparatorMenuItem"),
                     Background = new SolidColorBrush(Color.FromRgb(66, 66, 66)),
-                    Margin = new Thickness(10, 2, 10, 10)
+                    Margin = new Thickness(10, 0, 10, 8)
                 };
 
                 MenuItem notifyIconMenuItemExit = new()
@@ -465,6 +465,7 @@ namespace H1EmuLauncher
                     editServer.serverIpHint.Visibility = Visibility.Hidden;
                     editServer.saveServerButton.SetResourceReference(ContentProperty, "item213");
                     editServer.editIndex = i;
+
                     await Task.Run(() =>
                     {
                         Dispatcher.Invoke(new Action(delegate
@@ -775,19 +776,18 @@ namespace H1EmuLauncher
 
             try
             {
+                string arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}";
+
                 // Check that the patch is the latest version
-                if (!Properties.Settings.Default.developerMode)
-                {
-                    if (!ApplyPatchClass.ApplyPatch())
-                        return;
-                }
+                if (!Properties.Settings.Default.developerMode && !ApplyPatchClass.ApplyPatch())
+                    return;
 
                 // Check that the launcher is the latest version
-                if (SplashWindow.checkForUpdates)
-                {
-                    if (!await SplashWindow.CheckVersion(this))
-                        return;
-                }
+                if (SplashWindow.checkForUpdates && !await SplashWindow.CheckVersion(this))
+                    return;
+
+                if (Properties.Settings.Default.steamEnabled)
+                    arguments += " STEAM_ENABLED=1";
 
                 // Launch game
                 Process h1Process = new()
@@ -795,7 +795,7 @@ namespace H1EmuLauncher
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = $"{Properties.Settings.Default.activeDirectory}\\H1Z1.exe",
-                        Arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}",
+                        Arguments = arguments,
                         WindowStyle = ProcessWindowStyle.Normal,
                         WorkingDirectory = Properties.Settings.Default.activeDirectory,
                         UseShellExecute = true,
@@ -1227,7 +1227,7 @@ namespace H1EmuLauncher
             WindowState = WindowState.Minimized;
         }
 
-        private void LauncherClosed(object sender, EventArgs e)
+        private void LauncherWindowClosed(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }

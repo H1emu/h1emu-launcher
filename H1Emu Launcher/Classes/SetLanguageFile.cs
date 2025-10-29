@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
-using H1EmuLauncher.SettingsPages;
+using H1Emu_Launcher.SettingsPages;
 
-namespace H1EmuLauncher.Classes
+namespace H1Emu_Launcher.Classes
 {
     public static class SetLanguageFile
     {

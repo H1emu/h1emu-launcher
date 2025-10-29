@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
-using H1EmuLauncher.Classes;
+using H1Emu_Launcher.Classes;
 
-namespace H1EmuLauncher.SteamFramePages
+namespace H1Emu_Launcher.SteamFramePages
 {
     public partial class DownloadComplete
     {

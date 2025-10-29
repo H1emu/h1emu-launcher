@@ -15,7 +15,7 @@ using SteamKit2.Authentication;
 using SteamKit2.CDN;
 using SteamKit2.Internal;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     class Steam3Session
     {

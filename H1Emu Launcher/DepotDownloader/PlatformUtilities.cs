@@ -4,7 +4,7 @@
 using System.IO;
 using System.Runtime.InteropServices;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     static class PlatformUtilities
     {

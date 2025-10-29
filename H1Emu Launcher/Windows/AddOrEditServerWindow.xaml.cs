@@ -7,9 +7,9 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
-using H1EmuLauncher.Classes;
+using H1Emu_Launcher.Classes;
 
-namespace H1EmuLauncher
+namespace H1Emu_Launcher
 {
     public partial class AddOrEditServerWindow : Window
     {

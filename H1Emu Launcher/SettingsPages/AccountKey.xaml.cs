@@ -6,9 +6,9 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using H1EmuLauncher.Classes;
+using H1Emu_Launcher.Classes;
 
-namespace H1EmuLauncher.SettingsPages
+namespace H1Emu_Launcher.SettingsPages
 {
     public partial class AccountKey : Page
     {

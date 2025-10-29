@@ -1,7 +1,7 @@
 ﻿using System.Media;
 using System.Windows;
 
-namespace H1EmuLauncher.Classes
+namespace H1Emu_Launcher.Classes
 {
     class CustomMessageBox
     {

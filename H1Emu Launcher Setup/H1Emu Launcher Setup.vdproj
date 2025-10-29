@@ -54,8 +54,13 @@
                 {
                     "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.NetCore.DesktopRuntime.9.0.x64"
                     {
-                    "Name" = "8:.NET Desktop Runtime 9.0.3 (x64)"
+                    "Name" = "8:.NET Desktop Runtime 9.0.8 (x64)"
                     "ProductCode" = "8:Microsoft.NetCore.DesktopRuntime.9.0.x64"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Visual.C++.14.0.x64"
+                    {
+                    "Name" = "8:Visual C++ \"14\" Runtime Libraries (x64)"
+                    "ProductCode" = "8:Microsoft.Visual.C++.14.0.x64"
                     }
                 }
             }
@@ -198,21 +203,21 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:H1Emu Launcher"
-        "ProductCode" = "8:{D746A499-B55E-43D5-A5F1-3059ACE6FCFD}"
-        "PackageCode" = "8:{0A657284-C795-4392-BA29-59CF19E10A5D}"
+        "ProductCode" = "8:{A301A95F-1424-4F07-9963-848B0E1AE3A9}"
+        "PackageCode" = "8:{5C6E708D-A178-4B18-A432-A41B7CDABB94}"
         "UpgradeCode" = "8:{4E679270-65C8-4021-83BE-3B8EC3EC7AFE}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:3.4.2"
+        "ProductVersion" = "8:3.4.3"
         "Manufacturer" = "8:H1Emu"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://discord.com/invite/RM6jNkj"
         "Title" = "8:H1Emu Launcher"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:H1Emu Project"
+        "ARPCONTACT" = "8:H1Emu"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:A launcher application used to download, patch and launch H1Emu Just Survive as well as download and install server files."
         "ARPURLINFOABOUT" = "8:https://www.h1emu.com/us/"
@@ -222,7 +227,7 @@
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:echo Modifying the installer to launch the application when finished...\r\ncscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\necho Done.\r\n\r\necho Combining setups into a single .exe file...\r\ncd $(ProjectDir)\r\nC:\\Windows\\System32\\iexpress.exe /n /q IExpressPackageH1EmuLauncherSetup.sed\r\necho Done.\r\n\r\necho Digitally signing the .exe setup file...\r\n\"C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\signtool.exe\" sign /f \"$(ProjectDir)H1Emu Launcher Certificate.pfx\" /t http://timestamp.digicert.com /fd SHA256 \"$(ProjectDir)Debug\\H1EmuLauncherSetup.exe\"\r\necho Done.\r\n\r\necho Zipping installation contents to a portable .zip file...\r\ntar.exe -a -c -f \"$(ProjectDir)Debug\\H1EmuLauncherVPortable.zip\" -C \"$(ProjectDir)\\..\\H1Emu Launcher\\bin\\Debug\\net9.0-windows10.0.17763.0\" *\r\necho Done."
+        "PostBuildEvent" = "8:echo Modifying the installer to launch the application when finished...\r\ncscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\necho Done.\r\n\r\necho Combining setups into a single .exe file...\r\ncd $(ProjectDir)\r\nC:\\Windows\\System32\\iexpress.exe /n /q IExpressPackageH1EmuLauncherSetup.sed\r\necho Done.\r\n\r\necho Digitally signing the .exe setup file...\r\n\"C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x64\\signtool.exe\" sign /f \"$(ProjectDir)H1Emu Launcher Certificate.pfx\" /t http://timestamp.digicert.com /fd SHA256 \"$(ProjectDir)Debug\\H1EmuLauncherSetup.exe\"\r\necho Done.\r\n\r\necho Zipping installation contents to a portable .zip file...\r\ntar.exe -a -c -f \"$(ProjectDir)Debug\\H1EmuLauncherStandalone.zip\" -C \"$(ProjectDir)\\..\\H1Emu Launcher\\bin\\Debug\\net9.0-windows10.0.17763.0\" *\r\necho Done."
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"
