@@ -88,6 +88,12 @@ namespace H1Emu_Launcher.SettingsPages
                         // Extract Asset_259.pack for new textures
                         File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_259.pack", Properties.Resources.Assets_259);
 
+                        // Extract Asset_260.pack for new rocket launcher and dynamite assets
+                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_260.pack", Properties.Resources.Assets_260);
+
+                        // Extract Asset_261.pack for winter skins and battery dupe fix
+                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_261.pack", Properties.Resources.Assets_261);
+
                         // Extract lz4.dll file patch for smaller data sizes using compression
                         File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\lz4.dll", Properties.Resources.lz4);
 
