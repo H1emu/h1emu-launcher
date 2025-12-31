@@ -59,7 +59,7 @@
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
                                    FontWeight="Light"
-                                   Text="• Kentin • Meme • Avcio •"
+                                   Text="• Kentin • Meme • Avcio • JSON •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
@@ -127,7 +127,7 @@
                         <TextBlock Margin="60,0,60,0"
                                    Foreground="FloralWhite"
                                    FontWeight="Light"
-                                   Text="• Eavilaswayce • Ghost • doggo • KOBUNIX • JSON •"
+                                   Text="• Noctiamor • Ghost • doggo • KOBUNIX •"
                                    HorizontalAlignment="Center"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center"
@@ -375,7 +375,7 @@
                             </Rectangle.Effect>
                         </Rectangle>
 
-                        <!-- Launcher made by Eavilaswayce message -->
+                        <!-- Launcher made by Noctiamor message -->
                         <TextBlock Margin="60,20,60,20"
                                    Foreground="FloralWhite"
                                    HorizontalAlignment="Center"
