@@ -63,6 +63,23 @@ namespace H1Emu_Launcher.Classes
                     // Extract patched Locale files
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip", Properties.Resources.Locales);
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip", $"{Properties.Settings.Default.activeDirectory}\\Locale", true);
+
+                    // Clean up Assets directory
+                    foreach (var file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
+                    {
+                        string fileName = Path.GetFileName(file);
+                        if (!fileName.EndsWith(".pack", StringComparison.OrdinalIgnoreCase))
+                        {
+                            File.Delete(file);
+                            continue;
+                        }
+                        if (fileName.StartsWith("Assets_", StringComparison.OrdinalIgnoreCase))
+                        {
+                            // Try to parse the number between "Assets_" and ".pack"
+                            if (!int.TryParse(fileName[7..^5], out int packNum) || packNum > 259)
+                                File.Delete(file);
+                        }
+                    }
                 }
 
                 // Delete BattlEye folder to prevent Steam from trying to launch the game
