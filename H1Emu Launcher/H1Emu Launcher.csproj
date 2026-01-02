@@ -38,10 +38,6 @@
     <None Remove="Resources\5.jpg" />
     <None Remove="Resources\6.jpg" />
     <None Remove="Resources\7.jpg" />
-    <None Remove="Resources\Assets_256.pack" />
-    <None Remove="Resources\Assets_257.pack" />
-    <None Remove="Resources\Assets_258.pack" />
-    <None Remove="Resources\Assets_259.pack" />
     <None Remove="Resources\BackgroundArt.png" />
     <None Remove="Resources\CustomClientConfig.ini" />
     <None Remove="Resources\DisplayImage.png" />
@@ -152,18 +148,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\7.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Assets_256.pack">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Assets_257.pack">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Assets_258.pack">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Resources\Assets_259.pack">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\BackgroundArt.png">

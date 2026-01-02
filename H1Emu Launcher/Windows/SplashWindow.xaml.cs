@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using H1Emu_Launcher.Classes;
-using SteamKit2.GC.Dota.Internal;
 
 namespace H1Emu_Launcher
 {

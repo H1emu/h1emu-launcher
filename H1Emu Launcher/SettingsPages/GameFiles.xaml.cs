@@ -1,14 +1,21 @@
-﻿using System;
+﻿using H1Emu_Launcher.Classes;
+using H1Emu_Launcher.SteamFramePages;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO.Compression;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Reflection;
+using System.Text.Json;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
-using System.Drawing;
-using System.Drawing.Imaging;
-using H1Emu_Launcher.Classes;
 
 namespace H1Emu_Launcher.SettingsPages
 {
@@ -42,7 +49,7 @@ namespace H1Emu_Launcher.SettingsPages
             var watch = Stopwatch.StartNew();
             ToggleButtons(false);
 
-            new Thread(() =>
+            new Thread(async () =>
             {
                 // Unzip all of the files to the root directory
                 Dispatcher.Invoke(new Action(delegate
@@ -76,18 +83,6 @@ namespace H1Emu_Launcher.SettingsPages
                         Bitmap fairPlayLogo = new(Properties.Resources.logo);
                         fairPlayLogo.Save($"{Properties.Settings.Default.activeDirectory}\\logo.bmp", ImageFormat.Bmp);
 
-                        // Extract Asset_256.pack for various fixes
-                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_256.pack", Properties.Resources.Assets_256);
-
-                        // Extract Asset_257.pack for modified military base
-                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_257.pack", Properties.Resources.Assets_257);
-
-                        // Extract Asset_258.pack for new skins
-                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_258.pack", Properties.Resources.Assets_258);
-
-                        // Extract Asset_259.pack for new textures
-                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\Assets_259.pack", Properties.Resources.Assets_259);
-
                         // Extract lz4.dll file patch for smaller data sizes using compression
                         File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\lz4.dll", Properties.Resources.lz4);
 
@@ -107,10 +102,78 @@ namespace H1Emu_Launcher.SettingsPages
                             if (fileName.StartsWith("Assets_", StringComparison.OrdinalIgnoreCase))
                             {
                                 // Try to parse the number between "Assets_" and ".pack"
-                                if (!int.TryParse(fileName[7..^5], out int packNum) || packNum > 259)
+                                if (!int.TryParse(fileName[7..^5], out int packNum) || packNum > 255)
                                     File.Delete(file);
                             }
                         }
+
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            settingsProgressText.Text = FindResource("item54").ToString();
+                        }));
+
+                        // Download & extract asset files from the selected asset pack
+                        string assetPackDownloadURL = string.Empty;
+
+                        // Get the download URL for the selected asset pack
+                        if (Properties.Settings.Default.selectedAssetPack == 0)
+                            assetPackDownloadURL = Info.OFFICIAL_ASSET_PACK;
+                        else
+                        {
+                            List<LauncherWindow.AssetPackList> assetPackJson = JsonSerializer.Deserialize<List<LauncherWindow.AssetPackList>>(File.ReadAllText(LauncherWindow.assetPacksJsonFile));
+                            assetPackDownloadURL = assetPackJson[Properties.Settings.Default.selectedAssetPack - 2].AssetPackURL;
+                        }
+
+                        // Delete any old installation files if they exist in case of corruption
+                        if (File.Exists($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip"))
+                            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip");
+
+                        HttpResponseMessage downloadResponse = await SplashWindow.httpClient.GetAsync(assetPackDownloadURL);
+                        // Throw an exception if we didn't get the correct response, with the first letter capitalised in the message
+                        if (downloadResponse.StatusCode != HttpStatusCode.OK)
+                            throw new Exception($"{char.ToUpper(downloadResponse.ReasonPhrase.First())}{downloadResponse.ReasonPhrase.Substring(1)}");
+
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            settingsProgressBar.IsIndeterminate = false;
+                        }));
+
+                        long totalBytes = downloadResponse.Content.Headers.ContentLength ?? -1L;
+                        using Stream contentStream = await downloadResponse.Content.ReadAsStreamAsync();
+                        using (FileStream fileStream = new($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                        {
+                            byte[] buffer = new byte[8192];
+                            long totalBytesRead = 0;
+                            int bytesRead;
+
+                            while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
+                            {
+                                // Write the data to the file
+                                await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead));
+                                totalBytesRead += bytesRead;
+
+                                // Update the progress bar
+                                if (totalBytes > 0)
+                                {
+                                    float progressPercentage = (float)totalBytesRead * 100 / totalBytes;
+
+                                    Dispatcher.Invoke(new Action(delegate
+                                    {
+                                        settingsProgressBar.Value = progressPercentage;
+                                        settingsProgressText.Text = $"{FindResource("item54")} {progressPercentage:0.00}%";
+                                    }));
+                                }
+                            }
+                        };
+
+                        // Unzip the asset pack to the assets directory
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            settingsProgressBar.IsIndeterminate = true;
+                            settingsProgressText.Text = FindResource("item149").ToString();
+                        }));
+
+                        ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip", $"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets", true);
                     }
 
                     // Delete BattlEye folder to prevent Steam from trying to launch the game
@@ -140,6 +203,7 @@ namespace H1Emu_Launcher.SettingsPages
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Wasapi.dll");
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.WinMM.dll");
                     File.Delete($"{Properties.Settings.Default.activeDirectory}\\websocket-sharp.dll");
+                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip");
                 }
                 catch (Exception e)
                 {
@@ -152,11 +216,6 @@ namespace H1Emu_Launcher.SettingsPages
                     }));
                     return;
                 }
-
-                if (Properties.Settings.Default.gameVersionString == "22dec2016")
-                    Properties.Settings.Default.currentPatchVersion2016 = ApplyPatchClass.latestPatchVersion;
-
-                Properties.Settings.Default.Save();
 
                 // Finish
                 watch.Stop();

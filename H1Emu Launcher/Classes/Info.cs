@@ -14,6 +14,8 @@ namespace H1Emu_Launcher.Classes
 
         public static string LAUNCHER_JSON_API = "https://api.github.com/repos/H1emu/h1emu-launcher/releases/latest";
 
+        public static string OFFICIAL_ASSET_PACK = "https://github.com/h1emu/asset-pack/releases/latest/download/Assets.zip";
+
         public static string SERVER_BUG_LINK = "https://github.com/QuentinGruber/h1z1-server/issues/new?assignees=&labels=bug&template=bug_report.md&title=";
 
         public static string LAUNCHER_BUG_LINK = "https://github.com/H1emu/h1emu-launcher/issues/new";

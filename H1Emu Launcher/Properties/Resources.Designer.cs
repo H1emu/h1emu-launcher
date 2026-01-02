@@ -131,46 +131,6 @@ namespace H1Emu_Launcher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Assets_256 {
-            get {
-                object obj = ResourceManager.GetObject("Assets_256", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Assets_257 {
-            get {
-                object obj = ResourceManager.GetObject("Assets_257", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Assets_258 {
-            get {
-                object obj = ResourceManager.GetObject("Assets_258", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] Assets_259 {
-            get {
-                object obj = ResourceManager.GetObject("Assets_259", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap BackgroundArt {

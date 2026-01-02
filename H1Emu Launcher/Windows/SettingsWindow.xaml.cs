@@ -29,7 +29,7 @@ namespace H1Emu_Launcher
 
         public static void SwitchToAccountKeyTab(string accountKeyArgument)
         {
-            if (settingsInstance.settingsTabControl.SelectedIndex == 1)
+            if (settingsInstance.settingsTabControl.SelectedIndex == 2)
             {
                 SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxHint.Visibility = Visibility.Hidden;
 
@@ -40,7 +40,7 @@ namespace H1Emu_Launcher
             }
             else
             {
-                settingsInstance.settingsTabControl.SelectedIndex = 1;
+                settingsInstance.settingsTabControl.SelectedIndex = 2;
                 SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = accountKeyArgument;
             }
 
@@ -55,15 +55,18 @@ namespace H1Emu_Launcher
                     Title = $"{FindResource("item206")} - {FindResource("item195")}";
                     break;
                 case 1:
-                    Title = $"{FindResource("item206")} - {FindResource("item196")}";
+                    Title = $"{FindResource("item206")} - {FindResource("item224")}";
                     break;
                 case 2:
-                    Title = $"{FindResource("item206")} - {FindResource("item197")}";
+                    Title = $"{FindResource("item206")} - {FindResource("item196")}";
                     break;
                 case 3:
-                    Title = $"{FindResource("item206")} - {FindResource("item198")}";
+                    Title = $"{FindResource("item206")} - {FindResource("item197")}";
                     break;
                 case 4:
+                    Title = $"{FindResource("item206")} - {FindResource("item198")}";
+                    break;
+                case 5:
                     Title = $"{FindResource("item206")} - {FindResource("item199")}";
                     break;
             }

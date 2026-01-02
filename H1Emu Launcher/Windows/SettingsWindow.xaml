@@ -108,35 +108,42 @@
                         Padding="2,0,2,2"
                         SelectionChanged="SettingsTabControlSelectionChanged">
 
-                <!-- Game files tab -->
+                <!-- Game Files -->
                 <TabItem Header="{DynamicResource item195}"
                          Style="{StaticResource TabItemStyleFirst}">
 
                     <Frame Source="..\SettingsPages\GameFiles.xaml"/>
                 </TabItem>
 
-                <!-- Account key tab -->
+                <!-- Asset Packs -->
+                <TabItem Header="{DynamicResource item224}"
+                         Style="{StaticResource TabItemStyleFirst}">
+
+                    <Frame Source="..\SettingsPages\AssetPacks.xaml"/>
+                </TabItem>
+
+                <!-- Account Key -->
                 <TabItem Header="{DynamicResource item196}"
                          Style="{StaticResource TabItemStyleMiddle}">
 
                     <Frame Source="..\SettingsPages\AccountKey.xaml"/>
                 </TabItem>
 
-                <!-- Options tab -->
+                <!-- Options -->
                 <TabItem Header="{DynamicResource item197}"
                          Style="{StaticResource TabItemStyleMiddle}">
 
                     <Frame Source="..\SettingsPages\Options.xaml"/>
                 </TabItem>
 
-                <!-- Bug reports tab -->
+                <!-- Bug Reports -->
                 <TabItem Header="{DynamicResource item198}"
                          Style="{StaticResource TabItemStyleMiddle}">
 
-                    <Frame Source="..\SettingsPages\ReportBug.xaml"/>
+                    <Frame Source="..\SettingsPages\BugReports.xaml"/>
                 </TabItem>
 
-                <!-- About tab -->
+                <!-- About -->
                 <TabItem Header="{DynamicResource item199}"
                          Style="{StaticResource TabItemStyleLast}">
 

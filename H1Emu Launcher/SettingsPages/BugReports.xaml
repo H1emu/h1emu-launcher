@@ -1,0 +1,132 @@
+﻿<Page x:Class="H1Emu_Launcher.SettingsPages.BugReports"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:H1Emu_Launcher.SettingsPages"
+      mc:Ignorable="d"
+      UseLayoutRounding="True"
+      d:DesignWidth="735"
+      Title="Bug Reports"
+      FontFamily="Bahnschrift Light"
+      FontSize="16"
+      Foreground="FloralWhite">
+
+    <Page.Resources>
+        <ResourceDictionary>
+
+            <!-- Load dictionary into xaml resources just so we can see on the designer -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Language\StringResources.en-EN.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <Border Background="{DynamicResource DarkerColour}"
+            UseLayoutRounding="True"
+            CornerRadius="0,5,5,5">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+
+            <!-- Grainy texture -->
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+            </Grid.Background>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Report server files text -->
+                <TextBlock Margin="20"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Foreground="FloralWhite"
+                           TextWrapping="Wrap"
+                           Text="{DynamicResource item174}"
+                           Style="{DynamicResource TextBlockStyle}"/>
+
+                <!-- Report server files button -->
+                <Button Grid.Column="2"
+                        Click="BugReportsGithubServer"
+                        Margin="20"
+                        Padding="25,7,25,7"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Content="{DynamicResource item205}"
+                        Style="{DynamicResource PrimaryButton}">
+
+                    <Button.Effect>
+
+                        <!-- Drop shadow effect -->
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="1"
+                                          Opacity="0.3"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+
+            <!-- Divider -->
+            <Rectangle Grid.Row="2"
+                       Margin="20,0,20,0"
+                       Height="1"
+                       Fill="{DynamicResource LighterColour}">
+
+                <Rectangle.Effect>
+                    <DropShadowEffect BlurRadius="8"
+                                      Direction="-90"
+                                      RenderingBias="Quality"
+                                      ShadowDepth="1"
+                                      Opacity="0.3"/>
+                </Rectangle.Effect>
+            </Rectangle>
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Report launcher text -->
+                <TextBlock Margin="20"
+                           HorizontalAlignment="Left"
+                           Foreground="FloralWhite"
+                           TextWrapping="Wrap"
+                           Text="{DynamicResource item175}"
+                           Style="{DynamicResource TextBlockStyle}"/>
+
+                <!-- Report launcher button -->
+                <Button Grid.Column="2"
+                        Click="BugReportsGithubLauncher"
+                        Margin="20"
+                        Padding="25,7,25,7"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Content="{DynamicResource item205}"
+                        Style="{DynamicResource PrimaryButton}">
+
+                    <Button.Effect>
+
+                        <!-- Drop shadow effect -->
+                        <DropShadowEffect BlurRadius="15"
+                                          Direction="-90"
+                                          RenderingBias="Quality"
+                                          ShadowDepth="1"
+                                          Opacity="0.3"/>
+                    </Button.Effect>
+                </Button>
+            </Grid>
+        </Grid>
+    </Border>
+</Page>

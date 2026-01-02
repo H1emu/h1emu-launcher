@@ -38,6 +38,7 @@ namespace H1Emu_Launcher
         public static ContextMenu notifyIconContextMenu = new();
         public static string customServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\servers.json";
         public static string recentServersJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\recentServers.json";
+        public static string assetPacksJsonFile = $"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\assetPacks.json";
 
         public Storyboard CarouselNextAnimation;
         public Storyboard CarouselNextAnimationFollow;
@@ -103,6 +104,15 @@ namespace H1Emu_Launcher
             public string CustomServerNameRecent { get; set; }
         }
 
+        public class AssetPackList
+        {
+            [JsonPropertyName("Asset Pack Name")]
+            public string AssetPackName { get; set; }
+
+            [JsonPropertyName("Asset Pack URL")]
+            public string AssetPackURL { get; set; }
+        }
+
         public async Task ExecuteArguments(string[] rawArgs)
         {
             if (WindowState != WindowState.Normal)
@@ -121,20 +131,24 @@ namespace H1Emu_Launcher
                 // Close every other window apart from the Launcher and Add Server window
                 foreach (Window window in Application.Current.Windows)
                 {
-                    if (window is not LauncherWindow && window is not AddOrEditServerWindow)
+                    if (window is not LauncherWindow && window is not AddItemWindow)
                         window.Close();
                 }
 
                 string newServerName = SteamFramePages.Login.GetParameter(rawArgs, "-servername", "");
                 string newServerIp = SteamFramePages.Login.GetParameter(rawArgs, "-serverip", "");
 
-                if (AddOrEditServerWindow.addServerInstance == null)
+                if (AddItemWindow.addServerInstance == null)
                 {
-                    AddOrEditServerWindow addServer = new();
-                    addServer.serverNameBox.Text = newServerName;
-                    addServer.serverIpBox.Text = newServerIp;
-                    addServer.serverNameHint.Visibility = Visibility.Hidden;
-                    addServer.serverIpHint.Visibility = Visibility.Hidden;
+                    AddItemWindow addServer = new()
+                    {
+                        Owner = this,
+                        itemType = 1
+                    };
+                    addServer.primaryTextbox.Text = newServerName;
+                    addServer.secondaryTextbox.Text = newServerIp;
+                    addServer.primaryTextboxHint.Visibility = Visibility.Hidden;
+                    addServer.secondaryTextboxHint.Visibility = Visibility.Hidden;
                     await Task.Run(() =>
                     {
                         Dispatcher.Invoke(new Action(delegate
@@ -144,7 +158,7 @@ namespace H1Emu_Launcher
                     });
                 }
                 else
-                    AddOrEditServerWindow.addServerInstance.FillInFields(newServerName, newServerIp);
+                    AddItemWindow.addServerInstance.FillInFields(newServerName, newServerIp);
 
                 newServerName = null;
                 newServerIp = null;
@@ -167,7 +181,7 @@ namespace H1Emu_Launcher
                 {
                     SettingsWindow.newAccountKey = newAccountKey;
                     SettingsWindow sw = new();
-                    sw.settingsTabControl.SelectedIndex = 1;
+                    sw.settingsTabControl.SelectedIndex = 2;
                     await Task.Run(() =>
                     {
                         Dispatcher.Invoke(new Action(delegate
@@ -402,7 +416,7 @@ namespace H1Emu_Launcher
 
                         editOptionCustom.Icon = pathCustom;
                         editOptionCustom.SetResourceReference(HeaderedItemsControl.HeaderProperty, "item212");
-                        editOptionCustom.Click += (s, e) => { EditServerInfo(serverItem); };
+                        editOptionCustom.Click += (s, e) => { EditServer(serverItem); };
 
                         Separator separator = new()
                         {
@@ -445,24 +459,32 @@ namespace H1Emu_Launcher
             serverSelector.SelectedIndex = Properties.Settings.Default.lastServer;
         }
 
-        private void AddNewServer(object sender, MouseButtonEventArgs e)
+        private void AddNewServerClick(object sender, MouseButtonEventArgs e)
         {
-            AddOrEditServerWindow addServer = new();
+            AddItemWindow addServer = new()
+            {
+                Owner = this,
+                itemType = 1
+            };
             addServer.ShowDialog();
         }
 
-        public async void EditServerInfo(ComboBoxItem serverItem)
+        public async void EditServer(ComboBoxItem serverItem)
         {
             List<ServerList> currentJson = JsonSerializer.Deserialize<List<ServerList>>(File.ReadAllText(customServersJsonFile));
             for (int i = currentJson.Count - 1; i >= 0; i--)
             {
                 if (currentJson[i].CustomServerName == (string)serverItem.Content)
                 {
-                    AddOrEditServerWindow editServer = new();
-                    editServer.serverNameBox.Text = currentJson[i].CustomServerName;
-                    editServer.serverIpBox.Text = currentJson[i].CustomServerIp;
-                    editServer.serverNameHint.Visibility = Visibility.Hidden;
-                    editServer.serverIpHint.Visibility = Visibility.Hidden;
+                    AddItemWindow editServer = new()
+                    {
+                        Owner = this,
+                        itemType = 1
+                    };
+                    editServer.primaryTextbox.Text = currentJson[i].CustomServerName;
+                    editServer.secondaryTextbox.Text = currentJson[i].CustomServerIp;
+                    editServer.primaryTextboxHint.Visibility = Visibility.Hidden;
+                    editServer.secondaryTextboxHint.Visibility = Visibility.Hidden;
                     editServer.saveServerButton.SetResourceReference(ContentProperty, "item213");
                     editServer.editIndex = i;
 
@@ -760,7 +782,7 @@ namespace H1Emu_Launcher
 
                     case "createAccountKey":
                         SettingsWindow sw = new();
-                        sw.settingsTabControl.SelectedIndex = 1;
+                        sw.settingsTabControl.SelectedIndex = 2;
                         sw.ShowDialog();
                         break;
 
@@ -779,7 +801,7 @@ namespace H1Emu_Launcher
                 string arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}";
 
                 // Check that the patch is the latest version
-                if (!Properties.Settings.Default.developerMode && !ApplyPatchClass.ApplyPatch())
+                if (!Properties.Settings.Default.developerMode && !await InstallPatchClass.InstallPatch())
                     return;
 
                 // Check that the launcher is the latest version

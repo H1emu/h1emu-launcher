@@ -15,13 +15,16 @@
     <Compile Update="SettingsPages\AccountKey.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="SettingsPages\AssetPacks.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="SettingsPages\GameFiles.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SettingsPages\Options.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="SettingsPages\ReportBug.xaml.cs">
+    <Compile Update="SettingsPages\BugReports.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\DisclaimerWindow.xaml.cs">
@@ -30,7 +33,7 @@
     <Compile Update="SteamFramePages\2FA.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\AddOrEditServerWindow.xaml.cs">
+    <Compile Update="Windows\AddItemWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="SteamFramePages\DownloadComplete.xaml.cs">
@@ -85,7 +88,7 @@
     <Page Update="SettingsPages\Options.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="SettingsPages\ReportBug.xaml">
+    <Page Update="SettingsPages\BugReports.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\DisclaimerWindow.xaml">
@@ -121,7 +124,7 @@
     <Page Update="SteamFramePages\2FA.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\AddOrEditServerWindow.xaml">
+    <Page Update="Windows\AddItemWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="SteamFramePages\DownloadComplete.xaml">

@@ -7,9 +7,10 @@
       mc:Ignorable="d"
       UseLayoutRounding="True"
       d:DesignWidth="735"
-      Title="AccountKey"
+      Title="Account Key"
       FontFamily="Bahnschrift Light"
       FontSize="16"
+      Foreground="FloralWhite"
       Loaded="AccountKeyLoaded">
 
     <Page.Resources>

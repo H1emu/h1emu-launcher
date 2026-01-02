@@ -79,8 +79,8 @@ namespace H1Emu_Launcher.Classes
             Options.optionsInstance.Resources.MergedDictionaries.Clear();
             Options.optionsInstance.Resources.MergedDictionaries.Add(LoadFile());
 
-            ReportBug.reportBugInstance.Resources.MergedDictionaries.Clear();
-            ReportBug.reportBugInstance.Resources.MergedDictionaries.Add(LoadFile());
+            BugReports.bugReportsInstance.Resources.MergedDictionaries.Clear();
+            BugReports.bugReportsInstance.Resources.MergedDictionaries.Add(LoadFile());
 
             About.aboutInstance.Resources.MergedDictionaries.Clear();
             About.aboutInstance.Resources.MergedDictionaries.Add(LoadFile());

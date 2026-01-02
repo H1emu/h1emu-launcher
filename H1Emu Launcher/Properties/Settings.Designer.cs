@@ -118,13 +118,13 @@ namespace H1Emu_Launcher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string currentPatchVersion2016 {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int selectedAssetPack {
             get {
-                return ((string)(this["currentPatchVersion2016"]));
+                return ((int)(this["selectedAssetPack"]));
             }
             set {
-                this["currentPatchVersion2016"] = value;
+                this["selectedAssetPack"] = value;
             }
         }
         

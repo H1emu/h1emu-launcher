@@ -784,7 +784,7 @@
                                     <Separator Background="#444444"/>
 
                                     <ComboBoxItem Content="{DynamicResource item141}"
-                                                  PreviewMouseLeftButtonUp="AddNewServer"
+                                                  PreviewMouseLeftButtonUp="AddNewServerClick"
                                                   Style="{DynamicResource ComboBoxItemStyle}"/>
 
                                     <ComboBox.Effect>

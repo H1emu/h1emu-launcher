@@ -40,8 +40,8 @@
     <system:String x:Key="item43">LATEST</system:String>
     <system:String x:Key="item44">STABLE</system:String>
     <system:String x:Key="item45">If you are having game issues, try re-installing the patch or</system:String>
-    <system:String x:Key="item46">Click here to download the latest build of the server.</system:String>
-    <system:String x:Key="item47">Click here to download the latest stable build of the server.</system:String>
+    <system:String x:Key="item46">Click here to download and install the latest build of the server.</system:String>
+    <system:String x:Key="item47">Click here to download and install the latest stable build of the server.</system:String>
     <system:String x:Key="item48">Checking for updates...</system:String>
     <system:String x:Key="item49">Some information may be missing.</system:String>
     <system:String x:Key="item50">Please make sure your emails are open for the 2-Auth code after logging into your Steam account.</system:String>
@@ -201,4 +201,11 @@
     <system:String x:Key="item221">Paste</system:String>
     <system:String x:Key="item222">Would you like to return to the login page?</system:String>
     <system:String x:Key="item223">Steam enabled</system:String>
+    <system:String x:Key="item224">Asset Packs</system:String>
+    <system:String x:Key="item225">Select or add the asset pack required for the server you wish to play on.</system:String>
+    <system:String x:Key="item226">Official H1Emu Asset Pack</system:String>
+    <system:String x:Key="item227">New Asset Pack...</system:String>
+    <system:String x:Key="item228">Asset Pack Name...</system:String>
+    <system:String x:Key="item229">Asset Pack URL...</system:String>
+    <system:String x:Key="item230">Are you sure you want to delete this asset pack?</system:String>
 </ResourceDictionary>

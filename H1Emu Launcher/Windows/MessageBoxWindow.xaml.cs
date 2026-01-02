@@ -100,9 +100,7 @@ namespace H1Emu_Launcher
         private void MessageBoxWindowKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter || e.Key == Key.Escape)
-            {
                 Close();
-            }
         }
     }
 }
