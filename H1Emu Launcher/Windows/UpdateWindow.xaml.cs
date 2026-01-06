@@ -15,7 +15,7 @@ namespace H1Emu_Launcher
     public partial class UpdateWindow : Window
     {
         public static UpdateWindow updateInstance;
-        public static string installerDownloadUrl;
+        public static string installerDownloadURL;
         public static string installerFileName;
 
         public UpdateWindow()
@@ -44,7 +44,7 @@ namespace H1Emu_Launcher
                 if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{installerFileName}"))
                     File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{installerFileName}");
 
-                HttpResponseMessage response = await SplashWindow.httpClient.GetAsync(installerDownloadUrl);
+                HttpResponseMessage response = await SplashWindow.httpClient.GetAsync(installerDownloadURL, HttpCompletionOption.ResponseHeadersRead);
                 // Throw an exception if we didn't get the correct response, with the first letter capitalised in the message
                 if (response.StatusCode != HttpStatusCode.OK)
                     throw new Exception($"{char.ToUpper(response.ReasonPhrase.First())}{response.ReasonPhrase.Substring(1)}");

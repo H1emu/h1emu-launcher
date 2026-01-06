@@ -1,5 +1,4 @@
 ﻿using H1Emu_Launcher.Classes;
-using H1Emu_Launcher.SteamFramePages;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,7 +9,6 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Reflection;
 using System.Text.Json;
 using System.Threading;
 using System.Windows;
@@ -91,7 +89,7 @@ namespace H1Emu_Launcher.SettingsPages
                         ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip", $"{Properties.Settings.Default.activeDirectory}\\Locale", true);
 
                         // Clean up Assets directory
-                        foreach (var file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
+                        foreach (string file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
                         {
                             string fileName = Path.GetFileName(file);
                             if (!fileName.EndsWith(".pack", StringComparison.OrdinalIgnoreCase))
@@ -112,68 +110,77 @@ namespace H1Emu_Launcher.SettingsPages
                             settingsProgressText.Text = FindResource("item54").ToString();
                         }));
 
-                        // Download & extract asset files from the selected asset pack
-                        string assetPackDownloadURL = string.Empty;
+                        // Query the asset pack source JSON
+                        string assetPackJsonURL = string.Empty;
 
                         // Get the download URL for the selected asset pack
                         if (Properties.Settings.Default.selectedAssetPack == 0)
-                            assetPackDownloadURL = Info.OFFICIAL_ASSET_PACK;
+                            assetPackJsonURL = Info.OFFICIAL_ASSET_PACK;
                         else
                         {
                             List<LauncherWindow.AssetPackList> assetPackJson = JsonSerializer.Deserialize<List<LauncherWindow.AssetPackList>>(File.ReadAllText(LauncherWindow.assetPacksJsonFile));
-                            assetPackDownloadURL = assetPackJson[Properties.Settings.Default.selectedAssetPack - 2].AssetPackURL;
+                            assetPackJsonURL = assetPackJson[Properties.Settings.Default.selectedAssetPack - 2].AssetPackURL;
                         }
 
-                        // Delete any old installation files if they exist in case of corruption
-                        if (File.Exists($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip"))
-                            File.Delete($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip");
+                        // Deserialise the JSON into an object
+                        HttpResponseMessage response = await SplashWindow.httpClient.GetAsync(assetPackJsonURL, HttpCompletionOption.ResponseHeadersRead);
 
-                        HttpResponseMessage downloadResponse = await SplashWindow.httpClient.GetAsync(assetPackDownloadURL);
-                        // Throw an exception if we didn't get the correct response, with the first letter capitalised in the message
-                        if (downloadResponse.StatusCode != HttpStatusCode.OK)
-                            throw new Exception($"{char.ToUpper(downloadResponse.ReasonPhrase.First())}{downloadResponse.ReasonPhrase.Substring(1)}");
+                        // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
+                        if (response.StatusCode != HttpStatusCode.OK)
+                            throw new Exception($"{char.ToUpper(response.ReasonPhrase.First())}{response.ReasonPhrase.Substring(1)}");
+
+                        // Get latest release number and date published for app.
+                        string jsonAssetPack = await response.Content.ReadAsStringAsync();
+                        JsonEndPoints.AssetPack.Root jsonAssetPackDes = JsonSerializer.Deserialize<JsonEndPoints.AssetPack.Root>(jsonAssetPack);
 
                         Dispatcher.Invoke(new Action(delegate
                         {
                             settingsProgressBar.IsIndeterminate = false;
                         }));
 
-                        long totalBytes = downloadResponse.Content.Headers.ContentLength ?? -1L;
-                        using Stream contentStream = await downloadResponse.Content.ReadAsStreamAsync();
-                        using (FileStream fileStream = new($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                        // For each asset in the JSON, download the asset file
+                        foreach (JsonEndPoints.AssetPack.Asset item in jsonAssetPackDes.assets)
                         {
-                            byte[] buffer = new byte[8192];
-                            long totalBytesRead = 0;
-                            int bytesRead;
+                            // Deserialise the JSON into an object
+                            HttpResponseMessage responseDownloadURL = await SplashWindow.httpClient.GetAsync(item.url, HttpCompletionOption.ResponseHeadersRead);
+                            
+                            // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
+                            if (responseDownloadURL.StatusCode != HttpStatusCode.OK)
+                                throw new Exception($"{char.ToUpper(responseDownloadURL.ReasonPhrase.First())}{responseDownloadURL.ReasonPhrase.Substring(1)}");
 
-                            while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
+                            long totalBytes = responseDownloadURL.Content.Headers.ContentLength ?? -1L;
+                            using Stream contentStream = await responseDownloadURL.Content.ReadAsStreamAsync();
+                            using (FileStream fileStream = new($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\{item.filename}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
                             {
-                                // Write the data to the file
-                                await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead));
-                                totalBytesRead += bytesRead;
+                                byte[] buffer = new byte[8192];
+                                long totalBytesRead = 0;
+                                int bytesRead;
 
-                                // Update the progress bar
-                                if (totalBytes > 0)
+                                while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
                                 {
-                                    float progressPercentage = (float)totalBytesRead * 100 / totalBytes;
+                                    // Write the data to the file
+                                    await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead));
+                                    totalBytesRead += bytesRead;
 
-                                    Dispatcher.Invoke(new Action(delegate
+                                    // Update the progress bar
+                                    if (totalBytes > 0)
                                     {
-                                        settingsProgressBar.Value = progressPercentage;
-                                        settingsProgressText.Text = $"{FindResource("item54")} {progressPercentage:0.00}%";
-                                    }));
-                                }
-                            }
-                        };
+                                        float progressPercentage = (float)totalBytesRead * 100 / totalBytes;
 
-                        // Unzip the asset pack to the assets directory
+                                        Dispatcher.Invoke(new Action(delegate
+                                        {
+                                            settingsProgressBar.Value = progressPercentage;
+                                            settingsProgressText.Text = $"{FindResource("item54").ToString().Replace("...", "")} \"{item.filename}\"... {progressPercentage:0.00}%";
+                                        }));
+                                    }
+                                }
+                            };
+                        }
+
                         Dispatcher.Invoke(new Action(delegate
                         {
                             settingsProgressBar.IsIndeterminate = true;
-                            settingsProgressText.Text = FindResource("item149").ToString();
                         }));
-
-                        ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip", $"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets", true);
                     }
 
                     // Delete BattlEye folder to prevent Steam from trying to launch the game

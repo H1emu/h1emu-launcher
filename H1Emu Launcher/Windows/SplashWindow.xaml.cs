@@ -48,7 +48,7 @@ namespace H1Emu_Launcher
                     LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item214");
 
                 // Download launcher information from GitHub endpoint
-                HttpResponseMessage response = await httpClient.GetAsync(Info.LAUNCHER_JSON_API);
+                HttpResponseMessage response = await httpClient.GetAsync(Info.LAUNCHER_JSON_API, HttpCompletionOption.ResponseHeadersRead);
 
                 // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
                 if (response.StatusCode != HttpStatusCode.OK)
@@ -60,7 +60,7 @@ namespace H1Emu_Launcher
 
                 latestVersion = new(jsonLauncherDes.tag_name.Substring(1));
                 localVersion = new(Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.'));
-                UpdateWindow.installerDownloadUrl = jsonLauncherDes.assets[0].browser_download_url;
+                UpdateWindow.installerDownloadURL = jsonLauncherDes.assets[0].browser_download_url;
                 UpdateWindow.installerFileName = jsonLauncherDes.assets[0].name;
 
                 if (localVersion < latestVersion)

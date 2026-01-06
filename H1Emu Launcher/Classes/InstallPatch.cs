@@ -7,10 +7,10 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using System.Windows.Threading;
 
 namespace H1Emu_Launcher.Classes
 {
@@ -56,61 +56,88 @@ namespace H1Emu_Launcher.Classes
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip", Properties.Resources.Locales);
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip", $"{Properties.Settings.Default.activeDirectory}\\Locale", true);
 
-                    // Clean up Assets directory
-                    foreach (var file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
-                    {
-                        string fileName = Path.GetFileName(file);
-                        if (!fileName.EndsWith(".pack", StringComparison.OrdinalIgnoreCase))
-                        {
-                            File.Delete(file);
-                            continue;
-                        }
-                        if (fileName.StartsWith("Assets_", StringComparison.OrdinalIgnoreCase))
-                        {
-                            // Try to parse the number between "Assets_" and ".pack"
-                            if (!int.TryParse(fileName[7..^5], out int packNum) || packNum > 255)
-                                File.Delete(file);
-                        }
-                    }
-
-                    // Download & extract asset files from the selected asset pack
-                    string assetPackDownloadURL = string.Empty;
+                    // Query the asset pack source JSON
+                    string assetPackJsonURL = string.Empty;
 
                     // Get the download URL for the selected asset pack
                     if (Properties.Settings.Default.selectedAssetPack == 0)
-                        assetPackDownloadURL = Info.OFFICIAL_ASSET_PACK;
+                        assetPackJsonURL = Info.OFFICIAL_ASSET_PACK;
                     else
                     {
                         List<LauncherWindow.AssetPackList> assetPackJson = JsonSerializer.Deserialize<List<LauncherWindow.AssetPackList>>(File.ReadAllText(LauncherWindow.assetPacksJsonFile));
-                        assetPackDownloadURL = assetPackJson[Properties.Settings.Default.selectedAssetPack - 2].AssetPackURL;
+                        assetPackJsonURL = assetPackJson[Properties.Settings.Default.selectedAssetPack - 2].AssetPackURL;
                     }
 
-                    // Delete any old installation files if they exist in case of corruption
-                    if (File.Exists($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip"))
-                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip");
+                    // Deserialise the JSON into an object
+                    HttpResponseMessage response = await SplashWindow.httpClient.GetAsync(assetPackJsonURL, HttpCompletionOption.ResponseHeadersRead);
 
-                    HttpResponseMessage downloadResponse = await SplashWindow.httpClient.GetAsync(assetPackDownloadURL);
-                    // Throw an exception if we didn't get the correct response, with the first letter capitalised in the message
-                    if (downloadResponse.StatusCode != HttpStatusCode.OK)
-                        throw new Exception($"{char.ToUpper(downloadResponse.ReasonPhrase.First())}{downloadResponse.ReasonPhrase.Substring(1)}");
+                    // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
+                    if (response.StatusCode != HttpStatusCode.OK)
+                        throw new Exception($"{char.ToUpper(response.ReasonPhrase.First())}{response.ReasonPhrase.Substring(1)}");
 
-                    long totalBytes = downloadResponse.Content.Headers.ContentLength ?? -1L;
-                    using Stream contentStream = await downloadResponse.Content.ReadAsStreamAsync();
-                    using (FileStream fileStream = new($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                    // Get latest release number and date published for app.
+                    string jsonAssetPack = await response.Content.ReadAsStringAsync();
+                    JsonEndPoints.AssetPack.Root jsonAssetPackDes = JsonSerializer.Deserialize<JsonEndPoints.AssetPack.Root>(jsonAssetPack);
+
+                    List<string> verifiedAssets = [];
+                    for (int i = 0; i <= 255; i++)
+                        verifiedAssets.Add($"Assets_{i:D3}.pack");
+
+                    // For each asset in the JSON, download the asset file
+                    foreach (JsonEndPoints.AssetPack.Asset item in jsonAssetPackDes.assets)
                     {
-                        byte[] buffer = new byte[8192];
-                        long totalBytesRead = 0;
-                        int bytesRead;
+                        bool isDownloadNeeded = false;
 
-                        while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
+                        if (!File.Exists($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\{item.filename}"))
+                            isDownloadNeeded = true;
+                        else
                         {
-                            // Write the data to the file
-                            await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead));
-                            totalBytesRead += bytesRead;
-                        }
-                    };
+                            using var sha256 = SHA256.Create();
+                            using var stream = File.OpenRead($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\{item.filename}");
 
-                    ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip", $"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets", true);
+                            byte[] hash = sha256.ComputeHash(stream);
+
+                            string hashHex = Convert.ToHexString(hash); // .NET 5+
+
+                            if (!hashHex.Equals(item.hash.Replace("sha256:", ""), StringComparison.OrdinalIgnoreCase))
+                                isDownloadNeeded = true;
+
+                        }
+
+                        if (isDownloadNeeded)
+                        {
+                            // Deserialise the JSON into an object
+                            HttpResponseMessage responseDownloadURL = await SplashWindow.httpClient.GetAsync(item.url, HttpCompletionOption.ResponseHeadersRead);
+
+                            // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
+                            if (responseDownloadURL.StatusCode != HttpStatusCode.OK)
+                                throw new Exception($"{char.ToUpper(responseDownloadURL.ReasonPhrase.First())}{responseDownloadURL.ReasonPhrase.Substring(1)}");
+
+                            long totalBytes = responseDownloadURL.Content.Headers.ContentLength ?? -1L;
+                            using Stream contentStream = await responseDownloadURL.Content.ReadAsStreamAsync();
+                            using (FileStream fileStream = new($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\{item.filename}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                            {
+                                byte[] buffer = new byte[8192];
+                                int bytesRead;
+
+                                while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
+                                {
+                                    // Write the data to the file
+                                    await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead));
+                                }
+                            };
+                        }
+
+                        verifiedAssets.Add(item.filename);
+                    }
+
+                    // Make sure that only the default game assets and the newly installed asset pack is the only thing in the "Assets" folder
+                    foreach (string file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
+                    {
+                        string fileName = Path.GetFileName(file);
+                        if (!verifiedAssets.Contains(fileName))
+                            File.Delete(file);
+                    }
                 }
 
                 // Delete BattlEye folder to prevent Steam from trying to launch the game

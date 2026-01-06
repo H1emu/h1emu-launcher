@@ -733,7 +733,7 @@ namespace H1Emu_Launcher
                 {
                     case 0:
                         // sessionIdKey is the same as accountKey, not possible change the name without resetting users settings
-                        // If connecting to H1Emu servers, check is an Account Key is set
+                        // If connecting to H1Emu servers, check if an Account Key is set
                         if (string.IsNullOrEmpty(Properties.Settings.Default.sessionIdKey))
                         {
                             MessageBoxResult mbr = CustomMessageBox.Show(FindResource("item153").ToString(), this, false, true, true);
@@ -922,12 +922,12 @@ namespace H1Emu_Launcher
                 await AccountKeyUtil.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);
         }
 
-        public void DisplayVersionInformation()
+        public async void DisplayVersionInformation()
         {
             try
             {
                 // Update version, date published and patch notes code
-                HttpResponseMessage response = SplashWindow.httpClient.GetAsync(Info.SERVER_JSON_API).Result;
+                HttpResponseMessage response = await SplashWindow.httpClient.GetAsync(Info.SERVER_JSON_API, HttpCompletionOption.ResponseHeadersRead);
 
                 // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
                 if (response.StatusCode != HttpStatusCode.OK)

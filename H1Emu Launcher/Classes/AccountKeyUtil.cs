@@ -25,7 +25,7 @@ namespace H1Emu_Launcher.Classes
         {
             try
             {
-                HttpResponseMessage response = await SplashWindow.httpClient.GetAsync($"{Info.ACCOUNT_KEY_CHECK_API}{HttpUtility.UrlEncode(key)}");
+                HttpResponseMessage response = await SplashWindow.httpClient.GetAsync($"{Info.ACCOUNT_KEY_CHECK_API}{HttpUtility.UrlEncode(key)}", HttpCompletionOption.ResponseHeadersRead);
                 switch ((int)response.StatusCode)
                 {
                     case 200: // Valid key
