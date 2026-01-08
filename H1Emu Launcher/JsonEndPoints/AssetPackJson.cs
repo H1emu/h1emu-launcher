@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace H1Emu_Launcher.JsonEndPoints
 {
-    public class AssetPack
+    public class AssetPackJson
     {
         public class Asset
         {

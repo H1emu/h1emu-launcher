@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace H1Emu_Launcher.JsonEndPoints
 {
-    class Server
+    public class H1EmuLauncherJson
     {
         public class Asset
         {
@@ -11,7 +11,7 @@ namespace H1Emu_Launcher.JsonEndPoints
             public int id { get; set; }
             public string node_id { get; set; }
             public string name { get; set; }
-            public string label { get; set; }
+            public object label { get; set; }
             public Uploader uploader { get; set; }
             public string content_type { get; set; }
             public string state { get; set; }
@@ -64,7 +64,6 @@ namespace H1Emu_Launcher.JsonEndPoints
             public string tarball_url { get; set; }
             public string zipball_url { get; set; }
             public string body { get; set; }
-            public int mentions_count { get; set; }
         }
 
         public class Uploader

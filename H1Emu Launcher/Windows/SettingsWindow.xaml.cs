@@ -1,15 +1,19 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
+﻿using H1Emu_Launcher.Classes;
+using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
-using H1Emu_Launcher.Classes;
+using System.Windows.Input;
 
 namespace H1Emu_Launcher
 {
     public partial class SettingsWindow : Window
     {
         public static SettingsWindow settingsInstance;
+        public static string newAccountKey;
+        public static string newAssetPackName;
+        public static string newAssetPackURL;
 
         public SettingsWindow()
         {
@@ -27,22 +31,48 @@ namespace H1Emu_Launcher
             DragMove();
         }
 
-        public static void SwitchToAccountKeyTab(string accountKeyArgument)
+        public static void SwitchToAssetPacksTab(string newAssetPackName, string newAssetPackURL)
         {
-            if (settingsInstance.settingsTabControl.SelectedIndex == 2)
-            {
-                SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxHint.Visibility = Visibility.Hidden;
+            if (settingsInstance.settingsTabControl.SelectedIndex != 1)
+                settingsInstance.settingsTabControl.SelectedIndex = 1;
 
-                if (SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxText.Visibility == Visibility.Visible)
-                    SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxText.Text = accountKeyArgument;
-                else
-                    SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = accountKeyArgument;
+            if (AddItemWindow.addItemWindowInstance == null)
+            {
+                AddItemWindow addAssetPack = new()
+                {
+                    Owner = settingsInstance,
+                    itemType = 2
+                };
+                addAssetPack.primaryTextbox.Text = newAssetPackName;
+                addAssetPack.secondaryTextbox.Text = newAssetPackURL;
+                addAssetPack.primaryTextboxHint.Visibility = Visibility.Hidden;
+                addAssetPack.secondaryTextboxHint.Visibility = Visibility.Hidden;
+                Task.Run(() =>
+                {
+                    Application.Current.Dispatcher.Invoke(new Action(delegate
+                    {
+                        addAssetPack.ShowDialog();
+                    }));
+                });
             }
             else
-            {
+                AddItemWindow.addItemWindowInstance.FillInFields(newAssetPackName, newAssetPackURL);
+
+            newAssetPackName = null;
+            newAssetPackURL = null;
+        }
+
+        public static void SwitchToAccountKeyTab(string accountKeyArgument)
+        {
+            if (settingsInstance.settingsTabControl.SelectedIndex != 2)
                 settingsInstance.settingsTabControl.SelectedIndex = 2;
+
+            SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxHint.Visibility = Visibility.Hidden;
+
+            if (SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxText.Visibility == Visibility.Visible)
+                SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxText.Text = accountKeyArgument;
+            else
                 SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = accountKeyArgument;
-            }
 
             accountKeyArgument = null;
         }
@@ -72,13 +102,40 @@ namespace H1Emu_Launcher
             }
         }
 
-        public static string newAccountKey;
         private void SettingsWindowContentRendered(object sender, EventArgs e)
         {
             Top = (LauncherWindow.launcherInstance.Top + LauncherWindow.launcherInstance.Height / 2) - (Height / 2);
 
             if (!string.IsNullOrEmpty(newAccountKey))
+            {
                 SettingsPages.AccountKey.accountKeyInstance.accountKeyBoxPassword.Password = newAccountKey;
+                return;
+            }
+
+
+            if (!string.IsNullOrEmpty(newAssetPackName) || !string.IsNullOrEmpty(newAssetPackURL))
+            {
+                AddItemWindow addAssetPack = new()
+                {
+                    Owner = settingsInstance,
+                    itemType = 2
+                };
+                addAssetPack.primaryTextbox.Text = newAssetPackName;
+                addAssetPack.secondaryTextbox.Text = newAssetPackURL;
+                addAssetPack.primaryTextboxHint.Visibility = Visibility.Hidden;
+                addAssetPack.secondaryTextboxHint.Visibility = Visibility.Hidden;
+                Task.Run(() =>
+                {
+                    Application.Current.Dispatcher.Invoke(new Action(delegate
+                    {
+                        addAssetPack.ShowDialog();
+                    }));
+                });
+
+                newAssetPackName = null;
+                newAssetPackURL = null;
+                return;
+            }
         }
 
         public void CloseSettingsWindow(object sender, RoutedEventArgs e)

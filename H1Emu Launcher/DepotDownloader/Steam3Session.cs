@@ -416,7 +416,7 @@ namespace H1Emu_Launcher
                         try
                         {
                             _ = AccountSettingsStore.Instance.GuardData.TryGetValue(logonDetails.Username, out var guarddata);
-                            authSession = await steamClient.Authentication.BeginAuthSessionViaCredentialsAsync(new SteamKit2.Authentication.AuthSessionDetails
+                            authSession = await steamClient.Authentication.BeginAuthSessionViaCredentialsAsync(new AuthSessionDetails
                             {
                                 Username = logonDetails.Username,
                                 Password = logonDetails.Password,

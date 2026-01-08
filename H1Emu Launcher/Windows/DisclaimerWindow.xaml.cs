@@ -41,12 +41,6 @@ namespace H1Emu_Launcher
             SystemSounds.Beep.Play();
         }
 
-        private void DisclaimerWindowContentRendered(object sender, EventArgs e)
-        {
-            SizeToContent = SizeToContent.Manual;
-            SizeToContent = SizeToContent.WidthAndHeight;
-        }
-
         private void CloseDisclaimerWindow(object sender, RoutedEventArgs e)
         {
             Topmost = true;

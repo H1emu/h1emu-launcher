@@ -110,10 +110,9 @@ namespace H1Emu_Launcher.SettingsPages
                             settingsProgressText.Text = FindResource("item54").ToString();
                         }));
 
-                        // Query the asset pack source JSON
+                        // Get the download URL for the selected asset pack
                         string assetPackJsonURL = string.Empty;
 
-                        // Get the download URL for the selected asset pack
                         if (Properties.Settings.Default.selectedAssetPack == 0)
                             assetPackJsonURL = Info.OFFICIAL_ASSET_PACK;
                         else
@@ -122,16 +121,16 @@ namespace H1Emu_Launcher.SettingsPages
                             assetPackJsonURL = assetPackJson[Properties.Settings.Default.selectedAssetPack - 2].AssetPackURL;
                         }
 
-                        // Deserialise the JSON into an object
+                        // Query the asset pack JSON URL
                         HttpResponseMessage response = await SplashWindow.httpClient.GetAsync(assetPackJsonURL, HttpCompletionOption.ResponseHeadersRead);
 
                         // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
                         if (response.StatusCode != HttpStatusCode.OK)
                             throw new Exception($"{char.ToUpper(response.ReasonPhrase.First())}{response.ReasonPhrase.Substring(1)}");
 
-                        // Get latest release number and date published for app.
+                        // Deserialise the JSON into an object
                         string jsonAssetPack = await response.Content.ReadAsStringAsync();
-                        JsonEndPoints.AssetPack.Root jsonAssetPackDes = JsonSerializer.Deserialize<JsonEndPoints.AssetPack.Root>(jsonAssetPack);
+                        JsonEndPoints.AssetPackJson.Root jsonAssetPackDes = JsonSerializer.Deserialize<JsonEndPoints.AssetPackJson.Root>(jsonAssetPack);
 
                         Dispatcher.Invoke(new Action(delegate
                         {
@@ -139,7 +138,7 @@ namespace H1Emu_Launcher.SettingsPages
                         }));
 
                         // For each asset in the JSON, download the asset file
-                        foreach (JsonEndPoints.AssetPack.Asset item in jsonAssetPackDes.assets)
+                        foreach (JsonEndPoints.AssetPackJson.Asset item in jsonAssetPackDes.assets)
                         {
                             // Deserialise the JSON into an object
                             HttpResponseMessage responseDownloadURL = await SplashWindow.httpClient.GetAsync(item.url, HttpCompletionOption.ResponseHeadersRead);

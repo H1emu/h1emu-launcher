@@ -139,23 +139,23 @@ namespace H1Emu_Launcher.SettingsPages
             {
                 if (assetPackJson[i].AssetPackName == (string)assetPackItem.Content)
                 {
-                    AddItemWindow editServer = new()
+                    AddItemWindow editAssetPack = new()
                     {
                         Owner = SettingsWindow.settingsInstance,
                         itemType = 2
                     };
-                    editServer.primaryTextbox.Text = assetPackJson[i].AssetPackName;
-                    editServer.secondaryTextbox.Text = assetPackJson[i].AssetPackURL;
-                    editServer.primaryTextboxHint.Visibility = Visibility.Hidden;
-                    editServer.secondaryTextboxHint.Visibility = Visibility.Hidden;
-                    editServer.saveServerButton.SetResourceReference(ContentProperty, "item213");
-                    editServer.editIndex = i;
+                    editAssetPack.primaryTextbox.Text = assetPackJson[i].AssetPackName;
+                    editAssetPack.secondaryTextbox.Text = assetPackJson[i].AssetPackURL;
+                    editAssetPack.primaryTextboxHint.Visibility = Visibility.Hidden;
+                    editAssetPack.secondaryTextboxHint.Visibility = Visibility.Hidden;
+                    editAssetPack.saveServerButton.SetResourceReference(ContentProperty, "item213");
+                    editAssetPack.editIndex = i;
 
                     await Task.Run(() =>
                     {
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            editServer.ShowDialog();
+                            editAssetPack.ShowDialog();
                         }));
                     });
 

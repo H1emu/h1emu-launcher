@@ -9,7 +9,6 @@
         MaxWidth="800"
         MaxHeight="710"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         Background="Transparent"
@@ -17,12 +16,11 @@
         FontSize="16"
         Foreground="FloralWhite"
         Loaded="DisclaimerWindowLoaded"
-        ContentRendered="DisclaimerWindowContentRendered"
         Closed="DisclaimerWindowClosed">
 
     <!-- Keep window animations -->
     <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="1" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+        <WindowChrome GlassFrameThickness="1" CaptionHeight="0" NonClientFrameEdges="Bottom, Left, Right"/>
     </WindowChrome.WindowChrome>
 
     <Window.Resources>

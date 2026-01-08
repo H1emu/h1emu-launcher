@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace H1Emu_Launcher.Classes
 {
@@ -21,10 +22,7 @@ namespace H1Emu_Launcher.Classes
             // Unzip all of the files to the root directory
             try
             {
-                if (Properties.Settings.Default.selectedAssetPack == 0)
-                    LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item150");
-                else
-                    LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
+                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item150");
 
                 if (Properties.Settings.Default.gameVersionString == "22dec2016")
                 {
@@ -56,10 +54,9 @@ namespace H1Emu_Launcher.Classes
                     File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip", Properties.Resources.Locales);
                     ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip", $"{Properties.Settings.Default.activeDirectory}\\Locale", true);
 
-                    // Query the asset pack source JSON
+                    // Get the download URL for the selected asset pack
                     string assetPackJsonURL = string.Empty;
 
-                    // Get the download URL for the selected asset pack
                     if (Properties.Settings.Default.selectedAssetPack == 0)
                         assetPackJsonURL = Info.OFFICIAL_ASSET_PACK;
                     else
@@ -68,23 +65,23 @@ namespace H1Emu_Launcher.Classes
                         assetPackJsonURL = assetPackJson[Properties.Settings.Default.selectedAssetPack - 2].AssetPackURL;
                     }
 
-                    // Deserialise the JSON into an object
+                    // Query the asset pack JSON URL
                     HttpResponseMessage response = await SplashWindow.httpClient.GetAsync(assetPackJsonURL, HttpCompletionOption.ResponseHeadersRead);
 
                     // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
                     if (response.StatusCode != HttpStatusCode.OK)
                         throw new Exception($"{char.ToUpper(response.ReasonPhrase.First())}{response.ReasonPhrase.Substring(1)}");
 
-                    // Get latest release number and date published for app.
+                    // Deserialise the asset pack JSON into an object
                     string jsonAssetPack = await response.Content.ReadAsStringAsync();
-                    JsonEndPoints.AssetPack.Root jsonAssetPackDes = JsonSerializer.Deserialize<JsonEndPoints.AssetPack.Root>(jsonAssetPack);
+                    JsonEndPoints.AssetPackJson.Root jsonAssetPackDes = JsonSerializer.Deserialize<JsonEndPoints.AssetPackJson.Root>(jsonAssetPack);
 
                     List<string> verifiedAssets = [];
                     for (int i = 0; i <= 255; i++)
                         verifiedAssets.Add($"Assets_{i:D3}.pack");
 
                     // For each asset in the JSON, download the asset file
-                    foreach (JsonEndPoints.AssetPack.Asset item in jsonAssetPackDes.assets)
+                    foreach (JsonEndPoints.AssetPackJson.Asset item in jsonAssetPackDes.assets)
                     {
                         bool isDownloadNeeded = false;
 
@@ -118,12 +115,21 @@ namespace H1Emu_Launcher.Classes
                             using (FileStream fileStream = new($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\{item.filename}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
                             {
                                 byte[] buffer = new byte[8192];
+                                long totalBytesRead = 0;
                                 int bytesRead;
 
                                 while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
                                 {
                                     // Write the data to the file
                                     await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead));
+                                    totalBytesRead += bytesRead;
+
+                                    // Update the play button text to show the progress
+                                    if (totalBytes > 0)
+                                    {
+                                        float progressPercentage = (float)totalBytesRead * 100 / totalBytes;
+                                        LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item150") + $" {progressPercentage:0.00}%";
+                                    }
                                 }
                             };
                         }

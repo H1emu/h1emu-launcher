@@ -11,7 +11,6 @@
         Width="1300"
         Height="750"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         FontFamily="Bahnschrift Light"
         FontSize="16"
@@ -24,7 +23,7 @@
 
     <!-- Keep window animations -->
     <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="1" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+        <WindowChrome GlassFrameThickness="1" CaptionHeight="0" NonClientFrameEdges="Bottom, Left, Right"/>
     </WindowChrome.WindowChrome>
 
     <!-- Image carousel storyboard animations -->

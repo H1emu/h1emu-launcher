@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using H1Emu_Launcher.Classes;
+using Windows.Media.ClosedCaptioning;
 
 namespace H1Emu_Launcher
 {
@@ -54,9 +55,9 @@ namespace H1Emu_Launcher
                 if (response.StatusCode != HttpStatusCode.OK)
                     throw new Exception($"{char.ToUpper(response.ReasonPhrase.First())}{response.ReasonPhrase.Substring(1)}");
 
-                // Get latest release number and date published for app.
+                // Get latest release number and date published for app
                 string jsonLauncher = await response.Content.ReadAsStringAsync();
-                JsonEndPoints.Launcher.Root jsonLauncherDes = JsonSerializer.Deserialize<JsonEndPoints.Launcher.Root>(jsonLauncher);
+                JsonEndPoints.H1EmuLauncherJson.Root jsonLauncherDes = JsonSerializer.Deserialize<JsonEndPoints.H1EmuLauncherJson.Root>(jsonLauncher);
 
                 latestVersion = new(jsonLauncherDes.tag_name.Substring(1));
                 localVersion = new(Assembly.GetExecutingAssembly().GetName().Version.ToString().TrimEnd('0').TrimEnd('.'));
@@ -98,8 +99,10 @@ namespace H1Emu_Launcher
 
                 CustomMessageBox.Show($"{owner.FindResource("item66")} {owner.FindResource("item16")}{exceptionList}\n\n{owner.FindResource("item49")}", owner);
 
-                if (owner is SplashWindow)
+                if (owner is SplashWindow && !e.Message.Contains("Rate limit exceeded"))
                     Environment.Exit(0);
+                else if (owner is SplashWindow)
+                    owner.Close();
 
                 return false;
             }
@@ -115,8 +118,10 @@ namespace H1Emu_Launcher
 
                 CustomMessageBox.Show($"{owner.FindResource("item66")} \"{ex.Message}\"\n\n{owner.FindResource("item49")}", owner);
 
-                if (owner is SplashWindow)
+                if (owner is SplashWindow && !ex.Message.Contains("Rate limit exceeded"))
                     Environment.Exit(0);
+                else if (owner is SplashWindow)
+                    owner.Close();
 
                 return false;
             }
@@ -127,12 +132,6 @@ namespace H1Emu_Launcher
         private void MoveSplashScreenWindow(object sender, MouseButtonEventArgs e)
         {
             DragMove();
-        }
-
-        private void SplashScreenWindowContentRendered(object sender, System.EventArgs e)
-        {
-            SizeToContent = SizeToContent.Manual;
-            SizeToContent = SizeToContent.WidthAndHeight;
         }
 
         private void SplashScreenWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -153,6 +152,7 @@ namespace H1Emu_Launcher
                     {
                         dc.welcomeMessage.Visibility = Visibility.Collapsed;
                         dc.TOSHeader.Text = "Updated Terms of Service";
+                        dc.TOSHeader.Text = FindResource("item5").ToString();
                     }
 
                     dc.ShowDialog();

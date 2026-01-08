@@ -10,20 +10,18 @@
         MinHeight="210"
         MaxHeight="900"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="SingleBorderWindow"
         ResizeMode="NoResize"
         SizeToContent="WidthAndHeight"
         Background="Transparent"
         FontFamily="Bahnschrift Light"
         FontSize="16"
         Foreground="FloralWhite"
-        ContentRendered="ServerInstallOptionsContentRendered"
         Loaded="ServerInstallOptionsLoaded"
         Closing="ServerInstallOptionsClosing">
 
     <!-- Keep window animations -->
     <WindowChrome.WindowChrome>
-        <WindowChrome GlassFrameThickness="1" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+        <WindowChrome GlassFrameThickness="1" CaptionHeight="0" NonClientFrameEdges="Bottom, Left, Right"/>
     </WindowChrome.WindowChrome>
 
     <Window.Resources>

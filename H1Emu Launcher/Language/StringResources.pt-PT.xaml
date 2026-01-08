@@ -6,6 +6,7 @@
     <system:String x:Key="item2">ATUALIZAR</system:String>
     <system:String x:Key="item3">Versão</system:String>
     <system:String x:Key="item4">Por favor, espere</system:String>
+    <system:String x:Key="item5">Updated Terms of Service</system:String>
     <system:String x:Key="item8">JOGAR</system:String>
     <system:String x:Key="item9">Verifique se você selecionou o diretório correto que contém os arquivos do jogo.</system:String>
     <system:String x:Key="item10">AVISO:</system:String>
@@ -201,4 +202,11 @@
     <system:String x:Key="item221">Paste</system:String>
     <system:String x:Key="item222">Would you like to return to the login page?</system:String>
     <system:String x:Key="item223">Steam enabled</system:String>
+    <system:String x:Key="item224">Asset Packs</system:String>
+    <system:String x:Key="item225">Select or add the asset pack required for the server you wish to play on.</system:String>
+    <system:String x:Key="item226">Official H1Emu Asset Pack</system:String>
+    <system:String x:Key="item227">New Asset Pack...</system:String>
+    <system:String x:Key="item228">Asset Pack Name...</system:String>
+    <system:String x:Key="item229">Asset Pack URL...</system:String>
+    <system:String x:Key="item230">Are you sure you want to delete this asset pack?</system:String>
 </ResourceDictionary>

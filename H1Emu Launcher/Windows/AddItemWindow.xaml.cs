@@ -14,7 +14,7 @@ namespace H1Emu_Launcher
 {
     public partial class AddItemWindow : Window
     {
-        public static AddItemWindow addServerInstance;
+        public static AddItemWindow addItemWindowInstance;
         public int editIndex;
 
         // 1 = Server
@@ -24,7 +24,7 @@ namespace H1Emu_Launcher
         public AddItemWindow()
         {
             InitializeComponent();
-            addServerInstance = this;
+            addItemWindowInstance = this;
 
             // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Clear();
@@ -57,6 +57,10 @@ namespace H1Emu_Launcher
                             EditExistingServer(editIndex);
                         break;
                     case 2:
+                        if ((string)saveServerButton.Content == FindResource("item18").ToString())
+                            AddNewAssetPack();
+                        else
+                            EditExistingAssetPack(editIndex);
                         break;
                 }
             }
@@ -460,12 +464,6 @@ namespace H1Emu_Launcher
                 secondaryTextboxHint.Visibility = Visibility.Visible;
         }
 
-        private void AddServerContentRendered(object sender, EventArgs e)
-        {
-            SizeToContent = SizeToContent.Manual;
-            SizeToContent = SizeToContent.WidthAndHeight;
-        }
-
         private void CloseAddServer(object sender, RoutedEventArgs e)
         {
             CustomMessageBox.buttonPressed = MessageBoxResult.Cancel;
@@ -493,7 +491,7 @@ namespace H1Emu_Launcher
         private void AddServerClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             editIndex = 0;
-            addServerInstance = null;
+            addItemWindowInstance = null;
             FocusEffects.BeginFocusAnimation(Owner);
             Owner.Show();
             Owner.Activate();

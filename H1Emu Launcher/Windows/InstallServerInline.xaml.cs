@@ -262,12 +262,6 @@ namespace H1Emu_Launcher
             DragMove();
         }
 
-        private void ServerInstallOptionsContentRendered(object sender, EventArgs e)
-        {
-            SizeToContent = SizeToContent.Manual;
-            SizeToContent = SizeToContent.WidthAndHeight;
-        }
-
         private void CloseServerInstallOptionsWindow(object sender, RoutedEventArgs e)
         {
             Topmost = true;

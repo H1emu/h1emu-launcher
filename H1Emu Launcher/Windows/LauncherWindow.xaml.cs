@@ -138,7 +138,7 @@ namespace H1Emu_Launcher
                 string newServerName = SteamFramePages.Login.GetParameter(rawArgs, "-servername", "");
                 string newServerIp = SteamFramePages.Login.GetParameter(rawArgs, "-serverip", "");
 
-                if (AddItemWindow.addServerInstance == null)
+                if (AddItemWindow.addItemWindowInstance == null)
                 {
                     AddItemWindow addServer = new()
                     {
@@ -158,10 +158,47 @@ namespace H1Emu_Launcher
                     });
                 }
                 else
-                    AddItemWindow.addServerInstance.FillInFields(newServerName, newServerIp);
+                    AddItemWindow.addItemWindowInstance.FillInFields(newServerName, newServerIp);
 
                 newServerName = null;
                 newServerIp = null;
+                return;
+            }
+
+            // If the new asset pack name and URL arguments exist, open the Add Asset Pack window and tell it to fill in the name and URL fields with the specified argument values
+            if (!string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-assetpackname", "")) || !string.IsNullOrEmpty(SteamFramePages.Login.GetParameter(rawArgs, "-assetpackurl", "")))
+            {
+                // Close every other window apart from the Launcher and Settings windows
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window is not LauncherWindow && window is not SettingsWindow && window is not AddItemWindow)
+                        window.Close();
+                }
+
+                string newAssetPackName = SteamFramePages.Login.GetParameter(rawArgs, "-assetpackname", "");
+                string newAssetPackURL = SteamFramePages.Login.GetParameter(rawArgs, "-assetpackurl", "");
+
+                if (SettingsWindow.settingsInstance == null)
+                {
+                    SettingsWindow.newAssetPackName = newAssetPackName;
+                    SettingsWindow.newAssetPackURL = newAssetPackURL;
+                    SettingsWindow sw = new();
+                    sw.settingsTabControl.SelectedIndex = 1;
+                    await Task.Run(() =>
+                    {
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            sw.ShowDialog();
+                        }));
+                    });
+                }
+                else
+                    SettingsWindow.SwitchToAssetPacksTab(newAssetPackName, newAssetPackURL);
+
+                newAssetPackName = null;
+                newAssetPackURL = null;
+                SettingsWindow.newAssetPackName = null;
+                SettingsWindow.newAssetPackURL = null;
                 return;
             }
 
@@ -718,8 +755,8 @@ namespace H1Emu_Launcher
 
             if (!CheckGameVersionAndPath(this, false, true))
             {
-                playButton.SetResourceReference(ContentProperty, "item8");
                 playButton.IsEnabled = true;
+                playButton.SetResourceReference(ContentProperty, "item8");
                 return;
             }
 
@@ -791,8 +828,8 @@ namespace H1Emu_Launcher
                         break;
                 }
 
-                playButton.SetResourceReference(ContentProperty, "item8");
                 playButton.IsEnabled = true;
+                playButton.SetResourceReference(ContentProperty, "item8");
                 return;
             }
 
@@ -835,8 +872,8 @@ namespace H1Emu_Launcher
                             Activate();
                         }
 
-                        playButton.SetResourceReference(ContentProperty, "item8");
                         playButton.IsEnabled = true;
+                        playButton.SetResourceReference(ContentProperty, "item8");
                     }));
 
                     if (!Properties.Settings.Default.developerMode && startSingleplayerServerProcess != null)
@@ -855,8 +892,8 @@ namespace H1Emu_Launcher
             }
             catch (Exception ex)
             {
-                playButton.SetResourceReference(ContentProperty, "item8");
                 playButton.IsEnabled = true;
+                playButton.SetResourceReference(ContentProperty, "item8");
                 CustomMessageBox.Show($"{FindResource("item13")}\n\n{e.GetType().Name}: \"{ex.Message}\".", this);
             }
         }
@@ -935,7 +972,7 @@ namespace H1Emu_Launcher
 
                 // Get latest release number, date published, and patch notes for server
                 string jsonServer = response.Content.ReadAsStringAsync().Result;
-                JsonEndPoints.Server.Root jsonDesServer = JsonSerializer.Deserialize<JsonEndPoints.Server.Root>(jsonServer);
+                JsonEndPoints.H1EmuServerJson.Root jsonDesServer = JsonSerializer.Deserialize<JsonEndPoints.H1EmuServerJson.Root>(jsonServer);
                 string latestVersion = jsonDesServer.tag_name;
                 DateTime publishDate = jsonDesServer.published_at;
                 string latestPatchNotes = jsonDesServer.body;

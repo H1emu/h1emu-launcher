@@ -75,12 +75,6 @@ namespace H1Emu_Launcher
             DragMove();
         }
 
-        private void MessageBoxContentRendered(object sender, EventArgs e)
-        {
-            SizeToContent = SizeToContent.Manual;
-            SizeToContent = SizeToContent.WidthAndHeight;
-        }
-
         private void CloseMessageBoxWindow(object sender, RoutedEventArgs e)
         {
             Topmost = true;

@@ -187,6 +187,35 @@
             <Style x:Key="HyperLinkStyle" TargetType="{x:Type Hyperlink}">
                 <Setter Property="Foreground" Value="FloralWhite"/>
                 <Style.Triggers>
+                    <Trigger Property="IsEnabled" Value="False">
+                        <Trigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                    To="DarkGray"
+                                                    Duration="0:0:0.1">
+
+                                        <ColorAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseInOut"/>
+                                        </ColorAnimation.EasingFunction>
+                                    </ColorAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.EnterActions>
+                        <Trigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="(Foreground).(SolidColorBrush.Color)"
+                                                    Duration="0:0:0.1">
+
+                                        <ColorAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseInOut"/>
+                                        </ColorAnimation.EasingFunction>
+                                    </ColorAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </Trigger.ExitActions>
+                    </Trigger>
                     <EventTrigger RoutedEvent="MouseEnter">
                         <BeginStoryboard>
                             <Storyboard>

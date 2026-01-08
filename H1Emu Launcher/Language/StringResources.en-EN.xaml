@@ -6,6 +6,7 @@
     <system:String x:Key="item2">UPDATE</system:String>
     <system:String x:Key="item3">Version</system:String>
     <system:String x:Key="item4">Please wait</system:String>
+    <system:String x:Key="item5">Updated Terms of Service</system:String>
     <system:String x:Key="item8">PLAY</system:String>
     <system:String x:Key="item9">Please check you have selected the correct directory containing your game files.</system:String>
     <system:String x:Key="item10">WARNING:</system:String>

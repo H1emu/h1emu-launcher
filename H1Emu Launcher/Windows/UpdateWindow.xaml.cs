@@ -117,12 +117,6 @@ namespace H1Emu_Launcher
             DragMove();
         }
 
-        private void UpdateWindowContentRendered(object sender, EventArgs e)
-        {
-            SizeToContent = SizeToContent.Manual;
-            SizeToContent = SizeToContent.WidthAndHeight;
-        }
-
         private void CloseUpdateWindow(object sender, RoutedEventArgs e)
         {
             Topmost = true;
