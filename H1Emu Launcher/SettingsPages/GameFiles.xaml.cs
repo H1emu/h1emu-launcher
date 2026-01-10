@@ -132,6 +132,10 @@ namespace H1Emu_Launcher.SettingsPages
                         string jsonAssetPack = await response.Content.ReadAsStringAsync();
                         JsonEndPoints.AssetPackJson.Root jsonAssetPackDes = JsonSerializer.Deserialize<JsonEndPoints.AssetPackJson.Root>(jsonAssetPack);
 
+                        List<string> verifiedAssets = [];
+                        for (int i = 0; i <= 255; i++)
+                            verifiedAssets.Add($"Assets_{i:D3}.pack");
+
                         Dispatcher.Invoke(new Action(delegate
                         {
                             settingsProgressBar.IsIndeterminate = false;
@@ -174,12 +178,22 @@ namespace H1Emu_Launcher.SettingsPages
                                     }
                                 }
                             };
+
+                            verifiedAssets.Add(item.filename);
                         }
 
                         Dispatcher.Invoke(new Action(delegate
                         {
                             settingsProgressBar.IsIndeterminate = true;
                         }));
+
+                        // Make sure that only the default game assets and the newly installed asset pack is the only thing in the "Assets" folder
+                        foreach (string file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
+                        {
+                            string fileName = Path.GetFileName(file);
+                            if (!verifiedAssets.Contains(fileName))
+                                File.Delete(file);
+                        }
                     }
 
                     // Delete BattlEye folder to prevent Steam from trying to launch the game

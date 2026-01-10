@@ -101,7 +101,6 @@ namespace H1Emu_Launcher.Classes
 
                         }
 
-                        isDownloadNeeded = true;
                         if (isDownloadNeeded)
                         {
                             // Deserialise the JSON into an object
