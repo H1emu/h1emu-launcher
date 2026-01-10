@@ -15,6 +15,7 @@ namespace H1Emu_Launcher
     public partial class AddItemWindow : Window
     {
         public static AddItemWindow addItemWindowInstance;
+        public bool editItem;
         public int editIndex;
 
         // 1 = Server
@@ -36,28 +37,28 @@ namespace H1Emu_Launcher
             DragMove();
         }
 
-        public void FillInFields(string name, string ip)
+        public void FillInFields(string primaryText, string secondaryText)
         {
-            primaryTextbox.Text = name;
-            secondaryTextbox.Text = ip;
-            primaryTextboxHint.Visibility = Visibility.Hidden;
-            secondaryTextboxHint.Visibility = Visibility.Hidden;
+            primaryTextBox.Text = primaryText;
+            secondaryTextBox.Text = secondaryText;
+            primaryTextBoxHint.Visibility = Visibility.Hidden;
+            secondaryTextBoxHint.Visibility = Visibility.Hidden;
         }
 
-        private void secondaryTextboxKeyDown(object sender, KeyEventArgs e)
+        private void secondaryTextBoxKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
             {
                 switch (itemType)
                 {
                     case 1:
-                        if ((string)saveServerButton.Content == FindResource("item18").ToString())
+                        if (!editItem)
                             AddNewServer();
                         else
                             EditExistingServer(editIndex);
                         break;
                     case 2:
-                        if ((string)saveServerButton.Content == FindResource("item18").ToString())
+                        if (!editItem)
                             AddNewAssetPack();
                         else
                             EditExistingAssetPack(editIndex);
@@ -71,13 +72,13 @@ namespace H1Emu_Launcher
             switch (itemType)
             {
                 case 1:
-                    if ((string)saveServerButton.Content == FindResource("item18").ToString())
+                    if (!editItem)
                         AddNewServer();
                     else
                         EditExistingServer(editIndex);
                     break;
                 case 2:
-                    if ((string)saveServerButton.Content == FindResource("item18").ToString())
+                    if (!editItem)
                         AddNewAssetPack();
                     else
                         EditExistingAssetPack(editIndex);
@@ -87,19 +88,19 @@ namespace H1Emu_Launcher
 
         private void AddNewServer()
         {
-            if (string.IsNullOrEmpty(primaryTextbox.Text))
+            if (string.IsNullOrEmpty(primaryTextBox.Text))
             {
                 CustomMessageBox.Show(FindResource("item151").ToString(), this);
                 return;
             }
 
-            if (string.IsNullOrEmpty(secondaryTextbox.Text))
+            if (string.IsNullOrEmpty(secondaryTextBox.Text))
             {
                 CustomMessageBox.Show(FindResource("item161").ToString(), this);
                 return;
             }
 
-            if (primaryTextbox.Text.Trim() == FindResource("item139").ToString() || primaryTextbox.Text.Trim() == FindResource("item140").ToString() || primaryTextbox.Text.Trim() == FindResource("item141").ToString())
+            if (primaryTextBox.Text.Trim() == FindResource("item139").ToString() || primaryTextBox.Text.Trim() == FindResource("item140").ToString() || primaryTextBox.Text.Trim() == FindResource("item141").ToString())
             {
                 CustomMessageBox.Show(FindResource("item143").ToString(), this);
                 return;
@@ -108,7 +109,7 @@ namespace H1Emu_Launcher
             List<LauncherWindow.ServerList> currentJson = JsonSerializer.Deserialize<List<LauncherWindow.ServerList>>(File.ReadAllText(LauncherWindow.customServersJsonFile));
             foreach (LauncherWindow.ServerList item in currentJson)
             {
-                if (item.CustomServerName == primaryTextbox.Text.Trim())
+                if (item.CustomServerName == primaryTextBox.Text.Trim())
                 {
                     CustomMessageBox.Show(FindResource("item143").ToString(), this);
                     return;
@@ -120,8 +121,8 @@ namespace H1Emu_Launcher
                 // Save the new custom server to the custom servers file list
                 currentJson.Add(new LauncherWindow.ServerList()
                 {
-                    CustomServerName = primaryTextbox.Text.Trim(),
-                    CustomServerIp = secondaryTextbox.Text.Trim().Replace(" ", "")
+                    CustomServerName = primaryTextBox.Text.Trim(),
+                    CustomServerIp = secondaryTextBox.Text.Trim().Replace(" ", "")
                 });
 
                 string newJson = JsonSerializer.Serialize(currentJson, LauncherWindow.jsonSerializerOptions);
@@ -129,7 +130,7 @@ namespace H1Emu_Launcher
 
                 ComboBoxItem newItem = new()
                 {
-                    Content = primaryTextbox.Text.Trim(),
+                    Content = primaryTextBox.Text.Trim(),
                     Style = (Style)FindResource("ComboBoxItemStyle")
                 };
 
@@ -219,39 +220,57 @@ namespace H1Emu_Launcher
 
         private void EditExistingServer(int editIndex)
         {
-            if (string.IsNullOrEmpty(primaryTextbox.Text) || string.IsNullOrEmpty(secondaryTextbox.Text))
+            if (string.IsNullOrEmpty(primaryTextBox.Text) || string.IsNullOrEmpty(secondaryTextBox.Text))
             {
                 CustomMessageBox.Show(FindResource("item151").ToString(), this);
                 return;
             }
 
-            if (primaryTextbox.Text.Trim() == FindResource("item139").ToString() || primaryTextbox.Text.Trim() == FindResource("item140").ToString() || primaryTextbox.Text.Trim() == FindResource("item141").ToString())
+            if (primaryTextBox.Text.Trim() == FindResource("item139").ToString() || primaryTextBox.Text.Trim() == FindResource("item140").ToString() || primaryTextBox.Text.Trim() == FindResource("item141").ToString())
             {
                 CustomMessageBox.Show(FindResource("item143").ToString(), this);
                 return;
             }
 
+            List<LauncherWindow.ServerList> currentJson = JsonSerializer.Deserialize<List<LauncherWindow.ServerList>>(File.ReadAllText(LauncherWindow.customServersJsonFile));
+            List<LauncherWindow.ServerListRecent> currentJsonRecent = JsonSerializer.Deserialize<List<LauncherWindow.ServerListRecent>>(File.ReadAllText(LauncherWindow.recentServersJsonFile));
+            foreach (LauncherWindow.ServerList item in currentJson)
+            {
+                if (item.CustomServerName == primaryTextBox.Text.Trim())
+                {
+                    CustomMessageBox.Show(FindResource("item143").ToString(), this);
+                    return;
+                }
+            }
+
+            foreach (LauncherWindow.ServerListRecent item in currentJsonRecent)
+            {
+                if (item.CustomServerNameRecent == primaryTextBox.Text.Trim())
+                {
+                    CustomMessageBox.Show(FindResource("item143").ToString(), this);
+                    return;
+                }
+            }
+
             try
             {
-                List<LauncherWindow.ServerList> currentJson = JsonSerializer.Deserialize<List<LauncherWindow.ServerList>>(File.ReadAllText(LauncherWindow.customServersJsonFile));
-                List<LauncherWindow.ServerListRecent> currentJsonRecent = JsonSerializer.Deserialize<List<LauncherWindow.ServerListRecent>>(File.ReadAllText(LauncherWindow.recentServersJsonFile));
                 for (int i = currentJsonRecent.Count - 1; i >= 0; i--)
                 {
                     if (currentJsonRecent[i].CustomServerNameRecent == currentJson[editIndex].CustomServerName)
                     {
-                        currentJsonRecent[i].CustomServerNameRecent = primaryTextbox.Text.Trim();
+                        currentJsonRecent[i].CustomServerNameRecent = primaryTextBox.Text.Trim();
 
                         MenuItem notifyIconContextMenuItemToEdit = (MenuItem)LauncherWindow.notifyIconContextMenu.Items[i + 3];
-                        notifyIconContextMenuItemToEdit.Header = primaryTextbox.Text.Trim();
+                        notifyIconContextMenuItemToEdit.Header = primaryTextBox.Text.Trim();
                         break;
                     }
                 }
 
-                currentJson[editIndex].CustomServerName = primaryTextbox.Text.Trim();
-                currentJson[editIndex].CustomServerIp = secondaryTextbox.Text.Trim().Replace(" ", "");
+                currentJson[editIndex].CustomServerName = primaryTextBox.Text.Trim();
+                currentJson[editIndex].CustomServerIp = secondaryTextBox.Text.Trim().Replace(" ", "");
 
                 ComboBoxItem comboBoxItem = (ComboBoxItem)LauncherWindow.launcherInstance.serverSelector.Items[editIndex + 3];
-                comboBoxItem.Content = primaryTextbox.Text.Trim();
+                comboBoxItem.Content = primaryTextBox.Text.Trim();
 
                 string newJson = JsonSerializer.Serialize(currentJson, LauncherWindow.jsonSerializerOptions);
                 File.WriteAllText(LauncherWindow.customServersJsonFile, newJson);
@@ -270,30 +289,30 @@ namespace H1Emu_Launcher
 
         private void AddNewAssetPack()
         {
-            if (string.IsNullOrEmpty(primaryTextbox.Text))
+            if (string.IsNullOrEmpty(primaryTextBox.Text))
             {
-                CustomMessageBox.Show(FindResource("item151").ToString(), this);
+                CustomMessageBox.Show(FindResource("item233").ToString(), this);
                 return;
             }
 
-            if (string.IsNullOrEmpty(secondaryTextbox.Text))
+            if (string.IsNullOrEmpty(secondaryTextBox.Text))
             {
-                CustomMessageBox.Show(FindResource("item161").ToString(), this);
+                CustomMessageBox.Show(FindResource("item234").ToString(), this);
                 return;
             }
 
-            if (primaryTextbox.Text.Trim() == FindResource("item226").ToString() || primaryTextbox.Text.Trim() == FindResource("item227").ToString())
+            if (primaryTextBox.Text.Trim() == FindResource("item226").ToString() || primaryTextBox.Text.Trim() == FindResource("item227").ToString())
             {
-                CustomMessageBox.Show(FindResource("item143").ToString(), this);
+                CustomMessageBox.Show(FindResource("item235").ToString(), this);
                 return;
             }
 
             List<LauncherWindow.AssetPackList> assetPackJson = JsonSerializer.Deserialize<List<LauncherWindow.AssetPackList>>(File.ReadAllText(LauncherWindow.assetPacksJsonFile));
             foreach (LauncherWindow.AssetPackList item in assetPackJson)
             {
-                if (item.AssetPackName == primaryTextbox.Text.Trim())
+                if (item.AssetPackName == primaryTextBox.Text.Trim())
                 {
-                    CustomMessageBox.Show(FindResource("item143").ToString(), this);
+                    CustomMessageBox.Show(FindResource("item235").ToString(), this);
                     return;
                 }
             }
@@ -303,8 +322,8 @@ namespace H1Emu_Launcher
                 // Save the new custom server to the custom servers file list
                 assetPackJson.Add(new LauncherWindow.AssetPackList()
                 {
-                    AssetPackName = primaryTextbox.Text.Trim(),
-                    AssetPackURL = secondaryTextbox.Text.Trim().Replace(" ", "")
+                    AssetPackName = primaryTextBox.Text.Trim(),
+                    AssetPackURL = secondaryTextBox.Text.Trim().Replace(" ", "")
                 });
 
                 string newJson = JsonSerializer.Serialize(assetPackJson, LauncherWindow.jsonSerializerOptions);
@@ -312,7 +331,7 @@ namespace H1Emu_Launcher
 
                 ComboBoxItem newItem = new()
                 {
-                    Content = primaryTextbox.Text.Trim(),
+                    Content = primaryTextBox.Text.Trim(),
                     Style = (Style)FindResource("ComboBoxItemStyle")
                 };
 
@@ -402,27 +421,35 @@ namespace H1Emu_Launcher
 
         private void EditExistingAssetPack(int editIndex)
         {
-            if (string.IsNullOrEmpty(primaryTextbox.Text) || string.IsNullOrEmpty(secondaryTextbox.Text))
+            if (string.IsNullOrEmpty(primaryTextBox.Text) || string.IsNullOrEmpty(secondaryTextBox.Text))
             {
-                CustomMessageBox.Show(FindResource("item151").ToString(), this);
+                CustomMessageBox.Show(FindResource("item233").ToString(), this);
                 return;
             }
 
-            if (primaryTextbox.Text.Trim() == FindResource("item139").ToString() || primaryTextbox.Text.Trim() == FindResource("item140").ToString() || primaryTextbox.Text.Trim() == FindResource("item141").ToString())
+            if (primaryTextBox.Text.Trim() == FindResource("item139").ToString() || primaryTextBox.Text.Trim() == FindResource("item140").ToString() || primaryTextBox.Text.Trim() == FindResource("item141").ToString())
             {
-                CustomMessageBox.Show(FindResource("item143").ToString(), this);
+                CustomMessageBox.Show(FindResource("item235").ToString(), this);
                 return;
+            }
+
+            List<LauncherWindow.AssetPackList> assetPackJson = JsonSerializer.Deserialize<List<LauncherWindow.AssetPackList>>(File.ReadAllText(LauncherWindow.assetPacksJsonFile));
+            foreach (LauncherWindow.AssetPackList item in assetPackJson)
+            {
+                if (item.AssetPackName == primaryTextBox.Text.Trim())
+                {
+                    CustomMessageBox.Show(FindResource("item235").ToString(), this);
+                    return;
+                }
             }
 
             try
             {
-                List<LauncherWindow.AssetPackList> assetPackJson = JsonSerializer.Deserialize<List<LauncherWindow.AssetPackList>>(File.ReadAllText(LauncherWindow.assetPacksJsonFile));
-
-                assetPackJson[editIndex].AssetPackName = primaryTextbox.Text.Trim();
-                assetPackJson[editIndex].AssetPackURL = secondaryTextbox.Text.Trim().Replace(" ", "");
+                assetPackJson[editIndex].AssetPackName = primaryTextBox.Text.Trim();
+                assetPackJson[editIndex].AssetPackURL = secondaryTextBox.Text.Trim().Replace(" ", "");
 
                 ComboBoxItem comboBoxItem = (ComboBoxItem)AssetPacks.assetPacksInstance.assetPacksBox.Items[editIndex + 2];
-                comboBoxItem.Content = primaryTextbox.Text.Trim();
+                comboBoxItem.Content = primaryTextBox.Text.Trim();
 
                 string newJson = JsonSerializer.Serialize(assetPackJson, LauncherWindow.jsonSerializerOptions);
                 File.WriteAllText(LauncherWindow.assetPacksJsonFile, newJson);
@@ -442,53 +469,60 @@ namespace H1Emu_Launcher
             Close();
         }
 
-        private void ServerNameGotFocus(object sender, RoutedEventArgs e)
+        private void PrimaryTextBoxGotFocus(object sender, RoutedEventArgs e)
         {
-            primaryTextboxHint.Visibility = Visibility.Hidden;
+            primaryTextBoxHint.Visibility = Visibility.Hidden;
         }
 
-        private void ServerNameLostFocus(object sender, RoutedEventArgs e)
+        private void PrimaryTextBoxLostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(primaryTextbox.Text))
-                primaryTextboxHint.Visibility = Visibility.Visible;
+            if (string.IsNullOrEmpty(primaryTextBox.Text))
+                primaryTextBoxHint.Visibility = Visibility.Visible;
         }
 
-        private void ServerIPGotFocus(object sender, RoutedEventArgs e)
+        private void SecondaryTextBoxGotFocus(object sender, RoutedEventArgs e)
         {
-            secondaryTextboxHint.Visibility = Visibility.Hidden;
+            secondaryTextBoxHint.Visibility = Visibility.Hidden;
         }
 
-        private void ServerIPLostFocus(object sender, RoutedEventArgs e)
+        private void secondaryTextBoxLostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(secondaryTextbox.Text))
-                secondaryTextboxHint.Visibility = Visibility.Visible;
+            if (string.IsNullOrEmpty(secondaryTextBox.Text))
+                secondaryTextBoxHint.Visibility = Visibility.Visible;
         }
 
-        private void CloseAddServer(object sender, RoutedEventArgs e)
+        private void CloseAddItemWindow(object sender, RoutedEventArgs e)
         {
             CustomMessageBox.buttonPressed = MessageBoxResult.Cancel;
             Topmost = true;
             Close();
         }
 
-        private void AddServerLoaded(object sender, RoutedEventArgs e)
+        private void AddItemWindowLoaded(object sender, RoutedEventArgs e)
         {
             FocusEffects.BeginUnfocusAnimation(Owner);
 
             switch (itemType)
             {
                 case 1:
-                    primaryTextboxHint.Text = LauncherWindow.launcherInstance.FindResource("item144").ToString();
-                    secondaryTextboxHint.Text = LauncherWindow.launcherInstance.FindResource("item145").ToString();
+                    primaryTextBoxHint.Text = LauncherWindow.launcherInstance.FindResource("item144").ToString();
+                    secondaryTextBoxHint.Text = LauncherWindow.launcherInstance.FindResource("item145").ToString();
+                    Title = LauncherWindow.launcherInstance.FindResource("item207").ToString();
                     break;
                 case 2:
-                    primaryTextboxHint.Text = LauncherWindow.launcherInstance.FindResource("item228").ToString();
-                    secondaryTextboxHint.Text = LauncherWindow.launcherInstance.FindResource("item229").ToString();
+                    primaryTextBoxHint.Text = LauncherWindow.launcherInstance.FindResource("item228").ToString();
+                    secondaryTextBoxHint.Text = LauncherWindow.launcherInstance.FindResource("item229").ToString();
+                    Title = LauncherWindow.launcherInstance.FindResource("item231").ToString();
                     break;
             }
+
+            if (!editItem)
+                addOrSaveButton.Content = LauncherWindow.launcherInstance.FindResource("item18").ToString();
+            else
+                addOrSaveButton.Content = LauncherWindow.launcherInstance.FindResource("item213").ToString();
         }
 
-        private void AddServerClosing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void AddItemWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             editIndex = 0;
             addItemWindowInstance = null;

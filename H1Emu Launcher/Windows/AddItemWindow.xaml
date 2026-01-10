@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         UseLayoutRounding="True"
-        Title="{DynamicResource item207}"
         x:Name="AddServer"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
@@ -14,8 +13,8 @@
         FontFamily="Bahnschrift Light"
         FontSize="16"
         Foreground="FloralWhite"
-        Loaded="AddServerLoaded"
-        Closing="AddServerClosing">
+        Loaded="AddItemWindowLoaded"
+        Closing="AddItemWindowClosing">
 
     <!-- Keep window animations -->
     <WindowChrome.WindowChrome>
@@ -77,7 +76,7 @@
                 <!-- Exit button -->
                 <Button x:Name="CloseButton"
                         Grid.Column="2"
-                        Click="CloseAddServer"
+                        Click="CloseAddItemWindow"
                         Background="{DynamicResource RedAccent}"
                         Width="40"
                         Height="25"
@@ -131,10 +130,10 @@
                         </Grid.RowDefinitions>
 
                         <!-- Server name text box -->
-                        <TextBox x:Name="primaryTextbox"
+                        <TextBox x:Name="primaryTextBox"
                                  Grid.Row="1"
-                                 LostFocus="ServerNameLostFocus"
-                                 GotFocus="ServerNameGotFocus"
+                                 LostFocus="PrimaryTextBoxLostFocus"
+                                 GotFocus="PrimaryTextBoxGotFocus"
                                  Height="35"
                                  Margin="20,20,20,10"
                                  Padding="10,1,10,0"
@@ -153,7 +152,7 @@
                         </TextBox>
 
                         <!-- Hint for server name textbox -->
-                        <TextBlock x:Name="primaryTextboxHint"
+                        <TextBlock x:Name="primaryTextBoxHint"
                                    Grid.Row="1"
                                    Margin="20,20,20,10"
                                    Padding="14,2,14,0"
@@ -163,11 +162,11 @@
                                    Style="{DynamicResource TextBlockStyle}"/>
 
                         <!-- Server IP textbox -->
-                        <TextBox x:Name="secondaryTextbox"
+                        <TextBox x:Name="secondaryTextBox"
                                  Grid.Row="2"
-                                 GotFocus="ServerIPGotFocus"
-                                 LostFocus="ServerIPLostFocus"
-                                 KeyDown="secondaryTextboxKeyDown"
+                                 GotFocus="SecondaryTextBoxGotFocus"
+                                 LostFocus="secondaryTextBoxLostFocus"
+                                 KeyDown="secondaryTextBoxKeyDown"
                                  Height="35"
                                  Margin="20,10,20,20"
                                  Padding="10,1,10,0"
@@ -186,7 +185,7 @@
                         </TextBox>
 
                         <!-- Hint for server IP textbox -->
-                        <TextBlock x:Name="secondaryTextboxHint"
+                        <TextBlock x:Name="secondaryTextBoxHint"
                                    Grid.Row="2"
                                    Margin="20,10,20,20"
                                    Padding="14,2,14,0"
@@ -219,13 +218,12 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Add server button -->
-                            <Button x:Name="saveServerButton"
+                            <Button x:Name="addOrSaveButton"
                                     Click="AddButton"
                                     Margin="20"
                                     Padding="25,7,25,7"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
-                                    Content="{DynamicResource item18}"
                                     Style="{DynamicResource PrimaryButton}">
 
                                 <Button.Effect>

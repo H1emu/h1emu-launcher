@@ -10,8 +10,9 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Transactions;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Threading;
 
 namespace H1Emu_Launcher.Classes
 {
@@ -19,10 +20,9 @@ namespace H1Emu_Launcher.Classes
     {
         public static async Task<bool> InstallPatch()
         {
-            // Unzip all of the files to the root directory
             try
             {
-                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item150");
+                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
 
                 if (Properties.Settings.Default.gameVersionString == "22dec2016")
                 {
@@ -101,6 +101,7 @@ namespace H1Emu_Launcher.Classes
 
                         }
 
+                        isDownloadNeeded = true;
                         if (isDownloadNeeded)
                         {
                             // Deserialise the JSON into an object
@@ -118,6 +119,8 @@ namespace H1Emu_Launcher.Classes
                                 long totalBytesRead = 0;
                                 int bytesRead;
 
+                                LauncherWindow.launcherInstance.playButton.FontSize = 18;
+
                                 while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
                                 {
                                     // Write the data to the file
@@ -128,7 +131,7 @@ namespace H1Emu_Launcher.Classes
                                     if (totalBytes > 0)
                                     {
                                         float progressPercentage = (float)totalBytesRead * 100 / totalBytes;
-                                        LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item150") + $" {progressPercentage:0.00}%";
+                                        LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item188") + $" {progressPercentage:0.00}%";
                                     }
                                 }
                             };
@@ -136,6 +139,9 @@ namespace H1Emu_Launcher.Classes
 
                         verifiedAssets.Add(item.filename);
                     }
+
+                    LauncherWindow.launcherInstance.playButton.FontSize = 28;
+                    LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
 
                     // Make sure that only the default game assets and the newly installed asset pack is the only thing in the "Assets" folder
                     foreach (string file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
@@ -171,9 +177,13 @@ namespace H1Emu_Launcher.Classes
             }
             catch (Exception e)
             {
-                LauncherWindow.launcherInstance.playButton.IsEnabled = true;
-                LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item8");
-
+                if (LauncherWindow.launcherInstance.serverSelector.SelectedIndex != 1)
+                {
+                    LauncherWindow.launcherInstance.playButton.IsEnabled = true;
+                    LauncherWindow.launcherInstance.playButton.FontSize = 28;
+                    LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item8");
+                }
+                
                 if (Properties.Settings.Default.gameVersionString == "22dec2016")
                     CustomMessageBox.Show($"{LauncherWindow.launcherInstance.FindResource("item96")}\n\n{e.Message}", LauncherWindow.launcherInstance);
                 return false;

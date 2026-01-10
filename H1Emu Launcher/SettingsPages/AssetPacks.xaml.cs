@@ -126,7 +126,7 @@ namespace H1Emu_Launcher.SettingsPages
             }
             catch (Exception e)
             {
-                CustomMessageBox.Show($"{FindResource("item184")} \"{e.Message}\".", SettingsWindow.settingsInstance);
+                CustomMessageBox.Show($"{FindResource("item232")} \"{e.Message}\".", SettingsWindow.settingsInstance);
             }
 
             assetPacksBox.SelectedIndex = Properties.Settings.Default.selectedAssetPack;
@@ -144,11 +144,11 @@ namespace H1Emu_Launcher.SettingsPages
                         Owner = SettingsWindow.settingsInstance,
                         itemType = 2
                     };
-                    editAssetPack.primaryTextbox.Text = assetPackJson[i].AssetPackName;
-                    editAssetPack.secondaryTextbox.Text = assetPackJson[i].AssetPackURL;
-                    editAssetPack.primaryTextboxHint.Visibility = Visibility.Hidden;
-                    editAssetPack.secondaryTextboxHint.Visibility = Visibility.Hidden;
-                    editAssetPack.saveServerButton.SetResourceReference(ContentProperty, "item213");
+                    editAssetPack.primaryTextBox.Text = assetPackJson[i].AssetPackName;
+                    editAssetPack.secondaryTextBox.Text = assetPackJson[i].AssetPackURL;
+                    editAssetPack.primaryTextBoxHint.Visibility = Visibility.Hidden;
+                    editAssetPack.secondaryTextBoxHint.Visibility = Visibility.Hidden;
+                    editAssetPack.editItem = true;
                     editAssetPack.editIndex = i;
 
                     await Task.Run(() =>

@@ -130,7 +130,7 @@
     <system:String x:Key="item148">Exception thrown.</system:String>
     <system:String x:Key="item149">Unzipping asset files...</system:String>
     <system:String x:Key="item150">PATCHING...</system:String>
-    <system:String x:Key="item151">Server name not valid.</system:String>
+    <system:String x:Key="item151">The server name is not valid.</system:String>
     <system:String x:Key="item152">Deleting BattlEye folder...</system:String>
     <system:String x:Key="item153">When connecting to H1Emu Servers you must set an Account Key. Would you like to do this now?</system:String>
     <system:String x:Key="item154">Account Key...</system:String>
@@ -140,7 +140,7 @@
     <system:String x:Key="item158">Welcome to H1Emu!</system:String>
     <system:String x:Key="item159">BEFORE YOU BEGIN, please note that this project only supports the following game version:</system:String>
     <system:String x:Key="item160">.</system:String>
-    <system:String x:Key="item161">Server IP not valid.</system:String>
+    <system:String x:Key="item161">The server IP is not valid.</system:String>
     <system:String x:Key="item162">22nd December 2016</system:String>
     <system:String x:Key="item163">Please</system:String>
     <system:String x:Key="item164">DO NOT</system:String>
@@ -209,4 +209,9 @@
     <system:String x:Key="item228">Asset Pack Name...</system:String>
     <system:String x:Key="item229">Asset Pack URL...</system:String>
     <system:String x:Key="item230">Are you sure you want to delete this asset pack?</system:String>
+    <system:String x:Key="item231">Add Asset Pack</system:String>
+    <system:String x:Key="item232">There was an error loading the asset pack list:</system:String>
+    <system:String x:Key="item233">The asset pack name is not valid.</system:String>
+    <system:String x:Key="item234">The asset pack URL is not valid.</system:String>
+    <system:String x:Key="item235">This asset pack name already exists in the asset pack list.</system:String>
 </ResourceDictionary>

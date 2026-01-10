@@ -43,10 +43,10 @@ namespace H1Emu_Launcher
                     Owner = settingsInstance,
                     itemType = 2
                 };
-                addAssetPack.primaryTextbox.Text = newAssetPackName;
-                addAssetPack.secondaryTextbox.Text = newAssetPackURL;
-                addAssetPack.primaryTextboxHint.Visibility = Visibility.Hidden;
-                addAssetPack.secondaryTextboxHint.Visibility = Visibility.Hidden;
+                addAssetPack.primaryTextBox.Text = newAssetPackName;
+                addAssetPack.secondaryTextBox.Text = newAssetPackURL;
+                addAssetPack.primaryTextBoxHint.Visibility = Visibility.Hidden;
+                addAssetPack.secondaryTextBoxHint.Visibility = Visibility.Hidden;
                 Task.Run(() =>
                 {
                     Application.Current.Dispatcher.Invoke(new Action(delegate
@@ -120,10 +120,10 @@ namespace H1Emu_Launcher
                     Owner = settingsInstance,
                     itemType = 2
                 };
-                addAssetPack.primaryTextbox.Text = newAssetPackName;
-                addAssetPack.secondaryTextbox.Text = newAssetPackURL;
-                addAssetPack.primaryTextboxHint.Visibility = Visibility.Hidden;
-                addAssetPack.secondaryTextboxHint.Visibility = Visibility.Hidden;
+                addAssetPack.primaryTextBox.Text = newAssetPackName;
+                addAssetPack.secondaryTextBox.Text = newAssetPackURL;
+                addAssetPack.primaryTextBoxHint.Visibility = Visibility.Hidden;
+                addAssetPack.secondaryTextBoxHint.Visibility = Visibility.Hidden;
                 Task.Run(() =>
                 {
                     Application.Current.Dispatcher.Invoke(new Action(delegate

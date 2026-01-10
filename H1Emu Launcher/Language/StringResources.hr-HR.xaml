@@ -209,4 +209,9 @@
     <system:String x:Key="item228">Asset Pack Name...</system:String>
     <system:String x:Key="item229">Asset Pack URL...</system:String>
     <system:String x:Key="item230">Are you sure you want to delete this asset pack?</system:String>
+    <system:String x:Key="item231">Add Asset Pack</system:String>
+    <system:String x:Key="item232">There was an error loading the asset pack list:</system:String>
+    <system:String x:Key="item233">The asset pack name is not valid.</system:String>
+    <system:String x:Key="item234">The asset pack URL is not valid.</system:String>
+    <system:String x:Key="item235">This asset pack name already exists in the asset pack list.</system:String>
 </ResourceDictionary>

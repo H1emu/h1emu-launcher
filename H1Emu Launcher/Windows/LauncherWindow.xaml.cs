@@ -145,10 +145,10 @@ namespace H1Emu_Launcher
                         Owner = this,
                         itemType = 1
                     };
-                    addServer.primaryTextbox.Text = newServerName;
-                    addServer.secondaryTextbox.Text = newServerIp;
-                    addServer.primaryTextboxHint.Visibility = Visibility.Hidden;
-                    addServer.secondaryTextboxHint.Visibility = Visibility.Hidden;
+                    addServer.primaryTextBox.Text = newServerName;
+                    addServer.secondaryTextBox.Text = newServerIp;
+                    addServer.primaryTextBoxHint.Visibility = Visibility.Hidden;
+                    addServer.secondaryTextBoxHint.Visibility = Visibility.Hidden;
                     await Task.Run(() =>
                     {
                         Dispatcher.Invoke(new Action(delegate
@@ -518,11 +518,11 @@ namespace H1Emu_Launcher
                         Owner = this,
                         itemType = 1
                     };
-                    editServer.primaryTextbox.Text = currentJson[i].CustomServerName;
-                    editServer.secondaryTextbox.Text = currentJson[i].CustomServerIp;
-                    editServer.primaryTextboxHint.Visibility = Visibility.Hidden;
-                    editServer.secondaryTextboxHint.Visibility = Visibility.Hidden;
-                    editServer.saveServerButton.SetResourceReference(ContentProperty, "item213");
+                    editServer.primaryTextBox.Text = currentJson[i].CustomServerName;
+                    editServer.secondaryTextBox.Text = currentJson[i].CustomServerIp;
+                    editServer.primaryTextBoxHint.Visibility = Visibility.Hidden;
+                    editServer.secondaryTextBoxHint.Visibility = Visibility.Hidden;
+                    editServer.editItem = true;
                     editServer.editIndex = i;
 
                     await Task.Run(() =>
@@ -838,11 +838,11 @@ namespace H1Emu_Launcher
                 string arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}";
 
                 // Check that the patch is the latest version
-                if (!Properties.Settings.Default.developerMode && !await InstallPatchClass.InstallPatch())
+                if (!Properties.Settings.Default.developerMode && !await InstallPatchClass.InstallPatch() && serverIndex != 1)
                     return;
 
                 // Check that the launcher is the latest version
-                if (SplashWindow.checkForUpdates && !await SplashWindow.CheckVersion(this))
+                if (SplashWindow.checkForUpdates && !await SplashWindow.CheckVersion(this) && serverIndex != 1)
                     return;
 
                 if (Properties.Settings.Default.steamEnabled)

@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using H1Emu_Launcher.Classes;
-using Windows.Media.ClosedCaptioning;
 
 namespace H1Emu_Launcher
 {
@@ -93,15 +92,16 @@ namespace H1Emu_Launcher
                     owner.Hide();
                 else if (owner is LauncherWindow)
                 {
-                    LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item8");
-                    LauncherWindow.launcherInstance.playButton.IsEnabled = true;
+                    if (LauncherWindow.launcherInstance.serverSelector.SelectedIndex != 1)
+                    {
+                        LauncherWindow.launcherInstance.playButton.IsEnabled = true;
+                        LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item8");
+                    }
                 }
 
                 CustomMessageBox.Show($"{owner.FindResource("item66")} {owner.FindResource("item16")}{exceptionList}\n\n{owner.FindResource("item49")}", owner);
 
-                if (owner is SplashWindow && !e.Message.Contains("Rate limit exceeded"))
-                    Environment.Exit(0);
-                else if (owner is SplashWindow)
+                if (owner is SplashWindow)
                     owner.Close();
 
                 return false;
@@ -112,15 +112,16 @@ namespace H1Emu_Launcher
                     owner.Hide();
                 else if (owner is LauncherWindow)
                 {
-                    LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item8");
-                    LauncherWindow.launcherInstance.playButton.IsEnabled = true;
+                    if (LauncherWindow.launcherInstance.serverSelector.SelectedIndex != 1)
+                    {
+                        LauncherWindow.launcherInstance.playButton.IsEnabled = true;
+                        LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item8");
+                    }
                 }
 
                 CustomMessageBox.Show($"{owner.FindResource("item66")} \"{ex.Message}\"\n\n{owner.FindResource("item49")}", owner);
 
-                if (owner is SplashWindow && !ex.Message.Contains("Rate limit exceeded"))
-                    Environment.Exit(0);
-                else if (owner is SplashWindow)
+                if (owner is SplashWindow)
                     owner.Close();
 
                 return false;
@@ -151,7 +152,6 @@ namespace H1Emu_Launcher
                     if (!Properties.Settings.Default.firstTimeUse && Properties.Settings.Default.agreedToTOSIteration < Info.TOS_ITERATION)
                     {
                         dc.welcomeMessage.Visibility = Visibility.Collapsed;
-                        dc.TOSHeader.Text = "Updated Terms of Service";
                         dc.TOSHeader.Text = FindResource("item5").ToString();
                     }
 
