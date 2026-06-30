@@ -65,7 +65,47 @@ namespace H1Emu_Launcher.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _1 {
             get {
-                object obj = ResourceManager.GetObject("_1", resourceCulture);
+                object obj = ResourceManager.GetObject("1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _10 {
+            get {
+                object obj = ResourceManager.GetObject("10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _11 {
+            get {
+                object obj = ResourceManager.GetObject("11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _12 {
+            get {
+                object obj = ResourceManager.GetObject("12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _13 {
+            get {
+                object obj = ResourceManager.GetObject("13", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +115,7 @@ namespace H1Emu_Launcher.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _2 {
             get {
-                object obj = ResourceManager.GetObject("_2", resourceCulture);
+                object obj = ResourceManager.GetObject("2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +125,7 @@ namespace H1Emu_Launcher.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _3 {
             get {
-                object obj = ResourceManager.GetObject("_3", resourceCulture);
+                object obj = ResourceManager.GetObject("3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +135,7 @@ namespace H1Emu_Launcher.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _4 {
             get {
-                object obj = ResourceManager.GetObject("_4", resourceCulture);
+                object obj = ResourceManager.GetObject("4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +145,7 @@ namespace H1Emu_Launcher.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _5 {
             get {
-                object obj = ResourceManager.GetObject("_5", resourceCulture);
+                object obj = ResourceManager.GetObject("5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -115,7 +155,7 @@ namespace H1Emu_Launcher.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _6 {
             get {
-                object obj = ResourceManager.GetObject("_6", resourceCulture);
+                object obj = ResourceManager.GetObject("6", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -125,7 +165,27 @@ namespace H1Emu_Launcher.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _7 {
             get {
-                object obj = ResourceManager.GetObject("_7", resourceCulture);
+                object obj = ResourceManager.GetObject("7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _8 {
+            get {
+                object obj = ResourceManager.GetObject("8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _9 {
+            get {
+                object obj = ResourceManager.GetObject("9", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -472,7 +532,7 @@ namespace H1Emu_Launcher.Properties {
         ///    &lt;system:String x:Key=&quot;item1&quot;&gt;Для игры требуется новое обновление, подождите.&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;ОБНОВИТЬ&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;Обновление&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Пожалуйста подождите&lt;/syste [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item4&quot;&gt;Пожалуйста подождите [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_ru_RU {
             get {
@@ -521,7 +581,7 @@ namespace H1Emu_Launcher.Properties {
         ///    &lt;system:String x:Key=&quot;item2&quot;&gt;更新&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item3&quot;&gt;最新版本&lt;/system:String&gt;
         ///    &lt;system:String x:Key=&quot;item4&quot;&gt;请稍等&lt;/system:String&gt;
-        ///    &lt;system:String x:Key=&quot;item8&quot;&gt;运行游戏 [rest of string was truncated]&quot;;.
+        ///    &lt;system:String x:Key=&quot;item5&quot;&gt;Upda [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string StringResources_zh_CN {
             get {

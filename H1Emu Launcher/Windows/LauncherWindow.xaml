@@ -450,10 +450,6 @@
                             <Grid Grid.Row="1"
                                   Margin="30,0,10,20">
 
-                                <Grid.Background>
-                                    <ImageBrush ImageSource="..\Resources\Placeholder.jpg"/>
-                                </Grid.Background>
-
                                 <!-- Drop shadow effect -->
                                 <Grid.Effect>
                                     <DropShadowEffect BlurRadius="15"
@@ -464,6 +460,10 @@
 
                                 </Grid.Effect>
 
+                                <Image Source="..\Resources\Placeholder.jpg"
+                                       Stretch="Fill"
+                                       RenderOptions.BitmapScalingMode="Fant"/>
+                                
                                 <!-- Image carousel grid -->
                                 <Grid x:Name="imageCarousel"
                                       ClipToBounds="True"
@@ -471,7 +471,6 @@
                                       MouseLeave="CarouselMouseLeave">
 
                                     <Image x:Name="carouselImage"
-                                           Source="..\Resources\1.jpg"
                                            Stretch="Fill"
                                            RenderOptions.BitmapScalingMode="Fant">
 

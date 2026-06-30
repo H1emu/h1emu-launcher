@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Resources;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media;
@@ -44,11 +45,16 @@ namespace H1Emu_Launcher.Classes
                         i++;
                     }
                     else
-                        break;
+                        continue;
                 }
+
+                // Randomise the image list so that it's a bit different every time
+                Random.Shared.Shuffle(CollectionsMarshal.AsSpan(images));
 
                 Application.Current.Dispatcher.Invoke(new Action(delegate
                 {
+                    LauncherWindow.launcherInstance.carouselImage.Source = ConvertResourceToImageSource($"Resources\\{images[0]}");
+
                     DoubleAnimation carouselImageRectangle = new(0, LauncherWindow.launcherInstance.carouselRectangleGrid.ActualWidth, new Duration(TimeSpan.FromSeconds(6)))
                     {
                         EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
@@ -74,12 +80,15 @@ namespace H1Emu_Launcher.Classes
         public static void NextImage()
         {
             if (currentIndex == images.Count - 1)
+            {
                 currentIndex = 0;
-            else { currentIndex++; }
-
-            lastIndex = currentIndex - 1;
-            if (lastIndex < 0)
                 lastIndex = images.Count - 1;
+            }
+            else
+            {
+                currentIndex++;
+                lastIndex = currentIndex - 1;
+            }
 
             LauncherWindow.launcherInstance.carouselImage.Source = ConvertResourceToImageSource($"Resources\\{images[lastIndex]}");
             LauncherWindow.launcherInstance.carouselImageFollow.Source = ConvertResourceToImageSource($"Resources\\{images[currentIndex]}");
@@ -90,12 +99,15 @@ namespace H1Emu_Launcher.Classes
         public static void PreviousImage()
         {
             if (currentIndex == 0)
+            {
                 currentIndex = images.Count - 1;
-            else { currentIndex--; }
-
-            lastIndex = currentIndex + 1;
-            if (lastIndex > images.Count - 1)
                 lastIndex = 0;
+            }
+            else
+            {
+                currentIndex--;
+                lastIndex = currentIndex + 1;
+            }
 
             LauncherWindow.launcherInstance.carouselImage.Source = ConvertResourceToImageSource($"Resources\\{images[lastIndex]}");
             LauncherWindow.launcherInstance.carouselImageFollow.Source = ConvertResourceToImageSource($"Resources\\{images[currentIndex]}");

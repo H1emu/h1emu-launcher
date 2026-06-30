@@ -949,24 +949,19 @@ namespace H1Emu_Launcher
             if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}"))
                 File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}");
 
-            if (Properties.Settings.Default.imageCarouselVisibility)
-            {
-                // Show image carousel
-                imageCarousel.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                // Hide image carousel
-                imageCarousel.Visibility = Visibility.Hidden;
-            }
-
             if (Properties.Settings.Default.language == 1)
                 chineseLink.Visibility = Visibility.Visible;
 
             DisplayVersionInformation();
-            Carousel.BeginImageCarousel();
             LoadServers();
             CheckGameVersionAndPath(this, false, false);
+            Carousel.BeginImageCarousel();
+            if (!Properties.Settings.Default.imageCarouselVisibility)
+            {
+                // Show image carousel
+                Carousel.playCarousel.Stop();
+                imageCarousel.Visibility = Visibility.Visible;
+            }
         }
 
         public static string[] rawArgs;

@@ -73,10 +73,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Resources\Icon.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
     <Resource Include="Language\StringResources.en-EN.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
