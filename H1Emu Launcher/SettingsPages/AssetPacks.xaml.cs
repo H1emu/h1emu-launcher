@@ -1,5 +1,4 @@
-﻿using H1Emu_Launcher.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -8,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using H1Emu_Launcher.Classes;
 
 namespace H1Emu_Launcher.SettingsPages
 {
@@ -101,6 +101,7 @@ namespace H1Emu_Launcher.SettingsPages
                         MenuItem deleteOptionCustom = new()
                         {
                             Style = (Style)FindResource("CustomMenuItem"),
+                            Foreground = new SolidColorBrush(Color.FromRgb(255, 71, 76))
                         };
                         System.Windows.Shapes.Path pathDeleteCustom = new()
                         {

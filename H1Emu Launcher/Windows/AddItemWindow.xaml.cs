@@ -142,7 +142,7 @@ namespace H1Emu_Launcher
 
                 MenuItem editOption = new()
                 {
-                    Style = (Style)FindResource("CustomMenuItem"),
+                    Style = (Style)FindResource("CustomMenuItem")
                 };
                 System.Windows.Shapes.Path pathEdit = new()
                 {
@@ -170,6 +170,7 @@ namespace H1Emu_Launcher
                 MenuItem deleteOption = new()
                 {
                     Style = (Style)FindResource("CustomMenuItem"),
+                    Foreground = new SolidColorBrush(Color.FromRgb(255, 71, 76))
                 };
                 System.Windows.Shapes.Path pathDelete = new()
                 {
@@ -319,7 +320,7 @@ namespace H1Emu_Launcher
 
             try
             {
-                // Save the new custom server to the custom servers file list
+                // Save the new asset pack to the custom asset pack file list
                 assetPackJson.Add(new LauncherWindow.AssetPackList()
                 {
                     AssetPackName = primaryTextBox.Text.Trim(),
@@ -343,7 +344,7 @@ namespace H1Emu_Launcher
 
                 MenuItem editOption = new()
                 {
-                    Style = (Style)FindResource("CustomMenuItem"),
+                    Style = (Style)FindResource("CustomMenuItem")
                 };
                 System.Windows.Shapes.Path pathEdit = new()
                 {
@@ -371,6 +372,7 @@ namespace H1Emu_Launcher
                 MenuItem deleteOption = new()
                 {
                     Style = (Style)FindResource("CustomMenuItem"),
+                    Foreground = new SolidColorBrush(Color.FromRgb(255, 71, 76))
                 };
                 System.Windows.Shapes.Path pathDelete = new()
                 {

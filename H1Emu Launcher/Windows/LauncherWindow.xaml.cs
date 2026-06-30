@@ -336,7 +336,8 @@ namespace H1Emu_Launcher
 
                 MenuItem notifyIconMenuItemExit = new()
                 {
-                    Style = (Style)FindResource("CustomMenuItem")
+                    Style = (Style)FindResource("CustomMenuItem"),
+                    Foreground = new SolidColorBrush(Color.FromRgb(255, 71, 76))
                 };
                 System.Windows.Shapes.Path pathExitNotifyIcon = new()
                 {
@@ -465,6 +466,7 @@ namespace H1Emu_Launcher
                         MenuItem deleteOptionCustom = new()
                         {
                             Style = (Style)FindResource("CustomMenuItem"),
+                            Foreground = new SolidColorBrush(Color.FromRgb(255, 71, 76))
                         };
                         System.Windows.Shapes.Path pathDeleteCustom = new()
                         {

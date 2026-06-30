@@ -1,5 +1,4 @@
-﻿using H1Emu_Launcher.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -14,6 +13,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
+using H1Emu_Launcher.Classes;
 
 namespace H1Emu_Launcher.SettingsPages
 {

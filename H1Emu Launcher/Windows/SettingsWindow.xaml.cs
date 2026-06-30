@@ -1,6 +1,5 @@
 ﻿using H1Emu_Launcher.Classes;
 using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;

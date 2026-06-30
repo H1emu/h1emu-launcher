@@ -804,7 +804,6 @@
                 </Setter>
             </Style>
             <Style x:Key="CustomMenuItem" TargetType="{x:Type MenuItem}">
-                <Setter Property="Foreground" Value="FloralWhite"/>
                 <Setter Property="FontWeight" Value="Light"/>
                 <Setter Property="Icon" Value="True"/>
                 <Setter Property="Template">
@@ -822,27 +821,27 @@
                                     <Trigger.EnterActions>
                                         <BeginStoryboard>
                                             <Storyboard>
-                                                <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
-                                                                To="LightGray"
-                                                                Duration="0:0:0.1">
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 To="0.8"
+                                                                 Duration="0:0:0.1">
 
-                                                    <ColorAnimation.EasingFunction>
+                                                    <DoubleAnimation.EasingFunction>
                                                         <CubicEase EasingMode="EaseInOut"/>
-                                                    </ColorAnimation.EasingFunction>
-                                                </ColorAnimation>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
                                     <Trigger.ExitActions>
                                         <BeginStoryboard>
                                             <Storyboard>
-                                                <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
-                                                                Duration="0:0:0.1">
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 Duration="0:0:0.1">
 
-                                                    <ColorAnimation.EasingFunction>
+                                                    <DoubleAnimation.EasingFunction>
                                                         <CubicEase EasingMode="EaseInOut"/>
-                                                    </ColorAnimation.EasingFunction>
-                                                </ColorAnimation>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.ExitActions>
@@ -851,27 +850,27 @@
                                     <Trigger.EnterActions>
                                         <BeginStoryboard>
                                             <Storyboard>
-                                                <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
-                                                                To="DarkGray"
-                                                                Duration="0:0:0.1">
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 To="0.6"
+                                                                 Duration="0:0:0.1">
 
-                                                    <ColorAnimation.EasingFunction>
+                                                    <DoubleAnimation.EasingFunction>
                                                         <CubicEase EasingMode="EaseInOut"/>
-                                                    </ColorAnimation.EasingFunction>
-                                                </ColorAnimation>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.EnterActions>
                                     <Trigger.ExitActions>
                                         <BeginStoryboard>
                                             <Storyboard>
-                                                <ColorAnimation Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)"
-                                                                Duration="0:0:0.1">
-                                                    
-                                                    <ColorAnimation.EasingFunction>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 Duration="0:0:0.1">
+
+                                                    <DoubleAnimation.EasingFunction>
                                                         <CubicEase EasingMode="EaseInOut"/>
-                                                    </ColorAnimation.EasingFunction>
-                                                </ColorAnimation>
+                                                    </DoubleAnimation.EasingFunction>
+                                                </DoubleAnimation>
                                             </Storyboard>
                                         </BeginStoryboard>
                                     </Trigger.ExitActions>

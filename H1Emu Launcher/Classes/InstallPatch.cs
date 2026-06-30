@@ -10,8 +10,6 @@ using System.Net.Http;
 using System.Security.Cryptography;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.Transactions;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace H1Emu_Launcher.Classes
