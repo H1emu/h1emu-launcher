@@ -103,7 +103,7 @@
     <system:String x:Key="item120">Please close H1Z1.</system:String>
     <system:String x:Key="item121">H1Z1.exe is currently being used.\n\nPlease close any open instances of H1Z1.\n\nYou can use the button below to kill all processes of H1Z1.</system:String>
     <system:String x:Key="item122">Current Game Version: 2016</system:String>
-    <system:String x:Key="item124">Launcher version</system:String>
+    <system:String x:Key="item124">Launcher Version</system:String>
     <system:String x:Key="item125">Copyright © 2026 | H1Emu Project</system:String>
     <system:String x:Key="item126">Lead Development</system:String>
     <system:String x:Key="item127">Developers</system:String>
@@ -179,8 +179,8 @@
     <system:String x:Key="item198">Bug Reports</system:String>
     <system:String x:Key="item199">About</system:String>
     <system:String x:Key="item200">Language</system:String>
-    <system:String x:Key="item201">Display image carousel</system:String>
-    <system:String x:Key="item202">Automatically minimise to system tray</system:String>
+    <system:String x:Key="item201">Image Carousel</system:String>
+    <system:String x:Key="item202">Automatically Hide</system:String>
     <system:String x:Key="item203">On</system:String>
     <system:String x:Key="item204">Off</system:String>
     <system:String x:Key="item205">REPORT</system:String>
@@ -196,12 +196,12 @@
     <system:String x:Key="item215">Error computing asset hash:</system:String>
     <system:String x:Key="item216">Please uninstall any custom asset (.pack) files when playing on any H1Emu Main servers or it may result in a ban.</system:String>
     <system:String x:Key="item217">RUNNING</system:String>
-    <system:String x:Key="item218">Developer mode</system:String>
+    <system:String x:Key="item218">Developer Mode</system:String>
     <system:String x:Key="item219">Enabling developer mode means that the game will not be automatically patched, multiple instances of the game can be launched and the Singleplayer server window will stay open for debugging purposes.</system:String>
     <system:String x:Key="item220">There was an error pasting your text:</system:String>
     <system:String x:Key="item221">Paste</system:String>
     <system:String x:Key="item222">Would you like to return to the login page?</system:String>
-    <system:String x:Key="item223">Steam enabled</system:String>
+    <system:String x:Key="item223">Steam Enabled</system:String>
     <system:String x:Key="item224">Asset Packs</system:String>
     <system:String x:Key="item225">Select or add the asset pack required for the server you wish to play on.</system:String>
     <system:String x:Key="item226">Official H1Emu Asset Pack</system:String>

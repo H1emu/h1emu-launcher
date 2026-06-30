@@ -70,7 +70,11 @@ namespace H1Emu_Launcher
 
                 if (owner is LauncherWindow)
                 {
-                    LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item217");
+                    if (!Properties.Settings.Default.developerMode)
+                        LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item217");
+                    else
+                        LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item8");
+
                     LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 }
                 else

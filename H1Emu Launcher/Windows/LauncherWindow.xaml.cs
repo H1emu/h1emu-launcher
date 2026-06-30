@@ -783,7 +783,6 @@ namespace H1Emu_Launcher
 
                         // If connecting to H1Emu servers, check Account Key validity
                         await AccountKeyUtil.CheckAccountKeyValidity(Properties.Settings.Default.sessionIdKey);
-
                         sessionId = $"{{\"sessionId\":\"{Properties.Settings.Default.sessionIdKey}\",\"gameVersion\":2}}";
                         serverIp = Info.H1EMU_SERVER_IP;
                         break;
@@ -892,7 +891,13 @@ namespace H1Emu_Launcher
                 if (Properties.Settings.Default.autoMinimise && Visibility == Visibility.Visible)
                 {
                     Hide();
-                    new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
+                    
+                    if (Properties.Settings.Default.firstToast)
+                    {
+                        new ToastContentBuilder().AddText(FindResource("item191").ToString()).Show();
+                        Properties.Settings.Default.firstToast = false;
+                        Properties.Settings.Default.Save();
+                    }
                 }
             }
             catch (Exception ex)
@@ -906,7 +911,6 @@ namespace H1Emu_Launcher
         public static void KillProcesses()
         {
             string[] processNames = { "H1EmuVoiceClient", "H1Z1", "H1Z1_FP", "H1Z1_BE" };
-
             foreach (string name in processNames)
             {
                 foreach (Process p in Process.GetProcessesByName(name))

@@ -326,6 +326,7 @@
                                    FontFamily="Bahnschrift Light"
                                    Text="?"
                                    FontSize="10"
+                                   Padding="0,2,0,0"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
                                    IsHitTestVisible="False"
