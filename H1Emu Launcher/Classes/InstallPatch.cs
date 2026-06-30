@@ -23,6 +23,7 @@ namespace H1Emu_Launcher.Classes
             try
             {
                 LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
+                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
 
                 if (Properties.Settings.Default.gameVersionString == "22dec2016")
                 {
@@ -119,6 +120,7 @@ namespace H1Emu_Launcher.Classes
                                 int bytesRead;
 
                                 LauncherWindow.launcherInstance.playButton.FontSize = 18;
+                                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
 
                                 while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
                                 {
@@ -131,6 +133,7 @@ namespace H1Emu_Launcher.Classes
                                     {
                                         float progressPercentage = (float)totalBytesRead * 100 / totalBytes;
                                         LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item188") + $" {progressPercentage:0.00}%";
+                                        LauncherWindow.launcherInstance.taskbarIcon.ProgressValue = progressPercentage / 100;
                                     }
                                 }
                             };
@@ -141,6 +144,7 @@ namespace H1Emu_Launcher.Classes
 
                     LauncherWindow.launcherInstance.playButton.FontSize = 28;
                     LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
+                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
 
                     // Make sure that only the default game assets and the newly installed asset pack is the only thing in the "Assets" folder
                     foreach (string file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
@@ -181,6 +185,7 @@ namespace H1Emu_Launcher.Classes
                     LauncherWindow.launcherInstance.playButton.IsEnabled = true;
                     LauncherWindow.launcherInstance.playButton.FontSize = 28;
                     LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item8");
+                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                 }
                 
                 if (Properties.Settings.Default.gameVersionString == "22dec2016")
@@ -189,6 +194,7 @@ namespace H1Emu_Launcher.Classes
             }
 
             LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item217");
+            LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
             return true;
         }
     }

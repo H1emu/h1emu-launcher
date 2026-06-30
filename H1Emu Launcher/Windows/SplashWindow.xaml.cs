@@ -45,7 +45,12 @@ namespace H1Emu_Launcher
             try
             {
                 if (owner is LauncherWindow)
+                {
                     LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item214");
+                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                }
+                else
+                    splashInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
 
                 // Download launcher information from GitHub endpoint
                 HttpResponseMessage response = await httpClient.GetAsync(Info.LAUNCHER_JSON_API, HttpCompletionOption.ResponseHeadersRead);
@@ -63,6 +68,14 @@ namespace H1Emu_Launcher
                 UpdateWindow.installerDownloadURL = jsonLauncherDes.assets[0].browser_download_url;
                 UpdateWindow.installerFileName = jsonLauncherDes.assets[0].name;
 
+                if (owner is LauncherWindow)
+                {
+                    LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item217");
+                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+                }
+                else
+                    splashInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+
                 if (localVersion < latestVersion)
                 {
                     owner.Hide();
@@ -72,8 +85,6 @@ namespace H1Emu_Launcher
 
                 if (owner is SplashWindow)
                     owner.Close();
-                else if (owner is LauncherWindow)
-                    LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item217");
             }
             catch (AggregateException e)
             {
@@ -96,13 +107,17 @@ namespace H1Emu_Launcher
                     {
                         LauncherWindow.launcherInstance.playButton.IsEnabled = true;
                         LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item8");
+                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     }
                 }
 
                 CustomMessageBox.Show($"{owner.FindResource("item66")} {owner.FindResource("item16")}{exceptionList}\n\n{owner.FindResource("item49")}", owner);
 
                 if (owner is SplashWindow)
+                {
+                    splashInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     owner.Close();
+                }
 
                 return false;
             }
@@ -116,13 +131,17 @@ namespace H1Emu_Launcher
                     {
                         LauncherWindow.launcherInstance.playButton.IsEnabled = true;
                         LauncherWindow.launcherInstance.playButton.SetResourceReference(ContentProperty, "item8");
+                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     }
                 }
 
                 CustomMessageBox.Show($"{owner.FindResource("item66")} \"{ex.Message}\"\n\n{owner.FindResource("item49")}", owner);
 
                 if (owner is SplashWindow)
+                {
+                    splashInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
                     owner.Close();
+                }
 
                 return false;
             }

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:classes="clr-namespace:H1Emu_Launcher.Classes"
         mc:Ignorable="d"
         UseLayoutRounding="True"
         Title="{DynamicResource item211}"
@@ -34,7 +35,12 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    
+
+    <!-- Tasbar icon info -->
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo x:Name="taskbarIcon" Description="H1Emu Launcher"/>
+    </Window.TaskbarItemInfo>
+
     <!-- Window grid -->
     <Grid Background="{DynamicResource LighterColour}">
         
@@ -161,7 +167,7 @@
                             </Rectangle.Effect>
                         </Rectangle>
 
-                        <!-- Main progress bar -->
+                        <!-- Status rogress bar -->
                         <ProgressBar x:Name="downloadSetupProgress"
                                      Grid.Row="3"
                                      Height="25"
@@ -170,6 +176,7 @@
                                      Foreground="{DynamicResource DarkerColour}"
                                      BorderBrush="{DynamicResource RedAccent}"
                                      BorderThickness="2"
+                                     classes:ProgressBarCornerRadius.CornerRadius="5"
                                      Style="{DynamicResource ProgressBar}">
 
                             <ProgressBar.Effect>
@@ -180,15 +187,6 @@
                                                   Opacity="0.2"/>
                             </ProgressBar.Effect>
                         </ProgressBar>
-
-                        <!-- Progress bar outline (usually the fill colour overlaps the outline of the progress bar) -->
-                        <ProgressBar Grid.Row="3"
-                                     Height="25"
-                                     Margin="20"
-                                     Background="Transparent"
-                                     BorderThickness="2"
-                                     BorderBrush="Transparent"
-                                     Style="{DynamicResource ProgressBar}"/>
 
                         <!-- Status text to overlay progress bar -->
                         <TextBlock x:Name="downloadSetupProgressText"

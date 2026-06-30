@@ -837,16 +837,21 @@ namespace H1Emu_Launcher
             {
                 string arguments = $"sessionid={sessionId} gamecrashurl={Info.GAME_CRASH_URL} server={serverIp}";
 
-                // Check that the patch is the latest version
+                // Check that the patch is the latest version and prevent playing if trying to connect to H1Emu Servers
                 if (!Properties.Settings.Default.developerMode && !await InstallPatchClass.InstallPatch() && serverIndex != 1)
                     return;
 
-                // Check that the launcher is the latest version
+                // Check that the launcher is the latest version and prevent playing if trying to connect to H1Emu Servers
                 if (SplashWindow.checkForUpdates && !await SplashWindow.CheckVersion(this) && serverIndex != 1)
                     return;
 
+                // If user has Steam enabled then add it to the launch arguments
                 if (Properties.Settings.Default.steamEnabled)
                     arguments += " STEAM_ENABLED=1";
+
+                // Kill any lingering processes to prevent bugs
+                if (!Properties.Settings.Default.developerMode)
+                    KillProcesses();
 
                 // Launch game
                 Process h1Process = new()
@@ -895,6 +900,17 @@ namespace H1Emu_Launcher
                 playButton.IsEnabled = true;
                 playButton.SetResourceReference(ContentProperty, "item8");
                 CustomMessageBox.Show($"{FindResource("item13")}\n\n{e.GetType().Name}: \"{ex.Message}\".", this);
+            }
+        }
+
+        public static void KillProcesses()
+        {
+            string[] processNames = { "H1EmuVoiceClient", "H1Z1", "H1Z1_FP", "H1Z1_BE" };
+
+            foreach (string name in processNames)
+            {
+                foreach (Process p in Process.GetProcessesByName(name))
+                    p.Kill(true);
             }
         }
 

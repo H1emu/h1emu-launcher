@@ -139,6 +139,7 @@ namespace H1Emu_Launcher.SettingsPages
                         Dispatcher.Invoke(new Action(delegate
                         {
                             settingsProgressBar.IsIndeterminate = false;
+                            LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
                         }));
 
                         // For each asset in the JSON, download the asset file
@@ -174,6 +175,7 @@ namespace H1Emu_Launcher.SettingsPages
                                         {
                                             settingsProgressBar.Value = progressPercentage;
                                             settingsProgressText.Text = $"{FindResource("item54").ToString().Replace("...", "")} \"{item.filename}\"... {progressPercentage:0.00}%";
+                                            LauncherWindow.launcherInstance.taskbarIcon.ProgressValue = progressPercentage / 100;
                                         }));
                                     }
                                 }
@@ -185,6 +187,8 @@ namespace H1Emu_Launcher.SettingsPages
                         Dispatcher.Invoke(new Action(delegate
                         {
                             settingsProgressBar.IsIndeterminate = true;
+                            settingsProgressText.Text = FindResource("item99").ToString();
+                            LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                         }));
 
                         // Make sure that only the default game assets and the newly installed asset pack is the only thing in the "Assets" folder

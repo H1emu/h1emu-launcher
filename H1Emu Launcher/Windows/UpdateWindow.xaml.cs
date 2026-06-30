@@ -39,6 +39,7 @@ namespace H1Emu_Launcher
             try
             {
                 downloadSetupProgress.IsIndeterminate = true;
+                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
 
                 // Delete any old installation files if they exist in case of corruption
                 if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{installerFileName}"))
@@ -50,6 +51,7 @@ namespace H1Emu_Launcher
                     throw new Exception($"{char.ToUpper(response.ReasonPhrase.First())}{response.ReasonPhrase.Substring(1)}");
 
                 downloadSetupProgress.IsIndeterminate = false;
+                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
 
                 long totalBytes = response.Content.Headers.ContentLength ?? -1L;
                 using Stream contentStream = await response.Content.ReadAsStreamAsync();
@@ -71,11 +73,18 @@ namespace H1Emu_Launcher
                         float progressPercentage = (float)totalBytesRead * 100 / totalBytes;
                         downloadSetupProgress.Value = progressPercentage;
                         downloadSetupProgressText.Text = $"{FindResource("item54")} {progressPercentage:0.00}%";
+                        taskbarIcon.ProgressValue = progressPercentage / 100;
                     }
                 }
+
+                downloadSetupProgress.IsIndeterminate = true;
+                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
             }
             catch (AggregateException e)
             {
+                downloadSetupProgress.IsIndeterminate = true;
+                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+
                 string exceptionList = string.Empty;
                 foreach (Exception exception in e.InnerExceptions)
                     exceptionList += $"\n\n{exception.GetType().Name}: {exception.Message}";
@@ -91,6 +100,9 @@ namespace H1Emu_Launcher
             }
             catch (Exception ex)
             {
+                downloadSetupProgress.IsIndeterminate = true;
+                taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.None;
+
                 CustomMessageBox.Show($"{FindResource("item80")} \"{ex.Message}\".", this);
                 return;
             }

@@ -34,6 +34,11 @@
                 <RowDefinition Height="10"/>
             </Grid.RowDefinitions>
 
+            <!-- Grainy texture -->
+            <Grid.Background>
+                <ImageBrush ImageSource="..\Resources\Grain.png" Opacity="0.5" TileMode="Tile" ViewportUnits="Absolute" Viewport="0,0,512,512"/>
+            </Grid.Background>
+
             <!-- Disclaimer -->
             <TextBlock Grid.Row="1"
                        Margin="20"
