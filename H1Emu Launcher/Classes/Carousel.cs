@@ -31,7 +31,7 @@ namespace H1Emu_Launcher.Classes
             }
         }
 
-        public static void BeginImageCarousel()
+        public static void SetupAndBeginImageCarouselProcess()
         {
             new Thread(() =>
             {
@@ -68,10 +68,12 @@ namespace H1Emu_Launcher.Classes
                     {
                         NextImage();
                     };
-                    playCarousel.Begin();
 
-                    if (LauncherWindow.launcherInstance.imageCarousel.Visibility == Visibility.Hidden)
-                        playCarousel.Stop();
+                    // Show image carousel if the user has it enabled
+                    if (!Properties.Settings.Default.imageCarouselVisibility)
+                        LauncherWindow.launcherInstance.imageCarousel.Visibility = Visibility.Hidden;
+                    else
+                        playCarousel.Begin();
 
                 }));
             }).Start();

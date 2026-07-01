@@ -947,23 +947,18 @@ namespace H1Emu_Launcher
 
         private void LauncherWindowLoaded(object sender, RoutedEventArgs e)
         {
+            DisplayVersionInformation();
+            LoadServers();
+            CheckGameVersionAndPath(this, false, false);
+            Carousel.SetupAndBeginImageCarouselProcess();
+
             // Delete old setup file
             if (File.Exists($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}"))
                 File.Delete($"{Info.APPLICATION_DATA_PATH}\\H1Emu Launcher\\{UpdateWindow.installerFileName}");
 
+            // If language is Chinese, then display Chinese community link
             if (Properties.Settings.Default.language == 1)
                 chineseLink.Visibility = Visibility.Visible;
-
-            DisplayVersionInformation();
-            LoadServers();
-            CheckGameVersionAndPath(this, false, false);
-            Carousel.BeginImageCarousel();
-            if (!Properties.Settings.Default.imageCarouselVisibility)
-            {
-                // Show image carousel
-                Carousel.playCarousel.Stop();
-                imageCarousel.Visibility = Visibility.Visible;
-            }
         }
 
         public static string[] rawArgs;
@@ -1019,6 +1014,10 @@ namespace H1Emu_Launcher
         {
             Carousel.playCarousel.Stop();
             Carousel.playCarousel.Begin();
+
+            if (imageCarousel.IsMouseOver)
+                Carousel.playCarousel.Pause();
+
             doContinue = true;
         }
 

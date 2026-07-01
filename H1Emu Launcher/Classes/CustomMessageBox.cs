@@ -10,31 +10,31 @@ namespace H1Emu_Launcher.Classes
         public static MessageBoxResult Show(string text, Window owner = null, bool okButtonVisibility = true, bool yesButtonVisibility = false, bool noButtonVisibility = false, bool terminateH1Z1ButtonVisibility = false, bool discordLinkVisibility = false)
         {
             buttonPressed = MessageBoxResult.OK;
-            MessageBoxWindow messageBox = new();
-            messageBox.text.Text = text;
+            MessageBoxWindow customMessageBox = new();
+            customMessageBox.text.Text = text;
 
             if (yesButtonVisibility)
-                messageBox.confirmYesButton.Visibility = Visibility.Visible;
+                customMessageBox.confirmYesButton.Visibility = Visibility.Visible;
 
             if (noButtonVisibility)
-                messageBox.confirmNoButton.Visibility = Visibility.Visible;
+                customMessageBox.confirmNoButton.Visibility = Visibility.Visible;
 
             if (terminateH1Z1ButtonVisibility)
-                messageBox.killH1Z1Button.Visibility = Visibility.Visible;
+                customMessageBox.killH1Z1Button.Visibility = Visibility.Visible;
 
             if (!okButtonVisibility)
-                messageBox.okButton.Visibility = Visibility.Collapsed;
+                customMessageBox.okButton.Visibility = Visibility.Collapsed;
 
             if (discordLinkVisibility)
-                messageBox.discordInviteLink.Visibility = Visibility.Visible;
+                customMessageBox.discordInviteLink.Visibility = Visibility.Visible;
 
             if (owner != null && owner.IsVisible)
-                messageBox.Owner = owner;
+                customMessageBox.Owner = owner;
             else
-                messageBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                customMessageBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             SystemSounds.Beep.Play();
-            messageBox.ShowDialog();
+            customMessageBox.ShowDialog();
 
             if (owner != null)
                 owner.Activate();

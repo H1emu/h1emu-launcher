@@ -586,9 +586,7 @@ namespace H1Emu_Launcher
                     while (string.IsNullOrEmpty(SteamFramePages._2FA.code))
                     {
                         if (SteamFramePages._2FA.code != null)
-                        {
                             break;
-                        }
                     }
 
                     logonDetails.TwoFactorCode = SteamFramePages._2FA.code;
@@ -614,9 +612,7 @@ namespace H1Emu_Launcher
                     while (string.IsNullOrEmpty(SteamFramePages._2FA.code))
                     {
                         if (SteamFramePages._2FA.code != null)
-                        {
                             break;
-                        }
                     }
 
                     logonDetails.AuthCode = SteamFramePages._2FA.code;
