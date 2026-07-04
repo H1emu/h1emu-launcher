@@ -5,11 +5,11 @@ The H1Emu Launcher is an application that aims to make playing the H1Emu project
 ## H1EmuLauncher Tutorial
 
 1. Simply download the launcher installer and run it (accepting any UAC prompts).
-2. Set the directory of your game files using the textbox on the main page via the arrow button.
-3. If you want to play on H1Emu verified servers, you must create an account at [H1Emu](https://h1emu.com) and retrieve your Account Key. Then, navigate to the **Settings > Account Key** page and paste your key into the textbox to save it. You can now start playing by simply hitting the Play button!
-5. If you want to connect to custom servers, select the **New Server...** button from the server selector drop down menu, input an IP address and a server name of your choice and hit Play.
+2. Select the directory of your game files using the textbox on the main page via the arrow button.
+3. If you want to play on official H1Emu servers, you must navigate to the **Settings > Account Key** page and generate an Account Key. Then, join the official Discord server [here](https://discord.com/invite/h1emu) and, once verified, you may link your Account Key to your Discord account. You can now start playing by simply hitting the Play button! (You can retrieve your Account Key at anytime in the Discord server).
+5. If you want to connect to custom servers, select the **New Server...** button from the server selector drop down menu, input the IP address and a server name of your choice, save it and hit Play.
 6. If you want to play Singleplayer, navigate to the **Settings > Game Files** page and click either the **Latest** or **Stable** server build. Then, from the server selector drop down menu, select **Singleplayer** and hit Play.
-7. If you need further assistance, don't hesitate to join the H1Emu Discord server for help at [H1Emu Discord](https://discord.gg/h1emu).
+7. If you need further assistance, don't hesitate to ask for help in the H1Emu Discord server!.
 
 **Note: Account Keys are only needed for official H1Emu servers.**
 
