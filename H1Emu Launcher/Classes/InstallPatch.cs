@@ -77,12 +77,12 @@ namespace H1Emu_Launcher.Classes
 
                     long totalCombinedBytes = 0;
                     long totalCombinedBytesRead = 0;
-                    List<JsonEndPoints.AssetPackJson.Asset> assetNeedingDownload = [];
+                    List<JsonEndPoints.AssetPackJson.Asset> assetsNeedingDownload = [];
                     List<string> verifiedAssets = [];
                     for (int i = 0; i <= 255; i++)
                         verifiedAssets.Add($"Assets_{i:D3}.pack");
 
-                    // For each asset in the JSON, download the asset file
+                    // For each asset in the JSON, check if it exists, if it does exist check its hash, if either are false then add it to a list of assets that need downloading
                     foreach (JsonEndPoints.AssetPackJson.Asset asset in jsonAssetPackDes.assets)
                     {
                         bool isDownloadNeeded = false;
@@ -105,7 +105,7 @@ namespace H1Emu_Launcher.Classes
 
                         if (isDownloadNeeded)
                         {
-                            assetNeedingDownload.Add(asset);
+                            assetsNeedingDownload.Add(asset);
 
                             // Deserialise the JSON into an object
                             HttpResponseMessage responseDownloadURL = await SplashWindow.httpClient.GetAsync(asset.url, HttpCompletionOption.ResponseHeadersRead);
@@ -121,56 +121,53 @@ namespace H1Emu_Launcher.Classes
                     }
 
                     // Download the assets from the list of assets that need downloading, this process combines all downloads needed into one continuous percentage
-                    if (assetNeedingDownload.Count > 0)
+                    foreach (JsonEndPoints.AssetPackJson.Asset asset in assetsNeedingDownload)
                     {
-                        foreach (JsonEndPoints.AssetPackJson.Asset asset in assetNeedingDownload)
+                        // Deserialise the JSON into an object
+                        HttpResponseMessage responseDownloadURL = await SplashWindow.httpClient.GetAsync(asset.url, HttpCompletionOption.ResponseHeadersRead);
+
+                        // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
+                        if (responseDownloadURL.StatusCode != HttpStatusCode.OK)
+                            throw new Exception($"{char.ToUpper(responseDownloadURL.ReasonPhrase.First())}{responseDownloadURL.ReasonPhrase.Substring(1)}");
+
+                        long totalBytes = responseDownloadURL.Content.Headers.ContentLength ?? -1L;
+                        using Stream contentStream = await responseDownloadURL.Content.ReadAsStreamAsync();
+                        using (FileStream fileStream = new($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\{asset.filename}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
                         {
-                            // Deserialise the JSON into an object
-                            HttpResponseMessage responseDownloadURL = await SplashWindow.httpClient.GetAsync(asset.url, HttpCompletionOption.ResponseHeadersRead);
+                            byte[] buffer = new byte[8192];
+                            int bytesRead;
 
-                            // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
-                            if (responseDownloadURL.StatusCode != HttpStatusCode.OK)
-                                throw new Exception($"{char.ToUpper(responseDownloadURL.ReasonPhrase.First())}{responseDownloadURL.ReasonPhrase.Substring(1)}");
+                            LauncherWindow.launcherInstance.playButton.FontSize = 18;
+                            LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
 
-                            long totalBytes = responseDownloadURL.Content.Headers.ContentLength ?? -1L;
-                            using Stream contentStream = await responseDownloadURL.Content.ReadAsStreamAsync();
-                            using (FileStream fileStream = new($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\{asset.filename}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                            while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
                             {
-                                byte[] buffer = new byte[8192];
-                                int bytesRead;
+                                // Write the data to the file
+                                await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead));
+                                totalCombinedBytesRead += bytesRead;
 
-                                LauncherWindow.launcherInstance.playButton.FontSize = 18;
-                                LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
-
-                                while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
+                                // Update the play button text to show the progress
+                                if (totalBytes > 0)
                                 {
-                                    // Write the data to the file
-                                    await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead));
-                                    totalCombinedBytesRead += bytesRead;
-
-                                    // Update the play button text to show the progress
-                                    if (totalBytes > 0)
-                                    {
-                                        float progressPercentage = (float)totalCombinedBytesRead * 100 / totalCombinedBytes;
-                                        LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item188") + $" {progressPercentage:0.00}%";
-                                        LauncherWindow.launcherInstance.taskbarIcon.ProgressValue = progressPercentage / 100;
-                                    }
+                                    float progressPercentage = (float)totalCombinedBytesRead * 100 / totalCombinedBytes;
+                                    LauncherWindow.launcherInstance.playButton.Content = LauncherWindow.launcherInstance.FindResource("item188") + $" {progressPercentage:0.00}%";
+                                    LauncherWindow.launcherInstance.taskbarIcon.ProgressValue = progressPercentage / 100;
                                 }
                             }
-                            ;
                         }
+                        ;
+                    }
 
-                        LauncherWindow.launcherInstance.playButton.FontSize = 28;
-                        LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
-                        LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
+                    LauncherWindow.launcherInstance.playButton.FontSize = 28;
+                    LauncherWindow.launcherInstance.playButton.SetResourceReference(Button.ContentProperty, "item188");
+                    LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
 
-                        // Make sure that only the default game assets and the newly installed asset pack is the only thing in the "Assets" folder
-                        foreach (string file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
-                        {
-                            string fileName = Path.GetFileName(file);
-                            if (!verifiedAssets.Contains(fileName))
-                                File.Delete(file);
-                        }
+                    // Make sure that the vanilla and newly installed assets are the only assets in the "Assets" folder
+                    foreach (string file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
+                    {
+                        string fileName = Path.GetFileName(file);
+                        if (!verifiedAssets.Contains(fileName))
+                            File.Delete(file);
                     }
 
                     // Delete BattlEye folder to prevent Steam from trying to launch the game

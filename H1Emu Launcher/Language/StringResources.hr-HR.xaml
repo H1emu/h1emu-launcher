@@ -214,4 +214,6 @@
     <system:String x:Key="item233">The asset pack name is not valid.</system:String>
     <system:String x:Key="item234">The asset pack URL is not valid.</system:String>
     <system:String x:Key="item235">This asset pack name already exists in the asset pack list.</system:String>
+    <system:String x:Key="item236">Querying asset pack URL...</system:String>
+    <system:String x:Key="item237">Calculating download size...</system:String>
 </ResourceDictionary>

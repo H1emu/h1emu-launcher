@@ -1,4 +1,5 @@
-﻿using System;
+﻿using H1Emu_Launcher.Classes;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -13,7 +14,6 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
-using H1Emu_Launcher.Classes;
 
 namespace H1Emu_Launcher.SettingsPages
 {
@@ -88,26 +88,9 @@ namespace H1Emu_Launcher.SettingsPages
                         File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip", Properties.Resources.Locales);
                         ZipFile.ExtractToDirectory($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip", $"{Properties.Settings.Default.activeDirectory}\\Locale", true);
 
-                        // Clean up Assets directory
-                        foreach (string file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
-                        {
-                            string fileName = Path.GetFileName(file);
-                            if (!fileName.EndsWith(".pack", StringComparison.OrdinalIgnoreCase))
-                            {
-                                File.Delete(file);
-                                continue;
-                            }
-                            if (fileName.StartsWith("Assets_", StringComparison.OrdinalIgnoreCase))
-                            {
-                                // Try to parse the number between "Assets_" and ".pack"
-                                if (!int.TryParse(fileName[7..^5], out int packNum) || packNum > 255)
-                                    File.Delete(file);
-                            }
-                        }
-
                         Dispatcher.Invoke(new Action(delegate
                         {
-                            settingsProgressText.Text = FindResource("item54").ToString();
+                            settingsProgressText.Text = FindResource("item236").ToString();
                         }));
 
                         // Get the download URL for the selected asset pack
@@ -132,9 +115,27 @@ namespace H1Emu_Launcher.SettingsPages
                         string jsonAssetPack = await response.Content.ReadAsStringAsync();
                         JsonEndPoints.AssetPackJson.Root jsonAssetPackDes = JsonSerializer.Deserialize<JsonEndPoints.AssetPackJson.Root>(jsonAssetPack);
 
+                        Dispatcher.Invoke(new Action(delegate
+                        {
+                            settingsProgressText.Text = FindResource("item237").ToString();
+                        }));
+
+                        long totalCombinedBytes = 0;
+                        long totalCombinedBytesRead = 0;
+                        List<JsonEndPoints.AssetPackJson.Asset> assetsNeedingDownload = [];
+
+                        // Delete all assets that are not a part of the vanilla game, just in case
                         List<string> verifiedAssets = [];
                         for (int i = 0; i <= 255; i++)
                             verifiedAssets.Add($"Assets_{i:D3}.pack");
+
+                        // Make sure that the vanilla and newly installed assets are the only assets in the "Assets" folder before downloading the latest asset pack
+                        foreach (string file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
+                        {
+                            string fileName = Path.GetFileName(file);
+                            if (!verifiedAssets.Contains(fileName))
+                                File.Delete(file);
+                        }
 
                         Dispatcher.Invoke(new Action(delegate
                         {
@@ -142,48 +143,61 @@ namespace H1Emu_Launcher.SettingsPages
                             LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Normal;
                         }));
 
-                        // For each asset in the JSON, download the asset file
-                        foreach (JsonEndPoints.AssetPackJson.Asset item in jsonAssetPackDes.assets)
+                        // For each asset in the JSON, add the asset to a list and calculate total download size
+                        foreach (JsonEndPoints.AssetPackJson.Asset asset in jsonAssetPackDes.assets)
                         {
                             // Deserialise the JSON into an object
-                            HttpResponseMessage responseDownloadURL = await SplashWindow.httpClient.GetAsync(item.url, HttpCompletionOption.ResponseHeadersRead);
-                            
+                            HttpResponseMessage responseDownloadURL = await SplashWindow.httpClient.GetAsync(asset.url, HttpCompletionOption.ResponseHeadersRead);
+
+                            // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
+                            if (responseDownloadURL.StatusCode != HttpStatusCode.OK)
+                                throw new Exception($"{char.ToUpper(responseDownloadURL.ReasonPhrase.First())}{responseDownloadURL.ReasonPhrase.Substring(1)}");
+
+                            totalCombinedBytes += responseDownloadURL.Content.Headers.ContentLength ?? -1L;
+                            assetsNeedingDownload.Add(asset);
+                            verifiedAssets.Add(asset.filename);
+                        }
+
+                        // Download the assets from the list of assets, this process combines all downloads needed into one continuous percentage
+                        foreach (JsonEndPoints.AssetPackJson.Asset asset in assetsNeedingDownload)
+                        {
+                            // Deserialise the JSON into an object
+                            HttpResponseMessage responseDownloadURL = await SplashWindow.httpClient.GetAsync(asset.url, HttpCompletionOption.ResponseHeadersRead);
+
                             // Throw an exception if we didn't get the correct response, with the first letter in the message capitalised
                             if (responseDownloadURL.StatusCode != HttpStatusCode.OK)
                                 throw new Exception($"{char.ToUpper(responseDownloadURL.ReasonPhrase.First())}{responseDownloadURL.ReasonPhrase.Substring(1)}");
 
                             long totalBytes = responseDownloadURL.Content.Headers.ContentLength ?? -1L;
                             using Stream contentStream = await responseDownloadURL.Content.ReadAsStreamAsync();
-                            using (FileStream fileStream = new($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\{item.filename}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                            using (FileStream fileStream = new($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets\\{asset.filename}", FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
                             {
                                 byte[] buffer = new byte[8192];
-                                long totalBytesRead = 0;
                                 int bytesRead;
 
                                 while ((bytesRead = await contentStream.ReadAsync(buffer)) != 0)
                                 {
                                     // Write the data to the file
                                     await fileStream.WriteAsync(buffer.AsMemory(0, bytesRead));
-                                    totalBytesRead += bytesRead;
+                                    totalCombinedBytesRead += bytesRead;
 
-                                    // Update the progress bar
+                                    // Update the play button text to show the progress
                                     if (totalBytes > 0)
                                     {
-                                        float progressPercentage = (float)totalBytesRead * 100 / totalBytes;
+                                        float progressPercentage = (float)totalCombinedBytesRead * 100 / totalCombinedBytes;
 
                                         Dispatcher.Invoke(new Action(delegate
                                         {
                                             settingsProgressBar.Value = progressPercentage;
-                                            settingsProgressText.Text = $"{FindResource("item54").ToString().Replace("...", "")} \"{item.filename}\"... {progressPercentage:0.00}%";
+                                            settingsProgressText.Text = $"{FindResource("item54").ToString().Replace("...", "")} \"{asset.filename}\"... {progressPercentage:0.00}%";
                                             LauncherWindow.launcherInstance.taskbarIcon.ProgressValue = progressPercentage / 100;
                                         }));
                                     }
                                 }
                             };
-
-                            verifiedAssets.Add(item.filename);
                         }
 
+                        // Unzip patch files
                         Dispatcher.Invoke(new Action(delegate
                         {
                             settingsProgressBar.IsIndeterminate = true;
@@ -191,43 +205,35 @@ namespace H1Emu_Launcher.SettingsPages
                             LauncherWindow.launcherInstance.taskbarIcon.ProgressState = System.Windows.Shell.TaskbarItemProgressState.Indeterminate;
                         }));
 
-                        // Make sure that only the default game assets and the newly installed asset pack is the only thing in the "Assets" folder
-                        foreach (string file in Directory.GetFiles($"{Properties.Settings.Default.activeDirectory}\\Resources\\Assets"))
+                        // Replace users ClientConfig.ini with modified version
+                        File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\ClientConfig.ini", Properties.Resources.CustomClientConfig);
+
+                        // Delete any no longer needed files/old patches
+                        Dispatcher.Invoke(new Action(delegate
                         {
-                            string fileName = Path.GetFileName(file);
-                            if (!verifiedAssets.Contains(fileName))
-                                File.Delete(file);
-                        }
+                            settingsProgressText.Text = FindResource("item100").ToString();
+                        }));
+
+                        // Delete BattlEye folder to prevent Steam from trying to launch the game
+                        if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
+                            Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\BattlEye", true);
+
+                        if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice"))
+                            Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice", true);
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\Resources\\Audio\\pc9\\SoundBanks\\Sound_Banks.zip");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.dll");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.runtimeconfig.json");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Asio.dll");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Core.dll");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.dll");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Midi.dll");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Wasapi.dll");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.WinMM.dll");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\websocket-sharp.dll");
+                        File.Delete($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip");
                     }
-
-                    // Delete BattlEye folder to prevent Steam from trying to launch the game
-                    if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\BattlEye"))
-                        Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\BattlEye", true);
-
-                    // Replace users ClientConfig.ini with modified version
-                    File.WriteAllBytes($"{Properties.Settings.Default.activeDirectory}\\ClientConfig.ini", Properties.Resources.CustomClientConfig);
-
-                    // Delete any no longer needed files/old patches
-                    Dispatcher.Invoke(new Action(delegate
-                    {
-                        settingsProgressText.Text = FindResource("item100").ToString();
-                    }));
-
-                    if (Directory.Exists($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice"))
-                        Directory.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoice", true);
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Game_Patch_2016.zip");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Resources\\Audio\\pc9\\SoundBanks\\Sound_Banks.zip");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Locale\\Locales.zip");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\H1EmuVoiceClient.runtimeconfig.json");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Asio.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Core.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Midi.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.Wasapi.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\NAudio.WinMM.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\websocket-sharp.dll");
-                    File.Delete($"{Properties.Settings.Default.activeDirectory}\\Assets_Pack.zip");
                 }
                 catch (Exception e)
                 {
@@ -341,10 +347,6 @@ namespace H1Emu_Launcher.SettingsPages
             }).Start();
         }
 
-        /////////////////////////////
-        /// Extract Server Files ///
-        /////////////////////////////
-
         public bool ExtractMaster()
         {
             // Delete old server files if they exist
@@ -436,6 +438,7 @@ namespace H1Emu_Launcher.SettingsPages
                     deleteSinglePlayerDataHyperLink.IsEnabled = true;
                     isExecutingTasks = false;
 
+                    settingsProgressText.Text = string.Empty;
                     settingsProgressBar.Value = 0;
                     settingsProgressBar.IsIndeterminate = false;
                     settingsProgressRowContent.Measure(new System.Windows.Size(settingsProgressRow.MaxWidth, settingsProgressRow.MaxHeight));

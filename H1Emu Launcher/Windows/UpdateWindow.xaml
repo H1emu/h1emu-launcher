@@ -190,7 +190,6 @@
 
                         <!-- Status text to overlay progress bar -->
                         <TextBlock x:Name="downloadSetupProgressText"
-                                   Text="{DynamicResource item54}"
                                    Grid.Row="3"
                                    FontSize="12"
                                    VerticalAlignment="Center"

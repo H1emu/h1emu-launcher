@@ -26,6 +26,8 @@ namespace H1Emu_Launcher
             // Adds the correct language file to the resource dictionary and then loads it
             Resources.MergedDictionaries.Clear();
             Resources.MergedDictionaries.Add(SetLanguageFile.LoadFile());
+
+            downloadSetupProgressText.Text = $"{FindResource("item54")} 0.00%";
         }
 
         private async void UpdateWindowLoaded(object sender, RoutedEventArgs e)

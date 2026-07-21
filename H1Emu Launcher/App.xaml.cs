@@ -120,7 +120,7 @@ namespace H1Emu_Launcher
                     }
                 }
 
-                CustomMessageBox.Show($"An unhandled exception occurred: \"{(e.ExceptionObject as Exception).Message}\".\n\nThe launcher will now close.", LauncherWindow.launcherInstance);
+                CustomMessageBox.Show($"An unhandled exception occurred: \"{(e.ExceptionObject as Exception).Message}\".\n\nStack trace: \"{(e.ExceptionObject as Exception).StackTrace?.Split(Environment.NewLine)[0].Trim()}\".\n\nThe launcher will now close.", LauncherWindow.launcherInstance);
                 Environment.Exit(1);
             }
         }
